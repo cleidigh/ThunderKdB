@@ -86,7 +86,7 @@ EwsNativeMailbox.prototype = {
     return this;
   },
 
-  QueryInterface: ChromeUtils.generateQI([Ci.nsISupportsWeakReference]),
+  QueryInterface: ChromeUtils.generateQI(["nsISupportsWeakReference"]),
 
   get username()  { return this._username;},
   set username(a) { this._username = a;},

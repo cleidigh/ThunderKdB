@@ -1,0 +1,135 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<title id="title"></title>
+	<style>
+		.vCard {
+			display: block;
+			flex-flow: row wrap;
+			align-content: center;
+			border: 1px solid black;
+			box-shadow: 3px 3px 3px grey;
+			margin-bottom: 10px;
+			padding: 0;
+		}
+		.header {
+			font-weight: bold;
+		}
+		.row {
+			display: flex-inline;
+		}
+		.properties {
+			display: flex;
+			flex-flow: row wrap;
+			margin-left: 30px;
+		}
+		.itemproperties {
+			display: flex;
+			flex-flow: row wrap;
+			margin-left: 30px;
+		}
+		.itemproperties > .pref {
+			width: 5%;
+		}
+		.itemproperties > .type {
+			width: 25%;
+		}
+		.categoriesheaderrow > .type {
+			border: thin solid;
+		}
+		.key {
+			font-weight: bold;
+			width: 30%
+		}
+		.titlerow {
+			display: flex;
+			justify-content: center;
+		}
+	</style>
+</head>
+<body>
+	<div id="list-container" class="vCard"></div>
+
+	<!-- List item template for the "list" layout. -->
+	<template id="list-item-template">
+		<div class="vCard">
+			<div class="titlerow">
+			</div>
+			<div class="row header categoriesheaderrow">
+			</div>
+			<div class="categoriesrow">
+			</div>
+			<div class="row header personalheaderrow">
+			</div>
+			<div class="personalrow">
+			</div>
+			<div class="row header orgheaderrow">
+			</div>
+			<div class="orgrow">
+			</div>
+			<div class="row header emailheaderrow">
+			</div>
+			<div class="emailrow">
+			</div>
+			<div class="row header adrheaderrow">
+			</div>
+			<div class="adrrow">
+			</div>
+			<div class="row header telheaderrow">
+			</div>
+			<div class="telrow">
+			</div>
+			<div class="row header urlheaderrow">
+			</div>
+			<div class="urlrow">
+			</div>
+			<div class="row header imppheaderrow">
+			</div>
+			<div class="impprow">
+			</div>
+			<div class="row header eventheaderrow">
+			</div>
+			<div class="eventrow">
+			</div>
+			<div class="row header listheaderrow">
+			</div>
+			<div class="listrow">
+			</div>
+			<div class="row header noteheaderrow">
+			</div>
+			<div class="noterow">
+			</div>
+		</div>
+	</template>
+
+	<template id="list-item-header">
+		<div class="row header">
+			<div class="keyheader"></div>
+		</div>
+	</template>
+
+	<template id="list-item-properties">
+		<div class="row properties">
+			<div class="key"></div>
+			<div class="value"></div>
+		</div>
+	</template>
+
+	<template id="list-item-prefproperties">
+		<div class="row itemproperties">
+			<div class="pref"></div>
+			<div class="type"></div>
+			<div class="value"></div>
+		</div>
+	</template>
+
+	<template id="list-item-labelprefproperties">
+		<div class="row itemproperties">
+			<div class="key"></div>
+			<div class="pref"></div>
+			<div class="type"></div>
+			<div class="value"></div>
+		</div>
+	</template>
+</body>
+</html>

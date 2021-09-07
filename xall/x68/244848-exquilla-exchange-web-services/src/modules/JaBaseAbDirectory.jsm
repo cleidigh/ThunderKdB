@@ -37,7 +37,6 @@ JaBaseAbDirectory.Properties = {
                         Ci.nsIAbCollection, // COMPAT for TB 68
                         Ci.nsIAbItem, // COMPAT for TB 68
                         Ci.msgIOverride,
-                        Ci.nsISupports,
                         Ci.nsIInterfaceRequestor,
                         ]/* COMPAT for TB 68 */.filter(i => i),
 

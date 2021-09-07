@@ -3,36 +3,6 @@
     "namespace": "convMsgWindow",
     "functions": [
       {
-        "name": "isSelectionExpanded",
-        "type": "function",
-        "description": "Temporary. Returns true if the selection is expanded in the window.",
-        "async": true,
-        "parameters": [
-          {
-            "name": "windowId",
-            "type": "integer",
-            "optional": true,
-            "minimum": -2,
-            "description": "The window id."
-          }
-        ]
-      },
-      {
-        "name": "isSelectionThreaded",
-        "type": "function",
-        "description": "Determines if the selection in the view is threaded and it is not on an expanded thread.",
-        "async": true,
-        "parameters": [
-          {
-            "name": "windowId",
-            "type": "integer",
-            "optional": true,
-            "minimum": -2,
-            "description": "The window id."
-          }
-        ]
-      },
-      {
         "name": "getDisplayedMessages",
         "type": "function",
         "description": "Returns an array of the currently selected message headers.",
@@ -56,6 +26,31 @@
             "name": "url",
             "type": "string",
             "description": "The url to load in the window."
+          },
+          {
+            "name": "params",
+            "type": "string",
+            "description": "Extra URL params to pass to the window.",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "print",
+        "type": "function",
+        "description": "Prints an iframe in the multimessage view of the given window.",
+        "async": true,
+        "parameters": [
+          {
+            "name": "window",
+            "type": "integer",
+            "minimum": -2,
+            "description": "The window id."
+          },
+          {
+            "name": "iframeId",
+            "type": "string",
+            "description": "The iframe id."
           }
         ]
       }
@@ -128,6 +123,25 @@
         "type": "function",
         "description": "Temporary. Fake Listener, actually used for hooking into summarize thread.",
         "parameters": []
+      },
+      {
+        "name": "onPrint",
+        "type": "function",
+        "description": "Temporary. Used for hooking into the print menu.",
+        "parameters": [
+          {
+            "name": "window",
+            "type": "integer",
+            "optional": true,
+            "minimum": -2,
+            "description": "The window id."
+          },
+          {
+            "name": "id",
+            "type": "integer",
+            "description": "The message id."
+          }
+        ]
       }
     ]
   }

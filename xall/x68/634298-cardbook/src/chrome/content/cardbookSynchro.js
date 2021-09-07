@@ -8,6 +8,7 @@ loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBCat.js", th
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBUndo.js", this);
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBImage.js", this);
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBMailPop.js", this);
+loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBPrefDispName.js", this);
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBSearch.js", this);
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookEncryptor.js", this);
 
@@ -34,6 +35,9 @@ var cardbookSynchro = {
 			// mail popularity
 			cardbookIDBMailPop.openMailPopDB();
 
+			// prefer display name
+			cardbookIDBPrefDispName.openPrefDispNameDB();
+
 			cardbookRepository.firstLoad = true;
 		}
 		}
@@ -50,7 +54,5 @@ var cookieBehavior = Services.prefs.getIntPref("network.cookie.cookieBehavior", 
 if (cookieBehavior == 2) {
 	Services.prefs.setIntPref("network.cookie.cookieBehavior", 1);
 }
-
-cardbookRepository.cardbookPreferDisplayName.loadPreferDisplayName();
 
 cardbookSynchro.runBackgroundSync();

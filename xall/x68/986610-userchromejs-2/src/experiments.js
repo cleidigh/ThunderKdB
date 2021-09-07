@@ -67,7 +67,7 @@ function paint(win) {
     }
     var url = Services.io.getProtocolHandler("file").
         QueryInterface(Components.interfaces.nsIFileProtocolHandler).
-        getURLSpecFromFile(file);
+        getURLSpecFromActualFile(file);
     Services.scriptloader.loadSubScriptWithOptions(url, {
         target: win.document.defaultView,
         charset: "UTF-8",

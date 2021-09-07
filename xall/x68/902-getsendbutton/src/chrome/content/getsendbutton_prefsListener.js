@@ -27,7 +27,7 @@ var GetSendButton_label = {
   },
 
   setButtonLabel: function() {
-    // console.log("GetSendButton: setButtonLabel");
+    // console.debug("GetSendButton: setButtonLabel");
 
     let GetSendButton_getsendButton = 
       document.getElementById("button-getsendbutton");
@@ -40,14 +40,14 @@ var GetSendButton_label = {
       if (Services.prefs.getBoolPref(
         "extensions.getsendbutton.GetSendButton_SendYes", true)) {
 
-        // console.log("GetSendButton: setButtonLabel: Get & Send");
+        // console.debug("GetSendButton: setButtonLabel: Get & Send");
 
         GetSendButton_getsendButton.setAttribute("label",
           GetSetButton_bundle.GetStringFromName("getsendbutton.buttonGetsend.label"));
 
       } else {
 
-        // console.log("GetSendButton: setButtonLabel: Get - not send");
+        // console.debug("GetSendButton: setButtonLabel: Get - not send");
 
         GetSendButton_getsendButton.setAttribute("label",
           GetSendButton_getsendButton.getAttribute("label-getMsg"));

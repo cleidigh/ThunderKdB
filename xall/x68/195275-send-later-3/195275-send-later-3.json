@@ -16,7 +16,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/5/5389/5389259.png?modified=1579925536"
         }
     ],
-    "average_daily_users": 59526,
+    "average_daily_users": 67615,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -29,26 +29,26 @@
     "contributions_url": "https://www.paypal.com/donate?hosted_button_id=U5PJYWYVRJMDW",
     "created": "2010-07-09T19:07:32Z",
     "current_version": {
-        "id": 2476131,
+        "id": 2476431,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "93.0",
                 "min": "78.2.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-3/versions/2476131",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-3/versions/2476431",
         "files": [
             {
-                "id": 1019291,
-                "created": "2021-07-24T20:56:37Z",
-                "hash": "sha256:222d54d94f2f0403b52fb13cfaa03b01b04ba44b5b40a183750f26005a8924e3",
+                "id": 1019591,
+                "created": "2021-09-06T21:12:37Z",
+                "hash": "sha256:01fd7dedc5129ebef5e4d4f0c1be8bcea075f6f49f7d5fc0d82761bab5503b84",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 495964,
+                "size": 496340,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019291/send_later-8.9.5-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019591/send_later-8.9.8-tb.xpi?src=",
                 "permissions": [
                     "storage",
                     "accountsRead",
@@ -63,7 +63,7 @@
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 3338,
             "name": {
@@ -72,11 +72,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Fix for compatibility with Thunderbird 91"
+            "en-US": "Set maximum Thunderbird version for Send Later 8.9. Will be moving to 9.0 with next Thunderbird ESR."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/8.9.5",
-        "version": "8.9.5"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/8.9.8",
+        "version": "8.9.8"
     },
     "default_locale": "en-US",
     "description": {
@@ -169,7 +169,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-07-25T15:35:38Z",
+    "last_updated": "2021-09-07T07:18:16Z",
     "name": {
         "el": "Στείλετε αργότερα",
         "ca": "Enviar més tard",
@@ -298,12 +298,14 @@
     "weekly_downloads": 2002,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
-            "comp68": true,
+            "comp69plus": true,
             "comp78plus": true,
+            "comp61plus": true,
+            "comp68pv": true,
+            "comp68pv_date": "2019-03-30T22:13:04Z",
             "comp60pv": true,
-            "comp60pv_date": "2018-11-09T03:16:04Z"
+            "comp60pv_date": "2019-01-06T21:25:09Z"
         }
     }
 }

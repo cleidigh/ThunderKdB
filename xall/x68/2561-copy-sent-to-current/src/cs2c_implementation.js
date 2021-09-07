@@ -11,6 +11,7 @@ let sb4f=Services.strings.createBundle("chrome://messenger/locale/folderWidgets.
 var HTB={};
 var gContext;
 var chromeHandle=null;
+var appVersion;
 
 let strings={
   "copysent2choose_label": '',
@@ -288,6 +289,7 @@ debug('add toolbar buttons');
     let console = Services.console;
     let app = Services.appinfo;
     console.logStringMessage('CopySent2Current: '+addOn.version+' on '+app.name+' '+app.version);
+		appVersion=app.version.replace(/^(\d+\.\d+)(\..*)?$/, '$1');
   }
 
 };
@@ -306,7 +308,7 @@ function setFcc(win, identityKey, preSelect, isSend) {
 debug('selected identity='+identityKey+' '+identity+' account='+akey);
 */
 /* ... identical to this
-let cidentity=win.getCurrentIdentity();
+let cidentity=MailServices.accounts.getIdentity(win.getCurrentIdentityKey());
 let caccount=win.getCurrentAccountKey();
 debug('from window identity='+identity.key+' '+' account='+caccount);
 */
@@ -316,7 +318,7 @@ debug('from window identity='+identity.key+' '+' account='+caccount);
   if (identityKey)
     identity=MailServices.accounts.getIdentity(identityKey);
   else
-    identity=win.getCurrentIdentity();
+    identity=MailServices.accounts.getIdentity(win.getCurrentIdentityKey());
 debug(' selected identity is '+identityKey+' '+identity.identityName);
   //identity might have been changed by user
   if (!identity.doFcc) debug(' -- doFcc disabled!');
@@ -446,7 +448,7 @@ debug('setFcc finally: fcc='+msgCompFields.fcc+' fcc2='+msgCompFields.fcc2);
 function getFolders(cw) {
 	let state='';
   let curFolder=null;
-	let identity=cw.getCurrentIdentity();
+	let identity=MailServices.accounts.getIdentity(cw.getCurrentIdentityKey());	//getCurrentIdentity();
 	cw.cs2c_params.account=cw.getCurrentAccountKey();
 //    if (identity.doFcc && identity.fccFolderPickerMode>=gBase) {
 debug('identity='+identity.key+' .doFcc='+identity.doFcc+' account='+cw.cs2c_params.account+' useAccount='+prefs[cw.cs2c_params.account]);
@@ -898,9 +900,13 @@ debug('MoveMessage started: to '+folderuri);
       }
       debug('MoveMessage: apparently to '+folder.URI);
       var copyService = MailServices.copy;
-      var msgs=Components.classes["@mozilla.org/array;1"].
+      if (appVersion<85) {
+        var msgs=Components.classes["@mozilla.org/array;1"].
           createInstance(Components.interfaces.nsIMutableArray);
-      msgs.appendElement(msgHdr, false);
+        msgs.appendElement(msgHdr, false);
+      } else {
+        var msgs=[msgHdr];
+      }
       let listener={
         OnStartCopy: () => {
 debug('start move');
@@ -909,8 +915,13 @@ debug('start move');
 debug('stop move status='+status);  //status=0 even if message does not exists
         }
       };
-      copyService.CopyMessages(msgHdr.folder, msgs, folder,
+			try {
+				copyService.CopyMessages(msgHdr.folder, msgs, folder,					// up to TB8?
                true /* isMove */, listener, null /*msgWindow*/, true /* allow undo */);
+			} catch(e) {
+				copyService.copyMessages(msgHdr.folder, msgs, folder,					// since TB91
+               true /* isMove */, listener, null /*msgWindow*/, true /* allow undo */);
+			}
     } else {
 debug('MoveMessage: Message not moved since target is same folder');
     }
@@ -987,7 +998,7 @@ function test(wid, cw) {
 /* TEST */
 //	let win=Services.wm.getOuterWindowWithId(wid);	// ==cw
 	let msgCompFields = cw.gMsgCompose.compFields;
-	let identity=cw.getCurrentIdentity();
+	let identity=MailServices.accounts.getIdentity(cw.getCurrentIdentityKey());
 	let accountkey=cw.getCurrentAccountKey();
   let account=MailServices.accounts.getAccount(accountkey);
 	let origMsgURI=cw.gMsgCompose.originalMsgURI;	//"" if new, else "imap-message://ggbs@mailhost.iwf.ing.tu-bs.de/INBOX#53070"

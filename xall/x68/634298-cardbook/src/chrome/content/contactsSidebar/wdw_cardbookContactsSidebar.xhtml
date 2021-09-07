@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet href="chrome://messenger/skin/searchBox.css" type="text/css"?>
-<?xml-stylesheet href="chrome://messenger/skin/addressbook/abContactsPanel.css" type="text/css"?>
-<?xml-stylesheet href="chrome://messenger/skin/addressbook/abResultsPane.css" type="text/css"?>
-<?xml-stylesheet href="chrome://cardbook/content/skin/cardbookAddressBooks.css" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/searchBox.css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/addressbook/abResultsPane.css"?>
+<?xml-stylesheet type="text/css" href="chrome://cardbook/content/skin/cardbookAddressBooks.css"?>
 <!-- for the icons of the CardBook menus -->
-<?xml-stylesheet href="chrome://cardbook/content/skin/cardbookMenuIcons.css" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://cardbook/content/skin/cardbookMenuIcons.css"?>
 <!-- for the textbox -->
 <?xml-stylesheet type="text/css" href="chrome://messenger/skin/input-fields.css"?>
 <!-- for the display -->
@@ -32,6 +32,7 @@
 	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBUndo.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBImage.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBMailPop.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBPrefDispName.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBSearch.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookActions.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookCardParser.js"/>
@@ -125,33 +126,16 @@
 			</treecols>
 			<treechildren id="abResultsTreeChildren" ondblclick="wdw_cardbookContactsSidebar.doubleClickCardsTree(event);" ondragstart="CardBookResultsPaneObserver.onDragStart(event);"/>
 		</tree>
-		
+
 		<separator class="thin"/>
-		
-		<hbox>
-			<spring flex="1"/>
-			<grid>
-				<columns>
-					<column style="min-width: 10em"/>
-				</columns>
-				<rows>
-					<row id="toButtonBox">
-						<button id="toButton" label="__MSG_toButton.label__" accesskey="__MSG_toButton.accesskey__" oncommand="wdw_cardbookContactsSidebar.addEmails('addr_to')"/>
-					</row>
-					<row id="ccButtonBox">
-						<button id="ccButton" label="__MSG_ccButton.label__" accesskey="__MSG_ccButton.accesskey__" oncommand="wdw_cardbookContactsSidebar.addEmails('addr_cc')"/>
-					</row>
-					<row id="bccButtonBox">
-						<button id="bccButton" label="__MSG_bccButton.label__" accesskey="__MSG_bccButton.accesskey__" oncommand="wdw_cardbookContactsSidebar.addEmails('addr_bcc')"/>
-					</row>
-					<row id="replytoButtonBox">
-						<button id="replytoButton" label="__MSG_replytoButton.label__" accesskey="__MSG_replytoButton.accesskey__" oncommand="wdw_cardbookContactsSidebar.addEmails('addr_reply')"/>
-					</row>
-				</rows>
-			</grid>
-			<spring flex="1"/>
+
+		<hbox pack="center">
+			<vbox>
+				<button id="toButton" label="__MSG_toButton.label__" accesskey="__MSG_toButton.accesskey__" oncommand="wdw_cardbookContactsSidebar.addEmails('addr_to')"/>
+				<button id="ccButton" label="__MSG_ccButton.label__" accesskey="__MSG_ccButton.accesskey__" oncommand="wdw_cardbookContactsSidebar.addEmails('addr_cc')"/>
+				<button id="bccButton" label="__MSG_bccButton.label__" accesskey="__MSG_bccButton.accesskey__" oncommand="wdw_cardbookContactsSidebar.addEmails('addr_bcc')"/>
+				<button id="replytoButton" label="__MSG_replytoButton.label__" accesskey="__MSG_replytoButton.accesskey__" oncommand="wdw_cardbookContactsSidebar.addEmails('addr_reply')"/>
+			</vbox>
 		</hbox>
-		
-		<separator class="thin"/>
 	</vbox>
 </window>

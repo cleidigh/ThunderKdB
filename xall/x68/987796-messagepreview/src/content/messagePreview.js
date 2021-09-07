@@ -1,6 +1,6 @@
 "use strict";
 
-/* globals AppConstants, ConvertSortTypeToColumnID,
+/* globals AppConstants, ConvertSortTypeToColumnID, ExtensionParent,
  *         FolderDisplayListenerManager, gDBView, gFolderDisplay,
  *         GetThreadTree, makeURI, messenger, MsgSortThreadPane, MozXULElement,
  *         NetUtil, Services, SessionStoreManager */
@@ -30,70 +30,152 @@ var MessagePreview = {
     return "messagepreview@mozdev.org";
   },
 
-  async addonInfo() {
-    let addonInfo = await AddonManager.getAddonByID(this.addonId);
-    return addonInfo;
+  get extensionInfo() {
+    return ExtensionParent.GlobalManager.getExtension(this.addonId);
   },
 
-  async getResourceURI(relPath) {
-    let addonInfo = await this.addonInfo();
-    return addonInfo.getResourceURI().spec + relPath;
+  getBaseURL(relPath) {
+    return this.extensionInfo.rootURI.resolve(relPath);
   },
 
-  get obsTopicLocaleMessages() {
-    return `extension:${this.addonId}:locale-messages`;
+  getWXAPI(extension, name, sync = false) {
+    function implementation(api) {
+      let impl = api.getAPI({ extension })[name];
+
+      if (name == "storage") {
+        impl.local.get = (...args) =>
+          impl.local.callMethodInParentProcess("get", args);
+        impl.local.set = (...args) =>
+          impl.local.callMethodInParentProcess("set", args);
+        impl.local.remove = (...args) =>
+          impl.local.callMethodInParentProcess("remove", args);
+        impl.local.clear = (...args) =>
+          impl.local.callMethodInParentProcess("clear", args);
+      }
+      return impl;
+    }
+
+    if (sync) {
+      let api = extension.apiManager.getAPI(name, extension, "addon_parent");
+      return implementation(api);
+    }
+    return extension.apiManager
+      .asyncGetAPI(name, extension, "addon_parent")
+      .then(api => {
+        return implementation(api);
+      });
   },
 
-  obsTopicLocaleMessagesDeferred: {},
-
-  get obsTopicStorageLocal() {
-    return `extension:${this.addonId}:storage-local`;
-  },
-
-  get obsNotificationReadyTopic() {
-    return `extension:${this.addonId}:ready`;
-  },
-
-  get columnId() {
-    return "messagePreviewCol";
-  },
-
-  get Column() {
-    return this.e(this.columnId);
-  },
-
-  get TreeColumn() {
-    return GetThreadTree().columns[this.columnId];
-  },
-
-  get threadTreeChildren() {
-    return GetThreadTree().getElementsByTagName("treechildren")[0];
+  get obsTopicStorageLocalChanged() {
+    return `extension:${this.addonId}:storage-local-changed`;
   },
 
   /*
-   *  Preferences.
+   * Strings.
    */
-  get storageLocalMap() {
-    return this._storageLocalMap || new Map();
+  getLocaleMessage(key, substitutions) {
+    if (!this.i18n) {
+      this.i18n = this.getWXAPI(this.extensionInfo, "i18n", true);
+      // Init some strings.
+      this.extensionBye = this.i18n.getMessage("extensionBye");
+    }
+
+    return this.i18n.getMessage(key, substitutions);
   },
 
-  set storageLocalMap(val) {
-    this._storageLocalMap = val;
+  // Preview strings.
+  get previewTitle() {
+    return this.getLocaleMessage("previewTitle");
+  },
+  get previewTitleNA() {
+    return this.getLocaleMessage("previewTitleNA");
+  },
+  get previewNoAccess() {
+    let preview = ""; //this.previewTitleNA + "\n\n";
+    return preview + this.getLocaleMessage("previewNoAccess");
+  },
+  get previewNoMimeMsg() {
+    let preview = ""; //this.previewTitleNA + "\n\n";
+    return preview + this.getLocaleMessage("previewNoMimeMsg");
+  },
+  get previewNNTP() {
+    let preview = ""; //this.previewTitleNA + "\n\n";
+    return preview + this.getLocaleMessage("previewNNTP");
+  },
+  previewError(error) {
+    let preview = ""; //this.previewTitleNA + "\n\n";
+    return preview + this.getLocaleMessage("previewError", error);
+  },
+  get previewCannotDecrypt() {
+    let preview = ""; //this.previewTitleNA + "\n\n";
+    return preview + this.getLocaleMessage("previewCannotDecrypt");
+  },
+  get previewSeparator() {
+    return this.getLocaleMessage("previewSeparator");
+  },
+
+  /*
+   * Preferences.
+   *
+   * Initialize a map from storage.local for sync pref retrieval.
+   */
+  async InitializeStorageLocalMap() {
+    if (this.storageLocalMap) {
+      return;
+    }
+    this.DEBUG && console.debug("InitializeStorageLocalMap: START");
+    this.storageLocalMap = new Map();
+    const setCurrentPrefs = result => {
+      this.DEBUG && console.debug("InitializeStorageLocalMap: result ->");
+      this.DEBUG && console.debug(result);
+      for (let [prefKey, value] of Object.entries(result)) {
+        this.storageLocalMap.set(prefKey, value);
+      }
+    };
+    let onError = error => {
+      console.error("MessagePreview.InitializeStorageLocalMap: error ->");
+      console.error(error);
+      delete this.storageLocalMap;
+    };
+
+    this.storage = this.getWXAPI(this.extensionInfo, "storage", true);
+    this.DEBUG && console.debug(this.storage.local);
+    let getting = this.storage.local.get([
+      "previewTooltipEnabled",
+      "previewTooltipMaxSize",
+      "previewTextEnabled",
+      "previewTextMaxSize",
+      "previewGetOption",
+      "imapAllowDownload",
+    ]);
+    await getting.then(setCurrentPrefs, onError);
+  },
+
+  /*
+   * The notification in background.js will only send a true pref change in the
+   * storage local database.
+   *
+   * @param {Object} storageLocalData - The key-value pair that changed; the
+   *                                    value contains an |oldValue| property
+   *                                    and perhaps a |newValue| property.
+   */
+  onStorageLocalChanged(storageLocalData) {
+    this.DEBUG && console.debug("onStorageLocalChanged:storageLocalData ->");
+    this.DEBUG && console.debug(storageLocalData);
+    let key = Object.keys(storageLocalData)[0];
+    let values = Object.values(storageLocalData)[0];
+    if ("newValue" in values) {
+      this.storageLocalMap.set(key, values.newValue);
+    } else {
+      this.storageLocalMap.delete(key);
+    }
   },
 
   getStorageLocal(key) {
-    return this.storageLocalMap.get(key);
-  },
-
-  updateStorageLocal(newMap) {
-    this.DEBUG && console.debug("updateStorageLocal: --> MessagePreview ");
-    let storageLocalMapInitialized = this._storageLocalMap != undefined;
-    let oldMap = this.storageLocalMap;
-    this.storageLocalMap = newMap;
-    if (storageLocalMapInitialized) {
-      // Update only if initialized on startup.
-      this.onPrefChange(oldMap);
+    if (!this.storageLocalMap) {
+      this.InitializeStorageLocalMap();
     }
+    return this.storageLocalMap?.get(key);
   },
 
   get previewTooltipEnabledPref() {
@@ -192,76 +274,30 @@ var MessagePreview = {
     // Update actions here if immediately necessary on pref change.
   },
 
-  /*
-   * Strings.
-   */
-  get localeMessagesMap() {
-    return this._localeMessagesMap || new Map();
+  get columnId() {
+    return "messagePreviewCol";
   },
 
-  set localeMessagesMap(val) {
-    this._localeMessagesMap = val;
+  get Column() {
+    return this.e(this.columnId);
   },
 
-  getLocaleMessage(key, substitutions) {
-    let message = this.localeMessagesMap.get(key.toLowerCase()) || "";
-    if (substitutions == undefined) {
-      return message;
-    }
-
-    // We have to do our own substitutions as we don't have access to
-    // i18n.getMessage().
-    if (!Array.isArray(substitutions)) {
-      substitutions = [substitutions];
-    }
-    let n = 1;
-    for (let substitution of substitutions) {
-      message = message.replace(`$${n++}`, substitution);
-    }
-    return message;
+  get TreeColumn() {
+    return GetThreadTree().columns[this.columnId];
   },
 
-  // Preview strings.
-  get previewTitle() {
-    return this.getLocaleMessage("previewTitle");
-  },
-  get previewTitleNA() {
-    return this.getLocaleMessage("previewTitleNA");
-  },
-  get previewNoAccess() {
-    let preview = ""; //this.previewTitleNA + "\n\n";
-    return preview + this.getLocaleMessage("previewNoAccess");
-  },
-  get previewNoMimeMsg() {
-    let preview = ""; //this.previewTitleNA + "\n\n";
-    return preview + this.getLocaleMessage("previewNoMimeMsg");
-  },
-  get previewNNTP() {
-    let preview = ""; //this.previewTitleNA + "\n\n";
-    return preview + this.getLocaleMessage("previewNNTP");
-  },
-  previewError(error) {
-    let preview = ""; //this.previewTitleNA + "\n\n";
-    return preview + this.getLocaleMessage("previewError", error);
-  },
-  get previewCannotDecrypt() {
-    let preview = ""; //this.previewTitleNA + "\n\n";
-    return preview + this.getLocaleMessage("previewCannotDecrypt");
-  },
-  get previewSeparator() {
-    return this.getLocaleMessage("previewSeparator");
+  get threadTreeChildren() {
+    return GetThreadTree().getElementsByTagName("treechildren")[0];
   },
 
   onLoad() {
     this.DEBUG && console.debug("onLoad: --> MessagePreview");
+    if (this.checkForReload()) {
+      return;
+    }
     Services.obs.addObserver(this.Observer, "mail-tabs-session-restored");
     Services.obs.addObserver(this.Observer, "threadtree-column-added");
-    Services.obs.addObserver(this.Observer, this.obsTopicLocaleMessages);
-    this.obsTopicLocaleMessagesDeferred.promise = new Promise(resolve => {
-      this.obsTopicLocaleMessagesDeferred.resolve = resolve;
-    });
-    Services.obs.addObserver(this.Observer, this.obsTopicStorageLocal);
-    Services.obs.notifyObservers(null, this.obsNotificationReadyTopic);
+    Services.obs.addObserver(this.Observer, this.obsTopicStorageLocalChanged);
 
     Services.obs.addObserver(this.Observer, "MsgCreateDBView");
     Services.prefs.addObserver("mail.pane_config.dynamic", this.Observer);
@@ -290,6 +326,10 @@ var MessagePreview = {
 
   onUnload() {
     this.DEBUG && console.debug("onUnload: --> MessagePreview ");
+
+    delete this.storageLocalMap;
+    delete this.i18n;
+
     // RemoveObservers()
     if (gDBView) {
       try {
@@ -299,7 +339,8 @@ var MessagePreview = {
       }
     }
     Services.obs.removeObserver(this.Observer, "threadtree-column-added");
-    Services.obs.removeObserver(this.Observer, this.obsTopicStorageLocal);
+    // eslint-disable-next-line prettier/prettier
+    Services.obs.removeObserver(this.Observer, this.obsTopicStorageLocalChanged);
     Services.obs.removeObserver(this.Observer, "MsgCreateDBView");
     Services.prefs.removeObserver("mail.pane_config.dynamic", this.Observer);
 
@@ -335,7 +376,7 @@ var MessagePreview = {
     // Remove iconic column sort indicators.
     let treecols = this.e("threadCols").querySelectorAll("treecol");
     for (let col of treecols) {
-      if (col.classList.contains("treecol-image")) {
+      if (col.attributes.is == "treecol-image") {
         if (col.lastElementChild.classList.contains("treecol-sortdirection")) {
           col.lastElementChild.remove();
         }
@@ -354,24 +395,41 @@ var MessagePreview = {
     this.DEBUG && console.debug("onUnload: --> MessagePreview DONE");
   },
 
-  async CompleteInit() {
+  checkForReload() {
+    this.DEBUG && console.debug("checkForReload: START");
     if (this.TreeColumn) {
-      return;
+      return true;
     }
-    await this.InitializeOverlayElements();
-    this.onLoadThreadTree();
-    this.UpdateColumnElement();
-    this.SetColumnSortIndicator();
+
+    return false;
+  },
+
+  async CompleteInit() {
+    // Initialize the prefs.
+    await this.InitializeStorageLocalMap();
+
+    this.InitializeOverlayElements();
+
     this.onMsgCreateDBView();
+    this.onLoadThreadTree();
+    this.SetColumnSortIndicator();
+
+    this.onMailTabsSessionRestored();
 
     this.DEBUG && console.debug("CompleteInit: --> MessagePreview");
   },
 
   onMailTabsSessionRestored() {
-    this.DEBUG &&
-      console.debug("onMailTabsSessionRestored: --> MessagePreview");
-    // Make the column header an image now.
-    this.UpdateColumnElement();
+    if (!SessionStoreManager._restored) {
+      return;
+    }
+
+    // eslint-disable-next-line prettier/prettier
+    this.DEBUG && console.debug("onMailTabsSessionRestored: --> MessagePreview");
+
+    // Don't need these anymore.
+    //delete this.i18n;
+    delete this.storage;
   },
 
   onViewSortByPopupshowing(event) {
@@ -395,18 +453,18 @@ var MessagePreview = {
     }
     sortByMenuItem.setAttribute(
       "checked",
-      this.Column.hasAttribute("sortDirection") &&
-        !this.Column.hasAttribute("sortDirectionSecondary")
+      this.Column.attributes.sortDirection &&
+        !this.Column.attributes.sortDirectionSecondary
     );
   },
 
-  async InitializeOverlayElements() {
-    this.DEBUG && console.debug("InitializeOverlayElements:");
+  InitializeOverlayElements() {
+    this.DEBUG &&
+      console.debug("InitializeOverlayElements --> messagePreviewCol");
 
     // Add the stylesheets.
     this.InitializeStyleSheet();
 
-    await this.obsTopicLocaleMessagesDeferred.promise;
     let label = this.getLocaleMessage("messagePreviewColumnLabel");
     let tooltip = this.getLocaleMessage("messagePreviewColumnTooltip");
     let columnId = this.columnId;
@@ -455,14 +513,15 @@ var MessagePreview = {
       );
     }
 
-    // Column. Don't want custom element |is="treecol-image"| here. We want an
-    // image but also a sort indicator and variable width.
+    // Column. We want variable width and a label.
     this.e("threadCols").insertBefore(
       MozXULElement.parseXULToFragment(`
-      <treecol id="${columnId}" extension="${this.addonId}"
+      <treecol is="treecol-image" id="${columnId}" extension="${this.addonId}"
+               class="thread-tree-icon-header"
                persist="hidden ordinal sortDirection width"
                width="32"
                closemenu="none"
+               src="chrome://messenger/skin/icons/file-item.svg"
                label="${label}"
                tooltiptext="${tooltip}">
       </treecol>
@@ -470,6 +529,17 @@ var MessagePreview = {
                 resizeafter="farthest"/>
       `),
       this.e("subjectCol").nextElementSibling.nextElementSibling
+    );
+
+    // Add the label to the newly added column.
+    this.Column.append(
+      MozXULElement.parseXULToFragment(`
+        <spring flex="6"/>
+        <label class="treecol-text"
+               flex="1"
+               crop="right"
+               value="${label}"/>
+      `)
     );
 
     // Restore persisted attributes: hidden ordinal sortDirection width.
@@ -494,28 +564,239 @@ var MessagePreview = {
       }
     }
 
+    //Services.obs.notifyObservers(null, "threadtree-column-added", columnId);
+
     this.DEBUG && console.debug("InitializeOverlayElements: DONE");
   },
 
   /*
-   * Initialize the column display elements, and run on layout change which
-   * recreates the custom element and loses this DOM change.
+   * Unfortunately we must use this method of inserting rules that contain
+   * prefixed pseudo selectors, as necessary for any nsITree styling, as they
+   * are not recognized as valid by the css parser. So we cannot use an href
+   * in a <link> element, or in createProcessingInstruction(), or even add an
+   * @import url rule for the href in a <style> sheet.
+   *
+   * Ie, this won't work:
+   * //stylesheet = doc.createProcessingInstruction(
+   * //  "xml-stylesheet",
+   * //  `href="${href}" type="text/css"`
+   * //);
+   * //document.insertBefore(stylesheet, doc.documentElement);
+   * Nor this:
+   * // style.sheet.insertRule(`@import url("${href}")`, 0);
    */
-  UpdateColumnElement() {
-    let column = this.Column;
-    let icon = column.querySelector(".treecol-icon");
-    this.DEBUG && console.debug("UpdateColumnElement: " + Boolean(icon));
-    if (!icon) {
-      // Add the icon if it's not already there.
-      column.insertBefore(
-        MozXULElement.parseXULToFragment(`
-          <image class="treecol-icon"/>
-          <spring flex="1"/>
-        `),
-        column.firstElementChild
-      );
+  InitializeStyleSheet() {
+    let style = document.createElement("style");
+    style.title = `${this.addonId}`;
+    document.documentElement.appendChild(style);
+    let styleSheet = style.sheet;
+    if (styleSheet.title != `${this.addonId}`) {
+      console.error("InitializeStyleSheet: failed to get styleSheet");
+      return;
     }
+    // We must do this when setting title else another extension using this
+    // technique may have its sheet be the |document.selectedStyleSheetSet|.
+    styleSheet.disabled = false;
+
+    let cssRules = this.cssRules.concat(
+      this[`cssRules_${AppConstants.platform}`]
+    );
+    for (let rule of cssRules) {
+      styleSheet.insertRule(rule, styleSheet.rules.length);
+    }
+    this.DEBUG && console.debug(styleSheet);
   },
+
+  cssRules: [
+    `
+      #messagePreviewCol {
+        width: 32px;
+        min-width: 32px;
+      }
+    `,
+    `
+      #messagePreviewCol:not([sortDirection], [sortDirectionSecondary]) > .treecol-sortdirection {
+        display: none;
+      }
+    `,
+    `
+      #threadTree > treechildren::-moz-tree-image(messagePreviewCol) {
+        padding: 0 4px !important;
+        list-style-image: url(chrome://messenger/skin/icons/file-item.svg);
+      }
+    `,
+    `
+      #threadTree > treechildren::-moz-tree-image(messagePreviewCol, unknown) {
+        opacity: 0.1;
+      }
+    `,
+    `
+      #threadTree > treechildren::-moz-tree-image(messagePreviewCol, hasOne),
+      #threadTree > treechildren::-moz-tree-image(messagePreviewCol, gettingPreview) {
+        border-width: 1px !important;
+        border-style: solid !important;
+        border-color: transparent;
+        opacity: 0.8;
+        cursor: pointer;
+      }
+    `,
+    `
+      #threadTree > treechildren::-moz-tree-image(messagePreviewCol, previewing) {
+        border-color: rgb(118, 118, 118); !important;
+      }
+    `,
+    // Can't be accessed.
+    `
+      #threadTree > treechildren::-moz-tree-image(messagePreviewCol, allNoAccess) {
+        border-color: red !important;
+      }
+    `,
+    // Error.
+    `
+      #threadTree > treechildren::-moz-tree-image(messagePreviewCol, error) {
+        list-style-image: url("chrome://mozapps/skin/extensions/alerticon-error.svg");
+      }
+    `,
+    // Busy (cannot use animated gifs alas or even transitions).
+    `
+      #threadTree > treechildren::-moz-tree-image(messagePreviewCol, gettingPreview) {
+        list-style-image: url("chrome://messenger/skin/icons/waiting.svg") !important;
+      }
+    `,
+
+    // Extra css rules to fix Bug 323067 (iconic column sort indicator) and
+    // also add a secondary sort indicator to all columns.
+    `
+      #threadCols > treecol[is="treecol-image"] {
+        width: 32px;
+        min-width: 32px;
+      }
+    `,
+    `
+      #threadCols > treecol > label.treecol-text {
+        text-align: start;
+      }
+    `,
+    `
+      #threadCols > treecol[is="treecol-image"] > .sortdirection-spring {
+        display: none;
+      }
+    `,
+    `
+      #threadCols > treecol[is="treecol-image"][sortDirection] > .sortdirection-spring,
+      #threadCols > treecol[is="treecol-image"][sortDirectionSecondary] > .sortdirection-spring {
+        display: block;
+      }
+    `,
+    `
+      #threadCols > treecol[sortDirectionSecondary] > .treecol-sortdirection {
+        opacity: 0.4;
+      }
+    `,
+  ],
+
+  cssRules_linux: [
+    `
+      #messagePreviewCol > spring {
+        max-width: 10px;
+      }
+    `,
+
+    // See Bug Bug 1691129 in Tb87, 4px is insufficient.
+    `
+      #threadTree > treechildren::-moz-tree-image(attachmentCol, attach) {
+        padding-inline-start: 7px;
+      }
+    `,
+
+    // Extra css rules to fix Bug 323067 (iconic column sort indicator) and
+    // also add a secondary sort indicator to all columns.
+  ],
+
+  cssRules_macosx: [
+    `
+      #messagePreviewCol {
+        width: 28px;
+        min-width: 28px;
+        padding-inline-start: 6px;
+        padding-inline-end: 6px;
+      }
+    `,
+    `
+      #messagePreviewCol > .treecol-icon {
+        width: 14px;
+      }
+    `,
+    `
+      #messagePreviewCol > spring {
+        max-width: 8px;
+      }
+    `,
+    `
+      #threadTree > treechildren::-moz-tree-image(messagePreviewCol) {
+        width: 14px;
+      }
+    `,
+
+    // Extra css rules to fix Bug 323067 (iconic column sort indicator) and
+    // also add a secondary sort indicator to all columns.
+
+    /* Don't overlap an ellipsis */
+    `
+      #threadCols > treecol:not([is="treecol-image"])[sortDirection] {
+         padding-inline-end: 18px;
+      }
+    `,
+    `
+      #threadCols > treecol[is="treecol-image"] {
+        width: 28px;
+        min-width: 28px;
+        padding-inline-start: 0;
+      }
+    `,
+    `
+      #threadCols > treecol[sortDirectionSecondary="ascending"] > .treecol-sortdirection {
+        list-style-image: url("chrome://global/skin/icons/arrow-up-12.svg");
+      }
+    `,
+    `
+      #threadCols > treecol[sortDirectionSecondary="descending"] > .treecol-sortdirection {
+        list-style-image: url("chrome://global/skin/icons/arrow-down-12.svg");
+      }
+    `,
+    /* The list-style-image must be unset as the <image> inherits it, and
+       on osx it's visible as the image isn't otherwise used for the sort
+       indicator since it is rendered by the cocoa widget. Also need a
+       margin adjustment to account for that.*/
+    `
+      #threadCols > treecol > .treecol-sortdirection {
+        list-style-image: none;
+      }
+    `,
+    `
+      #threadCols > treecol[is="treecol-image"][sortDirectionSecondary] {
+        padding-inline-end: 3px !important;
+      }
+    `,
+  ],
+
+  cssRules_win: [
+    `
+      #messagePreviewCol > spring {
+        max-width: 7px;
+      }
+    `,
+
+    // See Bug Bug 1691129 in Tb87, 4px is insufficient.
+    `
+      #threadTree > treechildren::-moz-tree-image(attachmentCol, attach) {
+        padding-inline-start: 7px;
+      }
+    `,
+
+    // Extra css rules to fix Bug 323067 (iconic column sort indicator) and
+    // also add a secondary sort indicator to all columns.
+  ],
 
   /*
    * Add sort indicator to iconic columns, Bug 323067.
@@ -529,7 +810,7 @@ var MessagePreview = {
       ) {
         column.append(
           MozXULElement.parseXULToFragment(`
-            <spring flex="1"/>
+            <spring class="sortdirection-spring" flex="1"/>
             <image class="treecol-sortdirection"/>
           `)
         );
@@ -549,7 +830,9 @@ var MessagePreview = {
         return;
       }
     } else {
-      treecols = this.e("threadCols").querySelectorAll("treecol.treecol-image");
+      treecols = this.e("threadCols").querySelectorAll(
+        'treecol[is="treecol-image"]'
+      );
     }
     for (let col of treecols) {
       addSortIndicatorToColumn(col);
@@ -558,7 +841,7 @@ var MessagePreview = {
 
   /*
    * Set the secondary sort indicator, on MsgCreateDBView, onSortChanged,
-   * and on TabSwitched. Take care to handle custom columns.
+   * and on TabSwitched, and layout change. Take care to handle custom columns.
    */
   async UpdateSecondarySortIndicator() {
     this.DEBUG && console.debug("UpdateSecondarySortIndicator: START ");
@@ -570,15 +853,6 @@ var MessagePreview = {
     );
     if (curSecondarySortCol) {
       curSecondarySortCol.removeAttribute("sortDirectionSecondary");
-    }
-
-    // For linux Bug 703849; need reflow.
-    if (AppConstants.platform == "linux") {
-      const sleep = ms => {
-        /* eslint-disable mozilla/no-arbitrary-setTimeout */
-        return new Promise(resolve => setTimeout(resolve, ms));
-      };
-      await sleep(0);
     }
 
     let secondarySortColId;
@@ -639,248 +913,6 @@ var MessagePreview = {
   },
 
   /*
-   * Unfortunately we must use this method of inserting rules that contain
-   * prefixed pseudo selectors, as necessary for any nsITree styling, as they
-   * are not recognized as valid by the css parser. So we cannot use an href
-   * in a <link> element, or in createProcessingInstruction(), or even add an
-   * @import url rule for the href in a <style> sheet.
-   *
-   * Ie, this won't work:
-   * //stylesheet = doc.createProcessingInstruction(
-   * //  "xml-stylesheet",
-   * //  `href="${href}" type="text/css"`
-   * //);
-   * //document.insertBefore(stylesheet, doc.documentElement);
-   * Nor this:
-   * // style.sheet.insertRule(`@import url("${href}")`, 0);
-   */
-  InitializeStyleSheet() {
-    let style = document.createElement("style");
-    style.title = `${this.addonId}`;
-    document.documentElement.appendChild(style);
-    let styleSheet = style.sheet;
-    if (styleSheet.title != `${this.addonId}`) {
-      console.error("InitializeStyleSheet: failed to get styleSheet");
-      return;
-    }
-    // We must do this when setting title else another extension using this
-    // technique may have its sheet be the |document.selectedStyleSheetSet|.
-    styleSheet.disabled = false;
-
-    let cssRules = this.cssRules.concat(
-      this[`cssRules_${AppConstants.platform}`]
-    );
-    for (let rule of cssRules) {
-      styleSheet.insertRule(rule, styleSheet.rules.length);
-    }
-    this.DEBUG && console.debug(styleSheet);
-  },
-
-  cssRules: [
-    `
-      #messagePreviewCol {
-        width: 32px;
-        min-width: 32px;
-      }
-    `,
-    `
-      #messagePreviewCol > image.treecol-icon {
-        list-style-image: url(chrome://messenger/skin/icons/file-item.svg);
-        -moz-context-properties: fill;
-        fill: currentColor;
-      }
-    `,
-    `
-      #messagePreviewCol:not([sortDirection]):not([sortDirectionSecondary]) > image.treecol-sortdirection {
-        display: none;
-      }
-    `,
-    `
-      #threadTree > treechildren::-moz-tree-image(messagePreviewCol) {
-        padding: 0 4px !important;
-      }
-    `,
-    `
-      #threadTree > treechildren::-moz-tree-image(messagePreviewCol, unknown) {
-        list-style-image: url(chrome://messenger/skin/icons/file-item.svg);
-        opacity: 0.1;
-      }
-    `,
-    `
-      #threadTree > treechildren::-moz-tree-image(messagePreviewCol, hasOne),
-      #threadTree > treechildren::-moz-tree-image(messagePreviewCol, gettingPreview) {
-        border-width: 1px !important;
-        border-style: solid !important;
-        border-color: transparent;
-        list-style-image: url(chrome://messenger/skin/icons/file-item.svg);
-        opacity: 0.8;
-        cursor: pointer;
-      }
-    `,
-    `
-      #threadTree > treechildren::-moz-tree-image(messagePreviewCol, previewing) {
-        border-color: rgb(118, 118, 118); !important;
-      }
-    `,
-    // Can't be accessed.
-    `
-      #threadTree > treechildren::-moz-tree-image(messagePreviewCol, allNoAccess) {
-        border-color: red !important;
-      }
-    `,
-    // Error.
-    `
-      #threadTree > treechildren::-moz-tree-image(messagePreviewCol, error) {
-        list-style-image: url("chrome://mozapps/skin/extensions/alerticon-error.svg");
-      }
-    `,
-    // Busy (cannot use animated gifs alas or even transitions).
-    `
-      #threadTree > treechildren::-moz-tree-image(messagePreviewCol, gettingPreview) {
-        list-style-image: url("chrome://messenger/skin/icons/waiting.svg") !important;
-      }
-    `,
-
-    // Extra css rules to fix Bug 323067 (iconic column sort indicator) and
-    // also add a secondary sort indicator to all columns.
-    `
-      #threadCols > treecol.treecol-image {
-        width: 32px;
-        min-width: 32px;
-      }
-    `,
-    `
-      #threadCols > treecol > label.treecol-text {
-        text-align: start;
-      }
-    `,
-    `
-      #threadCols > treecol.treecol-image > spring,
-      #threadCols > treecol.treecol-image > image.treecol-sortdirection {
-        display: none;
-        visibility: collapse;
-        border-width: 0;
-        padding: 0;
-      }
-    `,
-    `
-      #threadCols > treecol.treecol-image[sortDirection] > spring,
-      #threadCols > treecol.treecol-image[sortDirectionSecondary] > spring,
-      #threadCols > treecol.treecol-image[sortDirection] > image.treecol-sortdirection,
-      #threadCols > treecol.treecol-image[sortDirectionSecondary] > image.treecol-sortdirection {
-        display: block;
-        visibility: visible;
-      }
-    `,
-    `
-      #threadCols > treecol[sortDirectionSecondary] > image.treecol-sortdirection {
-        opacity: 0.4;
-      }
-    `,
-    `
-      #threadTree > treechildren::-moz-tree-image(attachmentCol, attach) {
-        margin-inline-start: 6px !important;
-      }
-    `,
-  ],
-
-  cssRules_linux: [
-    `
-      #messagePreviewCol > spring {
-        max-width: 10px;
-      }
-    `,
-
-    // Extra css rules to fix Bug 323067 (iconic column sort indicator) and
-    // also add a secondary sort indicator to all columns.
-
-    // Extra rules to fix Bug 703849 (linux).
-  ],
-
-  cssRules_macosx: [
-    `
-      #messagePreviewCol {
-        width: 28px;
-        min-width: 28px;
-        padding-inline-start: 6px;
-        padding-inline-end: 6px;
-      }
-    `,
-    `
-      #messagePreviewCol > image.treecol-icon {
-        width: 14px;
-      }
-    `,
-    `
-      #messagePreviewCol > spring {
-        max-width: 8px;
-      }
-    `,
-    `
-      #threadTree > treechildren::-moz-tree-image(messagePreviewCol) {
-        width: 14px;
-      }
-    `,
-
-    // Extra css rules to fix Bug 323067 (iconic column sort indicator) and
-    // also add a secondary sort indicator to all columns.
-
-    /* Don't overlap an ellipsis */
-    `
-      #threadCols > treecol:not([is="treecol-image"])[sortDirection] {
-         padding-inline-end: 18px;
-      }
-    `,
-    `
-      #threadCols > treecol.treecol-image {
-        width: 28px;
-        min-width: 28px;
-        padding-inline-start: 0;
-      }
-    `,
-    `
-      #threadCols > treecol[sortDirectionSecondary="ascending"] > image.treecol-sortdirection {
-        list-style-image: url("chrome://global/skin/icons/arrow-up-12.svg");
-      }
-    `,
-    `
-      #threadCols > treecol[sortDirectionSecondary="descending"] > image.treecol-sortdirection {
-        list-style-image: url("chrome://global/skin/icons/arrow-dropdown-12.svg");
-      }
-    `,
-    /* The list-style-image must be unset as the <image> inherits it, and
-       on osx it's visible as the image isn't otherwise used for the sort
-       indicator since it is rendered by the cocoa widget. Also need a
-       margin adjustment to account for that.*/
-    `
-      #threadCols > treecol > image.treecol-sortdirection {
-        list-style-image: none;
-      }
-    `,
-    `
-      #threadCols > treecol.treecol-image[sortDirectionSecondary] {
-        padding-inline-end: 3px !important;
-      }
-    `,
-  ],
-
-  cssRules_win: [
-    `
-      #messagePreviewCol > spring {
-        max-width: 6px;
-      }
-    `,
-
-    // Extra css rules to fix Bug 323067 (iconic column sort indicator) and
-    // also add a secondary sort indicator to all columns.
-    `
-      #threadCols > treecol {
-        padding: 0 6px;
-      }
-    `,
-  ],
-
-  /*
    * Observer for custom column, show allBodyParts pref and layout change,
    * localeMessages and storageLocal (from experiments.js).
    */
@@ -909,24 +941,12 @@ var MessagePreview = {
         MessagePreview.DEBUG &&
           console.debug("Observer: " + topic + ", data - " + data);
         window.setTimeout(() => {
-          MessagePreview.UpdateColumnElement();
-          if (AppConstants.platform == "linux") {
-            MessagePreview.UpdateSecondarySortIndicator();
-          }
+          MessagePreview.UpdateSecondarySortIndicator();
         });
-      } else if (topic == MessagePreview.obsTopicLocaleMessages) {
+      } else if (topic == MessagePreview.obsTopicStorageLocalChanged) {
         MessagePreview.DEBUG &&
           console.debug("Observer: " + topic + ", data - " + data);
-        MessagePreview.localeMessagesMap = new Map(JSON.parse(data));
-        Services.obs.removeObserver(
-          MessagePreview.Observer,
-          MessagePreview.obsTopicLocaleMessages
-        );
-        MessagePreview.obsTopicLocaleMessagesDeferred.resolve();
-      } else if (topic == MessagePreview.obsTopicStorageLocal) {
-        MessagePreview.DEBUG &&
-          console.debug("Observer: " + topic + ", data - " + data);
-        MessagePreview.updateStorageLocal(new Map(JSON.parse(data)));
+        MessagePreview.onStorageLocalChanged(JSON.parse(data));
       }
     },
   },
@@ -961,7 +981,7 @@ var MessagePreview = {
       MessagePreview.DEBUG &&
         console.debug("AddonListener.resetSession: who - " + who);
       MessagePreview.onUnload();
-      console.info(MessagePreview.getLocaleMessage("extensionBye"));
+      console.info(MessagePreview.extensionBye);
     },
     onUninstalling(addon) {
       this.resetSession(addon, "onUninstalling");
@@ -1027,7 +1047,8 @@ var MessagePreview = {
         "onMouseMove: cX:cY - " + event.clientX + ":" + event.clientY
       );
 
-    let previewRow = this.previewRow >= gDBView.rowCount ? -1 : this.previewRow;
+    let previewRow =
+      !gDBView || this.previewRow >= gDBView.rowCount ? -1 : this.previewRow;
 
     this.TRACE &&
       console.debug(
@@ -1083,30 +1104,27 @@ var MessagePreview = {
           ":" +
           previewRow
       );
-    if (
-      row == previewRow &&
-      this.threadTreeChildren.hasAttribute("tooltiptext")
-    ) {
+    if (row == previewRow && this.threadTreeChildren.attributes.tooltiptext) {
       this.gettingPreview = false;
       return;
     }
 
-    let msgHdr = gDBView.getMsgHdrAt(row);
+    let msgHdr = gDBView?.getMsgHdrAt(row);
     this.previewRow = row;
     let hasPreview = this.hasPreview(msgHdr);
 
     this.DEBUG &&
-      console.debug("onMouseMove: PREVIEW messageKey - " + msgHdr.messageKey);
+      console.debug("onMouseMove: PREVIEW messageKey - " + msgHdr?.messageKey);
     if (!hasPreview) {
       this.DEBUG &&
-        console.debug("onMouseMove: GETTING messageKey - " + msgHdr.messageKey);
+        console.debug("onMouseMove: GET messageKey - " + msgHdr?.messageKey);
       this.getPreview(msgHdr, row);
     } else {
       let preview = this.getPreview(msgHdr, row);
       this.setTooltip(preview);
       this.gettingPreview = false;
       this.DEBUG &&
-        console.debug("onMouseMove: CACHED messageKey - " + msgHdr.messageKey);
+        console.debug("onMouseMove: CACHED messageKey - " + msgHdr?.messageKey);
     }
 
     this.invalidateCell(row, col, "onMouseMove:done");
@@ -1131,9 +1149,9 @@ var MessagePreview = {
   },
 
   removeTooltip(owner) {
-    this.TRACE && console.debug("removeTooltip: ");
-    if (this.threadTreeChildren.getAttribute("tooltiptextowner") == owner) {
-      this.DEBUG && console.debug("removeTooltip: owner - " + owner);
+    this.TRACE && console.debug("removeTooltip: START, owner - " + owner);
+    if (this.threadTreeChildren.attributes.tooltiptextowner?.value == owner) {
+      this.DEBUG && console.debug("removeTooltip: removed, owner - " + owner);
       this.threadTreeChildren.removeAttribute("tooltiptext");
       this.threadTreeChildren.removeAttribute("tooltiptextowner");
     }
@@ -1171,6 +1189,7 @@ var MessagePreview = {
 
   getCellProperties(row, col) {
     if (
+      !gDBView ||
       row < 0 ||
       row >= gDBView.rowCount ||
       !col ||
@@ -1195,7 +1214,7 @@ var MessagePreview = {
           this.getInfo(msgHdr, "gettingPreview")
       );
     if (this.getInfo(msgHdr, "gettingPreview") !== undefined) {
-      let properties = this.columnId + " gettingCount";
+      let properties = this.columnId + " gettingPreview";
       this.TRACE &&
         console.debug(
           "getCellProperties: row:messageKey:properties - " +
@@ -1251,6 +1270,7 @@ var MessagePreview = {
 
   getCellText(row, col) {
     if (
+      !gDBView ||
       row < 0 ||
       row >= gDBView.rowCount ||
       !col ||
@@ -1285,9 +1305,9 @@ var MessagePreview = {
 
   isGroupedBySortHdr(row) {
     return (
-      gFolderDisplay.view.showGroupedBySort &&
+      gFolderDisplay?.view.showGroupedBySort &&
       row >= 0 &&
-      (gDBView.isContainer(row) || gDBView.getLevel(row) == 0)
+      (gDBView?.isContainer(row) || gDBView?.getLevel(row) == 0)
     );
   },
 
@@ -1470,15 +1490,6 @@ var MessagePreview = {
 
   /*
    * @param {nsIMsgHdr} msgHdr          - The msgHdr.
-   * @returns {String} preview          - The formatted preview string.
-   */
-  createPreviewHeader(msgHdr) {
-    let preview = "";
-    return preview;
-  },
-
-  /*
-   * @param {nsIMsgHdr} msgHdr          - The msgHdr.
    * @param {String} content            - The raw message content.
    * @returns {String} preview          - The formatted preview string.
    */
@@ -1498,9 +1509,7 @@ var MessagePreview = {
     }
     let msgUri = msgHdr.folder.getUriForMsg(msgHdr);
     let msgService = messenger.messageServiceFromURI(msgUri);
-    let urlObj = {};
-    msgService.GetUrlForUri(msgUri, urlObj, null);
-    let msgUrl = urlObj.value.spec;
+    let msgUrl = msgService.getUrlForUri(msgUri)?.spec;
     this.DEBUG && console.debug("getMsgUrlFromMsgHdr: msgUrl - " + msgUrl);
     return msgUrl;
   },
@@ -1680,7 +1689,8 @@ var MessagePreview = {
     let channel = NetUtil.newChannel({
       uri: msgUrl,
       loadingPrincipal: Services.scriptSecurityManager.getSystemPrincipal(),
-      securityFlags: Ci.nsILoadInfo.SEC_REQUIRE_SAME_ORIGIN_DATA_INHERITS,
+      // eslint-disable-next-line prettier/prettier
+      securityFlags: Ci.nsILoadInfo.SEC_REQUIRE_SAME_ORIGIN_INHERITS_SEC_CONTEXT,
       contentPolicyType: Ci.nsIContentPolicy.TYPE_OTHER,
     });
 

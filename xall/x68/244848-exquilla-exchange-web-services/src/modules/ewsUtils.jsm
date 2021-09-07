@@ -143,6 +143,7 @@ function oPL(aObject)
   return propertyList;
 }
 
+// Used only by unit test code, and/or only for debugging purposes
 function stringPL(aList, aPrefix)
 {
   let result = "";
@@ -341,7 +342,8 @@ function openContentTab(aUrl, aStrRegEx, aDelay, aOnLoad, aOnListener, aSetTab)
                             .getService(Ci.nsIWindowMediator)
                             .getMostRecentWindow("mail:3pane");
     let tabmail = mail3PaneWindow.document.getElementById("tabmail");
-    let args =  { contentPage: aUrl,
+    let args =  { url: aUrl,
+                  contentPage: aUrl, // COMPAT for TB 78 (bug 1691304)
                   background: false,
                   clickHandler: "exquilla.siteClickHandler(event, new RegExp(\"" + aStrRegEx + "\"));",
                 };
@@ -491,7 +493,7 @@ function CopyServiceListener(asyncDriver)
 
 CopyServiceListener.prototype =
 {
-  QueryInterface: ChromeUtils.generateQI([Ci.nsIMsgCopyServiceListener]),
+  QueryInterface: ChromeUtils.generateQI(["nsIMsgCopyServiceListener"]),
   OnStartCopy: function() {},
   OnProgress: function(aProgress, aProgressMax) {},
   SetMessageKey: function(aKey) { },
@@ -510,7 +512,7 @@ function UrlListener(asyncDriver)
 
 UrlListener.prototype =
 {
-  QueryInterface: ChromeUtils.generateQI([Ci.nsIUrlListener]),
+  QueryInterface: ChromeUtils.generateQI(["nsIUrlListener"]),
   OnStartRunningUrl: function(aUri) {},
   OnStopRunningUrl: function(aUri, aResult) {
     this.asyncDriver.nextStep({uri: aUri, result: aResult});

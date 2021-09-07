@@ -16,13 +16,13 @@ function getCardForEmail(emailAddress) {
   // copied from msgHdrViewOverlay.js
   var books = MailServices.ab.directories;
   var result = { book: null, card: null };
-  while (!result.card && books.hasMoreElements()) {
-    var ab = books.getNext().QueryInterface(nsIAbDirectory);
+  for (let ab of books) {
     try {
       var card = ab.cardForEmailAddress(emailAddress);
       if (card) {
         result.book = ab;
         result.card = card;
+        break;
       }
     } catch (ex) {
       if (verbose) console.error(`Error (${ex.message}) fetching card from address book ${ab.dirName} for ${emailAddress}`);

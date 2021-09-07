@@ -34,6 +34,7 @@ manage_emails.applyRule= function applyRule(rule) {
 
 
 var nostalgy_gList = null;
+var nostalgy_ruleTableBody = null;
 
 var nostalgy_wait_key = null;
 var nostalgy_wait_key_old = "";
@@ -93,47 +94,150 @@ function NostalgyImportRules() {
 }
 
 function NostalgySetItem(item, rule) {
+
   var f = item.childNodes.item(0);
+ // console.log("FRS", item, f);
   var lab = "";
   if (rule.sender) lab = lab + "F";
   if (rule.recipients) lab = lab + "R";
   if (rule.subject) lab = lab + "S";
 
-  f.setAttribute("value", lab);
+  //f.setAttribute("value", lab);
+  f.textContent = lab;
+
+  var text = document.createTextNode(lab);
+//f.appendChild(text);
   //f.setAttribute("label", lab);
-  f.setAttribute("align", "center");
+  //f.setAttribute("align", "center");
   //item.childNodes.item(1).setAttribute("label", rule.contains);
-  item.childNodes.item(1).setAttribute("value", rule.contains);
+  f= item.childNodes.item(1);
+  f.setAttribute("value", rule.contains);
+  text = document.createTextNode(rule.contains);
+  f.textContent =  rule.contains;
+//f.appendChild(text);
 
   var u = "";
-  if (rule.under) { u = rule.under; }
-  item.childNodes.item(2).setAttribute("value", u);
+  if (rule.under) { u = rule.under; }  else {u = "";};
+  f = item.childNodes.item(2);
+  f.setAttribute("value", u);
+  text = document.createTextNode(u);
+  //f.appendChild(text);
+  f.textContent =  NostalgyCrop(u);
+  
   //item.childNodes.item(2).setAttribute("label", NostalgyCrop(u));
 
-  item.childNodes.item(3).setAttribute("value", rule.folder);
+  f = item.childNodes.item(3);
+  f.setAttribute("value", rule.folder);
+  text = document.createTextNode(rule.folder);
+  //f.appendChild(text);
+  f.textContent =  NostalgyCrop(rule.folder);
+
 //  item.childNodes.item(3).setAttribute("label", NostalgyCrop(rule.folder));
 }
 
 function NostalgyRuleOfItem(item) {
- var fields = item.childNodes.item(0).getAttribute("value");
- return ({ folder: item.childNodes.item(3).getAttribute("value"),
-           under: item.childNodes.item(2).getAttribute("value"),
-	         contains: item.childNodes.item(1).getAttribute("value"),
+ var fields = item.childNodes[0].textContent;//getAttribute("textContent");
+ return ({ folder: item.childNodes[3].textContent,//getAttribute("textContent"),
+           under: item.childNodes[2].textContent,//getAttribute("textContent"),
+	         contains: item.childNodes[1].textContent,//getAttribute("textContent"),
            sender: fields.indexOf("F") >= 0,
            recipients: fields.indexOf("R") >= 0,
            subject: fields.indexOf("S") >= 0 });
 }
 
+
+
+function highlight_row() {
+    var table = document.getElementById('display-table');
+    var cells = table.getElementsByTagName('td');
+
+    for (var i = 0; i < cells.length; i++) {
+        // Take each cell
+        var cell = cells[i];
+        // do something on onclick event for cell
+        cell.onclick = function () {
+            // Get the row id where the cell exists
+            var rowId = this.parentNode.rowIndex;
+
+            var rowsNotSelected = table.getElementsByTagName('tr');
+            for (var row = 0; row < rowsNotSelected.length; row++) {
+                rowsNotSelected[row].style.backgroundColor = "";
+                rowsNotSelected[row].classList.remove('selected');
+            }
+            var rowSelected = table.getElementsByTagName('tr')[rowId];
+            rowSelected.style.backgroundColor = "yellow";
+            rowSelected.className += " selected";
+
+            msg = 'The ID of the company is: ' + rowSelected.cells[0].innerHTML;
+            msg += '\nThe cell value is: ' + this.innerHTML;
+    //        alert(msg);
+        }
+    }
+
+}
 function NostalgyCreateItem(rule) {
 /*
 */
-  var item = document.createXULElement("richlistitem");
-
+//  var col, item = document.createXULElement("html:tr");
+  var col, item = document.createElement("tr");
+  item.setAttribute("height", "20px  !important");
+ // var item = document.createXULElement("richlistitem");
+//
   item.addEventListener("dblclick", function() { NostalgyDoEditItem(item); }, false);
-  item.appendChild(document.createXULElement("label"));
-  item.appendChild(document.createXULElement("label"));
-  item.appendChild(document.createXULElement("label"));
-  item.appendChild(document.createXULElement("label"));
+//  col = document.createXULElement("html:td");
+  col = document.createElement("td");
+  col.setAttribute("style", "height:20px");
+
+var highLight = 
+function () {
+    // Get the row id where the cell exists
+  debugger;
+    var table = nostalgy_gList;//document.getElementById('display-table');
+    var cells = table.getElementsByTagName('td');
+   var rowId = this.parentNode.rowIndex;
+   nostalgy_gList.selectedIndex = rowId;
+   //console.log("selected", rowId);
+
+
+  
+    var rows = nostalgy_gList.rows;//table.getElementsByTagName('tr');
+    for (let row of rows) {
+   //     rowsNotSelected[row].style.backgroundColor = "";
+        row.classList.remove('selected');
+    }
+ /*   */
+//    var rowSelected = table.getElementsByTagName('tr');//[rowId];
+ //   rowSelected.style.backgroundColor = "yellow";
+ //   rowSelected.className += " selected";
+    this.parentNode.className += " selected";
+ //   this.parentNode.className.style.backgroundColor = "yellow";
+
+}
+
+col.onclick = highLight;
+
+//console.log("table", nostalgy_gList,nostalgy_gList.rows.length);
+
+ 
+  item.appendChild(col);
+//  col = document.createXULElement("html:td");
+  col = document.createElement("td");
+    col.setAttribute("style", "height:20px");
+    col.onclick = highLight;
+     item.appendChild(col);
+//  col = document.createXULElement("html:td");
+  col = document.createElement("td");
+    col.setAttribute("style", "height:20px");
+    col.onclick = highLight;
+     item.appendChild(col);
+  col = document.createElement("td");
+ // col = document.createXULElement("html:td");
+  col.setAttribute("style", "height:20px");
+  col.onclick = highLight;
+   item.appendChild(col);
+//  item.appendChild(document.createXULElement("html:td"));
+ // item.appendChild(document.createXULElement("html:td"));
+//  item.appendChild(document.createXULElement("html:td"));
 
   // convert from previous version
   if (rule.field == "any") {
@@ -144,7 +248,7 @@ function NostalgyCreateItem(rule) {
   else if (rule.field == "subject") rule.subject = true;
 
   NostalgySetItem(item,rule);
-  nostalgy_gList.appendChild(item);
+  nostalgy_ruleTableBody.appendChild(item);
 
 }
 
@@ -185,31 +289,63 @@ function NostalgyDoEditItem(item) {
   }
 }
 
+
+function NostalgyDoNewRule() {
+  NostalgyEditRule({ sender:true, recipients:true, subject:true,
+             contains:"", folder:"", under:"" }, NostalgyCreateItem);
+}
+
+
+
 function NostalgyDoEdit() {
-  NostalgyDoEditItem(nostalgy_gList.selectedItem);
+  debugger;
+  let  item = nostalgy_gList.getItemAtIndex(nostalgy_gList.selectedIndex);
+
+  NostalgyDoEditItem(item);
 }
 
 function NostalgySwapItems(idx1,idx2) {
+  //console.log("swap",idx1, idx2 );
   var item1 = nostalgy_gList.getItemAtIndex(idx1);
   var item2 = nostalgy_gList.getItemAtIndex(idx2);
+ // console.log("items", item1, item2, "rows", nostalgy_gList.rows);
+//  nostalgy_gList.setItemAtIndex(item1,idx1);
+//  nostalgy_gList.setItemAtIndex(item1,idx2);
+let A = nostalgy_gList.rows;
+//console.log("type", typeof(A));
+A[idx2] = A.splice(idx1, 1, A[idx2])[0]; 
+ //console.log("items", item1, item2);
+  /*
   var rule1 = NostalgyRuleOfItem(item1);
   var rule2 = NostalgyRuleOfItem(item2);
   NostalgySetItem(item1,rule2);
   NostalgySetItem(item2,rule1);
   nostalgy_gList.selectedIndex = idx2;
-  nostalgy_gList.ensureIndexIsVisible(idx2);
+//  nostalgy_gList.ensureIndexIsVisible(idx2);
+*/
 }
 
 function NostalgyDoMoveUp(idx1,idx2) {
   var idx = nostalgy_gList.selectedIndex;
   if (idx == 0) return;
-  NostalgySwapItems(idx,idx-1);
+  let item = nostalgy_gList.getItemAtIndex(idx);
+  let prev1 = item.previousSibling;
+  //console.log("node", item, prev1,nostalgy_gList.rows );
+  prev1.before(item);
+  nostalgy_gList.selectedIndex--;
+  //item.parentNode.insertBefore()
+ // NostalgySwapItems(idx,idx-1);
 }
 
 function NostalgyDoMoveDown(idx1,idx2) {
   var idx = nostalgy_gList.selectedIndex;
   if (idx == nostalgy_gList.getRowCount() - 1) return;
-  NostalgySwapItems(idx,idx+1);
+  let item = nostalgy_gList.getItemAtIndex(idx);
+  let prev1 = item.nextSibling;
+  //console.log("node", item, prev1,nostalgy_gList.rows );
+  prev1.after(item);
+  nostalgy_gList.selectedIndex++;
+ // NostalgySwapItems(idx,idx+1);
 }
 
 function onNostalgyAcceptChanges() {
@@ -236,7 +372,7 @@ function onNostalgyAcceptChanges() {
   for (var i in nostalgy_keys) {
     let sKey= nostalgy_keys[i][0];
     let sValue= NostalgyEBI("key_" + nostalgy_keys[i][0]).value;
-    prefs.setCharPref(nostalgy_kKeysPrefs+nostalgy_keys[i][0],
+    prefs.setStringPref(nostalgy_kKeysPrefs+nostalgy_keys[i][0],
     NostalgyEBI("key_" + nostalgy_keys[i][0]).value);
   }
 
@@ -255,16 +391,12 @@ function onNostalgyAcceptChanges() {
   for (var i = 0; i < e.length; i++)
    if (e[i].id.substr(0,5) == "key__") {
       var id = e[i].id.substr(4);
-      prefs.setCharPref(nostalgy_kKeysPrefs+id,e[i].value);
-      prefs.setCharPref(nostalgy_kCustomActionsPrefs+id,e[i].previousSibling.value);
+  //    console.log("custom action", e[i], e[i].parentNode.previousSibling);
+      prefs.setStringPref(nostalgy_kKeysPrefs+id,e[i].value);
+      prefs.setStringPref(nostalgy_kCustomActionsPrefs+id,e[i].parentNode.previousSibling.childNodes[0].value);
    }
 
   window.close();
-}
-
-function NostalgyDoNewRule() {
-  NostalgyEditRule({ sender:true, recipients:true, subject:true,
-             contains:"", folder:"", under:"" }, NostalgyCreateItem);
 }
 
 manage_emails.ConvertToNewRule = function ConvertToNewRule() {
@@ -286,7 +418,8 @@ function NostalgyDoDelete() {
   if (idx >= 0) {
     nostalgy_gList.getItemAtIndex(idx).remove();
     if (nostalgy_gList.getRowCount() <= idx) { idx = nostalgy_gList.getRowCount() - 1; }
-    nostalgy_gList.selectedIndex = idx;
+    nostalgy_gList.selectedIndex = -1;
+    //nostalgy_gList.select(idx);
   }
 }
 
@@ -315,6 +448,13 @@ function NostalgyCreateElem(tag,attrs,children) {
  return x;
 }
 
+function NostalgyCreateHTMLElem(tag,attrs,children) {
+  var x = document.createElement(tag);
+  for (var a in attrs) x.setAttribute(a,attrs[a]);
+  if (children) for (var i in children) x.appendChild(children[i]);
+  return x;
+ }
+
 function NostalgyCreateKeyRow(id,txt,v) {
   var is_custom = id.substr(0,1) == "_";
   var buttons = [ ];
@@ -324,13 +464,15 @@ function NostalgyCreateKeyRow(id,txt,v) {
   else
    buttons.push(NostalgyCreateElem("label", { class:"text-link", value:"delete",
           onclick:"NostalgyRemoveRow(this.parentNode.parentNode);" }));
-  let html1=  NostalgyCreateElem("row",{ }, [
-    NostalgyCreateElem("label", { value:txt }),
-    NostalgyCreateElem("label", { id:"key_" + id, class:"text-link",
+  let html1=  NostalgyCreateHTMLElem("tr",{ }, [
+  //  NostalgyCreateHTMLElem("td",{ }, []),
+    NostalgyCreateHTMLElem("td",{width: "30%" }, [NostalgyCreateElem("label", { value:txt })]),
+    NostalgyCreateHTMLElem("td",{ }, [NostalgyCreateElem("label", { id:"key_" + id, class:"text-link",
                           value:v,
                           onclick:"NostalgyWaitKey(this);",
-                          onblur:"NostalgyCancel(this);" }),
-    NostalgyCreateElem("hbox", { }, buttons)
+                          onblur:"NostalgyCancel(this);" })]),
+   // NostalgyCreateElem("hbox", { }, buttons)
+   NostalgyCreateHTMLElem("td",{ }, [buttons[0]])
   ])    ;
 
   return html1;
@@ -345,12 +487,25 @@ function onNostalgyEditPrefsLoad() {
   NostalgyFolderSelectionBoxes();
  document.addEventListener("dialogextra2", (event) => { manage_emails.showHelpFile(); });
 
-  nostalgy_gList = NostalgyEBI("nrules");
+
+ nostalgy_gList = NostalgyEBI("display-table");
+ nostalgy_gList.selectedIndex = -1;
+ nostalgy_gList.getItemAtIndex = function(idx) {return nostalgy_gList.rows[idx];};
+ nostalgy_gList.removeItemAt = function (idx) {nostalgy_gList.getItemAtIndex(idx).remove()}
+ nostalgy_gList.setItemAtIndex = function(item, idx) { 
+  // debugger;
+   nostalgy_gList.rows[idx] = item;};
+ nostalgy_gList.getRowCount = function() {return nostalgy_gList.rows.length;};
+ nostalgy_gList.selected = function (idx) {
+  nostalgy_gList.selectedIndex = idx;
+  nostalgy_gList.rows[idx+1].className += " selected";
+ };
+ nostalgy_ruleTableBody = NostalgyEBI("nrules");
   nostalgy_folder_select = NostalgyEBI("folderselect");
 
   var prefs = PrefBranch();
   try {
-   var r = NostalgyJSONEval(prefs.getCharPref("extensions.nostalgy.rules"));
+   var r = NostalgyJSONEval(prefs.getStringPref("extensions.nostalgy.rules"));
    var i;
    for (i = 0; i < r.length; i++) { NostalgyCreateItem(r[i]); }
   } catch (ex) { }
@@ -372,7 +527,7 @@ function onNostalgyEditPrefsLoad() {
  for (var i = 0; i < nostalgy_keys.length; i++) {
   var v = nostalgy_keys[i][2];
   try {
-    v = prefs.getCharPref(nostalgy_kKeysPrefs + nostalgy_keys[i][0]);
+    v = prefs.getStringPref(nostalgy_kKeysPrefs + nostalgy_keys[i][0]);
   } catch (ex) { }
   nostalgy_key_rows.appendChild(NostalgyCreateKeyRow(nostalgy_keys[i][0],nostalgy_keys[i][1],v));
  }
@@ -384,8 +539,8 @@ function onNostalgyEditPrefsLoad() {
      var n = parseInt(id.substr(1));
      try {
        if (n > nostalgy_max_custom) nostalgy_max_custom = n;
-       var cmd = prefs.getCharPref(nostalgy_kCustomActionsPrefs + id);
-       nostalgy_key_rows.appendChild(NostalgyCreateKeyRow(id,cmd,prefs.getCharPref(a[i])));
+       var cmd = prefs.getStringPref(nostalgy_kCustomActionsPrefs + id);
+       nostalgy_key_rows.appendChild(NostalgyCreateKeyRow(id,cmd,prefs.getStringPref(a[i])));
      } catch (ex) { }
    }
  }
@@ -443,7 +598,7 @@ function NostalgyRecognize(ev, tgt) {
 function NostalgyWaitKey(tgt) {
   if (nostalgy_wait_key) nostalgy_wait_key.value = nostalgy_wait_key_old;
   nostalgy_wait_key_old = tgt.value;
-  tgt.value = "key?";
+  tgt.value = "Enter key here";
   nostalgy_wait_key = tgt;
 }
 

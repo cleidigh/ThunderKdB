@@ -13,6 +13,11 @@
 
 const { classes: Cc, Constructor: CC, interfaces: Ci, utils: Cu, Exception: CE, results: Cr, } = Components;
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
+try { // COMPAT for TB 78 (bug 1649554)
+  var { ComponentUtils } = ChromeUtils.import("resource://gre/modules/ComponentUtils.jsm");
+} catch (ex) { // COMPAT for TB 78 (bug 1649554)
+  var ComponentUtils = XPCOMUtils; // COMPAT for TB 78 (bug 1649554)
+} // COMPAT for TB 78 (bug 1649554)
 ChromeUtils.defineModuleGetter(this, "Utils",
   "resource://exquilla/ewsUtils.jsm");
 ChromeUtils.defineModuleGetter(this, "Services",
@@ -104,6 +109,7 @@ function EwsProtocol() {
   this._owner = null;
   this._contentDispositionFilename = null;
   this._contentDispositionHeader = null;
+  this._properties = {};
 }
 
 EwsProtocol.Properties = {
@@ -115,7 +121,8 @@ EwsProtocol.Properties = {
                         Ci.nsIRequestObserver,
                         Ci.nsITimerCallback,
                         Ci.nsIPrivateBrowsingChannel,
-                        Ci.nsISupports,
+                        Ci.nsIPropertyBag,
+                        Ci.nsIWritablePropertyBag,
                         ],
 
   classDescription:   "ExQuilla Protocol",
@@ -178,7 +185,7 @@ EwsProtocol.prototype = {
   },
   set contentType(a) {
     this._contentType =
-      Services.netUtils.parseRequestContentType(a, {}, {});
+      (/* COMPAT for TB 78 (bug 1464542) */Services.netUtils || Services.io).parseRequestContentType(a, {}, {});
   },
 
   get contentCharset() { return "UTF-8";},
@@ -799,6 +806,16 @@ EwsProtocol.prototype = {
   // nsITimerCallback,
   notify(a) { return this.onEvent(null, "Notify", null, Cr.NS_OK);},
 
+  // nsIPropertyBag
+  getProperty(aName) {
+    return this._properties[aName];
+  },
+
+  // nsIWritablePropertyBag
+  setProperty(aName, aValue) {
+    this._properties[aName] = aValue;
+  },
+
 // void asyncOpen (in nsIStreamListener aListener);
   asyncOpen(aListener) {
     let contentSecManager = Cc["@mozilla.org/contentsecuritymanager;1"]
@@ -871,10 +888,10 @@ EwsProtocol.prototype = {
       else
       {
         this.protocolType  = EPT_EWSATTACHMENT;
-         // We need to force message/rfc882 to open externally so that
-         //   messages as attachment work correctly
-         if (typeQuery == "message/rfc822")
+         // We need to force attachments to open externally
+         if (typeQuery != "message/rfc822" && typeQuery != "application/x-message-display" && typeQuery != "application/pdf") {
            this.contentDisposition = Ci.nsIChannel.DISPOSITION_ATTACHMENT;
+         }
       }
     }
     // For meetings, we are using the raw MIME to make sure we pickup the text/calendar
@@ -1219,5 +1236,5 @@ EwsProtocol.prototype = {
 
 };
 
-var NSGetFactory = XPCOMUtils.generateNSGetFactory([EwsProtocol]);
+var NSGetFactory = ComponentUtils.generateNSGetFactory([EwsProtocol]);
 var EXPORTED_SYMBOLS = ["NSGetFactory"];

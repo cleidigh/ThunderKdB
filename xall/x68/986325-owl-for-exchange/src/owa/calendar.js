@@ -619,7 +619,7 @@ OWAAccount.prototype.CreateEvent = async function(aFolder, aEvent, aNotify) {
  */
 OWAAccount.prototype.RespondToInboxInvitation = async function(aUID, aResponse, aNotify) {
   let GlobalObjectId = btoa(aUID.replace(/../g, hex => String.fromCharCode(parseInt(hex, 16)))); // UID is hex encoded but GlobalObjectId uses Base 64 encoding
-  let itemId = await browser.calendarProvider.getCurrentInvitation();
+  let { itemId } = await browser.calendarProvider.getCurrentInvitation();
   let fetch = {
     __type: "GetItemJsonRequest:#Exchange",
     Header: {
@@ -792,10 +792,14 @@ OWAAccount.prototype.UpdateParticipation = async function(aEventId, aUID, aParti
  * Notify the organiser of an invitation
  *
  * @param aEventId      {String}  The id of the invitation to update
- * @param aIsRecurrence {Boolean} Whether this is a recurrence instance
+ * @param aMethod       {String}  The type of notification
  * @param aParticipaton {String}  The new participation status
+ * @param aIsRecurrence {Boolean} Whether this is a recurrence instance
  */
-OWAAccount.prototype.NotifyParticipation = async function(aEventId, aParticipation, aIsRecurrence) {
+OWAAccount.prototype.NotifyParticipation = async function(aEventId, aMethod, aParticipation, aIsRecurrence) {
+  if (aMethod != "REPLY") {
+    return; // We already send invitations when creating or updating events.
+  }
   if (aIsRecurrence) {
     return; // We don't support this after the fact, due to Lightning weirdness.
   }
@@ -981,7 +985,7 @@ browser.calendarProvider.dispatcher.addListener(async function(aServerId, aOpera
     case "UpdateParticipation":
       return await account.UpdateParticipation(aParameters.id, aParameters.uid, aParameters.participation, aParameters.isRecurrence);
     case "NotifyParticipation":
-      return await account.NotifyParticipation(aParameters.id, aParameters.participation, aParameters.isRecurrence);
+      return await account.NotifyParticipation(aParameters.id, aParameters.method, aParameters.participation, aParameters.isRecurrence);
     case "DeleteEvent":
       return await account.DeleteEvent(aParameters.id, aParameters.notify);
     case "GetFreeBusy":

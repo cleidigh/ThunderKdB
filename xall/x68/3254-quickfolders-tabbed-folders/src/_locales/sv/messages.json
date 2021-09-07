@@ -29,7 +29,7 @@
     "message": "Jag vill förnya min licens"
   },
   "btn-want-a-license": {
-    "message": "Jag vill köpa en licens"
+    "message": "Välj en licens"
   },
   "btn-want-to-donate": {
     "message": "Jag vill hjälpa till med en engångs donation."
@@ -55,8 +55,14 @@
   "buyLicense.instruct": {
     "message": "Behöver du en licens själv? Skaffa en licens för en person. Den associeras med din personliga e-postadress och kan användas på flera installationer."
   },
-  "buyPersonalLicense.button": {
-    "message": "Köp personlig licens!"
+  "buyProLicense.button": {
+    "message": "Köp Pro-licens!"
+  },
+  "buyStandardLicense.button": {
+    "message": "Köp standardlicens!"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "Har du inte råd med premiumfunktionerna? Få en mycket prisvärd standardlicens och testa premiumfunktioner."
   },
   "chkComposerSubfolders": {
     "message": "Tillämpa även på undermappar"
@@ -92,7 +98,7 @@
     "message": "Bakgrund"
   },
   "cssBackground.tooltip": {
-    "message": "Ange bakgrundsegenskaper i CSS, t.ex. 'linear-gradient(to bottom, rgba(254,252,234,1) 0&#37;,rgba(241,218,54,1) 100&#37;)'."
+    "message": "Ange bakgrundsegenskaper i CSS, t.ex. 'linear-gradient(to bottom, rgba(254,252,234,1) 0%,rgba(241,218,54,1) 100%)'."
   },
   "cssColor": {
     "message": "Textfärg"
@@ -157,7 +163,7 @@
     "message": "Standardidentitet för att skapa e-brev"
   },
   "getQuickFolders": {
-    "message": "Skaffa QuickFolders Pro"
+    "message": "QuickFolders-licenser"
   },
   "grpComposer": {
     "message": "Standardfält för e-brev"
@@ -210,8 +216,41 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Tack för att du nyligen förlängde din licens eller om du har donerat. Eftersom du har hjälpt till att framtida bevisa detta tillägg kan du helt enkelt stänga det här fönstret."
   },
+  "licenseComparison" : {
+    "message": "För att jämföra funktionerna i de olika versionerna, {linkStart}läs den här listan{linkEnd}."
+  },  
+  "licenseHead": {
+    "message": "Nytt licenssystem"
+  },  
+  "licenseTypes": {
+    "message": "QuickFolders erbjuder två licenser, Standard och Pro; dessa är nödvändiga för att hänga med i förändringarna i Thunderbird-plattformen och för att finansiera innovationer och reparationer av tillägget. Eftersom ändringar som eventuellt bryter tilläggsfunktioner distribueras årligen, kommer licensen också att vara giltig i 1 år."
+  },  
   "licenseWindow.title": {
     "message": "Licens för QuickFolders Pro"
+  },
+  "license_restriced.std": {
+    "message": "Standardlicens - begränsad Pro -funktion. Få reda på mer…"
+  },
+  "license_restriced.unpaid": {
+    "message": "Olicensierad version - begränsad funktion. Få reda på mer…"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFolders behöver en Pro -licens för att stödja mer än $maxTabs$ flikar.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFolders behöver en licens för att stödja mer än $maxTabs$ flikar.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
   "mozillas-basic-platform": {
     "message": "Mozilla tillhandahåller bara en grundläggande plattform för att leverera vår programvara till dig, slutanvändarna. Om vi behöver be våra användare om betalning eller support kan vi inte göra detta från addons.thunderbird.net - det är inte en 'app store' med inbyggda betalväggar eller licenshantering som iTunes eller google play."
@@ -310,11 +349,11 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "Fokusera på meddelandelistan när du byter flik"
   },
-  "qf.checkbox.autoHideToolbar": {
-    "message": "Dölj QuickFolders-fältet där det inte behövs"
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "Dölj QuickFolders i flikar med enstaka meddelanden"
   },
-  "qf.checkbox.autoHideToolbar.tooltip": {
-    "message": "Döljer verktygsfältet i specialflikar såsom kalendern, innehållsflikar och tilläggshanteraren."
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "Tar bort QuickFolders verktygsfält i flikar som visar ett enda meddelande."
   },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "Stängknapp"
@@ -538,6 +577,9 @@
   "qf.copyfolders.tooltip": {
     "message": "Kopierar mapparnas konfigurationssträng till Urklipp"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Thunderbird-tema"
+  },
   "qf.currentFolderBackground.custom": {
     "message": "egen"
   },
@@ -545,7 +587,7 @@
     "message": "mörk"
   },
   "qf.currentFolderBackground.default": {
-    "message": "standard"
+    "message": "silver"
   },
   "qf.currentFolderBackground.translucent": {
     "message": "genomskinlig"
@@ -556,8 +598,8 @@
   "qf.currentfolder.rightSpacer": {
     "message": "Mellanrum till höger:"
   },
-  "qf.description.bugzilla": {
-    "message": "Var vänlig använd Bugzilla för alla officiella funktionsönskemål och buggrapporter"
+  "qf.description.github": {
+    "message": "Var vänlig använd github för alla officiella funktionsönskemål och buggrapporter"
   },
   "qf.description.categoryusage": {
     "message": "Du kan lägga det här bokmärket i en kategori (t.ex. 'Arbete', 'Privat', …)."
@@ -566,7 +608,12 @@
     "message": "Högerklicka på ett bokmärke för att inordna det i en kategori. Du får upp en rullgardinsmeny med kategorier till vänster om fältet."
   },
   "qf.description.contactMe": {
-    "message": "Du kan också kontakta oss via axelg@gofree.indigo.ie:"
+    "message": "Du kan också kontakta oss via $supportMail$:",
+    "placeholders": {
+      "supportMail": {
+        "content": "$1"
+      }
+    }
   },
   "qf.description.donate": {
     "message": "Om du gillar QuickFolders lika mycket som vi gör och skulle vilja stödja dess utveckling, kan du donera lite pengar till den framtida utvecklingen av QuickFolders."
@@ -590,7 +637,7 @@
     "message": "Följande objekt är experimentella, de kommer förhoppningsvis att inkluderas i nästa version!!"
   },
   "qf.description.languages": {
-    "message": "QuickFolders stödjer språkanpassning - du kan hjälpa till genom att lägga till en översättning på ditt språk på BabelZilla:"
+    "message": "QuickFolders stödjer språkanpassning - du kan hjälpa till genom att lägga till en översättning på ditt språk på github:"
   },
   "qf.description.linkNote": {
     "message": "Besök QuickFolders webbplats för en utförlig användarguide, tips och FAQ:"
@@ -724,8 +771,8 @@
   "qf.label.behavior": {
     "message": "Beteende"
   },
-  "qf.label.bugzilla": {
-    "message": "Rapportera en bugg / Uttryck önskemål om en ny funktion på Bugzilla…"
+  "qf.label.github": {
+    "message": "Rapportera en bugg / Uttryck önskemål om en ny funktion på github…"
   },
   "qf.label.buttonFontSizeNumeric": {
     "message": "Textstorlek för knapp (0 för standard):"
@@ -892,6 +939,9 @@
   "qf.licenseValidation.passed": {
     "message": "Tack för att du registrerar QuickFolders Pro! Alla licensbelagda funktioner är nu tillgängliga."
   },
+  "qf.licenseValidation.standard": {
+    "message": "Tack för att du registrerade en QuickFolders -licens - Du hjälper tillägget oerhört! Om du behöver fler funktioner kan du alltid uppgradera till Pro -licensen."
+  },  
   "qf.loadConfig": {
     "message": "Ladda konfiguration…"
   },
@@ -955,6 +1005,9 @@
   "qf.menuitem.quickfolders.repairTreeIcons": {
     "message": "Reparera trädstruktursikoner"
   },
+  "qf.menuitem.quickfolders.splash" : {
+    "message": "Visa stänkskärm"
+  },
   "qf.menuitem.quickfolders.support": {
     "message": "QuickFolders supportsektion…"
   },
@@ -973,6 +1026,15 @@
   "qf.notification.dontShowAgain": {
     "message": "Visa inte detta meddelande igen."
   },
+  "qf.notification.newsFlash": {
+    "message": "$addonName$ uppdaterades! Viktiga nyheter…",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "qf.notification.premium.btn.extendLicense": {
     "message": "Förläng licens"
   },
@@ -988,17 +1050,46 @@
   "qf.notification.premium.btn.renewLicense": {
     "message": "Förnya licens"
   },
+  "qf.notification.premium.btn.upgrade": {
+    "message": "Uppgradera till PRO"
+  },
   "qf.notification.premium.readingList": {
     "message": "Du har nu {1} definierade bokmärken. Gratisversionen av QuickFolders tillåter maximalt {2}."
   },
+  "qf.notification.premium.shortcut": {
+    "message": "Premiumlicensen ger dig dessutom en konfigurerbar kortkommando."
+  },
   "qf.notification.premium.tabIcons": {
-    "message": "Du har nu {1} definierade ikon(er). Gratisversionen av QuickFolders tillåter maximalt {2}."
+    "message": "Du använder nu $cntIcons$ anpassade ikoner för flikar. Den fria versionen av QuickFolders stöder högst $maxFreeIcons$. Standardlicensen stöder $maxStdIcons$. QuickFolders Pro har ingen gräns.",
+    "placeholders": {
+      "cntIcons": {
+        "content": "$1",
+        "example": "10"
+      },
+      "maxFreeIcons": {
+        "content": "$2",
+        "example": "5"
+      },
+      "maxStdIcons": {
+        "content": "$3",
+        "example": "12"
+      }
+    }
   },
   "qf.notification.premium.text": {
-    "message": "{1} är en funktion kopplad till QuickFolders Pro. Registrera QuickFolders för att använda den permanent."
+    "message": "{1} är en Premium -funktion. Skaffa en QuickFolders Pro -licens för att använda den."
   },
   "qf.notification.premium.title": {
     "message": "Licensbelagd funktion"
+  },
+  "qf.notification.standard.readingList": {
+    "message": "Du har nu {1} bokmärken definierade. Standardlicensen för QuickFolders tillåter högst {2}."
+  },
+  "qf.notification.standard.text": {
+    "message": "{1} är en licensbegränsad funktion. Skaffa en QuickFolders -licens för att använda den."
+  },
+  "qf.notification.standard.title": {
+    "message": "Standardfunktion"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Flikfärgsutseende"
@@ -1028,7 +1119,7 @@
     "message": "Visa alltid kantlinjer"
   },
   "qf.options.versionnumber.tooltip": {
-    "message": "Högerklicka för versionshistorik."
+    "message": "Klicka för att visa versionshistorik."
   },
   "qf.palette.inactive": {
     "message": "Som inaktiva flikar"
@@ -1100,7 +1191,7 @@
     "message": "Ny mapp"
   },
   "qf.prompt.pasteFolders": {
-    "message": "Detta kommer att radera alla QuickFolders-flikar och ersättas med objekten i ditt urklipp.\\n{0} element hittades i urklipp.\\nÄr du säker?"
+    "message": "Detta kommer att radera alla QuickFolders-flikar och ersättas med objekten i ditt urklipp.\n{0} element hittades i urklipp.\nÄr du säker?"
   },
   "qf.prompt.pasteFolders.confirm": {
     "message": "Behålla de synliga flikarna?"
@@ -1109,10 +1200,10 @@
     "message": "Ta bort detta objekt?"
   },
   "qf.prompt.readingList.searchMissingItem": {
-    "message": "Kan inte hitta e-postmeddelandet, det kanske har flyttats någonstans under tiden.\\n{1}\\n\\nVill du söka efter det?"
+    "message": "Kan inte hitta e-postmeddelandet, det kanske har flyttats någonstans under tiden.\n{1}\n\nVill du söka efter det?"
   },
   "qf.prompt.restoreFolders": {
-    "message": "Detta tar bort alla QuickFolders-flikar och ersätter dem med objekten från filen.\\n{0} poster lästes.\\nErsätt flikar?"
+    "message": "Detta tar bort alla QuickFolders-flikar och ersätter dem med objekten från filen.\n{0} poster lästes.\nErsätt flikar?"
   },
   "qf.prompt.switchDomainLicense": {
     "message": "Byt till domänlicens?"
@@ -1151,7 +1242,7 @@
     "message": "Allmänt"
   },
   "qf.tab.gopro": {
-    "message": "QuickFolders Pro"
+    "message": "Licenser"
   },
   "qf.tab.layout": {
     "message": "Utseende"
@@ -1523,7 +1614,7 @@
     "message": ": Det här är en flik som hänvisar till en ogiltig mapp:"
   },
   "qfTidyDeadFolders": {
-    "message": "Det här kommer att ta bort de flikar som inte har några giltiga mappar tilldelade sig.\\nDet här kan hända om en mapp tas bort eller flyttas utan att QuickFolders meddelas om ändringen."
+    "message": "Det här kommer att ta bort de flikar som inte har några giltiga mappar tilldelade sig.\nDet här kan hända om en mapp tas bort eller flyttas utan att QuickFolders meddelas om ändringen."
   },
   "qfTreeIconsInvalidCount": {
     "message": "{0} ikoner saknas"
@@ -1543,6 +1634,33 @@
   "qfVersionDisableOnUpdate": {
     "message": "Sluta visa versionshistoriken efter uppdateringar?"
   },
+  "quickMove.help.head": {
+    "message" : "Hjälp för {1}"
+  },
+  "quickMove.help.head.advanced": {
+    "message" : "Avancerade funktioner"
+  },
+  "quickMove.help.l1a": {
+    "message" : "Skriv in början på ett mappnamn eller ord i det, avgränsat med mellanslag."
+  }, 
+  "quickMove.help.l1b": {
+    "message" : "Följande tecken betraktas som ordgränser och behöver inte skrivas:"
+  }, 
+  "quickMove.help.l2a": {
+    "message" : "Skriv {1} för att ange far-och farförälder/förälder/sökt mapp."
+  }, 
+  "quickMove.help.l2b": {
+    "message" : "De första två bokstäverna i en överordnad mapp är vanligtvis tillräckliga. Du kan också skapa nya undermappar med denna syntax."
+  }, 
+  "quickMove.help.l3a": {
+    "message" : "Skriv {1} för att hoppa över alla mappar däremellan."
+  }, 
+  "quickMove.help.l3b": {
+    "message" : "Detta är användbart för djupare, mer komplicerade eller okända mapphierarkier."
+  },   
+  "quickMove.help.advanced": {
+    "message" : "Mer avancerade funktioner som tangentbordsgenvägar för att gå till en mapp / flytta e-post eller exkludera mappar från sökresultat kan konfigureras på fliken QuickFolders Pro. För att få tillgång till dessa och andra premiumfunktioner, skaffa en Pro-licens och stödja framtiden för QuickFolders."
+  },  
   "quickMove.singleMessage.goNext": {
     "message": "Visa nästa e-post efter att ha flyttat aktuell e-post"
   },
@@ -1592,13 +1710,39 @@
     "message": "Förnya din licens."
   },
   "special-offer-content": {
-    "message": "Gör QuickFolders framtidssäkra och hämta en licens medan det finns en {boldStart} 40% rabatt {boldEnd} på priset på QuickFolders Pro! Detta specialerbjudande kommer att finnas tillgängligt fram till {boldStart} 1 maj {boldEnd}."
+    "message": "Uppgradera dina funktioner och spara {boldStart} $reduction$ {boldEnd} genom att köpa en QuickFolders Pro -licens! Detta specialerbjudande är tillgängligt fram till {boldStart} $expirydate$ {boldEnd}. Eller välj standardfunktionerna med den nya {linkStart}standardlicensen{linkEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "16 april"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-upgrade": {
+    "message": "Uppgradera nu från QuickFolders Standard till Pro och spara {boldStart}$reduction${boldEnd}! Detta specialerbjudande är tillgängligt fram till {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
+  "special-offer-expiry": {
+    "message": "11 september"    
   },
   "special-offer-head": {
     "message": "Gör QuickFolders framtida bevis!"
   },
   "special-offer-intro": {
-    "message": "{boldStart} Kära {name} {boldEnd}, om du inte har någon licens ännu, kan du överväga att stödja QuickFolders för framtiden. Fler stora förändringar på Thunderbird kommer och jag behöver {boldStart} din hjälp {boldEnd} för att fortsätta!"
+    "message": "Bảo vệ QuickFolders cho phiên bản Thunderbird 91 sắp ra mắt và tiết kiệm {boldStart} 40% {boldEnd} khi mua giấy phép! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart} ngày 18 tháng 6 {boldEnd}."
   },
   "support-preference": {
     "message": "Detta är det föredragna sättet att stödja $addonName$.",
@@ -1671,13 +1815,13 @@
     "message": "Vad är nytt?"
   },
   "whats-new-head": {
-    "message": "Höjdpunkter"
+    "message": "Viktiga förändringar"
   },
   "whats-new-intro": {
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} 5.5.2 - snabbkorrigering - i Thunderbird 89 visades alternativmenyalternativet inte i tilläggshanteraren {L2}{L1} 5.5.2 - snabbkorrigering för quickMove - överordnad mapp som innehåller en understrykning som inte föreslås som överordnad {L2}{L1} 5.5.1 - snabbkorrigering för funktionen 'Markera mappar + undermappar som lästa' {L2}{L1} Jag slutförde även ungerska, förenklade kinesiska och katalanska språk. {L2}Denna version utökar quickMove-funktionen ytterligare genom följande funktioner: {L1} Flik för enstaka meddelanden: alternativ för att automatiskt öppna nästa e-post på samma flik efter att ett meddelande har flyttats {L2} {L1} Alternativ för att helt avbryta quickMove (och tömma listan över meddelanden) med ett enda tryck på ESCAPE. {L2} {L1} Avancerad matchning av överordnade mappar genom att läsa från _ och mellanslag och behandla dem som början på ett sökt namn. {L2} {L1} Reparerad: söka i mappar medan du tittar på meddelanden som visas i sökresultat eller från konversationer i flera mappar. {L2} {L1} Dessa och ytterligare funktioner för att begränsa sökresultat från vissa konton kan konfigureras via Avancerade sökinställningar på fliken QuickFolders Pro. {L2}"
+    "message": "{L1} Fixat i 5.7.2: När quickFilters aktiverar sin assistent blir alla ikoner till vänster på flikarna vita {L2}{L1} Fixat i 5.7.1: Vid sökning efter mappar med syntaxen 'överordnad mapp/överordnad mapp/önskad mapp' beaktades inte överordnade mappar med namn med en enda teckenlängd. {L2}{L1} Gjorde QuickFolders kompatibla med Thunderbird 91. {L2} {L1} Förbättrat stöd för mörka teman och tredjeparts teman, både i alternativskärmen och för navigationsverktygsfältet. {L2} {L1} Förbättrad synlighet för [vad som är nytt] -knappen med icke -standard QuickFolders-tema {L2} {L1} Fast: Ibland återställdes sessionen vid omstart eller efter installation av andra tillägg eller uppdateringar, så att alla kategorier visades. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

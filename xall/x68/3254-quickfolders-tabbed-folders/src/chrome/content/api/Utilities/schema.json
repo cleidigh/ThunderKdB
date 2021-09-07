@@ -16,63 +16,6 @@
       },
 
       {
-        "name": "LicenseIsExpired",
-        "type": "function",
-        "async": true,
-        "parameters": []
-      },
-
-      {
-        "name": "LicenseIsProUser",
-        "type": "function",
-        "async": true,
-        "parameters": []
-      },
-    
-      {
-        "name": "LicensedDaysLeft",
-        "type": "function",
-        "async": true,
-        "parameters": []
-      },
-    
-      {
-        "name": "isLicensed",
-        "type": "function",
-        "async": true,
-        "parameters": [
-          {
-            "name" : "forceValidation",
-            "type" : "boolean"
-          }
-        ]
-      },
-
-
-      {
-        "name": "getAddonVersion",
-        "type": "function",
-        "async": true,
-        "parameters": []
-      },
-
-      {
-        "name": "getTBVersion",
-        "type": "function",
-        "async": true,
-        "parameters": []
-      },
-
-
-      {
-        "name": "getAddonName",
-        "type": "function",
-        "async": true,
-        "parameters": []
-      },
-
-
-      {
         "name": "showXhtmlPage",
         "type": "function",
         "parameters": [
@@ -81,25 +24,22 @@
             "type": "string",
             "description": "url to open in browser"
           }
-
-
         ]
       },
 
       {
-        "name": "openLinkExternally",
+        "name": "showLicenseDialog",
         "type": "function",
         "parameters": [
           {
-            "name": "url",
+            "name": "referrer",
             "type": "string",
-            "description": "url to open in browser"
+            "description": "referrer or feature name to transmit to shop"
           }
- 
-
         ]
       },
-      
+
+     
       {
         "name": "showVersionHistory",
         "type": "function",
@@ -112,8 +52,6 @@
         "async": true,
         "parameters": []
       }
-      
-
    ]
   }
 ]

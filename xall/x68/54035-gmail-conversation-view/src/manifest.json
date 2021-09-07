@@ -3,17 +3,21 @@
   "applications": {
     "gecko": {
       "id": "gconversation@xulforum.org",
-      "strict_min_version": "78.0a1"
+      "strict_min_version": "78.0a1",
+      "strict_max_version": "102.0"
     }
   },
   "author": "Jonathan Protzenko",
   "name": "__MSG_extensionName__",
   "default_locale": "en",
   "description": "__MSG_extensionDescription__",
-  "version": "3.2.22",
+  "version": "3.2.34",
   "homepage_url": "http://github.com/thunderbird-conversations/thunderbird-conversations/wiki",
   "background": {
     "page": "background/background.html"
+  },
+  "icons": {
+    "32": "icon.png"
   },
   "options_ui": {
     "open_in_tab": true,
@@ -24,6 +28,7 @@
     "addressBooks",
     "messagesRead",
     "messagesMove",
+    "messagesDelete",
     "storage",
     "tabs"
   ],

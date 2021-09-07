@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 117,
+    "average_daily_users": 125,
     "categories": {
         "thunderbird": [
             "privacy-and-security"
@@ -18,33 +18,33 @@
     "contributions_url": "",
     "created": "2016-10-30T22:15:15Z",
     "current_version": {
-        "id": 2475371,
+        "id": 2476411,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
-                "min": "78.0"
+                "max": "91.*",
+                "min": "91.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/logout/versions/2475371",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/logout/versions/2476411",
         "files": [
             {
-                "id": 1018532,
-                "created": "2021-02-17T10:45:03Z",
-                "hash": "sha256:494ffdc80affaabca0e819e53519980b651cc4a77dbec80f4741d575e7277736",
+                "id": 1019571,
+                "created": "2021-09-04T12:08:36Z",
+                "hash": "sha256:2a41d4a701a9577deb73770848535c2708dbd19fac6dc64136ba503d6d915564",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 14163,
+                "size": 14251,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018532/logout-2.4-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019571/logout-2.6-tb.xpi?src=",
                 "permissions": [
                     "menus",
                     "accountsRead"
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 6,
             "name": {
@@ -75,8 +75,8 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/logout/versions/2.4",
-        "version": "2.4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/logout/versions/2.6",
+        "version": "2.6"
     },
     "default_locale": "de",
     "description": {
@@ -99,7 +99,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-02-17T10:51:26Z",
+    "last_updated": "2021-09-04T14:05:03Z",
     "name": {
         "de": "Logout"
     },
@@ -166,10 +166,17 @@
     "weekly_downloads": 16,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
-            "comp68": true,
+            "comp69plus": true,
             "comp78plus": true,
+            "comp61plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2021-02-17T10:45:03Z",
+            "comp78pv_version": "2.4",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "78.*",
+            "comp68pv": true,
+            "comp68pv_date": "2019-08-30T12:00:29Z",
             "comp60pv": true,
             "comp60pv_date": "2018-04-26T08:31:58Z"
         }

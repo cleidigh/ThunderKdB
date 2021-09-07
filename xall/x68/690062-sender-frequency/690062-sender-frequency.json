@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/6/6190/6190978.png?modified=1597937434"
         }
     ],
-    "average_daily_users": 305,
+    "average_daily_users": 326,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -19,30 +19,30 @@
     "contributions_url": "https://www.paypal.me/jorgk",
     "created": "2016-03-07T13:03:44Z",
     "current_version": {
-        "id": 2476006,
+        "id": 2476374,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "102.0",
                 "min": "68.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sender-frequency/versions/2476006",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sender-frequency/versions/2476374",
         "files": [
             {
-                "id": 1019166,
-                "created": "2021-06-16T17:54:38Z",
-                "hash": "sha256:88e1642099ef3f46c0c4619d1cd1598caaa78fa22320a4f9fd6f6685dc904718",
+                "id": 1019534,
+                "created": "2021-09-02T18:25:33Z",
+                "hash": "sha256:2a6ad9fabd0162f8d6f1e052363a10266e4d7007e0f15345790c3cfbd0bca046",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 4668,
+                "size": 4678,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019166/sender_frequency-2.0.4-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019534/sender_frequency-2.0.5-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 7057,
             "name": {
@@ -51,12 +51,11 @@
             "url": null
         },
         "release_notes": {
-            "en-GB": "",
-            "en-US": "Changed license to \"All Rights Reserved\"."
+            "en-US": "No changes."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sender-frequency/versions/2.0.4",
-        "version": "2.0.4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sender-frequency/versions/2.0.5",
+        "version": "2.0.5"
     },
     "default_locale": "en-US",
     "description": {
@@ -77,7 +76,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-06-17T08:15:10Z",
+    "last_updated": "2021-09-02T18:29:19Z",
     "name": {
         "en-US": "Sender Frequency"
     },
@@ -126,9 +125,11 @@
     "weekly_downloads": 49,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
             "comp68": true,
+            "comp69plus": true,
+            "comp78plus": true,
+            "comp61plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-04-04T23:16:24Z"
         }

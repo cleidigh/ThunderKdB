@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 1004,
+    "average_daily_users": 999,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -18,30 +18,30 @@
     "contributions_url": "",
     "created": "2020-02-15T05:10:54Z",
     "current_version": {
-        "id": 2476155,
+        "id": 2476409,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "93.0",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/restart-button/versions/2476155",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/restart-button/versions/2476409",
         "files": [
             {
-                "id": 1019315,
-                "created": "2021-07-31T13:45:27Z",
-                "hash": "sha256:3caeff407053ed6004187cc7006da204cd33814cb5760f9c990e9e4f3566d532",
+                "id": 1019569,
+                "created": "2021-09-04T03:26:21Z",
+                "hash": "sha256:0167d422720638dd37a05393c24818379c83140bdbae01db3b03224ce22279af",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 2878,
+                "size": 2586,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019315/restart_button-1.2-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019569/restart_button-1.3-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 6,
             "name": {
@@ -71,11 +71,11 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "1.2\nAdded MailUtils (for Thunderbird 91).\n\n1.1\nSwitched to BrowserUtils.\nAdded tooltip."
+            "en-US": "Set max version."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/restart-button/versions/1.2",
-        "version": "1.2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/restart-button/versions/1.3",
+        "version": "1.3"
     },
     "default_locale": "en-US",
     "description": null,
@@ -96,7 +96,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-08-02T16:43:47Z",
+    "last_updated": "2021-09-04T08:59:24Z",
     "name": {
         "en-US": "Restart Button"
     },
@@ -120,10 +120,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 3.13669,
-        "count": 8,
-        "average": 3.25,
-        "text_count": 8
+        "bayesian_average": 3.33635,
+        "count": 9,
+        "average": 3.4444,
+        "text_count": 9
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/restart-button/reviews/",
     "requires_payment": false,
@@ -145,9 +145,11 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
-            "comp68": true
+            "comp68": true,
+            "comp69plus": true,
+            "comp78plus": true,
+            "comp61plus": true
         }
     }
 }

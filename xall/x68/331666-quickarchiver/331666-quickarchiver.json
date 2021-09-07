@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 1265,
+    "average_daily_users": 1339,
     "categories": {
         "thunderbird": [
             "folders-and-filters",
@@ -19,30 +19,30 @@
     "contributions_url": "",
     "created": "2011-07-30T13:20:35Z",
     "current_version": {
-        "id": 2474973,
+        "id": 2476312,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickarchiver/versions/2474973",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickarchiver/versions/2476312",
         "files": [
             {
-                "id": 1018135,
-                "created": "2020-12-08T21:59:30Z",
-                "hash": "sha256:acfb4419625c7f72e2e6ac2bf3635fb8276d54b731dce95dc0b3238613b8eb0a",
+                "id": 1019472,
+                "created": "2021-08-20T07:20:23Z",
+                "hash": "sha256:6b8201de3fd467bbde53b04a53c3a881584b81e90e94beac594394802e22ebbb",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 40012,
+                "size": 42787,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018135/quickarchiver-0.2.8-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019472/quickarchiver-0.2.9-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 6,
             "name": {
@@ -72,12 +72,12 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "Compatibility with Thunderbird 78",
-            "de": ""
+            "en-US": "Thunderbird 91 compatibility.",
+            "de": "Thunderbird 91 kompatibilität."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickarchiver/versions/0.2.8",
-        "version": "0.2.8"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickarchiver/versions/0.2.9",
+        "version": "0.2.9"
     },
     "default_locale": "en-US",
     "description": {
@@ -105,7 +105,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-12-08T23:12:53Z",
+    "last_updated": "2021-08-20T10:03:39Z",
     "name": {
         "en-US": "QuickArchiver",
         "de": "QuickArchiver"
@@ -192,6 +192,11 @@
             "mext": true,
             "comp68": true,
             "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-12-08T21:59:30Z",
+            "comp78pv_version": "0.2.8",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*",
             "comp60pv": true,
             "comp60pv_date": "2018-08-20T21:18:40Z"
         }

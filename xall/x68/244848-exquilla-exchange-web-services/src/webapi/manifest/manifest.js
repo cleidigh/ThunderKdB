@@ -31,8 +31,7 @@ function notifyNeedsRestart() {
     notificationBox = new window.MozElements.NotificationBox(element => {
       element.id = "exquilla-notification-box";
       element.setAttribute("notificationside", "top");
-      document.documentElement.insertBefore(element,
-        document.getElementById("navigation-toolbox").nextSibling);
+      document.getElementById("navigation-toolbox").after(element);
     });
   }
   let brand = Services.strings.createBundle("chrome://branding/locale/brand.properties").GetStringFromName("brandShortName");
@@ -173,7 +172,7 @@ function mergeElement(aDocument, aTarget, aElement) {
     if (insertbefore) {
       let insert = aDocument.getElementById(insertbefore);
       if (insert && insert.parentElement == aTarget) {
-        aTarget.insertBefore(importedNode, insert);
+        insert.before(importedNode);
         continue;
       }
     }
@@ -195,7 +194,7 @@ function mergeDocument(aDocument, aOverlayURI) {
   for (let node of overlay.childNodes) {
     if (node.nodeType == node.PROCESSING_INSTRUCTION_NODE &&
         node.target == "xml-stylesheet") {
-      aDocument.insertBefore(aDocument.importNode(node), aDocument.documentElement);
+      aDocument.documentElement.before(aDocument.importNode(node));
     }
   }
   for (let child of overlay.documentElement.children) {
@@ -210,7 +209,7 @@ function mergeDocument(aDocument, aOverlayURI) {
     if (insertbefore) {
       let insert = aDocument.getElementById(insertbefore);
       if (insert) {
-        insert.parentElement.insertBefore(aDocument.importNode(child, true), insert);
+        insert.before(aDocument.importNode(child, true));
       }
     }
   }

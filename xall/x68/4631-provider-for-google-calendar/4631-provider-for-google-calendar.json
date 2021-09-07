@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/85/85036.png?modified=1509020086"
         }
     ],
-    "average_daily_users": 220792,
+    "average_daily_users": 242202,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -21,32 +21,32 @@
     "contributions_url": "https://www.paypal.me/kewisch/10eur",
     "created": "2007-03-10T04:25:09Z",
     "current_version": {
-        "id": 2474134,
+        "id": 2476368,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
-                "min": "78.2.0"
+                "max": "102.0",
+                "min": "91.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/provider-for-google-calendar/versions/2474134",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/provider-for-google-calendar/versions/2476368",
         "files": [
             {
-                "id": 1017296,
-                "created": "2020-08-24T22:35:55Z",
-                "hash": "sha256:c5c3e6d735afca631b44a3aedfe2d5cc717fd3ec66dada848b5eb7e9d3193235",
+                "id": 1019528,
+                "created": "2021-09-01T23:12:36Z",
+                "hash": "sha256:1463d27137919e402fd9981e856a97f873e955c1b5f1e0f046557a6fc08ac78e",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 181006,
+                "size": 171678,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017296/provider_for_google_calendar-78.0.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019528/provider_for_google_calendar-91.0.1-tb.xpi?src=",
                 "permissions": [
                     "storage"
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 3338,
             "name": {
@@ -55,16 +55,16 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "* Compatibility with Thunderbird 78 ([86bb9ef](<a href=\"https://github.com/kewisch/gdata-provider/commit/86bb9ef918535ec0c5a1c425d7fa42f69ea20668\" rel=\"nofollow\">https://github.com/kewisch/gdata-provider/commit/86bb9ef918535ec0c5a1c425d7fa42f69ea20668</a>))\n* Correct the path to the icon in manifest.json ([50bc09c](<a href=\"https://github.com/kewisch/gdata-provider/commit/50bc09ca1147b4e4018a1133ba3f3dc6d039d7b4\" rel=\"nofollow\">https://github.com/kewisch/gdata-provider/commit/50bc09ca1147b4e4018a1133ba3f3dc6d039d7b4</a>))\n* Correct use of i18n placeholders ([9f1dfb7](<a href=\"https://github.com/kewisch/gdata-provider/commit/9f1dfb73ea2db57e9818ac234243ba14bcff2103\" rel=\"nofollow\">https://github.com/kewisch/gdata-provider/commit/9f1dfb73ea2db57e9818ac234243ba14bcff2103</a>))\n* Import other locales ([0f32516](<a href=\"https://github.com/kewisch/gdata-provider/commit/0f325169e8e92ec2afb57bc5a2eb80d8c1470995\" rel=\"nofollow\">https://github.com/kewisch/gdata-provider/commit/0f325169e8e92ec2afb57bc5a2eb80d8c1470995</a>))\n* Suppress error messages from the browserRequest window ([d4bfb0d](<a href=\"https://github.com/kewisch/gdata-provider/commit/d4bfb0d659418a1dd751d19d1117311ac9f6630c\" rel=\"nofollow\">https://github.com/kewisch/gdata-provider/commit/d4bfb0d659418a1dd751d19d1117311ac9f6630c</a>))"
+            "en-US": "## [91.0.1](<a rel=\"nofollow\" href=\"https://github.com/kewisch/gdata-provider/compare/v91.0.0...v91.0.1\">https://github.com/kewisch/gdata-provider/compare/v91.0.0...v91.0.1</a>) (2021-09-01)\n\n\n### Bug Fixes\n\n* Port bug 1687612 - Fix new account OAuth window to be E10s capable. ([44a563a](<a rel=\"nofollow\" href=\"https://github.com/kewisch/gdata-provider/commit/44a563a478e47f9c31e8c686998d445824a9b0a4\">https://github.com/kewisch/gdata-provider/commit/44a563a478e47f9c31e8c686998d445824a9b0a4</a>))\n\n\n\n# [91.0.0](<a rel=\"nofollow\" href=\"https://github.com/kewisch/gdata-provider/compare/v78.0.1...v91.0.0\">https://github.com/kewisch/gdata-provider/compare/v78.0.1...v91.0.0</a>) (2021-08-30)\n\n\n### Bug Fixes\n\n* Compatibility with Thunderbird 91 ([957b242](<a rel=\"nofollow\" href=\"https://github.com/kewisch/gdata-provider/commit/957b2428194b9b6c41f2a3aa827ed667a5acf902\">https://github.com/kewisch/gdata-provider/commit/957b2428194b9b6c41f2a3aa827ed667a5acf902</a>))\n* Replace `create...` by `new ...` after 1659558 (fix [#112](<a rel=\"nofollow\" href=\"https://github.com/kewisch/gdata-provider/issues/112\">https://github.com/kewisch/gdata-provider/issues/112</a>)) ([f5d4fc6](<a rel=\"nofollow\" href=\"https://github.com/kewisch/gdata-provider/commit/f5d4fc65cc09403b90c76aba52415432be567f9b\">https://github.com/kewisch/gdata-provider/commit/f5d4fc65cc09403b90c76aba52415432be567f9b</a>))"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/provider-for-google-calendar/versions/78.0.1",
-        "version": "78.0.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/provider-for-google-calendar/versions/91.0.1",
+        "version": "91.0.1"
     },
     "default_locale": "en-US",
     "description": {
-        "fr": "Cette extension permet à Sunbird et Lightning de lire et écrire des événements d'un agenda Google Agenda.\n\nVeuillez lire <a href=\"https://github.com/kewisch/gdata-provider/wiki/FAQ\" rel=\"nofollow\">https://github.com/kewisch/gdata-provider/wiki/FAQ</a> pour plus de détails et avant de rapporter un bug.\n\nUtilisez <a href=\"https://github.com/kewisch/gdata-provider/issues\" rel=\"nofollow\">https://github.com/kewisch/gdata-provider/issues</a> pour rapporter des bugs.",
-        "en-US": "This extension allows Lightning to read and write events and tasks to a Google Calendar.\n\nPlease read <a href=\"https://github.com/kewisch/gdata-provider/wiki/FAQ\" rel=\"nofollow\">the FAQ</a> for more details and before filing a bug. Also, be sure to visit the <a href=\"http://groups.google.com/group/provider-for-google-calendar\" rel=\"nofollow\">discussion forums</a>, maybe your bug already has a solution!\n\nTo search for and submit bugs, visit <a href=\"https://github.com/kewisch/gdata-provider/issues\" rel=\"nofollow\">https://github.com/kewisch/gdata-provider/issues</a>"
+        "fr": "Cette extension permet à Sunbird et Lightning de lire et écrire des événements d'un agenda Google Agenda.\n\nVeuillez lire <a rel=\"nofollow\" href=\"https://github.com/kewisch/gdata-provider/wiki/FAQ\">https://github.com/kewisch/gdata-provider/wiki/FAQ</a> pour plus de détails et avant de rapporter un bug.\n\nUtilisez <a rel=\"nofollow\" href=\"https://github.com/kewisch/gdata-provider/issues\">https://github.com/kewisch/gdata-provider/issues</a> pour rapporter des bugs.",
+        "en-US": "This extension allows Thunderbird to read and write events and tasks to a Google Calendar.\n\nPlease read <a rel=\"nofollow\" href=\"https://github.com/kewisch/gdata-provider/wiki/FAQ\">the FAQ</a> for frequent questions and troubleshooting before requesting support or filing a bug.\n\nCommunity Support <a rel=\"nofollow\" href=\"https://github.com/kewisch/gdata-provider/discussions/categories/support\">is available here</a>. If you are certain you found a bug please <a rel=\"nofollow\" href=\"https://github.com/kewisch/gdata-provider/issues\">file an issue</a>."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/provider-for-google-calendar/edit",
@@ -84,7 +84,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-08-25T07:00:02Z",
+    "last_updated": "2021-09-02T06:05:44Z",
     "name": {
         "fr": "Fournisseur pour Google Agenda",
         "en-US": "Provider for Google Calendar"
@@ -109,10 +109,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 3.52255,
-        "count": 1372,
-        "average": 3.5233,
-        "text_count": 1372
+        "bayesian_average": 3.52135,
+        "count": 1381,
+        "average": 3.5221,
+        "text_count": 1381
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/provider-for-google-calendar/reviews/",
     "requires_payment": false,
@@ -127,7 +127,7 @@
         "en-US": "mozilla-extensions-gdata@kewis.ch"
     },
     "support_url": {
-        "en-US": "http://groups.google.com/group/provider-for-google-calendar"
+        "en-US": "https://github.com/kewisch/gdata-provider/discussions"
     },
     "tags": [
         "calendar",
@@ -144,10 +144,12 @@
     "weekly_downloads": 7128,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
-            "comp68": true,
+            "comp69plus": true,
             "comp78plus": true,
+            "comp61plus": true,
+            "comp68pv": true,
+            "comp68pv_date": "2019-08-08T02:31:15Z",
             "comp60pv": true,
             "comp60pv_date": "2018-07-31T19:08:15Z"
         }

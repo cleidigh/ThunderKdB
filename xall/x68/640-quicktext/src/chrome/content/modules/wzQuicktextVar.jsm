@@ -99,7 +99,7 @@ wzQuicktextVar.prototype = {
     this.mData = tmpData;
   }
 ,
-  parse: function(aStr, aType)
+  parse: async function(aStr, aType)
   {
     // Reparse the text until there is no difference in the text
     // or that we parse 100 times (so we don't make an infinitive loop)
@@ -109,13 +109,13 @@ wzQuicktextVar.prototype = {
     do {
       count++;
       oldStr = aStr;
-      aStr = this.parseText(aStr, aType);
+      aStr = await this.parseText(aStr, aType);
     } while (aStr != oldStr && count < 20);
 
     return aStr;
   }
 ,
-  parseText: function(aStr, aType)
+  parseText: async function(aStr, aType)
   {
     var tags = this.getTags(aStr);
 
@@ -161,13 +161,14 @@ wzQuicktextVar.prototype = {
       if (typeof this["get_"+ tags[i].tagName.toLowerCase()] == "function" && variable_limit >= 0 && tags[i].variables.length >= variable_limit) {
 	      
         // these tags need different behaviour if added in "text" or "html" mode
-        if (tags[i].tagName.toLowerCase() == "image" ||
-	    tags[i].tagName.toLowerCase() == "clipboard" ||
-	    tags[i].tagName.toLowerCase() == "selection") {
-        
-          value = this["get_"+ tags[i].tagName.toLowerCase()](tags[i].variables, aType);
+        if (
+          tags[i].tagName.toLowerCase() == "image" ||
+          tags[i].tagName.toLowerCase() == "clipboard" ||
+          tags[i].tagName.toLowerCase() == "selection")
+        {
+          value = await this["get_"+ tags[i].tagName.toLowerCase()](tags[i].variables, aType);
         } else {
-          value = this["get_"+ tags[i].tagName.toLowerCase()](tags[i].variables);
+          value = await this["get_"+ tags[i].tagName.toLowerCase()](tags[i].variables);
         }
       }
 
@@ -293,7 +294,7 @@ wzQuicktextVar.prototype = {
 ,
   get_image: function(aVariables, aType)
   {
-    if (aType = 1) {
+    if (aType == 1) {
       // image tag may only be added in html mode
       return this.process_image_content(aVariables);
     } else {
@@ -396,9 +397,9 @@ wzQuicktextVar.prototype = {
       return "";
   }
 ,
-  get_url: function(aVariables)
+  get_url: async function(aVariables)
   {
-    return this.process_url(aVariables);
+    return await this.process_url(aVariables);
   }
 ,
   get_version: function(aVariables)
@@ -413,9 +414,9 @@ wzQuicktextVar.prototype = {
     return "";
   }
 ,
-  get_counter: function(aVariables)
+  get_counter: async function(aVariables)
   {
-    return this.process_counter(aVariables);
+    return await this.process_counter(aVariables);
   }
 ,
   get_subject: function(aVariables)
@@ -481,14 +482,18 @@ wzQuicktextVar.prototype = {
 
   process_file: function(aVariables)
   {
-    if (aVariables.length == 1 && aVariables[0] != "")
+    if (aVariables.length > 0 && aVariables[0] != "")
     {
       // Tries to open the file and returning the content
       var fp = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
       try {
         aVariables[0] = this.mQuicktext.parseFilePath(aVariables[0]);
         fp.initWithPath(aVariables[0]);
-        return this.mQuicktext.readFile(fp);
+        let content = this.mQuicktext.readFile(fp);
+        if (aVariables.length > 1 && aVariables[1].includes("strip_html_comments")) {
+          return content.replace(/<!--[\s\S]*?(?:-->)/g, '');
+        }
+        return content;
       } catch(e) { Components.utils.reportError(e); }
     }
 
@@ -802,7 +807,7 @@ wzQuicktextVar.prototype = {
     if (this.mData['FROM'] && this.mData['FROM'].checked)
       return this.mData['FROM'].data;
 
-    const identity = this.mWindow.getCurrentIdentity();
+    const identity = this.mWindow.gCurrentIdentity;
 
     this.mData['FROM'] = {};
     this.mData['FROM'].checked = true;
@@ -926,7 +931,7 @@ wzQuicktextVar.prototype = {
     return this.mData['TO'].data;
   }
 ,
-  process_url: function(aVariables)
+  process_url: async function(aVariables)
   {
     if (aVariables.length == 0)
       return "";
@@ -953,7 +958,7 @@ wzQuicktextVar.prototype = {
             case 'att':
             case 'orgheader':
             case 'orgatt':
-              data = this["process_"+ tag]();
+              data = await this["process_"+ tag]();
               if (typeof data != 'undefined')
               {
                 for (var i in data)
@@ -965,7 +970,7 @@ wzQuicktextVar.prototype = {
             case 'version':
             case 'date':
             case 'time':
-              data = this["process_"+ tag]();
+              data = await this["process_"+ tag]();
               if (typeof data != 'undefined')
               {
                 for (var i in data)
@@ -976,7 +981,7 @@ wzQuicktextVar.prototype = {
             case 'clipboard':
             case 'selection':
             case 'counter':
-              data = this["process_"+ tag]();
+              data = await this["process_"+ tag]();
               if (typeof data != 'undefined')
                 post.push(tag +'='+ data);
               break;
@@ -1043,16 +1048,16 @@ wzQuicktextVar.prototype = {
     return this.mData['VERSION'].data;
   }
 ,
-  process_counter: function(aVariables)
+  process_counter: async function(aVariables)
   {
     if (this.mData['COUNTER'] && this.mData['COUNTER'].checked)
       return this.mData['COUNTER'].data;
 
     this.mData['COUNTER'] = {};
     this.mData['COUNTER'].checked = true;
-    this.mData['COUNTER'].data = this.mQuicktext.preferences.getPref("counter");
+    this.mData['COUNTER'].data = await this.mQuicktext.notifyTools.notifyBackground({command:"getPref", pref: "counter"});
     this.mData['COUNTER'].data++;
-    this.mQuicktext.preferences.setPref("counter", this.mData['COUNTER'].data);
+    await this.mQuicktext.notifyTools.notifyBackground({command:"setPref", pref: "counter", value: this.mData['COUNTER'].data});
 
     return this.mData['COUNTER'].data;
   }
@@ -1198,81 +1203,24 @@ wzQuicktextVar.prototype = {
   }
 ,
   getCardForEmail: function(aAddress) {
-    // The Thunderbird way
-    if ("@mozilla.org/abmanager;1" in Components.classes)
+    let directories = MailServices.ab.directories;
+    for (let addrbook of directories)
     {
-      let enumerator = Components.classes["@mozilla.org/abmanager;1"]
-        .getService(Components.interfaces.nsIAbManager)
-        .directories;
-
-      let cardForEmailAddress;
-      let addrbook;
-      while (!cardForEmailAddress && enumerator.hasMoreElements())
-      {
-        addrbook = enumerator.getNext().QueryInterface(Components.interfaces.nsIAbDirectory);
-        try
-        {
-          card = addrbook.cardForEmailAddress(aAddress);
-          if (card)
-            return card;
-        } catch (ex) {}
-      }
-
-      return null;
+        let card = addrbook.cardForEmailAddress(aAddress);
+        if (card) {
+          return card;
+        }
     }
-
-    // Fallback to old way for Postbox. This does actually not work. databases will be empty but there is no errors
-    var databases = [];
-    var directories = [];
-    var rdfService = Components.classes["@mozilla.org/rdf/rdf-service;1"].getService(Components.interfaces.nsIRDFService);
-    var directory = rdfService.GetResource("moz-abdirectory://").QueryInterface(Components.interfaces.nsIAbDirectory);
-    var addressBook = Components.classes["@mozilla.org/addressbook;1"].getService(Components.interfaces.nsIAddressBook);
-
-    var cn = directory.childNodes;
-    while (cn.hasMoreElements())
-    {
-      var abook = cn.getNext();
-      if (abook instanceof Components.interfaces.nsIAbDirectory)
-      {
-        // abook.URI only exists in 3.0 so fallback so it works on other versions also
-        var uri = (abook.URI) ? abook.URI : abook.directoryProperties.URI;
-
-        try {
-          databases.push(addressBook.getAbDatabaseFromURI(uri));
-          directories.push(abook);
-        } catch(e) { Components.utils.reportError(e); }
-      }
-    }
-
-    Components.classes["@mozilla.org/consoleservice;1"].getService(Components.interfaces.nsIConsoleService).logStringMessage("DATABASES: "+ databases.length);
-
-    for (var databaseIndex = 0; databaseIndex < databases.length; databaseIndex++)
-    {
-      var card = databases[databaseIndex].getCardFromAttribute(directories[databaseIndex], "LowercasePrimaryEmail", aAddress, true);
-      Components.classes["@mozilla.org/consoleservice;1"].getService(Components.interfaces.nsIConsoleService).logStringMessage("card: "+ card);
-      if (card)
-        return card;
-    }
-
     return null;
   }
 ,
   getPropertiesFromCard: function(card)
   {
     var retval = {}
-    // New stuff in Thunderbird 3.0
-    if (card.properties) {
-      var props = card.properties;
-      while (props.hasMoreElements())
-      {
-        var prop = props.getNext().QueryInterface(Components.interfaces.nsIProperty);
-        retval[prop.name.toLowerCase()] = prop.value;
-      }
-    } else {
-      for (var name in card) {
-        if (typeof card[name] != 'function')
-          retval[name.toLowerCase()] = card[name];
-      }
+    var props = card.properties;
+    for (let prop of props)
+    {
+      retval[prop.name.toLowerCase()] = prop.value;
     }
     return retval;
   }

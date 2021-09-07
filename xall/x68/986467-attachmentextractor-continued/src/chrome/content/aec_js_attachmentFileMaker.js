@@ -256,6 +256,16 @@ if (typeof AttachmentFileMaker === "undefined") {
 
   AttachmentFileMaker.prototype.substitutetokens_sub = function(stringin,
     folder, filename, count, cache) {
+
+    // move the slashes replacement here to replace forward and backslashes 
+    // 1) on all platforms 
+    // 2) (only) in filenames to prevent creating subfolder due to slashes in filenames
+    // 3) doing this here still allows the subfolder creation from the patterns
+    aedump("AEC substitutetokens_sub stringin: " + stringin + "\n");
+    aedump("AEC substitutetokens_sub filename original        : " + filename + "\n");
+    filename = filename.replace(/[\/\\]+/g, "-");    /*  / \  = -  */
+    aedump("AEC substitutetokens_sub filename replaced slashes: " + filename + "\n");
+
     var extpart = "";
     if ((stringin.indexOf("#namepart#") > -1) || (stringin.indexOf(
         "#extpart#") > -1)) {
@@ -420,8 +430,7 @@ if (typeof AttachmentFileMaker === "undefined") {
 
   AttachmentFileMaker.prototype.validateFileName = function(folder, aFileName,
     extpart, count) {
-
-    function joinArrs(a1, a2) {
+      function joinArrs(a1, a2) {
       return a1.concat(a2).sort(function(a, b) {
         return a.idx - b.idx;
       });
@@ -429,16 +438,15 @@ if (typeof AttachmentFileMaker === "undefined") {
 
     count = "" + count;
 
-    // aedump("aFileName: "+aFileName+"\n");
-    // lift the slashes replacement a few lines up and replace forward 
-    // and backslash on all platforms to prevent creating subfolders
-    aFileName = aFileName.replace(/[\/\\]+/g, "-");    /*  / \  = -  */
-    // aedump("aFileName: "+aFileName+"\n");
+    // The slashes replacement has been moved up to function substitutetokens_sub.
+    // There it is possible to replace all slahes (only) in filenames (as intended).
+    // The following replacements still allow subfolder creation an replace only
+    // not allowed characters.
 
     if (navigator.appVersion.indexOf("Windows") !== -1) {
       aFileName = aFileName.replace(/[\"]+/g, "'") /*  "  = '  */
         .replace(/[\*\:\?\t\v]+/g, " ")            /*  * : ? tab vtab  =   */
-        .replace(/[\|]+/g, "-")                    /*  |  = -  */
+        .replace(/[\/\|]+/g, "_")                  /*  / |  = _  */
         .replace(/[\<]+/g, "(")                    /*  <  = (  */
         .replace(/[\>]+/g, ")");                   /*  >  = )  */
       var comp = (folder === null || folder.path === null ? "" : folder.path) +
@@ -476,7 +484,7 @@ if (typeof AttachmentFileMaker === "undefined") {
       aFileName = aFileName.replace(/[\. ]+\\/g, "\\");
     } else {
       if (navigator.appVersion.indexOf("Macintosh") !== -1) aFileName =
-        aFileName.replace(/[\:]+/g, "-"); /*   : = -   */
+        aFileName.replace(/[\:]+/g, "_");           /*  : = _  */
       aFileName = aFileName.replace(/%/g, count).replace(/#extpart#/g, extpart
         .replace(this.tokenregexs.dollars, "$$$$"));
     }

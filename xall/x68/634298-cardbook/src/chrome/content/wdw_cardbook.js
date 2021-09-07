@@ -2,10 +2,12 @@ if ("undefined" == typeof(wdw_cardbook)) {
 	var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 	var { PluralForm } = ChromeUtils.import("resource://gre/modules/PluralForm.jsm");
+	var { MailE10SUtils } = ChromeUtils.import("resource:///modules/MailE10SUtils.jsm");
 	var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
 
 	var loader = Services.scriptloader;
 	loader.loadSubScript("chrome://cardbook/content/cardbookActions.js", this);
+	loader.loadSubScript("chrome://cardbook/content/scripts/notifyTools.js", this);
 
 	var wdw_cardbook = {
 		
@@ -445,6 +447,22 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			wdw_cardbook.createCard(myNewCard, "CreateList");
 		},
 
+		createTemplate: function () {
+			var myNewCard = new cardbookCardParser();
+			let dirPrefId = "";
+			for (let account of cardbookRepository.cardbookAccounts) {
+				if (account[1] && account[5] && (account[6] != "SEARCH")) {
+					dirPrefId = account[4];
+					break;
+				}
+			}
+			if (dirPrefId) {
+				myNewCard.dirPrefId = dirPrefId;
+				myNewCard.fn = cardbookRepository.cardbookPreferences.getFnFormula(wdw_cardEdition.workingCard.dirPrefId);
+				wdw_cardbook.createCard(myNewCard, "EditTemplate");
+			}
+		},
+
 		createCard: function (aCard, aEditionMode) {
 			let myTree = document.getElementById('accountsOrCatsTree');
 			if (myTree.currentIndex != -1) {
@@ -498,7 +516,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 						await cardbookRepository.saveCardFromUpdate({}, myArgs.cardsOut[0], myActionId, true);
 						break;
 				}
-				cardbookActions.endAction(myActionId);
+				await cardbookActions.endAction(myActionId);
 			}
 			catch (e) {
 				cardbookRepository.cardbookLog.updateStatusProgressInformation("wdw_cardbook.mergeCards error : " + e, "Error");
@@ -523,7 +541,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				cardbookRepository.cardbookUtils.setCardUUID(myOutCard);
 				await cardbookRepository.saveCardFromUpdate({}, myOutCard, myActionId, false);
 			}
-			cardbookActions.endAction(myActionId);
+			await cardbookActions.endAction(myActionId);
 		},
 
 		findDuplicatesFromAccountsOrCats: function () {
@@ -601,7 +619,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					}
 				}
 				cardbookRepository.cardbookUtils.formatStringForOutput(myTopic, [myTargetName, counter]);
-				cardbookActions.endAction(myActionId);
+				await cardbookActions.endAction(myActionId);
 			}
 			catch (e) {
 				cardbookRepository.cardbookLog.updateStatusProgressInformation("wdw_cardbook.generateFn error : " + e, "Error");
@@ -1299,36 +1317,51 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			wdw_cardbook.openURLCards(listOfSelectedCard, null);
 		},
 
-		print: function () {
+		printCards: async function() {
+			let printBrowser = document.getElementById("cardbookPrintContent");
+			let listOfSelectedCard = [];
 			if (document.commandDispatcher.focusedElement.getAttribute('id') == "cardsTree") {
-				var myTree = document.getElementById('cardsTree');
+				let myTree = document.getElementById('cardsTree');
 				if (myTree.currentIndex != -1) {
-					wdw_cardbook.printFromCards();
+					listOfSelectedCard = cardbookWindowUtils.getSelectedCardsId();
 				}
 			} else if (document.commandDispatcher.focusedElement.getAttribute('id') == "accountsOrCatsTree") {
-				var myTree = document.getElementById('accountsOrCatsTree');
+				let myTree = document.getElementById('accountsOrCatsTree');
 				if (myTree.currentIndex != -1) {
-					wdw_cardbook.printFromAccountsOrCats();
+					let accountCards = cardbookWindowUtils.getCardsFromAccountsOrCats();
+					listOfSelectedCard = Array.from(accountCards, card => card.cbid);
 				}
 			}
-		},
-
-		printFromCards: function () {
-			var listOfSelectedCard = [];
-			listOfSelectedCard = cardbookWindowUtils.getCardsFromCards();
-			var defaultTitle = "";
-			if (listOfSelectedCard.length == 1) {
-				defaultTitle = listOfSelectedCard[0].fn;
+			if (listOfSelectedCard.length == 0) {
+				return
+			} else {
+				printBrowser.setAttribute("cards", listOfSelectedCard.join(","));
 			}
-			wdw_cardbook.openPrintEdition(listOfSelectedCard, defaultTitle);
-		},
+			if (printBrowser.currentURI.spec == "about:blank") {
+				// The template page hasn't been loaded yet. Do that now.
+				await new Promise(resolve => {
+					// Store a strong reference to this progress listener.
+					printBrowser.progressListener = {
+						QueryInterface: ChromeUtils.generateQI([
+							"nsIWebProgressListener",
+							"nsISupportsWeakReference",
+						]),
 
-		printFromAccountsOrCats: function () {
-			var listOfSelectedCard = [];
-			listOfSelectedCard = cardbookWindowUtils.getCardsFromAccountsOrCats();
-			var myTree = document.getElementById('accountsOrCatsTree');
-			var defaultTitle = myTree.view.getCellText(myTree.currentIndex, myTree.columns.getNamedColumn('accountName'));
-			wdw_cardbook.openPrintEdition(listOfSelectedCard, defaultTitle);
+						/** nsIWebProgressListener */
+						onStateChange(webProgress, request, stateFlags, status) {
+							if (stateFlags & Components.interfaces.nsIWebProgressListener.STATE_STOP && printBrowser.currentURI.spec != "about:blank") {
+								printBrowser.webProgress.removeProgressListener(this);
+								delete printBrowser.progressListener;
+								resolve();
+							}
+						},
+					};
+
+					printBrowser.webProgress.addProgressListener(printBrowser.progressListener, Components.interfaces.nsIWebProgress.NOTIFY_STATE_ALL);
+					MailE10SUtils.loadURI(printBrowser, "chrome://cardbook/content/print/printing-template.html");
+				});
+			}
+			PrintUtils.startPrintWindow(printBrowser.browsingContext, {});
 		},
 
 		findEmailsFromCards: function () {
@@ -1395,20 +1428,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				}
 			// possbility to send email to nobody for the write button
 			} else {
-				var msgComposeType = Components.interfaces.nsIMsgCompType;
-				var msgComposFormat = Components.interfaces.nsIMsgCompFormat;
-				var msgComposeService = MailServices.compose;
-				var params = Components.classes["@mozilla.org/messengercompose/composeparams;1"].createInstance(Components.interfaces.nsIMsgComposeParams);
-				msgComposeService = msgComposeService.QueryInterface(Components.interfaces.nsIMsgComposeService);
-				if (params) {
-					params.type = msgComposeType.New;
-					params.format = msgComposFormat.Default;
-					var composeFields = Components.classes["@mozilla.org/messengercompose/composefields;1"].createInstance(Components.interfaces.nsIMsgCompFields);
-					if (composeFields) {
-						params.composeFields = composeFields;
-						msgComposeService.OpenComposeWindowWithParams(null, params);
-					}
-				}
+				notifyTools.notifyBackground({query: "cardbook.emailCards", compFields: []});
 				return;
 			}
 
@@ -1418,66 +1438,22 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			}
 			
 			if (warnCheck) {
-				var msgComposeType = Components.interfaces.nsIMsgCompType;
-				var msgComposFormat = Components.interfaces.nsIMsgCompFormat;
-				var msgComposeService = MailServices.compose;
-				var params = Components.classes["@mozilla.org/messengercompose/composeparams;1"].createInstance(Components.interfaces.nsIMsgComposeParams);
-				msgComposeService = msgComposeService.QueryInterface(Components.interfaces.nsIMsgComposeService);
-				if (params) {
-					params.type = msgComposeType.New;
-					params.format = msgComposFormat.Default;
-					var composeFields = Components.classes["@mozilla.org/messengercompose/composefields;1"].createInstance(Components.interfaces.nsIMsgCompFields);
-					if (composeFields) {
-						composeFields[aMsgField] = result.notEmptyResults.join(" , ");
-						params.composeFields = composeFields;
-						msgComposeService.OpenComposeWindowWithParams(null, params);
-					}
-				}
+				notifyTools.notifyBackground({query: "cardbook.emailCards", compFields: [{field: aMsgField, value: result.notEmptyResults.join(" , ")}]});
 			}
 		},
 
 		shareCardsByEmail: async function (aListOfSelectedCard) {
 			if (aListOfSelectedCard.length != 0) {
-				var msgComposeType = Components.interfaces.nsIMsgCompType;
-				var msgComposFormat = Components.interfaces.nsIMsgCompFormat;
-				var msgComposeService = MailServices.compose;
-				var params = Components.classes["@mozilla.org/messengercompose/composeparams;1"].createInstance(Components.interfaces.nsIMsgComposeParams);
-				msgComposeService = msgComposeService.QueryInterface(Components.interfaces.nsIMsgComposeService);
-				if (params) {
-					params.type = msgComposeType.New;
-					params.format = msgComposFormat.Default;
-					var composeFields = Components.classes["@mozilla.org/messengercompose/composefields;1"].createInstance(Components.interfaces.nsIMsgCompFields);
-					if (composeFields) {
-						// purge temporary files used :
-						// for sharing contacts
-						// for attaching vCard files
-						var myTmpDir = cardbookRepository.cardbookUtils.getTempFile();
-						myTmpDir.append("cardbook-send-messages");
-						if (myTmpDir.exists() && myTmpDir.isDirectory()) {
-							myTmpDir.remove(true);
-						}
-						for (var i = 0; i < aListOfSelectedCard.length; i++) {
-							var myCard = aListOfSelectedCard[i];
-							var myTempFileName = cardbookRepository.cardbookUtils.getFreeFileName(myTmpDir.path, myCard.fn, myCard.uid.replace(/^urn:uuid:/i, ""), ".vcf");
-							var myTempFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
-							myTempFile.initWithPath(myTmpDir.path);
-							myTempFile.append(myTempFileName);
-							var attachment = Components.classes["@mozilla.org/messengercompose/attachment;1"].createInstance(Components.interfaces.nsIMsgAttachment);
-							attachment.contentType = "text/vcard";
-							attachment.name = myTempFileName;
-							let content = await cardbookRepository.cardbookUtils.getvCardForEmail(myCard);
-							cardbookRepository.cardbookUtils.writeContentToFile(myTempFile.path, content, "UTF8");
-							if (myTempFile.exists() && myTempFile.isFile()) {
-								attachment.url = "file:///" + myTempFile.path;
-								composeFields.addAttachment(attachment);
-							} else {
-								cardbookRepository.cardbookUtils.formatStringForOutput("errorAttachingFile", [myTempFile.path], "Error");
-							}
-						}
-						params.composeFields = composeFields;
-						msgComposeService.OpenComposeWindowWithParams(null, params);
-					}
+				let vCards = [];
+				let listOfFileNames = [];
+				for (let card of aListOfSelectedCard) {
+					let listOfNames = Array.from(vCards, x => x.filename);
+					let filename = cardbookRepository.cardbookUtils.getFileNameForCard2(card, listOfNames, "vcf");
+					let vCard = await cardbookRepository.cardbookUtils.getvCardForEmail(card);
+					vCards.push({filename: filename, vCard: vCard});
 				}
+				notifyTools.notifyBackground({query: "cardbook.sharevCards", vCards: vCards});
+				return;
 			}
 		},
 
@@ -1918,13 +1894,6 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			}
 		},
 
-		openPrintEdition: function (aListOfCards, aTitle) {
-			var statusFeedback = Components.classes["@mozilla.org/messenger/statusfeedback;1"].createInstance();
-			statusFeedback = statusFeedback.QueryInterface(Components.interfaces.nsIMsgStatusFeedback);
-			var myArgs = {listOfCards: aListOfCards, title: aTitle, feedback: statusFeedback, doPrintPreview: true};
-			var printEngineWindow = Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/print/wdw_cardbookPrint.xhtml", "", cardbookRepository.windowParams, myArgs);
-		},
-
 		addAddressbook: function (aAction, aDirPrefId) {
 			var myArgs = {action: aAction, dirPrefId: aDirPrefId, rootWindow: window};
 			var myWindow = Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/addressbooksconfiguration/wdw_addressbooksAdd.xhtml", "", cardbookRepository.windowParams, myArgs);
@@ -2060,7 +2029,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 							}
 							// cannot be launched from cardbookRepository
 							cardbookIndexedDB.removeAccount(myParentAccountId, myParentAccountName);
-							cardbookRepository.cardbookPreferences.delBranch(myParentAccountId);
+							cardbookRepository.cardbookPreferences.delAccount(myParentAccountId);
 							wdw_cardbook.loadCssRules();
 							cardbookRepository.cardbookUtils.formatStringForOutput("addressbookDeleted", [myParentAccountName]);
 							cardbookActions.addActivity("addressbookDeleted", [myParentAccountName], "deleteMail");
@@ -2372,7 +2341,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					await cardbookRepository.saveCardFromUpdate(myCard, myOutCard, myActionId, false);
 				}
 			}
-			cardbookActions.endAction(myActionId);
+			await cardbookActions.endAction(myActionId);
 			wdw_cardbook.loadCssRules();
 		},
 
@@ -2392,7 +2361,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					await cardbookRepository.saveCardFromUpdate(myCard, myOutCard, myActionId, true);
 				}
 			}
-			cardbookActions.endAction(myActionId);
+			await cardbookActions.endAction(myActionId);
 		},
 
 		renameNode: function (aDirPrefId, aNodeId, aNodeName, aNodeType, aNodeSelect) {
@@ -2492,7 +2461,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					let value = parseInt(myArgs.mailpop) || "0";
 					cardbookIDBMailPop.updateMailPop(myArgs.type, value);
 					if (nameChanged && !uncategorized) {
-						cardbookActions.endAction(myActionId, true);
+						await cardbookActions.endAction(myActionId, true);
 					}
 				};
 				var myArgs = {type: aNodeName, id: aNodeId, context: myContext, typeAction: "", validationList: myValidationList, mailpop: "",
@@ -2557,7 +2526,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 							delCat(aDirPrefId);
 						}
 					}
-					cardbookActions.endAction(myActionId, true);
+					await cardbookActions.endAction(myActionId, true);
 				}
 			}
 			catch (e) {
@@ -2576,7 +2545,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					myValidationList.push(cardbookRepository.cardbookUncategorizedCards);
 				}
 				var myContext = "CreateCat";
-				var onSaved = () => {
+				var onSaved = async () => {
 					var colorChanged = myArgs.color != myArgs.oldColor;
 					if (myArgs.typeAction != "SAVE" || myArgs.type == "") {
 						return;
@@ -2594,7 +2563,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					}
 					let value = parseInt(myArgs.mailpop) || 0;
 					cardbookIDBMailPop.updateMailPop(myArgs.type, value);
-					cardbookActions.endAction(myActionId, true);
+					await cardbookActions.endAction(myActionId, true);
 				};
 				var myArgs = {type: "", id: "", context: myContext, typeAction: "", validationList: myValidationList, color: "", oldColor: "", mailpop: "", onSaved};
 				var myWindow = Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/wdw_cardbookRenameField.xhtml", "", cardbookRepository.colorPickableModalDialogParams, myArgs);
@@ -2675,7 +2644,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					cardbookRepository.cardbookUtils.addMemberstoCard(myDirPrefIds[i].list, myDirPrefIds[i].members, "group");
 					await cardbookRepository.saveCardFromUpdate({}, myDirPrefIds[i].list, myActionId, true);
 				}
-				cardbookActions.endAction(myActionId);
+				await cardbookActions.endAction(myActionId);
 			}
 			catch (e) {
 				cardbookRepository.cardbookLog.updateStatusProgressInformation("wdw_cardbook.createListFromNode error : " + e, "Error");
@@ -2722,7 +2691,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					cardbookRepository.cardbookUtils.addMemberstoCard(myDirPrefIds[i].list, myDirPrefIds[i].members, "group");
 					await cardbookRepository.saveCardFromUpdate({}, myDirPrefIds[i].list, myActionId, true);
 				}
-				cardbookActions.endAction(myActionId);
+				await cardbookActions.endAction(myActionId);
 			}
 			catch (e) {
 				cardbookRepository.cardbookLog.updateStatusProgressInformation("wdw_cardbook.convertNodeToList error : " + e, "Error");
@@ -2774,7 +2743,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 						}
 					}
 					await cardbookRepository.deleteCards([myCard], myActionId);
-					cardbookActions.endAction(myActionId);
+					await cardbookActions.endAction(myActionId);
 				}
 			}
 			catch (e) {
@@ -2922,7 +2891,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				await cardbookRepository.saveCardFromUpdate(myCard, myOutCard, myActionId, false);
 				cardbookRepository.cardbookLog.updateStatusProgressInformation(cardbookRepository.extension.localeData.localizeMessage("linePastedToCard", [myOutCard.fn]));
 			}
-			cardbookActions.endAction(myActionId);
+			await cardbookActions.endAction(myActionId);
 		},
 
 		setCurrentTypeFromEvent: function (aEvent) {
@@ -3013,9 +2982,12 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				wdw_cardbook.setElementIdLabelWithBundle('cardbookAccountMenuReadOnlyOrReadWriteAddressbook', "readWriteFromAccountsOrCats");
 			} else if (myTree.currentIndex != -1) {
 				var myPrefId = myTree.view.getCellText(myTree.currentIndex, myTree.columns.getNamedColumn('accountRoot'));
+				var myType = cardbookRepository.cardbookPreferences.getType(myPrefId);
 				wdw_cardbook.enableOrDisableElement(['cardbookAccountMenuEditServer', 'cardbookAccountMenuCloseServer', 'cardbookAccountMenuEnableOrDisableAddressbook', 'cardbookAccountMenuReadOnlyOrReadWriteAddressbook'], false);
+				if (myType == "GOOGLE3") {
+					wdw_cardbook.enableOrDisableElement(['cardbookAccountMenuReadOnlyOrReadWriteAddressbook'], true);
+				}
 				if (cardbookRepository.cardbookPreferences.getEnabled(myPrefId)) {
-					var myType = cardbookRepository.cardbookPreferences.getType(myPrefId);
 					if (cardbookRepository.cardbookUtils.isMyAccountLocal(myType)) {
 						wdw_cardbook.enableOrDisableElement(['cardbookAccountMenuSync'], true);
 					} else {
@@ -3249,7 +3221,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 															'readOnlyOrReadWriteFromAccountsOrCats'], true);
 				} else {
 					wdw_cardbook.enableOrDisableElement(['editAccountFromAccountsOrCats', 'removeAccountFromAccountsOrCats', 'enableOrDisableFromAccountsOrCats'], false);
-					if (myType == "SEARCH") {
+					if (myType == "SEARCH" || myType == "GOOGLE3") {
 						wdw_cardbook.enableOrDisableElement(['readOnlyOrReadWriteFromAccountsOrCats'], true);
 					} else {
 						wdw_cardbook.enableOrDisableElement(['readOnlyOrReadWriteFromAccountsOrCats'], false);
@@ -3632,6 +3604,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		},
 
 		refreshWindow: function (aParams) {
+			cardbookActions.setUndoAndRedoMenuAndButton();
 			if (!document.getElementById('accountsOrCatsTree')) {
 				return;
 			// no need to refresh cards for others syncing dirprefid

@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 787,
+    "average_daily_users": 880,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,30 +18,30 @@
     "contributions_url": "",
     "created": "2020-02-15T04:48:08Z",
     "current_version": {
-        "id": 2476277,
+        "id": 2476406,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "93.0",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/config-button/versions/2476277",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/config-button/versions/2476406",
         "files": [
             {
-                "id": 1019437,
-                "created": "2021-08-12T21:18:09Z",
-                "hash": "sha256:430517504bbca7ed05b7115afad8e7ad497d156e96e7d9210ee1bad4d72da04e",
+                "id": 1019566,
+                "created": "2021-09-04T02:42:14Z",
+                "hash": "sha256:d8dee2e7295298bf86625e0ee8115a497a8494b3246b550979a58ee2d67d4243",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 5278,
+                "size": 4977,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019437/config_button-1.5-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019566/config_button-1.6-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 6,
             "name": {
@@ -71,11 +71,11 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "Added option to open about:config in a tab.\nSet minimum version to Thunderbird 78."
+            "en-US": "Set max version."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/config-button/versions/1.5",
-        "version": "1.5"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/config-button/versions/1.6",
+        "version": "1.6"
     },
     "default_locale": "en-US",
     "description": {
@@ -98,7 +98,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-08-12T22:03:13Z",
+    "last_updated": "2021-09-04T09:03:44Z",
     "name": {
         "en-US": "Config Button"
     },
@@ -147,10 +147,17 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
-            "comp68": true,
-            "comp78plus": true
+            "comp69plus": true,
+            "comp78plus": true,
+            "comp61plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2021-08-12T21:18:09Z",
+            "comp78pv_version": "1.5",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*",
+            "comp68pv": true,
+            "comp68pv_date": "2020-02-16T10:30:57Z"
         }
     }
 }

@@ -159,8 +159,8 @@ PromiseUtils.RequestObserver = function(aWrapped) {
   this.wrapped = aWrapped;
 }
 PromiseUtils.RequestObserver.prototype = {
-  QueryInterface: ChromeUtils.generateQI([Ci.nsIStreamListener,
-                                          Ci.nsIRequestObserver]),
+  QueryInterface: ChromeUtils.generateQI(["nsIStreamListener",
+                                          "nsIRequestObserver"]),
 
   onStartRequest(aRequest) {
     if (this.wrapped && this.wrapped.onStartRequest)
@@ -519,7 +519,7 @@ PromiseUtils.CopyListener = function(aWrapped) {
 };
 
 PromiseUtils.CopyListener.prototype = {
-  QueryInterface: ChromeUtils.generateQI([Ci.nsIMsgCopyServiceListener]),
+  QueryInterface: ChromeUtils.generateQI(["nsIMsgCopyServiceListener"]),
   OnStartCopy: function() {
     if (this.wrapped && this.wrapped.OnStartCopy)
       this.wrapped.OnStartCopy();
@@ -578,7 +578,7 @@ var nsIMFNService = Ci.nsIMsgFolderNotificationService;
 PromiseUtils.promiseFolderEvents = function promiseFolderEvents(folder, events) {
   return new Promise( (resolve, reject) => {
     let folderListener = {
-      QueryInterface: ChromeUtils.generateQI([Ci.nsIFolderListener]),
+      QueryInterface: ChromeUtils.generateQI(["nsIFolderListener"]),
       OnItemEvent: function onItemEvent(aEventFolder, aEvent) {
         if (folder.folderURL == aEventFolder.folderURL && events.includes(aEvent.toString())) {
           MailServices.mailSession.RemoveFolderListener(folderListener);

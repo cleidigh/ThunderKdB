@@ -103,7 +103,8 @@ var cardbookIndexedDB = {
 			cardbookIDBCard.encryptCards(),
 			cardbookIDBUndo.encryptUndos(),
 			cardbookIDBImage.encryptImages(),
-			cardbookIDBMailPop.encryptMailPops()
+			cardbookIDBMailPop.encryptMailPops(),
+			cardbookIDBPrefDispName.encryptPrefDispNames()
 		]);
 	},
 
@@ -114,7 +115,8 @@ var cardbookIndexedDB = {
 			cardbookIDBCard.decryptCards(),
 			cardbookIDBUndo.decryptUndos(),
 			cardbookIDBImage.decryptImages(),
-			cardbookIDBMailPop.decryptMailPops()
+			cardbookIDBMailPop.decryptMailPops(),
+			cardbookIDBPrefDispName.decryptPrefDispNames()
 		]);
 	},
 
@@ -127,7 +129,8 @@ var cardbookIndexedDB = {
 				cardbookIDBCard.upgradeCards(),
 				cardbookIDBUndo.upgradeUndos(),
 				cardbookIDBImage.upgradeImages(),
-				cardbookIDBMailPop.upgradeMailPops()
+				cardbookIDBMailPop.upgradeMailPops(),
+				cardbookIDBPrefDispName.upgradePrefDispNames()
 			]).then(() => {
 				cardbookRepository.cardbookPreferences.setStringPref("extensions.cardbook.localDataEncryption.validatedVersion", String(cardbookEncryptor.VERSION));
 			});

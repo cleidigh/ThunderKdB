@@ -3,7 +3,7 @@
   "name": "DevTools Button",
   "description": "Adds a DevTools button, opens the Developer Toolbox",
   "homepage_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/devtools-button/",
-  "version": "1.1",
+  "version": "1.2",
   "experiment_apis": {
     "devToolsButtonApi": {
       "schema": "schema.json",
@@ -32,7 +32,8 @@
   "applications": {
     "gecko": {
       "id": "devToolsButton@dillinger",
-      "strict_min_version": "68.0"
+      "strict_min_version": "68.0",
+      "strict_max_version": "93.0"
     }
   },
   "icons": {

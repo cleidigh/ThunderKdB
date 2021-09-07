@@ -358,8 +358,9 @@ var BrowseInTabOptions = {
       this.linkClickLoadsInTab.checked = result?.linkClickLoadsInTab ?? false;
       this.linkClickLoadsInBackgroundTab.checked =
         result?.linkClickLoadsInBackgroundTab ?? false;
-      this.forceLinkClickLoadsInCurrentTab.checked =
-        result?.forceLinkClickLoadsInCurrentTab ?? true;
+      // TODO: Restore once e10s content script handling is implemented.
+      //this.forceLinkClickLoadsInCurrentTab.checked =
+      //  result?.forceLinkClickLoadsInCurrentTab ?? true;
       this.showContentBase.checked = result?.showContentBase ?? true;
       this.contentBaseHeader.value =
         result?.contentBaseHeader || this.contentBaseHeaderDefault;

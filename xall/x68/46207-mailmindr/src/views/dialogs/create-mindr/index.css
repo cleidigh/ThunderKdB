@@ -1,5 +1,14 @@
 @import url('../../mailmindr-core.css');
 
+body.mailmindr-inline-popup main * {
+    font-size: 13px;
+}
+
+body {
+    /* min-height: 320px; */
+    min-width: 430px;
+}
+
 h1 {
     margin: 0 0 8px;
     font-size: 22px;
@@ -69,7 +78,7 @@ main {
 
 .mailmindr-fieldwrapper--caption {
     font-weight: bold;
-    min-height: 30px;
+    min-height: 21px;
 }
 
 .mailmindr-fieldwrapper--caption > label {
@@ -115,6 +124,22 @@ select {
     text-decoration: none;
     font-size: 1em;
     background-color: rgba(12, 12, 13, 0.1);
-
     width: 275px;
+}
+
+@media (prefers-color-scheme: dark) {
+    input[type='text'],
+    input[type='number'],
+    select {
+        border-color: rgba(249, 249, 250, 0.2);
+    }
+
+    input[type='date'],
+    input[type='time'] {
+        color: #f9f9fa;
+        background-color: #2a2a2e;
+        border-color: rgba(249, 249, 250, 0.2);
+        border-width: 1px;
+        border-radius: 2px;
+    }
 }

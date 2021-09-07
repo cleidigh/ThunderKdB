@@ -30,7 +30,6 @@ XPCOMUtils.defineLazyGetter(this, "ecalLog", () => {
 
 // class of an exception
 const kExClass = "IPM.OLE.CLASS.{00061055-0000-0000-C000-000000000046}";
-var { fixIterator } = ChromeUtils.import("resource:///modules/iteratorUtils.jsm");
 
 var { cal } = ChromeUtils.import("resource://calendar/modules/calUtils.jsm");
 
@@ -835,7 +834,7 @@ function EwsCalendar()
 //try {
 EwsCalendar.prototype =
 {
-  QueryInterface:   ChromeUtils.generateQI([Ci.calICalendar, Ci.calISchedulingSupport]),
+  QueryInterface:   ChromeUtils.generateQI(["calICalendar", "calISchedulingSupport"]),
 
    /*
     * implement calISchedulingSupport
@@ -1471,7 +1470,7 @@ EwsCalendar.prototype =
       let accountManager = Cc["@mozilla.org/messenger/account-manager;1"]
                              .getService(Ci.nsIMsgAccountManager);
       let servers = accountManager.allServers;
-      for (let server of fixIterator(servers, Ci.nsIMsgIncomingServer))
+      for (let server of servers)
       {
         if (server.serverURI == this.serverURI)
         {

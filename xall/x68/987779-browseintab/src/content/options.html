@@ -4,11 +4,21 @@
   <head>
     <meta charset="utf-8">
     <script src="options.js"></script>
-    <link rel="stylesheet" href="../skin/options.css">
+    <link rel="stylesheet"
+          href="chrome://global/skin/in-content/common.css">
+    <!--
+    <link rel="stylesheet"
+          href="chrome://messenger/skin/preferences/preferences.cs">
+    <!-- "Content may not load or link..." so add rules to options.css.
+    <link rel="stylesheet"
+          href="chrome://mozapps/content/extensions/aboutaddons.css"> -->
+    <link rel="stylesheet"
+          href="chrome://messenger/content/aboutAddonsExtra.css">
+    <link rel="stylesheet"
+          href="../skin/options.css">
   </head>
 
   <body id="container"
-        onkeypress="console.debug('onkeypress: '+document.activeElement.id)"
         hidden="true">
 
 
@@ -16,17 +26,17 @@
          class="tab-group"
          role="tablist">
       <button id="tabButtonLinks"
-              class="tab-button"
+              class="tab-button ghost-button"
               panelid="linksPanel"
               role="tab"
               data-localekey="tabLabelLinks"></button
      ><button id="tabButtonTabsToolbars"
-              class="tab-button"
+              class="tab-button ghost-button"
               panelid="tabsToolbarsPanel"
               role="tab"
               data-localekey="tabLabelTabsToolbars"></button
      ><button id="tabButtonZoom"
-              class="tab-button"
+              class="tab-button ghost-button"
               panelid="tabsZoomPanel"
               role="tab"
               data-localekey="tabLabelZoom"></button>
@@ -34,9 +44,9 @@
     <br/>
 
     <div id="linksPanel"
-         class="browser-style panel"
+         class="panel"
          hidden="true">
-      <div class="browser-style inputlabel">
+      <div class="inputlabel">
         <input id="tabsLoadInBackground"
                type="checkbox"></input>
         <label for="tabsLoadInBackground"
@@ -44,9 +54,9 @@
       </div>
       <label class="small-detail small-detail-indent"
              data-localekey="tabsLoadInBackgroundExtra"></label>
-      <h2></h2>
+      <hr>
 
-      <div class="browser-style inputlabel">
+      <div class="inputlabel">
         <input id="linkClickLoadsInTab"
                type="checkbox"></input>
         <label for="linkClickLoadsInTab"
@@ -56,9 +66,8 @@
              data-localekey="linkClickLoadsInTabExtra"></label>
       <div></div>
 
-      <fieldset id="linkClickOptionsFieldset"
-                class="browser-style">
-        <div class="browser-style inputlabel">
+      <fieldset id="linkClickOptionsFieldset">
+        <div class="inputlabel">
           <input id="linkClickLoadsInBackgroundTab"
                  type="checkbox"></input>
           <label for="linkClickLoadsInBackgroundTab"
@@ -68,7 +77,8 @@
                data-localekey="linkClickLoadsInBackgroundTabExtra"></label>
       </fieldset>
 
-      <div class="browser-style inputlabel">
+     <!-- Restore once e10s content script handling is implemented.
+      <div class="inputlabel">
         <input id="forceLinkClickLoadsInCurrentTab"
                type="checkbox"></input>
         <label for="forceLinkClickLoadsInCurrentTab"
@@ -76,23 +86,22 @@
       </div>
       <label class="small-detail small-detail-indent"
              data-localekey="forceLinkClickLoadsInCurrentTabExtra"></label>
-      <h2></h2>
+      <hr> -->
 
-      <div class="browser-style inputlabel">
+      <div class="inputlabel">
         <input id="showContentBase"
                type="checkbox"></input>
         <label for="showContentBase"
                data-localekey="showContentBase"></label>
       </div>
-      <fieldset id="contentBaseFieldset"
-                class="browser-style">
+      <fieldset id="contentBaseFieldset">
         <label id="contentBaseLabel"
                for="contentBaseHeader"
                data-localekey="contentBaseLabel"></label>
         <input id="contentBaseHeader"></input>
       </fieldset>
 
-      <div class="browser-style inputlabel">
+      <div class="inputlabel">
         <input id="useFirefoxCompatUserAgent"
                type="checkbox"></input>
         <label for="useFirefoxCompatUserAgent"
@@ -100,32 +109,31 @@
       </div>
       <label class="small-detail small-detail-indent"
              data-localekey="useFirefoxCompatUserAgentExtra"></label>
-      <h2></h2>
+      <hr>
 
       <div>
         <label class="small-note"
                data-localekey="systemContentTabOrLinkNote"></label>
       </div>
-      <h2></h2>
     </div>
 
     <div id="tabsToolbarsPanel"
-         class="browser-style panel"
+         class="panel"
          hidden="true">
-      <div class="browser-style">
+      <div>
         <label for="maxContentTabs"
                data-localekey="maxContentTabs"></label>
         <input id="maxContentTabs"
                type="number"
                min="0"></input>
       </div>
+      <hr>
 
-      <div class="browser-style">
+      <div>
         <label for="mailToolbarRadioForm"
                data-localekey="showMailToolbarOption"></label>
-        <form id="mailToolbarRadioForm"
-              class="browser-style">
-          <div class="browser-style inputlabel">
+        <form id="mailToolbarRadioForm">
+          <div class="inputlabel">
             <input id="showMailToolbarDefaultTabs"
                    type="radio"
                    name="showMailToolbar"
@@ -134,7 +142,7 @@
             <label for="showMailToolbarDefaultTabs"
                    data-localekey="showMailToolbarDefaultTabs"></label>
           </div>
-          <div class="browser-style inputlabel">
+          <div class="inputlabel">
             <input id="showMailToolbarWebpageTabs"
                    type="radio"
                    name="showMailToolbar"
@@ -143,7 +151,7 @@
             <label for="showMailToolbarWebpageTabs"
                    data-localekey="showMailToolbarWebpageTabs"></label>
           </div>
-          <div class="browser-style inputlabel">
+          <div class="inputlabel">
             <input id="showMailToolbarAllTabs"
                    type="radio"
                    name="showMailToolbar"
@@ -153,14 +161,13 @@
           </div>
         </form>
       </div>
-      <h2></h2>
+      <hr>
 
-      <div class="browser-style">
+      <div>
         <label for="urlToolbarRadioForm"
                data-localekey="showUrlToolbarOption"></label>
-        <form id="urlToolbarRadioForm"
-              class="browser-style">
-          <div class="browser-style inputlabel">
+        <form id="urlToolbarRadioForm">
+          <div class="inputlabel">
             <input id="showUrlToolbarWebpageTabs"
                    type="radio"
                    name="showUrlToolbar"
@@ -169,7 +176,7 @@
             <label for="showUrlToolbarWebpageTabs"
                    data-localekey="showUrlToolbarWebpageTabs"></label>
           </div>
-          <div class="browser-style inputlabel">
+          <div class="inputlabel">
             <input id="showUrlToolbarAllTabs"
                    type="radio"
                    name="showUrlToolbar"
@@ -182,17 +189,16 @@
     </div>
 
     <div id="tabsZoomPanel"
-         class="browser-style panel"
+         class="panel"
          hidden="true">
-      <div class="browser-style inputlabel">
+      <div class="inputlabel">
         <input id="customZoomEnabled"
                type="checkbox"></input>
         <label for="customZoomEnabled"
                data-localekey="customZoomEnabled"></label>
       </div>
 
-      <fieldset id="customZoomFieldset"
-                class="browser-style">
+      <fieldset id="customZoomFieldset">
         <label for="globalZoomFactor"
                data-localekey="globalZoomFactor"></label>
         <input id="globalZoomFactor"
@@ -205,37 +211,39 @@
         <div></div>
         <label class="small-detail"
                data-localekey="globalZoomFactorExtra"></label>
-        <h2></h2>
+        <hr>
 
-        <fieldset id="contentZoomFieldset"
-                  class="browser-style">
+        <label for="zoomIncrement"
+               data-localekey="zoomIncrement"></label>
+        <input id="zoomIncrement"
+               type="number"
+               min="1"
+               max="20"
+               step="1"></input>
+        <label for="zoomIncrement"
+               data-localekey="zoomPercent"></label>
+        <div></div>
+        <label class="small-detail"
+               data-localekey="zoomIncrementExtra"></label>
+        <hr>
+
+        <div class="inputlabel">
+          <input id="perTabZoomDisabled"
+                 type="checkbox"></input>
+          <label for="perTabZoomDisabled"
+                 data-localekey="perTabZoomDisabled"></label>
+        </div>
+        <label class="small-detail small-detail-indent"
+               data-localekey="perTabZoomDisabledExtra"></label>
+        <hr>
+
+        <fieldset id="contentZoomFieldset">
           <legend data-localekey="contentZoomLegend"></legend>
-
-          <label for="zoomIncrement"
-                 data-localekey="zoomIncrement"></label>
-          <input id="zoomIncrement"
-                 type="number"
-                 min="1"
-                 max="20"
-                 step="1"></input>
-          <label for="zoomIncrement"
-                 data-localekey="zoomPercent"></label>
-          <div></div>
           <label class="small-detail"
-                 data-localekey="zoomIncrementExtra"></label>
-          <h2></h2>
+                 data-localekey="contentZoomDetails"></label>
+          <hr>
 
-          <div class="browser-style inputlabel">
-            <input id="perTabZoomDisabled"
-                   type="checkbox"></input>
-            <label for="perTabZoomDisabled"
-                   data-localekey="perTabZoomDisabled"></label>
-          </div>
-          <label class="small-detail small-detail-indent"
-                 data-localekey="perTabZoomDisabledExtra"></label>
-          <h2></h2>
-
-          <div class="browser-style inputlabel">
+          <div class="inputlabel">
             <input id="imageZoomEnabled"
                    type="checkbox"></input>
             <label for="imageZoomEnabled"
@@ -243,18 +251,17 @@
           </div>
           <label class="small-detail small-detail-indent"
                  data-localekey="imageZoomEnabledExtra"></label>
-          <h2></h2>
+          <hr>
 
-          <div class="browser-style inputlabel">
+          <div class="inputlabel">
             <input id="mousebuttonZoomEnabled"
                    type="checkbox"></input>
             <label for="mousebuttonZoomEnabled"
                    data-localekey="mousebuttonZoomEnabled"></label>
           </div>
 
-          <fieldset id="mousebuttonZoomOptionsFieldset"
-                    class="browser-style">
-            <div class="browser-style inputlabel">
+          <fieldset id="mousebuttonZoomOptionsFieldset">
+            <div class="inputlabel">
               <input id="mousebuttonZoomImageOnlyEnabled"
                      type="checkbox"></input>
               <label for="mousebuttonZoomImageOnlyEnabled"
@@ -269,7 +276,6 @@
     </div>
 
     <button id="restoreDefaults"
-            class="browser-style"
             data-localekey="restoreDefaults"></button>
 
   </body>

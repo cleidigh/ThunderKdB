@@ -3,6 +3,9 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 	var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
 
+	var loader = Services.scriptloader;
+	loader.loadSubScript("chrome://cardbook/content/scripts/notifyTools.js", this);
+
 	var wdw_birthdayList = {
 		
 		sortTrees: function (aEvent) {
@@ -139,22 +142,7 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 						var errorMsg = cardbookRepository.extension.localeData.localizeMessage("noEmailFoundMessage", [myName]);
 						Services.prompt.alert(null, errorTitle, errorMsg);
 					} else {
-						var msgComposeType = Components.interfaces.nsIMsgCompType;
-						var msgComposFormat = Components.interfaces.nsIMsgCompFormat;
-						var msgComposeService = MailServices.compose;
-						var params = Components.classes["@mozilla.org/messengercompose/composeparams;1"].createInstance(Components.interfaces.nsIMsgComposeParams);
-						
-						msgComposeService = msgComposeService.QueryInterface(Components.interfaces.nsIMsgComposeService);
-						if (params) {
-							params.type = msgComposeType.New;
-							params.format = msgComposFormat.Default;
-							var composeFields = Components.classes["@mozilla.org/messengercompose/composefields;1"].createInstance(Components.interfaces.nsIMsgCompFields);
-							if (composeFields) {
-								composeFields.to = myEmail;
-								params.composeFields = composeFields;
-								msgComposeService.OpenComposeWindowWithParams(null, params);
-							}
-						}
+						notifyTools.notifyBackground({query: "cardbook.emailCards", compFields: [{field: "to", value: myEmail}]});
 					}
 				}
 			}

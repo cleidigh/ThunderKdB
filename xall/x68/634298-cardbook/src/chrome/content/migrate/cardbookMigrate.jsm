@@ -61,7 +61,7 @@ var cardbookMigrate = {
 				if (myMapData != "") {
 					myCard[myListMap[i][2]].push([[myMapData], myListMap[i][1], "", []]);
 					if (myListMap[i][2] == "email" && myPreferDisplayName == "0") {
-						cardbookRepository.cardbookPreferDisplayNameIndex[myMapData.toLowerCase()] = 1
+						cardbookIDBPrefDispName.addPrefDispName({email: myMapData});
 					}
 				}
 			}
@@ -144,24 +144,24 @@ var cardbookMigrate = {
 		}
 	},
 
-	getSolvedListNumber: function () {
+	getSolvedListNumber: function (aDirPrefIdTarget) {
 		var result = 0;
-		for (let i in cardbookMigrate.allLists) {
-			if (cardbookMigrate.allLists[i].solved) {
+		for (let i in cardbookMigrate.allLists[aDirPrefIdTarget]) {
+			if (cardbookMigrate.allLists[aDirPrefIdTarget][i].solved) {
 				result++;
 			}
 		}
 		return result;
 	},
 
-	mayTheListBeResolved: function (aABList) {
+	mayTheListBeResolved: function (aDirPrefIdTarget, aABList) {
 		try {
 			for (let card of aABList.childCards) {
 				var myABCard = card.QueryInterface(Components.interfaces.nsIAbCard);
 				var myEmail = myABCard.primaryEmail;
 				var myName = myABCard.getProperty("DisplayName","");
-				if ((myName == myEmail) && cardbookMigrate.allLists[myName]) {
-					if (!cardbookMigrate.allLists[myName].solved) {
+				if ((myName == myEmail) && cardbookMigrate.allLists[aDirPrefIdTarget][myName]) {
+					if (!cardbookMigrate.allLists[aDirPrefIdTarget][myName].solved) {
 						return false;
 					}
 				}
@@ -176,14 +176,14 @@ var cardbookMigrate = {
 
 	translateStandardLists: async function (aDirPrefIdTarget, aDirPrefIdTargetName, aVersion) {
 		try {
-			var myBeforeNumber = cardbookMigrate.getSolvedListNumber();
+			var myBeforeNumber = cardbookMigrate.getSolvedListNumber(aDirPrefIdTarget);
 			var myAfterNumber = 0;
 			var myCondition = true;
 			// loop until all lists may be solved
 			while (myCondition) {
-				for (listName in cardbookMigrate.allLists) {
-					if (!cardbookMigrate.allLists[listName].solved && cardbookMigrate.mayTheListBeResolved(cardbookMigrate.allLists[listName].list)) {
-						var myList = cardbookMigrate.allLists[listName].list;
+				for (listName in cardbookMigrate.allLists[aDirPrefIdTarget]) {
+					if (!cardbookMigrate.allLists[aDirPrefIdTarget][listName].solved && cardbookMigrate.mayTheListBeResolved(aDirPrefIdTarget, cardbookMigrate.allLists[aDirPrefIdTarget][listName].list)) {
+						var myList = cardbookMigrate.allLists[aDirPrefIdTarget][listName].list;
 						var myCard = new cardbookCardParser();
 						myCard.dirPrefId = aDirPrefIdTarget;
 						myCard.version = aVersion;
@@ -199,8 +199,8 @@ var cardbookMigrate = {
 							var myName = myABCard.getProperty("DisplayName","");
 							try {
 								// within a standard list all members are simple cards… weird…
-								if ((myName == myEmail) && cardbookMigrate.allLists[myName] && cardbookMigrate.allLists[myName].solved) {
-									myTargetMembers.push("urn:uuid:" + cardbookMigrate.allLists[myName].uid);
+								if ((myName == myEmail) && cardbookMigrate.allLists[aDirPrefIdTarget][myName] && cardbookMigrate.allLists[aDirPrefIdTarget][myName].solved) {
+									myTargetMembers.push("urn:uuid:" + cardbookMigrate.allLists[aDirPrefIdTarget][myName].uid);
 								} else if (cardbookRepository.cardbookCardEmails[aDirPrefIdTarget][myLowerEmail]) {
 									var myTargetCard = cardbookRepository.cardbookCardEmails[aDirPrefIdTarget][myLowerEmail][0];
 									myTargetMembers.push("urn:uuid:" + myTargetCard.uid);
@@ -214,11 +214,11 @@ var cardbookMigrate = {
 						await cardbookRepository.saveCardFromUpdate({}, myCard, "", true);
 						cardbookRepository.cardbookServerCardSyncDone[aDirPrefIdTarget]++;
 
-						cardbookMigrate.allLists[listName].solved = true;
-						cardbookMigrate.allLists[listName].uid = myCard.uid;
+						cardbookMigrate.allLists[aDirPrefIdTarget][listName].solved = true;
+						cardbookMigrate.allLists[aDirPrefIdTarget][listName].uid = myCard.uid;
 					}
 				}
-				myAfterNumber = cardbookMigrate.getSolvedListNumber();
+				myAfterNumber = cardbookMigrate.getSolvedListNumber(aDirPrefIdTarget);
 				myCondition = (myBeforeNumber != myAfterNumber);
 				myBeforeNumber = myAfterNumber;
 			}
@@ -262,6 +262,7 @@ var cardbookMigrate = {
 	importCards: async function (aDirPrefIdSource, aDirPrefIdTarget, aDirPrefIdTargetName, aVersion) {
 		for (let addrbook of MailServices.ab.directories) {
 			if (addrbook.dirPrefId == aDirPrefIdSource) {
+				cardbookMigrate.allLists[aDirPrefIdTarget] = {};
 				for (let myABCard of addrbook.childCards) {					
 					if (!myABCard.isMailList) {
 						cardbookRepository.cardbookServerCardSyncTotal[aDirPrefIdTarget]++;
@@ -269,9 +270,9 @@ var cardbookMigrate = {
 						await cardbookMigrate.translateStandardCards(aDirPrefIdTarget, aDirPrefIdTargetName, myABCard, aVersion, myDateFormat);
 					} else {
 						let myABList = MailServices.ab.getDirectory(myABCard.mailListURI);
-						cardbookMigrate.allLists[myABList.dirName] = {};
-						cardbookMigrate.allLists[myABList.dirName].solved = false;
-						cardbookMigrate.allLists[myABList.dirName].list = myABList;
+						cardbookMigrate.allLists[aDirPrefIdTarget][myABList.dirName] = {};
+						cardbookMigrate.allLists[aDirPrefIdTarget][myABList.dirName].solved = false;
+						cardbookMigrate.allLists[aDirPrefIdTarget][myABList.dirName].list = myABList;
 						cardbookRepository.cardbookServerCardSyncTotal[aDirPrefIdTarget]++;
 					}
 				}
@@ -279,7 +280,6 @@ var cardbookMigrate = {
 				break;
 			}
 		}
-		cardbookRepository.cardbookPreferDisplayName.writePreferDisplayName();
 		cardbookRepository.writePossibleCustomFields();
 		cardbookRepository.cardbookDBCardResponse[aDirPrefIdTarget]++;
 	}

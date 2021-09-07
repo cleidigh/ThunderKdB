@@ -33,6 +33,14 @@ footer {
     background-color: whitesmoke;
 }
 
+.mailmindr-buttonbar--wrapper button.mailmindr-button--micro {
+    margin-right: 2px;
+}
+
+.mailmindr-buttonbar--wrapper button.mailmindr-button--micro:not(:first-child) {
+    margin-left: 2px;
+}
+
 .mailmindr-three-pane {
     position: absolute;
     left: 0;
@@ -125,4 +133,19 @@ button {
     font-size: 12px;
     height: unset;
     min-height: 21px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .mailmindr-alert-list .mailmindr-alert-list-item:hover {
+        background-color: rgba(12, 12, 13, 0.5);
+    }
+
+    .mailmindr-alert-list .mailmindr-alert-list-item--selected:hover,
+    .mailmindr-alert-list .mailmindr-alert-list-item--selected {
+        background-color: var(--blue-50);
+    }
+
+    footer {
+        background-color: var(--grey-90-a80);
+    }
 }

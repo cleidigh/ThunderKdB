@@ -29,7 +29,7 @@
     "message": "Chcę odnowić licencję"
   },
   "btn-want-a-license": {
-    "message": "Chcę kupić licencję"
+    "message": "Wybierz licencję"
   },
   "btn-want-to-donate": {
     "message": "Chcę pomóc w sprawie jednorazowej darowizny."
@@ -55,8 +55,14 @@
   "buyLicense.instruct": {
     "message": "Potrzebujesz licencji dla siebie? Zdobądź licencję dla jednego użytkownika. Jest ona przypisana do Twojego adresu Email i może być używana w wielu instalacjach."
   },
-  "buyPersonalLicense.button": {
-    "message": "Kup prywatną licencję!"
+  "buyProLicense.button": {
+    "message": "Kup licencję Pro!"
+  },
+  "buyStandardLicense.button": {
+    "message": "Kup licencję standardową!"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "Nie możesz sobie pozwolić na funkcje premium? Uzyskaj niedrogą standardową licencję i testuj funkcje premium."
   },
   "chkComposerSubfolders": {
     "message": "Zastosuj również do podfolderów"
@@ -92,7 +98,7 @@
     "message": "Tło"
   },
   "cssBackground.tooltip": {
-    "message": "Podaj tło w formacie CSS, np. linear-gradient(to bottom, rgba(254,252,234,1) 0&#37;,rgba(241,218,54,1) 100&#37;)"
+    "message": "Podaj tło w formacie CSS, np. linear-gradient(to bottom, rgba(254,252,234,1) 0%,rgba(241,218,54,1) 100%)"
   },
   "cssColor": {
     "message": "Kolor tekstu"
@@ -157,7 +163,7 @@
     "message": "Domyślna tożsamość podczas tworzenia nowych wiadomości"
   },
   "getQuickFolders": {
-    "message": "Zarejestruj QuickFolders Pro"
+    "message": "Licencje QuickFolders"
   },
   "grpComposer": {
     "message": "Pola domyślne wiadomości"
@@ -210,8 +216,41 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Dziękujemy za niedawne przedłużenie licencji lub przekazanie darowizny. Ponieważ pomogłeś w przygotowaniu tego dodatku w przyszłości, możesz po prostu zamknąć to okno."
   },
+  "licenseComparison" : {
+    "message": "Aby porównać funkcje różnych wersji, {linkStart}przeczytaj tę listę{linkEnd}."
+  },  
+  "licenseHead": {
+    "message": "Nowy system licencjonowania"
+  },  
+  "licenseTypes": {
+    "message": "QuickFolders oferuje dwie licencje, Standard i Pro; są one niezbędne, aby nadążyć za zmianami na platformie Thunderbird oraz sfinansować innowacje i naprawy dodatku. Ponieważ zmiany, które potencjalnie zakłócają funkcjonalność rozszerzenia, są wprowadzane co roku, licencja będzie również ważna przez 1 rok."
+  },  
   "licenseWindow.title": {
     "message": "Licencja QuickFolders Pro"
+  },
+  "license_restriced.std": {
+    "message": "Licencja standardowa - ograniczona funkcja Pro. Dowiedz się więcej…"
+  },
+  "license_restriced.unpaid": {
+    "message": "Wersja nielicencjonowana - funkcja ograniczona. Dowiedz się więcej…"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFolders potrzebuje licencji Pro, aby obsługiwać więcej niż karty $maxTabs$.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFolders potrzebuje licencji do obsługi więcej niż $maxTabs$ kart.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
   "mozillas-basic-platform": {
     "message": "Mozilla zapewnia jedynie podstawową platformę do dostarczania naszego oprogramowania użytkownikom końcowym. Jeśli musimy poprosić naszych użytkowników o płatność lub wsparcie, nie możemy tego zrobić z addons.thunderbird.net - nie jest to „sklep z aplikacjami” z wbudowanymi paywallami lub zarządzaniem licencjami, jak iTunes czy Google Play."
@@ -310,11 +349,11 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "Uaktywniaj listę wiadomości podczas zmiany folderów"
   },
-  "qf.checkbox.autoHideToolbar": {
-    "message": "Nie wyświetlaj paska QuickFolders, gdy jest niepotrzebny"
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "Ukryj QuickFolders w zakładkach pojedynczych wiadomości"
   },
-  "qf.checkbox.autoHideToolbar.tooltip": {
-    "message": "Pasek QuickFolders będzie ukrywany, gdy będą wyświetlane specjalne karty, takie jak kalendarz, treści, menedżer dodatków"
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "Usuwa pasek narzędzi QuickFolders z kart, które pokazują pojedynczą wiadomość."
   },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "Przycisk zamykania"
@@ -538,6 +577,9 @@
   "qf.copyfolders.tooltip": {
     "message": "Kopiuje zapis konfiguracji folderów do schowka"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Motyw Thunderbirda"
+  },
   "qf.currentFolderBackground.custom": {
     "message": "Własne"
   },
@@ -545,7 +587,7 @@
     "message": "Ciemne"
   },
   "qf.currentFolderBackground.default": {
-    "message": "Domyślne"
+    "message": "Srebro"
   },
   "qf.currentFolderBackground.translucent": {
     "message": "Przezroczyste"
@@ -556,8 +598,8 @@
   "qf.currentfolder.rightSpacer": {
     "message": "Prawy element dystansowy:"
   },
-  "qf.description.bugzilla": {
-    "message": "Używaj Bugzilli do raportowania błędów i zgłaszania propozycji nowych funkcji"
+  "qf.description.github": {
+    "message": "Używaj github do raportowania błędów i zgłaszania propozycji nowych funkcji"
   },
   "qf.description.categoryusage": {
     "message": "Możesz umieścić ten folder w kategorii, np. Praca, Prywatne,…."
@@ -566,7 +608,12 @@
     "message": "Aby przyporządkować folderowi kategorię, należy kliknąć prawym przyciskiem etykietę folderu. Używając przycisku znajdującego się po lewej stronie paska QuickFolders, można tworzyć filtry dla kategorii."
   },
   "qf.description.contactMe": {
-    "message": "Można kontaktować się z autorem osobiście pod adresem axelg@gofree.indigo.ie:"
+    "message": "Można kontaktować się z autorem osobiście pod adresem $supportMail$:",
+    "placeholders": {
+      "supportMail": {
+        "content": "$1"
+      }
+    }
   },
   "qf.description.donate": {
     "message": "Jeśli lubisz QuickFolders i chcesz wesprzeć jego rozwój, możesz dokonać dotacji na rzecz jego dalszego rozwoju."
@@ -590,7 +637,7 @@
     "message": "Następujące elementy są eksperymentalne, ale jest duże prawdopodobieństwo, że będą działać w następnym wydaniu!"
   },
   "qf.description.languages": {
-    "message": "Pomoc w tłumaczeniu QuickFolders – pomóż na portalu BabelZilla tłumaczyć QuickFolders na twój język:"
+    "message": "Pomoc w tłumaczeniu QuickFolders – pomóż na portalu github tłumaczyć QuickFolders na twój język:"
   },
   "qf.description.linkNote": {
     "message": "Odwiedź stronę domową QuickFolders, aby zobaczyć szczegółową instrukcję użytkowania, podpowiedzi i FAQ:"
@@ -724,8 +771,8 @@
   "qf.label.behavior": {
     "message": "Zachowanie"
   },
-  "qf.label.bugzilla": {
-    "message": "Zgłoś błąd/poproś o nową funkcję poprzez Bugzillę…"
+  "qf.label.github": {
+    "message": "Zgłoś błąd/poproś o nową funkcję poprzez github…"
   },
   "qf.label.buttonFontSizeNumeric": {
     "message": "Rozmiar czcionki etykiet (0 - domyślny):"
@@ -892,6 +939,9 @@
   "qf.licenseValidation.passed": {
     "message": "Dziękujemy za rejestrację QuickFolders Pro! Wszystkie funkcje premium są teraz odblokowane."
   },
+  "qf.licenseValidation.standard": {
+    "message": "Dziękujemy za zarejestrowanie licencji QuickFolders — ogromnie pomagasz dodatkowi! Jeśli potrzebujesz więcej funkcji, zawsze możesz uaktualnić do licencji Pro."
+  },  
   "qf.loadConfig": {
     "message": "Ładowanie konfiguracji…"
   },
@@ -955,6 +1005,9 @@
   "qf.menuitem.quickfolders.repairTreeIcons": {
     "message": "Napraw ikony"
   },
+  "qf.menuitem.quickfolders.splash" : {
+    "message": "Wyświetl ekran powitalny"
+  },
   "qf.menuitem.quickfolders.support": {
     "message": "Wsparcie QuickFolders…"
   },
@@ -973,6 +1026,15 @@
   "qf.notification.dontShowAgain": {
     "message": "Nie pokazuj tej wiadomości ponownie."
   },
+  "qf.notification.newsFlash": {
+    "message": "$addonName$ został zaktualizowany! Ważne wiadomości…",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "qf.notification.premium.btn.extendLicense": {
     "message": "Przedłużenie licencji"
   },
@@ -988,17 +1050,46 @@
   "qf.notification.premium.btn.renewLicense": {
     "message": "Odnów licencję"
   },
+  "qf.notification.premium.btn.upgrade": {
+    "message": "Przejść na wersje Pro"
+  },
   "qf.notification.premium.readingList": {
     "message": "Zdefiniowane zakładki - {1}. Darmowa wersja QuickFolders umożliwia definiowanie maksymalnie {2}."
   },
+  "qf.notification.premium.shortcut": {
+    "message": "Licencja premium zapewnia dodatkowo konfigurowalny skrót klawiaturowy."
+  },
   "qf.notification.premium.tabIcons": {
-    "message": "Zdefiniowane ikony - {1}. Darmowa wersja QuickFolders umożliwia definiowanie maksymalnie {2}."
+    "message": "Teraz używasz niestandardowych ikon $cntIcons$ dla kart. Bezpłatna wersja QuickFolders obsługuje maksymalnie $maxFreeIcons$. Standardowa licencja obsługuje $maxStdIcons$. QuickFolders Pro nie ma ograniczeń.",
+    "placeholders": {
+      "cntIcons": {
+        "content": "$1",
+        "example": "10"
+      },
+      "maxFreeIcons": {
+        "content": "$2",
+        "example": "5"
+      },
+      "maxStdIcons": {
+        "content": "$3",
+        "example": "12"
+      }
+    }
   },
   "qf.notification.premium.text": {
-    "message": "{1} jest funkcją Premium. Zarejestruj QuickFolders, aby móc z niej korzystać."
+    "message": "{1} to funkcja Premium, uzyskaj licencję QuickFolders Pro, aby z niej korzystać."
   },
   "qf.notification.premium.title": {
     "message": "Funkcja Premium"
+  },
+  "qf.notification.standard.readingList": {
+    "message": "Masz teraz zdefiniowanych {1} zakładek. Standardowa licencja QuickFolders pozwala na maksymalnie {2}."
+  },
+  "qf.notification.standard.text": {
+    "message": "{1} to funkcja z ograniczeniami licencyjnymi, uzyskaj licencję QuickFolders, aby z niej korzystać."
+  },
+  "qf.notification.standard.title": {
+    "message": "Standardowa funkcja"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Wygląd dodatkowych elementów paska"
@@ -1028,7 +1119,7 @@
     "message": "Zawsze wyświetlaj obramowanie"
   },
   "qf.options.versionnumber.tooltip": {
-    "message": "Kliknij prawym przyciskiem, by wyświetlić historię wersji"
+    "message": "Kliknij, aby wyświetlić historię wersji"
   },
   "qf.palette.inactive": {
     "message": "Jak foldery nieaktywne"
@@ -1100,7 +1191,7 @@
     "message": "Nowy Folder"
   },
   "qf.prompt.pasteFolders": {
-    "message": "Spowoduje to usunięcie wszystkich zakładek QuickFolders i podmieni je z tymi zawartymi w schowku.\\nZnaleziono w schowku {0} wpisów.\\nCzy na pewno?"
+    "message": "Spowoduje to usunięcie wszystkich zakładek QuickFolders i podmieni je z tymi zawartymi w schowku.\nZnaleziono w schowku {0} wpisów.\nCzy na pewno?"
   },
   "qf.prompt.pasteFolders.confirm": {
     "message": "Zachować wyświetlone zakładki?"
@@ -1109,10 +1200,10 @@
     "message": "Usunąć tę pozycję?"
   },
   "qf.prompt.readingList.searchMissingItem": {
-    "message": "Nie można znaleźć wiadomości. Być może została przeniesiona w inne miejsce.\\n{1}\\n\\nCzy chcesz jej poszukać?"
+    "message": "Nie można znaleźć wiadomości. Być może została przeniesiona w inne miejsce.\n{1}\n\nCzy chcesz jej poszukać?"
   },
   "qf.prompt.restoreFolders": {
-    "message": "Spowoduje to usunięcie wszystkich kart QuickFolders i zastąpienie elementami z pliku.\\n{0} wpisy zostały przeczytane.\\nCzy zamienić karty?"
+    "message": "Spowoduje to usunięcie wszystkich kart QuickFolders i zastąpienie elementami z pliku.\n{0} wpisy zostały przeczytane.\nCzy zamienić karty?"
   },
   "qf.prompt.switchDomainLicense": {
     "message": "Przełączyć do strony licencji?"
@@ -1151,7 +1242,7 @@
     "message": "Ogólne"
   },
   "qf.tab.gopro": {
-    "message": "QuickFolders Pro"
+    "message": "Licencje"
   },
   "qf.tab.layout": {
     "message": "Upiększ foldery"
@@ -1523,7 +1614,7 @@
     "message": ": Ta zakładka odnosi się do niewłaściwego folderu:"
   },
   "qfTidyDeadFolders": {
-    "message": "Spowoduje to usunięcie kart, które nie mają przypisanych właściwych folderów.\\nDzieje się tak czasami, jeśli folder zostanie usunięty lub przeniesiony bez powiadomienia QuickFolders."
+    "message": "Spowoduje to usunięcie kart, które nie mają przypisanych właściwych folderów.\nDzieje się tak czasami, jeśli folder zostanie usunięty lub przeniesiony bez powiadomienia QuickFolders."
   },
   "qfTreeIconsInvalidCount": {
     "message": "Brakujące ikony: {0}"
@@ -1543,6 +1634,33 @@
   "qfVersionDisableOnUpdate": {
     "message": "Czy przestać wyświetlać historię wersji po aktualizacji?"
   },
+  "quickMove.help.head": {
+    "message" : "Pomoc dla {1}"
+  },
+  "quickMove.help.head.advanced": {
+    "message" : "Zaawansowane funkcje"
+  },
+  "quickMove.help.l1a": {
+    "message" : "Wpisz początek nazwy folderu lub słów w nim oddzielonych spacją."
+  }, 
+  "quickMove.help.l1b": {
+    "message" : "Następujące znaki są traktowane jako granice wyrazów i nie trzeba ich wpisywać:"
+  }, 
+  "quickMove.help.l2a": {
+    "message" : "Wpisz {1}, aby wprowadzić folder dziadków/rodziców/przeszukiwany."
+  }, 
+  "quickMove.help.l2b": {
+    "message" : "Zwykle wystarczą pierwsze 2 litery dowolnego folderu nadrzędnego. Za pomocą tej składni możesz także tworzyć nowe podfoldery."
+  }, 
+  "quickMove.help.l3a": {
+    "message" : "Wpisz {1}, aby pominąć wszystkie foldery pomiędzy."
+  }, 
+  "quickMove.help.l3b": {
+    "message" : "Jest to przydatne w przypadku głębszych, bardziej skomplikowanych lub nieznanych hierarchii folderów."
+  },   
+  "quickMove.help.advanced": {
+    "message" : "Bardziej zaawansowane funkcje, takie jak skróty klawiaturowe umożliwiające przejście do folderu/przenoszenie poczty lub wykluczanie folderów z wyników wyszukiwania, można skonfigurować na karcie QuickFolders Pro. Aby uzyskać dostęp do tych i innych funkcji premium, uzyskaj licencję Pro i wesprzyj przyszłość QuickFolders."
+  },  
   "quickMove.singleMessage.goNext": {
     "message": "Wyświetl następną wiadomość po przeniesieniu bieżącej"
   },
@@ -1592,7 +1710,33 @@
     "message": "Odnów licencję."
   },
   "special-offer-content": {
-    "message": "Przygotuj QuickFolders na przyszłość i pobierz licencję, dopóki cena QuickFolders Pro jest {boldStart} 40% obniżona {boldEnd}! Ta oferta specjalna będzie dostępna do {boldStart} 1 maja {boldEnd}."
+    "message": "Ulepsz swoje funkcje i zaoszczędź {boldStart}$reduction${boldEnd}, kupując licencję QuickFolders Pro! Ta oferta specjalna będzie dostępna do {boldStart}$expirydate${boldEnd}. Lub wybierz standardowe funkcje dzięki nowej {linkStart}Licencji standardowej{linkEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "22 sierpnia"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-upgrade": {
+    "message": "Przejdź teraz z QuickFolders Standard na Pro i zaoszczędź {boldStart}$reduction${boldEnd}! Ta oferta specjalna będzie dostępna do {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
+  "special-offer-expiry": {
+    "message": "11 września"    
   },
   "special-offer-head": {
     "message": "Przygotuj QuickFolders na przyszłość!"
@@ -1671,13 +1815,13 @@
     "message": "Co nowego?"
   },
   "whats-new-head": {
-    "message": "Najważniejsze"
+    "message": "Ważne zmiany"
   },
   "whats-new-intro": {
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1} 5.5.2 - poprawka - w Thunderbirdzie 89 pozycja menu opcji nie była wyświetlana w Menedżerze dodatków {L2}{L1} 5.5.2 - poprawka do quickMove - folder nadrzędny zawierający podkreślenie nie jest sugerowany jako nadrzędny {L2}{L1} 5.5.1 - poprawka do funkcji „Oznacz foldery + podfoldery jako przeczytane” {L2}{L1} Ukończyłem również język węgierski, chiński uproszczony i kataloński. {L2}Ta wersja dodatkowo rozszerza funkcję quickMove o następujące funkcje: {L1} Pojedyncza karta wiadomości: opcja automatycznego otwierania następnej wiadomości e-mail na tej samej karcie po przeniesieniu wiadomości {L2} {L1} Opcja całkowitego anulowania quickMove (i opróżnienia jego listy wiadomości) jednym naciśnięciem klawisza ESCAPE. {L2} {L1} Zaawansowane dopasowywanie folderów nadrzędnych poprzez czytanie z _ i separatorów spacji i traktowanie ich jak początku wyszukiwanej nazwy. {L2} {L1} Naprawiono: wyszukiwanie folderów podczas przeglądania wiadomości wyświetlane w wynikach wyszukiwania lub z konwersacji obejmującej wiele folderów. {L2} {L1} Te i dodatkowe funkcje ograniczające wyniki wyszukiwania z niektórych kont można skonfigurować w ustawieniach wyszukiwania zaawansowanego na karcie QuickFolders Pro. {L2}"
+    "message": "{L1}Naprawiono w 5.7.2: Gdy quickFilters aktywuje swojego asystenta, wszystkie ikony po lewej stronie kart będą białe{L2} {L1}Naprawiono w 5.7.1: Podczas wyszukiwania folderów o składni „folder nadrzędny/folder nadrzędny/folder poszukiwany”, foldery nadrzędne o nazwach składających się z jednego znaku nie były brane pod uwagę. {L2}{L1}Uczyniono QuickFolders kompatybilnymi z Thunderbirdem 91.{L2}{L1}Poprawiona obsługa motywów ciemnych i innych firm, zarówno na ekranie opcji, jak i na pasku narzędzi Nawigacja.{L2}{L1}Poprawiona widoczność przycisku [co nowego] przy braku -standardowy motyw QuickFolders{L2}{L1}Naprawiono: Czasami sesja była resetowana po ponownym uruchomieniu lub po zainstalowaniu innych dodatków lub aktualizacji, tak że wyświetlane były wszystkie kategorie.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

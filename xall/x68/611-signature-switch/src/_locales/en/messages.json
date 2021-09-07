@@ -29,6 +29,63 @@
   "menuOptions": {
     "message": "Options"
   },
+  "nativeMessagingDescription1": {
+    "message": "Native messaging can be used to insert dynamic content into your signature received from a native application installed on your computer."
+  },
+  "nativeMessagingDescription2": {
+    "message": "However, it is quite cumbersome to get Thunderbird to talk to the native application. Plus, it's even more complicated to provide/implement an application that behaves exactly like the 'Native Messaging API' expects (mainly because the transferred data needs to be in a specific \"format\")."
+  },
+  "nativeMessagingDescription3": {
+    "message": "For detailed information and working sample code please check the documentation on GitHub before you continue:"
+  },
+  "nativeMessagingMessage": {
+    "message": "Message:"
+  },
+  "nativeMessagingMessageTooltip": {
+    "message": "This resembles the message that is being sent to the native application via native messaging. Aside from your tag, all other values will be filled automatically."
+  },
+  "nativeMessagingMessageValidationFailure": {
+    "message": "Invalid!"
+  },
+  "nativeMessagingMessageValidationSuccess": {
+    "message": "Valid."
+  },
+  "nativeMessagingResponse": {
+    "message": "Response:"
+  },
+  "nativeMessagingResponseTooltip": {
+    "message": "This should show the message your native application returned. It need to be a JSON-object containing a 'message'-attribute."
+  },
+  "nativeMessagingResponseValidationFailure": {
+    "message": "Failure!"
+  },
+  "nativeMessagingResponseValidationInvalid": {
+    "message": "Invalid or incomplete result!"
+  },
+  "nativeMessagingResponseValidationSuccess": {
+    "message": "Success."
+  },
+  "nativeMessagingSend": {
+    "message": "Send Message"
+  },
+  "nativeMessagingTestHeader": {
+    "message": "Native Messaging Test"
+  },
+  "nativeMessagingTestHint": {
+    "message": "The 'Native Messaging Setup' for Signature Switch can be verified by making a test request with the (mockup) message below. Upon success you should see the response of the native application."
+  },
+  "nativeMessagingUsageCode": {
+    "message": "Moe Zilla<br>\nemail: <a href=\"mailto:moe@zilla.org\">moe@zilla.org</a><br>\n<br>\nMy current IP address: __IP__"
+  },
+  "nativeMessagingUsageDescription": {
+    "message": "An arbitrary tag name - enclosed by double underscores - can be used within your signature to send a message to the native application; and have the tag replaced with the returned content."
+  },
+  "nativeMessagingUsageExample": {
+    "message": "For example:"
+  },
+  "nativeMessagingUsageHeader": {
+    "message": "Usage:"
+  },
   "optionsAddFortuneCookies": {
     "message": "Add new fortune cookies"
   },
@@ -85,6 +142,15 @@
   },
   "optionsCommandKeyUp": {
     "message": "Up"
+  },
+  "optionsCommandLabelNext": {
+    "message": "Cycle (next):"
+  },
+  "optionsCommandLabelPrevious": {
+    "message": "Cycle (previous):"
+  },
+  "optionsCommandLabelSwitch": {
+    "message": "Switch (on/off):"
   },
   "optionsCommandReset": {
     "message": "Reset"
@@ -278,9 +344,6 @@
   "optionsImportExportDataLabel": {
     "message": "Signatures:"
   },
-  "optionsImportExportDataTooltip": {
-    "message": "JSON data in the form of:"
-  },
   "optionsImportExportDescription1": {
     "message": "This feature is primarily intended for backup/restore purposes. Export your signatures; copy them to the clipboard; paste into a text editor of your choice and save the data to a file. (Vice versa: Paste previously backed up data in here and import.)"
   },
@@ -311,11 +374,8 @@
   "optionsMiscellaneous": {
     "message": "Miscellaneous"
   },
-  "optionsNextCommandLabel": {
-    "message": "Cycle (next):"
-  },
-  "optionsPreviousCommandLabel": {
-    "message": "Cycle (previous):"
+  "optionsNativeMessaging": {
+    "message": "Native Messaging"
   },
   "optionsReloadIdentities": {
     "message": "Reload"
@@ -333,7 +393,7 @@
     "message": "Auto switch"
   },
   "optionsSignatureEditModalAutoSwitchPlaceholder": {
-    "message": "e.g. '*@company.com, *smith*@*.de, moe@zilla.com'"
+    "message": "*@company.com, *smith*@*.de, moe@zilla.com"
   },
   "optionsSignatureEditModalAutoSwitchTooltip": {
     "message": "A comma separated list of email addresses, which - when detected as recipient - will automatically trigger insertion of this signature. (NOTE: The asterisk character can be used as wildcard.)"
@@ -357,7 +417,7 @@
     "message": "Name"
   },
   "optionsSignatureEditModalNamePlaceholder": {
-    "message": "e.g. 'Private Signature'"
+    "message": "Business Signature"
   },
   "optionsSignatureEditModalNameTooltip": {
     "message": "The name which gets displayed when selecting your signature via button or context menu."
@@ -407,9 +467,6 @@
   "optionsSignatures": {
     "message": "Signatures"
   },
-  "optionsSwitchCommandLabel": {
-    "message": "Switch (on/off):"
-  },
   "optionsTableColumnFortuneCookiesDelete": {
     "message": "Delete"
   },
@@ -420,13 +477,13 @@
     "message": "Name"
   },
   "optionsTableColumnFortuneCookiesNamePlaceholder": {
-    "message": "e.g. 'Chuck Norris'"
+    "message": "Chuck Norris"
   },
   "optionsTableColumnFortuneCookiesTag": {
     "message": "Tag"
   },
   "optionsTableColumnFortuneCookiesTagPlaceholder": {
-    "message": "e.g. 'chuck'"
+    "message": "chuck"
   },
   "optionsTableColumnIdentityAssignedSignature": {
     "message": "Assigned Signature"
@@ -444,13 +501,13 @@
     "message": "Name"
   },
   "optionsTableColumnImagesNamePlaceholder": {
-    "message": "e.g. 'Company Logo (large)'"
+    "message": "Company Logo"
   },
   "optionsTableColumnImagesTag": {
     "message": "Tag"
   },
   "optionsTableColumnImagesTagPlaceholder": {
-    "message": "e.g. 'clogo-l'"
+    "message": "logo"
   },
   "optionsTableColumnSignaturesAction": {
     "message": "Action"

@@ -82,6 +82,10 @@ treecol#cardIcon.cardIconHeader .treecol-sortdirection {
 	list-style-image: url("chrome://cardbook/content/skin/abcard.svg");
 }
 
+.boldFont {
+	font-weight: bold;
+}
+
 /* categories */
 #categoriesclassicalHbox,
 #categoriesmodernHbox {
@@ -101,7 +105,7 @@ treecol#cardIcon.cardIconHeader .treecol-sortdirection {
 /* textarea */
 #notemodernGroupbox,
 #noteclassicalGroupbox,
-#noteTabpanel,
+#noteGroupbox,
 #othersGroupboxWrapper,
 #vcardTabGroupbox {
     display: flex;
@@ -170,3 +174,8 @@ treecol#cardIcon.cardIconHeader .treecol-sortdirection {
 	background-color: var(--tab-selected-background);
 	border-bottom: 2px solid var(--tab-line-color, var(--highlight-color));
 }
+
+.cardbook-large-column {
+    width: 60%;
+}
+

@@ -27,7 +27,7 @@
     "message" : "Chci si obnovit licenci"
   },
   "btn-want-a-license": {
-    "message" : "Chci koupit licenci"
+    "message" : "Vyberte licenci"
   },
   "btn-want-to-donate": {
     "message" : "Chci pomoci s jednorázovým darem."
@@ -85,6 +85,42 @@
     "message": "Děkujeme, že jste nedávno prodloužili licenci nebo jste darovali. Jelikož jste pomohli doložit tento doplněk do budoucna, můžete toto okno jednoduše zavřít.",
     "description": "Shown if license expires more than a year from now"
   },
+  "licenseComparison" : {
+    "message": "Chcete -li porovnat funkce různých verzí, {linkStart}přečtěte si tento seznam{linkEnd}."
+  },
+  "licenseHead": {
+    "message": "Nový licenční systém"
+  },  
+  "licenseTypes": {
+    "message": "QuickFolders nabízí dvě licence, Standard a Pro; jsou nezbytné k udržení kroku se změnami na platformě Thunderbird a k financování inovací a oprav doplňku. Protože změny, které potenciálně narušují funkce rozšíření, jsou vydávány každoročně, licence bude také platná po dobu 1 roku."
+  },  
+  "licenseWindow.title": {
+    "message": "Licence QuickFolders Pro"
+  },
+  "license_restriced.unpaid": {
+    "message": "Nelicencovaná verze - omezená funkce. Zjistit více…"
+  },
+  "license_restriced.std": {
+    "message": "Standardní licence - omezená funkce Pro. Zjistit více…"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFolders potřebuje licenci Pro na podporu více než $maxTabs$ karet.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFolders potřebuje licenci k podpoře více než $maxTabs$ karet.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },  
   "mozillas-basic-platform": {
     "message" : "Mozilla poskytuje pouze základní platformu pro doručování našeho softwaru vám, koncovým uživatelům. Pokud potřebujeme požádat naše uživatele o platbu nebo podporu, nemůžeme to udělat z addons.thunderbird.net - nejedná se o „obchod s aplikacemi“ s vestavěnými paywally nebo správou licencí, jako je iTunes nebo Google Play."
   },
@@ -107,6 +143,15 @@
   "purchase-heading": {
     "message" : "Nákup licence!"
   }, 
+  "qf.notification.newsFlash": {
+    "message": "$addonName$ bylo aktualizováno! Důležité novinky…",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "renew-your-license": {
     "message" : "Obnovte si licenci."
   },  
@@ -117,7 +162,33 @@
     "message": "{boldStart} Vážený uživateli {name} {boldEnd}, pokud ještě nemáte licenci, zvažte podporu podpory QuickFolders pro budoucnost. Chystají se další velké změny v Thunderbirdu a potřebuji {boldStart} vaši pomoc {boldEnd}, abych udržel krok!"
   },  
   "special-offer-content": {
-    "message": "Udělejte QuickFolders budoucí důkaz a získejte licenci, zatímco u ceny QuickFolders Pro je {boldStart} 40% snížení {boldEnd}! Tato speciální nabídka bude k dispozici do {boldStart} 1. Května {boldEnd}."
+    "message": "Vylepšete své funkce a ušetřete {boldStart} $reduction$ {boldEnd} zakoupením licence QuickFolders Pro! Tato speciální nabídka bude k dispozici do {boldStart}$expirydate${boldEnd}. Nebo vyberte standardní funkce s novou {linkStart}standardní licencí{linkEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "16. Dubna"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-upgrade": {
+    "message": "Upgradujte nyní z QuickFolders Standard na Pro a ušetřete {boldStart}$reduction${boldEnd}! Tato speciální nabídka bude k dispozici do {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
+  "special-offer-expiry": {
+    "message": "11. září"
   },
   "support-preference": {
     "message": "Toto je upřednostňovaný způsob podpory $addonName$.",
@@ -172,13 +243,13 @@
     "message": "Co je nového?"
   }, 
   "whats-new-head": {
-    "message": "Hlavní body"
+    "message": "Důležité změny"
   },
   "whats-new-intro": {
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):" 
   },
   "whats-new-list": {
-    "message" : "{L1} 5.5.2 - oprava hotfix - v Thunderbirdu 89 se položka nabídky možností ve Správci doplňků nezobrazila {L2}{L1} 5.5.2 - oprava hotfix pro quickMove - nadřazená složka obsahující podtržítko není doporučeno jako nadřazená {L2}{L1} 5.5.1 - oprava hotfix pro funkci „Označit složky + podsložky jako přečtené“{L2}{L1}Dokončená maďarská, zjednodušená čínská a katalánská národní prostředí.{L2}Tato verze dále rozšiřuje funkci quickMove o následující funkce: {L1}Karta Jedna zpráva: možnost automaticky otevřít další e-mail na stejné kartě po přesunutí zprávy{L2} {L1} Možnost úplného zrušení quickMove (a vyprázdnění seznamu zprávy) jediným stisknutím klávesy ESCAPE. {L2} {L1} Pokročilé porovnávání nadřazených složek čtením z oddělovačů _ a mezer a zacházením s nimi jako se začátkem hledaného jména. {L2} {L1} Opraveno: vyhledávání složek při prohlížení zprávy zobrazené ve výsledcích vyhledávání nebo z vícesložkové konverzace. {L2} {L1} Tyto a další funkce omezující výsledky vyhledávání z určitých účtů lze konfigurovat pomocí Rozšířeného nastavení vyhledávání na kartě QuickFolders Pro. {L2}"
+    "message" : "{L1} Opraveno v 5.7.2: Když quickFilters aktivuje svého asistenta, všechny ikony vlevo na kartách budou bílé {L2}{L1} Opraveno v 5.7.1: Při hledání složek se syntaxí „nadřazená složka/nadřazená složka/požadovaná složka“ nebyly vzaty v úvahu nadřazené složky se jmény o délce jednoho znaku. {L2}{L1} Vyrobeno QuickFolders kompatibilní s Thunderbirdem 91. {L2} {L1} Vylepšená podpora tmavých motivů a motivů třetích stran, a to jak na obrazovce možností, tak na panelu nástrojů Navigace. {L2} {L1} Vylepšená viditelnost tlačítka [co je nového] s -standardní téma QuickFolders {L2} {L1} Opraveno: Někdy byla relace resetována při restartu nebo po instalaci dalších doplňků nebo aktualizací, takže se zobrazily všechny kategorie.{L2}"
   },
   "window-title": {
     "message": "Vítejte v $addonName$",

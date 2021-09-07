@@ -11,7 +11,7 @@
  
 // provides exchange autodiscover of ews server url
 
-const EXPORTED_SYMBOLS = ["EwsAutoDiscover"];
+const EXPORTED_SYMBOLS = ["EwsAutoDiscover", "savePassword"];
 var EwsAutoDiscover = {};
 
 let Cu = Components.utils;
@@ -99,19 +99,30 @@ function doAutodiscover(aEmail, aUsername, aDomain, aPassword, aSavePassword, aL
       // use the example from extensions/irc/js/lib/dcc.js
       let th = Cc["@mozilla.org/thread-manager;1"].getService(Ci.nsIThreadManager).currentThread;
       let promiseDnsResolve = new Promise(resolve => {
-        dnsService.asyncResolve(prefixedURL, flags,
-          { onLookupComplete: function onLookupComplete(aRequest, aRecord, aStatus)
-            { log.debug('onLookupComplete: status is ' + CN(aStatus));
-              record = aRecord;
-              status = aStatus;
-              resolve();
-            }
-          }, th);
+        if (dnsService.asyncResolve.length < 7) { /* COMPAT for TB 78 (bug 1657582) */
+          dnsService.asyncResolve(prefixedURL, flags,
+            { onLookupComplete: function onLookupComplete(aRequest, aRecord, aStatus)
+              { log.debug('onLookupComplete: status is ' + CN(aStatus));
+                record = aRecord;
+                status = aStatus;
+                resolve();
+              }
+            }, th);
+        } else { /* COMPAT for TB 78 (bug 1657582) */
+          dnsService.asyncResolve(prefixedURL, Ci.nsIDNSService.RESOLVE_TYPE_DEFAULT, flags, null,
+            { onLookupComplete: function onLookupComplete(aRequest, aRecord, aStatus)
+              { log.debug('onLookupComplete: status is ' + CN(aStatus));
+                record = aRecord;
+                status = aStatus;
+                resolve();
+              }
+            }, th);
+        } // COMPAT for TB 78 (bug 1657582)
       });
       await promiseDnsResolve;
 
       log.config('DNS status for autodiscover prefix is ' + CN(status) +
-                  ' address is ' + (record ? record.getNextAddrAsString() : ""));
+                  ' address is ' + (record ? record.QueryInterface(Ci.nsIDNSAddrRecord/* COMPAT for TB 78 (bug 1657582) */ || Ci.nsIDNSRecord).getNextAddrAsString() : ""));
       if (status == 0)
       {
         // try to use the autodiscover prefixed url. Use the http: version first to look for a redirect,
@@ -751,7 +762,7 @@ function _newAsyncPromptConsumer(aCallback, aContext)
 {
   let obj = 
   {
-    QueryInterface: ChromeUtils.generateQI([Ci.nsICancelable]),
+    QueryInterface: ChromeUtils.generateQI(["nsICancelable"]),
     callback: aCallback,
     context: aContext,
     cancel: function() {

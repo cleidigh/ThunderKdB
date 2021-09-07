@@ -55,7 +55,7 @@ var NostalgyPredict =
 
         for (var i = 1; i <= 20; i++) {
             try {
-                this.emails[prefs.getCharPref("mail.identity.id" + i + ".useremail")] = 1;
+                this.emails[prefs.getStringPref("mail.identity.id" + i + ".useremail")] = 1;
             } catch (ex) { }
         }
 

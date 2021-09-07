@@ -20,47 +20,41 @@ if ("undefined" == typeof(ovl_filters)) {
 
 		_addEmails: async function(aMsgHdrs, aActionValue, aField) {
 			// a category might be included
-			var mySepPosition = aActionValue.indexOf("::",0);
+			let myCategory = "";
+			let mySepPosition = aActionValue.indexOf("::",0);
 			if (mySepPosition != -1) {
-				var myCategory = aActionValue.substr(mySepPosition+2,aActionValue.length);
-				aActionValue = aActionValue.substr(0,mySepPosition);
-			} else {
-				var myCategory = "";
+				myCategory = aActionValue.substr(mySepPosition+2, aActionValue.length);
+				aActionValue = aActionValue.substr(0, mySepPosition);
 			}
-			let count = aMsgHdrs.length;
-			var myTopic = "emailCollectedByFilter";
-			var myActionId = cardbookActions.startAction(myTopic);
-			for (var i = 0; i < count; i++) {
-				let hdr = aMsgHdrs.queryElementAt(i, Components.interfaces.nsIMsgDBHdr);
-				let addresses = MailServices.headerParser.parseEncodedHeaderW(hdr[aField]);
+			let myTopic = "emailCollectedByFilter";
+			let myActionId = cardbookActions.startAction(myTopic);
+			for (let msgHdr of aMsgHdrs) {
+				let addresses = MailServices.headerParser.parseEncodedHeaderW(msgHdr[aField]);
 				for (let address of addresses) {
 					await cardbookRepository.cardbookUtils.addCardFromDisplayAndEmail(aActionValue, address.name, address.email, myCategory, myActionId);
 				}
 			}
-			cardbookActions.endAction(myActionId);
+			await cardbookActions.endAction(myActionId);
 		},
 
 		_removeEmails: function(aMsgHdrs, aActionValue, aField) {
 			// a category might be included
-			var mySepPosition = aActionValue.indexOf("::",0);
+			let myCategory = "";
+			let mySepPosition = aActionValue.indexOf("::",0);
 			if (mySepPosition != -1) {
-				var myCategory = aActionValue.substr(mySepPosition+2,aActionValue.length);
-				aActionValue = aActionValue.substr(0,mySepPosition);
-			} else {
-				var myCategory = "";
+				myCategory = aActionValue.substr(mySepPosition+2, aActionValue.length);
+				aActionValue = aActionValue.substr(0, mySepPosition);
 			}
-			let count = aMsgHdrs.length;
-			var myTopic = "emailDeletedByFilter";
-			var myActionId = cardbookActions.startAction(myTopic);
-			for (var i = 0; i < count; i++) {
-				let hdr = aMsgHdrs.queryElementAt(i, Components.interfaces.nsIMsgDBHdr);
-				let addresses = MailServices.headerParser.parseEncodedHeaderW(hdr[aField]);
+			let myTopic = "emailDeletedByFilter";
+			let myActionId = cardbookActions.startAction(myTopic);
+			for (let msgHdr of aMsgHdrs) {
+				let addresses = MailServices.headerParser.parseEncodedHeaderW(msgHdr[aField]);
 				for (let address of addresses) {
-					var myEmail = address.email.toLowerCase();
+					let myEmail = address.email.toLowerCase();
 					if (cardbookRepository.cardbookCardEmails[aActionValue]) {
 						if (cardbookRepository.cardbookCardEmails[aActionValue][myEmail]) {
 							for (let k = 0; k < cardbookRepository.cardbookCardEmails[aActionValue][myEmail].length; k++) {
-								var myCard = cardbookRepository.cardbookCardEmails[aActionValue][myEmail][k];
+								let myCard = cardbookRepository.cardbookCardEmails[aActionValue][myEmail][k];
 								if (myCategory != "") {
 									if (myCategory == cardbookRepository.cardbookUncategorizedCards) {
 										if (myCard.categories == "") {
@@ -79,7 +73,7 @@ if ("undefined" == typeof(ovl_filters)) {
 					}
 				}
 			}
-			cardbookActions.endAction(myActionId);
+			cardbookActions.endAsyncAction(myActionId);
 		},
 
 		_searchEmails: function(aSearchValue, aEmail) {
@@ -325,11 +319,12 @@ if ("undefined" == typeof(ovl_filters)) {
 				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.addFrom.name"),
 				isValidForType: function(type, scope) {return true;},
 				validateActionValue: function(value, folder, type) { return null;},
-				allowDuplicates: true,
+				applyAction: async function (aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
+					await ovl_filters._addEmails(aMsgHdrs, aActionValue, "author");
+				},
+				allowDuplicates: false,
 				needsBody: false,
-				apply: function (aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
-					ovl_filters._addEmails(aMsgHdrs, aActionValue, "author");
-				}
+				isAsync: true
 			};
 			MailServices.filters.addCustomAction(addFrom);
 
@@ -338,11 +333,12 @@ if ("undefined" == typeof(ovl_filters)) {
 				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.addTo.name"),
 				isValidForType: function(type, scope) {return true;},
 				validateActionValue: function(value, folder, type) { return null;},
-				allowDuplicates: true,
+				applyAction: async function (aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
+					await ovl_filters._addEmails(aMsgHdrs, aActionValue, "recipients");
+				},
+				allowDuplicates: false,
 				needsBody: false,
-				apply: function (aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
-					ovl_filters._addEmails(aMsgHdrs, aActionValue, "recipients");
-				}
+				isAsync: true
 			};
 			MailServices.filters.addCustomAction(addTo);
 
@@ -351,11 +347,12 @@ if ("undefined" == typeof(ovl_filters)) {
 				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.addCc.name"),
 				isValidForType: function(type, scope) {return true;},
 				validateActionValue: function(value, folder, type) { return null;},
-				allowDuplicates: true,
+				applyAction: async function (aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
+					await ovl_filters._addEmails(aMsgHdrs, aActionValue, "ccList");
+				},
+				allowDuplicates: false,
 				needsBody: false,
-				apply: function (aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
-					ovl_filters._addEmails(aMsgHdrs, aActionValue, "ccList");
-				}
+				isAsync: true
 			};
 			MailServices.filters.addCustomAction(addCc);
 
@@ -364,11 +361,12 @@ if ("undefined" == typeof(ovl_filters)) {
 				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.addBcc.name"),
 				isValidForType: function(type, scope) {return true;},
 				validateActionValue: function(value, folder, type) { return null;},
-				allowDuplicates: true,
+				applyAction: async function (aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
+					await ovl_filters._addEmails(aMsgHdrs, aActionValue, "bccList");
+				},
+				allowDuplicates: false,
 				needsBody: false,
-				apply: function (aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
-					ovl_filters._addEmails(aMsgHdrs, aActionValue, "bccList");
-				}
+				isAsync: true
 			};
 			MailServices.filters.addCustomAction(addBcc);
 
@@ -377,14 +375,15 @@ if ("undefined" == typeof(ovl_filters)) {
 				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.addAll.name"),
 				isValidForType: function(type, scope) {return true;},
 				validateActionValue: function(value, folder, type) { return null;},
-				allowDuplicates: true,
+				applyAction: async function (aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
+					await ovl_filters._addEmails(aMsgHdrs, aActionValue, "author");
+					await ovl_filters._addEmails(aMsgHdrs, aActionValue, "recipients");
+					await ovl_filters._addEmails(aMsgHdrs, aActionValue, "ccList");
+					await ovl_filters._addEmails(aMsgHdrs, aActionValue, "bccList");
+				},
+				allowDuplicates: false,
 				needsBody: false,
-				apply: function (aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
-					ovl_filters._addEmails(aMsgHdrs, aActionValue, "author");
-					ovl_filters._addEmails(aMsgHdrs, aActionValue, "recipients");
-					ovl_filters._addEmails(aMsgHdrs, aActionValue, "ccList");
-					ovl_filters._addEmails(aMsgHdrs, aActionValue, "bccList");
-				}
+				isAsync: true
 			};
 			MailServices.filters.addCustomAction(addAll);
 
@@ -393,11 +392,12 @@ if ("undefined" == typeof(ovl_filters)) {
 				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.removeFrom.name"),
 				isValidForType: function(type, scope) {return true;},
 				validateActionValue: function(value, folder, type) { return null;},
-				allowDuplicates: true,
+				applyAction: async function (aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
+					await ovl_filters._removeEmails(aMsgHdrs, aActionValue, "author");
+				},
+				allowDuplicates: false,
 				needsBody: false,
-				apply: function (aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
-					ovl_filters._removeEmails(aMsgHdrs, aActionValue, "author");
-				}
+				isAsync: true
 			};
 			MailServices.filters.addCustomAction(removeFrom);
 
@@ -406,11 +406,12 @@ if ("undefined" == typeof(ovl_filters)) {
 				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.removeTo.name"),
 				isValidForType: function(type, scope) {return true;},
 				validateActionValue: function(value, folder, type) { return null;},
-				allowDuplicates: true,
+				applyAction: async function (aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
+					await ovl_filters._removeEmails(aMsgHdrs, aActionValue, "recipients");
+				},
+				allowDuplicates: false,
 				needsBody: false,
-				apply: function (aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
-					ovl_filters._removeEmails(aMsgHdrs, aActionValue, "recipients");
-				}
+				isAsync: true
 			};
 			MailServices.filters.addCustomAction(removeTo);
 
@@ -419,11 +420,12 @@ if ("undefined" == typeof(ovl_filters)) {
 				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.removeCc.name"),
 				isValidForType: function(type, scope) {return true;},
 				validateActionValue: function(value, folder, type) { return null;},
-				allowDuplicates: true,
+				applyAction: async function (aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
+					await ovl_filters._removeEmails(aMsgHdrs, aActionValue, "ccList");
+				},
+				allowDuplicates: false,
 				needsBody: false,
-				apply: function (aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
-					ovl_filters._removeEmails(aMsgHdrs, aActionValue, "ccList");
-				}
+				isAsync: true
 			};
 			MailServices.filters.addCustomAction(removeCc);
 
@@ -432,11 +434,12 @@ if ("undefined" == typeof(ovl_filters)) {
 				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.removeBcc.name"),
 				isValidForType: function(type, scope) {return true;},
 				validateActionValue: function(value, folder, type) { return null;},
-				allowDuplicates: true,
+				applyAction: async function (aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
+					await ovl_filters._removeEmails(aMsgHdrs, aActionValue, "bccList");
+				},
+				allowDuplicates: false,
 				needsBody: false,
-				apply: function (aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
-					ovl_filters._removeEmails(aMsgHdrs, aActionValue, "bccList");
-				}
+				isAsync: true
 			};
 			MailServices.filters.addCustomAction(removeBcc);
 
@@ -445,14 +448,15 @@ if ("undefined" == typeof(ovl_filters)) {
 				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.removeAll.name"),
 				isValidForType: function(type, scope) {return true;},
 				validateActionValue: function(value, folder, type) { return null;},
-				allowDuplicates: true,
+				applyAction: async function (aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
+					await ovl_filters._removeEmails(aMsgHdrs, aActionValue, "author");
+					await ovl_filters._removeEmails(aMsgHdrs, aActionValue, "recipients");
+					await ovl_filters._removeEmails(aMsgHdrs, aActionValue, "ccList");
+					await ovl_filters._removeEmails(aMsgHdrs, aActionValue, "bccList");
+				},
+				allowDuplicates: false,
 				needsBody: false,
-				apply: function (aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
-					ovl_filters._removeEmails(aMsgHdrs, aActionValue, "author");
-					ovl_filters._removeEmails(aMsgHdrs, aActionValue, "recipients");
-					ovl_filters._removeEmails(aMsgHdrs, aActionValue, "ccList");
-					ovl_filters._removeEmails(aMsgHdrs, aActionValue, "bccList");
-				}
+				isAsync: true
 			};
 			MailServices.filters.addCustomAction(removeAll);
 			

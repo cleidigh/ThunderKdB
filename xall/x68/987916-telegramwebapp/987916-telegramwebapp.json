@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 142,
+    "average_daily_users": 150,
     "categories": {
         "thunderbird": [
             "chat",
@@ -19,26 +19,26 @@
     "contributions_url": "https://paypal.me/lancelott2",
     "created": "2020-10-05T04:48:07Z",
     "current_version": {
-        "id": 2474400,
+        "id": 2476423,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "91.*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/telegramwebapp/versions/2474400",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/telegramwebapp/versions/2476423",
         "files": [
             {
-                "id": 1017562,
-                "created": "2020-10-05T04:48:07Z",
-                "hash": "sha256:534e5ce43f5edaefcc58fc717f108a1982cc34d8af59ddcde7a58542e862dbee",
+                "id": 1019583,
+                "created": "2021-09-06T00:54:58Z",
+                "hash": "sha256:5a4ae05978f622dd53a5f3835d03a235c0fbc45ada5ee7f1a9d785d705e0e02a",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 5047,
+                "size": 5057,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017562/telegramwebapp-1.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019583/telegramwebapp-1.2-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -51,9 +51,9 @@
             "url": null
         },
         "release_notes": null,
-        "reviewed": "2020-10-05T04:55:04Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/telegramwebapp/versions/1.0",
-        "version": "1.0"
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/telegramwebapp/versions/1.2",
+        "version": "1.2"
     },
     "default_locale": "de",
     "description": null,
@@ -74,14 +74,29 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-10-05T04:55:04Z",
+    "last_updated": "2021-09-06T00:55:04Z",
     "name": {
         "de": "telegramwebapp"
     },
-    "previews": [],
+    "previews": [
+        {
+            "id": 206598,
+            "caption": null,
+            "image_size": [
+                1159,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206598.png?modified=1629436656",
+            "thumbnail_size": [
+                290,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206598.png?modified=1629436656"
+        }
+    ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 2.62694,
+        "bayesian_average": 2.62923,
         "count": 2,
         "average": 3,
         "text_count": 2
@@ -112,10 +127,15 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
-            "comp68": true,
-            "comp78plus": true
+            "comp69plus": true,
+            "comp78plus": true,
+            "comp61plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-10-05T04:48:07Z",
+            "comp78pv_version": "1.0",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "78.*"
         }
     }
 }

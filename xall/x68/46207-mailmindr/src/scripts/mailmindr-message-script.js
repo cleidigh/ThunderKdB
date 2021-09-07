@@ -20,14 +20,19 @@ const createUI = (guid, dueDateTimeText) => {
     mailmindrContentWrapper.className = 'mailmindr-message-bar_content-wrapper';
     const mailmindrMessage = document.createElement('span');
 
-    mailmindrMessage.innerText = `Follow-up is set for ${dueDateTimeText}.`;
+    mailmindrMessage.innerText = browser.i18n.getMessage(
+        'view.message-display.notification.button.message',
+        dueDateTimeText
+    );
 
     const mailmindrButtonWrapper = document.createElement('div');
     mailmindrButtonWrapper.className = 'mailmindr-message-bar_button-wrapper';
 
     const mailmindrCloseBtn = document.createElement('button');
     mailmindrCloseBtn.className = 'mailmindr-button mailmindr-button--micro';
-    mailmindrCloseBtn.innerText = 'Close';
+    mailmindrCloseBtn.innerText = browser.i18n.getMessage(
+        'view.message-display.notification.button.close'
+    );
     mailmindrCloseBtn.addEventListener('click', () => {
         const existingMessageBar = getExistingMessageBar();
         existingMessageBar.style.display = 'none';
@@ -35,7 +40,9 @@ const createUI = (guid, dueDateTimeText) => {
 
     const mailmindrEditBtn = document.createElement('button');
     mailmindrEditBtn.className = 'mailmindr-button mailmindr-button--micro';
-    mailmindrEditBtn.innerText = 'Edit follow-up';
+    mailmindrEditBtn.innerText = browser.i18n.getMessage(
+        'view.message-display.notification.button.edit'
+    );
     mailmindrEditBtn.addEventListener('click', async () => {
         await messenger.runtime.sendMessage({
             action: 'do:mindr-action-edit',

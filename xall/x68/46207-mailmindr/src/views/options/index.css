@@ -142,13 +142,52 @@ input[type='number'] {
 .mailmindr-jump-button {
     text-align: left;
     width: 175px;
+    height: auto;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 .mailmindr-jump-button:not(:hover) {
     background-color: unset;
 }
 
+.mailmindr-jump-button:active {
+    background-color: var(--grey-90-a30);
+}
+
 .mailmindr-sidebar-footer {
     padding: 0.25em;
     text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+    * {
+        color: #f9f9fa;
+    }
+
+    body {
+        color: #f9f9fa;
+        background-color: #2a2a2e;
+    }
+
+    aside {
+        background-color: rgba(249, 249, 250, 0.1);
+    }
+
+    input[type='text'],
+    input[type='number'],
+    select,
+    .mailmindr-options--oneline select {
+        border-color: rgba(249, 249, 250, 0.2);
+        border-width: 1px;
+    }
+
+    .mailmindr-ui-lock-shim {
+        background-color: rgba(42, 42, 46, 0.75);
+    }
+
+    .mailmindr-ui-lock-message {
+        color: #f9f9fa;
+        background-color: #2a2a2e;
+    }
 }

@@ -17,7 +17,7 @@ function onLoad(activatedWhileWindowOpen) {
     <stringbundleset id="xnote-stringbundleset">
       <stringbundle id="xnote-stringbundle-overlay" src="chrome://xnote/locale/xnote-overlay.properties"/>
     </stringbundleset>
-    
+    <browser id ="xnote-print" insertbefore = "messagepane"  type = "content" hidden = "true"/>
     <!-- Context menu for message list -->
     <popup id="mailContext">
     <menu id="xnote-mailContext-xNote" label="&xnote.label;" accesskey="&xnote.key;"
@@ -57,7 +57,8 @@ function onLoad(activatedWhileWindowOpen) {
     <splitter class="tree-splitter" />
     <treecol id="xnoteCol" persist="hidden ordinal width" label="&xnote.label;"
        currentView="unthreaded" is="treecol-image" 
-       class="treecol-image xnote-column-header" tooltiptext="&header.label;" />
+       class="treecol-image xnote-column-header" tooltiptext="&header.label;"
+       src = "resource://xnote/skin/xnote_context.png" />
     </treecols>
     </tree>
   

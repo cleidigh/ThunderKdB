@@ -13,21 +13,21 @@ var GetSendButton_functions = {
    */
   GetSingleAccountOrGetAndSend: function(aFolder, event) {
     if (!aFolder) {
-    // console.log("GetSendButton: GetSingleAccountOrGetAndSend: call decide function");
+    // console.debug("GetSendButton: GetSingleAccountOrGetAndSend: call decide function");
     this.DecideGetAndSendMessages(event);
       return;
     }
 
     if (MailOfflineMgr.isOnline() || MailOfflineMgr.getNewMail()) {
       let server = aFolder.server;
-      // console.log("GetSendButton: GetSingleAccountOrGetAndSend: explicitly get for server: " + server);
+      // console.debug("GetSendButton: GetSingleAccountOrGetAndSend: explicitly get for server: " + server);
       GetMessagesForInboxOnServer(server);
     }
   },
 
   // ----- Funktion des Buttons Get/Send -----
   DecideGetAndSendMessages: function(event) {
-    // console.log("GetSendButton: DecideGetAndSendMessages");
+    // console.debug("GetSendButton: DecideGetAndSendMessages");
 
     let prefGetSendButtonSend =
       Services.prefs.getBoolPref(
@@ -42,44 +42,44 @@ var GetSendButton_functions = {
     if (prefGetSendButtonSend) { // Send=Yes
       if (!prefGetSendButtonPass) { // Ask not for passwords
         if ((event.shiftKey == true) || (!prefGetSendButtonOnlySingleAccount)) {
-          // console.log("GetSendButton: DecideGetAndSendMessages: cmd_getMsgsForAuthAccounts");
+          // console.debug("GetSendButton: DecideGetAndSendMessages: cmd_getMsgsForAuthAccounts");
           goDoCommand('cmd_getMsgsForAuthAccounts');
         } else {
-          // console.log("GetSendButton: DecideGetAndSendMessages: cmd_getNewMessages");
+          // console.debug("GetSendButton: DecideGetAndSendMessages: cmd_getNewMessages");
           goDoCommand('cmd_getNewMessages'); // nur aktuelles Konto abrufen
         }
         if (!(event.ctrlKey || event.metaKey)) { // STRG (or Cmd on OS X) disables sending
-          // console.log("GetSendButton: DecideGetAndSendMessages: cmd_sendUnsentMsgs");
+          // console.debug("GetSendButton: DecideGetAndSendMessages: cmd_sendUnsentMsgs");
           goDoCommand('cmd_sendUnsentMsgs');
         }
       } else if (prefGetSendButtonPass) { // Ask for passwords			
         if ((event.shiftKey == true) || (!prefGetSendButtonOnlySingleAccount)) {
-          // console.log("GetSendButton: DecideGetAndSendMessages: GetMessagesForAllAccounts");
+          // console.debug("GetSendButton: DecideGetAndSendMessages: GetMessagesForAllAccounts");
           this.GetMessagesForAllAccounts();
         } else {
-          // console.log("GetSendButton: DecideGetAndSendMessages: cmd_getNewMessages");
+          // console.debug("GetSendButton: DecideGetAndSendMessages: cmd_getNewMessages");
           goDoCommand('cmd_getNewMessages'); // nur aktuelles Konto abrufen
         }
         if (!(event.ctrlKey || event.metaKey)) { // STRG (or Cmd on OS X) disables sending
-          // console.log("GetSendButton: DecideGetAndSendMessages: cmd_sendUnsentMsgs");
+          // console.debug("GetSendButton: DecideGetAndSendMessages: cmd_sendUnsentMsgs");
           goDoCommand('cmd_sendUnsentMsgs');
         }
       }
     } else { // Send=No
       if (!prefGetSendButtonPass) { // Ask not for passwords
         if ((event.shiftKey == true) || (!prefGetSendButtonOnlySingleAccount)) {
-          // console.log("GetSendButton: DecideGetAndSendMessages: cmd_getMsgsForAuthAccounts");
+          // console.debug("GetSendButton: DecideGetAndSendMessages: cmd_getMsgsForAuthAccounts");
           goDoCommand('cmd_getMsgsForAuthAccounts');
         } else {
-          // console.log("GetSendButton: DecideGetAndSendMessages: cmd_getNewMessages");
+          // console.debug("GetSendButton: DecideGetAndSendMessages: cmd_getNewMessages");
           goDoCommand('cmd_getNewMessages'); // nur aktuelles Konto abrufen
         }
       } else if (prefGetSendButtonPass) { // Ask for passwords			
         if ((event.shiftKey == true) || (!prefGetSendButtonOnlySingleAccount)) {
-          // console.log("GetSendButton: DecideGetAndSendMessages: GetMessagesForAllAccounts");
+          // console.debug("GetSendButton: DecideGetAndSendMessages: GetMessagesForAllAccounts");
           this.GetMessagesForAllAccounts();
         } else {
-          // console.log("GetSendButton: DecideGetAndSendMessages: cmd_getNewMessages");
+          // console.debug("GetSendButton: DecideGetAndSendMessages: cmd_getNewMessages");
           goDoCommand('cmd_getNewMessages'); // nur aktuelles Konto abrufen
         }
       }
@@ -90,11 +90,11 @@ var GetSendButton_functions = {
   // original function GetMessagesForAllAuthenticatedAccounts()
   GetMessagesForAllAccounts: function() {
 
-    // console.log("GetSendButton: GetMessagesForAllAccounts");
+    // console.debug("GetSendButton: GetMessagesForAllAccounts");
 
     if (MailOfflineMgr.isOnline() || this.PromptGoOnline()) {
 
-      // console.log("GetSendButton: GetMessagesForAllAccounts: we are online");
+      // console.debug("GetSendButton: GetMessagesForAllAccounts: we are online");
 
       try {
         // Array of arrays of servers for a particular folder.
@@ -109,9 +109,9 @@ var GetSendButton_functions = {
           // // if (server.protocolInfo.canGetMessages &&
           // // !server.passwordPromptRequired)
           if (server.protocolInfo.canGetMessages) {
-            // console.log("GetSendButton: GetMessagesForAllAccounts: can get messages");
+            // console.debug("GetSendButton: GetMessagesForAllAccounts: can get messages");
             if (server.type == "pop3") {
-              // console.log("GetSendButton: GetMessagesForAllAccounts: POP3 account");
+              // console.debug("GetSendButton: GetMessagesForAllAccounts: POP3 account");
               CoalesceGetMsgsForPop3ServersByDestFolder(
                 server,
                 pop3DownloadServersArray,
@@ -120,14 +120,14 @@ var GetSendButton_functions = {
               pop3Server = server.QueryInterface(Ci.nsIPop3IncomingServer);
             } else {
               // get new messages on the server for imap or rss
-              // console.log("GetSendButton: GetMessagesForAllAccounts: Other account (not POP3)");
+              // console.debug("GetSendButton: GetMessagesForAllAccounts: Other account (not POP3)");
               GetMessagesForInboxOnServer(server);
             }
           }
         }
 
         for (let i = 0; i < pop3DownloadServersArray.length; ++i) {
-          // console.log("GetSendButton: GetMessagesForAllAccounts: in pop3array - download now");
+          // console.debug("GetSendButton: GetMessagesForAllAccounts: in pop3array - download now");
           // any ol' pop3Server will do - the serversArray specifies which servers to download from
           pop3Server.downloadMailFromServers(
             pop3DownloadServersArray[i],
@@ -137,13 +137,13 @@ var GetSendButton_functions = {
           );
         }
       } catch (ex) {
-        // console.log("GetSendButton: GetMessagesForAllAccounts: catch (ex): " + ex);
+        // console.debug("GetSendButton: GetMessagesForAllAccounts: catch (ex): " + ex);
       }
     }
   },
 
   PromptGoOnline: function() {
-    // console.log("GetSendButton: PromptGoOnline");
+    // console.debug("GetSendButton: PromptGoOnline");
 
     const nsIPS = Components.interfaces.nsIPromptService;
     let promptService =

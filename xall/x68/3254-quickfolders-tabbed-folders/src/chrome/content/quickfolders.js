@@ -480,18 +480,84 @@ END LICENSE BLOCK */
     ##   calling overlay localisation with i18n.js
     ## 	 replaced bundle strings - removed all instances of GetStringFromName
     ##   label dialog extra buttons manually after i18n.updateDocument
-    
+
   5.5.2 QuickFolders Pro - 28/04/2021
     ## [issue 148] quickMove: parent folder containing an underscore not suggested as parent
     ## quickMove: character » is replaced with encoded unicode entry \u00BB in Create subfolder menu item (side effect 
        from converting localization to json in 5.5.1)
     ## In Thunderbird 89, the options menu item was not displayed in Add-ons Manager.
-
   
+  5.6.4 QuickFolders Pro - 04/07/2021
+    ## [issue 155] Support entering multiple words in a search string to find longer folder names that are composite
+    ##             also support ">" for skipping folders.
+    ##             added help panel for search
+    ## [issue 150] New line characters "\n" displayed in some strings in version 5.5.2
+    ## [issue 167] Unreadable colors of QuickFolders toolbar icons / font in Linux
+    ## Added instruction text on empty toolbar which was missing since Thunderbird 78 migration
+    ## licenser code migrated into background script
+       TO DO: rename hasPremiumLicense() ==> hasValidProLicense()
+              simplify Expired logic
+    ## Removed many global functions that work in the last 3pane window and replaced them with event notifications
+    ## uses the Notification Tool library and uses the background script (a mechanism of the new API based extensions model)
+    ## this way all Thunderbird windows (if you work from multiple windows) will be update when you do one of the following actinos
+    ## - rename a tab
+    ## - move a tab position
+    ## - delete a tab or remove it from or add it to a category
+    ## - change the layout from the optiins dialog (themes, colors)
+    ## - rename categories
+    ## - change the theme / buttons of the Current Folder Bar
+    ## - change options of where to display the Current Folder Bar (main window, message tab, single message window)
+    ## - changes to the license when entered / validated
+    ## All these actions now work simultaneously and update in multiple Thunderbird windows.
     
+  5.6.5 QuickFolders Pro - 05/07/2021
+    ## [issue 172] quickMove results pathes are only showing last 2 folders in path if only a single search word is entered.
+    
+  5.6.6 QuickFolders Pro - 11/07/2021
+    ## [issue 177] Unreliable search if space and "-" characters are combined in the search string
+    ## [issue 174] Fixed: QuickFolders toolbar was hidden in single message tabs by default.
+       Removed obsolete setting extensions.quickfolders.toolbar.onlyShowInMailWindows and added UI for 
+       hiding QuickFolders toolbar in single message tabs
+    ## added experimental accounts which prevents a rare error on startup.
+    ## [issue 176] Hide instructions on how to set up QuickFolders at startup (if tabs are already defined) 
+    ## Proper removal of event listeners on shut down
+    ## Improved icon for quickMove help
+    ## [issue 179] use extensions.quickfolders.premium.findFolder.disableSpace=true to disable " " search + improve performance
+    
+
+  5.7 QuickFolders Pro - 10/08/2021
+    ## [issue 187] Implement a QuickFolders Standard License
+    ## [issue 184] Update Notice - "What's New button" is badly visible when using different QF theme than flat style
+    ## [issue 166] 3rd party themes - Current folder toolbar colors are incorrect until Refresh visible tabs command
+    ## [issue 186] Theming make some items in options screens hard / impossible to see 
+       - improved visibility of dropdowns in options screen when using dark (and third party) themes
+    ## [issue 185] On installation / sometimes restart or update of _other_ add-ons category is reset to "all"
+                   Fixed by not removing the session store function when Add-on is removed within session (call to  QuickFolders.restoreSessionStore)
+    ## Add keyboard support to selecting items from any recent folders menu.
+    ## Added dedicated path for Thunderbird 91 specific style rules. (content/skin/tb91) - qf-options.css
+    ## Removed old rsa module 
+    ## default event for popupmenus changed from click to command to better support keyboard only navigation. [extensions.quickfolders.debug.popupmenus.folderEventType]
+    ## [issue 114] Make QuickFolders compatible with Thunderbird 91. (ESR 2021/22)
+    ## - Fixed the missing (and badly styled) [Buy License] button at the bottom of the options dialog. 
+         this is done by loading a separate style sheet link element into the shadow DOM.
+    ## - Fixed: showing the debug settings (and other advanced settings) via a small window that 
+                filters "about:config" stopped working in Tb91.  
+    ## - Fixed: missing icons on sliding notification bars
+    ## - Removed deprecated fixIterators
+    ## - [issue 189] Fixed: No longer able to move a message by dropping it on a quick folder tab
+                     the function copyMessages was renamed in Tb91
+    ## - [issue 190] Fixed dragging the envelope from current folder toolbar (Navigation bar)
+    ## TO DO: review qf.notification.premium.text (remove "using it -permanently-") 
+
+  5.7.1 QuickFolders Pro - WIP
+    ## [issue 197] Instructions on empty toolbar get duplicated on folder change https://github.com/RealRaven2000/QuickFolders/issues/197
+    ## [issue 198] Tb91 regression: Junk folder tab doesn't get focus when clicked (IMAP) - 
+    ## [issue 199] Subfolders with with length of 1 character omitted from quickJump search results
+    ## removed "workaround" experimental APIs (notifications, accounts)
+    
+
     -=-----------------=-    PLANNED
     ## [issue 103] Feature Request: Support copying folders
-
 
    	TODOs
 	=========
@@ -561,11 +627,6 @@ END LICENSE BLOCK */
 */
 
 
-if (!this.QuickFolders_CC)
-	this.QuickFolders_CC = Components.classes;
-if (!this.QuickFolders_CI)
-	this.QuickFolders_CI = Components.interfaces;
-
 // not sure whether (and how) to use defineModuleGetter() - does it work in Tb68??
 if (typeof DeferredTask == "undefined")
   var {DeferredTask} = ChromeUtils.import("resource://gre/modules/DeferredTask.jsm");  
@@ -573,67 +634,6 @@ if (typeof DeferredTask == "undefined")
   var {Task} = ChromeUtils.import("resource://gre/modules/Task.jsm");  
 
 	
-// THUNDERBIRD SPECIFIC CODE!!	
-// wrap function for session store: persist / restore categories	
-var QuickFolders_PrepareSessionStore = function () {
-	const util = QuickFolders.Util,
-        model = QuickFolders.Model,
-		    CI = Components.interfaces;
-	if (!util) {
-		return;
-	}
-	if (typeof mailTabType != "undefined") { // Thunderbird
-		if (mailTabType.QuickFolders_SessionStore) return; // avoid multiple modifications.
-		mailTabType.QuickFolders_SessionStore = true;
-		// overwrite persist 
-		let orgPersist = mailTabType.modes["folder"].persistTab;
-		mailTabType.modes["folder"].persistTab = function(aTab) {
-			let retval = orgPersist(aTab);
-			if (retval) {
-				util.logDebug("persist tab category: " + aTab.QuickFoldersCategory);
-				retval.QuickFoldersCategory = aTab.QuickFoldersCategory; // add category from the tab to persisted info object
-			}
-			return retval; 
-		}
-		// overwrite restoreTab
-		let orgRestore = mailTabType.modes["folder"].restoreTab;
-		mailTabType.modes["folder"].restoreTab = function(aTabmail, aPersistedState) {
-			orgRestore(aTabmail, aPersistedState);
-      debugger;
-			let txt;
-			try {
-				txt = aPersistedState.QuickFoldersCategory || "(no category)";
-		  } catch(ex) {;}
-			util.logDebug("restored tabs: " + txt);
-			// let  rdf = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(CI.nsIRDFService),
-      //      folder = rdf.GetResource(aPersistedState.folderURI).QueryInterface(CI.nsIMsgFolder);
-			let folder = model.getMsgFolderFromUri(aPersistedState.folderURI); 
-			if (folder && aPersistedState.QuickFoldersCategory) {
-        let tabInfo, theUri;
-			  // Thunderbird only code, so it is fine to use tabInfo here:
-				for (let i = 0; i < aTabmail.tabInfo.length; i++) {
-					tabInfo = aTabmail.tabInfo[i];
-					if (tabInfo && tabInfo.folderDisplay && tabInfo.folderDisplay.view && tabInfo.folderDisplay.view.displayedFolder) {
-						theUri = tabInfo.folderDisplay.view.displayedFolder.URI;
-						if (theUri == aPersistedState.folderURI) {
-							// util.logDebug("restore category to tabInfo folder [" + theUri + "] + " +  aPersistedState.QuickFoldersCategory);
-							let cat = aPersistedState.QuickFoldersCategory;
-							if (cat) {
-								util.logDebug("restore category " + cat);
-								tabInfo.QuickFoldersCategory = aPersistedState.QuickFoldersCategory;
-							}
-							return;
-						}
-					}
-				}
-			}
-		}
-	}
-};
-window.setTimeout(function () {
-  QuickFolders_PrepareSessionStore();
-}, 6000);
-
 /* GLOBAL VARIABLES */
 var QuickFolders_globalHidePopupId="",
     QuickFolders_globalLastChildPopup=null,
@@ -664,14 +664,14 @@ var QuickFolders = {
 		return this._folderTree;
 	},
 	// keyListen: EventListener,
-	loadListen: false,
   folderPaneListen: false,
 	_tabContainer: null,
 	get tabContainer() {
 		if (!this._tabContainer) {
 			const util = QuickFolders.Util;
+      let d = this.doc || document;
       this._tabContainer = 
-        this.doc.getElementById('tabmail').tabContainer || this.doc.getElementById('tabmail-tabs');
+        d.getElementById('tabmail').tabContainer || d.getElementById('tabmail-tabs');
 				
 		}
 		return this._tabContainer;
@@ -706,64 +706,60 @@ var QuickFolders = {
     }
 
 		if (mainWindow) {
-			QuickFolders.doc = mainWindow.document;
-			QuickFolders.win = mainWindow;
-			// Fix position of QuickFolders toolbar underneath the tabs-toolbar
-			if (util.ApplicationName == 'Interlink') {
-				let toolbar = QuickFolders.doc.getElementById("QuickFolders-Toolbar"),
-				    navBox = QuickFolders.doc.getElementById("navigation-toolbox");
-				toolbar.parentNode.removeChild(toolbar);
-				navBox.appendChild(toolbar);
-			}
+			QuickFolders_globalDoc = mainWindow.document;
+			QuickFolders_globalWin = mainWindow;
 		}
 		else {
-			QuickFolders.doc = document;
-			QuickFolders.win = window;
+			QuickFolders_globalDoc = document;
+			QuickFolders_globalWin = window;
 		}
-		QuickFolders_globalWin = QuickFolders.win;
-		QuickFolders_globalDoc = QuickFolders.doc;
+    this.doc = QuickFolders_globalDoc;
+    this.win = QuickFolders_globalWin;
 
-		util.logDebug ("initDocAndWindow\nQuickFolders.doc = " + QuickFolders.doc.location + "\nthis.doc = " + this.doc.location);
+		util.logDebug ("initDocAndWindow()\nQuickFolders_globalDoc = " + QuickFolders_globalDoc.location);
 	},
 
-	initDelayed: function initDelayed(win, WLorig) {
-	  if (this.initDone) return;
-    if (WLorig)
-      QuickFolders.WL = WLorig;
-	  const Cc = Components.classes,
+	initDelayed: async function initDelayed(WLorig) {
+    const Cc = Components.classes,
 					Ci = Components.interfaces,
 					prefs = QuickFolders.Preferences,
 					util = QuickFolders.Util,
 					QI = QuickFolders.Interface;
-	  let sWinLocation,
+	  if (this.initDone) return;
+    
+    // from the time we passed in the window as win
+    let win = window;
+    
+    if (WLorig)
+      QuickFolders.WL = WLorig;
+      
+    let sWinLocation,
 	      nDelay = prefs.getIntPref('initDelay');
-	  QuickFolders.initDocAndWindow(win);
-	  util.VersionProxy(); // initialize the version number using the AddonManager
+	  
+    QuickFolders.initDocAndWindow(win);
 	  nDelay = nDelay? nDelay: 750;
-	  sWinLocation = new String(window.location);
+	  sWinLocation = new String(win.location);
+        
+    if (QuickFolders.isCorrectWindow(win)) {
+			util.logDebug ("initDelayed ==== correct window: " + sWinLocation + " - " + win.document.title + "\nwait " + nDelay + " msec until init()...");
 
-    if (QuickFolders.isCorrectWindow()) {
-			util.logDebug ("initDelayed ==== correct window: " + sWinLocation + " - " + document.title + "\nwait " + nDelay + " msec until init()...");
-			// document.getElementById('QuickFolders-Toolbar').style.display = '-moz-inline-box';
-			// var thefunc='QuickFolders.init()';
-			// setTimeout(func, nDelay); // changed to closure, according to Michael Buckley's tip:
-			win.setTimeout(function() { QuickFolders.init(); }, nDelay);
+			win.setTimeout(function() { 
+        QuickFolders.init(); 
+      }, nDelay);
+      
       let folderTree = QuickFolders.mailFolderTree;
       // add an onSelect event!
       folderTree.addEventListener("select", QuickFolders.FolderTreeSelect, false);
 			// [Bug 26566] - Folder Tree doesn't show icons
 			let vc = Cc["@mozilla.org/xpcom/version-comparator;1"].getService(Ci.nsIVersionComparator);
-			if (vc.compare(util.ApplicationVersion, "60.0") >= 0) {
-				let w = util.getMail3PaneWindow(),
-				    time = prefs.getIntPref('treeIconsDelay');
-				util.logDebug("Repair Icons for "  + util.Application  + " " + util.ApplicationVersion + " in " + time/1000 + " sec...");
-				w.setTimeout(
-					function () {
-						util.logDebug("Repair Icons:");
-						QI.repairTreeIcons(true); // silently
-					}, time
-				);
-			}
+      let time = prefs.getIntPref('treeIconsDelay');
+      util.logDebug("Repair Icons for "  + util.Application  + " " + util.ApplicationVersion + " in " + time/1000 + " sec...");
+      win.setTimeout(
+        function () {
+          util.logDebug("Repair Icons:");
+          QI.repairTreeIcons(true); // silently
+        }, time
+      );
 			
       util.logDebug("Adding Search Input event handler...");
       let findFolderBox = QI.FindFolderBox; // #QuickFolders-FindFolder
@@ -773,61 +769,66 @@ var QuickFolders = {
           }
         );
       }
-      else{
+      else {
         util.logDebug("element not found: QuickFolders-FindFolder");
       }
 			
 			this.initDone=true;
 		}
-		else {
-		  try {
-        let doc = document; // in case a stand alone window is opened (e..g double clicking an eml file)
-        let qfToolbar = QI.Toolbar;
-        
-        // if (qfToolbar) qfToolbar.style.display = 'none';
-        // doc.getElementById('QuickFolders-Toolbar').style.display = 'none';
-
-        let wt = doc.getElementById('messengerWindow').getAttribute('windowtype');
-
-        util.logDebug ("DIFFERENT window type(messengerWindow): "
-            + wt
-            + "\ndocument.title: " + doc.title )
-        /**** SINGLE MESSAGE WINDOWS ****/
-        if (wt === 'mail:messageWindow') {
-          util.logDebug('Calling displayNavigationToolbar()');
-          QuickFolders.Interface.displayNavigationToolbar(prefs.isShowCurrentFolderToolbar('messageWindow'), 'messageWindow');
-          // set current folder tab label
-          if (window.arguments) {
-            let args = window.arguments,
-                fld;
-            // from messageWindow.js actuallyLoadMessage()
-            if (args.length && args[0] instanceof Components.interfaces.nsIMsgDBHdr) {
-              let msgHdr= args[0];
-              fld = msgHdr.folder;
-            }
-            
-            let cF = QuickFolders.Interface.CurrentFolderTab;
-            // force loading main stylesheet (for single message window)
-            QI.ensureStyleSheetLoaded('quickfolders-layout.css', 'QuickFolderStyles');
-            if (fld)
-              QI.initCurrentFolderTab(cF, fld);
-            QI.updateUserStyles();
-          }
-        }
-        else {
-          util.logDebug('window type : ' + wt);
-        }
-		  }
-		  catch(e) { 
-        if (prefs.isDebug)
-          util.logException('QuickFolders.initDelayed()', e) ;
-      }  //-- always thrown when options dialog is up!
-		}
 	} ,
 
-	isCorrectWindow: function isCorrectWindow() {
+
+  initSingleMsg: async function(WLorig) {
+    const prefs = QuickFolders.Preferences,
+					util = QuickFolders.Util,
+					QI = QuickFolders.Interface;
+    let win = window;
+    
+    if (WLorig)
+      QuickFolders.WL = WLorig;    
+    
+    try {
+      
+      let doc = win.document; // in case a stand alone messageWindow is opened (e..g double clicking an eml file)
+      let wt = doc.getElementById('messengerWindow').getAttribute('windowtype');
+      util.logDebug ("initSingleMsg() window type(messengerWindow): "
+          + wt
+          + "\ndocument.title: " + doc.title )
+
+      if (wt === 'mail:messageWindow') {
+        util.logDebug("QuickFolders.initSingleMsg() - Calling displayNavigationToolbar()");
+        QuickFolders.Interface.displayNavigationToolbar(prefs.isShowCurrentFolderToolbar('messageWindow'));
+        // set current folder tab label
+        if (win.arguments) {
+          let args = win.arguments,
+              fld;
+          // from messageWindow.js actuallyLoadMessage()
+          if (args.length && args[0] instanceof Components.interfaces.nsIMsgDBHdr) {
+            let msgHdr= args[0];
+            fld = msgHdr.folder;
+          }
+          
+          let cF = QuickFolders.Interface.CurrentFolderTab;
+          // force loading main stylesheet (for single message window)
+          QI.ensureStyleSheetLoaded('quickfolders-layout.css', 'QuickFolderStyles');
+          if (fld)
+            QI.initCurrentFolderTab(cF, fld);
+          QI.updateUserStyles();
+        }
+      }
+      else {
+        util.logDebug('window type : ' + wt);
+      }
+    }
+    catch(e) { 
+      if (prefs.isDebug)
+        util.logException('QuickFolders.initDelayed()', e) ;
+    }  //-- always thrown when options dialog is up!
+  },
+  
+	isCorrectWindow: function isCorrectWindow(win) {
 		try {
-			return document.getElementById('messengerWindow').getAttribute('windowtype') === "mail:3pane";
+			return win.document.getElementById('messengerWindow').getAttribute('windowtype') === "mail:3pane";
 		}
 		catch(e) { return false; }
 	} ,
@@ -857,22 +858,20 @@ var QuickFolders = {
                        name: folder.prettyName});
   },
      
-	initListeners: function () {
-			const util = QuickFolders.Util,
-			      win = util.getMail3PaneWindow(),
-			      prefs = QuickFolders.Preferences,
-						QI = win.QuickFolders.Interface;
+	initKeyListeners: function () {
+			const win = window,
+			      prefs = QuickFolders.Preferences;
 			// only add event listener on startup if necessary as we don't
 			// want to consume unnecessary performance during keyboard presses!
 			if (prefs.isKeyboardListeners) {
-				if(!QI.boundKeyListener) {
+				if(!QuickFolders.Interface.boundKeyListener) {
 					win.addEventListener("keypress", this.keyListen = function(e) {
-						QI.windowKeyPress(e,'down');
+						QuickFolders.Interface.windowKeyPress(e,'down');
 					}, true);
 					win.addEventListener("keyup", function(e) {
-						QI.windowKeyPress(e,'up');
+						QuickFolders.Interface.windowKeyPress(e,'up');
 					}, true);
-					QI.boundKeyListener = true;
+					QuickFolders.Interface.boundKeyListener = true;
 				}
 			}
 	},
@@ -882,6 +881,7 @@ var QuickFolders = {
 		      that = this.isQuickFolders ? this : QuickFolders,
 					QI = that.Interface; // main window Interface!
 		
+    util.logDebug("initTabsFromEntries()");
 		if (folderEntries.length) try {
 			let currentFolder = util.CurrentFolder;
 			that.Model.selectedFolders = folderEntries;
@@ -909,7 +909,7 @@ var QuickFolders = {
 				else
 				  cats = tab.QuickFoldersCategory;
 				
-				util.logDebug('init: setting categories to ' + cats);
+				util.logDebug("init: setting categories to " + cats);
 				if (tabMode == "folder" || tabMode == "message") {
 					// restore categories of first tab; set to "all" if not set
 					QI.currentActiveCategories = cats;
@@ -924,7 +924,8 @@ var QuickFolders = {
 			util.logException('init: folderEntries', ex);
 		}
     finally {
-			QI.updateMainWindow();  // selectCategory already called updateFolders!  was that.Interface.updateFolders(true,false)
+      QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); 
+      // selectCategory already called updateFolders!  was that.Interface.updateFolders(true,false)
       // make sure tabs not in active category are hidden - this at least doesn't happen if we load the extension from the debugging tab
       if (QI.currentActiveCategories) {
         util.logDebugOptional('categories', "forcing selectCategory");
@@ -932,9 +933,7 @@ var QuickFolders = {
         QI._selectedCategories = null;
         QI.selectCategory(bkCat);
       }
-      
     }
-	
 	},
 
 	init: function init() {
@@ -943,7 +942,7 @@ var QuickFolders = {
 					QI = that.Interface, // main window Interface!
 					Cc = Components.classes,
 					Ci = Components.interfaces;
-		let myver = that.Util.Version, // will start VersionProxy
+		let myver = that.Util.Version, 
 		    ApVer, ApName,
         prefs = that.Preferences; 
     try{ ApVer=that.Util.ApplicationVersion} catch(e){ApVer="?"};
@@ -956,10 +955,6 @@ var QuickFolders = {
 				QuickFolders.RenameFolders_Tb = gFolderTreeController.renameFolder; 
 				gFolderTreeController.renameFolder = QuickFolders.renameFolder.bind(gFolderTreeController);
 			}
-			else {
-				//?QuickFolders.RenameFolders_Tb = RenameFolder;  // SeaMonkey, legacy Postbox 
-				//?RenameFolder = QuickFolders.renameFolderSuite; // global, no bind necessary
-			}
     }
     
 		if (prefs && prefs.isDebug)
@@ -967,13 +962,9 @@ var QuickFolders = {
 
 		// moved into Version Proxy!
 		// that.Util.FirstRun.init();
-
 		that.addTabEventListener();
 		
-		let versionComparator = Cc["@mozilla.org/xpcom/version-comparator;1"]
-                            .getService(Ci.nsIVersionComparator);
-		
-		QuickFolders.initListeners();
+		QuickFolders.initKeyListeners();
 		
 		// move out to allow reload / editing feature
 		let folderEntries = prefs.loadFolderEntries();
@@ -983,16 +974,7 @@ var QuickFolders = {
 		if (QuickFolders.FolderTree)
 			QuickFolders.FolderTree.init();
 
-		let observerService = Cc["@mozilla.org/observer-service;1"].getService(Ci.nsIObserverService);
-
-		observerService.addObserver({
-			observe: function() {
-				QuickFolders.Interface.updateFolders(true, false);
-				QuickFolders.Interface.updateUserStyles();
-			}
-		},"quickfolders-options-saved", false);
-
-		that.Util.logDebug("call displayNavigationToolbar.");
+		that.Util.logDebug("QuickFolders.Init() - call displayNavigationToolbar.");
 		// remember whether toolbar was shown, and make invisible or initialize if necessary
     // default to folder view
 		QI.displayNavigationToolbar(prefs.isShowCurrentFolderToolbar(), ''); 
@@ -1005,7 +987,6 @@ var QuickFolders = {
 		that.Util.logDebug("QF.init() ends.");
 		// now make it visible!
 		QuickFolders.Interface.Toolbar.style.display = '-moz-inline-box';
-		// this.doc.getElementById('QuickFolders-Toolbar').style.display = '-moz-inline-box';
 		
 		if (QuickFolders.Preferences.getBoolPref('contextMenu.hideFilterMode')) {
 			if (QuickFolders.Interface.FilterToggleButton)
@@ -1017,38 +998,40 @@ var QuickFolders = {
     if (QuickFolders.bookmarks) {
       QuickFolders.bookmarks.load();
     }
+    QuickFolders.initLicensedUI();
+    QuickFolders.Interface.updateMainWindow(false);
     
-    // Force Registration key check (if key is entered) in order to update interface
-    window.setTimeout( function() {
-			let menuRegister = document.getElementById('QuickFolders-ToolbarPopup-register'),
-			    State = util.Licenser.ELicenseState,
-					hasLicense = util.hasPremiumLicense(true);
-      if (hasLicense) {  // reset licenser (e.g. in new window)
-        util.logDebug ("Premium License found - removing Animations()...");
-        QuickFolders.Interface.removeAnimations('quickfolders-layout.css');
+	},
+  
+  // all main window elements that change depending on license status (e.g. display "Expired" instead of QuickFolders label)
+  initLicensedUI: function initLicensedUI() {
+    let State = QuickFolders.Util.licenseInfo.status,
+        hasLicense = QuickFolders.Util.hasValidLicense();
+    QuickFolders.Util.logDebug ("initLicensedUI - hasLicense = " + hasLicense + "\n licenseInfo:", QuickFolders.Util.licenseInfo);
+    if (hasLicense) {  // reset licenser (e.g. in new window)
+      QuickFolders.Util.logDebug ("License found - removing Animations()...");
+      QuickFolders.Interface.removeAnimations('quickfolders-layout.css');
+    }
+    let menuRegister = document.getElementById('QuickFolders-ToolbarPopup-register');
+    if (menuRegister) {
+      switch (State) {
+        case "Valid":
+          menuRegister.classList.add('paid');
+          menuRegister.classList.remove('free');
+          menuRegister.label = QuickFolders.Util.getBundleString("qf.menuitem.quickfolders.register");
+          break;
+        case "Expired":
+          menuRegister.label = "QuickFolders Pro: " + QuickFolders.Util.getBundleString("qf.notification.premium.btn.renewLicense") + "\u2026";
+          menuRegister.classList.add('expired');
+          menuRegister.classList.remove('free');
+          break;
+        default:
+          menuRegister.label = QuickFolders.Util.getBundleString("qf.menuitem.quickfolders.register");
+          menuRegister.classList.add('free');
       }
-			if (menuRegister) {
-				switch (util.Licenser.ValidationStatus) {
-					case State.Valid:
-						menuRegister.classList.add('paid');
-						menuRegister.classList.remove('free');
-						break;
-					case State.Expired:
-						menuRegister.label = "QuickFolders Pro: " + util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License") + "\u2026";
-						menuRegister.classList.add('expired');
-						menuRegister.classList.remove('free');
-						break;
-					default:
-						menuRegister.classList.add('free');
-				}
-			}
-			// 4.9.1 decided to leave button on screen but serve premium notification on use
-			// let quickFoldersSkipFolder = document.getElementById('quickFoldersSkipFolder');
-			// quickFoldersSkipFolder.collapsed = !hasLicense;
-
-    }, 1000);
-    
-	} ,
+    }
+    QuickFolders.Interface.updateQuickFoldersLabel.call(QuickFolders.Interface); // this is also called when udpating the main toolbar with QI.updateFolders()
+  } ,
 
 	sayHello: function sayHello() {
 		QuickFolders.Util.alert("Hello from QuickFolders");
@@ -1112,11 +1095,11 @@ var QuickFolders = {
 			return false;
 		},
 
-		dragOver: function qftoolbar_dragOver(evt){//}, flavour, dragSession){
+		dragOver: function qftoolbar_dragOver(evt){
       if (!evt)
         debugger;
       evt.preventDefault();
-	  //if (!dragSession) 
+	  
 	  let dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
 
 			let types = Array.from(evt.dataTransfer.mozTypesAt(0)),
@@ -1147,21 +1130,48 @@ var QuickFolders = {
       
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
       
-			if (this.prefs.isDebugOption('dnd')) debugger;
+			if (this.prefs.isDebugOption('dnd')) {
+        debugger;
+        QuickFolders.Util.logToConsole("toolbarDragObserver.drop() - dragSession = ", dragSession);
+      }
 			// let contentType = dropData.flavour ? dropData.flavour.contentType : dragSession.dataTransfer.items[0].type;
       let types = Array.from(evt.dataTransfer.mozTypesAt(0)),
           contentType = types[0];
 
 			this.util.logDebugOptional("dnd","toolbarDragObserver.drop - " + contentType);
  			function addFolder(src) {
-					if(src) {
-						let cat = QuickFolders.Interface.CurrentlySelectedCategories;
-						if (QuickFolders.Model.addFolder(src, cat)) {
-							let s = "Added shortcut " + src + " to QuickFolders"
-							if (cat !== null) s = s + " Category " + cat;
-							try{ QuickFolders.Util.showStatusMessage(s); } catch (e) {};
-						}
-					}
+        if(src) {
+          let msg="", maxTabs, warnLevel;
+          if (!QuickFolders.Util.hasValidLicense()) { // max tab
+            maxTabs = QuickFolders.Model.MAX_UNPAID_TABS;
+            msg = QuickFolders.Util.getBundleString("license_restriced.unpaid.maxtabs",[maxTabs]);
+            warnLevel = 2;
+          }
+          else if (QuickFolders.Util.hasStandardLicense()) {
+            maxTabs = QuickFolders.Model.MAX_STANDARD_TABS;
+            msg = QuickFolders.Util.getBundleString("license_restriced.standard.maxtabs",[maxTabs]);
+            warnLevel = 0;
+          }
+          if (QuickFolders.Model.selectedFolders.length >= maxTabs
+              && 
+              !QuickFolders.Model.getFolderEntry(src)) {
+            if (msg) { 
+              // allow adding folder (to different category if tab already exists)
+              // otherwise, restrictions apply
+              QuickFolders.Util.popupRestrictedFeature("tabs>" + maxTabs, msg, warnLevel);
+              QuickFolders.Interface.viewSplash(msg);
+              return false;
+            }         
+          }
+          
+          let cat = QuickFolders.Interface.CurrentlySelectedCategories;
+          if (QuickFolders.Model.addFolder(src, cat)) {
+            let s = "Added shortcut " + src + " to QuickFolders"
+            if (cat !== null) s = s + " Category " + cat;
+            try{ QuickFolders.Util.showStatusMessage(s); } catch (e) {};
+          }
+        }
+        return true;
 			};
 
 			QuickFolders.Util.logDebugOptional("dnd", "toolbarDragObserver.drop " + contentType);
@@ -1170,6 +1180,7 @@ var QuickFolders = {
 			switch (contentType) {
 				case "text/x-moz-folder":
 				case "text/x-moz-newsfolder":
+
 					if (evt.dataTransfer && evt.dataTransfer.mozGetDataAt) { 
             let count = evt.dataTransfer.mozItemCount ? evt.dataTransfer.mozItemCount : 1;
             for (let i=0; i<count; i++) { // allow multiple folder drops...
@@ -1178,7 +1189,7 @@ var QuickFolders = {
                 sourceUri = msgFolder.QueryInterface(Components.interfaces.nsIMsgFolder).URI;
               else
                 sourceUri = QuickFolders.Util.getFolderUriFromDropData(evt, dragSession); // Postbox
-              addFolder(sourceUri);
+              if (!addFolder(sourceUri)) break;
             }
 					}
 					else {
@@ -1334,7 +1345,9 @@ var QuickFolders = {
             model = QuickFolders.Model,
             QI = QuickFolders.Interface,
             QFFW = QuickFolders.FilterWorker;
-      if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession(); 
+      if (!dragSession) {
+        dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession(); 
+      }
       
 			let isThread = evt.isThread,
 			    isCopy = (QuickFolders.popupDragObserver.dragAction === Ci.nsIDragService.DRAGDROP_ACTION_COPY),
@@ -1416,7 +1429,8 @@ var QuickFolders = {
               },
               function failedCreateFolder(ex) {
                 util.logException('getOrCreateFolder() ', ex);	
-                util.alert("Something unforeseen happened trying to create the folder, for detailed info please check error console!");
+                util.alert("Something unforeseen happened trying to create the folder, for detailed info please check tools / developer tools / error console!\n"
+                  + "To add more detail, enable debug mode in QuickFolders advanced settings.");
               }
             );
 						
@@ -1681,6 +1695,8 @@ var QuickFolders = {
 						    menupopup = this.doc.createXULElement ? this.doc.createXULElement('menupopup') : this.doc.createElement('menupopup'),
 						    popupId;
 						QI.FoldersBox.appendChild(popupset);
+            
+            let isDisabled = (button && targetFolder) ? (button.getAttribute("disabled") || false) : false;
 
 						if (targetFolder) {
 							popupId = 'moveTo_'+targetFolder.URI;
@@ -1696,7 +1712,13 @@ var QuickFolders = {
 								menupopup.folder = targetFolder;
 								popupset.appendChild(menupopup);
 								removeLastPopup(QuickFolders_globalHidePopupId, this.doc);
-								QI.addSubFoldersPopup(menupopup, targetFolder, true);
+                
+                if (isDisabled) {
+                  let mi = QI.createMenuItem_disabled();
+                  menupopup.appendChild(mi);
+                }
+                else
+                  QI.addSubFoldersPopup(menupopup, targetFolder, true);
 							}
 						}
 						else { // special folderbutton: recent
@@ -1902,6 +1924,7 @@ var QuickFolders = {
 			if (prefs.isDebugOption("dnd")) debugger;
       try {
         util.logDebugOptional("dnd", "buttonDragObserver.drop flavour=" + contentType);
+        util.logToConsole("dragSession = ", dragSession);
       } catch(ex) { util.logDebugOptional("dnd", ex); }
 			QuickFolders_globalHidePopupId = "";
 
@@ -1964,6 +1987,23 @@ var QuickFolders = {
 							txtUris ='',
 							dt = evt.dataTransfer,
 					    types = dt.mozTypesAt(0);
+              
+          if (DropTarget.getAttribute("disabled")) {
+            let msg="", maxTabs;
+            if (!util.hasValidLicense()) { // max tab
+              maxTabs = QuickFolders.Model.MAX_UNPAID_TABS;
+              msg = util.getBundleString("license_restriced.unpaid.maxtabs",[maxTabs]);
+            }
+            else if (util.hasStandardLicense()) {
+              maxTabs = QuickFolders.Model.MAX_STANDARD_TABS;
+              msg = util.getBundleString("license_restriced.standard.maxtabs",[maxTabs]);
+            }
+            if (msg) {
+              util.popupRestrictedFeature("tabs>" + maxTabs, msg, 2);
+              QuickFolders.Interface.viewSplash(msg);
+              return;
+            }
+          }
 							
 					if (types.contains("text/x-moz-message")) {
 					  lastAction = "get data from event.dataTransfer"
@@ -2119,19 +2159,6 @@ var QuickFolders = {
 
 	},
 
-	// for persistent category selection, add a tabmail listener
-	addTabMailListener: function addTabMailListener() {
-		
-	},
-	
-	addLoadEventListener: function addLoadEventListener() {
-		// avoid registering this event listener twice!
-		if (!this.loadListen) {
-			//window.addEventListener("load", function() { QuickFolders.initDelayed(window); }, true);
-		}
-		this.loadListen=true;
-	},
-  
   addFolderPaneListener: function addFolderPaneListener() {
     if (!this.folderPaneListen) {
       let menu = document.getElementById('folderPaneContext');
@@ -2173,8 +2200,74 @@ var QuickFolders = {
       tabContainer.removeEventListener(key, this.TabEventListeners[key]);
     }
   }
+}; // QuickFolders main object
+
+
+// wrap function for session store: persist / restore categories	
+QuickFolders.prepareSessionStore = function () {
+	const util = QuickFolders.Util,
+        model = QuickFolders.Model,
+		    CI = Components.interfaces;
+  util.logDebug("=============================\nPreparing Session Store - for QuickFolders Categories...\n========================");
+	if (!util) {
+		return;
+	}
+	if (typeof mailTabType == "undefined") { // Thunderbird - defined in mailTab.js
+    return;
+  }
+  
+  if (mailTabType.QuickFolders_SessionStore) return; // avoid multiple modifications.
+  mailTabType.QuickFolders_SessionStore = {};
+  // overwrite persist 
+  let orgPersist = mailTabType.modes["folder"].persistTab;
+  mailTabType.QuickFolders_SessionStore.persistTab = orgPersist;
+  mailTabType.modes["folder"].persistTab = function(aTab) {
+    let retval = orgPersist(aTab);
+    if (retval) {
+      retval.QuickFoldersCategory = aTab.QuickFoldersCategory; // add category from the tab to persisted info object
+      util.logDebug("Persisted tab category: " + aTab.QuickFoldersCategory);
+    }
+    return retval; 
+  }
+  // overwrite restoreTab
+  let orgRestore = mailTabType.modes["folder"].restoreTab;
+  mailTabType.QuickFolders_SessionStore.restoreTab = orgRestore;
+  mailTabType.modes["folder"].restoreTab = function(aTabmail, aPersistedState) {
+    orgRestore(aTabmail, aPersistedState);
+    let txt;
+    try {
+      txt = aPersistedState.QuickFoldersCategory || "(no category)";
+    } catch(ex) {;}
+    // let folder = model.getMsgFolderFromUri(aPersistedState.folderURI); 
+    util.logDebug("restore tab: QuickFoldersCategory = " + txt + " persisted State = ", aPersistedState);
+    if (aPersistedState.QuickFoldersCategory) {
+      let tabInfo, theUri;
+      // Thunderbird only code, so it is fine to use tabInfo here:
+      for (let i = 0; i < aTabmail.tabInfo.length; i++) {
+        tabInfo = aTabmail.tabInfo[i];
+        if (tabInfo && tabInfo.folderDisplay && tabInfo.folderDisplay.view && tabInfo.folderDisplay.view.displayedFolder) {
+          theUri = tabInfo.folderDisplay.view.displayedFolder.URI;
+          if (theUri == aPersistedState.folderURI) {
+            // util.logDebug("restore category to tabInfo folder [" + theUri + "] + " +  aPersistedState.QuickFoldersCategory);
+            let cat = aPersistedState.QuickFoldersCategory;
+            if (cat) {
+              util.logDebug("Restored category " + cat);
+              tabInfo.QuickFoldersCategory = aPersistedState.QuickFoldersCategory;
+            }
+            return;
+          }
+        }
+      }
+    }
+  }
+	
 };
 
+QuickFolders.restoreSessionStore = function() {
+  if (!mailTabType.QuickFolders_SessionStore) return;
+  mailTabType.modes["folder"].persistTab = mailTabType.QuickFolders_SessionStore.persistTab;
+  mailTabType.modes["folder"].restoreTab = mailTabType.QuickFolders_SessionStore.restoreTab;
+}
 
 
 function QuickFolders_MyEnsureFolderIndex(tree, msgFolder) {
@@ -2360,171 +2453,120 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 	}
 
 	let Flags = util.FolderFlags,
-      theTreeView,
 			isRoot = (msgFolder.rootFolder.URI == msgFolder.URI);
 
   util.logDebugOptional("folders.select", "folder [" +  msgFolder.prettyName  + "] flags = " + msgFolder.flags
 	  + (isRoot ? "\nThis is a ROOT folder" : ""));
-	switch (util.Application) {
-    case 'Thunderbird':
-      // TB 3
-      // find out if parent folder is smart and collapsed (bug in TB3!)
-      // in this case getIndexOfFolder returns a faulty index (the parent node of the inbox = the mailbox account folder itself)
-      // therefore, ensureRowIsVisible does not work!
-      let isSelected = false,
-          forceSelect = prefs.isChangeFolderTreeViewEnabled;
-      theTreeView = gFolderTreeView;
-      QuickFolders.lastTreeViewMode = theTreeView.mode; // backup of view mode. (TB3)
+  // find out if parent folder is smart and collapsed (bug in TB3!)
+  // in this case getIndexOfFolder returns a faulty index (the parent node of the inbox = the mailbox account folder itself)
+  // therefore, ensureRowIsVisible does not work!
+  let isSelected = false,
+      forceSelect = prefs.isChangeFolderTreeViewEnabled;
+  const theTreeView = gFolderTreeView;
+  
+  if (theTreeView.mode)
+    QuickFolders.lastTreeViewMode = theTreeView.mode; // backup of view mode. (TB78)
 
+  folderIndex = theTreeView.getIndexOfFolder(msgFolder);
+  if (null == folderIndex) {
+    util.logDebugOptional("folders.select","theTreeView.selectFolder(" + msgFolder.prettyName + ", " + forceSelect + ")");
+    isSelected = theTreeView.selectFolder(msgFolder, forceSelect); // forceSelect
+    folderIndex = theTreeView.getIndexOfFolder(msgFolder);
+  }
+  util.logDebugOptional("folders.select","folderIndex = " + folderIndex);
+  
+  if (msgFolder.parent) {
+    util.logDebugOptional("folders.select","ensureFolderViewTab()");
+    util.ensureFolderViewTab(); // let's always do this when a folder is clicked!
+
+    if (null==folderIndex) {
+      util.logDebugOptional("folders.select","ensureNormalFolderView()");
+      util.ensureNormalFolderView();
       folderIndex = theTreeView.getIndexOfFolder(msgFolder);
-      if (null == folderIndex) {
-        util.logDebugOptional("folders.select","theTreeView.selectFolder(" + msgFolder.prettyName + ", " + forceSelect + ")");
-        isSelected = theTreeView.selectFolder(msgFolder, forceSelect); // forceSelect
-        folderIndex = theTreeView.getIndexOfFolder(msgFolder);
-      }
       util.logDebugOptional("folders.select","folderIndex = " + folderIndex);
+    }
+
+    let parentIndex = theTreeView.getIndexOfFolder(msgFolder.parent);
+    util.logDebugOptional("folders.select","parent index: " + parentIndex);
+    // flags from: mozilla 1.8.0 / mailnews/ base/ public/ nsMsgFolderFlags.h
+    let specialFlags = Flags.MSG_FOLDER_FLAG_INBOX + Flags.MSG_FOLDER_FLAG_QUEUE + Flags.MSG_FOLDER_FLAG_SENTMAIL 
+                     + Flags.MSG_FOLDER_FLAG_TRASH + Flags.MSG_FOLDER_FLAG_DRAFTS + Flags.MSG_FOLDER_FLAG_TEMPLATES 
+                     + Flags.MSG_FOLDER_FLAG_JUNK + Flags.MSG_FOLDER_FLAG_ARCHIVES ; 
+    if (msgFolder.flags & specialFlags) {
+      // is this folder a smartfolder?
+      let isSmartView = (theTreeView.activeModes && theTreeView.activeModes.includes("smart")) ||
+                        (theTreeView.mode && theTreeView.mode=="smart");
       
-      if (msgFolder.parent) {
-        util.logDebugOptional("folders.select","ensureFolderViewTab()");
-        util.ensureFolderViewTab(); // let's always do this when a folder is clicked!
+      if (folderUri.indexOf("nobody@smart")>0 && null==parentIndex && !isSmartView) {
+        util.logDebugOptional("folders.select","smart folder detected, switching treeview mode...");
+        // toggle to smartfolder view and reinitalize folder variable!
+        if (theTreeView.activeModes)
+          theTreeView.activeModes.push("smart");
+        else if (theTreeView.mode)
+          theTreeView.mode="smart"; // after changing the view, we need to get a new parent!!
+        //let rdf = Cc['@mozilla.org/rdf/rdf-service;1'].getService(Ci.nsIRDFService),
+        //    folderResource = rdf.GetResource(folderUri);
+        msgFolder = model.getMsgFolderFromUri(folderUri);   // folderResource.QueryInterface(Ci.nsIMsgFolder);
+        parentIndex = theTreeView.getIndexOfFolder(msgFolder.parent);
+      }
+      
+      isSmartView = (theTreeView.mode && theTreeView.mode=="smart") ||
+                    (theTreeView.activeModes && theTreeView.activeModes.includes("smart"));
 
-        if (null==folderIndex) {
-          util.logDebugOptional("folders.select","ensureNormalFolderView()");
-          util.ensureNormalFolderView();
-          folderIndex = theTreeView.getIndexOfFolder(msgFolder);
-          util.logDebugOptional("folders.select","folderIndex = " + folderIndex);
-        }
-
-        let parentIndex = theTreeView.getIndexOfFolder(msgFolder.parent);
-        util.logDebugOptional("folders.select","parent index: " + parentIndex);
-        // flags from: mozilla 1.8.0 / mailnews/ base/ public/ nsMsgFolderFlags.h
-        let specialFlags = Flags.MSG_FOLDER_FLAG_INBOX + Flags.MSG_FOLDER_FLAG_QUEUE + Flags.MSG_FOLDER_FLAG_SENTMAIL 
-                         + Flags.MSG_FOLDER_FLAG_TRASH + Flags.MSG_FOLDER_FLAG_DRAFTS + Flags.MSG_FOLDER_FLAG_TEMPLATES 
-                         + Flags.MSG_FOLDER_FLAG_JUNK + Flags.MSG_FOLDER_FLAG_ARCHIVES ; 
-        if (msgFolder.flags & specialFlags) {
-          // is this folder a smartfolder?
-          if (folderUri.indexOf("nobody@smart")>0 && null==parentIndex && theTreeView.mode !== "smart") {
-            util.logDebugOptional("folders.select","smart folder detected, switching treeview mode...");
-            // toggle to smartfolder view and reinitalize folder variable!
-            theTreeView.mode="smart"; // after changing the view, we need to get a new parent!!
-            //let rdf = Cc['@mozilla.org/rdf/rdf-service;1'].getService(Ci.nsIRDFService),
-            //    folderResource = rdf.GetResource(folderUri);
-            msgFolder = model.getMsgFolderFromUri(folderUri);   // folderResource.QueryInterface(Ci.nsIMsgFolder);
-            parentIndex = theTreeView.getIndexOfFolder(msgFolder.parent);
-          }
-
-          // a special folder, its parent is a smart folder?
-          if (msgFolder.parent.flags & Flags.MSG_FOLDER_FLAG_VIRTUAL || "smart" === theTreeView.mode) {
-            if (null === folderIndex || parentIndex > folderIndex) {
-              // if the parent appears AFTER the folder, then the "real" parent is a smart folder.
-              let smartIndex=0;
-              while (0x0 === (specialFlags & (theTreeView._rowMap[smartIndex]._folder.flags & msgFolder.flags)))
-              smartIndex++;
-              if (!(theTreeView._rowMap[smartIndex]).open) {
-                theTreeView._toggleRow(smartIndex, false);
-              }
-            }
-          }
-          else { // all other views:
-            if (null !== parentIndex) {
-              if (!(theTreeView._rowMap[parentIndex]).open)
-                theTreeView._toggleRow(parentIndex, true); // server
-            }
-            else {
-              util.logDebugOptional("folders.select", "Can not make visible: " + msgFolder.URI + " - not in current folder view?");
-            }
+      // a special folder, its parent is a smart folder?
+      if (msgFolder.parent.flags & Flags.MSG_FOLDER_FLAG_VIRTUAL || isSmartView) {
+        if (null === folderIndex || parentIndex > folderIndex) {
+          // if the parent appears AFTER the folder, then the "real" parent is a smart folder.
+          let smartIndex=0;
+          // we can have "non-folder" items here
+          while (!theTreeView._rowMap[smartIndex]._folder || 
+                 0x0 === (specialFlags & (theTreeView._rowMap[smartIndex]._folder.flags & msgFolder.flags)))
+            smartIndex++;
+          if (!(theTreeView._rowMap[smartIndex]).open) {
+            theTreeView._toggleRow(smartIndex, false);
           }
         }
       }
-
-      if (folderIndex != null) {
-        try {
-          util.logDebugOptional("folders.select","Selecting folder via treeview.select(" + msgFolder.prettyName + ")..\n" +
-					  msgFolder.URI);
-				  // added forceSelect = true
-          theTreeView.selectFolder (msgFolder, true);
-          util.logDebugOptional("folders.select","ensureRowIsVisible()..");
-					
-					if (theTreeView._treeElement.ensureRowIsVisible)
-					  theTreeView._treeElement.ensureRowIsVisible(folderIndex); // Thunderbird 68
-					else
-						theTreeView._treeElement.treeBoxObject.ensureRowIsVisible(folderIndex);
+      else { // all other views:
+        if (null !== parentIndex) {
+          if (!(theTreeView._rowMap[parentIndex]).open)
+            theTreeView._toggleRow(parentIndex, true); // server
         }
-        catch(e) { util.logException("Exception selecting via treeview: ", e);};
-      }
-
-      // reset the view mode.
-      if (!prefs.isChangeFolderTreeViewEnabled) {
-        
-        if (QuickFolders.lastTreeViewMode !== null && theTreeView.mode !== QuickFolders.lastTreeViewMode) {
-          util.logDebugOptional("folders.select","Restoring view mode to " + QuickFolders.lastTreeViewMode + "...");
-          theTreeView.mode = QuickFolders.lastTreeViewMode;
+        else {
+          util.logDebugOptional("folders.select", "Can not make visible: " + msgFolder.URI + " - not in current folder view?");
         }
       }
+    }
+  }
 
-      //folderTree.treeBoxObject.ensureRowIsVisible(gFolderTreeView.selection.currentIndex); // folderTree.currentIndex
-      if ((msgFolder.flags & Flags.MSG_FOLDER_FLAG_VIRTUAL)) // || folderUri.indexOf("nobody@smart")>0
-        QuickFolders.Interface.onTabSelected();
-      break;
-    case 'SeaMonkey': 
-      const TAB_MODBITS_TabShowFolderPane  = 0x0001,
-            TAB_MODBITS_TabShowMessagePane = 0x0002,
-            TAB_MODBITS_TabShowThreadPane  = 0x0004,
-            TAB_MODBITS_TabShowAcctCentral = 0x0008;
+  if (folderIndex != null) {
+    try {
+      util.logDebugOptional("folders.select","Selecting folder via treeview.select(" + msgFolder.prettyName + ")..\n" +
+        msgFolder.URI);
+      // added forceSelect = true
+      theTreeView.selectFolder (msgFolder, true);
+      util.logDebugOptional("folders.select","ensureRowIsVisible()..");
+      
+      if (theTreeView._treeElement.ensureRowIsVisible)
+        theTreeView._treeElement.ensureRowIsVisible(folderIndex); // Thunderbird 68
+      else
+        theTreeView._treeElement.treeBoxObject.ensureRowIsVisible(folderIndex);
+    }
+    catch(e) { util.logException("Exception selecting via treeview: ", e);};
+  }
 
-      // must have at least have either folder pane or message pane,
-      // otherwise find another tab!
-      if (!(tabmail.currentTabInfo.modeBits & (TAB_MODBITS_TabShowFolderPane | TAB_MODBITS_TabShowThreadPane)))
-        for (i = 0; i < tabmail.tabInfo.length; i++) {
-          let info = tabmail.tabInfo[i];
-          if (info && (info.modeBits & TAB_MODBITS_TabShowFolderPane)) {
-            gMailNewsTabsType.showTab (info);
-            break;
-          }
-        }
+  // reset the view mode.
+  if (!prefs.isChangeFolderTreeViewEnabled) {
+    // this only works in Thunderbird 78 - Tb91 has the activeModes array... 
+    if (QuickFolders.lastTreeViewMode !== null && theTreeView.mode !== QuickFolders.lastTreeViewMode) {
+      util.logDebugOptional("folders.select","Restoring view mode to " + QuickFolders.lastTreeViewMode + "...");
+      theTreeView.mode = QuickFolders.lastTreeViewMode;
+    }
+  }
 
-      util.logDebugOptional("folders.select", 'QuickFolders_MyEnsureFolderIndex()');
-      folderIndex = QuickFolders_MyEnsureFolderIndex(folderTree, msgFolder);
-      // AG no need to switch the view if folder exists in the current one (eg favorite folders or unread Folders
-      if (folderIndex<0) {
-        util.ensureNormalFolderView();
-        folderIndex = QuickFolders_MyEnsureFolderIndex(folderTree, msgFolder);
-      }
-      util.logDebugOptional("folders.select", 'QuickFolders_MyChangeSelection(folderTree,' + folderIndex + ')');
-      QuickFolders_MyChangeSelection(folderTree, folderIndex);
-      break;
-    case 'Postbox': // TB 2, Postbox
-			if (isRoot) { // is this a root folder?
-			  let newAcIndex = gAccountView.getViewIndexForItem(msgFolder);
-				if (GetSelectedAccountIndex() != newAcIndex) {
-					util.logDebugOptional("folders.select", 'Postbox - need to select different account idx: ' + newAcIndex);
-					ChangeSelection(GetAccountTree(), gAccountView.getViewIndexForItem(msgFolder));
-				}
-				else
-					util.logDebugOptional("folders.select", 'Postbox - current account index: ' + newAcIndex);
-			}
-
-      // before we can select a folder, we need to make sure it is "visible"
-      // in the tree.	to do that, we need to ensure that all its
-      // ancestors are expanded
-			util.logDebugOptional("folders.select", "Postbox: EnsureFolderIndex : " + msgFolder.URI);
-			if (typeof EnsureFolderIndex !== 'undefined')
-				folderIndex = EnsureFolderIndex(msgFolder); // legacy
-			else {
-				if (gFolderView.selectFolder(msgFolder))
-					return true; // modern Postbox shortcut
-			}
-      util.logDebugOptional("folders.select", "result index = " + folderIndex);
-      // AG no need to switch the view if folder exists in the current one (eg favorite folders or unread Folders
-      if (folderIndex<0) {
-        util.ensureNormalFolderView();
-        folderIndex = QuickFolders_MyEnsureFolderIndex(folderTree, msgFolder);
-      }
-      if (folderIndex>=0)
-        QuickFolders_MyChangeSelection(folderTree, folderIndex);
-      // select message in top pane for keyboard navigation
-      break;
-	}
+  //folderTree.treeBoxObject.ensureRowIsVisible(gFolderTreeView.selection.currentIndex); // folderTree.currentIndex
+  if ((msgFolder.flags & Flags.MSG_FOLDER_FLAG_VIRTUAL)) // || folderUri.indexOf("nobody@smart")>0
+    QuickFolders.Interface.onTabSelected();
 	
 	// could not find folder!
 	if (null == folderIndex || folderIndex<0) {
@@ -2535,8 +2577,8 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 	if (prefs.isFocusPreview && !(QuickFolders.Interface.getThreadPane().collapsed)) {
     util.logDebugOptional("folders.select", 'setFocusThreadPane()');
 		QuickFolders.Interface.setFocusThreadPane();
-		QuickFolders.doc.commandDispatcher.advanceFocus();
-		QuickFolders.doc.commandDispatcher.rewindFocus();
+		document.commandDispatcher.advanceFocus();
+		document.commandDispatcher.rewindFocus();
 	}
 	
 	// speed up the highlighting... - is this only necessary on MAC ?
@@ -2739,15 +2781,15 @@ QuickFolders.FolderListener = {
 					// describe the action that caused the compacting
 					switch (QuickFolders.compactReportCommandType) {
 						case 'compactFolder':
-							message = util.getBundleString("qfCompactedFolder", "Compacted folder") + " '" + item.prettyName + "'";
+							message = util.getBundleString("qfCompactedFolder") + " '" + item.prettyName + "'";
 							break;
 						case 'emptyJunk':
-							message = util.getBundleString("qfEmptiedJunk", "Emptied junk and compacted folder")+ " '" + item.prettyName + "'";
+							message = util.getBundleString("qfEmptiedJunk") + " '" + item.prettyName + "'";
 							if (!item.URI)
 								size2 = 0;
 							break;
 						case 'emptyTrash':
-							message = util.getBundleString("qfEmptiedTrash", "Emptied trash.");
+							message = util.getBundleString("qfEmptiedTrash");
 							if (!item.URI)
 								size2 = 0;
 							break;
@@ -2755,9 +2797,9 @@ QuickFolders.FolderListener = {
 							message = "unknown compactReportCommandType: [" + compactReportCommandType + "]";
 							break;
 					}
-					let originalSize= util.getBundleString("qfCompactedOriginalFolderSize","Original size"),
-					    newSize = util.getBundleString("qfCompactedNewFolderSize","New Size"),
-					    expunged = util.getBundleString("qfCompactedBytesFreed","Bytes expunged"),
+					let originalSize= util.getBundleString("qfCompactedOriginalFolderSize"),
+					    newSize = util.getBundleString("qfCompactedNewFolderSize"),
+					    expunged = util.getBundleString("qfCompactedBytesFreed"),
 					    out = message + " :: "
 						+ (size1 ? (originalSize + ": " + add1000Separators(size1.toString()) + " ::  "
 								   + expunged + ":" + add1000Separators((size1-size2).toString()) + " :: ")

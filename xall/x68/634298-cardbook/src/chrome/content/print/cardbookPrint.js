@@ -1,12 +1,10 @@
 if ("undefined" == typeof(cardbookPrint)) {
-	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 	var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
 	var loader = Services.scriptloader;
 	loader.loadSubScript("chrome://cardbook/content/lists/cardbookListConversion.js", this);
 
 	var cardbookPrint = {
-		result: "",
-		indentation: "",
+		options: {},
 
 		getTypes: function (aDirPrefId, aType, aInputTypes, aPgType, aPgName, aCardValue) {
 			var myInputTypes = [];
@@ -80,544 +78,248 @@ if ("undefined" == typeof(cardbookPrint)) {
 			cardbookPrint.closeTag("style", true);
 		},
 
-		openTag: function (aTag, aParameters, aValue) {
-			cardbookPrint.indentation = cardbookPrint.indentation + "   ";
-			cardbookPrint.result = cardbookPrint.result + "\r\n";
-			if (aParameters == "") {
-				cardbookPrint.result = cardbookPrint.result + cardbookPrint.indentation + "<" + aTag + ">" + aValue;
+		attachHeaderNode: function (document, child, headerNode, headerKey) {
+			if (child.querySelector(".keyheader") || child.querySelector(".key") || child.querySelector(".value")) {
+				if (headerNode && cardbookPrint.options.headers && cardbookPrint.options.fieldNames) {
+					let templateHeader = document.getElementById("list-item-header");
+					let itemHeaderNode = templateHeader.content.cloneNode(true);
+					let prefix = cardbookRepository.extension.localeData.localizeMessage(headerKey);
+					itemHeaderNode.querySelector(".keyheader").textContent = prefix;
+					headerNode.appendChild(itemHeaderNode);
+				}
 			} else {
-				cardbookPrint.result = cardbookPrint.result + cardbookPrint.indentation + "<" + aTag + " " + aParameters + ">" + aValue;
+				if (headerNode) {
+					headerNode.remove();
+				}
+				child.remove();
 			}
 		},
 
-		closeTag: function (aTag, aCarriageReturn) {
-			if (aCarriageReturn) {
-				cardbookPrint.result = cardbookPrint.result + "\r\n" + cardbookPrint.indentation + "</" + aTag + ">";
-			} else {
-				cardbookPrint.result = cardbookPrint.result + "</" + aTag + ">";
+		setupLabelPrefPropertyRow: function (document, itemNode, propValue, propType, propPref, propKey) {
+			let templateProperty = document.getElementById("list-item-labelprefproperties");
+			let itemPropertyNode = templateProperty.content.cloneNode(true);
+			if (propValue) {
+				if (propKey) {
+					itemPropertyNode.querySelector(".key").textContent = propKey;
+				}
+				if (propPref) {
+					// test to change 
+					// itemPropertyNode.querySelector(".pref").classlist.add("pref");
+					itemPropertyNode.querySelector(".pref").textContent = "★";
+				}
+				if (propType) {
+					itemPropertyNode.querySelector(".type").textContent = propType;
+				}
+				itemPropertyNode.querySelector(".value").textContent = propValue;
+				itemNode.appendChild(itemPropertyNode);
 			}
-			cardbookPrint.indentation = cardbookPrint.indentation.replace("   ", "");
 		},
 
-		buildHTML: function (aListOfCards, aTitle, aColumnChoice) {
-			let dirPrefIds = Array.from(aListOfCards, card => card.dirPrefId);
+		setupPrefPropertyRow: function (document, itemNode, propValue, propType, propPref) {
+			let templateProperty = document.getElementById("list-item-prefproperties");
+			let itemPropertyNode = templateProperty.content.cloneNode(true);
+			if (propValue) {
+				if (propPref) {
+					// test to change 
+					// itemPropertyNode.querySelector(".pref").classList.add("pref");
+					itemPropertyNode.querySelector(".pref").textContent = "★";
+				}
+				if (propType) {
+					itemPropertyNode.querySelector(".type").textContent = propType;
+				}
+				itemPropertyNode.querySelector(".value").textContent = propValue;
+				itemNode.appendChild(itemPropertyNode);
+			}
+		},
+
+		setupPropertyRow: function (document, itemNode, propValue, propLabel) {
+			let templateProperty = document.getElementById("list-item-properties");
+			let itemPropertyNode = templateProperty.content.cloneNode(true);
+			if (propValue) {
+				if (propLabel && cardbookPrint.options.fieldNames) {
+					itemPropertyNode.querySelector(".key").textContent = propLabel;
+				} else {
+					let key = itemPropertyNode.querySelector(".key");
+					key.remove();
+				}
+				itemPropertyNode.querySelector(".value").textContent = propValue;
+				itemNode.appendChild(itemPropertyNode);
+			}
+		},
+
+		buildHTML: function (document, cards, options) {
+			for (let option in options) {
+				cardbookPrint.options[option] = options[option];
+			}
+
+			let listContainer = document.getElementById("list-container");
+			while (listContainer.lastChild) {
+				listContainer.lastChild.remove();
+			}
+
+			let template = document.getElementById("list-item-template");
+
+			let listOfSelectedCard = cards.split(",");
+			let dirPrefIds = Array.from(listOfSelectedCard, card => card.dirPrefId);
 			dirPrefIds = cardbookRepository.arrayUnique(dirPrefIds);
-   			cardbookPrint.result = '<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1//EN\" \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">';
-   			cardbookPrint.openTag("html", 'xmlns="http://www.w3.org/1999/xhtml"', "");
-   			cardbookPrint.openTag("head", '', "");
-   			cardbookPrint.openTag("title", '', aTitle);
-   			cardbookPrint.closeTag("title", false);
-   			cardbookPrint.openTag("meta", 'http-equiv="Content-Type" content="text/html; charset=UTF-8"', aTitle);
-   			cardbookPrint.closeTag("meta", false);
-   			cardbookPrint.addStyle(dirPrefIds);
-   			cardbookPrint.closeTag("head", true);
-   			cardbookPrint.openTag("body", '', "");
-			for (let card of aListOfCards) {
-				cardbookPrint.openTag("div", 'class="vCard"', "");
-				cardbookPrint.openTag("table", 'class="table"', "");
+   			cardbookPrint.result = '';
+
+		   for (let cardId of listOfSelectedCard) {
+				let itemNode = template.content.firstElementChild.cloneNode(true);
+				let card = cardbookRepository.cardbookCards[cardId];
 				let dateFormat = cardbookRepository.getDateFormat(card.dirPrefId, card.version);
-				for (var j in cardbookRepository.allColumns) {
-					if (j == "technical" || j == "technicalForTree" || j == "calculated") {
-						continue;
-					} else if (j == "display" && aColumnChoice["display"]) {
-						var myField = cardbookRepository.allColumns[j][0];
-						if (card[myField] != "") {
-							let fieldClass = "cardTitle_" + card.dirPrefId;
-							cardbookPrint.openTag("tr", '', "");
-							cardbookPrint.openTag("td", 'colspan="8" class="' + fieldClass + '"', card[myField]);
-							cardbookPrint.closeTag("td", false);
-							cardbookPrint.closeTag("tr", true);
+
+				// display name
+				if (cardbookPrint.options.fn) {
+					let titleNode = itemNode.querySelector(".titlerow");
+					cardbookPrint.setupPropertyRow(document, titleNode, card.fn, "");
+					cardbookPrint.attachHeaderNode(document, titleNode);
+				}
+
+				// categories
+				if (cardbookPrint.options.categories) {
+					let categoriesNode = itemNode.querySelector(".categoriesrow");
+					for (let category of card.categories) {
+						let categoryLabel = "";
+						if (!cardbookPrint.options.headers) {
+							categoryLabel = cardbookRepository.extension.localeData.localizeMessage("categoriesLabel");
 						}
-					} else if (j == "note" && aColumnChoice["note"]) {
-						var myField = cardbookRepository.allColumns[j][0];
-						if (card[myField] != "") {
-							if (aColumnChoice.headers) {
-								cardbookPrint.openTag("tr", '', "");
-								if (aColumnChoice.fieldNames) {
-									cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage(j + 'GroupboxLabel'));
+						cardbookPrint.setupPropertyRow(document, categoriesNode, category, categoryLabel);
+					}
+					let categoriesHeaderNode = itemNode.querySelector(".categoriesheaderrow");
+					cardbookPrint.attachHeaderNode(document, categoriesNode, categoriesHeaderNode, "categoriesHeader");
+				}
+
+				// personal fields
+				if (cardbookPrint.options.personal) {
+					let personalNode = itemNode.querySelector(".personalrow");
+					for (let field of cardbookRepository.allColumns["personal"]) {
+						let value = card[field];
+						if (cardbookRepository.dateFields.includes(field)) {
+							value = cardbookRepository.cardbookDates.getFormattedDateForDateString(card[field], dateFormat, cardbookRepository.dateDisplayedFormat);
+						}
+						let label = cardbookRepository.extension.localeData.localizeMessage(`${field}Label`)
+						cardbookPrint.setupPropertyRow(document, personalNode, value, label);
+					}
+					if (cardbookPrint.options.custom) {
+						for (let customField of cardbookRepository.customFields["personal"]) {
+							let customValue = cardbookRepository.cardbookUtils.getCardValueByField(card, customField[0], false)[0];
+							let customLabel = customField[1];
+							cardbookPrint.setupPropertyRow(document, personalNode, customValue, customLabel);
+						}
+					}
+					let personalHeaderNode = itemNode.querySelector(".personalheaderrow");
+					cardbookPrint.attachHeaderNode(document, personalNode, personalHeaderNode, "personalGroupboxLabel");
+				}
+
+				if (cardbookPrint.options.org) {
+					// org fields
+					let orgNode = itemNode.querySelector(".orgrow");
+					let orgStructure = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.orgStructure");
+					if (orgStructure) {
+						let orgStructureArray = cardbookRepository.cardbookUtils.unescapeArray(cardbookRepository.cardbookUtils.escapeString(orgStructure).split(";"));
+						let orgValueArray = cardbookRepository.cardbookUtils.unescapeArray(cardbookRepository.cardbookUtils.escapeString(card.org).split(";"));
+						for (var l = 0; l < orgValueArray.length; l++) {
+							let label = orgStructureArray[l];
+							let value = orgValueArray[l];
+							cardbookPrint.setupPropertyRow(document, orgNode, value, label);
+						}
+						cardbookPrint.setupPropertyRow(document, orgNode, card.title, cardbookRepository.extension.localeData.localizeMessage("titleLabel"));
+						cardbookPrint.setupPropertyRow(document, orgNode, card.role, cardbookRepository.extension.localeData.localizeMessage("roleLabel"));
+					} else {
+						for (let field of cardbookRepository.allColumns["org"]) {
+							let value = card[field];
+							let label = cardbookRepository.extension.localeData.localizeMessage(`${field}Label`)
+							cardbookPrint.setupPropertyRow(document, orgNode, value, label);
+						}
+					}
+					if (cardbookPrint.options.custom) {
+						for (let customField of cardbookRepository.customFields["org"]) {
+							let customValue = cardbookRepository.cardbookUtils.getCardValueByField(card, customField[0], false)[0];
+							let customLabel = customField[1];
+							cardbookPrint.setupPropertyRow(document, orgNode, customValue, customLabel);
+						}
+					}
+					let orgHeaderNode = itemNode.querySelector(".orgheaderrow");
+					cardbookPrint.attachHeaderNode(document, orgNode, orgHeaderNode, "orgGroupboxLabel");
+				}
+
+				// multine line fields
+				if (!card.isAList) {
+					for (let field of cardbookRepository.multilineFields) {
+						if (cardbookPrint.options[field] == true) {
+							let fieldNode = itemNode.querySelector(`.${field}row`);
+							for (let line of card[field]) {
+								let value = line[0];
+								let pref = cardbookRepository.cardbookUtils.getPrefBooleanFromTypes(line[1]);
+								let type = cardbookPrint.getTypes(card.dirPrefId, field, line[1], line[3], line[2], line[0][0]).join(" ");
+								if (field == "adr") {
+									value = cardbookRepository.cardbookUtils.formatAddress(line[0]);
+								}
+								if (!cardbookPrint.options.headers) {
+									let initField = field[0].toUpperCase() + field.slice(1);
+									let label = cardbookRepository.extension.localeData.localizeMessage(`typesCategory${initField}Label`);
+									cardbookPrint.setupLabelPrefPropertyRow(document, fieldNode, value, type, pref, label);
 								} else {
-									cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', "");
-								}
-								cardbookPrint.closeTag("td", false);
-								cardbookPrint.closeTag("tr", true);
-								cardbookPrint.openTag("tr", '', "");
-								cardbookPrint.openTag("td", 'class="dummyvalue"', "");
-								cardbookPrint.closeTag("td", false);
-								cardbookPrint.openTag("td", '', "");
-								cardbookPrint.closeTag("td", false);
-								cardbookPrint.openTag("td", '', "");
-								cardbookPrint.closeTag("td", false);
-								cardbookPrint.openTag("td", 'class="datavalue"', card[myField]);
-								cardbookPrint.closeTag("td", false);
-								cardbookPrint.closeTag("tr", true);
-							} else {
-								cardbookPrint.openTag("tr", '', "");
-								if (aColumnChoice.fieldNames) {
-									cardbookPrint.openTag("td", 'class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage(j + 'GroupboxLabel'));
-								} else {
-									cardbookPrint.openTag("td", 'class="titlevalue"', "");
-								}
-								cardbookPrint.closeTag("td", false);
-								cardbookPrint.openTag("td", '', "");
-								cardbookPrint.closeTag("td", false);
-								cardbookPrint.openTag("td", '', "");
-								cardbookPrint.closeTag("td", false);
-								cardbookPrint.openTag("td", 'class="datavalue"', card[myField]);
-								cardbookPrint.closeTag("td", false);
-								cardbookPrint.closeTag("tr", true);
-							}
-						}
-					} else if (j == "categories" && aColumnChoice["categories"]) {
-						var myField = cardbookRepository.allColumns[j][0];
-						var categories = cardbookRepository.cardbookUtils.sortArrayByString(card[myField], 1).map(category => '<span class="print_preview_category print_preview_category_' + cardbookRepository.cardbookUtils.formatCategoryForCss(category) + '">' + category.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</span>').join(' ');
-						if (card[myField] != "") {
-							if (aColumnChoice.headers) {
-								cardbookPrint.openTag("tr", '', "");
-								if (aColumnChoice.fieldNames) {
-									cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage(j + 'Header'));
-								} else {
-									cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', "");
-								}
-								cardbookPrint.closeTag("td", false);
-								cardbookPrint.closeTag("tr", true);
-								cardbookPrint.openTag("tr", '', "");
-								cardbookPrint.openTag("td", 'class="dummyvalue"', "");
-								cardbookPrint.closeTag("td", false);
-								cardbookPrint.openTag("td", '', "");
-								cardbookPrint.closeTag("td", false);
-								cardbookPrint.openTag("td", '', "");
-								cardbookPrint.closeTag("td", false);
-								cardbookPrint.openTag("td", 'class="datavalue"', categories);
-								cardbookPrint.closeTag("td", false);
-								cardbookPrint.closeTag("tr", true);
-							} else {
-								cardbookPrint.openTag("tr", '', "");
-								if (aColumnChoice.fieldNames) {
-									cardbookPrint.openTag("td", 'class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage(j + 'Header'));
-								} else {
-									cardbookPrint.openTag("td", 'class="titlevalue"', "");
-								}
-								cardbookPrint.closeTag("td", false);
-								cardbookPrint.openTag("td", '', "");
-								cardbookPrint.closeTag("td", false);
-								cardbookPrint.openTag("td", '', "");
-								cardbookPrint.closeTag("td", false);
-								cardbookPrint.openTag("td", 'class="datavalue"', categories);
-								cardbookPrint.closeTag("td", false);
-								cardbookPrint.closeTag("tr", true);
-							}
-						}
-					} else if (j == "personal") {
-						if (aColumnChoice[j]) {
-							var found = false;
-							for (var k = 0; k < cardbookRepository.allColumns[j].length; k++) {
-								var myField = cardbookRepository.allColumns[j][k];
-								if (card[myField] != "") {
-									if (aColumnChoice.headers) {
-										if (!found) {
-											cardbookPrint.openTag("tr", '', "");
-											if (aColumnChoice.fieldNames) {
-												cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage(j + 'GroupboxLabel'));
-											} else {
-												cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', "");
-											}
-											cardbookPrint.closeTag("td", false);
-											cardbookPrint.closeTag("tr", true);
-											found = true;
-										}
-										cardbookPrint.openTag("tr", '', "");
-										cardbookPrint.openTag("td", 'class="dummyvalue"', "");
-										cardbookPrint.closeTag("td", false);
-										if (aColumnChoice.fieldNames) {
-											cardbookPrint.openTag("td", 'class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage(myField + "Label"));
-										} else {
-											cardbookPrint.openTag("td", 'class="titlevalue"', "");
-										}
-										cardbookPrint.closeTag("td", false);
-										cardbookPrint.openTag("td", '', "");
-										cardbookPrint.closeTag("td", false);
-									} else {
-										cardbookPrint.openTag("tr", '', "");
-										if (aColumnChoice.fieldNames) {
-											cardbookPrint.openTag("td", 'class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage(myField + "Label"));
-										} else {
-											cardbookPrint.openTag("td", 'class="titlevalue"', "");
-										}
-										cardbookPrint.closeTag("td", false);
-										cardbookPrint.openTag("td", '', "");
-										cardbookPrint.closeTag("td", false);
-										cardbookPrint.openTag("td", '', "");
-										cardbookPrint.closeTag("td", false);
-									}
-									if (cardbookRepository.dateFields.includes(myField)) {
-										let myFormattedDate = cardbookRepository.cardbookDates.getFormattedDateForDateString(card[myField], dateFormat, cardbookRepository.dateDisplayedFormat);
-										cardbookPrint.openTag("td", 'class="datavalue"', myFormattedDate);
-									} else {
-										cardbookPrint.openTag("td", 'class="datavalue"', card[myField]);
-									}
-									cardbookPrint.closeTag("td", false);
-									cardbookPrint.closeTag("tr", true);
-								}
-								// custom fields
-								if (k == cardbookRepository.allColumns[j].length - 1 && aColumnChoice.custom) {
-									for (var l= 0; l < cardbookRepository.customFields[j].length; l++) {
-										let customValue = cardbookRepository.cardbookUtils.getCardValueByField(card, cardbookRepository.customFields[j][l][0], false);
-										if (customValue.length) {
-											if (aColumnChoice.headers) {
-												cardbookPrint.openTag("tr", '', "");
-												cardbookPrint.openTag("td", 'class="dummyvalue"', "");
-												cardbookPrint.closeTag("td", false);
-												if (aColumnChoice.fieldNames) {
-													cardbookPrint.openTag("td", 'class="titlevalue"', cardbookRepository.customFields[j][l][1]);
-												} else {
-													cardbookPrint.openTag("td", 'class="titlevalue"', "");
-												}
-												cardbookPrint.closeTag("td", false);
-												cardbookPrint.openTag("td", '', "");
-												cardbookPrint.closeTag("td", false);
-											} else {
-												cardbookPrint.openTag("tr", '', "");
-												if (aColumnChoice.fieldNames) {
-													cardbookPrint.openTag("td", 'class="titlevalue"', cardbookRepository.customFields[j][l][1]);
-												} else {
-													cardbookPrint.openTag("td", 'class="titlevalue"', "");
-												}
-												cardbookPrint.closeTag("td", false);
-												cardbookPrint.openTag("td", '', "");
-												cardbookPrint.closeTag("td", false);
-												cardbookPrint.openTag("td", '', "");
-												cardbookPrint.closeTag("td", false);
-											}
-											cardbookPrint.openTag("td", 'class="datavalue"', customValue);
-											cardbookPrint.closeTag("td", false);
-											cardbookPrint.closeTag("tr", true);
-										}
-									}
+									cardbookPrint.setupPrefPropertyRow(document, fieldNode, value, type, pref);
 								}
 							}
-						}
-					} else if (j == "org") {
-						if (aColumnChoice[j]) {
-							var found = false;
-							for (var k = 0; k < cardbookRepository.allColumns[j].length; k++) {
-								var myField = cardbookRepository.allColumns[j][k];
-								if (card[myField] != "") {
-									if (myField == 'org') {
-										let orgStructure = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.orgStructure");
-										if (orgStructure) {
-											let myOrgStructure = cardbookRepository.cardbookUtils.unescapeArray(cardbookRepository.cardbookUtils.escapeString(orgStructure).split(";"));
-											let myOrgValue = cardbookRepository.cardbookUtils.unescapeArray(cardbookRepository.cardbookUtils.escapeString(card[myField]).split(";"));
-											for (var l = 0; l < myOrgValue.length; l++) {
-												let label = myOrgStructure[l];
-												let value = myOrgValue[l];
-												if (value) {
-													if (aColumnChoice.headers) {
-														if (!found) {
-															cardbookPrint.openTag("tr", '', "");
-															if (aColumnChoice.fieldNames) {
-																cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage(j + 'GroupboxLabel'));
-															} else {
-																cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', "");
-															}
-															cardbookPrint.closeTag("td", false);
-															cardbookPrint.closeTag("tr", true);
-															found = true;
-														}
-														cardbookPrint.openTag("tr", '', "");
-														cardbookPrint.openTag("td", 'class="dummyvalue"', "");
-														cardbookPrint.closeTag("td", false);
-														if (aColumnChoice.fieldNames) {
-															cardbookPrint.openTag("td", 'class="titlevalue"', label);
-														} else {
-															cardbookPrint.openTag("td", 'class="titlevalue"', "");
-														}
-														cardbookPrint.closeTag("td", false);
-														cardbookPrint.openTag("td", '', "");
-														cardbookPrint.closeTag("td", false);
-													} else {
-														cardbookPrint.openTag("tr", '', "");
-														if (aColumnChoice.fieldNames) {
-															cardbookPrint.openTag("td", 'class="titlevalue"', label);
-														} else {
-															cardbookPrint.openTag("td", 'class="titlevalue"', "");
-														}
-														cardbookPrint.closeTag("td", false);
-														cardbookPrint.openTag("td", '', "");
-														cardbookPrint.closeTag("td", false);
-														cardbookPrint.openTag("td", '', "");
-														cardbookPrint.closeTag("td", false);
-													}
-													cardbookPrint.openTag("td", 'class="datavalue"', value);
-													cardbookPrint.closeTag("td", false);
-													cardbookPrint.closeTag("tr", true);
-												}
-											}
-										} else {
-											if (aColumnChoice.headers) {
-												if (!found) {
-													cardbookPrint.openTag("tr", '', "");
-													if (aColumnChoice.fieldNames) {
-														cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage(j + 'GroupboxLabel'));
-													} else {
-														cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', "");
-													}
-													cardbookPrint.closeTag("td", false);
-													cardbookPrint.closeTag("tr", true);
-													found = true;
-												}
-												cardbookPrint.openTag("tr", '', "");
-												cardbookPrint.openTag("td", 'class="dummyvalue"', "");
-												cardbookPrint.closeTag("td", false);
-												if (aColumnChoice.fieldNames) {
-													cardbookPrint.openTag("td", 'class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage(myField + "Label"));
-												} else {
-													cardbookPrint.openTag("td", 'class="titlevalue"', "");
-												}
-												cardbookPrint.closeTag("td", false);
-												cardbookPrint.openTag("td", '', "");
-												cardbookPrint.closeTag("td", false);
-											} else {
-												cardbookPrint.openTag("tr", '', "");
-												if (aColumnChoice.fieldNames) {
-													cardbookPrint.openTag("td", 'class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage(myField + "Label"));
-												} else {
-													cardbookPrint.openTag("td", 'class="titlevalue"', "");
-												}
-												cardbookPrint.closeTag("td", false);
-												cardbookPrint.openTag("td", '', "");
-												cardbookPrint.closeTag("td", false);
-												cardbookPrint.openTag("td", '', "");
-												cardbookPrint.closeTag("td", false);
-											}
-											cardbookPrint.openTag("td", 'class="datavalue"', card[myField]);
-											cardbookPrint.closeTag("td", false);
-											cardbookPrint.closeTag("tr", true);
-										}
-									} else {
-										if (aColumnChoice.headers) {
-											if (!found) {
-												cardbookPrint.openTag("tr", '', "");
-												if (aColumnChoice.fieldNames) {
-													cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage(j + 'GroupboxLabel'));
-												} else {
-													cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', "");
-												}
-												cardbookPrint.closeTag("td", false);
-												cardbookPrint.closeTag("tr", true);
-												found = true;
-											}
-											cardbookPrint.openTag("tr", '', "");
-											cardbookPrint.openTag("td", 'class="dummyvalue"', "");
-											cardbookPrint.closeTag("td", false);
-											if (aColumnChoice.fieldNames) {
-												cardbookPrint.openTag("td", 'class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage(myField + "Label"));
-											} else {
-												cardbookPrint.openTag("td", 'class="titlevalue"', "");
-											}
-											cardbookPrint.closeTag("td", false);
-											cardbookPrint.openTag("td", '', "");
-											cardbookPrint.closeTag("td", false);
-										} else {
-											cardbookPrint.openTag("tr", '', "");
-											if (aColumnChoice.fieldNames) {
-												cardbookPrint.openTag("td", 'class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage(myField + "Label"));
-											} else {
-												cardbookPrint.openTag("td", 'class="titlevalue"', "");
-											}
-											cardbookPrint.closeTag("td", false);
-											cardbookPrint.openTag("td", '', "");
-											cardbookPrint.closeTag("td", false);
-											cardbookPrint.openTag("td", '', "");
-											cardbookPrint.closeTag("td", false);
-										}
-										cardbookPrint.openTag("td", 'class="datavalue"', card[myField]);
-										cardbookPrint.closeTag("td", false);
-										cardbookPrint.closeTag("tr", true);
-									}
-									cardbookPrint.closeTag("td", false);
-									cardbookPrint.closeTag("tr", true);
-								}
-								// custom fields
-								if (k == cardbookRepository.allColumns[j].length - 1 && aColumnChoice.custom) {
-									for (var l= 0; l < cardbookRepository.customFields[j].length; l++) {
-										let customValue = cardbookRepository.cardbookUtils.getCardValueByField(card, cardbookRepository.customFields[j][l][0], false);
-										if (customValue.length) {
-											if (aColumnChoice.headers) {
-												cardbookPrint.openTag("tr", '', "");
-												cardbookPrint.openTag("td", 'class="dummyvalue"', "");
-												cardbookPrint.closeTag("td", false);
-												if (aColumnChoice.fieldNames) {
-													cardbookPrint.openTag("td", 'class="titlevalue"', cardbookRepository.customFields[j][l][1]);
-												} else {
-													cardbookPrint.openTag("td", 'class="titlevalue"', "");
-												}
-												cardbookPrint.closeTag("td", false);
-												cardbookPrint.openTag("td", '', "");
-												cardbookPrint.closeTag("td", false);
-											} else {
-												cardbookPrint.openTag("tr", '', "");
-												if (aColumnChoice.fieldNames) {
-													cardbookPrint.openTag("td", 'class="titlevalue"', cardbookRepository.customFields[j][l][1]);
-												} else {
-													cardbookPrint.openTag("td", 'class="titlevalue"', "");
-												}
-												cardbookPrint.closeTag("td", false);
-												cardbookPrint.openTag("td", '', "");
-												cardbookPrint.closeTag("td", false);
-												cardbookPrint.openTag("td", '', "");
-												cardbookPrint.closeTag("td", false);
-											}
-											cardbookPrint.openTag("td", 'class="datavalue"', customValue);
-											cardbookPrint.closeTag("td", false);
-											cardbookPrint.closeTag("tr", true);
-										}
-									}
-								}
-							}
-						}
-					} else if (j == "arrayColumns" && !card.isAList) {
-						for (var l = 0; l < cardbookRepository.allColumns.arrayColumns.length; l++) {
-							var found = false;
-							var myField = cardbookRepository.allColumns.arrayColumns[l][0];
-							if (aColumnChoice[myField]) {
-								for (var m = 0; m < card[myField].length; m++) {
-									if (card[myField][m][0].join(" ").trim() != "") {
-										if (aColumnChoice.headers) {
-											if (!found) {
-												cardbookPrint.openTag("tr", '', "");
-												if (aColumnChoice.fieldNames) {
-													cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage(myField + 'GroupboxLabel'));
-												} else {
-													cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', "");
-												}
-												cardbookPrint.closeTag("td", false);
-												cardbookPrint.closeTag("tr", true);
-												found = true;
-											}
-											cardbookPrint.openTag("td", 'class="dummyvalue"', "");
-											cardbookPrint.closeTag("td", false);
-										} else {
-											if (aColumnChoice.fieldNames) {
-												cardbookPrint.openTag("td", 'class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage(myField + 'Label'));
-											} else {
-												cardbookPrint.openTag("td", 'class="titlevalue"', "");
-											}
-											cardbookPrint.closeTag("td", false);
-										}
-										if (cardbookRepository.cardbookUtils.getPrefBooleanFromTypes(card[myField][m][1]) && aColumnChoice.types) {
-											var myCheck = "★";
-										} else {
-											var myCheck = "";
-										}
-										cardbookPrint.openTag("td", 'class="typevalue"', myCheck);
-										cardbookPrint.closeTag("td", false);
-										if (aColumnChoice.types) {
-											cardbookPrint.openTag("td", 'class="typevalue"', cardbookPrint.getTypes(card.dirPrefId, myField, card[myField][m][1], card[myField][m][3], card[myField][m][2], card[myField][m][0][0]).join(" "));
-										} else {
-											cardbookPrint.openTag("td", 'class="typevalue"', "");
-										}
-										cardbookPrint.closeTag("td", false);
-										if (myField == "adr") {
-											cardbookPrint.openTag("td", 'class="datavalue"', cardbookRepository.cardbookUtils.formatAddress(card[myField][m][0]));
-										} else {
-											cardbookPrint.openTag("td", 'class="datavalue"', card[myField][m][0][0].trim());
-										}
-										cardbookPrint.closeTag("td", false);
-										cardbookPrint.closeTag("tr", true);
-									}
-								}
-							}
+							let fieldHeaderNode = itemNode.querySelector(`.${field}headerrow`);
+							cardbookPrint.attachHeaderNode(document, fieldNode, fieldHeaderNode, `${field}GroupboxLabel`);
 						}
 					}
 				}
-				// Events
-				var myField = "event";
-				if (aColumnChoice[myField] && !card.isAList) {
-					let myEvents = cardbookRepository.cardbookUtils.getEventsFromCard(card.note.split("\n"), card.others);
-					let found = false;
-					for (let eventLine of myEvents.result) {
-						if (aColumnChoice.headers) {
-							if (!found) {
-								cardbookPrint.openTag("tr", '', "");
-								if (aColumnChoice.fieldNames) {
-									cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage(myField + 'GroupboxLabel'));
-								} else {
-									cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', "");
-								}
-								cardbookPrint.closeTag("td", false);
-								cardbookPrint.closeTag("tr", true);
-								found = true;
-							}
-							cardbookPrint.openTag("td", 'class="dummyvalue"', "");
-							cardbookPrint.closeTag("td", false);
-						} else {
-							if (aColumnChoice.fieldNames) {
-								cardbookPrint.openTag("td", 'class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage(myField + 'Label'));
+
+				// events
+				if (!card.isAList) {
+					if (cardbookPrint.options.event) {
+						let eventNode = itemNode.querySelector(".eventrow");
+						let events = cardbookRepository.cardbookUtils.getEventsFromCard(card.note.split("\n"), card.others);
+						for (let event of events.result) {
+							let pref = (event[2] && cardbookRepository.cardbookUtils.getPrefBooleanFromTypes(event[2].split(";")));
+							let type = cardbookRepository.cardbookDates.getFormattedDateForDateString(event[0], dateFormat, cardbookRepository.dateDisplayedFormat);
+							let value = event[1];
+							if (!cardbookPrint.options.headers) {
+								let label = cardbookRepository.extension.localeData.localizeMessage("eventLabel");
+								cardbookPrint.setupLabelPrefPropertyRow(document, eventNode, value, type, pref, label);
 							} else {
-								cardbookPrint.openTag("td", 'class="titlevalue"', "");
+								cardbookPrint.setupPrefPropertyRow(document, eventNode, value, type, pref);
 							}
-							cardbookPrint.closeTag("td", false);
 						}
-						if (eventLine[2] && cardbookRepository.cardbookUtils.getPrefBooleanFromTypes(eventLine[2].split(";")) && aColumnChoice.types) {
-							var myCheck = "★";
-						} else {
-							var myCheck = "";
-						}
-						cardbookPrint.openTag("td", 'class="typevalue"', myCheck);
-						cardbookPrint.closeTag("td", false);
-						let myFormattedDate = cardbookRepository.cardbookDates.getFormattedDateForDateString(eventLine[0], dateFormat, cardbookRepository.dateDisplayedFormat);
-						cardbookPrint.openTag("td", 'class="typevalue"', myFormattedDate);
-						cardbookPrint.closeTag("td", false);
-						cardbookPrint.openTag("td", 'class="datavalue"', eventLine[1]);
-						cardbookPrint.closeTag("td", false);
-						cardbookPrint.closeTag("tr", true);
+						let eventHeaderNode = itemNode.querySelector(".eventheaderrow");
+						cardbookPrint.attachHeaderNode(document, eventNode, eventHeaderNode, "eventGroupboxLabel");
 					}
 				}
-				// members for lists
+
+				// list
 				if (card.isAList) {
-					let myConversion = new cardbookListConversion(card.fn + " <" + card.fn + ">");
-					let found = false;
-					for (let email of myConversion.emailResult) {
+					let listNode = itemNode.querySelector(".listrow");
+					let list = new cardbookListConversion(`${card.fn} <${card.fn}>`);
+					for (let email of list.emailResult) {
 						let addresses = MailServices.headerParser.parseEncodedHeaderW(email);
 						for (let address of addresses) {
-							if (aColumnChoice.headers) {
-								if (!found) {
-									cardbookPrint.openTag("tr", '', "");
-									if (aColumnChoice.fieldNames) {
-										cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage('addedCardsGroupboxLabel'));
-									} else {
-										cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', "");
-									}
-									cardbookPrint.closeTag("td", false);
-									cardbookPrint.closeTag("tr", true);
-									found = true;
-								}
-								cardbookPrint.openTag("td", 'class="dummyvalue"', "");
-								cardbookPrint.closeTag("td", false);
-							} else {
-								if (aColumnChoice.fieldNames) {
-									cardbookPrint.openTag("td", 'class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage('memberCustomLabel'));
-								} else {
-									cardbookPrint.openTag("td", 'class="titlevalue"', "");
-								}
-								cardbookPrint.closeTag("td", false);
-							}
-							cardbookPrint.openTag("td", 'class="typevalue"', "");
-							cardbookPrint.closeTag("td", false);
-							cardbookPrint.openTag("td", 'class="typevalue"', "");
-							cardbookPrint.closeTag("td", false);
-							cardbookPrint.openTag("td", 'class="datavalue"', address.email);
-							cardbookPrint.closeTag("td", false);
-							cardbookPrint.closeTag("tr", true);
+							cardbookPrint.setupPropertyRow(document, listNode, address.email, "");
 						}
 					}
+					let listHeaderNode = itemNode.querySelector(".eventheaderrow");
+					cardbookPrint.attachHeaderNode(document, listNode, listHeaderNode, "addedCardsGroupboxLabel");
 				}
-				cardbookPrint.closeTag("table", true);
-				cardbookPrint.closeTag("div", true);
+			
+				// note
+				if (cardbookPrint.options.note) {
+					let noteNode = itemNode.querySelector(".noterow");
+					if (!cardbookPrint.options.headers) {
+						let label = cardbookRepository.extension.localeData.localizeMessage("noteLabel");
+						cardbookPrint.setupPropertyRow(document, noteNode, card.note, label);
+					} else {
+						cardbookPrint.setupPropertyRow(document, noteNode, card.note);
+					}
+					let noteHeaderNode = itemNode.querySelector(".noteheaderrow");
+					cardbookPrint.attachHeaderNode(document, noteNode, noteHeaderNode, "noteGroupboxLabel");
+				}
+
+				listContainer.appendChild(itemNode);
 			}
-			cardbookPrint.closeTag("body", true);
-			cardbookPrint.closeTag("html", true);
-			return cardbookPrint.result;
 		}
 	};
 };

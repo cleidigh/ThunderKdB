@@ -314,10 +314,7 @@ debug(JSON.stringify(uri));
 debug(uristring+' -> '+uri.scheme+' '+uri.hostPort+' '+uri.filePath);
             if (uri.scheme=='ftp') {
               if (!Services.prefs.getBoolPref("network.ftp.enabled", false)) {
-                let sb=Services.strings.createBundle(
-                  "chrome://messenger/locale/accountCreationUtil.properties"
-                );
-                let msg=sb.GetStringFromName('url_parsing.error');  //URL not recognized
+                let msg=strings['url_scheme_error'];
                 Services.prompt.alert(null, "Addressbooks Synchronizer", msg);
                 return null;
               } else {
@@ -326,19 +323,11 @@ debug(uristring+' -> '+uri.scheme+' '+uri.hostPort+' '+uri.filePath);
               }
             }
             if (uri.scheme=='ftp' || uri.scheme=='http') {
-              let sb=Services.strings.createBundle(
-                "chrome://messenger/locale/accountCreation.properties"
-              );
-              let msg=sb.formatStringFromName(
-                "cleartext_warning", [uristring, ]);
+							let msg=strings['cleartext_details'];
               let ans=Services.prompt.confirm(null, "Addressbooks Synchronizer", msg);
               if (!ans) return null;
-
             } else if (uri.scheme!='https') {
-              let sb=Services.strings.createBundle(
-                "chrome://messenger/locale/accountCreationUtil.properties"
-              );
-              let msg=sb.GetStringFromName('url_scheme.error'); //URL scheme not allowed (e.g. file:)
+              let msg=strings['url_scheme_error']; //URL scheme not allowed (e.g. file:)
               Services.prompt.alert(null, "Addressbooks Synchronizer", msg);
               return null;
             }
@@ -347,10 +336,7 @@ debug(uristring+' -> '+uri.scheme+' '+uri.hostPort+' '+uri.filePath);
 debug(e);
           }
 debug(uristring+' -> illegal uri');
-          let sb=Services.strings.createBundle(
-            "chrome://messenger/locale/accountCreationUtil.properties"
-          );
-          let msg=sb.GetStringFromName('url_parsing.error');  //URL not recognized
+          let msg=strings['url_parsing_error'];  //URL not recognized
           Services.prompt.alert(null, "Addressbooks Synchronizer", msg);
           return null;
         },

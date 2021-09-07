@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/5/5389/5389259.png?modified=1579925536"
         }
     ],
-    "average_daily_users": 94,
+    "average_daily_users": 97,
     "categories": {
         "seamonkey": [
             "privacy-and-security"
@@ -22,30 +22,30 @@
     "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=jik%40kamens%2eus&lc=US&item_name=Remote%20Content%20By%20Folder%20add%2don&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted",
     "created": "2017-09-09T23:02:00Z",
     "current_version": {
-        "id": 2474589,
+        "id": 2476383,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "91.*",
                 "min": "69.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/remote-content-by-folder/versions/2474589",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/remote-content-by-folder/versions/2476383",
         "files": [
             {
-                "id": 1017751,
-                "created": "2020-10-28T23:27:24Z",
-                "hash": "sha256:065ff45a78868f339b14a480967d56b3081633a3de659764eba81b697be7595d",
+                "id": 1019543,
+                "created": "2021-09-02T21:17:36Z",
+                "hash": "sha256:b446e12d1d65efd9c6b7b633ab43929e4e33a50f80199abddb6d57379d3aaa2c",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 19654,
+                "size": 18859,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017751/remote_content_by_folder-2.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019543/remote_content_by_folder-2.0.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 3338,
             "name": {
@@ -54,11 +54,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Compatibility with Thunderbird 78.\n\nThere are some remaining open issues. See <a rel=\"nofollow\" href=\"https://github.com/Extended-Thunder/remote-content-by-folder/issues\">https://github.com/Extended-Thunder/remote-content-by-folder/issues</a> to view them or to report any additional issues that you find."
+            "en-US": "Fix incorrect debug log message in error console. It was claiming that regexp preferences were empty when they weren't. The functionality was correct, just the log message was wrong.\n\nChange <a rel=\"nofollow\" href=\"http://addons.mozilla.org\">addons.mozilla.org</a> link to <a rel=\"nofollow\" href=\"http://addons.thunderbird.net\">addons.thunderbird.net</a> in the manifest and README."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/remote-content-by-folder/versions/2.0",
-        "version": "2.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/remote-content-by-folder/versions/2.0.1",
+        "version": "2.0.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -83,7 +83,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-10-29T15:08:04Z",
+    "last_updated": "2021-09-02T21:30:02Z",
     "name": {
         "en-US": "Remote Content By Folder"
     },
@@ -117,9 +117,12 @@
     "weekly_downloads": 47,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
-            "comp68": true,
+            "comp69plus": true,
+            "comp78plus": true,
+            "comp61plus": true,
+            "comp68pv": true,
+            "comp68pv_date": "2019-05-20T19:56:35Z",
             "comp60pv": true,
             "comp60pv_date": "2017-12-10T21:01:22Z"
         }

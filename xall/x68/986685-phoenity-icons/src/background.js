@@ -22,6 +22,10 @@ messenger.WindowListener.registerWindow(
     "chrome://messenger/content/messageWindow.xhtml",
     "chrome://PhoenityIcons/content/scripts/loadMessenger.js");
 
+//messenger.WindowListener.registerWindow(
+    //"chrome://messenger/content/multimessageview.xhtml",
+    //"chrome://PhoenityIcons/content/scripts/loadMessenger.js");
+
 messenger.WindowListener.registerWindow(
     "chrome://messenger/content/customizeToolbar.xhtml",
     "chrome://PhoenityIcons/content/scripts/loadMessenger.js");

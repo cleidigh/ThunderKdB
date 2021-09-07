@@ -1086,5 +1086,3 @@ EwsNativeItem.prototype = {
     return [typeNamespace, schemaType, encoding];
   },
 }
-
-var NSGetFactory = XPCOMUtils.generateNSGetFactory([EwsNativeItem]);

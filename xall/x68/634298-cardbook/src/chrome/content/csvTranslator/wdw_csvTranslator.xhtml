@@ -32,27 +32,32 @@
 		<vbox flex="1">
 			<hbox>
 				<vbox flex="1" align="center">
-					<grid align="center" flex="1">
-						<columns>
-							<column/>
-							<column/>
-						</columns>
-			
-						<rows>
-							<row align="center">
+					<html:table>
+						<html:tr>
+							<html:td>
 								<label id="fieldDelimiterLabel" control="fieldDelimiterTextBox" class="header"/>
+							</html:td>
+							<html:td>
 								<html:input id="fieldDelimiterTextBox" size="5" oninput="loadFoundColumns();"/>
-							</row>
-							<row align="center">
+							</html:td>
+						</html:tr>
+						<html:tr>
+							<html:td>
 								<label id="includePrefLabel" control="includePrefCheckBox" class="header"/>
+							</html:td>
+							<html:td>
 								<checkbox id="includePrefCheckBox" checked="false" persist="checked"/>
-							</row>
-							<row align="center">
+							</html:td>
+						</html:tr>
+						<html:tr>
+							<html:td>
 								<label id="lineHeaderLabel" control="lineHeaderCheckBox" class="header"/>
+							</html:td>
+							<html:td>
 								<checkbox id="lineHeaderCheckBox" checked="true"/>
-							</row>
-						</rows>
-					</grid>
+							</html:td>
+						</html:tr>
+					</html:table>
 				</vbox>
 			</hbox>
 			<hbox flex="1">

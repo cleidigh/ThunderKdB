@@ -59,6 +59,47 @@ var SLStatic = {
   debug(...msg)  { SLStatic.logger(msg, "debug", console.debug) },
   trace(...msg)  { SLStatic.logger(msg, "trace", console.trace) },
 
+  RFC5322: {
+    // RFC2822 / RFC5322 formatter
+    dayOfWeek: (d) => ["Sun", "Mon", "Tue", "Wed",
+                      "Thu", "Fri", "Sat"][d.getDay()],
+
+    day: (d) => d.getDate(),
+
+    month: (d) => ["Jan", "Feb", "Mar", "Apr",
+                  "May", "Jun", "Jul", "Aug",
+                  "Sep", "Oct", "Nov", "Dec"][d.getMonth()],
+
+    year: (d) => d.getFullYear().toFixed(0),
+
+    date(d) {
+      return `${this.day(d)} ${this.month(d)} ${this.year(d)}`;
+    },
+
+    time(d) {
+      let H = d.getHours().toString().padStart(2,'0');
+      let M = d.getMinutes().toString().padStart(2,'0');
+      let S = d.getSeconds().toString().padStart(2,'0');
+      return `${H}:${M}:${S}`;
+    },
+
+    tz(d) {
+      let offset = d.getTimezoneOffset()|0;
+      let sign = offset > 0 ? '-' : '+'; // yes, counterintuitive
+      let hrs = Math.floor(Math.abs(offset/60)).toFixed(0);
+      let mins = Math.abs(offset%60).toFixed(0);
+      return sign + hrs.padStart(2,'0') + mins.padStart(2,'0');
+    },
+
+    format(d) {
+      let day = this.dayOfWeek(d);
+      let date = this.date(d);
+      let time = this.time(d);
+      let tz = this.tz(d);
+      return `${day}, ${date} ${time} ${tz}`;
+    }
+  },
+
   flatten(arr) {
     // Flattens an N-dimensional array.
     return arr.reduce((res, item) => res.concat(
@@ -144,9 +185,8 @@ var SLStatic = {
   },
 
   parseableDateTimeFormat(date) {
-    date = SLStatic.convertDate(date);
-    const DATE_RFC2822 = "%a, %d %b %Y %T %z";
-    return Sugar.Date.format(date||(new Date()), DATE_RFC2822, "en");
+    date = SLStatic.convertDate(date)||(new Date());
+    return SLStatic.RFC5322.format(date);
   },
 
   humanDateTimeFormat(date) {

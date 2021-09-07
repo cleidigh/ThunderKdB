@@ -742,6 +742,16 @@ exquilla.AW = (function exquillaAW()
 
         if (aEvent == "StopMachine")
         {
+          if (_e("exquillaSavePassword").checked) {
+            let localScope = {};
+            try {
+              localScope = ChromeUtils.import("resource://exquilla/autodiscover.js");
+            } catch(e) {
+              localScope = ChromeUtils.import("resource:///modules/autodiscover.js");
+            }
+            let uri = newParsingURI(this.ewsUrl);
+            localScope.savePassword(uri.prePath, this.mailbox.username, this.mailbox.domain, this.mailbox.password);
+          }
           let nativeService = new EwsNativeService();
           nativeService.removeNativeMailbox(this.mailbox);
           let authMethod = this.mailbox.authMethod;
@@ -814,10 +824,10 @@ exquilla.AW = (function exquillaAW()
             this.mailbox.ewsURL = this.ewsUrl;
             if (aAuthMethod == Ci.nsMsgAuthMethod.anything) {
               try {
-                if (await this.tryPasswordAuth(this.ewsUrl, username, password, domain)) {
-                  this.mailbox.authMethod = Ci.nsMsgAuthMethod.passwordCleartext;
-                } else {
+                if (await this.mailbox.oAuth2Login.isOffice365()) {
                   this.mailbox.authMethod = await this.mailbox.oAuth2Login.detectAuthMethod();
+                } else {
+                  this.mailbox.authMethod = Ci.nsMsgAuthMethod.passwordCleartext;
                 }
               } catch (ex) {
                 log.warn(ex);
@@ -843,45 +853,6 @@ exquilla.AW = (function exquillaAW()
           alertAutodiscover(true, this.lastErrorMessage);
         }
       },
-
-      /**
-       * Attempt a simple EWS request with basic authentication.
-       *
-       * @param aEwsUrl   {String}
-       * @param aUsername {String}
-       * @param aPassword {String}
-       * @param aDomain   {String?}
-       * @returns         {Boolean} Whether the request succeeded
-       */
-      tryPasswordAuth: async function tryPasswordAuth(aEwsUrl, aUsername, aPassword, aDomain) {
-        let userdomain = aDomain ? aDomain + "\\" + aUsername : aUsername;
-        let response = await fetch(aEwsUrl, {
-          method: "POST",
-          headers: {
-            Authorization: "Basic " + btoaUTF(userdomain + ":" + aPassword),
-            "Content-Type": "text/xml; charset=utf-8",
-          },
-          body: `<?xml version="1.0" encoding="utf-8"?>
-<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"
-            xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages"
-            xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
-  <s:Header>
-    <t:RequestServerVersion Version="Exchange2007_SP1"/>
-  </s:Header>
-  <s:Body>
-    <m:GetFolder>
-      <m:FolderShape>
-        <t:BaseShape>IdOnly</t:BaseShape>
-      </m:FolderShape>
-      <m:FolderIds>
-        <t:DistinguishedFolderId Id="msgfolderroot"/>
-      </m:FolderIds>
-    </m:GetFolder>
-  </s:Body>
-</s:Envelope>`,
-        });
-        return response.ok;
-      }
     };
 
     listener.nextUrl();

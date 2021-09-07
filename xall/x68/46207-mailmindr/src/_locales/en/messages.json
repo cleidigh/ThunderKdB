@@ -5,6 +5,15 @@
     "extensionName": {
         "message": "mailmindr"
     },
+    "errorInitializationBrowserButtonText": {
+        "message": "Fehler! 😵"
+    },
+    "mailmindrMainToolbarButton": {
+        "message": "Follow-Ups"
+    },
+    "mailmindrMessageDisplayButton": {
+        "message": "Follow-Up"
+    },
     "module.string-utils.chunk.and": {
         "message": "and"
     },
@@ -109,7 +118,7 @@
     "module.string-utils.relative.ago.weeks.pluralize": {
         "message": "one week ago;#1 weeks ago"
     },
-    "module.string-utils.relative.ago.weeks.pluraliz.one": {
+    "module.string-utils.relative.ago.weeks.pluralize.one": {
         "message": "one week ago"
     },
     "module.string-utils.relative.ago.weeks.pluralize.other": {
@@ -201,7 +210,7 @@
         "description": "The option text when the user picks directly from date/time pickers"
     },
     "presets.action.flag": {
-        "message": "Flag/Start message"
+        "message": "Flag/Star message"
     },
     "presets.action.mark-unread": {
         "message": "Mark message as unread"
@@ -311,11 +320,35 @@
     "view.dialog.time-preset-editor.caption.cancel": {
         "message": "Cancel"
     },
+    "view.options.title": {
+        "message": "mailmindr Preferences"
+    },
+    "view.options.jump-button.common-settings": {
+        "message": "Common settings"
+    },
+    "view.options.jump-button.presets": {
+        "message": "Presets"
+    },
+    "view.options.jump-button.get-help": {
+        "message": "Get help"
+    },
+    "view.options.sidebar-footer.sponsor": {
+        "message": "💜 Become a mailmindr sponsor"
+    },
+    "view.options.heading.common-settings": {
+        "message": "Common Settings"
+    },
+    "view.options.heading.presets": {
+        "message": "Presets"
+    },
+    "view.options.heading.get-help": {
+        "message": "Get Help"
+    },
     "view.options.message.dialog-open.heading": {
         "message": "There's a dialog open"
     },
     "view.options.message.dialog-open.text": {
-        "message": "There's a dialog open that causes the mailmidnr preferences to stay locked. If you're not able to find the dialog on your screen you can either bring the dialog to the front or ignore this and just unlock the settings."
+        "message": "There's a dialog open that causes the mailmindr preferences to stay locked. If you're not able to find the dialog on your screen you can either bring the dialog to the front or ignore this and just unlock the settings."
     },
     "view.options.message.dialog-open.button.dialog-to-front": {
         "message": "Bring dialog to front"
@@ -326,20 +359,47 @@
     "view.options.default-time-preset.label": {
         "message": "Default follow-up:"
     },
+    "view.options.default-time-preset.description": {
+        "message": "Pre-selected time setting when creating a new reminder"
+    },
     "view.options.default-action-preset.label": {
         "message": "Default action:"
+    },
+    "view.options.default-action-preset.description": {
+        "message": "Pre-selected action setting when creating a new reminder"
     },
     "view.options.snooze-time.label": {
         "message": "Snooze time in Minutes:",
         "description": "Default snooze time for alerts"
     },
+    "view.options.snooze-time.description": {
+        "message": "Snooze the reminder for a given number of minutes"
+    },
     "view.options.default-icebox-folder.label": {
         "message": "Icebox folder:",
         "description": "Name of the setting for the folder, where all the messages are moved to (parked) until their due date is reached."
     },
+    "view.options.default-icebox-folder.description": {
+        "message": "Messages will be moved to this folder once a reminder is set. On due time the message is moved back to its origin folder."
+    },
     "view.options.default-icebox-folder.option-none": {
         "message": "Select folder…",
         "description": "The label/text of the option item when no selection is made for the icebox folder"
+    },
+    "view.options.time-presets.subtitle": {
+        "message": "Time presets"
+    },
+    "view.options.time-presets.description": {
+        "message": "Time presets can be a relative time (e.g. in 6 hours) or an absolute time (e.g. in 2 days at 10:00 a.m.). Define as many time presets as you like. mailmindr's internal presets cannot be removed and appear here in a disabled state."
+    },
+    "view.options.time-presets.button.add-preset": {
+        "message": "Add Preset"
+    },
+    "view.options.time-presets.button.edit-preset": {
+        "message": "Edit Preset"
+    },
+    "view.options.time-presets.button.remove-preset": {
+        "message": "Remove Preset"
     },
     "view.options.get-help.website.label": {
         "message": "Website"
@@ -347,11 +407,17 @@
     "view.options.get-help.website.description": {
         "message": "Get more information on how to use mailmindr and read about the feature roadmap on https://mailmindr.net/"
     },
+    "view.options.get-help.website.button-label": {
+        "message": "Open https://mailmindr.net/ in the browser"
+    },
     "view.options.get-help.twitter.label": {
         "message": "Twitter"
     },
     "view.options.get-help.twitter.description": {
         "message": "Looking for a direct connection to mailmindr? Check out the twitter account: @mailmindr"
+    },
+    "view.options.get-help.twitter.button-label": {
+        "message": "Open https://twitter.com/mailmindr/ in the browser"
     },
     "view.options.get-help.patreon.label": {
         "message": "Become a patron"
@@ -359,17 +425,47 @@
     "view.options.get-help.patreon.description": {
         "message": "Want to support mailmindr on a monthly basis? Luckily there's a patreon page for this."
     },
+    "view.options.get-help.patreon.button-label": {
+        "message": "Open https://patreon.com/arndissler/ in the browser"
+    },
     "view.options.get-help.paypal.label": {
         "message": "PayPal Donation"
     },
     "view.options.get-help.paypal.description": {
         "message": "Want to show some love and support? Support mailmindr with a donation via PayPal."
     },
+    "view.options.get-help.paypal.button-label": {
+        "message": "Open https://paypal.me/mailmindr in the browser"
+    },
     "view.options.get-help.facebook.label": {
         "message": "facebook"
     },
     "view.options.get-help.facebook.description": {
         "message": "There's a facebook page - join the community: https://facebook.com/mailmindr/"
+    },
+    "view.options.get-help.facebook.button-label": {
+        "message": "Open https://facebook.com/mailmindr/ in the browser"
+    },
+    "view.popups.list-all.link.whats.new": {
+        "message": "Check out what's new in mailmindr"
+    },
+    "view.popups.list-all.message.p0": {
+        "message": "No reminders set."
+    },
+    "view.popups.list-all.message.p1": {
+        "message": "☀️ Have a great day - and maybe consider a donation to support mailmindr?"
+    },
+    "view.popups.list-all.footer.sponsor": {
+        "message": "💜 Become a mailmindr sponsor"
+    },
+    "view.message-display.notification.button.close": {
+        "message": "Close"
+    },
+    "view.message-display.notification.button.edit": {
+        "message": "Edit follow-up"
+    },
+    "view.message-display.notification.button.message": {
+        "message": "Follow-up is set for $1"
     },
     "mailmindr.utils.core.plural.beforestart.minutes.one": {
         "message": "$1 minute before due",

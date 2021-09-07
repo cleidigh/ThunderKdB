@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 136,
+    "average_daily_users": 162,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,30 +18,30 @@
     "contributions_url": "",
     "created": "2020-02-15T05:05:02Z",
     "current_version": {
-        "id": 2473447,
+        "id": 2476407,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "93.0",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/devtools-button/versions/2473447",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/devtools-button/versions/2476407",
         "files": [
             {
-                "id": 1016575,
-                "created": "2020-02-16T10:32:58Z",
-                "hash": "sha256:142079912d0e490626635ca62607dee1d502021945d28e10fe72eb46416389de",
+                "id": 1019567,
+                "created": "2021-09-04T02:54:29Z",
+                "hash": "sha256:9b77ac7624486901814fa24dd45951b9a5f3523730cdd4cbf97c3dc3e2348009",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 7327,
+                "size": 4283,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016575/devtools_button-1.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019567/devtools_button-1.2-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 6,
             "name": {
@@ -71,11 +71,11 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "Changed the icon."
+            "en-US": "Set max version."
         },
-        "reviewed": "2020-02-17T03:16:56Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/devtools-button/versions/1.1",
-        "version": "1.1"
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/devtools-button/versions/1.2",
+        "version": "1.2"
     },
     "default_locale": "en-US",
     "description": null,
@@ -96,7 +96,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-02-17T03:16:56Z",
+    "last_updated": "2021-09-04T09:07:10Z",
     "name": {
         "en-US": "DevTools Button"
     },
@@ -145,9 +145,11 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
-            "comp68": true
+            "comp68": true,
+            "comp69plus": true,
+            "comp78plus": true,
+            "comp61plus": true
         }
     }
 }

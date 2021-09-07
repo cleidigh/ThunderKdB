@@ -2909,6 +2909,9 @@
 	"wdw_cardEditionViewListTitle": {
 		"message": "Toon lijst"
 	},
+	"wdw_cardEditionEditTemplateTitle": {
+		"message": "Sjabloon bewerken"
+	},
 	"wdw_cardbookPrintTitleLong": {
 		"message": "Afdrukvoorbeeld van $P1$ - CardBook - Thunderbird",
         "placeholders": {
@@ -3563,20 +3566,20 @@
 	"cardbookContactPaneItemAccesskey": {
 		"message": "O"
 	},
+	"wizard.next.label": {
+		"message": "Volgende"
+	},	
+	"wizard.back.label": {
+		"message": "Terug"
+	},	
+	"wizard.create.label": {
+		"message": "Maken"
+	},
 	"wizard.title": {
 		"message": "Adresboek toevoegen"
 	},
-	"wizard.label": {
-		"message": "Adresboek toevoegen"
-	},
-	"welcomePage.wizard.description": {
-		"message": "Welkom"
-	},
 	"welcomePage.description": {
 		"message": "Het lijkt er op dat dit de eerste keer is dat CardBook gebruikt wordt. Het programma gaat proberen om bekende contactpersonen om te zetten naar CardBook. Eerst wordt er gekeken naar contactpersonen in Thunderbird's standaard adresboeken en daarna naar eventuele adresboeken op servers."
-	},
-	"initialPage.wizard.description": {
-		"message": "Opslag van het nieuwe adresboek"
 	},
 	"initialPage.description": {
 		"message": "Staat het nieuwe adresboek lokaal of op internet:"
@@ -3595,9 +3598,6 @@
 	},
 	"initialPage.find.label": {
 		"message": "Zoeken naar adresboeken op servers"
-	},
-	"localPage.wizard.description": {
-		"message": "Plaats en type van het lokale adresboek."
 	},
 	"localPage.type.description": {
 		"message": "Type van het lokale adresboek:"
@@ -3632,9 +3632,6 @@
 	"localPage.uributton.label": {
 		"message": "Verkenner"
 	},
-	"remotePage.wizard.description": {
-		"message": "Type en plaats van het nieuwe internet-adresboek."
-	},
 	"remotePage.description": {
 		"message": "Type van het internet-adresboek: (Pas op: Google ondersteunt geen vCard-standaarden.)"
 	},
@@ -3646,6 +3643,9 @@
 	},
 	"remotePage.google.label": {
 		"message": "Google"
+	},
+	"remotePage.googleWorkspace.label": {
+		"message": "Google Workspace"
 	},
 	"remotePage.apple.label": {
 		"message": "Apple"
@@ -3671,14 +3671,14 @@
 	"remotePage.password.label": {
 		"message": "Wachtwoord:"
 	},
+	"rememberPassword": {
+		"message": "Wachtwoordenbeheerder gebruiken om dit wachtwoord te onthouden"
+	},
 	"showHidePassword.tooltip": {
 		"message": "Wachtwoord tonen/verbergen"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Controleren"
-	},
-	"locationSearchPage.wizard.description": {
-		"message": "Definitie van geavanceerd zoeken"
 	},
 	"locationSearchPage.label": {
 		"message": "Geavanceerd zoeken"
@@ -3704,9 +3704,6 @@
 	"googleOauthPage.wizard.description": {
 		"message": "Google-authenticatie"
 	},
-	"namePage.wizard.description": {
-		"message": "Eigenschappen van adresboek"
-	},
 	"namePage.selected.label": {
 		"message": "Geselecteerd"
 	},
@@ -3725,17 +3722,11 @@
 	"namePage.vCardVersion.label": {
 		"message": "vCard"
 	},
-	"namesPage.wizard.description": {
-		"message": "Eigenschappen van adresboeken"
-	},
 	"namesPage.name.label": {
 		"message": "Namen"
 	},
 	"namesPage.name.description": {
 		"message": "Er zijn meerdere adresboeken gevonden. Kies welke geopend moeten worden en kies de namen:"
-	},
-	"findPage.wizard.description": {
-		"message": "Zoeken naar adresboeken op servers"
 	},
 	"findPage.name1.description": {
 		"message": "Er kan geen adresboek toegevoegd worden."
@@ -3745,9 +3736,6 @@
 	},
 	"findPage.name3.description": {
 		"message": "Er zijn meerdere adresboeken gevonden. Welke moeten omgezet worden:"
-	},
-	"finishPage.wizard.description": {
-		"message": "Adresboek-configuratie"
 	},
 	"finishPage.description": {
 		"message": "Het nieuwe adresboek is succesvol geconfigureerd."
@@ -5117,6 +5105,12 @@
 	"cardbookToolbarAddListButtonTooltip": {
 		"message": "Een nieuwe lijst aanmaken"
 	},
+	"cardbookToolbarAddTemplateButtonLabel": {
+		"message": "Nieuw sjabloon"
+	},
+	"cardbookToolbarAddTemplateButtonTooltip": {
+		"message": "Nieuw sjabloon aanmaken"
+	},
 	"cardbookToolbarEditButtonLabel": {
 		"message": "Wijzigen"
 	},
@@ -5315,6 +5309,15 @@
 	"searchForLocalKeyEditButton.tooltip": {
 		"message": "Uit een bestand importeren"
 	},
+	"definitionLabel": {
+		"message": "Definitie"
+	},
+	"fieldsLabel": {
+		"message": "Velden"
+	},
+	"formulasLabel": {
+		"message": "Formules"
+	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Gegevens van contactpersoon aan iemand anders mailen"
 	},
@@ -5462,6 +5465,9 @@
 	"fnFormulaExplanation": {
 		"message": "Het is mogelijk om de manier waarop CardBook de getoonde naam genereert, zelf samen te stellen. Dat gebeurt met een formule die bestaat uit blokken, omsloten door haakjes, “()”. In deze blokken mogen verschillende onderdelen gescheiden worden door “|”."
 	},
+	"templateFormulaExplanation": {
+		"message": "Het is mogelijk om sjablonen te maken met voorgedefinieerde adressen. Bijvoorbeeld met het adres ”({{2}}).({{4}})@mijnbedrijf.org”. Toegepast op een contactpersoon die ”Pietje Puk” heet, wordt er dan een e-mail adres ”pietje.puk@mijnbedrijf.org” toegevoegd aan de contactpersonen."
+	},
 	"formulaExplanation1": {
 		"message": "({{1}}|{{2}}) : Als {{1}} leeg is, dan wordt het blok vervangen door {{2}}."
 	},
@@ -5500,12 +5506,6 @@
 	},
 	"displayFieldNamesAccesskey": {
 		"message": "r"
-	},
-	"displayTypesLabel": {
-		"message": "Toon types en voorkeuren"
-	},
-	"displayTypesAccesskey": {
-		"message": "y"
 	},
 	"fieldsToPrintGroupboxLabel": {
 		"message": "Af te drukken"
@@ -5698,6 +5698,12 @@
 	},
 	"saveTemplateLabel": {
 		"message": "Bewaar sjabloon"
+	},
+	"applyTemplateLabel": {
+		"message": "Sjabloon toepassen"
+	},
+	"createTemplateLabel": {
+		"message": "Sjabloon maken"
 	},
 	"convertVCardsLabel": {
 		"message": "Converteren van vCard-versie"

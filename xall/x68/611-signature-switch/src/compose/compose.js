@@ -2,6 +2,9 @@ browser.runtime.onMessage.addListener(request => {
 
     switch (request.type) {
 
+        case "ping":
+            return Promise.resolve("pong");
+
         case "appendSignature":
             if (request.value.prepend) {
                 document.body.appendChild(createElement(request.value.prepend));
@@ -37,13 +40,9 @@ browser.runtime.onMessage.addListener(request => {
             break;
 
         case "cleanUp":
-            let elements = document.querySelectorAll(request.value.selector);
-
-            if (elements.length > 0) {
-                for (let element of elements) {
-                    element.remove();
-                }
-            }
+            document.querySelectorAll(request.value.selector).forEach(element => {
+                element.remove();
+            });
 
             break;
 
@@ -67,15 +66,15 @@ function createElement(properties) {
     let element = document.createElement(properties.type);
 
     if (properties.classes) {
-        for (let clazz of properties.classes) {
+        properties.classes.forEach(clazz => {
             element.classList.add(clazz);
-        }
+        });
     }
 
     if (properties.attributes) {
-        for (let attribute of properties.attributes) {
+        properties.attributes.forEach(attribute => {
             element.setAttribute(attribute.key, attribute.value);
-        }
+        });
     }
 
     if (properties.innerHtml) {

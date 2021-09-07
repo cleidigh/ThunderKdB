@@ -6,9 +6,10 @@
 'use strict';
 
 export class RecipientClassifier {
-  constructor({internalDomains, attentionDomains } = {}) {
+  constructor({internalDomains, attentionDomains, blockedDomains } = {}) {
     this.$internalDomainsSet = new Set((internalDomains || []).map(domain => domain.toLowerCase().replace(/^@/, '')));
     this.$attentionDomainsSet = new Set((attentionDomains || []).map(domain => domain.toLowerCase().replace(/^@/, '')));
+    this.$blockedDomainsSet = new Set((blockedDomains || []).map(domain => domain.toLowerCase().replace(/^@/, '')));
 
     this.classify = this.classify.bind(this);
   }
@@ -16,6 +17,7 @@ export class RecipientClassifier {
   classify(recipients) {
     const internals = [];
     const externals = [];
+    const blocked   = [];
 
     for (const recipient of recipients) {
       const address = /<([^@]+@[^>]+)>\s*$/.test(recipient) ? RegExp.$1 : recipient;
@@ -26,12 +28,14 @@ export class RecipientClassifier {
         domain,
         isAttentionDomain: this.$attentionDomainsSet.has(domain)
       };
-      if (this.$internalDomainsSet.has(domain))
+      if (this.$blockedDomainsSet.has(domain))
+        blocked.push(classifiedRecipient);
+      else if (this.$internalDomainsSet.has(domain))
         internals.push(classifiedRecipient);
       else
         externals.push(classifiedRecipient);
     }
 
-    return { internals, externals };
+    return { internals, externals, blocked };
   }
 }

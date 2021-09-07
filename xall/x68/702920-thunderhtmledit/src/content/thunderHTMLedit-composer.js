@@ -307,7 +307,7 @@ var SourceEditor = {
   },
 
   foldAllDataUrls(editor) {
-    // todo use "tokenizerUpdate" event to  update after chanegs (paste, edits, etc)
+    // todo use "tokenizerUpdate" event to update after changes (paste, edits, etc)
     // todo instead calling "foldAllDataUrls", the "tokenizerUpdate" may be enough :-)
 
     editor.getSession().on("changeFold", (param) => {
@@ -403,6 +403,7 @@ var ResetTheme;
 var Undo;
 var Redo;
 var thisWin;
+var currentMode;
 // eslint-disable-next-line max-len, comma-spacing
 var lc = ["A2FYC3R5","A2XHDXMU","A3NIZWF0","AG12ZXJV","AGFYCMTL","AGVYDMVI","AI5KZWPV","AKBQB3JN","AM9HY2HP","AM9LCMCU","AM9UYXMT","AM9ZQGRL","AMF5QHNH","AMLTQGPH","AMPZZG5A","AMVABW12","AMVADMVY","AMVMZNJ5","ANAUBGV2","ANV0DGFA","AW5MB0BK","AW5MB0BN","AW5MB0BR","AW5MB0BZ","AWFUBWVK","AWXWAXBW","AZDQZWJA","B2ZMAWNL","B3JKZXJZ","B3ZHAGLT","BGVUYS0Y","BMF0AGFU","BMF1BMF1","BMLJAGLN","BMVKZGVU","BWDYZWLZ","BWF0DGNS","BWFPBEBH","BWFPBEBT","BWFUDUBZ","BWFYDGLU","BWFYYY5N","BWLJAGFL","BWLRZUBQ","BWLRZUBW","BWNMCM9Z","BWVAZG9U","BWVNLMHH","BWZIQGXL","BXR5DHNL","C2FKANVR","C2FMZXJZ","C2FRZXMT","C2FSZXNA","C2HLZW4U","C2LSDMFP","C2NVDHQU","C2TABGFI","C2VYDMLJ","C2XHD2VR","C3NHNTU1","C3RLDMVA","C3RVEWFU","CGF0CMLJ","CGF0YM9Y","CGF5CGFS","CGHPBF9J","CGHVZMZT","CGJIMDMX","CGLLCNJL","CGLUQGDL","CGOUAGFH","CGPACGPH","CGV0ZXJO","CGV0ZXJZ","CGVWZXRY","CHBLCM5H","CM1VCMFS","CM9ZC2VI","CMLJAGFY","CMOUA2VJ","CMRLDMVU","D2H5DHDV","D2HHDHPN","D2LTQHZH","D2ROZ25K","D2VIDHVU","D3JPZ2H0","DG9TYXJK","DG9TYXMU","DGH1BMRL","DGHVCNN0","DGRHBWF0","DGV0C3V5","DHDHZ0BZ","DHDPBGVZ","DNRYDNRY","DXCUYWX0","Y29YYMFS","Y29YZWRL","Y29YZXLA","Y2HHAXJW","Y2HYAXNA","Y2HYAXNN","Y2XHDWRP","Y3VUB0BP","Y3ZPDGFS","YMD1AWXS","YMF1ZXJJ","YMVUAMFT","YNJ1BM8U","YNJ1Y2VA","YNNJYXJS","YS5WLMPH","YW5KCMV3","YW5KEUBU","YW5QYS5K","YWFMLXJH","YWNOAW0U","YWRSAW5K","YWRTAW5A","YWX0QHRT","YWXHAW4Z","YWXIZXJ0","YWXLEGFU","YXHLBC5N","YXJ2AWRA","YXRYB2NP","YY5JB3JI","Z29SBHDP","Z2FYDGHA","Z2FYYWDL","Z2JJCMVU","Z2LSBGVZ","Z2VVZMZA","Z3JHBNRA","ZG9TAW5P","ZG9UX3JL","ZGF2ZUBK","ZGF2ZUBT","ZGFUQGRP","ZGPAYXZV","ZGPJYXR0","ZGVZC2FP","ZHDPBGRL","ZHLZQG91","ZMFYBWVY","ZNJHBMNP","ZW1HBNVL","ZWFJQGFY","ZWJHEUBL","ZWLTYW50","ZWQUYWDV","ZWXICMFJ","ZWXJB29R","ZXJPY3D5","ZXJPYY5H"];
 
@@ -501,8 +502,8 @@ function CheckLicense() {
 
 function PrepareHTMLtab() {
   try {
-    // (***) This counting bussiness doesn't really work well. If you do:
-    // Type in souce, save, switch to HTML, you get count 0.
+    // (***) This counting business doesn't really work well. If you do:
+    // Type in source, save, switch to HTML, you get count 0.
     // Switch to edit, type, save, switch to HTML, count still 0 after save, so you missed the last bit.
     // That's why ThunderHTMLedit Mark 1 had (expensive) action/transaction listeners.
     // To avoid that, I'll just reset the count in the send/save listener and force a
@@ -518,6 +519,7 @@ function PrepareHTMLtab() {
     // Like this, users will understand that there is really no plain text editor.
     // It's all HTML ;-)
     thisWin.document.getElementById("thunderHTMLedit-content-tab").removeAttribute("collapsed");
+    currentMode = 0;  // 0 - WYSIWYG, 1 - HTML source.
 
     initIframe(thisWin);
   } catch (e) { ThunderHTMLedit.handleException(e); }
@@ -574,14 +576,16 @@ function initIframe(win) {
   SourceEditor.initWindow(cw);
 }
 
-// modes: 0 - WYSIWYG, 1- HTML source
+// modes: 0 - WYSIWYG, 1 - HTML source
 function SelectEditMode(mode, syncOnly) {
+  if (mode == currentMode) return;
+
   // If we get enabled on an open compose window, we're not fully initialised
   // since compose-window-init isn't fired again. So just give up.
   if (!onComposeBodyReadyCalled) return;
 
   try {
-    // Function called when composer window is not constructed completly yet, just after overlay loads.
+    // Function called when composer window is not constructed completely yet, just after overlay loads.
     if (thisWin.gMsgCompose == null) return;
 
     // Copy content from WYSIWYG to HTML tab, only when WYSIWYG is changed.
@@ -607,6 +611,8 @@ function SelectEditMode(mode, syncOnly) {
         Redo.removeAttribute("command");
         Redo.setAttribute("oncommand", "window.ThunderHTMLedit_.AceRedo();");
         Redo.setAttribute("disabled", false);
+
+        currentMode = 1;
       }
     }
 
@@ -636,6 +642,8 @@ function SelectEditMode(mode, syncOnly) {
         Undo.setAttribute("command", "cmd_undo");
         Redo.removeAttribute("oncommand");
         Redo.setAttribute("command", "cmd_redo");
+
+        currentMode = 0;
       }
     }
   } catch (e) { ThunderHTMLedit.handleException(e); }
@@ -772,9 +780,8 @@ function composeSendMessage(e) {
   // Services.console.logStringMessage("ThunderHTMLedit - compose-send-message");
   if (onComposeBodyReadyCalled) {
     try {
-      // Synchronize WYSIWYG editor to Source editor, if currently user edit source.
-      let isHTML = thisWin.document.getElementById("content-frame").getAttribute("collapsed");
-      if (isHTML) SelectEditMode(0, true);
+      // Synchronize WYSIWYG editor to Source editor, if currently in source mode.
+      if (currentMode == 1) SelectEditMode(0, true);
     } catch (ex) {}
   }
   // See comment above (***) to see why we're doing this.

@@ -129,7 +129,7 @@ var ahtButtonStatus = {
   },
 
   enableButtons: function() {
-    // console.log("AHT: enableButtons");
+    // console.debug("AHT: enableButtons");
 
     // we MUST use removeAttribute("disabled")
     // setAttribute to false leads to problems in tabbar-toolbar
@@ -148,7 +148,7 @@ var ahtButtonStatus = {
   },
 
   disableButtons: function() {
-    // console.log("AHT: disableButtons");
+    // console.debug("AHT: disableButtons");
 
     let ahtHdrButton = document.getElementById("hdrAHTButton");
     if (ahtHdrButton)
@@ -164,7 +164,7 @@ var ahtButtonStatus = {
   },
 
   changeRemoteContentPopupmenuItem: function() {
-    // console.log("AHT: changeRemoteContentPopupmenuItem");
+    // console.debug("AHT: changeRemoteContentPopupmenuItem");
 
     // Tb 31, 38, 45, 52, ... popupmenu item has ID "remoteContentOptionAllowForMsg"
 
@@ -184,7 +184,7 @@ var ahtButtonStatus = {
   },
 
   resetRemoteContentPopupmenuItem: function() {
-    // console.log("AHT: resetRemoteContentPopupmenuItem");
+    // console.debug("AHT: resetRemoteContentPopupmenuItem");
 
     // Tb 31, 38, 45, 52, ... popupmenu item has ID "remoteContentOptionAllowForMsg"
 
@@ -204,10 +204,10 @@ var ahtButtonStatus = {
   },
 
   checkMailForHtmlpart: function() {
-    // console.log("AHT: run checkMailForHtmlpart ----------------");
+    // console.debug("AHT: run checkMailForHtmlpart ----------------");
     try {
       if (gFolderDisplay.selectedCount != 1) {
-        // console.log("AHT: selectedCount != 1");
+        // console.debug("AHT: selectedCount != 1");
         ahtButtonStatus.disableButtons();
       } else {
         // get the msg header (to ask for junk status and 'Body: text/html')
@@ -218,10 +218,13 @@ var ahtButtonStatus = {
 
         // if msg is junk disable the ahtButtons
         if (ahtMsgIsJunk) {
-          // console.log("AHT: message is Junk");
+          // console.debug("AHT: message is Junk");
+          ahtButtonStatus.disableButtons();
+        } else if (gFolderDisplay.selectedMessageIsNews) { 
+          // console.debug("AHT: message is News");
           ahtButtonStatus.disableButtons();
         } else if (gFolderDisplay.selectedMessageIsFeed) { 
-          // console.log("AHT: message is Feed");
+          // console.debug("AHT: message is Feed");
           ahtButtonStatus.enableButtons();
         } else {
           // First check MsgHdr without decrypting to prevent an additional passphrase dialog in case of PGP/MIME
@@ -229,24 +232,24 @@ var ahtButtonStatus = {
             // multipart/encrypted enables the button for encrypted PGP/MIME messages
             // in this case we don't check for HTML, because the check seems not to be possible for PGP/MIME
             if (aMimeMsg.prettyString().search("multipart/encrypted") != -1) {
-              // console.log("AHT: message is PGP/MIME multipart/encrypted");
+              // console.debug("AHT: message is PGP/MIME multipart/encrypted");
               ahtButtonStatus.enableButtons();
             } else {
               // search for 'Body: text/html' in MIME parts,
               // it seems this is only working if messages are downloaded for offline reading?
               MsgHdrToMimeMessage(ahtMsgHdr, null, function(aMsgHdr, aMimeMsg) {
-                // console.log("AHT: Check for html part ----------------");
-                // console.log("AHT: Body: text/html " + aMimeMsg.prettyString().search("Body: text/html"));
-                // console.log("AHT: text/html " + aMimeMsg.prettyString().search("text/html"));
-                // console.log("AHT: Body: plain/html " + aMimeMsg.prettyString().search("Body: plain/html"));
-                // console.log("AHT: plain/html " + aMimeMsg.prettyString().search("plain/html"));
-                // console.log("AHT: multipart/alternative " + aMimeMsg.prettyString().search("multipart/alternative"));
-                // console.log("AHT: multipart/signed " + aMimeMsg.prettyString().search("multipart/signed"));
-                // console.log("AHT: multipart/encrypted " + aMimeMsg.prettyString().search("multipart/encrypted"));
+                // console.debug("AHT: Check for html part ----------------");
+                // console.debug("AHT: Body: text/html " + aMimeMsg.prettyString().search("Body: text/html"));
+                // console.debug("AHT: text/html " + aMimeMsg.prettyString().search("text/html"));
+                // console.debug("AHT: Body: plain/html " + aMimeMsg.prettyString().search("Body: plain/html"));
+                // console.debug("AHT: plain/html " + aMimeMsg.prettyString().search("plain/html"));
+                // console.debug("AHT: multipart/alternative " + aMimeMsg.prettyString().search("multipart/alternative"));
+                // console.debug("AHT: multipart/signed " + aMimeMsg.prettyString().search("multipart/signed"));
+                // console.debug("AHT: multipart/encrypted " + aMimeMsg.prettyString().search("multipart/encrypted"));
 
                 // 'Body: text/html' is found, enable ahtButtons
                 if (aMimeMsg.prettyString().search("Body: text/html") != -1) {
-                  // console.log("AHT: message contains HTML body part");
+                  // console.debug("AHT: message contains HTML body part");
                   ahtButtonStatus.enableButtons();
                 }
                 // no 'Body: text/html', disable ahtButtons
@@ -263,7 +266,7 @@ var ahtButtonStatus = {
         }
       }
     } catch (e) {
-      // console.log("AHT: catch error in checkMailForHtmlpart");
+      // console.debug("AHT: catch error in checkMailForHtmlpart");
       ahtButtonStatus.disableButtons();
     }
   }

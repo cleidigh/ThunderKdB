@@ -4,7 +4,7 @@
 
 var init = async () => {
   // Listener for storage.local changes to notify chrome observer.
-  const storageChanged = async (changes, area) => {
+  const storageChanged = (changes, area) => {
     if (area != "local") {
       return;
     }
@@ -26,7 +26,8 @@ var init = async () => {
   // Inject the main script.
   browser.browseintab.injectScriptIntoChromeDocument(
     "content/browseintab.js",
-    "mail:3pane"
+    "mail:3pane",
+    false
   );
 
   // Add storage change listener.

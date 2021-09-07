@@ -227,6 +227,10 @@ function addMessageListener() {
                     focused: true}
                 );
                 break;
+            case "sendNativeMessage":
+                return new Promise(async resolve => {
+                    resolve(JSON.stringify(await sendNativeMessage(request.value)));
+                });
             default:
                 console.log("invalid message type!");
         }
@@ -260,6 +264,9 @@ function addWindowCreateListener() {
         if (window.type === WINDOW_TYPE_MESSAGE_COMPOSE) {
             browser.tabs.query({windowId: window.id}).then(async tabs => {
                 let tabId = tabs[0].id;
+
+                // wait until compose script is ready
+                await waitForComposeMessageListener(tabId);
 
                 let storage = await browser.storage.local.get();
                 let details = await browser.compose.getComposeDetails(tabId);
@@ -376,7 +383,7 @@ async function appendSignatureToComposer(signature, tabId = composeActionTabId, 
                 type: "div",
                 classes: signatureClasses,
                 attributes: signatureAttributes,
-                innerHtml: await createSignatureForPlainTextComposer(signature.text, aboveQuoteOrForwarding)
+                innerHtml: await createSignatureForPlainTextComposer(signature.text, details.type, aboveQuoteOrForwarding)
             },
             // TB also always adds a new line at the end of a signature in plaintext mode
             postpend: {
@@ -404,7 +411,7 @@ async function appendSignatureToComposer(signature, tabId = composeActionTabId, 
                 type: `${plaintextFallback ? "pre" : "div"}`,
                 classes: signatureClasses,
                 attributes: signatureAttributes,
-                innerHtml: await createSignatureForHtmlComposer(plaintextFallback ? signature.text : signature.html, signatureSeparatorHtml, aboveQuoteOrForwarding),
+                innerHtml: await createSignatureForHtmlComposer(plaintextFallback ? signature.text : signature.html, details.type, signatureSeparatorHtml, aboveQuoteOrForwarding),
                 aboveQuoteOrForwarding: aboveQuoteOrForwarding
             }
         };
@@ -513,9 +520,10 @@ function autoSwitchBasedOnRecipients(tabId = composeActionTabId, recipients) {
    signature creation ...
  */
 
-async function createSignatureForPlainTextComposer(content, signaturePlacementAboveQuoteOrForwarding = false) {
-    // resolve fc-placeholders
+async function createSignatureForPlainTextComposer(content, composeType, signaturePlacementAboveQuoteOrForwarding = false) {
+    // resolve placeholders
     content = await searchAndReplaceFortuneCookiePlaceholder(content);
+    content = await searchAndReplaceNativeMessagingPlaceholder(content, { isPlainText: true, type: composeType });
 
     // make sure we have a sig-separator (but only if we don't put the signature above the reply-quote or forwarding)
     if (!content.trim().startsWith(PLAINTEXT_SIGNATURE_SEPARATOR) && !signaturePlacementAboveQuoteOrForwarding) {
@@ -526,10 +534,11 @@ async function createSignatureForPlainTextComposer(content, signaturePlacementAb
     return content.replaceAll(NEW_LINE, `<br ${ATTRIBUTE_MOZ_DIRTY}="">`);
 }
 
-async function createSignatureForHtmlComposer(content, signatureSeparatorHtml, aboveQuote = false) {
+async function createSignatureForHtmlComposer(content, composeType, signatureSeparatorHtml = true, aboveQuote = false) {
     // resolve placeholders
     content = await searchAndReplaceFortuneCookiePlaceholder(content);
     content = await searchAndReplaceImagePlaceholder(content);
+    content = await searchAndReplaceNativeMessagingPlaceholder(content, { isPlainText: false, type: composeType });
 
     // prepend the sig-separator if activated in options (but only if we don't put the signature above the reply-quote or forwarding)
     if (signatureSeparatorHtml && !aboveQuote) {
@@ -562,6 +571,25 @@ async function searchAndReplaceFortuneCookiePlaceholder(content) {
                 }
             }
         });
+    }
+
+    return content;
+}
+
+async function searchAndReplaceNativeMessagingPlaceholder(content, composeDetails) {
+    let regExp = new RegExp("__.*?__");
+
+    if (regExp.test(content)) {
+        let match;
+        while (match = regExp.exec(content)) {
+            let tag = match[0].substring(2, match[0].length - 2);
+            let nativeMessage = await sendNativeMessage({
+                tag: tag,
+                isPlainText: composeDetails.isPlainText,
+                type: composeDetails.type
+            });
+            content = content.replace(`__${tag}__`, nativeMessage.success ? nativeMessage.response.message : "");
+        }
     }
 
     return content;
@@ -651,4 +679,25 @@ async function serializeRecipients(recipients) {
     }
 
     return serializedRecipients;
+}
+
+async function sendNativeMessage(object) {
+    try {
+        return { success: true,
+                 response: await messenger.runtime.sendNativeMessage("signatureswitch", object) };
+    } catch(e) {
+        return { success: false,
+                 response: { message: e.message } };
+    }
+
+}
+
+// make sure the compose-script is injected and ready to receive messages
+async function waitForComposeMessageListener(tabId) {
+    let result = "";
+    while (result === "") {
+        try {
+            result = await browser.tabs.sendMessage(tabId, { type: "ping" }) === "";
+        } catch(e) {}
+    }
 }

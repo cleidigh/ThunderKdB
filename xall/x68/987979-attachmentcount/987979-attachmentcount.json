@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 243,
+    "average_daily_users": 255,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -19,32 +19,32 @@
     "contributions_url": "",
     "created": "2020-12-14T19:07:43Z",
     "current_version": {
-        "id": 2475022,
+        "id": 2476298,
         "compatibility": {
             "thunderbird": {
-                "max": "84.0",
-                "min": "78.0a1"
+                "max": "*",
+                "min": "90.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/attachmentcount/versions/2475022",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/attachmentcount/versions/2476298",
         "files": [
             {
-                "id": 1018184,
-                "created": "2020-12-14T19:07:43Z",
-                "hash": "sha256:e262382babb2c864b103b4f5289d4752ff82cfb97084b3c7d33788e7dda481aa",
+                "id": 1019458,
+                "created": "2021-08-18T03:00:50Z",
+                "hash": "sha256:e356a2412235dbd150e532dae116991ced9ae740dd96b57018489bba4231222c",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 26891,
+                "size": 27270,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018184/attachmentcount-6.4-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019458/attachmentcount-6.5-tb.xpi?src=",
                 "permissions": [
                     "storage"
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 6,
             "name": {
@@ -74,11 +74,11 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "<b>Version 6.4 changes</b>\n<ul>  <li>New: initial ATN version. See the homepage for details. </li></ul>"
+            "en-US": "<b>Version 6.5 changes</b>\n<ul>  <li>Update: compatibility with Tb91.</li>  <li>Update: several internal refactorings.</li>  <li>NOTE: possible poor tooltip contrast when using the Thunderbird dark theme on linux.</li></ul>"
         },
-        "reviewed": "2020-12-15T17:14:24Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attachmentcount/versions/6.4",
-        "version": "6.4"
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attachmentcount/versions/6.5",
+        "version": "6.5"
     },
     "default_locale": "en-US",
     "description": {
@@ -101,7 +101,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-12-15T17:14:24Z",
+    "last_updated": "2021-08-19T08:52:03Z",
     "name": {
         "en-US": "AttachmentCount"
     },
@@ -185,10 +185,15 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
-            "comp69plus": true,
+            "comp68": true,
             "comp78plus": true,
-            "comp61plus": true
+            "comp78pv": true,
+            "comp78pv_date": "2020-12-14T19:07:43Z",
+            "comp78pv_version": "6.4",
+            "comp78pv_vmin": "78.0a1",
+            "comp78pv_vmax": "84.0"
         }
     }
 }

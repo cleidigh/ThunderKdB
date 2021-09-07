@@ -29,7 +29,7 @@
     "message": "我想續簽我的許可證"
   },
   "btn-want-a-license": {
-    "message": "我想購買許可證"
+    "message": "選擇許可證"
   },
   "btn-want-to-donate": {
     "message": "我想提供一次捐款。"
@@ -55,8 +55,14 @@
   "buyLicense.instruct": {
     "message": "需要自己的一份授權？取得一份個人使用者授權。它會跟你個人E-mail做連結，並且能使用在多處安裝上。"
   },
-  "buyPersonalLicense.button": {
-    "message": "購買個人授權！"
+  "buyProLicense.button": {
+    "message": "購買專業版許可證！"
+  },
+  "buyStandardLicense.button": {
+    "message": "购买标准许可证！"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "买不起高级功能？ 获得更便宜的标准许可证并继续测试高级功能。"
   },
   "chkComposerSubfolders": {
     "message": "也適用到子目錄"
@@ -92,7 +98,7 @@
     "message": "背景"
   },
   "cssBackground.tooltip": {
-    "message": "輸入一個CSS背景，例如線性梯度（到底部，rgba(254,252,234,1) 0&#37;,rgba(241,218,54,1) 100&#37;）"
+    "message": "輸入一個CSS背景，例如線性梯度（到底部，rgba(254,252,234,1) 0%,rgba(241,218,54,1) 100%）"
   },
   "cssColor": {
     "message": "文字顏色"
@@ -157,7 +163,7 @@
     "message": "當撰寫新郵件時，使用預設的帳號"
   },
   "getQuickFolders": {
-    "message": "取得QuickFolders 專業版"
+    "message": "QuickFolders 許可證"
   },
   "grpComposer": {
     "message": "預設的E-mail範圍"
@@ -210,8 +216,41 @@
     "description": "Shown if license expires more than a year from now",
     "message": "感謝您最近延長許可證或捐贈。 當您幫助將來對該插件進行驗證時，只需關閉此窗口即可。"
   },
+  "licenseComparison" : {
+    "message": "要比較不同版本的功能，請{linkStart}閱讀此列表{linkEnd}。"
+  },  
+  "licenseHead": {
+    "message": "新的許可製度"
+  },  
+  "licenseTypes": {
+    "message": "QuickFolders 提供兩種許可證，Standard 和 Pro； 這些對於跟上 Thunderbird 平台的變化以及為插件的創新和修復提供資金是必要的。 由於可能破壞擴展功能的更改每年都會部署，因此許可證的有效期也為 1 年。"
+  },  
   "licenseWindow.title": {
     "message": "QuickFolders 專業版購買證明"
+  },
+  "license_restriced.std": {
+    "message": "標准許可證 - 受限 Pro 功能。 了解更多…"
+  },
+  "license_restriced.unpaid": {
+    "message": "未授權版本 - 受限功能。 了解更多…"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFolders 需要 Pro 許可證才能支持多個 $maxTabs$ 選項卡。",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFolders 需要一個許可證來支持多個 $maxTabs$ 選項卡。",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
   "mozillas-basic-platform": {
     "message": "Mozilla僅提供一個基本平台，用於向您（最終用戶）交付我們的軟件。 如果我們需要向我們的用戶付款或提供支持，則不能通過addons.thunderbird.net進行操作-這不是內置付費界面或許可證管理（如iTunes或Google Play）的“應用商店”。"
@@ -310,11 +349,11 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "當改變標籤時聚焦於信件清單"
   },
-  "qf.checkbox.autoHideToolbar": {
-    "message": "當不需要QuickFolders時隱藏"
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "在單個消息選項卡中隱藏 QuickFolders"
   },
-  "qf.checkbox.autoHideToolbar.tooltip": {
-    "message": "在特別的頁面，像是日曆、內容或附加元件管理中心折疊工具列。"
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "在顯示單個消息的選項卡中刪除 QuickFolders 工具欄。"
   },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "關閉按鈕"
@@ -538,6 +577,9 @@
   "qf.copyfolders.tooltip": {
     "message": "複製資料夾設定於剪貼簿中"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Thunderbird 主題"
+  },
   "qf.currentFolderBackground.custom": {
     "message": "自訂"
   },
@@ -545,7 +587,7 @@
     "message": "暗黑"
   },
   "qf.currentFolderBackground.default": {
-    "message": "預設"
+    "message": "銀"
   },
   "qf.currentFolderBackground.translucent": {
     "message": "半透明"
@@ -556,8 +598,8 @@
   "qf.currentfolder.rightSpacer": {
     "message": "右邊間隔："
   },
-  "qf.description.bugzilla": {
-    "message": "請使用Bugzilla來提供特色需求與錯誤回報"
+  "qf.description.github": {
+    "message": "請使用github來提供特色需求與錯誤回報"
   },
   "qf.description.categoryusage": {
     "message": "你能將此標籤放進分類裡（像是工作、私人等）。"
@@ -566,7 +608,12 @@
     "message": "滑鼠右鍵點選標籤能選擇一個適當分類。你能在工具列左側的下拉式選單中選擇一個分類。"
   },
   "qf.description.contactMe": {
-    "message": "您也能與我個人聯絡axelg@gofree.indigo.ie："
+    "message": "您也能與我個人聯絡$supportMail$：",
+    "placeholders": {
+      "supportMail": {
+        "content": "$1"
+      }
+    }
   },
   "qf.description.donate": {
     "message": "如果你非常喜愛QuickFolders，您可以藉由小額捐助支持它的開發。"
@@ -590,7 +637,7 @@
     "message": "下面的選項是測試中的，它們希望在接下來的改版中能正式運作！"
   },
   "qf.description.languages": {
-    "message": "QuickFolders支援在地語言 - 你能在Babelzilla上協助翻譯成你的語言："
+    "message": "QuickFolders支援在地語言 - 你能在github上協助翻譯成你的語言："
   },
   "qf.description.linkNote": {
     "message": "參觀QuickFolders的首頁，以便進一步瞭解詳細的使用說明、技巧和問答集："
@@ -724,8 +771,8 @@
   "qf.label.behavior": {
     "message": "特性"
   },
-  "qf.label.bugzilla": {
-    "message": "以Bugzilla回報錯誤與新的特色需求"
+  "qf.label.github": {
+    "message": "以 github 回報錯誤與新的特色需求"
   },
   "qf.label.buttonFontSizeNumeric": {
     "message": "按鈕字型大小（0為預設值）："
@@ -892,6 +939,9 @@
   "qf.licenseValidation.passed": {
     "message": "感謝購買QuickFolders專業版！所有的進階功能現在都將開啟。"
   },
+  "qf.licenseValidation.standard": {
+    "message": "感謝您註冊 QuickFolders 許可證 - 您正在極大地幫助附加組件！ 如果您需要更多功能，您可以隨時升級到 Pro 許可證。"
+  },  
   "qf.loadConfig": {
     "message": "讀取設定..."
   },
@@ -955,6 +1005,9 @@
   "qf.menuitem.quickfolders.repairTreeIcons": {
     "message": "修復樹狀目錄圖示"
   },
+  "qf.menuitem.quickfolders.splash" : {
+    "message": "顯示閃屏"
+  },
   "qf.menuitem.quickfolders.support": {
     "message": "QuickFolders支援…"
   },
@@ -973,6 +1026,15 @@
   "qf.notification.dontShowAgain": {
     "message": "不再顯示這個訊息。"
   },
+  "qf.notification.newsFlash": {
+    "message": "$addonName$ 已更新！重要消息……",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "qf.notification.premium.btn.extendLicense": {
     "message": "展延購買憑證"
   },
@@ -988,17 +1050,46 @@
   "qf.notification.premium.btn.renewLicense": {
     "message": "展延授權"
   },
+  "qf.notification.premium.btn.upgrade": {
+    "message": "升級到專業版"
+  },
   "qf.notification.premium.readingList": {
     "message": "您現在有{1}個已定義的書籤。免費版本的QuickFolders最多只允許{2}個。"
   },
+  "qf.notification.premium.shortcut": {
+    "message": "高級許可證還為您提供了一個可配置的鍵盤快捷鍵。"
+  },
   "qf.notification.premium.tabIcons": {
-    "message": "您現在有{1}個定義的圖示。免費版本的QuickFolders最多只允許{2}個。"
+    "message": "您現在為選項卡使用 $cntIcons$ 自定義圖標。 QuickFolders 的免費版本最多支持 $maxFreeIcons$。 標准許可證支持 $maxStdIcons$。",
+    "placeholders": {
+      "cntIcons": {
+        "content": "$1",
+        "example": "10"
+      },
+      "maxFreeIcons": {
+        "content": "$2",
+        "example": "5"
+      },
+      "maxStdIcons": {
+        "content": "$3",
+        "example": "12"
+      }
+    }
   },
   "qf.notification.premium.text": {
-    "message": "{1} 是獨特的功能，請註冊QuickFolders以永久使用這項功能。"
+    "message": "{1} 是一項高級功能，請獲得 QuickFolders Pro 許可才能使用它。"
   },
   "qf.notification.premium.title": {
     "message": "獨特的功能"
+  },
+  "qf.notification.standard.readingList": {
+    "message": "您現在已經定義了 {1} 個書籤。 QuickFolders 的標准許可最多允許 {2}。"
+  },
+  "qf.notification.standard.text": {
+    "message": "{1} 是一項許可限制功能，請獲得 QuickFolders 許可才能使用它。"
+  },
+  "qf.notification.standard.title": {
+    "message": "標準功能"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "個別標籤顏色樣式"
@@ -1028,7 +1119,7 @@
     "message": "總是顯示邊界"
   },
   "qf.options.versionnumber.tooltip": {
-    "message": "以滑鼠右鍵點選以顯示版本歷史"
+    "message": "單擊以顯示版本歷史記錄"
   },
   "qf.palette.inactive": {
     "message": "像非作用中分頁"
@@ -1100,7 +1191,7 @@
     "message": "新資料夾"
   },
   "qf.prompt.pasteFolders": {
-    "message": "這將刪除所有QuickFolders分頁，並從你的剪貼簿中置換項目。在剪貼簿中發現\\n{0} 項目，你確定嗎？"
+    "message": "這將刪除所有QuickFolders分頁，並從你的剪貼簿中置換項目。在剪貼簿中發現\n{0} 項目，你確定嗎？"
   },
   "qf.prompt.pasteFolders.confirm": {
     "message": "保持顯示的分頁？"
@@ -1109,10 +1200,10 @@
     "message": "移除這個項目？"
   },
   "qf.prompt.readingList.searchMissingItem": {
-    "message": "不能找到該封信件，或許是因為它在某個時候被移動到另外的地方。\\n{1}\\n\\n您想要搜尋這封郵件嗎？"
+    "message": "不能找到該封信件，或許是因為它在某個時候被移動到另外的地方。\n{1}\n\n您想要搜尋這封郵件嗎？"
   },
   "qf.prompt.restoreFolders": {
-    "message": "這將刪除所有 QuickFolders 分頁並且置換檔案中的項目。讀取到  \\n{0} 項目。 \\n 置換分頁？"
+    "message": "這將刪除所有 QuickFolders 分頁並且置換檔案中的項目。讀取到  \n{0} 項目。 \n 置換分頁？"
   },
   "qf.prompt.switchDomainLicense": {
     "message": "切換到主要的授權？"
@@ -1151,7 +1242,7 @@
     "message": "一般"
   },
   "qf.tab.gopro": {
-    "message": "QuickFolders 專業版"
+    "message": "執照"
   },
   "qf.tab.layout": {
     "message": "外觀"
@@ -1523,7 +1614,7 @@
     "message": "：這是一個指向不正確資料夾的標籤："
   },
   "qfTidyDeadFolders": {
-    "message": "這將移除那些指向不正確資料夾的標籤。\\n 這有時候發生在QuickFolders沒有注意到一個已經刪除或移動的資料夾。"
+    "message": "這將移除那些指向不正確資料夾的標籤。\n 這有時候發生在QuickFolders沒有注意到一個已經刪除或移動的資料夾。"
   },
   "qfTreeIconsInvalidCount": {
     "message": "{0} 圖示遺失"
@@ -1543,6 +1634,33 @@
   "qfVersionDisableOnUpdate": {
     "message": "在更新之後停止顯示版本記錄？"
   },
+  "quickMove.help.head": {
+    "message" : "{1} 的幫助"
+  },
+  "quickMove.help.head.advanced": {
+    "message" : "高級功能"
+  },
+  "quickMove.help.l1a": {
+    "message" : "鍵入文件夾名稱的開頭或其中的單詞，以空格分隔。"
+  }, 
+  "quickMove.help.l1b": {
+    "message" : "以下字符被視為單詞邊界，不需要鍵入："
+  }, 
+  "quickMove.help.l2a": {
+    "message" : "輸入 {1} 以輸入祖父/父/搜索文件夾。"
+  }, 
+  "quickMove.help.l2b": {
+    "message" : "任何父文件夾的前 2 個字母通常就足夠了。 您還可以使用此語法創建新的子文件夾。"
+  }, 
+  "quickMove.help.l3a": {
+    "message" : "鍵入 {1} 以跳過其間的任何文件夾。"
+  }, 
+  "quickMove.help.l3b": {
+    "message" : "這對於更深、更複雜或未知的文件夾層次結構很有用。"
+  },   
+  "quickMove.help.advanced": {
+    "message" : "可以在 QuickFolders Pro 選項卡上配置更高級的功能，例如轉到文件夾/移動郵件的鍵盤快捷鍵或從搜索結果中排除文件夾。 要訪問這些和其他高級功能，請獲取 Pro 許可證並支持 QuickFolders 的未來。"
+  },  
   "quickMove.singleMessage.goNext": {
     "message": "在移动当前一封邮件后显示下一封邮件"
   },
@@ -1592,7 +1710,33 @@
     "message": "續訂您的許可證。"
   },
   "special-offer-content": {
-    "message": "使QuickFolders成為將來的證明並獲取許可，同時QuickFolders Pro的價格降低{boldStart} 40％{boldEnd}！ 此特別優惠將在{boldStart} 5月1日{boldEnd}之前提供。"
+    "message": "通過購買 QuickFolders Pro 許可證升級您的功能並節省 {boldStart}$reduction${boldEnd}！ 此特別優惠將持續到 {boldStart}$expirydate${boldEnd}。 或者使用新的 {linkStart}Standard License{linkEnd} 選擇標準功能。",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "4月16日"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-upgrade": {
+    "message": "立即從 QuickFolders Standard 升級到 Pro 並節省 {boldStart}$reduction${boldEnd}！ 此特別優惠將持續到 {boldStart}$expirydate${boldEnd}。",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
+  "special-offer-expiry": {
+    "message": "9月11日"    
   },
   "special-offer-head": {
     "message": "使QuickFolders成為未來的證明！"
@@ -1671,13 +1815,13 @@
     "message": "什麼是新的？"
   },
   "whats-new-head": {
-    "message": "強調"
+    "message": "重要變化"
   },
   "whats-new-intro": {
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1} 5.5.2-修補程序-在Thunderbird 89中，選項菜單項未顯示在附加組件管理器中{L2}{L1} 5.5.2-quickMove的修復程序-包含下劃線的父文件夾不建議用作父項{L2}{L1}5.5.1-“將文件夾+子文件夾標記為已讀”功能的修復程序{L2}{L1}我還完成了匈牙利語，簡體中文和加泰羅尼亞語的地區設置。{L2}此版本通過以下功能進一步擴展了quickMove功能：{L1}單個郵件標籤：此選項可在移動郵件後自動在同一標籤中打開下一封電子郵件{L2} {L1}選項，以完全取消quickMove（並清空其列表 {L2} {L1}通過讀取_和空格分隔符並將它們視為搜索名稱的開頭來進行高級匹配，例如：{L2} {L1}已修復：在查看時搜索文件夾 {L2} {L1}這些和其他用於限制某些帳戶搜索結果的功能可以通過QuickFolders Pro標籤上的“高級搜索設置”進行配置。{L2}"
+    "message": "{L1}在 5.7.2 中修復：當 quickFilters 激活其助手時，選項卡左側的所有圖標都將變為白色{L2}{L1} 已在 5.7.1 中修復：搜索具有“父文件夾/父文件夾/想要的文件夾”語法的文件夾時，不考慮名稱為單個字符長度的父文件夾。 {L2} {L1}使 QuickFolders 與 Thunderbird 91 兼容。{L2}{L1}在選項屏幕和導航工具欄中改進了對黑暗和 3rd 方主題的支持。{L2}{L1}改進了 [what's new] 按鈕與非 -標準 QuickFolders 主題{L2}{L1}已修復：有時在重新啟動或安裝其他附加組件或更新後會重置會話，以便顯示所有類別。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

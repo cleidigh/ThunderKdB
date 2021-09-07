@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/66/66492.png?modified=1554204559"
         }
     ],
-    "average_daily_users": 12482,
+    "average_daily_users": 13370,
     "categories": {
         "seamonkey": [
             "downloading-and-file-management"
@@ -22,43 +22,46 @@
     "contributions_url": null,
     "created": "2012-05-06T09:12:42Z",
     "current_version": {
-        "id": 2476191,
+        "id": 2476313,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "91.*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfilters/versions/2476191",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfilters/versions/2476313",
         "files": [
             {
-                "id": 1019351,
-                "created": "2021-08-05T09:11:40Z",
-                "hash": "sha256:25a2a41b6134d16ece7c315f05dbbc66f43255c7622f0304f5c065e9d3a2955c",
+                "id": 1019473,
+                "created": "2021-08-20T12:48:09Z",
+                "hash": "sha256:ee03cffda83ceb300e56b41f40d9ecfacb17bcf393ac26068e247744ce542023",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 568573,
+                "size": 570102,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019351/quickfilters-5.3.1-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019473/quickfilters-5.3.2-tb.xpi?src=",
+                "permissions": [
+                    "accountsRead",
+                    "notifications"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 7111,
             "name": {
                 "en-US": "Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)"
             },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfilters/license/5.3.1"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfilters/license/5.3.2"
         },
         "release_notes": {
-            "en-US": "quickFilters Change Log - Version 5.3.1\n<ul><li>quickFilters is now compatible with Thunderbird 91, which commences the next ESR period (2021-2022).</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/67\">[issue 67]</a> Added colored icons and theme support in message filter list toolbar. </li><li>Splash screen: instead of displaying this as soon as Thunderbird installs a new version of Thunderbird, this is now available by clicking the message on the assistant button which shows the fact that quickFilters was updated.</li><li>Options are now available through Add-ons Manager / quickFilters \"Wrench Icon\".</li><li>Restricted special search methods in the filter list to licensed users only.</li></ul><b>Bug Fixes</b>\n<ul><li>The link on the registration screen in 5.3 accidentally directed to buy a QuickFolders license. This is now fixed in version 5.3.1.</li><li>The license validation didn't tell if license failing - fixed in 5.3.1</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/66\">[issue 66]</a> Fixed: On some machines, quickFilters is not loading at startup (due to accounts not loading)</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/68\">[issue 68]</a> Fixed: Moving mails with context menu moves wrong mails (it switched to mail below the selection and moved that instead). </li><li>When an invalid license was entered in version 5.3 no feedback or reason for it not working was given.</li></ul><b>Localization</b>\n<ul><li>Use modern json localization format. This can avoid problems of dialogs not loading in non-English locales if a text is missing.</li><li>Completed Argentinian Locale using strings from the Spanish one.</li><li>Added Finnish, Portuguese and Polish translations (using google translate). </li></ul><b>Compatibility with Thunderbird 91</b>\n<ul><li>Fixed missing icons on sliding notification bars</li><li>Fixed style / visibility of [Buy License] button at bottom of settings dialog.</li><li>Removed deprecated fixIterator function from findInboxFromRoot() function</li><li>Using notifyTools for updating UI via background page (mail extension conversion).</li><li>Licenser code migrated into background script. </li><li>Hiding / showing the toolbar in filter list is now instant.</li><li>Removed obsolete legacy locale files.</li><li>Removed all references to the old <a rel=\"nofollow\" href=\"http://mozdev.org\">mozdev.org</a> site.</li></ul>"
+            "en-US": "quickFilters Change Log - Version 5.3.2  - changes since 5.2.1\n\n<b>Maintenance Release 5.3.2</b>\n<ul><li>Extended special offer for getting a quickFilters Pro license to 12th of September.</li><li>5.3.2 - Fixed <a rel=\"nofollow\" href=\"https://sites.fastspring.com/quickfolders/product/quickfiltersdomainlicense?referrer=atn-version\">domain license link</a>. You can now buy a license for your enterprise, have a single license for muliple users and save money and time from 5 users and more.</li><li>Fixed in 5.3.2 - The link to premium features directed to QuickFolders site, not quickFilters!</li><li> Removed experimental APIs for notifications and reading accounts that worked around <a rel=\"nofollow\" href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1710359\">Bug 1710359</a>.</li></ul>\n\n<b>Changes in 5.3.1</b>\n<ul><li>quickFilters is now compatible with Thunderbird 91, which commences the next ESR period (2021-2022).</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/67\">[issue 67]</a> Added colored icons and theme support in message filter list toolbar. </li><li>Splash screen: instead of displaying this as soon as Thunderbird installs a new version of Thunderbird, this is now available by clicking the message on the assistant button which shows the fact that quickFilters was updated.</li><li>Options are now available through Add-ons Manager / quickFilters \"Wrench Icon\".</li><li>Restricted special search methods in the filter list to licensed users only.</li><li>Added support for quickFilters Domain licenses - you can buy a domain license that can cover multiple users with a single license <a rel=\"nofollow\" href=\"http://sites.fastspring.com/quickfolders/product/quickfiltersdomainlicense\">here.</a></li></ul><b>Bug Fixes</b>\n<ul><li>The link on the registration screen in 5.3 accidentally directed to buy a QuickFolders license. This is now fixed in version 5.3.1.</li><li>The license validation didn't tell if license failing - fixed in 5.3.1</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/66\">[issue 66]</a> Fixed: On some machines, quickFilters is not loading at startup (due to accounts not loading)</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/68\">[issue 68]</a> Fixed: Moving mails with context menu moves wrong mails (it switched to mail below the selection and moved that instead). </li><li>When an invalid license was entered in version 5.3 no feedback or reason for it not working was given.</li><li>Removed experimental APIs for notifications and reading accounts that worked around <a rel=\"nofollow\" href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1710359\">Bug 1710359</a> .</li></ul><b>Localization</b>\n<ul><li>Use modern json localization format. This can avoid problems of dialogs not loading in non-English locales if a text is missing.</li><li>Completed Argentinian Locale using strings from the Spanish one.</li><li>Added Finnish, Portuguese and Polish translations (using google translate). </li></ul><b>Compatibility with Thunderbird 91</b>\n<ul><li>Fixed missing icons on sliding notification bars</li><li>Fixed style / visibility of [Buy License] button at bottom of settings dialog.</li><li>Removed deprecated fixIterator function from findInboxFromRoot() function</li><li>Using notifyTools for updating UI via background page (mail extension conversion).</li><li>Licenser code migrated into background script. </li><li>Hiding / showing the toolbar in filter list is now instant.</li><li>Removed obsolete legacy locale files.</li><li>Removed all references to the old <a rel=\"nofollow\" href=\"http://mozdev.org\">mozdev.org</a> site.</li></ul>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfilters/versions/5.3.1",
-        "version": "5.3.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfilters/versions/5.3.2",
+        "version": "5.3.2"
     },
     "default_locale": "en-US",
     "description": {
@@ -83,7 +86,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-08-05T09:34:15Z",
+    "last_updated": "2021-08-20T13:00:46Z",
     "name": {
         "ru": "quickFilters",
         "fr": "quickFilters",
@@ -515,10 +518,10 @@
     "weekly_downloads": 463,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
-            "comp68": true,
+            "comp69plus": true,
             "comp78plus": true,
+            "comp61plus": true,
             "comp78pv": true,
             "comp78pv_date": "2020-11-29T14:28:15Z",
             "comp78pv_version": "5.0",

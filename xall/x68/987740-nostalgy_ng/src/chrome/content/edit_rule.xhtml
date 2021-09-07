@@ -30,27 +30,37 @@
   <script src="chrome://nostalgy/content/edit_rule.js"/>
 
 <vbox style="width:750px">
- <groupbox>
 
-<grid flex="1">
-  <columns>
-    <column flex="0"/>
-    <column flex="1"/>
-  </columns>
 
-  <rows>
-    <row>
-      <label value="Look header(s)"/>
-      <hbox>
+  <!--  -->
+    <html:table>
+      <html:thead>
+          <html:tr>
+              <html:th colspan="2">Rule for Move/Copy Suggestions</html:th>
+          </html:tr>
+      </html:thead>
+      <html:tbody>
+          <html:tr>
+              <html:td>
+                <html:label>Look in header(s)</html:label>
+               </html:td>
+              <html:td>  
+              
+                <hbox>
       <checkbox id="sender" label="From"/>  
       <checkbox id="recipients" label="To/Cc"/>  
       <checkbox id="subject" label="Subject"/>  
       </hbox>
-   </row>
+              </html:td>
+          </html:tr>
 
-    <row>
-      <label value="for substring"/>
-      <html:input is="autocomplete-input" id="contains"
+           <html:tr>
+              <html:td>
+                <label value="for substring"/>
+  
+              </html:td>
+              <html:td>  
+       <html:input is="autocomplete-input" id="contains"
                             type="text"
                             
                             disableonsend="true"
@@ -68,11 +78,17 @@
                      
                           
                             recipienttype="addr_to"
-                            size="1"     />
-    </row>
+                            size="110"     />
+                       
+                </html:td>
+                        </html:tr>
+                            <html:tr>
+              <html:td>
+                <label value="when message is under folder"/>
+  
 
-  <row>
-    <label value="when message is under folder"/>
+              </html:td>
+              <html:td>
       <html:input is="autocomplete-input" id="underselect"
                             type="text"
                             
@@ -87,13 +103,14 @@
  
                             minresultsforpopup="2"
                             ignoreblurwhilesearching="true"
+                            placeholder="may be empty (apply rule in all folders)"
 
 
                             highlightnonmatches="true"
                             crop="center"
                             recipienttype="addr_to"
 
-                            size="70"
+                            size="110"
 
                                         
                            completeselectedindex="true"
@@ -101,14 +118,16 @@
                      
                           
 
-   />
+   />     
+   </html:td>   
+    </html:tr>
+           <html:tr>
+              <html:td>
+                <label value="then save to"/>
 
-    </row>
 
-    
-
-    <row>
-      <label value="then save to"/>
+              </html:td>
+              <html:td>  
       <html:input is="autocomplete-input" id="folderselect"
                             type="text"
                             
@@ -126,12 +145,17 @@
                      
                           
                             recipienttype="addr_to"
-                            size="70"     />
+                            size="110"     />
+              </html:td>
+          </html:tr>
 
-  </row>
-  </rows>
-</grid>
- </groupbox>
+   
+          </html:tbody>
+  </html:table>
+
+
+
+  
 
 </vbox>
 

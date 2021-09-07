@@ -2,8 +2,18 @@
 /* broke out palette piece for custom configurations */
 @import url('chrome://quickfolders/content/skin/quickfolders-widgets.css');
 /* version specific styling */
-/* @import url('chrome://quickfoldersLayout/content/quickfolders-mods.css'); */
 @import url('chrome://quickfolders/content/quickfolders-mods.css');
+
+
+/* without standard license */
+toolbar .folderBarContainer toolbarbutton[disabled="true"] {
+  background-color: rgb(70,70,70) !important;
+  background-image: none !important;
+}
+toolbar .folderBarContainer toolbarbutton[disabled="true"] label {
+  color: rgb(170,170,170) !important;
+}
+
 
 
 #QuickFolders-Toolbar toolbarbutton.popupButton {
@@ -163,6 +173,120 @@ menupopup.widerMenu menucaption {
 	color: rgb(255,255,255) !important;
 }
 
+/* help button */
+#QuickFolders-FindFolder-Help {
+  list-style-image: url("chrome://quickfolders/content/skin/ico/help-search.svg");
+  -moz-context-properties: fill;
+  fill: #0079ef; /* currentColor; */
+  padding-left: 0;
+  margin-left: -5px;
+}
+
+#QuickFolders-FindFolder-Help > image.toolbarbutton-icon {
+  height:21px;
+  transition: height 0.2s;
+}
+
+#QuickFolders-FindFolder-Help:hover {
+  /* margin-right: -4px; */
+}
+
+#QuickFolders-FindFolder-Help:hover > image.toolbarbutton-icon {
+  height:25px;
+}
+
+
+#quickMoveHelpOverlay.overlay {
+  position: fixed;
+  inset: 5px 0 0 0;
+  background: rgba(0, 0, 0, 0.25);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 1;           /* was zero */
+  pointer-events: none; /* click through */
+  z-index: 100;         /* folderpane_splitter and threadpane-splitter are 10! */
+}
+
+
+#quickMoveHelp {
+  background: #fff;
+  border: 1px solid rgba(120,120,120,0.9);
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(30,30,30,0.4);  
+  background-color: #ffffff;
+}
+
+
+#quickMoveHelp.popup {
+  border-radius: 5px;
+  float: left; /* may be needed, but really I want to shrink-wrap */
+  font-size: 1.1em;
+  margin-right: 20px;
+  max-width: 60%;
+  padding: 5px 16px;
+  pointer-events: all; /* re-activate click on close button */
+  position: relative;
+  transition: all 5s ease-in-out;
+  width: auto;
+  transform: translate3d(0, 0, 0); /* to "integrate" the arrow */
+}
+
+/* arrow on top */
+#quickMoveHelp.popup:after {
+  background: #f00;
+  border-top: 1px solid rgba(120,120,120,0.9);
+  content: "";
+  width: 13px;
+  height: 13px;
+  transform: rotate(-45deg);
+  background: #fff;
+  position: absolute;
+  z-index: -1;
+  top: -7px;
+  left: 3em;
+}
+
+
+#quickMoveHelp.popup .close {
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0px 6px 4px;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  transition: all 200ms;
+  text-decoration: none;
+}
+
+#quickMoveHelp.popup .close:hover {
+  background-color: rgba(30,30,40,0.85);
+  border-radius: 4px;
+  color: #eeeeee;
+}
+
+
+#quickMoveHelp * {
+  color: rgb(80,80,80);
+  text-align: left;
+}
+
+#quickMoveHelp h3 {
+  margin-top: 5px;
+  margin-bottom: 8px;
+}
+
+#quickMoveHelp code {
+  display: inline;
+  padding: 1px 3px;
+  font-family: consolas, Courier, monospace;
+  font-size: 11px;
+  color: rgb(20,20,20);
+  background-color: rgb(210,210,210);
+  border-radius: 2px;
+  margin: 0 3px;
+}
+
 #QuickFolders-mainPopup image, #QuickFolders-quickMove image, #filterActive image { height:16px !important; }
 
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopup:hover {
@@ -275,9 +399,10 @@ menupopup.widerMenu menucaption {
 	margin-top: 0;
 }
 
-#QuickFolders-Category-Box[mode="filter"] {
+#QuickFolders-Category-Box[mode="filter"] #QuickFolders-filterActive {
 	background-image: linear-gradient(rgba(251, 28, 3, 0.5) 0%, rgba(161, 26, 11, 0.5) 42%, rgba(138, 18, 4, 0.5) 51%, rgba(199, 24, 5,0.5) 100%);
-	color:white;
+	color:white !important;
+  border-radius: 0 !important;
 }
 
 #QuickFolders-Category-Box[mode="filter"] toolbarbutton {
@@ -331,7 +456,7 @@ menupopup.widerMenu menucaption {
 }
 
 #QuickFolders-LabelBox {
-	display: -moz-inline-box;
+	display: -moz-box; /* -moz-inline-box; */
 	/* float: left; */
 	border: 0 !important;
 	padding: 0 !important;
@@ -340,7 +465,8 @@ menupopup.widerMenu menucaption {
 }
 
 #QuickFolders-Toolbar #QuickFolders-title-label {
-	-moz-appearance: none;
+	-moz-appearance: none !important;
+  appearance: none !important;
 	background: transparent !important;
 	border-radius: 0.4em !important;
 	font-weight: bold;
@@ -356,18 +482,38 @@ menupopup.widerMenu menucaption {
 	to {box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.25);}
 }
 
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.newsflash,
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired {
+	background-color: #006EB7 !important; /* blue */
+	background-image: linear-gradient(to bottom, #0380bf 0%,#006eb7 100%) !important;
+  border-radius: 2px !important;
+}
+#QuickFolders-LabelBox #QuickFolders-title-label.newsflash {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+#QuickFolders-LabelBox #QuickFolders-title-label.expired {
+  padding-left: 2em;
+  padding-right: 2em;
+}
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.newsflash label, 
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired label {
+	color: rgb(255,255,255) !important;
+  font-size: 1.1em;
+}
+
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.newsflash:hover {
+	background-color: #ffd65e !important; /* yellow */
+	background-image: linear-gradient(to bottom, #fff65e 0%,#febf04 100%) !important;
+}
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.newsflash:hover label {
+	color: rgb(60,0,0) !important;
+}
 
 #QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired {
 	animation: quickfoldersRenew 2s 60s infinite cubic-bezier(0.66, 0, 0, 1);
 	box-shadow: 0 0 0 0 rgba(40, 40, 40, 0.0);
-	background-color: #990038 !important; /* dark purple */
-	background-image: linear-gradient(to bottom, #bf376b 0%,#990038 51%,#700029 100%) !important;
 	margin: 0 4px 1px 7px;
-	padding: 2px 3px;
-}
-
-#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired label {
-	color: rgb(245, 235, 185) !important;
 }
 
 #QuickFolders-Toolbar[brighttext="true"] #QuickFolders-title-label.expired  {
@@ -380,16 +526,23 @@ menupopup.widerMenu menucaption {
 }
 
 #QuickFolders-Toolbar #QuickFolders-title-label.expired:hover > label {
-	color: white !important;
+	color: rgb(255,250,205) !important; /* lemon chiffon */
 }
 
 
 
-#QuickFolders-Toolbar #QuickFolders-title-label:hover {
+#QuickFolders-Toolbar #QuickFolders-title-label:hover,
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired:hover:not(.newsflash) {
+  /* bright green */
 	border-color: rgb(255, 255, 255);
 	background-image: linear-gradient(to bottom, rgb(184, 211, 27) 0%, rgb(122, 166, 18) 50%, rgb(92, 138, 0) 51%, rgb(135, 181, 19) 100%) !important;
 	color: rgb(255, 255, 255);
 }
+
+#QuickFolders-title-label:hover .toolbarbutton-text {
+	color: rgb(255, 255, 255) !important;
+}
+
 
 #QuickFolders-FoldersBox {
 	/* display: inline-box;  - Tb68 only */
@@ -399,7 +552,7 @@ menupopup.widerMenu menucaption {
 	margin-bottom: 0px;
 }
 
-#QuickFolders-Instructions-Label {
+.QuickFolders-Empty-Toolbar-Label {
 	max-height:28px;
 	min-width: 85%;
 }
@@ -415,11 +568,14 @@ menupopup.widerMenu menucaption {
 
 /* CURRENT FOLDER TOOLBAR */
 /* Styles for Message Preview Navigation */
+/*
 #QuickFolders-PreviewToolbarPanel,
-#QuickFolders-PreviewToolbarPanel-ConversationView {
+#QuickFolders-PreviewToolbarPanel-ConversationView
+*/
+.QuickFolders-NavigationPanel {
 	/* background-color: transparent; */
 	background-color: var(--toolbar-bgcolor);
-    color: var(--lwt-toolbar-field-color, black);
+  color: var(--lwt-text-color, --lwt-toolbar-field-color); /* fallbck was black */
 	margin-bottom: -3px;
 	overflow-y: visible !important;
 	padding-top: 0 !important;
@@ -628,7 +784,9 @@ toolbar.quickfolders-flat #QuickFolders-Folders-Pane {
   background-color: unset;
 }
 
-
+#QuickFolders-CurrentFolderTools[theme="default"] > toolbarbutton.icon {
+  fill: rgb(30,30,30); /* silver background */
+}
 
 #QuickFolders-Toolbar toolbarbutton.icon,
 #QuickFolders-CurrentFolderTools toolbarbutton.icon,
@@ -999,59 +1157,5 @@ popup menu[label]{
 menupopup.QuickFolders-folder-popup .menu-iconic-left {
 	 visibility: visible; /* make icons always visible in gnome! */
 	 -moz-image-region: auto; /* trash inheritance */
-}
-
-
-/** notifications **/
-@keyframes quickFoldersPulse1 {to {box-shadow: 0 0 0 10px rgba(190, 80, 60, 0.1);}}
-
-xbl-notification[value="quickfolders-proFeature"] .notification-button[accesskey], /* temporary Tb 64+ */
-notification[value="quickfolders-proFeature"] .notification-button[accesskey] {
-	-moz-appearance: none;
-  animation: quickFoldersPulse1 2s infinite cubic-bezier(0.66, 0, 0, 1);
-	background-color: rgb(7, 97, 48) !important;
-	background: linear-gradient(to bottom, rgba(184,211,27,1) 0%,rgba(122,166,18,1) 50%,rgba(92,138,0,1) 51%,rgba(135,181,19,1) 100%) !important;
-	border: 1px solid white;
-	border-radius: 1px;
-	box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.5);
-	color: #FFFFFF;
-	cursor: pointer;
-	font-weight: bold;
-}
-
-xbl-notification[value="quickfolders-proFeature"] .notification-button[accesskey]:hover, /* temporary Tb 64+ */
-notification[value="quickfolders-proFeature"] .notification-button[accesskey]:hover {
-	background: linear-gradient(to bottom, #fedeb2 0%,#f1a233 46%,#eb8c07 57%,#fbba5f 100%) !important;
-	box-shadow: 1px 1px 2px -1px rgba(0, 0, 0, 0.5);
-}
-
-
-xbl-notification[value="quickfolders-proFeature"] image.messageImage, /* temporary Tb 64+ */
-notification[value="quickfolders-proFeature"] image.messageImage {
-	/* proFeature.png */
-	min-width: 72px !important;
-	width: 72px !important;
-	min-height: 32px !important;
-	height: 32px !important;
-	margin-bottom: 1em;
-}
-
-xbl-notification[value="quickfolders-proFeature"] .messageCloseButton,  /* temporary Tb 64+ */
-notification[value="quickfolders-proFeature"] .messageCloseButton {
-	min-width: 20px;
-	min-height: 20px;
-}
-
-xbl-notification[value="quickfolders-proFeature"] description.messageText, /* temporary Tb 64+ */
-notification[value="quickfolders-proFeature"] description.messageText
-{
-	white-space: normal !important;
-	height: auto;
-	word-wrap: normal;
-	overflow: auto;
-	padding-left: 2em;
-	padding-right: 2em;
-	margin-top: 1em;
-	margin-bottom: 1.5em;
 }
 

@@ -275,21 +275,29 @@ function encodeMime(aHeader, aIsEmailAddress)
 
 /**
  * Given an email address, returns an encoded header value.
- * @param aMailboxObject {Mailbox} An object with name and email properties
- * @returns              {String}  The encoded value
+ * @param aMailboxObject {Mailbox|String} An address object or string
+ * @returns              {String}         The encoded value
+ *
+ * Note: A Mailbox object has separate name and email properties.
  */
-function encodeAddress(aMailboxObject)
+function encodeAddress(aAddress)
 {
-  return encodeMime(MailServices.headerParser.makeMimeHeader([aMailboxObject], 1), true);
+  if (typeof aAddress != "string") {
+    aAddress = MailServices.headerParser.makeMimeHeader([aAddress], 1);
+  }
+  return encodeMime(aAddress, true);
 }
 
 /**
  * Given an array of email addresses, returns an encoded header value.
- * @param aMailboxObjects {Array[Mailbox]} The mailbox objects
- * @returns               {String}         The encoded value
+ * @param aMailboxObjects {Array[Mailbox]|String} The mailbox objects
+ * @returns               {String}                The encoded value
  */
 function encodeAddresses(aMailboxObjects)
 {
+  if (typeof aMailboxObjects == "string") {
+    aMailboxObjects = MailServices.headerParser.parseDecodedHeader(aMailboxObjects);
+  }
   return aMailboxObjects.map(encodeAddress).join(", ");
 }
 
@@ -426,14 +434,14 @@ function ApplyFilterHit(aFolder, aFilter, aHdr, aMsgWindow, aListener)
 
 /**
  * Wrapper adound the Copy Service to turn it into an async function.
- * @param aFolder    {nsIMsgFolder} The folder containing the messages
- * @param aMessages  {nsIArray}     The message headers
+ * @param aFolder    {nsIMsgFolder} The folder containing the message
+ * @param aMessage   {nsIMsgDBHdr}  The message to be copied
  * @param aTarget    {nsIMsgFolder} The target folder
  * @param aIsMove    {Boolean}      Whether this is a move
  * @param aMsgWindow {nsIMsgWindow}
  * @returns          {Number}       The final nsresult of the copy
  */
-async function CopyMessages(aFolder, aMessages, aTarget, aIsMove, aMsgWindow)
+async function copyMessage(aFolder, aMessage, aTarget, aIsMove, aMsgWindow)
 {
   return new Promise((resolve, reject) => {
     let listener = {
@@ -443,7 +451,13 @@ async function CopyMessages(aFolder, aMessages, aTarget, aIsMove, aMsgWindow)
       GetMessageId: function(aOutMessageId) {},
       OnStopCopy: resolve,
     };
-    MailServices.copy.CopyMessages(aFolder, aMessages, aTarget, aIsMove, listener, aMsgWindow, false);
+    if (MailServices.copy.CopyMessages) { /* COMPAT for TB 78 (bug 1612239, bug 1715433) */
+      let hdrArray = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
+      hdrArray.appendElement(aMessage);
+      MailServices.copy.CopyMessages(aFolder, hdrArray, aTarget, aIsMove, listener, aMsgWindow, false);
+    } else { /* COMPAT for TB 78 (bug 1612239, bug 1715433) */
+      MailServices.copy.copyMessages(aFolder, [aMessage], aTarget, aIsMove, listener, aMsgWindow, false);
+    } // COMPAT for TB 78 (bug 1612239, bug 1715433)
   });
 }
 
@@ -526,13 +540,19 @@ async function ResyncFolder(aFolder, aMsgWindow, aStatusFeedback, aGettingNewMes
         hdrs = [];
         if (!result.deletions) {
           // A full resync has no deletions, so assume everything was deleted.
-          database.ListAllKeys({
-            appendElement: function(key) {
-              keys.push(key);
-            },
-            setCapacity: function(capacity) {
-            },
-          });
+          /* COMPAT for TB 78 (bug 1687542) */
+          if (database.ListAllKeys) {
+            database.ListAllKeys({
+              appendElement: function(key) {
+                keys.push(key);
+              },
+              setCapacity: function(capacity) {
+              },
+            });
+          } else {
+          /* COMPAT for TB 78 (bug 1687542) */
+            keys = database.listAllKeys();
+          } // COMPAT for TB 78 (bug 1687542)
         }
       }
       for (let message of result.messages) {
@@ -697,21 +717,19 @@ async function ResyncFolder(aFolder, aMsgWindow, aStatusFeedback, aGettingNewMes
           // So instead of triggering the copies in ApplyFilterHit,
           // they are collected by the listener and we then process them here.
           if (listener.copies.length || listener.move) {
-            let hdrArray = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
-            hdrArray.appendElement(hdr);
             for (let copy of listener.copies) {
               let target = MailServices.folderLookup.getFolderForURL(copy);
               if (listener.move || listener.delete) {
-                await CopyMessages(aFolder, hdrArray, target, false, aMsgWindow);
+                await copyMessage(aFolder, hdr, target, false, aMsgWindow);
               } else {
                 // We don't need to wait for the copy to complete in this case.
-                MailServices.copy.CopyMessages(aFolder, hdrArray, target, false, null, aMsgWindow, false);
+                noAwait(copyMessage(aFolder, hdr, target, false, aMsgWindow), ex => ReportException(ex, aMsgWindow));
               }
             }
             if (listener.move) {
               let target = MailServices.folderLookup.getFolderForURL(listener.move);
               // We don't need to wait for the move to complete.
-              MailServices.copy.CopyMessages(aFolder, hdrArray, target, true, null, aMsgWindow, false);
+              noAwait(copyMessage(aFolder, hdr, target, true, aMsgWindow), ex => ReportException(ex, aMsgWindow));
             }
           }
           if (listener.delete) {
@@ -1022,6 +1040,34 @@ Folder.prototype = {
     return false;
   },
   /**
+   * Deletes this folder.
+   */
+  deleteSelf: async function(aMsgWindow) {
+    let strongThis = this.delegator.get();
+    try {
+      if (this.cppBase.flags & Ci.nsMsgFolderFlags.Virtual) {
+        this.cppBase.deleteSelf(aMsgWindow);
+        return;
+      }
+      let message = this.cppBase.isSpecialFolder(Ci.nsMsgFolderFlags.Trash, true) ? "imapDeleteNoTrash" : "imapMoveFolderToTrash";
+      if (!aMsgWindow.promptDialog.confirmEx(gStringBundle.GetStringFromName("imapDeleteFolderDialogTitle"), gStringBundle.formatStringFromName(message, [this.cppBase.name], 1), Ci.nsIPrompt.BUTTON_TITLE_IS_STRING * Ci.nsIPrompt.BUTTON_POS_0 + Ci.nsIPrompt.BUTTON_TITLE_CANCEL * Ci.nsIPrompt.BUTTON_POS_1, gStringBundle.GetStringFromName("imapDeleteFolderButtonLabel"), null, null, null, {})) { // COMPAT for TB 68 (bug 1557793)
+        // If we're already a child of Trash then this is a real delete.
+        if (this.cppBase.isSpecialFolder(Ci.nsMsgFolderFlags.Trash, true)) {
+          if (!this.cppBase.matchOrChangeFilterDestination(null, false) || this.cppBase.confirmFolderDeletionForFilter(aMsgWindow)) {
+            await CallExtension(this.cppBase.server, "DeleteFolder", { folder: this.cppBase.getStringProperty("FolderId"), parent: this.cppBase.parent.getStringProperty("FolderId"), permanent: true }, aMsgWindow);
+            this.cppBase.deleteSelf(aMsgWindow);
+          }
+        } else {
+          // Move the folder to the trash.
+          MailServices.copy.copyFolders([strongThis], this.cppBase.rootFolder.getFolderWithFlags(Ci.nsMsgFolderFlags.Trash), true, null, aMsgWindow);
+        }
+      }
+    } catch (ex) {
+      ReportException(ex, aMsgWindow);
+    }
+  },
+  /**
+   * COMPAT for TB 78 (bug 1612239)
    * Deletes folders.
    * @param aFolders   {nsIArray} The subfolders to delete (always 1 folder?)
    * @param aMsgWindow {nsIMsgWindow}
@@ -1034,23 +1080,23 @@ Folder.prototype = {
         this.cppBase.deleteSubFolders(aFolders, aMsgWindow);
         return;
       }
-      let message = this.cppBase.isSpecialFolder(Ci.nsMsgFolderFlags.Trash) ? "imapDeleteNoTrash" : "imapMoveFolderToTrash";
+      let message = this.cppBase.isSpecialFolder(Ci.nsMsgFolderFlags.Trash, true) ? "imapDeleteNoTrash" : "imapMoveFolderToTrash";
       if (!aMsgWindow.promptDialog.confirmEx(gStringBundle.GetStringFromName("imapDeleteFolderDialogTitle"), gStringBundle.formatStringFromName(message, [folder.name], 1), Ci.nsIPrompt.BUTTON_TITLE_IS_STRING * Ci.nsIPrompt.BUTTON_POS_0 + Ci.nsIPrompt.BUTTON_TITLE_CANCEL * Ci.nsIPrompt.BUTTON_POS_1, gStringBundle.GetStringFromName("imapDeleteFolderButtonLabel"), null, null, null, {})) { // COMPAT for TB 68 (bug 1557793)
         // If we're already a child of Trash then this is a real delete.
         if (this.cppBase.isSpecialFolder(Ci.nsMsgFolderFlags.Trash, true)) {
-          if (!this.cppBase.matchOrChangeFilterDestination(null, false) || this.cppBase.confirmFolderDeletionForFilter(aMsgWindow)) {
-            await CallExtension(this.cppBase.server, "DeleteFolder", { folder: folder.getStringProperty("FolderId"), parent: this.cppBase.getStringProperty("FolderId"), permanent: true }, aMsgWindow);
+          if (!folder.matchOrChangeFilterDestination(null, false) || folder.confirmFolderDeletionForFilter(aMsgWindow)) {
+            await CallExtension(this.cppBase.server, "DeleteFolder", { folder: folder.getStringProperty("FolderId"), parent: this.cppBase.getStringProperty("FolderId") }, aMsgWindow);
             this.cppBase.deleteSubFolders(aFolders, aMsgWindow);
           }
         } else {
-          // Move the folder to the trasn.
+          // Move the folder to the trash.
           MailServices.copy.CopyFolders(aFolders, this.cppBase.rootFolder.getFolderWithFlags(Ci.nsMsgFolderFlags.Trash), true, null, aMsgWindow);
         }
       }
     } catch (ex) {
       ReportException(ex, aMsgWindow);
     }
-  },
+  }, /* COMPAT for TB 78 (bug 1612239) */
   /**
    * Creates a folder.
    * @param aName      {String} The name of the new folder
@@ -1134,7 +1180,7 @@ Folder.prototype = {
     let strongThis = this.delegator.get();
     if (this.cppBase.flags & Ci.nsMsgFolderFlags.Trash) {
       try {
-        await CallExtension(this.cppBase.server, "EmptyTrash", null, aMsgWindow);
+        await CallExtension(this.cppBase.server, "EmptyTrash", { folder: this.cppBase.getStringProperty("FolderId") }, aMsgWindow);
         for (let child of this.cppBase.subFolders) {
           this.cppBase.propagateDelete(child, true, null);
         }
@@ -1161,7 +1207,7 @@ Folder.prototype = {
       if (this.cppBase.flags & Ci.nsMsgFolderFlags.Virtual) {
         this.cppBase.rename(aName, aMsgWindow);
       } else {
-        await CallExtension(this.cppBase.server, "RenameFolder", { folder: this.cppBase.getStringProperty("FolderId"), name: aName }, aMsgWindow);
+        await CallExtension(this.cppBase.server, "RenameFolder", { folder: this.cppBase.getStringProperty("FolderId"), target: this.cppBase.parent.getStringProperty("FolderId"), name: aName }, aMsgWindow);
         RenameFolder(strongThis.QueryInterface(Ci.nsIMsgFolder), aName, aMsgWindow);
       }
     } catch (ex) {
@@ -1293,7 +1339,7 @@ Folder.prototype = {
           let promise = new Promise((resolve, reject) => {
             let content = "";
             let listener = {
-              QueryInterface: ChromeUtils.generateQI([Ci.nsIStreamListener, Ci.nsIRequestObserver]),
+              QueryInterface: ChromeUtils.generateQI(["nsIStreamListener", "nsIRequestObserver"]),
               onDataAvailable: function(aRequest, aStream, aOffset, aCount) {
                 let stream = Cc["@mozilla.org/scriptableinputstream;1"].createInstance(Ci.nsIScriptableInputStream);
                 stream.init(aStream);
@@ -1334,13 +1380,21 @@ Folder.prototype = {
           aSrcFolder.deleteMessages(aMessages, aMsgWindow, true, true, null, aAllowUndo);
         }
       }
-      MailServices.copy.NotifyCompletion(aSrcFolder, strongThis, Cr.NS_OK);
+      if (MailServices.copy.NotifyCompletion) { // COMPAT for TB 78 (bug 1715433)
+        MailServices.copy.NotifyCompletion(aSrcFolder, strongThis, Cr.NS_OK); // COMPAT for TB 78 (bug 1715433)
+      } else { // COMPAT for TB 78 (bug 1715433)
+        MailServices.copy.notifyCompletion(aSrcFolder, strongThis, Cr.NS_OK);
+      } // COMPAT for TB 78 (bug 1715433)
       if (aIsMove) {
         aSrcFolder.NotifyFolderEvent("DeleteOrMoveMsgCompleted");
       }
     } catch (ex) {
       ReportException(ex, aMsgWindow);
-      MailServices.copy.NotifyCompletion(aSrcFolder, strongThis, Cr.NS_ERROR_FAILURE);
+      if (MailServices.copy.NotifyCompletion) { // COMPAT for TB 78 (bug 1715433)
+        MailServices.copy.NotifyCompletion(aSrcFolder, strongThis, Cr.NS_ERROR_FAILURE); // COMPAT for TB 78 (bug 1715433)
+      } else { // COMPAT for TB 78 (bug 1715433)
+        MailServices.copy.notifyCompletion(aSrcFolder, strongThis, Cr.NS_ERROR_FAILURE);
+      } // COMPAT for TB 78 (bug 1715433)
       if (aIsMove) {
         aSrcFolder.NotifyFolderEvent("DeleteOrMoveMsgFailed");
       }
@@ -1375,12 +1429,20 @@ Folder.prototype = {
     let strongThis = this.delegator.get();
     (async () => {
       try {
-        await CallExtension(this.cppBase.server, "MoveFolder", { folder: aSrcFolder.getStringProperty("FolderId"), target: this.cppBase.getStringProperty("FolderId") }, aMsgWindow);
+        await CallExtension(this.cppBase.server, "MoveFolder", { folder: aSrcFolder.getStringProperty("FolderId"), target: this.cppBase.getStringProperty("FolderId"), name: aSrcFolder.name }, aMsgWindow);
         let msgFolder = MoveFolder(aSrcFolder, strongThis.QueryInterface(Ci.nsIMsgFolder), aMsgWindow);
-        MailServices.copy.NotifyCompletion(aSrcFolder, msgFolder, Cr.NS_OK);
+        if (MailServices.copy.NotifyCompletion) { // COMPAT for TB 78 (bug 1715433)
+          MailServices.copy.NotifyCompletion(aSrcFolder, strongThis, Cr.NS_OK); // COMPAT for TB 78 (bug 1715433)
+        } else { // COMPAT for TB 78 (bug 1715433)
+          MailServices.copy.notifyCompletion(aSrcFolder, strongThis, Cr.NS_OK);
+        } // COMPAT for TB 78 (bug 1715433)
       } catch (ex) {
         ReportException(ex, aMsgWindow);
-        MailServices.copy.NotifyCompletion(aSrcFolder, strongThis, Cr.NS_ERROR_FAILURE);
+        if (MailServices.copy.NotifyCompletion) { // COMPAT for TB 78 (bug 1715433)
+          MailServices.copy.NotifyCompletion(aSrcFolder, strongThis, Cr.NS_ERROR_FAILURE); // COMPAT for TB 78 (bug 1715433)
+        } else { // COMPAT for TB 78 (bug 1715433)
+          MailServices.copy.notifyCompletion(aSrcFolder, strongThis, Cr.NS_ERROR_FAILURE);
+        } // COMPAT for TB 78 (bug 1715433)
       }
     })();
   },
@@ -1410,10 +1472,18 @@ Folder.prototype = {
       } else {
         this.cppBase.changeNumPendingTotalMessages(1);
       }
-      MailServices.copy.NotifyCompletion(aFile, strongThis, Cr.NS_OK);
+      if (MailServices.copy.NotifyCompletion) { // COMPAT for TB 78 (bug 1715433)
+        MailServices.copy.NotifyCompletion(aFile, strongThis, Cr.NS_OK); // COMPAT for TB 78 (bug 1715433)
+      } else { // COMPAT for TB 78 (bug 1715433)
+        MailServices.copy.notifyCompletion(aFile, strongThis, Cr.NS_OK);
+      } // COMPAT for TB 78 (bug 1715433)
     } catch (ex) {
       ReportException(ex, aMsgWindow);
-      MailServices.copy.NotifyCompletion(aFile, strongThis, Cr.NS_ERROR_FAILURE);
+      if (MailServices.copy.NotifyCompletion) { // COMPAT for TB 78 (bug 1715433)
+        MailServices.copy.NotifyCompletion(aFile, strongThis, Cr.NS_ERROR_FAILURE); // COMPAT for TB 78 (bug 1715433)
+      } else { // COMPAT for TB 78 (bug 1715433)
+        MailServices.copy.notifyCompletion(aFile, strongThis, Cr.NS_ERROR_FAILURE);
+      } // COMPAT for TB 78 (bug 1715433)
     }
   },
   /**
@@ -1434,7 +1504,7 @@ Folder.prototype = {
       }
       // We need to log in first so that the folders have been discovered.
       await CallExtension(this.cppBase.server, "EnsureLoggedIn", null, aMsgWindow);
-      if (this.cppBase.getStringProperty("FolderId")) {
+      if (!this.cppBase.isServer) {
         // Getting new messages for a single folder.
         // Resync the folder, but tell the user if there are no new messages.
         await ResyncFolder(strongThis.QueryInterface(Ci.nsIMsgFolder), aMsgWindow, aMsgWindow && aMsgWindow.statusFeedback, true, false);
@@ -1528,6 +1598,27 @@ Folder.prototype = {
     default:
       return true;
     }
+  },
+  /**
+   * COMPAT for TB 78 (bug 1701259)
+   * Called to check whether a filter refers to a folder.
+   */
+  matchOrChangeFilterDestination: function(aFolder, aCaseInsensitive) {
+    let oldURI = this.cppBase.URI;
+    let newURI = aFolder && aFolder.URI;
+    let found = false;
+    for (let server of /* COMPAT for TB 68 (bug 1614846) */toArray(MailServices.accounts.allServers, Ci.nsIMsgIncomingServer)) {
+      if (server.canHaveFilters) {
+        for (let filterList of [server.getFilterList(null), server.getEditableFilterList(null)]) {
+          let matched = filterList.matchOrChangeFilterTarget(oldURI, newURI, aCaseInsensitive);
+          if (matched) {
+            found = true;
+            filterList.saveToDefaultFile();
+          }
+        }
+      }
+    }
+    return found;
   },
   /**
    * Called to arrange the order of top-level folders.

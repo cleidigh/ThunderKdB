@@ -2,13 +2,14 @@
 	"manifest_version": 2,
 	"name": "X-Unsent support",
 	"description": "Adds support for the X-Unsent header.",
-	"version": "4.0.1",
+	"version": "4.0.2",
 	"author": "Philippe Lieser",
 	"homepage_url": "https://github.com/lieser/X-Unsent_support",
 	"applications": {
 		"gecko": {
 			"id": "X-Unsent_support@pl",
-			"strict_min_version": "78.0"
+			"strict_min_version": "78.0",
+			"strict_max_version": "90.0"
 		}
 	},
 	"background": {

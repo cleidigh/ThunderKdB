@@ -29,7 +29,7 @@
     "message": "Ik wil mijn licentie verlengen"
   },
   "btn-want-a-license": {
-    "message": "Ik wil een vergunning kopen"
+    "message": "Kies een licentie"
   },
   "btn-want-to-donate": {
     "message": "Ik wil helpen met een eenmalige donatie."
@@ -55,8 +55,14 @@
   "buyLicense.instruct": {
     "message": "Hebt u een licentie voor uzelf nodig? Neem een persoonlijke licentie. Deze is aan uw persoonlijke e-mailadres gekoppeld en kan bij verschillende installaties worden gebruikt."
   },
-  "buyPersonalLicense.button": {
-    "message": "Een persoonlijke licentie kopen!"
+  "buyProLicense.button": {
+    "message": "Koop Pro-licentie!"
+  },
+  "buyStandardLicense.button": {
+    "message": "Standaardlicentie kopen!"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "Kunt u zich de premiumfuncties niet veroorloven? Koop dan een betaalbare standaardlicentie en blijf de premiumfuncties uitproberen."
   },
   "chkComposerSubfolders": {
     "message": "Ook op submappen toepassen"
@@ -92,7 +98,7 @@
     "message": "Achtergrond"
   },
   "cssBackground.tooltip": {
-    "message": "Voer een CSS-achtergrond in, bv. linear-gradient(to bottom, rgba(254,252,234,1) 0&#37;,rgba(241,218,54,1) 100&#37;)"
+    "message": "Voer een CSS-achtergrond in, bv. linear-gradient(to bottom, rgba(254,252,234,1) 0%,rgba(241,218,54,1) 100%)"
   },
   "cssColor": {
     "message": "Tekstkleur"
@@ -157,7 +163,7 @@
     "message": "Standaardidentiteit bij het opstellen van e-mails"
   },
   "getQuickFolders": {
-    "message": "QuickFolders Pro kopen"
+    "message": "QuickFolders-licenties"
   },
   "grpComposer": {
     "message": "Standaard-e-mailvelden"
@@ -210,8 +216,41 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Bedankt voor het onlangs verlengen van uw licentie of als u heeft gedoneerd. Omdat u heeft geholpen om deze add-on toekomstbestendig te maken, kunt u dit venster eenvoudig sluiten."
   },
+  "licenseComparison" : {
+    "message": "Om de kenmerken van de verschillende versies te vergelijken, {linkStart}lees deze lijst{linkEnd}."
+  },  
+  "licenseHead": {
+    "message": "Nieuw licentiesysteem"
+  },  
+  "licenseTypes": {
+    "message": "QuickFolders biedt twee licenties, Standard en Pro; deze zijn nodig om de veranderingen in het Thunderbird-platform bij te houden en om Innovaties en reparaties van de Add-on te financieren. Omdat wijzigingen die mogelijk de extensiefunctionaliteit verbreken jaarlijks worden uitgerold, is de licentie ook 1 jaar geldig."
+  },  
   "licenseWindow.title": {
     "message": "QuickFolders Pro-licentie"
+  },
+  "license_restriced.std": {
+    "message": "Standaardlicentie - beperkte Pro-functie. Meer te weten komen…"
+  },
+  "license_restriced.unpaid": {
+    "message": "Versie zonder licentie - beperkte functie. Meer te weten komen…"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFolders heeft een Pro-licentie nodig om meer dan $maxTabs$ tabbladen te ondersteunen.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFolders heeft een licentie nodig om meer dan $maxTabs$ tabbladen te ondersteunen.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
   "mozillas-basic-platform": {
     "message": "Mozilla biedt alleen een basisplatform om onze software aan u, de eindgebruikers, te leveren. Als we onze gebruikers om betaling of ondersteuning moeten vragen, kunnen we dit niet doen vanaf addons.thunderbird.net - het is geen 'app store' met ingebouwde paywalls of licentiebeheer zoals iTunes of Google Play."
@@ -310,11 +349,11 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "Focus op berichtenlijst leggen bij wisselen van tabblad"
   },
-  "qf.checkbox.autoHideToolbar": {
-    "message": "QuickFolders verbergen wanneer onnodig"
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "Verberg QuickFolders in tabbladen met één bericht"
   },
-  "qf.checkbox.autoHideToolbar.tooltip": {
-    "message": "Vouwt de werkbalk samen in speciale tabbladen zoals agenda, inhoud, add-onbeheerder."
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "Verwijdert de QuickFolders-werkbalk in tabbladen die een enkel bericht tonen."
   },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "Knop Sluiten"
@@ -538,6 +577,9 @@
   "qf.copyfolders.tooltip": {
     "message": "De configuratie van QuickFolders-tabbladen naar het klembord kopiëren"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Thunderbird-thema"
+  },
   "qf.currentFolderBackground.custom": {
     "message": "aangepast"
   },
@@ -545,7 +587,7 @@
     "message": "donker"
   },
   "qf.currentFolderBackground.default": {
-    "message": "standaard"
+    "message": "zilver"
   },
   "qf.currentFolderBackground.translucent": {
     "message": "doorschijnend"
@@ -556,8 +598,8 @@
   "qf.currentfolder.rightSpacer": {
     "message": "Inspringing rechts:"
   },
-  "qf.description.bugzilla": {
-    "message": "Gebruik Bugzilla voor alle officiële functieaanvragen en bugrapporten"
+  "qf.description.github": {
+    "message": "Gebruik github voor alle officiële functieaanvragen en bugrapporten"
   },
   "qf.description.categoryusage": {
     "message": "U kunt dit tabblad in een categorie zetten (bv. ‘Werk’, ‘Privé’, …)."
@@ -566,7 +608,12 @@
     "message": "Klik met rechts op een tabblad om het in een of meer categorieën in te delen. Maakt een filter voor categorieën links van de tabbladen."
   },
   "qf.description.contactMe": {
-    "message": "U kunt ook persoonlijk contact met mij opnemen via axelg@gofree.indigo.ie:"
+    "message": "U kunt ook persoonlijk contact met mij opnemen via $supportMail$:",
+    "placeholders": {
+      "supportMail": {
+        "content": "$1"
+      }
+    }
   },
   "qf.description.donate": {
     "message": "Als QuickFolders u net zo bevalt als ons en de ontwikkeling ervan wilt steunen, kunt u wat geld doneren voor de verdere ontwikkeling van QuickFolders."
@@ -590,7 +637,7 @@
     "message": "De volgende items zijn experimenteel; hopelijk werken ze in de volgende versie!!"
   },
   "qf.description.languages": {
-    "message": "QuickFolders ondersteunt vertalingen - u kunt ons helpen door een vertaling toe te voegen op BabelZilla:"
+    "message": "QuickFolders ondersteunt vertalingen - u kunt ons helpen door een vertaling toe te voegen op github:"
   },
   "qf.description.linkNote": {
     "message": "Bezoek de startpagina van QuickFolders voor een gedetailleerde handleiding, tips en veelgestelde vragen:"
@@ -724,7 +771,7 @@
   "qf.label.behavior": {
     "message": "Gedrag"
   },
-  "qf.label.bugzilla": {
+  "qf.label.github": {
     "message": "Een bug melden / functie aanvragen…"
   },
   "qf.label.buttonFontSizeNumeric": {
@@ -892,6 +939,9 @@
   "qf.licenseValidation.passed": {
     "message": "Bedankt voor uw registratie van QuickFolders Pro! Alle premiumfuncties kunnen nu worden gebruikt."
   },
+  "qf.licenseValidation.standard": {
+    "message": "Bedankt voor het registreren van een QuickFolders-licentie - u helpt de add-on enorm! Als u meer functies nodig heeft, kunt u altijd upgraden naar de Pro-licentie."
+  },  
   "qf.loadConfig": {
     "message": "Configuratie laden…"
   },
@@ -955,6 +1005,9 @@
   "qf.menuitem.quickfolders.repairTreeIcons": {
     "message": "Boompictogrammen repareren"
   },
+  "qf.menuitem.quickfolders.splash" : {
+    "message": "Opstartscherm weergeven"
+  },
   "qf.menuitem.quickfolders.support": {
     "message": "QuickFolders-ondersteuning…"
   },
@@ -973,6 +1026,15 @@
   "qf.notification.dontShowAgain": {
     "message": "Dit bericht niet meer tonen"
   },
+  "qf.notification.newsFlash": {
+    "message": "$addonName$ is bijgewerkt! Belangrijk nieuws…",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "qf.notification.premium.btn.extendLicense": {
     "message": "Licentie verlengen"
   },
@@ -988,17 +1050,46 @@
   "qf.notification.premium.btn.renewLicense": {
     "message": "Licentie vernieuwen"
   },
+  "qf.notification.premium.btn.upgrade": {
+    "message": "Upgraden naar Pro"
+  },
   "qf.notification.premium.readingList": {
     "message": "U hebt nu {1} bladwijzers gedefinieerd. De gratis versie van QuickFolders staat maximaal {2} bladwijzers toe."
   },
+  "qf.notification.premium.shortcut": {
+    "message": "De premium-licentie geeft u bovendien een configureerbare sneltoets."
+  },
   "qf.notification.premium.tabIcons": {
-    "message": "U hebt nu {1} pictogrammen gedefinieerd. De gratis versie van QuickFolders staat maximaal {2} bladwijzers toe."
+    "message": "U gebruikt nu $cntIcons$ aangepaste pictogrammen voor tabbladen. De gratis versie van QuickFolders ondersteunt maximaal $maxFreeIcons$. De standaardlicentie ondersteunt $maxStdIcons$. QuickFolders Pro heeft geen limiet.",
+    "placeholders": {
+      "cntIcons": {
+        "content": "$1",
+        "example": "10"
+      },
+      "maxFreeIcons": {
+        "content": "$2",
+        "example": "5"
+      },
+      "maxStdIcons": {
+        "content": "$3",
+        "example": "12"
+      }
+    }   
   },
   "qf.notification.premium.text": {
-    "message": "{1} is een Premium-functie; registreer QuickFolders om deze permanent te gebruiken."
+    "message": "{1} is een Premium-functie, vraag een QuickFolders Pro-licentie aan om deze te gebruiken."
   },
   "qf.notification.premium.title": {
     "message": "Premium-functie"
+  },
+  "qf.notification.standard.readingList": {
+    "message": "U heeft nu {1} bladwijzers gedefinieerd. De standaardlicentie van QuickFolders staat maximaal {2} toe."
+  },
+  "qf.notification.standard.text": {
+    "message": "{1} is een functie met beperkte licentie. Vraag een QuickFolders-licentie aan om deze te gebruiken."
+  },
+  "qf.notification.standard.title": {
+    "message": "Standaardfunctie"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Individuele tabbladkleurweergave"
@@ -1028,7 +1119,7 @@
     "message": "Randen altijd weergeven"
   },
   "qf.options.versionnumber.tooltip": {
-    "message": "Klik met rechts voor versiegeschiedenis."
+    "message": "Klik om de versiegeschiedenis weer te geven."
   },
   "qf.palette.inactive": {
     "message": "Zoals inactieve tabbladen"
@@ -1100,7 +1191,7 @@
     "message": "Nieuwe map"
   },
   "qf.prompt.pasteFolders": {
-    "message": "Dit verwijdert alle QuickFolders-tabbladen en vervangt deze door de items op uw klembord.\\n{0} items gevonden op klembord.\\nWeet u het zeker?"
+    "message": "Dit verwijdert alle QuickFolders-tabbladen en vervangt deze door de items op uw klembord.\n{0} items gevonden op klembord.\nWeet u het zeker?"
   },
   "qf.prompt.pasteFolders.confirm": {
     "message": "Weergegeven tabbladen behouden?"
@@ -1109,10 +1200,10 @@
     "message": "Dit bericht verwijderen?"
   },
   "qf.prompt.readingList.searchMissingItem": {
-    "message": "Kan de e-mail niet vinden; mogelijk is deze ondertussen verplaatst.\\n{1}\\n\\nWilt u ernaar zoeken?"
+    "message": "Kan de e-mail niet vinden; mogelijk is deze ondertussen verplaatst.\n{1}\n\nWilt u ernaar zoeken?"
   },
   "qf.prompt.restoreFolders": {
-    "message": "Dit verwijdert alle QuickFolders-tabbladen en vervangt deze door de items in het bestand.\\n{0} items zijn gelezen.\\nTabbladen vervangen?"
+    "message": "Dit verwijdert alle QuickFolders-tabbladen en vervangt deze door de items in het bestand.\n{0} items zijn gelezen.\nTabbladen vervangen?"
   },
   "qf.prompt.switchDomainLicense": {
     "message": "Wisselen naar domeinlicentie?"
@@ -1151,7 +1242,7 @@
     "message": "Algemeen"
   },
   "qf.tab.gopro": {
-    "message": "QuickFolders Pro"
+    "message": "Licenties"
   },
   "qf.tab.layout": {
     "message": "Bling mijn tabbladen!"
@@ -1523,7 +1614,7 @@
     "message": ": Dit tabblad verwijst naar een ongeldige map."
   },
   "qfTidyDeadFolders": {
-    "message": "Dit verwijdert de tabbladen waaraan geen geldige mappen zijn toegewezen.\\nDit gebeurt soms als een map wordt verwijderd of verplaatst zonder dat QuickFolders hiervan op de hoogte wordt gesteld."
+    "message": "Dit verwijdert de tabbladen waaraan geen geldige mappen zijn toegewezen.\nDit gebeurt soms als een map wordt verwijderd of verplaatst zonder dat QuickFolders hiervan op de hoogte wordt gesteld."
   },
   "qfTreeIconsInvalidCount": {
     "message": "{0} ontbrekende pictogrammen"
@@ -1543,6 +1634,33 @@
   "qfVersionDisableOnUpdate": {
     "message": "Versiegeschiedenis niet meer weergeven na updates?"
   },
+  "quickMove.help.head": {
+    "message" : "Hulp voor {1}"
+  },
+  "quickMove.help.head.advanced": {
+    "message" : "Geavanceerde functies"
+  },
+  "quickMove.help.l1a": {
+    "message" : "Typ het begin van een mapnaam of woorden erin, gescheiden door spatie."
+  }, 
+  "quickMove.help.l1b": {
+    "message" : "De volgende tekens worden beschouwd als woordgrenzen en hoeven niet te worden getypt:"
+  }, 
+  "quickMove.help.l2a": {
+    "message" : "Typ {1} voor het invoeren van de grootouder/ouder/gezochte map."
+  }, 
+  "quickMove.help.l2b": {
+    "message" : "De eerste 2 letters van een bovenliggende map zijn meestal voldoende. U kunt met deze syntaxis ook nieuwe submappen maken."
+  }, 
+  "quickMove.help.l3a": {
+    "message" : "Typ {1} om tussenliggende mappen over te slaan."
+  }, 
+  "quickMove.help.l3b": {
+    "message" : "Dit is handig voor diepere, meer gecompliceerde of onbekende mappenhiërarchieën."
+  },   
+  "quickMove.help.advanced": {
+    "message" : "Meer geavanceerde functies zoals sneltoetsen om naar een map te gaan / e-mail te verplaatsen of mappen uit te sluiten van zoekresultaten kunnen worden geconfigureerd op het tabblad QuickFolders Pro. Om toegang te krijgen tot deze en andere premiumfuncties, moet u een Pro-licentie aanschaffen en de toekomst van QuickFolders ondersteunen."
+  },  
   "quickMove.singleMessage.goNext": {
     "message": "Geef de volgende e-mail weer nadat u de huidige hebt verplaatst"
   },
@@ -1592,7 +1710,33 @@
     "message": "Verleng uw licentie."
   },
   "special-offer-content": {
-    "message": "Maak QuickFolders toekomstbestendig en haal een licentie op terwijl er {boldStart} 40% korting {boldEnd} is op de prijs van QuickFolders Pro! Deze speciale aanbieding is beschikbaar tot {boldStart} 1 mei {boldEnd}."
+    "message": "Upgrade uw functies en bespaar {boldStart}$reduction${boldEnd} door een QuickFolders Pro-licentie te kopen! Deze speciale aanbieding is geldig tot {boldStart}$expirydate${boldEnd}. Of kies voor de standaardfuncties met de nieuwe {linkStart}Standaardlicentie{linkEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "22 augustus"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-upgrade": {
+    "message": "Upgrade nu van QuickFolders Standard naar Pro en bespaar {boldStart}$reduction${boldEnd}! Deze speciale aanbieding is geldig tot {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
+  "special-offer-expiry": {
+    "message": "11 september"    
   },
   "special-offer-head": {
     "message": "Maak QuickFolders toekomstbestendig!"
@@ -1671,13 +1815,13 @@
     "message": "Wat is er nieuw?"
   },
   "whats-new-head": {
-    "message": "Hoogtepunten"
+    "message": "Belangrijke wijzigingen"
   },
   "whats-new-intro": {
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1} 5.5.2 - hotfix - in Thunderbird 89 werd het optiemenu-item niet weergegeven in Add-onsbeheer {L2}{L1} 5.5.2 - hotfix voor quickMove - bovenliggende map met een onderstrepingsteken dat niet wordt voorgesteld als bovenliggende {L2}{L1} 5.5.1 - hotfix voor de functie 'Markeer mappen + submappen als gelezen' {L2}{L1} Ik heb ook Hongaarse, Vereenvoudigd Chinese en Catalaanse taalinstellingen voltooid. {L2}Deze versie breidt de quickMove-functie verder uit met de volgende functies: {L1} Single Message Tab: optie om automatisch de volgende e-mail op hetzelfde tabblad te openen na het verplaatsen van een bericht {L2} {L1} Optie om quickMove volledig te annuleren (en de lijst met berichten) met een enkele druk op ESCAPE. {L2} {L1} Geavanceerde afstemming van bovenliggende mappen door het lezen van _ en spatiescheidingstekens en deze te behandelen als het begin van een gezochte naam. {L2} {L1} Gerepareerd: mappen zoeken tijdens het bekijken berichten die worden weergegeven in zoekresultaten of uit conversaties met meerdere mappen. {L2} {L1} Deze en aanvullende functies om zoekresultaten van bepaalde accounts te beperken, kunnen worden geconfigureerd via de geavanceerde zoekinstellingen op het tabblad QuickFolders Pro. {L2}"
+    "message": "{L1}Opgelost in 5.7.2: wanneer quickFilters zijn assistent activeert, zijn alle pictogrammen links van de tabbladen wit{L2} {L1}Opgelost in 5.7.1: Bij het zoeken naar mappen met de syntaxis 'bovenliggende map/bovenliggende map/gewenste map' werd geen rekening gehouden met bovenliggende mappen met namen met één tekenlengte. {L2} {L1}QuickFolders compatibel gemaakt met Thunderbird 91.{L2}{L1}Verbeterde ondersteuning voor donkere thema's en thema's van derden, zowel in het optiescherm als voor de navigatiewerkbalk.{L2}{L1}Verbeterde zichtbaarheid van de knop [wat is er nieuw] met niet -standaard QuickFolders-thema{L2}{L1}Opgelost: soms werd de sessie gereset bij het opnieuw opstarten of na het installeren van andere add-ons of updates, zodat alle categorieën werden weergegeven.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

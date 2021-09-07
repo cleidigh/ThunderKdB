@@ -8,6 +8,11 @@
 	box-shadow: 4px 4px 3px rgba(80,80,80,0.3);
 }
 
+#actionsGrid checkbox,
+#conditionsGrid checkbox {
+  white-space: nowrap;
+}
+
 #mesquillaLink {
 	background: linear-gradient(to bottom, #67b6ce 0%,#316c8c 31%,#066dab 100%);
 	color: #FFF;
@@ -35,6 +40,10 @@
   background: linear-gradient(to bottom, #fdd8b3 0%,#fea546 31%,#f47e00 61%,#fdc589 100%);
 }
 
+div.lineSpacer {
+  display: block;
+  border-bottom: 1px solid gray;
+}
 
 .customLogo {
   margin-left: 5px;
@@ -172,8 +181,9 @@ hbox.title spacer {
 .grid-container {
   align-content: start;
   display: grid;
-  grid-row-gap: 5px;
+  grid-row-gap: 1px;
   grid-column-gap: 5px;
+  padding-top: 12px;
 }
 
 #actionsGrid,

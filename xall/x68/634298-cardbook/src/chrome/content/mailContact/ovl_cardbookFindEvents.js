@@ -4,8 +4,8 @@ if ("undefined" == typeof(ovl_cardbookFindEvents)) {
 
 	var ovl_cardbookFindEvents = {
 
-		findEventsFromEmail: function() {
-			var myEmailNode = document.popupNode.closest("mail-emailaddress");
+		findEventsFromEmail: function(emailAddressNode) {
+			var myEmailNode = emailAddressNode.closest("mail-emailaddress");
 			var myEmail = myEmailNode.getAttribute('emailAddress');
 			if (ovl_cardbookMailContacts) {
 				var isEmailRegistered = cardbookRepository.isEmailRegistered(myEmail, ovl_cardbookMailContacts.getIdentityKey());
@@ -21,8 +21,8 @@ if ("undefined" == typeof(ovl_cardbookFindEvents)) {
 			}
 		},
 
-		findAllEventsFromContact: function() {
-			var myEmailNode = document.popupNode.closest("mail-emailaddress");
+		findAllEventsFromContact: function(emailAddressNode) {
+			var myEmailNode = emailAddressNode.closest("mail-emailaddress");
 			var myEmail = myEmailNode.getAttribute('emailAddress');
 			if (ovl_cardbookMailContacts) {
 				var isEmailRegistered = cardbookRepository.isEmailRegistered(myEmail, ovl_cardbookMailContacts.getIdentityKey());

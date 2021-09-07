@@ -84,7 +84,7 @@ async function showVersion() {
         logo.src = {
             "Nextcloud": "images/nextcloud-logo.svg",
             "ownCloud": "images/owncloud-logo.svg",
-            "Unsupported": "images/management.png",
+            "Unsupported": "../../icon48.png",
         }[ncc.cloud_type];
 
         if (!ncc.cloud_supported) {
@@ -92,7 +92,7 @@ async function showVersion() {
         }
     } else {
         provider_name.textContent = '*cloud';
-        logo.src = "images/management.png";
+        logo.src = "../../icon48.png";
         cloud_version.textContent = "";
     }
 }

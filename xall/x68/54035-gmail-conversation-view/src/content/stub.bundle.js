@@ -2,7 +2,7 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 6141:
+/***/ 2707:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -10,7 +10,7 @@
 /* harmony export */   "Xh": () => (/* binding */ browser)
 /* harmony export */ });
 /* unused harmony exports i18n, initializeI18n */
-/* harmony import */ var _prefs_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4131);
+/* harmony import */ var _prefs_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3392);
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
@@ -43,7 +43,6 @@ const ALL_LOCALES = ["bg", "ca", "cs", "da", "de", "el", "en", "es", "eu", "fi",
  * This function should only be used in the dev frame. It is exported
  * to give the dev frame a way to mock a change to the UI language.
  *
- * @export
  * @param {*} resolve
  * @param {string} [locale="en"]
  */
@@ -109,7 +108,9 @@ if (!browser.storage) {
   const DEFAULT_PREFS = { ..._prefs_js__WEBPACK_IMPORTED_MODULE_0__/* .kPrefDefaults */ .i,
     // DEFAULT_PREFS is only used when browser.storage does not exist. I.e.,
     // when running in the browser in dev mode. Turn on logging in this case.
-    logging_enabled: true
+    logging_enabled: true,
+    expand_who: 4,
+    uninstall_infos: "{}"
   }; // Fake what we need from the browser storage library
 
   const _stored = {
@@ -229,6 +230,45 @@ if (!browser.conversations) {
       }
 
       return "ltr";
+    },
+
+    async getCorePref(name) {
+      switch (name) {
+        case "mail.showCondensedAddresses":
+          return false;
+
+        case "mailnews.mark_message_read.auto":
+          return true;
+
+        case "mailnews.mark_message_read.delay":
+          return false;
+      }
+
+      throw new Error("Unexpected pref");
+    },
+
+    async getFolderName(name) {
+      return "Fake/Folder";
+    },
+
+    async makeFriendlyDateAgo() {
+      return "yesterday";
+    },
+
+    async formatFileSize(size) {
+      return `${size} bars`;
+    },
+
+    async makePlural(form, string, count) {
+      return `${string} ${count}`;
+    },
+
+    async isInView() {
+      return true;
+    },
+
+    async quoteMsgHdr() {
+      return "MsgBody";
     }
 
   };
@@ -239,6 +279,13 @@ if (!browser.convCompose) {
     send(details) {
       console.log("Sending:", details);
     }
+
+  };
+}
+
+if (!browser.compose) {
+  browser.compose = {
+    async beginNew() {}
 
   };
 }
@@ -293,6 +340,36 @@ if (!browser.messageDisplay) {
   };
 }
 
+if (!browser.messages) {
+  browser.messages = {
+    async listTags() {
+      return [{
+        key: "$label1",
+        tag: "Important",
+        color: "#ff2600",
+        ordinal: ""
+      }, {
+        key: "$label2",
+        tag: "Work",
+        color: "#FF9900",
+        ordinal: ""
+      }, {
+        color: "#009900",
+        key: "$label3",
+        ordinal: "",
+        tag: "Personal"
+      }];
+    },
+
+    async get(id) {
+      return {};
+    },
+
+    async update(id) {}
+
+  };
+}
+
 if (!browser.windows) {
   browser.windows = {
     async create() {},
@@ -328,8 +405,8 @@ if (!browser.runtime) {
 
 if (!browser.contacts) {
   browser.contacts = {
-    async quickSearch(email) {
-      if (["foo@example.com", "bar@example.com"].includes(email)) {
+    async quickSearch(queryInfo) {
+      if (["foo@example.com", "bar@example.com"].includes(queryInfo.searchString)) {
         return [{
           id: "135246",
           type: "contact",
@@ -341,7 +418,7 @@ if (!browser.contacts) {
             PhotoURI: undefined
           }
         }];
-      } else if (email == "id4@example.com") {
+      } else if (queryInfo.searchString == "id4@example.com") {
         return [{
           id: "15263748",
           type: "contact",
@@ -352,7 +429,7 @@ if (!browser.contacts) {
             PhotoURI: undefined
           }
         }];
-      } else if (email == "extra@example.com") {
+      } else if (queryInfo.searchString == "extra@example.com") {
         return [{
           id: "75312468",
           type: "contact",
@@ -361,6 +438,39 @@ if (!browser.contacts) {
             DisplayName: "extra card",
             PreferDisplayName: "0",
             PhotoURI: "https://example.com/fake"
+          },
+          readOnly: true
+        }];
+      } else if (["arch@example.com", "cond@example.com"].includes(queryInfo.searchString)) {
+        return [{
+          id: "1357924680",
+          type: "contact",
+          properties: {
+            PrimaryEmail: "search@example.com",
+            SecondEmail: "second@example.com",
+            DisplayName: "search name",
+            PreferDisplayName: "1",
+            PhotoURI: undefined
+          }
+        }, {
+          id: "3216549870",
+          type: "contact",
+          properties: {
+            PrimaryEmail: "arch@example.com",
+            SecondEmail: "other@example.com",
+            DisplayName: "arch test",
+            PreferDisplayName: "1",
+            PhotoURI: undefined
+          }
+        }, {
+          id: "9753124680",
+          type: "contact",
+          properties: {
+            PrimaryEmail: "another@example.com",
+            SecondEmail: "cond@example.com",
+            DisplayName: "cond test",
+            PreferDisplayName: "1",
+            PhotoURI: undefined
           }
         }];
       }
@@ -387,7 +497,7 @@ if (!browser.contacts) {
 
 /***/ }),
 
-/***/ 8901:
+/***/ 2285:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -395,19 +505,17 @@ if (!browser.contacts) {
 /* harmony export */   "Bw": () => (/* binding */ messagesSlice)
 /* harmony export */ });
 /* unused harmony export initialMessages */
-/* harmony import */ var _reducer_summary_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3850);
-/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9829);
-/* harmony import */ var _es_modules_thunderbird_compat_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6141);
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9829);
+/* harmony import */ var _es_modules_thunderbird_compat_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2707);
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-/* global Conversation, BrowserSim, topMail3Pane */
-
+/* global BrowserSim, topMail3Pane */
 
  // Prefer the global browser object to the imported one.
 
-window.browser = window.browser || _es_modules_thunderbird_compat_js__WEBPACK_IMPORTED_MODULE_1__/* .browser */ .Xh;
+window.browser = window.browser || _es_modules_thunderbird_compat_js__WEBPACK_IMPORTED_MODULE_0__/* .browser */ .Xh;
 const initialMessages = {
   msgData: []
 };
@@ -424,159 +532,12 @@ function modifyOnlyMsgId(state, id, modifier) {
   };
 }
 
-async function getPreference(name, defaultValue) {
-  const prefs = await browser.storage.local.get("preferences");
-  return prefs?.preferences?.[name] ?? defaultValue;
-} // TODO: Once the WebExtension parts work themselves out a bit more,
-// determine if this is worth sharing via a shared module with the background
-// scripts, or if it doesn't need it.
-
-
-async function setupConversationInTab(params, isInTab) {
-  let isThreaded = params.get("isThreaded");
-  isThreaded = !!parseInt(isThreaded); // If we start up Thunderbird with a saved conversation tab, then we
-  // have no selected message. Fallback to the usual mode.
-
-  if (!isThreaded && !topMail3Pane(window).gFolderDisplay.selectedMessage) {
-    isThreaded = true;
-  }
-
-  if (window.frameElement) {
-    window.frameElement.setAttribute("tooltip", "aHTMLTooltip");
-  }
-
-  const msgUrls = params.get("urls").split(",");
-  const msgIds = [];
-
-  for (const url of msgUrls) {
-    const id = await browser.conversations.getMessageIdForUri(url);
-
-    if (id) {
-      msgIds.push(id);
-    }
-  } // It might happen that there are no messages left...
-
-
-  if (!msgIds.length) {
-    document.getElementById("messageList").textContent = browser.i18n.getMessage("message.movedOrDeletedConversation");
-  } else {
-    window.Conversations = {
-      currentConversation: null,
-      counter: 0
-    };
-    let freshConversation = new Conversation(window, // TODO: This should really become ids at some stage, but we need to
-    // teach Conversation how to handle those.
-    msgUrls, isThreaded, ++window.Conversations.counter, isInTab);
-    let browserFrame = window.frameElement; // Because Thunderbird still hasn't fixed that...
-
-    if (browserFrame) {
-      browserFrame.setAttribute("context", "mailContext");
-    }
-
-    freshConversation.outputInto(window, async function (aConversation) {
-      // This is a stripped-down version of what's in msgWindowApi.js,
-      //  make sure the two are in sync!
-      window.Conversations.currentConversation = aConversation;
-      aConversation.completed = true; // TODO: Re-enable this.
-      // registerQuickReply();
-      // That's why we saved it before...
-      // newComposeSessionByDraftIf();
-      // TODO: expandQuickReply isn't defined anywhere. Should it be?
-      // let willExpand = parseInt(params.get("willExpand"));
-      // if (willExpand)
-      //   expandQuickReply();
-      // Create a new rule that will override the default rule, so that
-      // the expanded quick reply is twice higher.
-
-      document.body.classList.add("inTab"); // Do this now so as to not defeat the whole expand/collapse
-      // logic.
-
-      if (await browser.conversations.getCorePref("mailnews.mark_message_read.auto")) {
-        const markAsReadAfterDelay = await browser.conversations.getCorePref("mailnews.mark_message_read.delay");
-        let markAsReadDelay = 0;
-
-        if (markAsReadAfterDelay) {
-          markAsReadDelay = await browser.conversations.getCorePref("mailnews.mark_message_read.delay.interval");
-        }
-
-        setTimeout(function () {
-          for (const id of msgIds) {
-            browser.messages.update(id, {
-              read: true
-            }).catch(console.error);
-          }
-        }, markAsReadDelay * 1000);
-      }
-    });
-  }
-}
-
 const messageActions = {
-  waitForStartup() {
-    return async dispatch => {
-      const params = new URL(document.location).searchParams;
-      const isInTab = params.has("urls");
-      const topWin = topMail3Pane(window);
-      await dispatch(_reducer_summary_js__WEBPACK_IMPORTED_MODULE_0__/* .summaryActions.setConversationState */ .vX.setConversationState({
-        isInTab,
-        tabId: BrowserSim.getTabId(topWin, window),
-        windowId: BrowserSim.getWindowId(topWin)
-      }));
-      const platformInfo = await browser.runtime.getPlatformInfo();
-      const browserInfo = await browser.runtime.getBrowserInfo();
-      const defaultFontSize = await browser.conversations.getCorePref("font.size.variable.x-western");
-      const browserForegroundColor = await browser.conversations.getCorePref("browser.display.foreground_color");
-      const browserBackgroundColor = await browser.conversations.getCorePref("browser.display.background_color");
-      const defaultDetailsShowing = (await browser.conversations.getCorePref("mail.show_headers")) == 2;
-      await dispatch(_reducer_summary_js__WEBPACK_IMPORTED_MODULE_0__/* .summaryActions.setSystemOptions */ .vX.setSystemOptions({
-        browserForegroundColor,
-        browserBackgroundColor,
-        defaultDetailsShowing,
-        defaultFontSize,
-        hideQuickReply: await getPreference("hide_quick_reply", false),
-        OS: platformInfo.os,
-        browserVersion: browserInfo.version
-      }));
-
-      if (!isInTab) {
-        return;
-      }
-
-      await new Promise((resolve, reject) => {
-        let tries = 0;
-
-        function checkStarted() {
-          let mainWindow = topMail3Pane(window);
-
-          if (mainWindow.Conversations && mainWindow.Conversations.finishedStartup) {
-            resolve();
-          } else {
-            // Wait up to 10 seconds, if it is that slow we're in trouble.
-            if (tries >= 100) {
-              console.error("Failed waiting for monkeypatch to finish startup");
-              reject();
-              return;
-            }
-
-            tries++;
-            setTimeout(checkStarted, 100);
-          }
-        }
-
-        checkStarted();
-      });
-      await dispatch(messageActions.initializeMessageThread({
-        isInTab: true,
-        params
-      }));
-    };
-  },
-
   getLateAttachments({
     id
   }) {
-    return async dispatch => {
-      const attachments = await browser.conversations.getLateAttachments(id);
+    return async (dispatch, getState) => {
+      const attachments = await browser.conversations.getLateAttachments(id, getState().summary.prefs.extraAttachments);
       const numAttachments = attachments.length; // This is bug 630011, remove when fixed
 
       const unknown = browser.i18n.getMessage("attachments.sizeUnknown");
@@ -592,25 +553,12 @@ const messageActions = {
         attachments[i].formattedSize = formattedSize;
       }
 
-      await dispatch(messagesSlice.actions.msgUpdateDataId({
-        msgData: {
-          attachments,
-          attachmentsPlural: await browser.conversations.makePlural(browser.i18n.getMessage("pluralForm"), browser.i18n.getMessage("attachments.numAttachments"), numAttachments),
-          id,
-          needsLateAttachments: false
-        }
+      await dispatch(messagesSlice.actions.updateAttachmentData({
+        id,
+        attachments,
+        attachmentsPlural: await browser.conversations.makePlural(browser.i18n.getMessage("pluralForm"), browser.i18n.getMessage("attachments.numAttachments"), numAttachments),
+        needsLateAttachments: false
       }));
-    };
-  },
-
-  initializeMessageThread({
-    isInTab,
-    params
-  }) {
-    return async (dispatch, getState) => {
-      if (getState().summary.isInTab) {
-        setupConversationInTab(params, isInTab).catch(console.error);
-      }
     };
   },
 
@@ -796,7 +744,7 @@ const messageActions = {
       const state = getState();
       let msgs;
 
-      if (state.summary.isInTab || (await getPreference("operate_on_conversations", false))) {
+      if (state.summary.isInTab || state.summary.prefs.operateOnConversations) {
         msgs = state.messages.msgData.map(msg => msg.id);
       } else {
         if ("getDisplayedMessages" in browser.messageDisplay) {
@@ -817,7 +765,7 @@ const messageActions = {
       const state = getState();
       let msgs;
 
-      if (state.summary.isInTab || (await getPreference("operate_on_conversations", false))) {
+      if (state.summary.isInTab || state.summary.prefs.operateOnConversations) {
         msgs = state.messages.msgData.map(msg => msg.id);
       } else {
         if ("getDisplayedMessages" in browser.messageDisplay) {
@@ -870,9 +818,9 @@ const messageActions = {
       const msg = window.Conversations.currentConversation.getMessageByApiId(id); // Turn remote content message "off", as although it has it, it can be loaded.
 
       msg.hasRemoteContent = false;
-      const msgData = await msg.toReactData();
-      dispatch(messagesSlice.actions.msgUpdateData({
-        msgData
+      dispatch(messagesSlice.actions.setHasRemoteContent({
+        id,
+        hasRemoteContent: false
       }));
     };
   },
@@ -886,9 +834,9 @@ const messageActions = {
       const msg = window.Conversations.currentConversation.getMessageByApiId(id); // Turn remote content message "off", as although it has it, it can be loaded.
 
       msg.hasRemoteContent = false;
-      const msgData = await msg.toReactData();
-      dispatch(messagesSlice.actions.msgUpdateData({
-        msgData
+      dispatch(messagesSlice.actions.setHasRemoteContent({
+        id,
+        hasRemoteContent: false
       }));
     };
   },
@@ -948,10 +896,9 @@ const messageActions = {
   }) {
     return async dispatch => {
       await browser.conversations.ignorePhishing(id);
-      await dispatch(messagesSlice.actions.msgUpdateDataId({
-        msgData: {
-          isPhishing: false
-        }
+      await dispatch(messagesSlice.actions.setPhishing({
+        id,
+        isPhishing: false
       }));
     };
   },
@@ -1029,30 +976,38 @@ const messageActions = {
   }
 
 };
-const messagesSlice = _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__/* .createSlice */ .oM({
+const messagesSlice = _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__/* .createSlice */ .oM({
   name: "messages",
   initialState: initialMessages,
   reducers: {
     /**
      * Update the message list either replacing or appending the messages.
      *
-     * @param {object} messages
+     * @param {object} state
+     * @param {object} payload
+     * @param {object} payload.payload
+     * @param {object} payload.payload.messages
      *   The messages to insert or append.
-     * @param {boolean} append
-     *   Set to true to append messages, false to replace the current conversation.
+     * @param {string} payload.payload.mode
+     *   Can be "append", "replaceAll" or "replaceMsg". replaceMsg will replace
+     *   only a single message.
      */
     updateConversation(state, {
-      payload
-    }) {
-      const {
+      payload: {
         messages,
-        append
-      } = payload;
-
-      if (append) {
+        mode
+      }
+    }) {
+      if (mode == "append") {
         return { ...state,
           msgData: state.msgData.concat(messages.msgData)
         };
+      }
+
+      if (mode == "replaceMsg") {
+        return modifyOnlyMsgId(state, messages.msgData[0].id, msg => ({ ...msg,
+          ...messages.msgData[0]
+        }));
       }
 
       return { ...state,
@@ -1078,19 +1033,37 @@ const messagesSlice = _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__/* .createSli
       };
     },
 
-    msgUpdateData(state, {
+    setHasRemoteContent(state, {
       payload
     }) {
-      return modifyOnlyMsg(state, payload.msgData.msgUri, msg => ({ ...msg,
-        ...payload.msgData
+      return modifyOnlyMsgId(state, payload.id, msg => ({ ...msg,
+        hasRemoteContent: payload.hasRemoteContent
       }));
     },
 
-    msgUpdateDataId(state, {
+    setPhishing(state, {
       payload
     }) {
-      return modifyOnlyMsgId(state, payload.msgData.id, msg => ({ ...msg,
-        ...payload.msgData
+      return modifyOnlyMsgId(state, payload.id, msg => ({ ...msg,
+        isPhishing: payload.isPhishing
+      }));
+    },
+
+    setSmimeReload(state, {
+      payload
+    }) {
+      return modifyOnlyMsgId(state, payload.id, msg => ({ ...msg,
+        smimeReload: payload.smimeReload
+      }));
+    },
+
+    updateAttachmentData(state, {
+      payload
+    }) {
+      return modifyOnlyMsgId(state, payload.id, msg => ({ ...msg,
+        attachments: payload.attachments,
+        attachmentsPlural: payload.attachmentsPlural,
+        needsLateAttachments: payload.needsLateAttachments
       }));
     },
 
@@ -1192,7 +1165,7 @@ Object.assign(messageActions, messagesSlice.actions);
 
 /***/ }),
 
-/***/ 3850:
+/***/ 3587:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -1200,18 +1173,14 @@ Object.assign(messageActions, messagesSlice.actions);
 /* harmony export */   "oj": () => (/* binding */ summarySlice)
 /* harmony export */ });
 /* unused harmony export initialSummary */
-/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(9829);
-/* harmony import */ var _contacts_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4093);
-/* harmony import */ var _reducer_messages_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8901);
-/* harmony import */ var _reducer_compose_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4978);
-/* harmony import */ var _reducer_quickReply_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5101);
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9829);
+/* harmony import */ var _conversationUtils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7029);
+/* harmony import */ var _reducer_messages_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2285);
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 /* global Conversations, getMail3Pane, topMail3Pane, printConversation */
-
-
 
 
 
@@ -1222,9 +1191,9 @@ const initialSummary = {
   defaultFontSize: 15,
   hasBuiltInPdf: false,
   hasIdentityParamsForCompose: false,
-  hideQuickReply: false,
   iframesLoading: 0,
   isInTab: false,
+  isStandalone: false,
   // TODO: What is loading used for?
   loading: true,
   OS: "win",
@@ -1232,63 +1201,102 @@ const initialSummary = {
   tenPxFactor: 0.7,
   subject: "",
   windowId: null,
-  defaultDetailsShowing: false
+  defaultDetailsShowing: false,
+  initialSet: [],
+  prefs: {
+    expandWho: 4,
+    extraAttachments: false,
+    hideQuickReply: false,
+    hideQuoteLength: 5,
+    hideSigs: false,
+    loggingEnabled: false,
+    noFriendlyDate: false,
+    operateOnConversations: false,
+    tweakBodies: true,
+    tweakChrome: true
+  }
 };
-
-async function handleShowDetails(messages, state, dispatch, updateFn) {
-  let defaultShowing = state.summary.defaultDetailsShowing;
-
-  for (let msg of messages.msgData) {
-    msg.detailsShowing = defaultShowing;
-  }
-
-  await updateFn();
-
-  if (defaultShowing) {
-    for (let msg of state.messages.msgData) {
-      await dispatch(_reducer_messages_js__WEBPACK_IMPORTED_MODULE_1__/* .messageActions.showMsgDetails */ .od.showMsgDetails({
-        id: msg.id,
-        detailsShowing: true
-      }));
-    }
-  }
-}
-
+let markAsReadTimer;
 const summaryActions = {
   /**
-   * Update a conversation either replacing or appending the messages.
-   *
-   * @param {object} [summary]
-   *   Only applies to replacing a conversation, the summary details to update.
-   * @param {object} messages
-   *   The messages to insert or append.
-   * @param {boolean} append
-   *   Set to true to append messages, false to replace the current conversation.
+   * Sets up any listeners required.
    */
-  updateConversation({
-    summary,
-    messages,
-    append
-  }) {
+  setupListeners() {
     return async (dispatch, getState) => {
-      await handleShowDetails(messages, getState(), dispatch, async () => {
-        // The messages inside `msgData` don't come with filled in `to`/`from`/ect. fields.
-        // We need to fill them in ourselves.
-        await (0,_contacts_js__WEBPACK_IMPORTED_MODULE_0__/* .mergeContactDetails */ .A)(messages.msgData);
+      function selectionChangedListener(tab) {
+        let state = getState();
 
-        if (!append) {
-          await dispatch(_reducer_compose_js__WEBPACK_IMPORTED_MODULE_2__/* .composeSlice.actions.resetStore */ .jz.actions.resetStore());
-          await dispatch(_reducer_quickReply_js__WEBPACK_IMPORTED_MODULE_3__/* .quickReplySlice.actions.setExpandedState */ .PK.actions.setExpandedState({
-            expanded: false
-          }));
-          await dispatch(summarySlice.actions.replaceSummaryDetails(summary));
+        if (state.summary.tabId != tab.id) {
+          return;
         }
 
-        return dispatch(_reducer_messages_js__WEBPACK_IMPORTED_MODULE_1__/* .messageActions.updateConversation */ .od.updateConversation({
-          messages,
-          append
+        if (markAsReadTimer) {
+          clearTimeout(markAsReadTimer);
+          markAsReadTimer = null;
+        }
+      }
+
+      function printListener(winId, msgId) {
+        let state = getState();
+
+        if (state.summary.windowId != winId) {
+          return;
+        }
+
+        if (!state.messages.msgData.find(m => m.id == msgId)) {
+          return;
+        }
+
+        browser.convMsgWindow.print(winId, `convIframe${msgId}`);
+      }
+
+      browser.messageDisplay.onMessagesDisplayed.addListener(selectionChangedListener);
+
+      if (getState().summary.hasBuiltInPdf) {
+        // Only override print on TB 91 and later.
+        browser.convMsgWindow.onPrint.addListener(printListener);
+        window.addEventListener("unload", () => {
+          browser.messageDisplay.onMessagesDisplayed.removeListener(selectionChangedListener);
+          browser.convMsgWindow.onPrint.removeListener(printListener);
+        }, {
+          once: true
+        });
+      }
+    };
+  },
+
+  /**
+   * Sets up getting user preferences for a conversation.
+   */
+  setupUserPreferences() {
+    return async (dispatch, getState) => {
+      const prefs = await browser.storage.local.get("preferences");
+
+      function setPrefs(newPrefs = {}) {
+        return dispatch(summarySlice.actions.setUserPreferences({
+          // Default is expand auto.
+          expandWho: newPrefs.preferences?.expand_who ?? 4,
+          extraAttachments: newPrefs.preferences?.extra_attachments ?? false,
+          hideQuickReply: newPrefs.preferences?.hide_quick_reply ?? false,
+          hideQuoteLength: newPrefs.preferences?.hide_quote_length ?? 5,
+          hideSigs: newPrefs.preferences?.hide_sigs ?? false,
+          loggingEnabled: newPrefs.preferences?.logging_enabled ?? false,
+          noFriendlyDate: newPrefs.preferences?.no_friendly_date ?? false,
+          operateOnConversations: newPrefs.preferences?.operate_on_conversations ?? false,
+          tweakBodies: newPrefs.preferences?.tweak_bodies ?? true,
+          tweakChrome: newPrefs.preferences?.tweak_chrome ?? true
         }));
+      }
+
+      browser.storage.onChanged.addListener(async (changed, areaName) => {
+        if (areaName != "local" || !("preferences" in changed) || !("newValue" in changed.preferences)) {
+          return;
+        }
+
+        const newPrefs = await browser.storage.local.get("preferences");
+        setPrefs(newPrefs);
       });
+      await setPrefs(prefs);
     };
   },
 
@@ -1306,6 +1314,7 @@ const summaryActions = {
   },
 
   sendEmail({
+    msgId,
     name,
     email
   }) {
@@ -1317,15 +1326,18 @@ const summaryActions = {
       });
 
       if (state.summary.hasIdentityParamsForCompose) {
-        // Ideally we should use the displayed folder, but the displayed message
-        // works fine, as we'll only
-        let tab = await browser.mailTabs.query({
-          active: true,
-          currentWindow: true
-        });
-        let account = await browser.accounts.get(tab[0].displayedFolder.accountId);
+        let msg = getState().messages.msgData.find(m => m.id == msgId);
+        let account = await browser.accounts.get(msg.folderAccountId);
+        let identityId;
+
+        if (!account) {
+          identityId = (await browser.accounts.list())[0].identityId;
+        } else {
+          identityId = account.identities[0]?.id;
+        }
+
         await browser.compose.beginNew({
-          identityId: account.identities[0]?.id,
+          identityId,
           to: dest
         });
       } else {
@@ -1398,9 +1410,10 @@ const summaryActions = {
   },
 
   forwardConversation() {
-    return async () => {
+    return async (dispay, getState) => {
       try {
-        await Conversations.currentConversation.forward();
+        let state = getState();
+        await _conversationUtils_js__WEBPACK_IMPORTED_MODULE_0__/* .conversationUtils.forward */ .c.forward(state.summary.tabId, state.messages.msgData);
       } catch (e) {
         console.error(e);
       }
@@ -1420,12 +1433,8 @@ const summaryActions = {
       // and move on.
 
 
-      const {
-        summary
-      } = getState();
-
-      if (summary.conversation?.getMessage) {
-        const msg = summary.conversation.getMessage(msgUri);
+      if (Conversations.currentConversation?.getMessage) {
+        let msg = Conversations.currentConversation.getMessage(msgUri);
 
         if (msg) {
           msg.postStreamMessage(topMail3Pane(window), iframe);
@@ -1444,22 +1453,67 @@ const summaryActions = {
         dispatch(summarySlice.actions.incIframesLoading());
       }
 
-      const {
-        summary
-      } = getState();
-      let message = summary.conversation.getMessage(msgUri); // The message might not be found, if so it has probably been deleted from
+      let msg = Conversations.currentConversation.getMessage(msgUri); // The message might not be found, if so it has probably been deleted from
       // under us, so just continue and not blow up.
 
-      if (message) {
-        message.streamMessage(topMail3Pane(window).msgWindow, docshell);
+      if (msg) {
+        msg.streamMessage(topMail3Pane(window).msgWindow, docshell);
       } else {
         console.warn("Could not find message for streaming", msgUri);
+      }
+    };
+  },
+
+  setMarkAsRead() {
+    return async (dispatch, getState) => {
+      let state = getState();
+      let autoMarkRead = await browser.conversations.getCorePref("mailnews.mark_message_read.auto");
+
+      if (autoMarkRead) {
+        let delay = 0;
+        let shouldDelay = await browser.conversations.getCorePref("mailnews.mark_message_read.delay");
+
+        if (shouldDelay) {
+          delay = (await browser.conversations.getCorePref("mailnews.mark_message_read.delay.interval")) * 1000;
+        }
+
+        markAsReadTimer = setTimeout(async function () {
+          markAsReadTimer = null;
+
+          if (state.summary.initialSet.length > 1) {
+            // If we're selecting a thread, mark thee whole conversation as read.
+            // Note: if two or more in different threads are selected, then
+            // the conversation UI is not used. Hence why this is ok to do here.
+            if (state.summary.prefs.loggingEnabled) {
+              console.debug("Marking the whole conversation as read");
+            }
+
+            for (let msg of state.messages.msgData) {
+              if (!msg.read) {
+                await dispatch(_reducer_messages_js__WEBPACK_IMPORTED_MODULE_1__/* .messageActions.markAsRead */ .od.markAsRead({
+                  id: msg.id
+                }));
+              }
+            }
+          } else {
+            // We only have a single message selected, mark that as read.
+            if (state.summary.prefs.loggingEnabled) {
+              console.debug("Marking selected message as read");
+            } // We use the selection from the initial set, just in case something
+            // changed before we hit the timer.
+
+
+            await dispatch(_reducer_messages_js__WEBPACK_IMPORTED_MODULE_1__/* .messageActions.markAsRead */ .od.markAsRead({
+              id: state.summary.initialSet[0]
+            }));
+          }
+        }, delay);
       }
     };
   }
 
 };
-const summarySlice = _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_4__/* .createSlice */ .oM({
+const summarySlice = _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__/* .createSlice */ .oM({
   name: "summary",
   initialState: initialSummary,
   reducers: {
@@ -1481,11 +1535,13 @@ const summarySlice = _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_4__/* .createSlic
     }) {
       const {
         isInTab,
+        isStandalone,
         tabId,
         windowId
       } = payload;
       return { ...state,
         isInTab,
+        isStandalone,
         tabId,
         windowId
       };
@@ -1500,8 +1556,7 @@ const summarySlice = _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_4__/* .createSlic
         browserBackgroundColor,
         defaultFontSize,
         defaultDetailsShowing,
-        browserVersion,
-        hideQuickReply
+        browserVersion
       } = payload;
       let tenPxFactor = 0.625;
 
@@ -1518,11 +1573,22 @@ const summarySlice = _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_4__/* .createSlic
         defaultFontSize,
         defaultDetailsShowing,
         // Thunderbird 81 has built-in PDF viewer.
+        // Note: the logic here is the wrong way around, but not bothering
+        // to change that on the 3.2+ branch.
         hasBuiltInPdf: mainVersion >= 81,
         hasIdentityParamsForCompose: mainVersion > 78 || mainVersion == 78 && minorVersion >= 6,
-        hideQuickReply,
         OS,
         tenPxFactor
+      };
+    },
+
+    setUserPreferences(state, {
+      payload
+    }) {
+      return { ...state,
+        prefs: { ...state.prefs,
+          ...payload
+        }
       };
     },
 
@@ -1548,7 +1614,7 @@ globalThis.conversationSummaryActions = summaryActions;
 
 /***/ }),
 
-/***/ 4993:
+/***/ 5283:
 /***/ ((__unused_webpack___webpack_module__, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 
@@ -1561,15 +1627,15 @@ var redux_toolkit_esm = __webpack_require__(9829);
 // EXTERNAL MODULE: ./node_modules/react-redux/es/index.js
 var es = __webpack_require__(533);
 // EXTERNAL MODULE: ./node_modules/redux/es/redux.js + 2 modules
-var redux = __webpack_require__(8676);
+var redux = __webpack_require__(8531);
 // EXTERNAL MODULE: ./addon/content/reducer/reducer-compose.js
-var reducer_compose = __webpack_require__(4978);
+var reducer_compose = __webpack_require__(6000);
 // EXTERNAL MODULE: ./addon/content/reducer/reducer-messages.js
-var reducer_messages = __webpack_require__(8901);
+var reducer_messages = __webpack_require__(2285);
 // EXTERNAL MODULE: ./addon/content/reducer/reducer-summary.js
-var reducer_summary = __webpack_require__(3850);
+var reducer_summary = __webpack_require__(3587);
 // EXTERNAL MODULE: ./addon/content/reducer/reducer-quickReply.js
-var reducer_quickReply = __webpack_require__(5101);
+var reducer_quickReply = __webpack_require__(9837);
 ;// CONCATENATED MODULE: ./addon/content/reducer/reducer.js
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -1608,8 +1674,8 @@ function printConversation(event) {
 
   oldPrint();
 }
-// EXTERNAL MODULE: ./addon/content/components/conversation/conversationWrapper.jsx + 19 modules
-var conversationWrapper = __webpack_require__(5908);
+// EXTERNAL MODULE: ./addon/content/components/conversation/conversationWrapper.jsx + 23 modules
+var conversationWrapper = __webpack_require__(3951);
 ;// CONCATENATED MODULE: ./addon/content/stub.js
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -1626,21 +1692,7 @@ var conversationWrapper = __webpack_require__(5908);
 document.addEventListener("DOMContentLoaded", () => {
   conversationStore = redux_toolkit_esm/* configureStore */.xC({
     reducer: conversationApp,
-    // XXX bug #1461. Remove this code when that bug is resolved.
-    //
-    // By default RTK includes the serializableCheck
-    // Redux middleware which makes sure the Redux state
-    // and all Redux actions are serializable. We want this to
-    // be the case in the long run, but there are a few places
-    // where it will take more work to eliminate the non-serializable
-    // data. As a temporary workaround, exclude that data from the
-    // checks.
-    middleware: redux_toolkit_esm/* getDefaultMiddleware */.Bx({
-      serializableCheck: {
-        ignoredActions: ["summary/replaceSummaryDetails"],
-        ignoredPaths: ["summary.conversation"]
-      }
-    })
+    middleware: redux_toolkit_esm/* getDefaultMiddleware */.Bx()
   }); // Once we can potentially load in a WebExtension scope, then we should
   // be able to remove this.
 
@@ -1710,7 +1762,8 @@ document.addEventListener("DOMContentLoaded", () => {
 /******/ 				}
 /******/ 				if(fulfilled) {
 /******/ 					deferred.splice(i--, 1)
-/******/ 					result = fn();
+/******/ 					var r = fn();
+/******/ 					if (r !== undefined) result = r;
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
@@ -1802,7 +1855,7 @@ document.addEventListener("DOMContentLoaded", () => {
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [415,800,50,978,859], () => (__webpack_require__(4993)))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [415,928,50,978,48], () => (__webpack_require__(5283)))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

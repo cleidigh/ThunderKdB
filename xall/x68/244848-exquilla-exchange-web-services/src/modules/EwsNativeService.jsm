@@ -33,7 +33,7 @@ function EwsNativeService() {
 }
 
 EwsNativeService.prototype = {
-  QueryInterface: ChromeUtils.generateQI([Ci.nsIObserver]),
+  QueryInterface: ChromeUtils.generateQI(["nsIObserver"]),
 
   getExistingMailbox(aServerURI) {
     for (let mailbox of gMailboxes) {

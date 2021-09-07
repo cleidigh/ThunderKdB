@@ -69,6 +69,10 @@
 #smallicons {
   display: initial;
 }
+/* don't restore the small icons checkbox for the cardbook toolbar */
+[toolboxId="cardbook-toolbox"] #smallicons {
+  display: none;
+}
 
 /* ::::: primary toolbar buttons ::::: */
 
@@ -161,10 +165,11 @@ toolbox[labelalign="end"] > toolbar[mode="full"] deck .toolbarbutton-text {
   list-style-image: url("./icons/button-replylist.png");
 }
 
+#mhcFwdAs,
 #hdrForwardButton,
 #hdrDualForwardButton,
 #button-forward {
-  list-style-image: url("./icons/button-forward.png");
+  list-style-image: url("./icons/button-forward.png") !important;
 }
 
 #hdrTrashButton,
@@ -182,8 +187,9 @@ toolbox[labelalign="end"] > toolbar[mode="full"] deck .toolbarbutton-text {
   list-style-image: url("./icons/button-isJunk.png");
 }
 
+#mhcPrint,
 #button-print {
-  list-style-image: url("./icons/button-print.png");
+  list-style-image: url("./icons/button-print.png") !important;
 }
 
 #button-stop {
@@ -206,9 +212,14 @@ toolbox[labelalign="end"] > toolbar[mode="full"] deck .toolbarbutton-text {
   list-style-image: url("./icons/button-mark.png");
 }
 
+#mhcStar {
+  list-style-image: url("./icons/star.png") !important;
+}
+
+#mhcTag,
 #hdrTagButton,
 #button-tag {
-  list-style-image: url("./icons/button-tag.png");
+  list-style-image: url("./icons/button-tag.png") !important;
 }
 
 #button-goback, #button-goforward[chromedir="rtl"] {
@@ -236,9 +247,10 @@ toolbox[labelalign="end"] > toolbar[mode="full"] deck .toolbarbutton-text {
   list-style-image: url("./icons/button-appmenu.png");
 }
 
+#mhcConv,
 #hdrOpenConversationButton,
 #button-showconversation {
-  list-style-image: url("./icons/button-showconversation.png");
+  list-style-image: url("./icons/button-showconversation.png") !important;
 }
 
 .button-appmenu .toolbarbutton-text,
@@ -279,6 +291,11 @@ toolbar[iconsize="small"] .toolbarbutton-1 .toolbarbutton-icon,
 }
 
 #mail-bar3[iconsize="small"] .toolbarbutton-1 .toolbarbutton-icon {
+  min-width: 20px;
+  min-height: 20px;
+}
+
+#mail-bar3[iconsize="small"] .button-appmenu .toolbarbutton-icon {
   min-width: 18px;
   min-height: 18px;
 }
@@ -287,9 +304,11 @@ toolbar[iconsize="small"] .toolbarbutton-1 .toolbarbutton-icon,
   display: none;
 }
 
+/*
 toolbar[iconsize="small"] .button-appmenu {
   list-style-image: url("./icons/button-appmenu-small.png");
 }
+*/
 
 /* ::::: end small primary toolbar buttons ::::: */
 

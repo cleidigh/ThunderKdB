@@ -12,7 +12,7 @@ class popup {
         this._openPopup(errorPopup,
             browser.i18n.getMessage(`error_${err_id}`, Array.from(arguments).slice(1)) ||
             // No message for this error, show the default one
-            browser.i18n.getMessage('error_0'));
+            browser.i18n.getMessage('error_0', err_id));
     }
 
     /**

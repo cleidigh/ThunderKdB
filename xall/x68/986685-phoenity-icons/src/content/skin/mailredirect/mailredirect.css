@@ -1,21 +1,14 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
- 
+
 #hdrMailredirectButton,
 #mailredirect-toolbarbutton,
 #mailredirect-toolbarbutton:hover,
-#mailredirect-toolbarbutton[disabled="true"]{
+#mailredirect-toolbarbutton[disabled="true"],
+#simplemailredirection_ggbs_de-browserAction-toolbarbutton,
+#simplemailredirection_ggbs_de-messageDisplayAction-toolbarbutton {
   list-style-image: url("mailredirect-large.png") !important;
-  -moz-image-region: rect(0 24px 24px 0) !important;
-}
-
-toolbar[iconsize="small"] #hdrMailredirectButton,
-toolbar[iconsize="small"] #mailredirect-toolbarbutton,
-toolbar[iconsize="small"] #mailredirect-toolbarbutton:hover,
-toolbar[iconsize="small"] #mailredirect-toolbarbutton[disabled="true"] {
-  list-style-image: url("mailredirect-small.png") !important;
-  -moz-image-region: rect(0 16px 16px 0) !important;
 }
 
 #bounceMailsLabel {
@@ -30,7 +23,7 @@ toolbar[iconsize="small"] #mailredirect-toolbarbutton[disabled="true"] {
 /* ..... subject column, mail ..... */
 
 tree > treechildren::-moz-tree-image(subjectCol, kw-redirected) {
-  list-style-image: url("mailredirect-icons.png");
+  list-style-image: url("mailredirect-small.png");
   -moz-image-region: rect(0 16px 16px 0);
 }
 

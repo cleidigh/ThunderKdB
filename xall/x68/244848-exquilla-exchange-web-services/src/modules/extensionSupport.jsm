@@ -4,6 +4,10 @@
 
 // Customzied by R. Kent James to use in loading prefs during testing.
 
+//////////////////
+// This file is used only by unit tests and not by the actual extension code
+//////////////////
+
 this.EXPORTED_SYMBOLS = [ "loadAddonPrefs" ];
 
 const { classes: Cc, Constructor: CC, interfaces: Ci, utils: Cu, Exception: CE, results: Cr, } = Components;
@@ -12,7 +16,6 @@ var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 // var { Deprecated } = ChromeUtils.import("resource://gre/modules/Deprecated.jsm") - needed for warning.
 var { NetUtil } = ChromeUtils.import("resource://gre/modules/NetUtil.jsm");
 
-var { fixIterator } = ChromeUtils.import("resource:///modules/iteratorUtils.jsm");
 try { // COMPAT for TB 68
 var { IOUtils } = ChromeUtils.import("resource:///modules/IOUtils.jsm");
 } catch (ex) { /* COMPAT for TB 68 */
@@ -72,7 +75,7 @@ var { IOUtils } = ChromeUtils.import("resource:///modules/IOUtils.js");
       if (!prefFile.exists() || !prefFile.isDirectory())
         return [];
 
-      for (let file of fixIterator(prefFile.directoryEntries, Ci.nsIFile)) {
+      for (let file of prefFile.directoryEntries) {
         if (file.isFile() && file.leafName.toLowerCase().endsWith(".js")) {
           foundPrefStrings.push(IOUtils.loadFileToString(file));
         }

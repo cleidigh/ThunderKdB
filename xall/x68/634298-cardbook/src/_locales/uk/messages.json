@@ -2909,6 +2909,9 @@
 	"wdw_cardEditionViewListTitle": {
 		"message": "Переглянути список"
 	},
+	"wdw_cardEditionEditTemplateTitle": {
+		"message": "Змінити шаблон"
+	},
 	"wdw_cardbookPrintTitleLong": {
 		"message": "Попередній перегляд $P1$ - Контакти - Thunderbird",
         "placeholders": {
@@ -3563,20 +3566,20 @@
 	"cardbookContactPaneItemAccesskey": {
 		"message": "к"
 	},
+	"wizard.next.label": {
+		"message": "Наступна"
+	},	
+	"wizard.back.label": {
+		"message": "Назад"
+	},	
+	"wizard.create.label": {
+		"message": "Створити"
+	},
 	"wizard.title": {
 		"message": "Додайте нову адресну книгу"
 	},
-	"wizard.label": {
-		"message": "Додайте нову адресну книгу"
-	},
-	"welcomePage.wizard.description": {
-		"message": "Вітаємо"
-	},
 	"welcomePage.description": {
 		"message": "??It seems that this is the first time CardBook has been run. CardBook will attempt to collect contacts from Thunderbird’s standard address books and remote address books.??"
-	},
-	"initialPage.wizard.description": {
-		"message": "Розташування нової адресної книги."
 	},
 	"initialPage.description": {
 		"message": "Розташування адресної книги:"
@@ -3595,9 +3598,6 @@
 	},
 	"initialPage.find.label": {
 		"message": "??Search for remote address books??"
-	},
-	"localPage.wizard.description": {
-		"message": "Тип і місце розташування нової локальної адресної книги."
 	},
 	"localPage.type.description": {
 		"message": "Тип локальної адресної книги:"
@@ -3632,9 +3632,6 @@
 	"localPage.uributton.label": {
 		"message": "Вибрати"
 	},
-	"remotePage.wizard.description": {
-		"message": "Тип і розташування нової віддаленої адресної книги."
-	},
 	"remotePage.description": {
 		"message": "Який тип вашої віддаленої адресної книги? (Увага: Гугл НЕ відповідає стандартам Особиста картка «vCard»)"
 	},
@@ -3646,6 +3643,9 @@
 	},
 	"remotePage.google.label": {
 		"message": "Гугл"
+	},
+	"remotePage.googleWorkspace.label": {
+		"message": "Google Workspace"
 	},
 	"remotePage.apple.label": {
 		"message": "Яблучний"
@@ -3671,14 +3671,14 @@
 	"remotePage.password.label": {
 		"message": "Пароль:"
 	},
+	"rememberPassword": {
+		"message": "Використовувати Менеджер паролів, щоб запам’ятати цей пароль"
+	},
 	"showHidePassword.tooltip": {
 		"message": "Показати/Приховати пароль"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Підтвердження"
-	},
-	"locationSearchPage.wizard.description": {
-		"message": "Віртуальну теку визначень"
 	},
 	"locationSearchPage.label": {
 		"message": "Віртуальну теку"
@@ -3704,9 +3704,6 @@
 	"googleOauthPage.wizard.description": {
 		"message": "Аутентифікація Гугл"
 	},
-	"namePage.wizard.description": {
-		"message": "Властивості адресної книги"
-	},
 	"namePage.selected.label": {
 		"message": "Вибрано"
 	},
@@ -3725,17 +3722,11 @@
 	"namePage.vCardVersion.label": {
 		"message": "Особиста картка «vCard»"
 	},
-	"namesPage.wizard.description": {
-		"message": "Властивості адресної книги"
-	},
 	"namesPage.name.label": {
 		"message": "Імена"
 	},
 	"namesPage.name.description": {
 		"message": "Виявлено кілька адресних книг. Виберіть, які адресні книги ви хочете відкрити, і їхні імена :"
-	},
-	"findPage.wizard.description": {
-		"message": "??Remote address book search??"
 	},
 	"findPage.name1.description": {
 		"message": "??No remote address books found.??"
@@ -3745,9 +3736,6 @@
 	},
 	"findPage.name3.description": {
 		"message": "??Multiple remote address books found. Validate remote address books to add:??"
-	},
-	"finishPage.wizard.description": {
-		"message": "??Address books configuration??"
 	},
 	"finishPage.description": {
 		"message": "Ваша нова адресна книга була успішно налаштована."
@@ -5117,6 +5105,12 @@
 	"cardbookToolbarAddListButtonTooltip": {
 		"message": "Новий список розсилки"
 	},
+	"cardbookToolbarAddTemplateButtonLabel": {
+		"message": "??New Template??"
+	},
+	"cardbookToolbarAddTemplateButtonTooltip": {
+		"message": "??Create a new template??"
+	},
 	"cardbookToolbarEditButtonLabel": {
 		"message": "Змінити"
 	},
@@ -5315,6 +5309,15 @@
 	"searchForLocalKeyEditButton.tooltip": {
 		"message": "Імпортувати з файлу"
 	},
+	"definitionLabel": {
+		"message": "Визначений"
+	},
+	"fieldsLabel": {
+		"message": "??Fields??"
+	},
+	"formulasLabel": {
+		"message": "??Formulas??"
+	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Поділіться електронною поштою"
 	},
@@ -5462,6 +5465,9 @@
 	"fnFormulaExplanation": {
 		"message": "Можна налаштувати спосіб, у який Контакти генерує своє відображення. Ця формула складається з блоків, що містяться в «()». ??In these blocks there might be many parts delimited by «|».??"
 	},
+	"templateFormulaExplanation": {
+		"message": "??It is possible to define templates with pre-defined fields. For example one may define a template with the email ”({{2}}).({{4}})@mycompany.org”. Once applied to a contact that has ”John” and ”Doe” as given name and family name, an email ”john.doe@mycompany.org” will be added to the contact.??"
+	},
 	"formulaExplanation1": {
 		"message": "??({{1}}|{{2}}) : If {{1}} is empty, then the block will be replaced by {{2}}.??"
 	},
@@ -5500,12 +5506,6 @@
 	},
 	"displayFieldNamesAccesskey": {
 		"message": "п"
-	},
-	"displayTypesLabel": {
-		"message": "Типи та уподобання"
-	},
-	"displayTypesAccesskey": {
-		"message": "Т"
 	},
 	"fieldsToPrintGroupboxLabel": {
 		"message": "Що друкувати"
@@ -5698,6 +5698,12 @@
 	},
 	"saveTemplateLabel": {
 		"message": "Зберегти шаблон"
+	},
+	"applyTemplateLabel": {
+		"message": "??Apply template??"
+	},
+	"createTemplateLabel": {
+		"message": "??Create template??"
 	},
 	"convertVCardsLabel": {
 		"message": "??Convert vCards??"

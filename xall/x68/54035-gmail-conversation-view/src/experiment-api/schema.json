@@ -29,20 +29,15 @@
         ]
       },
       {
-        "name": "setPref",
+        "name": "startup",
         "type": "function",
-        "description": "Temporary. Sets a conversation preference.",
+        "description": "Temporary. Does the necessary work to start conversations",
         "async": true,
         "parameters": [
           {
-            "name": "name",
-            "type": "string",
-            "description": "The preference name"
-          },
-          {
-            "name": "value",
-            "type": "any",
-            "description": "The preference value"
+            "name": "loggingEnabled",
+            "type": "boolean",
+            "description": "Whether or not to enable logging."
           }
         ]
       },
@@ -66,6 +61,12 @@
             "items": {
               "type": "string"
             }
+          },
+          {
+            "name": "uninstallInfos",
+            "type": "string",
+            "description": "Any existing uninstall information",
+            "optional": true
           }
         ]
       },
@@ -74,7 +75,14 @@
         "type": "function",
         "description": "Removes the installed customizations.",
         "async": true,
-        "parameters": []
+        "parameters": [
+          {
+            "name": "uninstallInfos",
+            "type": "string",
+            "description": "Any existing uninstall information",
+            "optional": true
+          }
+        ]
       },
       {
         "name": "getMessageIdForUri",
@@ -205,6 +213,11 @@
             "name": "id",
             "type": "integer",
             "description": "The message id to get data for."
+          },
+          {
+            "name": "extraAttachments",
+            "type": "boolean",
+            "description": "Whether or not to include extra attachments"
           }
         ]
       },
@@ -478,6 +491,37 @@
             "name": "date",
             "type": "integer",
             "description": "The date in milliseconds."
+          }
+        ]
+      },
+      {
+        "name": "isInView",
+        "type": "function",
+        "description": "Determines if the message is in the view for the current tab.",
+        "async": true,
+        "parameters": [
+          {
+            "name": "tabId",
+            "type": "integer",
+            "description": "The tab id."
+          },
+          {
+            "name": "msgId",
+            "type": "integer",
+            "description": "The message id."
+          }
+        ]
+      },
+      {
+        "name": "quoteMsgHdr",
+        "type": "function",
+        "description": "Use the mailnews component to stream a message, and process it in a way that's suitable for quoting (strip signature, remove images, stuff like that).",
+        "async": true,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "integer",
+            "description": "The message id to quote."
           }
         ]
       }

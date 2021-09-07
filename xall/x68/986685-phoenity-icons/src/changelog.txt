@@ -1,10 +1,26 @@
 Changelog for Phoenity Icons
 
+3.4
+Fixed min/max/close buttons for Thunderbird 91 on Linux.
+Fixed Today Pane button for Thunderbird 91.
+
+3.3
+Fixed minimum row height for Thunderbird 91.
+
+3.2
+Improved support for Cardbook, Cardbook toolbar now uses fixed icon size.
+Improved format toolbar button icons, added Remove Text Styling button.
+Improved support for large & small icons, increased small icon size.
+
+3.1
+Updated WindowListener API to 1.56, this fixes the icons for Thunderbird 91.
+
 3.0
 First release for Thunderbird 78, migrated using the WindowListener API.
 Restored the icon size option in the "Customize Toolbar" dialogs.
-Limited support for extensions (Cardbook, uBlockOrigin, Mail Redirect).
-Icon size is not always persistent (Cardbook).
+Supports some extensions (Cardbook, uBlockOrigin, Mail Redirect).
+Icon size is not persistent for all toolbars (Cardbook).
+Supports more extensions (Message Header Toolbar Customize, Simple Mail Redirection).
 
 2.9
 Tweaked the numberbox appearance.

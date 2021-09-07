@@ -21,9 +21,9 @@ if ("undefined" == typeof(cardbookActions)) {
 			cardbookRepository.cardbookPreferences.setStringPref("extensions.cardbook.currentUndoId", cardbookRepository.currentUndoId);
 		},
 
-		addUndoCardsAction: function (aActionCode, aActionMessage, aOldCards, aNewCards, aOldCats, aNewCats) {
+		addUndoCardsAction: async function (aActionCode, aActionMessage, aOldCards, aNewCards, aOldCats, aNewCats) {
 			let myNextUndoId = cardbookRepository.currentUndoId + 1;
-			cardbookIDBUndo.addUndoItem(myNextUndoId, aActionCode, aActionMessage, aOldCards, aNewCards, aOldCats, aNewCats, false);
+			await cardbookIDBUndo.addUndoItem(myNextUndoId, aActionCode, aActionMessage, aOldCards, aNewCards, aOldCats, aNewCats, false);
 		},
 
 		undo: function () {
@@ -257,10 +257,10 @@ if ("undefined" == typeof(cardbookActions)) {
 			if (cardbookRepository.currentAction[aActionId]) {
 				cardbookActions.lTimerActionAll[aActionId] = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);
 				var lTimerActions = cardbookActions.lTimerActionAll[aActionId];
-				lTimerActions.initWithCallback({ notify: function(lTimerActions) {
+				lTimerActions.initWithCallback({ notify: async function(lTimerActions) {
 					var myAction = cardbookRepository.currentAction[aActionId];
 					if (myAction.totalCards == myAction.doneCards && myAction.totalCats == myAction.doneCats) {
-						cardbookActions.endAction(aActionId);
+						await cardbookActions.endAction(aActionId);
 						lTimerActions.cancel();
 					}
 				}
@@ -268,13 +268,13 @@ if ("undefined" == typeof(cardbookActions)) {
 			}
 		},
 
-		endAction: function (aActionId, aForceRefresh) {
+		endAction: async function (aActionId, aForceRefresh) {
 			if (cardbookRepository.currentAction[aActionId]) {
 				var myAction = cardbookRepository.currentAction[aActionId];
 				if (myAction.files.length > 0) {
 					cardbookActions.addActivityFromUndo(aActionId);
 					if (myAction.actionCode != "undoActionDone" && myAction.actionCode != "redoActionDone"  && myAction.actionCode != "syncMyPhoneExplorer") {
-						cardbookActions.addUndoCardsAction(myAction.actionCode, myAction.message, myAction.oldCards, myAction.newCards, myAction.oldCats, myAction.newCats);
+						await cardbookActions.addUndoCardsAction(myAction.actionCode, myAction.message, myAction.oldCards, myAction.newCards, myAction.oldCats, myAction.newCats);
 					}
 					if (myAction.refresh != "") {
 						cardbookRepository.cardbookUtils.notifyObservers(myAction.actionCode, "force::" + myAction.refresh);

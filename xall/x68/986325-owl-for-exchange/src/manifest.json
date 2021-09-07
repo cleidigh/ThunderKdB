@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "version": "0.7.8.2",
+  "version": "0.7.9.1",
   "name": "__MSG_extName__",
   "description": "__MSG_extDescription__",
   "developer": {
@@ -8,7 +8,8 @@
    },
   "applications": {
     "gecko": {
-      "strict_min_version": "68.8.0",
+      "strict_min_version": "78.7.0",
+      "strict_max_version": "91.*",
       "id": "owl@beonex.com"
     }
   },
@@ -27,6 +28,12 @@
       "errorLog.js",
       "shared/contacts.js",
       "shared/misc.js",
+      "shared/oauth2.js",
+      "eas/eas.js",
+      "eas/emails.js",
+      "eas/contacts.js",
+      "eas/calendar.js",
+      "eas/util.js",
       "ews/ews.js",
       "ews/emails.js",
       "ews/contacts.js",

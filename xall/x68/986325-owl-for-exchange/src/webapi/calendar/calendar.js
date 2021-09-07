@@ -1,12 +1,26 @@
-var {XPCOMUtils} = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
+try { // COMPAT for TB 78 (bug 1649554)
+var {ComponentUtils} = ChromeUtils.import("resource://gre/modules/ComponentUtils.jsm");
+} catch (ex) { // COMPAT for TB 78 (bug 1649554)
+var ComponentUtils = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm").XPCOMUtils; // COMPAT for TB 78 (bug 1649554)
+} // COMPAT for TB 78 (bug 1649554)
 var {Services} = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var {MailServices} = ChromeUtils.import("resource:///modules/MailServices.jsm");
+var {jsmime} = ChromeUtils.import("resource:///modules/jsmime.jsm");
 try {
   var {cal} = ChromeUtils.import("resource:///modules/calendar/calUtils.jsm");
+  var {ICAL} = ChromeUtils.import("resource:///modules/calendar/Ical.jsm");
   var {splitRecurrenceRules, checkRecurrenceRule, countOccurrences} = ChromeUtils.import("resource:///modules/calendar/calRecurrenceUtils.jsm");
+  if (!cal.createEvent) { // COMPAT for TB 78 (bug 1659558)
+    var {CalEvent} = ChromeUtils.import("resource:///modules/CalEvent.jsm");
+    var {CalTodo} = ChromeUtils.import("resource:///modules/CalTodo.jsm");
+    var {CalAttendee} = ChromeUtils.import("resource:///modules/CalAttendee.jsm");
+    var {CalAlarm} = ChromeUtils.import("resource:///modules/CalAlarm.jsm");
+    var {CalRecurrenceInfo} = ChromeUtils.import("resource:///modules/CalRecurrenceInfo.jsm");
+  } // COMPAT for TB 78 (bug 1659558)
 } catch (ex) {
   try { // COMPAT for TB 68 (bug 1608610)
     cal = ChromeUtils.import("resource://calendar/modules/calUtils.jsm").cal; // COMPAT for TB 68 (bug 1608610)
+    ({ICAL} = ChromeUtils.import("resource://calendar/modules/ical.js")); // COMPAT for TB 68 (bug 1608610)
     ({splitRecurrenceRules, checkRecurrenceRule, countOccurrences} = ChromeUtils.import("resource://calendar/modules/calRecurrenceUtils.jsm")); // COMPAT for TB 68 (bug 1608610)
   } catch (ex) { // COMPAT for TB 68 (bug 1608610)
     // Calendar isn't installed. Eat the exception to allow the extension to load.
@@ -32,22 +46,44 @@ function getTimezone(aDisplayName) {
     timezone = cal.getTimezoneService().getTimezone(aDisplayName.replace(/^\(GMT[+-]\d\d:\d\d\) /, ""));
     if (!timezone) {
       // Create a fake event and parse a time zone from it.
-      let comp = cal.getIcsService().parseICS("BEGIN:VCALENDAR\nBEGIN:VTIMEZONE\nTZID:" + aDisplayName.replace(/[^ -~]/g, "") + "\nEND:VTIMEZONE\nEND:VCALENDAR", null);
-      timezone = {
-        provider: null,
-        icalComponent: comp.getFirstSubcomponent("VTIMEZONE"),
-        tzid: aDisplayName,
-        isUTC: false,
-        isFloating: false,
-        latitude: null,
-        longitude: null,
-        displayName: aDisplayName,
-        toString() { return this.displayName; },
-      };
+      let comp = cal.getIcsService().parseICS("BEGIN:VCALENDAR\nBEGIN:VTIMEZONE\nTZID:" + aDisplayName.replace(/[^ -~]/g, "") + "\nEND:VTIMEZONE\nEND:VCALENDAR", null).getFirstSubcomponent("VTIMEZONE");
+      if (Services.prefs.getBoolPref("calendar.icaljs", false)) {
+        // XXX This works in the Error Console but fails here,
+        // unfortunately the debugger isn't reliable on trunk.
+        timezone = {
+          innerObject: new ICAL.Timezone({ tzid: aDisplayName, component: comp }),
+          get wrappedJSObject() {
+            return this;
+          },
+        };
+      } else {
+        timezone = {
+          provider: null,
+          icalComponent: comp,
+          tzid: aDisplayName,
+          isUTC: false,
+          isFloating: false,
+          latitude: null,
+          longitude: null,
+          displayName: aDisplayName,
+          toString() { return this.displayName; },
+        };
+      }
     }
     gTimeZoneCache.set(aDisplayName, timezone);
   }
   return timezone;
+}
+
+/**
+ * Tries to find a calendar with a given URI.
+ *
+ * @param aURI {String} The URI to find.
+ * @returns    {calICalendar?}
+ */
+function findCalendar(aURI) {
+  let uri = Services.io.newURI(aURI);
+  return cal.getCalendarManager().getCalendars({}).find(calendar => calendar.uri.equals(uri));
 }
 
 /**
@@ -280,7 +316,7 @@ function JSON2Item(aJSON, aItem) {
   // Organiser.
   let organizer = null;
   if (aJSON.organizer) {
-    organizer = cal.createAttendee();
+    organizer = /* COMPAT for TB 78 (bug 1659558) */cal.createAttendee ? cal.createAttendee() : new CalAttendee();
     organizer.id = "mailto:" + aJSON.organizer.email;
     organizer.commonName = aJSON.organizer.name;
     organizer.role = "CHAIR";
@@ -295,7 +331,7 @@ function JSON2Item(aJSON, aItem) {
       // Lightning doesn't like it if the organiser is an attendee.
       continue;
     }
-    let attendee = cal.createAttendee();
+    let attendee = /* COMPAT for TB 78 (bug 1659558) */cal.createAttendee ? cal.createAttendee() : new CalAttendee();
     attendee.id = "mailto:" + required.email;
     attendee.commonName = required.name;
     attendee.role = "REQ-PARTICIPANT";
@@ -304,7 +340,7 @@ function JSON2Item(aJSON, aItem) {
     aItem.addAttendee(attendee);
   }
   for (let optional of aJSON.optionalAttendees) {
-    let attendee = cal.createAttendee();
+    let attendee = /* COMPAT for TB 78 (bug 1659558) */cal.createAttendee ? cal.createAttendee() : new CalAttendee();
     attendee.id = "mailto:" + optional.email;
     attendee.commonName = optional.name;
     attendee.role = "OPT-PARTICIPANT";
@@ -332,8 +368,7 @@ function JSON2Item(aJSON, aItem) {
         isEveryWeekday(aJSON.recurrence.daysOfWeek)) {
       aJSON.recurrence.type = "DAILY";
     }
-    recurrenceInfo = cal.createRecurrenceInfo();
-    recurrenceInfo.item = aItem;
+    recurrenceInfo = /* COMPAT for TB 78 (bug 1659558) */cal.createRecurrenceInfo ? cal.createRecurrenceInfo(aItem) : new CalRecurrenceInfo(aItem);
     let rule = cal.createRecurrenceRule();
     rule.type = aJSON.recurrence.type;
     let days = aJSON.recurrence.daysOfWeek;
@@ -393,7 +428,7 @@ function JSON2Item(aJSON, aItem) {
   // Alarm.
   aItem.clearAlarms();
   if (aJSON.reminder != null) {
-    let alarm = cal.createAlarm();
+    let alarm = /* COMPAT for TB 78 (bug 1659558) */cal.createAlarm ? cal.createAlarm() : new CalAlarm();
     alarm.related = Ci.calIAlarm.ALARM_RELATED_START;
     alarm.offset = cal.createDuration();
     alarm.offset.inSeconds = aJSON.reminder;
@@ -428,7 +463,7 @@ function JSON2Occurrence(aJSON, aOccurrence) {
  * Note: The original event is not modified.
  */
 function JSON2Event(aJSON, aCalendar, aEvent) {
-  let event = aEvent ? aEvent.clone() : cal.createEvent();
+  let event = aEvent ? aEvent.clone() : /* COMPAT for TB 78 (bug 1659558) */ cal.createEvent ? cal.createEvent() : new CalEvent();
   event.calendar = aCalendar;
   if (aJSON) {
     JSON2Occurrence(aJSON, event);
@@ -447,7 +482,7 @@ function JSON2Event(aJSON, aCalendar, aEvent) {
  * Note: The original task is not modified.
  */
 function JSON2Task(aJSON, aCalendar, aTask) {
-  let task = aTask ? aTask.clone() : cal.createTodo();
+  let task = aTask ? aTask.clone() : /* COMPAT for TB 78 (bug 1659558) */cal.createTodo ? cal.createTodo() : new CalTodo();
   task.calendar = aCalendar;
   if (aJSON) {
     task.entryDate = JSON2Date(aJSON.startDate);
@@ -497,6 +532,7 @@ function Item2JSON(aItem, aJSON) {
       break;
     }
   }
+  aJSON.recurrenceId = Date2JSON(aItem.recurrenceId);
   if (aItem.recurrenceInfo) {
     let [rules, deletions] = splitRecurrenceRules(aItem.recurrenceInfo);
     if (rules.length == 1) {
@@ -564,6 +600,7 @@ function Item2JSON(aItem, aJSON) {
         }
         let occurrences = rule.getOccurrences(aItem.recurrenceStartDate, aItem.recurrenceStartDate, maxDate, 0, /* COMPAT for TB 68 (bug 1602424) */{});
         occurrences.push(maxDate);
+        aJSON.deletedIds = deletions.map(deletion => Date2JSON(deletion.date));
         aJSON.deletions = deletions.map(deletion => occurrences.findIndex(date => !date.compare(deletion.date)) + 1);
       }
     }
@@ -630,7 +667,7 @@ class Calendar extends (cal && cal.provider.BaseClass) {
     this.initProviderBase();
     this.offlineStorage = null;
     this.senderAddress = null;
-    this.QueryInterface = ChromeUtils.generateQI([Ci.calICalendar, Ci.calIChangeLog, Ci.calISchedulingSupport, Ci.calIItipTransport, Ci.calIFreeBusyProvider]);
+    this.QueryInterface = ChromeUtils.generateQI(["calICalendar", "calIChangeLog", "calISchedulingSupport", "calIItipTransport", "calIFreeBusyProvider"]);
   }
   /**
    * Invoke the extension's dispatch listener.
@@ -697,26 +734,50 @@ class Calendar extends (cal && cal.provider.BaseClass) {
   get scheme() {
     return "mailto";
   }
-  async sendItems(aRecipients, aItipItem, aItipItemTB68) {
-    if (aItipItemTB68) { // COMPAT for TB 68 (bug 1557504)
-      aItipItem = aItipItemTB68; // COMPAT for TB 68 (bug 1557504)
+  async sendItems(aRecipients, aItipItem, aSender) {
+    if (typeof aRecipients == "number") { // COMPAT for TB 68 (bug 1557504)
+      aRecipients = aItemItem; // COMPAT for TB 68 (bug 1557504)
+      aItipItem = aSender; // COMPAT for TB 68 (bug 1557504)
     } // COMPAT for TB 68 (bug 1557504)
-    if (aItipItem.responseMethod == "REPLY") {
-      try {
-        // We disabled the response when the item was modified,
-        // but the user wanted to respond. Send the response now.
-        let invitation = aItipItem.getItemList(/* COMPAT for TB 68 (bug 1557504) */{})[0];
-        let folder = this.getItemFolder(invitation);
-        let id = this.offlineStorage.getMetaData(invitation.id);
-        let participation = cal.itip.getInvitedAttendee(invitation, aItipItem.targetCalendar).participationStatus;
-        let isRecurrence = invitation.recurrenceId != null;
-        await this.callExtension("NotifyParticipation", { folder, id, participation, isRecurrence });
-      } catch (ex) {
-        logError(ex);
-      }
+    try {
+      let method = aItipItem.responseMethod;
+      let transport = super.getProperty("itip.transport").wrappedJSObject;
+      let { subject, body } = transport._prepareItems(aItipItem);
+      let serializer = Cc["@mozilla.org/calendar/ics-serializer;1"].createInstance(Ci.calIIcsSerializer);
+      let itemList = aItipItem.getItemList(/* COMPAT for TB 68 (bug 1557504) */{});
+      serializer.addItems(itemList, itemList.length);
+      let methodProp = cal.getIcsService().createIcalProperty("METHOD");
+      methodProp.value = method;
+      serializer.addProperty(methodProp);
+      let icsText = serializer.serializeToString();
+      let randomGenerator = Cc["@mozilla.org/security/random-generator;1"].getService(Ci.nsIRandomGenerator);
+      let randomBytes = randomGenerator.generateRandomBytes(12);
+      let boundary = randomBytes.map(byte => byte.toString(16).padStart(2, 0)).join("").toUpperCase();
+      let headers = new Map();
+      headers.set("Date", [new Date()]);
+      headers.set("Subject", [subject]);
+      headers.set("To", aRecipients.map(attendee => ({ name: attendee.commonName, email: attendee.id.replace(/^mailto:/, "")})));
+      headers.set("Content-Type", ["multipart/mixed; boundary=\"" + boundary + "\""]);
+      let content = jsmime.headeremitter.emitStructuredHeaders(headers, { hardMargin: kHardMargin }) + "\r\n";
+      content += "--" + boundary + "\r\n";
+      content += "Content-Type: text/plain; charset=UTF-8\r\n\r\n";
+      content += body + "\r\n";
+      content += "--" + boundary + "\r\n";
+      content += "Content-Type: text/calendar; method=" + aItipItem.responseMethod + "; charset=UTF-8\r\nContent-Transfer-Encoding: 8BIT\r\n\r\n";
+      content += icsText;
+      content += "--" + boundary + "\r\n";
+      content += "Content-Type: application/ics; name=\"invite.ics\"\r\nContent-Disposition: attachment; filename=\"invite.ics\"\r\nContent-Transfer-Encoding: 8BIT\r\n\r\n";
+      content += icsText;
+      content += "--" + boundary + "--\r\n";
+      let invitation = itemList[0];
+      let folder = this.getItemFolder(invitation);
+      let id = this.offlineStorage.getMetaData(invitation.id);
+      let participation = method == "REPLY" ? cal.itip.getInvitedAttendee(invitation, aItipItem.targetCalendar).participationStatus : null;
+      let isRecurrence = invitation.recurrenceId != null;
+      await this.callExtension("NotifyParticipation", { folder, id, method, participation, isRecurrence, content });
+    } catch (ex) {
+      logError(ex);
     }
-    // We get called for REQUEST and CANCEL as well,
-    // but those get processed at creation/modification time.
   }
   // calISchedulingSupport
   isInvitation(aItem) {
@@ -900,6 +961,12 @@ class Calendar extends (cal && cal.provider.BaseClass) {
   // deleteProperty handled by base class
   // addObserver handled by base class
   // removeObserver handled by base class
+  get supportsScheduling() {
+    return this.uri.filePath == "/";
+  }
+  getSchedulingSupport() {
+    return this;
+  }
   async addItem(aEvent, aListener) {
     try {
       if (aEvent.getProperty("STATUS") == "CANCELLED") {
@@ -908,10 +975,14 @@ class Calendar extends (cal && cal.provider.BaseClass) {
       let event = {};
       let folder = this.getItemFolder(aEvent, event);
       // Check whether we accepted or declined an invitation.
-      let { uid, itemid } = this.isInvitation(aEvent) ?
+      let syncState = this.getProperty(folder + "SyncState");
+      let result = this.isInvitation(aEvent) ?
         await this.callExtension("UpdateParticipation", { uid: aEvent.id, participation: this.getInvitedAttendee(aEvent).participationStatus, isRecurrence: aEvent.recurrenceId != null }) :
-        await this.callExtension("CreateEvent", { folder, event, notify: getNotificationStatus(aEvent) } );
-      if (aEvent.id != uid) {
+        await this.callExtension("CreateEvent", { folder, syncState, event, notify: getNotificationStatus(aEvent) } );
+      if (result.syncState) {
+        this.setProperty(folder + "SyncState", result.syncState);
+      }
+      if (aEvent.id != result.uid) {
         if (aEvent.id) {
           let promiseStorage = cal.async.promisifyCalendar(this.offlineStorage);
           await promiseStorage.deleteItem(aEvent);
@@ -919,9 +990,9 @@ class Calendar extends (cal && cal.provider.BaseClass) {
         if (!aEvent.isMutable) {
           aEvent = aEvent.clone();
         }
-        aEvent.id = uid;
+        aEvent.id = result.uid;
       }
-      this.offlineStorage.setMetaData(uid, itemid);
+      this.offlineStorage.setMetaData(result.uid, result.itemid);
       this.observers.notify("onAddItem", [aEvent]);
       this.notifyOperationComplete(aListener, Cr.NS_OK, Ci.calIOperationListener.ADD, aEvent.id, aEvent);
     } catch (ex) {
@@ -934,7 +1005,7 @@ class Calendar extends (cal && cal.provider.BaseClass) {
   }
   async modifyItem(aNewEvent, aOldEvent, aListener) {
     try {
-      let newEvent = {}, oldEvent = {};
+      let newEvent = {}, oldEvent = {}, masterEvent = {};
       let folder = this.getItemFolder(aNewEvent, newEvent);
       if (folder != this.getItemFolder(aOldEvent, oldEvent)) {
         throw new Error("Modified item must be of the same type");
@@ -946,6 +1017,9 @@ class Calendar extends (cal && cal.provider.BaseClass) {
       if (aNewEvent.recurrenceId) {
         let [[rule]] = splitRecurrenceRules(aNewEvent.parentItem.recurrenceInfo);
         newEvent.index = rule.QueryInterface(Ci.calIRecurrenceRule).getOccurrences(aNewEvent.parentItem.recurrenceStartDate, aNewEvent.parentItem.recurrenceStartDate, aNewEvent.recurrenceId, 0, /* COMPAT for TB 68 (bug 1602424) */{}).length + 1;
+        this.getItemFolder(aNewEvent.parentItem, masterEvent);
+      } else {
+        masterEvent = newEvent;
       }
       if (this.isInvitation(aOldEvent) && this.isInvitation(aNewEvent)) {
         // Check whether we accepted or declined an invitation.
@@ -965,7 +1039,11 @@ class Calendar extends (cal && cal.provider.BaseClass) {
       // This is just an optimisation so it doesn't have to be 100% perfect.
       if (JSON.stringify(newEvent) != JSON.stringify(oldEvent)) {
         let notify = getNotificationStatus(aNewEvent);
-        await this.callExtension("UpdateEvent", { folder, newEvent, oldEvent, notify } );
+        let syncState = this.getProperty(folder + "SyncState");
+        syncState = await this.callExtension("UpdateEvent", { folder, syncState, masterEvent, newEvent, oldEvent, notify } );
+        if (syncState) {
+          this.setProperty(folder + "SyncState", syncState);
+        }
       }
       this.observers.notify("onModifyItem", [aNewEvent, aOldEvent]);
       this.notifyOperationComplete(aListener, Cr.NS_OK, Ci.calIOperationListener.MODIFY, aNewEvent.id, aNewEvent);
@@ -999,8 +1077,15 @@ class Calendar extends (cal && cal.provider.BaseClass) {
     try {
       let folder = this.getItemFolder(aEvent);
       let id = this.offlineStorage.getMetaData(aEvent.id);
-      let notify = getNotificationStatus(aEvent);
-      await this.callExtension("DeleteEvent", { folder, id, notify } );
+      // Items that don't exist on the server are already deleted.
+      if (id) {
+        let notify = getNotificationStatus(aEvent);
+        let syncState = this.getProperty(folder + "SyncState");
+        syncState = await this.callExtension("DeleteEvent", { folder, syncState, id, notify } );
+        if (syncState) {
+          this.setProperty(folder + "SyncState", syncState);
+        }
+      }
       this.observers.notify("onDeleteItem", [aEvent]);
       this.notifyOperationComplete(aListener, Cr.NS_OK, Ci.calIOperationListener.DELETE, aEvent.id, aEvent);
     } catch (ex) {
@@ -1054,7 +1139,7 @@ try {
     throw ex;
   }
 }
-gCalendarProperties.factory = XPCOMUtils._getFactory(Calendar);
+gCalendarProperties.factory = ComponentUtils._getFactory(Calendar);
 gComponentRegistrar.registerFactory(gCalendarProperties.classID, gCalendarProperties.classDescription, gCalendarProperties.contractID, gCalendarProperties.factory);
 
 Services.scriptloader.loadSubScriptWithOptions(extensions.modules.get("calendar").url.slice(0, extensions.modules.get("calendar").url.lastIndexOf("/") + 1) + "uiOverlay.js", { ignoreCache: true });
@@ -1065,9 +1150,29 @@ this.calendar = class extends ExtensionAPI {
       calendarProvider: {
         getCurrentInvitation: function() {
           let mainWindow = Services.wm.getMostRecentWindow("mail:3pane");
-          return !mainWindow || !mainWindow.gDBView ||
-                 mainWindow.gDBView.currentlyDisplayedMessage == nsMsgViewIndex_None ? "" :
-                 mainWindow.gDBView.hdrForFirstSelectedMessage.getStringProperty("X-GM-MSGID");
+          if (!mainWindow || !mainWindow.gDBView ||
+              mainWindow.gDBView.currentlyDisplayedMessage == nsMsgViewIndex_None) {
+            return { itemId: "", folderId: "" };
+          }
+          let hdr = mainWindow.gDBView.hdrForFirstSelectedMessage;
+          return {
+            itemId: hdr.getStringProperty("X-GM-MSGID"),
+            folderId: hdr.folder.getStringProperty("FolderId"),
+          };
+        },
+        notifyFolderResync: function(key, type, id) {
+          if (cal) {
+            try {
+              let server = MailServices.accounts.getIncomingServer(key);
+              let calendar = findCalendar(server.serverURI + "/" + id) || findCalendar(server.serverURI);
+              if (calendar) {
+                calendar.refresh();
+              }
+            } catch (ex) {
+              logError(ex);
+              throw new ExtensionUtils.ExtensionError(ex.message);
+            }
+          }
         },
         registerCalendar: function(key) {
           if (cal) {

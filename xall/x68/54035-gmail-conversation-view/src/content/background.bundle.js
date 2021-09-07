@@ -23,6 +23,11 @@ const kPrefDefaults = {
   unwanted_recipients: "{}",
   hide_sigs: false
 };
+/**
+ * Handles loading of the preferences, and any migration routines that are
+ * necessary.
+ */
+
 class Prefs {
   async init() {
     try {
@@ -43,12 +48,9 @@ class Prefs {
           updatePrefs = true;
           results.preferences[prefName] = kPrefDefaults[prefName];
         }
+      }
 
-        await browser.conversations.setPref(prefName, results.preferences[prefName]);
-      } // Set a special pref so bootstrap knows it can continue.
-
-
-      await browser.conversations.setPref("finishedStartup", true);
+      await browser.conversations.startup(results.preferences.logging_enabled);
 
       if (updatePrefs) {
         try {
@@ -62,8 +64,6 @@ class Prefs {
     } else {
       console.error("Could not find the preferences to send to the API.");
     }
-
-    this._addListener();
   }
 
   async _migrate() {
@@ -111,24 +111,6 @@ class Prefs {
     });
   }
 
-  _addListener() {
-    browser.storage.onChanged.addListener((changed, areaName) => {
-      if (areaName != "local" || !("preferences" in changed) || !("newValue" in changed.preferences)) {
-        return;
-      }
-
-      for (const prefName of Object.getOwnPropertyNames(changed.preferences.newValue)) {
-        if (prefName == "migratedLegacy") {
-          continue;
-        }
-
-        if (!changed.preferences.oldValue || changed.preferences.oldValue[prefName] != changed.preferences.newValue[prefName]) {
-          browser.conversations.setPref(prefName, changed.preferences.newValue[prefName]);
-        }
-      }
-    });
-  }
-
 }
 ;// CONCATENATED MODULE: ./addon/content/es-modules/thunderbird-compat.js
 /* This Source Code Form is subject to the terms of the Mozilla Public
@@ -163,7 +145,6 @@ const ALL_LOCALES = ["bg", "ca", "cs", "da", "de", "el", "en", "es", "eu", "fi",
  * This function should only be used in the dev frame. It is exported
  * to give the dev frame a way to mock a change to the UI language.
  *
- * @export
  * @param {*} resolve
  * @param {string} [locale="en"]
  */
@@ -229,7 +210,9 @@ if (!thunderbird_compat_browser.storage) {
   const DEFAULT_PREFS = { ...kPrefDefaults,
     // DEFAULT_PREFS is only used when browser.storage does not exist. I.e.,
     // when running in the browser in dev mode. Turn on logging in this case.
-    logging_enabled: true
+    logging_enabled: true,
+    expand_who: 4,
+    uninstall_infos: "{}"
   }; // Fake what we need from the browser storage library
 
   const _stored = {
@@ -349,6 +332,45 @@ if (!thunderbird_compat_browser.conversations) {
       }
 
       return "ltr";
+    },
+
+    async getCorePref(name) {
+      switch (name) {
+        case "mail.showCondensedAddresses":
+          return false;
+
+        case "mailnews.mark_message_read.auto":
+          return true;
+
+        case "mailnews.mark_message_read.delay":
+          return false;
+      }
+
+      throw new Error("Unexpected pref");
+    },
+
+    async getFolderName(name) {
+      return "Fake/Folder";
+    },
+
+    async makeFriendlyDateAgo() {
+      return "yesterday";
+    },
+
+    async formatFileSize(size) {
+      return `${size} bars`;
+    },
+
+    async makePlural(form, string, count) {
+      return `${string} ${count}`;
+    },
+
+    async isInView() {
+      return true;
+    },
+
+    async quoteMsgHdr() {
+      return "MsgBody";
     }
 
   };
@@ -359,6 +381,13 @@ if (!thunderbird_compat_browser.convCompose) {
     send(details) {
       console.log("Sending:", details);
     }
+
+  };
+}
+
+if (!thunderbird_compat_browser.compose) {
+  thunderbird_compat_browser.compose = {
+    async beginNew() {}
 
   };
 }
@@ -413,6 +442,36 @@ if (!thunderbird_compat_browser.messageDisplay) {
   };
 }
 
+if (!thunderbird_compat_browser.messages) {
+  thunderbird_compat_browser.messages = {
+    async listTags() {
+      return [{
+        key: "$label1",
+        tag: "Important",
+        color: "#ff2600",
+        ordinal: ""
+      }, {
+        key: "$label2",
+        tag: "Work",
+        color: "#FF9900",
+        ordinal: ""
+      }, {
+        color: "#009900",
+        key: "$label3",
+        ordinal: "",
+        tag: "Personal"
+      }];
+    },
+
+    async get(id) {
+      return {};
+    },
+
+    async update(id) {}
+
+  };
+}
+
 if (!thunderbird_compat_browser.windows) {
   thunderbird_compat_browser.windows = {
     async create() {},
@@ -448,8 +507,8 @@ if (!thunderbird_compat_browser.runtime) {
 
 if (!thunderbird_compat_browser.contacts) {
   thunderbird_compat_browser.contacts = {
-    async quickSearch(email) {
-      if (["foo@example.com", "bar@example.com"].includes(email)) {
+    async quickSearch(queryInfo) {
+      if (["foo@example.com", "bar@example.com"].includes(queryInfo.searchString)) {
         return [{
           id: "135246",
           type: "contact",
@@ -461,7 +520,7 @@ if (!thunderbird_compat_browser.contacts) {
             PhotoURI: undefined
           }
         }];
-      } else if (email == "id4@example.com") {
+      } else if (queryInfo.searchString == "id4@example.com") {
         return [{
           id: "15263748",
           type: "contact",
@@ -472,7 +531,7 @@ if (!thunderbird_compat_browser.contacts) {
             PhotoURI: undefined
           }
         }];
-      } else if (email == "extra@example.com") {
+      } else if (queryInfo.searchString == "extra@example.com") {
         return [{
           id: "75312468",
           type: "contact",
@@ -481,6 +540,39 @@ if (!thunderbird_compat_browser.contacts) {
             DisplayName: "extra card",
             PreferDisplayName: "0",
             PhotoURI: "https://example.com/fake"
+          },
+          readOnly: true
+        }];
+      } else if (["arch@example.com", "cond@example.com"].includes(queryInfo.searchString)) {
+        return [{
+          id: "1357924680",
+          type: "contact",
+          properties: {
+            PrimaryEmail: "search@example.com",
+            SecondEmail: "second@example.com",
+            DisplayName: "search name",
+            PreferDisplayName: "1",
+            PhotoURI: undefined
+          }
+        }, {
+          id: "3216549870",
+          type: "contact",
+          properties: {
+            PrimaryEmail: "arch@example.com",
+            SecondEmail: "other@example.com",
+            DisplayName: "arch test",
+            PreferDisplayName: "1",
+            PhotoURI: undefined
+          }
+        }, {
+          id: "9753124680",
+          type: "contact",
+          properties: {
+            PrimaryEmail: "another@example.com",
+            SecondEmail: "cond@example.com",
+            DisplayName: "cond test",
+            PreferDisplayName: "1",
+            PhotoURI: undefined
           }
         }];
       }
@@ -513,6 +605,11 @@ if (!thunderbird_compat_browser.contacts) {
 if (!globalThis.browser) {
   globalThis.browser = thunderbird_compat_browser;
 }
+/**
+ * This class handles setting up hooks into the Thunderbird UI for display of
+ * columns, handling key presses etc.
+ */
+
 
 class UIHandler {
   init() {
@@ -589,6 +686,11 @@ class UIHandler {
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+/**
+ * This class handles hooking into the Thunderbird message window to be able
+ * to manage the message preview correctly.
+ */
 class Window {
   async init() {
     // Set up our monkey patches which aren't really listeners, but this
@@ -629,7 +731,7 @@ class Window {
         urls.push(await browser.conversations.getMessageUriForId(hdr.id));
       }
 
-      const url = this.makeConversationUrl(urls, await browser.convMsgWindow.isSelectionThreaded(windowId));
+      const url = this.makeConversationUrl(urls);
       await browser.conversations.createTab({
         url,
         type: "chromeTab"
@@ -642,41 +744,43 @@ class Window {
   }
 
   async openConversation(windowId, urls) {
-    const url = this.makeConversationUrl(urls, await browser.convMsgWindow.isSelectionThreaded(windowId));
-
     switch (await browser.conversations.getCorePref("mail.openMessageBehavior")) {
       case 0: // fall-through
 
       case 1:
-        browser.convMsgWindow.openNewWindow(url);
-        break;
+        {
+          if ("getCurrent" in browser.mailTabs) {
+            // Thunderbird 91
+            browser.convMsgWindow.openNewWindow("chrome://conversations/content/stubWrapper.xhtml", this.getQueryString(urls) + "&standalone=1");
+          } else {
+            // Thunderbird 78
+            browser.convMsgWindow.openNewWindow(`chrome://conversations/content/stub.html${this.getQueryString(urls)}`);
+          }
+
+          break;
+        }
 
       case 2:
-        await browser.conversations.createTab({
-          url,
-          type: "contentTab"
-        });
-        break;
+        {
+          await browser.conversations.createTab({
+            url: `chrome://conversations/content/stub.html${this.getQueryString(urls)}`,
+            type: "contentTab"
+          });
+          break;
+        }
     }
   }
   /**
-   * Makes a conversation url for opening in new windows/tabs.
+   * Returns a string of parameters for us in URLs when opening stub windows.
    *
-   * @param {Array} urls
+   * @param {string[]} urls
    *   An array of urls to be opened.
-   * @param {Boolean} [isSelectionThreaded]
-   *   Is the selection threaded
+   * @returns {string}
    */
 
 
-  makeConversationUrl(urls, isSelectionThreaded) {
-    let queryString = "?urls=" + encodeURIComponent(urls.join(","));
-
-    if (isSelectionThreaded) {
-      queryString += "&isThreaded=" + (isSelectionThreaded ? 1 : 0);
-    }
-
-    return `chrome://conversations/content/stub.html${queryString}`;
+  getQueryString(urls) {
+    return "?urls=" + encodeURIComponent(urls.join(","));
   }
 
 }
@@ -689,6 +793,11 @@ class Window {
 if (!globalThis.browser) {
   globalThis.browser = thunderbird_compat_browser;
 }
+/**
+ * @typedef {object} ContactNode
+ * @see https://webextension-api.thunderbird.net/en/latest/contacts.html#contacts-contactnode
+ */
+
 /**
  * @typedef {object} Contact
  * @property {string} color
@@ -704,6 +813,8 @@ if (!globalThis.browser) {
  *   the contact.
  * @property {string} photoURI
  *   A uri to use for the avator photo for the contact (if any).
+ * @property {boolean} readOnly
+ *   True if the card is read-only.
  */
 
 /**
@@ -717,13 +828,15 @@ class ExtendedContact {
     email,
     identityId,
     name,
-    photoURI
+    photoURI,
+    readOnly
   }) {
     this.color = freshColor(email);
     this.contactId = contactId;
     this.identityId = identityId;
     this.name = name;
     this.photoURI = photoURI;
+    this.readOnly = readOnly;
     /**
      * The time when the contact was last accessed in the cache, used for
      * clearing out the cache.
@@ -742,6 +855,7 @@ class ExtendedContact {
     this.HARD_MAX_CACHE_SIZE = 1000;
     /**
      * When we do a soft cleanup, we'll cleanup by this amount of contacts.
+     *
      * @type {number}
      */
 
@@ -760,7 +874,8 @@ class ExtendedContact {
       contactId: this.contactId,
       identityId: this.identityId,
       name: this.name,
-      photoURI: this.photoURI
+      photoURI: this.photoURI,
+      readOnly: this.readOnly
     };
   }
 
@@ -809,6 +924,8 @@ class ContactManager {
 
 
   async get(email) {
+    email = email.toLocaleLowerCase();
+
     let cachedValue = this._cache.get(email);
 
     if (cachedValue) {
@@ -858,21 +975,39 @@ class ContactManager {
     // happen if there are broken address books.
 
     try {
-      matchingCards = await browser.contacts.quickSearch(email);
+      matchingCards = await browser.contacts.quickSearch({
+        includeRemote: false,
+        searchString: email
+      });
     } catch (ex) {
-      console.error(ex);
-    }
+      if (ex.message.includes("Incorrect argument types")) {
+        try {
+          // Try again, this is for Thunderbird 78.
+          matchingCards = await browser.contacts.quickSearch(email);
+        } catch (ex) {
+          console.error(ex);
+        }
+      } else {
+        console.error(ex);
+      }
+    } // The search is only a quick search, therefore it might match email
+    // addresses with prefixes or suffixes. Hence, we refine the matching cards
+    // further here.
 
+
+    matchingCards = matchingCards.filter(c => c.properties.PrimaryEmail?.toLocaleLowerCase() == email || c.properties.SecondEmail?.toLocaleLowerCase() == email);
     let contactId = undefined;
     let emails = [];
     let name = undefined;
     let photoURI = undefined;
     let emailAddressForColor = email;
+    let readOnly = false;
 
     if (matchingCards.length) {
       // We only look at the first contact.
       let card = matchingCards[0].properties;
-      contactId = matchingCards[0].id; // PreferDisplayName returns a literal string "0" or "1". We must convert it
+      contactId = matchingCards[0].id;
+      readOnly = !!matchingCards[0].readOnly; // PreferDisplayName returns a literal string "0" or "1". We must convert it
       // to a boolean appropriately.
 
       let useCardName = card.PreferDisplayName != null ? !!+card.PreferDisplayName : true;
@@ -912,7 +1047,8 @@ class ContactManager {
       email: emailAddressForColor,
       identityId,
       name,
-      photoURI
+      photoURI,
+      readOnly
     })];
   }
   /**
@@ -1055,6 +1191,10 @@ function freshColor(email) {
 
 
 const requestHandlers = [];
+/**
+ * The initial background handler, responsible for setting up other background
+ * objects.
+ */
 
 class Background {
   constructor() {

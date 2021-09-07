@@ -1,9 +1,9 @@
+"use strict";
 (self["webpackChunkthunderbirdconversations"] = self["webpackChunkthunderbirdconversations"] || []).push([[415],{
 
 /***/ 7418:
 /***/ ((module) => {
 
-"use strict";
 /*
 object-assign
 (c) Sindre Sorhus
@@ -101,7 +101,6 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /***/ 2703:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -173,7 +172,6 @@ module.exports = function() {
 /***/ 414:
 /***/ ((module) => {
 
-"use strict";
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -193,7 +191,6 @@ module.exports = ReactPropTypesSecret;
 /***/ 4448:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-"use strict";
 /** @license React v17.0.2
  * react-dom.production.min.js
  *
@@ -498,7 +495,6 @@ exports.unstable_renderSubtreeIntoContainer=function(a,b,c,d){if(!rk(c))throw Er
 /***/ 2408:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-"use strict";
 /** @license React v17.0.2
  * react.production.min.js
  *
@@ -529,7 +525,6 @@ exports.useLayoutEffect=function(a,b){return S().useLayoutEffect(a,b)};exports.u
 /***/ 53:
 /***/ ((__unused_webpack_module, exports) => {
 
-"use strict";
 /** @license React v0.20.2
  * scheduler.production.min.js
  *
@@ -557,7 +552,6 @@ exports.unstable_wrapCallback=function(a){var b=P;return function(){var c=P;P=b;
 /***/ 3840:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
 
 
 if (true) {

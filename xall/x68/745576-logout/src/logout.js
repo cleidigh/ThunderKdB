@@ -8,8 +8,16 @@ async function main() {
 }
 
 function logout_onclick(item) {
-	account_promise=messenger.accounts.get(item.selectedFolder.accountId);
-	account_promise.then(logout,logout_failure);
+	var account_promise=null
+	if(item.hasOwnProperty('selectedFolder')) {
+		account_promise=messenger.accounts.get(item.selectedFolder.accountId);
+	}
+	if(item.hasOwnProperty('selectedAccount')) {
+		account_promise=messenger.accounts.get(item.selectedAccount.id);
+	}
+	if(account_promise != null){
+		account_promise.then(logout,logout_failure);
+	}
 }
 
 function logout_failure(result) {

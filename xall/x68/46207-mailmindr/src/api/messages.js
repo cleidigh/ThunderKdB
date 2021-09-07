@@ -1,9 +1,6 @@
 var { ExtensionCommon } = ChromeUtils.import(
     'resource://gre/modules/ExtensionCommon.jsm'
 );
-var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
-
-var { MailUtils } = ChromeUtils.import('resource:///modules/MailUtils.jsm');
 
 var { ExtensionParent } = ChromeUtils.import(
     'resource://gre/modules/ExtensionParent.jsm'
@@ -11,6 +8,15 @@ var { ExtensionParent } = ChromeUtils.import(
 var extension = ExtensionParent.GlobalManager.getExtension(
     'mailmindr@arndissler.net'
 );
+
+const { XPCOMUtils } = ChromeUtils.import(
+    'resource://gre/modules/XPCOMUtils.jsm'
+);
+
+XPCOMUtils.defineLazyModuleGetters(this, {
+    Services: 'resource://gre/modules/Services.jsm',
+    MailUtils: 'resource:///modules/MailUtils.jsm'
+});
 
 var mailmindrMessagesApi = class extends ExtensionCommon.ExtensionAPI {
     getAPI(context) {
@@ -24,65 +30,71 @@ var mailmindrMessagesApi = class extends ExtensionCommon.ExtensionAPI {
                         .trim();
 
                     try {
-                        const getMessageHeaderForMessageId =
-                            MailUtils.getMsgHdrForMsgId ||
-                            ((msgId, startServer) => {
-                                let { MailServices } = ChromeUtils.import(
-                                    'resource:///modules/MailServices.jsm'
-                                );
-                                const findMsgIdInFolder = (msgId, folder) => {
-                                    let msgHdr;
-                                    // 
-                                    if (!folder.isServer) {
-                                        msgHdr = folder.msgDatabase.getMsgHdrForMessageID(
-                                            msgId
-                                        );
-                                        if (msgHdr) {
-                                            return msgHdr;
-                                        }
-                                    }
-
-                                    // 
-                                    for (let currentFolder of folder.subFolders) {
-                                        msgHdr = findMsgIdInFolder(
-                                            msgId,
-                                            currentFolder
-                                        );
-                                        if (msgHdr) {
-                                            return msgHdr;
-                                        }
-                                    }
-                                    return null;
-                                };
-
-                                let allServers =
-                                    MailServices.accounts.allServers;
-                                if (startServer) {
-                                    allServers = [startServer].concat(
-                                        allServers.filter(
-                                            s => s.key != startServer.key
-                                        )
+                        const getMessageHeaderForMessageId = (
+                            msgId,
+                            startServer
+                        ) => {
+                            let { MailServices } = ChromeUtils.import(
+                                'resource:///modules/MailServices.jsm'
+                            );
+                            const findMsgIdInFolder = (msgId, folder) => {
+                                let msgHdr;
+                                // 
+                                if (!folder.isServer) {
+                                    msgHdr = folder.msgDatabase.getMsgHdrForMessageID(
+                                        msgId
                                     );
+                                    if (msgHdr) {
+                                        return msgHdr;
+                                    }
                                 }
-                                for (let server of allServers) {
-                                    if (
-                                        server &&
-                                        server.canSearchMessages &&
-                                        !server.isDeferredTo
-                                    ) {
-                                        let msgHdr = findMsgIdInFolder(
-                                            msgId,
-                                            server.rootFolder
-                                        );
-                                        if (msgHdr) {
-                                            return msgHdr;
-                                        }
+
+                                // 
+                                for (let currentFolder of folder.subFolders) {
+                                    msgHdr = findMsgIdInFolder(
+                                        msgId,
+                                        currentFolder
+                                    );
+                                    if (msgHdr) {
+                                        return msgHdr;
                                     }
                                 }
                                 return null;
-                            });
+                            };
 
-                        const msgHdr = getMessageHeaderForMessageId(msgId);
+                            let allServers = MailServices.accounts.allServers;
+                            if (startServer) {
+                                allServers = [startServer].concat(
+                                    allServers.filter(
+                                        s => s.key != startServer.key
+                                    )
+                                );
+                            }
+                            for (let server of allServers) {
+                                if (
+                                    server &&
+                                    server.canSearchMessages &&
+                                    !server.isDeferredTo
+                                ) {
+                                    let msgHdr = findMsgIdInFolder(
+                                        msgId,
+                                        server.rootFolder
+                                    );
+                                    if (msgHdr) {
+                                        return msgHdr;
+                                    }
+                                }
+                            }
+                            return null;
+                        };
+
+                        let msgHdr = null;
+                        if (MailUtils.getMsgHdrForMsgId) {
+                            msgHdr = MailUtils.getMsgHdrForMsgId(msgId);
+                        } else {
+                            msgHdr = getMessageHeaderForMessageId(msgId);
+                        }
+
                         if (msgHdr) {
                             MailUtils.displayMessage(msgHdr);
                         }

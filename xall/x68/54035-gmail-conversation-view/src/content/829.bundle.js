@@ -1,18 +1,18 @@
+"use strict";
 (self["webpackChunkthunderbirdconversations"] = self["webpackChunkthunderbirdconversations"] || []).push([[829],{
 
 /***/ 9829:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "xC": () => (/* binding */ configureStore),
 /* harmony export */   "oM": () => (/* binding */ createSlice)
 /* harmony export */ });
 /* unused harmony exports MiddlewareArray, createAction, createAsyncThunk, createDraftSafeSelector, createEntityAdapter, createImmutableStateInvariantMiddleware, createReducer, createSerializableStateInvariantMiddleware, findNonSerializableValue, getDefaultMiddleware, getType, isAllOf, isAnyOf, isAsyncThunkAction, isFulfilled, isImmutableDefault, isPending, isPlain, isPlainObject, isRejected, isRejectedWithValue, miniSerializeError, nanoid, unwrapResult */
-/* harmony import */ var reselect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2222);
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8676);
-/* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3894);
 /* harmony import */ var immer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8172);
+/* harmony import */ var reselect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2222);
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8531);
+/* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3894);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -61,11 +61,13 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
     return to;
 };
 var __defProp = Object.defineProperty;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __propIsEnum = Object.prototype.propertyIsEnumerable;
 var __defNormalProp = function (obj, key, value) { return key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value: value }) : obj[key] = value; };
-var __objSpread = function (a, b) {
+var __spreadValues = function (a, b) {
     for (var prop in b || (b = {}))
         if (__hasOwnProp.call(b, prop))
             __defNormalProp(a, prop, b[prop]);
@@ -77,6 +79,7 @@ var __objSpread = function (a, b) {
         }
     return a;
 };
+var __spreadProps = function (a, b) { return __defProps(a, __getOwnPropDescs(b)); };
 var __async = function (__this, __arguments, generator) {
     return new Promise(function (resolve, reject) {
         var fulfilled = function (value) {
@@ -100,6 +103,7 @@ var __async = function (__this, __arguments, generator) {
     });
 };
 // src/index.ts
+
 
 
 
@@ -461,7 +465,7 @@ function configureStore(options) {
     var middlewareEnhancer = redux__WEBPACK_IMPORTED_MODULE_1__/* .applyMiddleware.apply */ .md.apply(void 0, finalMiddleware);
     var finalCompose = redux__WEBPACK_IMPORTED_MODULE_1__/* .compose */ .qC;
     if (devTools) {
-        finalCompose = composeWithDevTools(__objSpread({
+        finalCompose = composeWithDevTools(__spreadValues({
             trace: !IS_PRODUCTION
         }, typeof devTools === "object" && devTools));
     }
@@ -487,7 +491,7 @@ function createAction(type, prepareAction) {
             if (!prepared) {
                 throw new Error("prepareAction did not return an object");
             }
-            return __objSpread(__objSpread({
+            return __spreadValues(__spreadValues({
                 type: type,
                 payload: prepared.payload
             }, "meta" in prepared && { meta: prepared.meta }), "error" in prepared && { error: prepared.error });
@@ -542,7 +546,6 @@ function executeReducerBuilderCallback(builderCallback) {
 // src/createReducer.ts
 function createReducer(initialState, mapOrBuilderCallback, actionMatchers, defaultCaseReducer) {
     if (actionMatchers === void 0) { actionMatchers = []; }
-    (0,immer__WEBPACK_IMPORTED_MODULE_3__/* .enableES5 */ .pV)();
     var _b = typeof mapOrBuilderCallback === "function" ? executeReducerBuilderCallback(mapOrBuilderCallback) : [mapOrBuilderCallback, actionMatchers, defaultCaseReducer], actionsMap = _b[0], finalActionMatchers = _b[1], finalDefaultCaseReducer = _b[2];
     var frozenInitialState = (0,immer__WEBPACK_IMPORTED_MODULE_3__/* .default */ .ZP)(initialState, function () {
     });
@@ -621,7 +624,7 @@ function createSlice(options) {
         sliceCaseReducersByType[type] = caseReducer;
         actionCreators[reducerName] = prepareCallback ? createAction(type, prepareCallback) : createAction(type);
     });
-    var finalCaseReducers = __objSpread(__objSpread({}, extraReducers), sliceCaseReducersByType);
+    var finalCaseReducers = __spreadValues(__spreadValues({}, extraReducers), sliceCaseReducersByType);
     var reducer = createReducer(initialState, finalCaseReducers, actionMatchers, defaultCaseReducer);
     return {
         name: name,
@@ -811,7 +814,7 @@ function createUnsortedStateAdapter(selectId) {
             if (update.id in state.entities) {
                 updatesPerEntity[update.id] = {
                     id: update.id,
-                    changes: __objSpread(__objSpread({}, updatesPerEntity[update.id] ? updatesPerEntity[update.id].changes : null), update.changes)
+                    changes: __spreadValues(__spreadValues({}, updatesPerEntity[update.id] ? updatesPerEntity[update.id].changes : null), update.changes)
                 };
             }
         });
@@ -946,14 +949,14 @@ function createSortedStateAdapter(selectId, sort) {
 // src/entities/create_adapter.ts
 function createEntityAdapter(options) {
     if (options === void 0) { options = {}; }
-    var _b = __objSpread({
+    var _b = __spreadValues({
         sortComparer: false,
         selectId: function (instance) { return instance.id; }
     }, options), selectId = _b.selectId, sortComparer = _b.sortComparer;
     var stateFactory = createInitialStateFactory();
     var selectorsFactory = createSelectorsFactory();
     var stateAdapter = sortComparer ? createSortedStateAdapter(selectId, sortComparer) : createUnsortedStateAdapter(selectId);
-    return __objSpread(__objSpread(__objSpread({
+    return __spreadValues(__spreadValues(__spreadValues({
         selectId: selectId,
         sortComparer: sortComparer
     }, stateFactory), selectorsFactory), stateAdapter);
@@ -1006,7 +1009,7 @@ var miniSerializeError = function (value) {
 function createAsyncThunk(typePrefix, payloadCreator, options) {
     var fulfilled = createAction(typePrefix + "/fulfilled", function (payload, requestId, arg, meta) { return ({
         payload: payload,
-        meta: __objSpread(__objSpread({}, meta || {}), {
+        meta: __spreadProps(__spreadValues({}, meta || {}), {
             arg: arg,
             requestId: requestId,
             requestStatus: "fulfilled"
@@ -1014,7 +1017,7 @@ function createAsyncThunk(typePrefix, payloadCreator, options) {
     }); });
     var pending = createAction(typePrefix + "/pending", function (requestId, arg, meta) { return ({
         payload: void 0,
-        meta: __objSpread(__objSpread({}, meta || {}), {
+        meta: __spreadProps(__spreadValues({}, meta || {}), {
             arg: arg,
             requestId: requestId,
             requestStatus: "pending"
@@ -1023,7 +1026,7 @@ function createAsyncThunk(typePrefix, payloadCreator, options) {
     var rejected = createAction(typePrefix + "/rejected", function (error, requestId, arg, payload, meta) { return ({
         payload: payload,
         error: (options && options.serializeError || miniSerializeError)(error || "Rejected"),
-        meta: __objSpread(__objSpread({}, meta || {}), {
+        meta: __spreadProps(__spreadValues({}, meta || {}), {
             arg: arg,
             requestId: requestId,
             rejectedWithValue: !!payload,
@@ -1284,6 +1287,8 @@ function isAsyncThunkAction() {
         return combinedMatcher(action);
     };
 }
+// src/index.ts
+(0,immer__WEBPACK_IMPORTED_MODULE_3__/* .enableES5 */ .pV)();
 
 //# sourceMappingURL=module.js.map
 

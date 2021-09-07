@@ -14,18 +14,23 @@
 
 const { classes: Cc, Constructor: CC, interfaces: Ci, utils: Cu, Exception: CE, results: Cr, } = Components;
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
+try { // COMPAT for TB 78 (bug 1649554)
+  var { ComponentUtils } = ChromeUtils.import("resource://gre/modules/ComponentUtils.jsm");
+} catch (ex) { // COMPAT for TB 78 (bug 1649554)
+  var ComponentUtils = XPCOMUtils; // COMPAT for TB 78 (bug 1649554)
+} // COMPAT for TB 78 (bug 1649554)
 ChromeUtils.defineModuleGetter(this, "Utils",
   "resource://exquilla/ewsUtils.jsm");
 ChromeUtils.defineModuleGetter(this, "Services",
   "resource://gre/modules/Services.jsm");
 ChromeUtils.defineModuleGetter(this, "MailServices",
   "resource:///modules/MailServices.jsm");
-try { // COMPAT for TB 68
+/* COMPAT for TB 78 (bug 1614265, bug 1670752) */
+if (!MailServices.ab.addAddressBook && !MailServices.ab.convertQueryStringToExpression) {
   Object.defineProperties(ChromeUtils.import("resource:///modules/AddrBookManager.jsm").AddrBookManager.prototype, Object.getOwnPropertyDescriptors(ChromeUtils.import("resource://exquilla/AddrBookManager.jsm").AddrBookManager.prototype));
-  MailServices.ab = MailServices.ab.wrappedJSObject;
   Services.obs.notifyObservers(null, "addrbook-reload", null);
-} catch (ex) { // COMPAT for TB 68
-} // COMPAT for TB 68
+}
+/* COMPAT for TB 78 (bug 1614265, bug 1670752) */
 
 var _log = null;
 XPCOMUtils.defineLazyGetter(this, "log", () => {
@@ -92,7 +97,7 @@ function prepareEwsUrl(aSrcMsgURI,   // string spec
   let skinkFolder = fls.getFolderForURL(folderURIBase);
   uri.folder = skinkFolder;
 
-  if (key != -1)
+  if (skinkFolder && key != -1)
   {
     let ewsFolder = safeGetJS(skinkFolder);
     let itemId = ewsFolder.idFromKey(key);
@@ -249,10 +254,8 @@ EwsService.prototype = {
     displayName = extendedDisplayName;
 
     let matchingDirectory;
-    let directories = MailServices.ab.directories;
-    while (directories.hasMoreElements())
+    for (let directory of MailServices.ab.directories)
     {
-      let directory = directories.getNext().QueryInterface(Ci.nsIAbDirectory);
       let directoryFolderId = directory.getStringValue("folderId", "");
       if (directoryFolderId == folderId)
       {
@@ -272,7 +275,7 @@ EwsService.prototype = {
       let postSlashes = serverURI.indexOf("://") + 3;
       let serverPath = serverURI.substring(postSlashes);
 
-      let escapedPath = Services.netUtils.escapeString(path, Ci.nsINetUtil.ESCAPE_URL_PATH);
+      let escapedPath = (/* COMPAT for TB 78 (bug 1464542) */Services.netUtils || Services.io).escapeString(path, Ci.nsINetUtil.ESCAPE_URL_PATH);
 
       // For testing purposes, we allow the uri to be set in preferences.
       // preference extensions.exquilla.abScheme
@@ -280,19 +283,26 @@ EwsService.prototype = {
                   "://" + serverPath + "/" + escapedPath;
       log.info("New Address Book with URI " + uri);
 
-      const MAPIDirectory = 3;
-      let dirPref = "ldap_2.servers.ews://";
+      if (MailServices.ab.addAddressBook) { // COMPAT for TB 78 (bug 1670752)
+        matchingDirectory = Cc["@mozilla.org/addressbook/directory;1?type=exquilla-directory"].createInstance(Ci.nsIAbDirectory);
+        matchingDirectory.init(uri);
+        matchingDirectory.dirName = displayName;
+        MailServices.ab.addAddressBook(matchingDirectory);
+      } else { /* COMPAT for TB 78 (bug 1670752) */
+        const MAPIDirectory = 3;
+        let dirPref = "ldap_2.servers.ews://";
 
-      // the list of servers in prefs will break on "." so we must escape periods
-      //  for the pref path
-      serverPath+= "/" + path;
-      let escapedPrefPath = 
-        Services.netUtils.escapeURL(serverPath, Ci.nsINetUtil.ESCAPE_URL_FILE_EXTENSION);
+        // the list of servers in prefs will break on "." so we must escape periods
+        //  for the pref path
+        serverPath+= "/" + path;
+        let escapedPrefPath = 
+          Services.netUtils.escapeURL(serverPath, Ci.nsINetUtil.ESCAPE_URL_FILE_EXTENSION);
 
-      dirPref+= escapedPrefPath;
-      let returnedURI = MailServices.ab.newAddressBook(displayName, uri, MAPIDirectory, dirPref);
+        dirPref+= escapedPrefPath;
+        MailServices.ab.newAddressBook(displayName, uri, MAPIDirectory, dirPref);
+        matchingDirectory = MailServices.ab.getDirectory(uri);
+      } /* COMPAT for TB 78 (bug 1670752) */
 
-      matchingDirectory = MailServices.ab.getDirectory(uri);
       let ewsDirectory = safeGetJS(matchingDirectory);
 
       // glue between the native folder and the ab directory
@@ -445,6 +455,9 @@ EwsService.prototype = {
     // returns nsIURI aURL
     log.config("openAttachment for uri " + aUrl + " aMessageURI " + aMessageURI);
 
+    if (aContentType && !aUrl.includes("&type=")) {
+      aUrl += "&type=" + aContentType;
+    }
     let uri = prepareEwsUrl(aUrl, aUrlListener, aMsgWindow);
     // set the original message uri
     uri instanceof Ci.nsIMsgMessageUrl;
@@ -471,12 +484,17 @@ EwsService.prototype = {
     aURL.value = uri;
   },
 
+  getUrlForUri(aMessageURI, aMsgWindow)
+  {
+    return prepareEwsUrl(aMessageURI, null, aMsgWindow);
+  },
+  /* COMPAT for TB 78 (bug 1667338) */
   GetUrlForUri(aMessageURI, aURL, aMsgWindow)
   {
     let uri = prepareEwsUrl(aMessageURI, null, aMsgWindow);
     aURL.value = uri;
   },
-
+  /* COMPAT for TB 78 (bug 1667338) */
   DisplayMessageForPrinting(aMessageURI, aDisplayConsumer, aMsgWindow, aUrlListener, aURL)
   {
     // Append appropriate query
@@ -550,13 +568,14 @@ EwsService.prototype = {
   get scheme() { throw Cr.NS_ERROR_NOT_IMPLEMENTED;},
   allowPort(port, scheme) { throw Cr.NS_ERROR_NOT_IMPLEMENTED;},
   get protocolFlags() {
-    return Ci.nsIProtocolHandler.URI_STD |
+    return Ci.nsIProtocolHandler.URI_NORELATIVE |
            Ci.nsIProtocolHandler.URI_FORBIDS_AUTOMATIC_DOCUMENT_REPLACEMENT |
-           Ci.nsIProtocolHandler.URI_DANGEROUS_TO_LOAD |
-           Ci.nsIProtocolHandler.ALLOWS_PROXY;
+           Ci.nsIProtocolHandler.URI_IS_UI_RESOURCE |
+           Ci.nsIProtocolHandler.ALLOWS_PROXY |
+           Ci.nsIProtocolHandler.ORIGIN_IS_FULL_SPEC;
   },
 
 }
 
-var NSGetFactory = XPCOMUtils.generateNSGetFactory([EwsService]);
+var NSGetFactory = ComponentUtils.generateNSGetFactory([EwsService]);
 var EXPORTED_SYMBOLS = ["NSGetFactory"];

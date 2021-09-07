@@ -769,8 +769,13 @@ debug('SetMessageKey called: key='+key);
   let READ=1; //see mailnews\base\public\nsMsgMessageFlags.idl
   //let msgWindow = Cc["@mozilla.org/messenger/msgwindow;1"].
 	//										createInstance(Ci.nsIMsgWindow);
-  MailServices.copy.CopyFileMessage(tmpFile, gImapFolder, null, false, READ,
+	try {
+		MailServices.copy.CopyFileMessage(tmpFile, gImapFolder, null, false, READ,
       '', copyServiceListener, null/*msgWindow*/);
+	} catch(e) {	// since TB91!
+		MailServices.copy.copyFileMessage(tmpFile, gImapFolder, null, false, READ,
+      '', copyServiceListener, null/*msgWindow*/);
+	}
 
   // next mabfile is started, when listener is informed about the end of the operation
 debug('return');

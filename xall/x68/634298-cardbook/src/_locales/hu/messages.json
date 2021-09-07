@@ -2909,6 +2909,9 @@
 	"wdw_cardEditionViewListTitle": {
 		"message": "Nézet lista"
 	},
+	"wdw_cardEditionEditTemplateTitle": {
+		"message": "Sablon szerkesztése"
+	},
 	"wdw_cardbookPrintTitleLong": {
 		"message": "$P1$ nyomtatási képe - Névjegyzék - Thunderbird",
         "placeholders": {
@@ -3563,20 +3566,20 @@
 	"cardbookContactPaneItemAccesskey": {
 		"message": "N"
 	},
+	"wizard.next.label": {
+		"message": "Tovább"
+	},	
+	"wizard.back.label": {
+		"message": "Vissza"
+	},	
+	"wizard.create.label": {
+		"message": "Létrehozás"
+	},
 	"wizard.title": {
 		"message": "Új névjegytár mappa"
 	},
-	"wizard.label": {
-		"message": "Új névjegytár mappa"
-	},
-	"welcomePage.wizard.description": {
-		"message": "Üdvözöljük!"
-	},
 	"welcomePage.description": {
 		"message": "Úgy tűnik, ez az első alkalom, amikor a Névjegyzék programot futtatták. A Névjegyzék megpróbálja összegyűjteni a Thunderbird szabványos címjegyzékeit és távoli névjegytárakat."
-	},
-	"initialPage.wizard.description": {
-		"message": "Névjegytár mappa típus."
 	},
 	"initialPage.description": {
 		"message": "Névjegytár mappa típus:"
@@ -3595,9 +3598,6 @@
 	},
 	"initialPage.find.label": {
 		"message": "Távoli névjegytár keresése"
-	},
-	"localPage.wizard.description": {
-		"message": "Helyi névjegytár mappaformátum és tárolási hely."
 	},
 	"localPage.type.description": {
 		"message": "Válassza ki a helyi névjegytár mappaformátum:"
@@ -3632,9 +3632,6 @@
 	"localPage.uributton.label": {
 		"message": "Tallózás…"
 	},
-	"remotePage.wizard.description": {
-		"message": "Távoli névjegytár mappaformátum és tárolási hely."
-	},
 	"remotePage.description": {
 		"message": "Válassza ki a távoli névjegytár mappaformátum: (Vigyázat: Google végrehajtása a vCard formátum hibás.)"
 	},
@@ -3646,6 +3643,9 @@
 	},
 	"remotePage.google.label": {
 		"message": "Google"
+	},
+	"remotePage.googleWorkspace.label": {
+		"message": "Google Workspace"
 	},
 	"remotePage.apple.label": {
 		"message": "Apple"
@@ -3671,14 +3671,14 @@
 	"remotePage.password.label": {
 		"message": "Jelszó:"
 	},
+	"rememberPassword": {
+		"message": "Jelszókezelő használata a jelszó megjegyzésére"
+	},
 	"showHidePassword.tooltip": {
 		"message": "Jelszó megjelenítése/elrejtése"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Érvényesít"
-	},
-	"locationSearchPage.wizard.description": {
-		"message": "Mentett keresés meghatározása."
 	},
 	"locationSearchPage.label": {
 		"message": "Mentett keresés"
@@ -3704,9 +3704,6 @@
 	"googleOauthPage.wizard.description": {
 		"message": "Google hitelesítés"
 	},
-	"namePage.wizard.description": {
-		"message": "Névjegytár mappa tulajdonságok"
-	},
 	"namePage.selected.label": {
 		"message": "Kijelölt"
 	},
@@ -3725,17 +3722,11 @@
 	"namePage.vCardVersion.label": {
 		"message": "vCard"
 	},
-	"namesPage.wizard.description": {
-		"message": "Névjegytár mappák tulajdonságok"
-	},
 	"namesPage.name.label": {
 		"message": "Nevek"
 	},
 	"namesPage.name.description": {
 		"message": "Felfedeztuk több névjegytár mappák. Válassza ki a nevek, a névjegytár amit szeretné megnyitni:"
-	},
-	"findPage.wizard.description": {
-		"message": "Távoli névjegytár keresése"
 	},
 	"findPage.name1.description": {
 		"message": "Távoli névjegytár nem található."
@@ -3745,9 +3736,6 @@
 	},
 	"findPage.name3.description": {
 		"message": "Több távoli névjegytár található. Érvényesítse a hozzáadandó távoli névjegytárakat:"
-	},
-	"finishPage.wizard.description": {
-		"message": "Névjegytár beállítások"
 	},
 	"finishPage.description": {
 		"message": "Az új névjegytár mappa sikeresen beállítva."
@@ -5117,6 +5105,12 @@
 	"cardbookToolbarAddListButtonTooltip": {
 		"message": "Egy új lista létrehozása"
 	},
+	"cardbookToolbarAddTemplateButtonLabel": {
+		"message": "Új sablon"
+	},
+	"cardbookToolbarAddTemplateButtonTooltip": {
+		"message": "Új sablon létrehozása"
+	},
 	"cardbookToolbarEditButtonLabel": {
 		"message": "Szerkesztés"
 	},
@@ -5315,6 +5309,15 @@
 	"searchForLocalKeyEditButton.tooltip": {
 		"message": "Importálás fájlból"
 	},
+	"definitionLabel": {
+		"message": "Definíció"
+	},
+	"fieldsLabel": {
+		"message": "Mezők"
+	},
+	"formulasLabel": {
+		"message": "Képletek"
+	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Új üzenet (névjegy melléklettel)"
 	},
@@ -5462,6 +5465,9 @@
 	"fnFormulaExplanation": {
 		"message": "Lehetőség van a megszokott módon névjegyzék állítja elő az megjelenített neve. Ez a képlet áll blokkok által közrezárt „()”. Ezekben a blokkokban sok rész lehet, amelyeket „|” határol."
 	},
+	"templateFormulaExplanation": {
+		"message": "Lehetőség van előre meghatározott mezőkkel rendelkező sablonok meghatározására. Például meghatározhat egy sablont a(z) „({{2}}).({{4}})@cégem.hu” e-mail-címmel. Ha egy névjegyre alkalmazzák, amelynek keresztnévként és családnévként „János” és „Kovács” szerepel, a „jános.kovács@cégem.hu” e-mailt hozzáadjuk a névjegyhez."
+	},
 	"formulaExplanation1": {
 		"message": "({{1}}|{{2}}) : Ha a(z) {{1}} üres, akkor a blokk helyébe a(z) {{2}} lép."
 	},
@@ -5500,12 +5506,6 @@
 	},
 	"displayFieldNamesAccesskey": {
 		"message": "M"
-	},
-	"displayTypesLabel": {
-		"message": "Típusok és beállítások"
-	},
-	"displayTypesAccesskey": {
-		"message": "b"
 	},
 	"fieldsToPrintGroupboxLabel": {
 		"message": "Helyszíni beállítások"
@@ -5698,6 +5698,12 @@
 	},
 	"saveTemplateLabel": {
 		"message": "Sablon mentése"
+	},
+	"applyTemplateLabel": {
+		"message": "Sablon alkalmazása"
+	},
+	"createTemplateLabel": {
+		"message": "Sablon létrehozása"
 	},
 	"convertVCardsLabel": {
 		"message": "vCard átalakítása"

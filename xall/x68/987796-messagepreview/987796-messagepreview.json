@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 527,
+    "average_daily_users": 549,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -18,32 +18,32 @@
     "contributions_url": "",
     "created": "2020-03-08T19:17:13Z",
     "current_version": {
-        "id": 2474620,
+        "id": 2476299,
         "compatibility": {
             "thunderbird": {
-                "max": "84.0",
-                "min": "78.0a1"
+                "max": "*",
+                "min": "91.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/messagepreview/versions/2474620",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/messagepreview/versions/2476299",
         "files": [
             {
-                "id": 1017782,
-                "created": "2020-11-02T20:55:30Z",
-                "hash": "sha256:a3b89feec49d8d73ff01b605704c70d579c1a955c72de7df1c631bc8af3e88f9",
+                "id": 1019459,
+                "created": "2021-08-18T03:20:29Z",
+                "hash": "sha256:4fa1fed0c1726d5b2e0ee1936a4437a5906df7cfa238f1be8f3dad04e054ec02",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 25405,
+                "size": 25361,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017782/messagepreview-2.3-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019459/messagepreview-2.5-tb.xpi?src=",
                 "permissions": [
                     "storage"
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 6,
             "name": {
@@ -73,11 +73,11 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "<b>Version 2.3 changes</b>\n\n<li>Update: storage.local options messaging.</li><li>New: icon.</li>\n<b>Version 2.2 changes</b>\n\n<li>Fix: change timing of UI creation on startup.</li><li>New: implement browser_style in Options.</li>\n<b>Version 2.1 changes</b>\n\n<li>Update: updated for fixed column handling in Tb 78.</li> \n<b>Version 2.0 changes</b>\n\n<li>Update: updates and refactorings for Tb 78.</li>"
+            "en-US": "<b>Version 2.5 changes</b>\n<ul>  <li>Update: compatibility with Tb91.</li>  <li>Update: several internal refactorings.</li>  <li>NOTE: possible poor tooltip contrast when using the Thunderbird dark theme on linux.</li></ul>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/messagepreview/versions/2.3",
-        "version": "2.3"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/messagepreview/versions/2.5",
+        "version": "2.5"
     },
     "default_locale": "en-US",
     "description": {
@@ -100,7 +100,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-11-03T10:59:14Z",
+    "last_updated": "2021-08-19T08:49:23Z",
     "name": {
         "en-US": "MessagePreview"
     },
@@ -169,10 +169,15 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
-            "comp69plus": true,
+            "comp68": true,
             "comp78plus": true,
-            "comp61plus": true
+            "comp78pv": true,
+            "comp78pv_date": "2020-11-02T20:55:30Z",
+            "comp78pv_version": "2.3",
+            "comp78pv_vmin": "78.0a1",
+            "comp78pv_vmax": "84.0"
         }
     }
 }

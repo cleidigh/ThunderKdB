@@ -1,63 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/css" href="chrome://messenger/skin/addressbook/abContactsPanel.css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+<?xml-stylesheet type="text/css" href="chrome://cardbook/content/skin/cardbookConfiguration.css"?>
 <!-- for the notification box -->
-<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?> 
-<?xml-stylesheet href="chrome://messenger/content/notification.css" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/content/bindings.css"?> 
+<?xml-stylesheet type="text/css" href="chrome://messenger/content/notification.css"?>
 <!-- for the textbox -->
 <?xml-stylesheet type="text/css" href="chrome://messenger/skin/input-fields.css"?>
 <!-- for the display -->
 <?xml-stylesheet type="text/css" href="chrome://messenger/skin/themeableDialog.css"?>
 
-<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-	xmlns:xhtml="http://www.w3.org/1999/xhtml"
+<html id="wdw_cardbookConfigurationAddCustomField" xmlns="http://www.w3.org/1999/xhtml"
+	role="document"
+	xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 	xmlns:html="http://www.w3.org/1999/xhtml"
-	onload="onLoadDialog();" resizable="true"
-	onclose="onCancelDialog();"
-	id="wdw_cardbookConfigurationAddCustomField" title="__MSG_wdw_cardbookConfigurationAddCustomFieldTitle__"
 	persist="screenX screenY width height"
 	lightweightthemes="true"
 	style="min-width:200px;min-height:50px;">
-	
-	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookRichContext.js"/>
-	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookNotifications.js"/>
-	<script type="application/x-javascript" src="chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddCustomField.js"/>
-	<script type="application/x-javascript" src="chrome://cardbook/content/scripts/i18n.js"/>
-	<!-- for the textbox -->
-	<script type="application/x-javascript" src="chrome://global/content/globalOverlay.js"/>
-	<script type="application/x-javascript" src="chrome://global/content/editMenuOverlay.js"/>
+	<head>
+		<title>__MSG_wdw_cardbookConfigurationAddCustomFieldTitle__</title>
+		<script type="application/x-javascript" src="chrome://cardbook/content/cardbookRichContext.js"/>
+		<script type="application/x-javascript" src="chrome://cardbook/content/cardbookNotifications.js"/>
+		<script type="application/x-javascript" src="chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddCustomField.js"/>
+		<script type="application/x-javascript" src="chrome://cardbook/content/scripts/i18n.js"/>
+		<!-- for the textbox -->
+		<script type="application/x-javascript" src="chrome://global/content/globalOverlay.js"/>
+		<script type="application/x-javascript" src="chrome://global/content/editMenuOverlay.js"/>
+	</head>
 
-	<dialog id="wdw_cardbookConfigurationAddCustomFieldDialog"
-		buttons="accept,cancel">
+	<html:body xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+		<dialog id="wdw_cardbookConfigurationAddCustomFieldDialog"
+			buttons="accept,cancel">
 
-		<keyset id="wdw_cardbookConfigurationAddCustomField-keys">
-			<key keycode="VK_ESCAPE" oncommand="onCancelDialog();"/>
-		</keyset>
-	
-		<hbox flex="1">
-			<vbox flex="1">
-				<grid align="center" flex="1">
-					<columns>
-						<column/>
-						<column flex="1"/>
-					</columns>
-		
-					<rows>
-						<row align="center">
+			<html:div class="hbox">
+				<html:table class="flex">
+					<html:tr>
+						<html:td>
 							<label id="customFieldCodeLabel" value="__MSG_customFieldCodeLabel__" control="customFieldCodeTextBox"/>
+						</html:td>
+						<html:td class="cardbook-td-input">
 							<html:input id="customFieldCodeTextBox" oninput="customFieldCheck(this);validate();"/>
-						</row>
-						<row align="center">
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:td>
 							<label id="customFieldLabelLabel" value="__MSG_customFieldLabelLabel__" control="customFieldLabelTextBox"/>
+						</html:td>
+						<html:td class="cardbook-td-input">
 							<html:input id="customFieldLabelTextBox" oninput="validate();"/>
-						</row>
-					</rows>
-				</grid>
-			</vbox>
-		</hbox>
-		<vbox>
-			<hbox id="errorNotificationsHbox" class="notification-inline">
-				<!-- notificationbox will be added here lazily. -->
-			</hbox>
-		</vbox>
-	</dialog>
-</window>
+						</html:td>
+					</html:tr>
+				</html:table>
+			</html:div>
+			<html:div>
+				<html:div id="errorNotificationsHbox" class="notification-inline">
+					<!-- notificationbox will be added here lazily. -->
+				</html:div>
+			</html:div>
+		</dialog>
+	</html:body>
+</html>

@@ -3,7 +3,7 @@
   // Define default prefs.
   let defaultPrefs = {
       "counter": 0,
-      "settingsFolder": "",
+      "templateFolder": "",
       "defaultImport": "",
       "menuCollapse": true,
       "toolbar": true,
@@ -14,7 +14,7 @@
       "collapseState": ""
   }; 
   await preferences.init(defaultPrefs);
-  
+
   // Migrate legacy prefs using the LegacyPrefs API.
   const legacyPrefBranch = "extensions.quicktext.";
   const prefNames = Object.keys(defaultPrefs);
@@ -34,6 +34,29 @@
       messenger.LegacyPrefs.clearUserPref(`${legacyPrefBranch}${prefName}`);
     }
   }
+
+  // Allow to set defaultImport from user_prefs
+  let defaultImportOverride = await messenger.LegacyPrefs.getUserPref(`${legacyPrefBranch}defaultImportOverride`);    
+  if (defaultImportOverride !== null) {
+    preferences.setPref("defaultImport", defaultImportOverride);
+  }
+
+  // Allow to override templateFolder from user_prefs
+  let templateFolderOverride = await messenger.LegacyPrefs.getUserPref(`${legacyPrefBranch}templateFolderOverride`);    
+  if (templateFolderOverride !== null) {
+    preferences.setPref("templateFolder", templateFolderOverride);
+  }
+
+  messenger.NotifyTools.onNotifyBackground.addListener(async (info) => {
+    switch (info.command) {
+      case "setPref":
+        preferences.setPref(info.pref, info.value);
+        break;
+      case "getPref":
+        return await preferences.getPref(info.pref);
+        break;
+    }
+  }); 
   
   // load add-on via WindowListener API
   messenger.WindowListener.registerChromeUrl([ 
@@ -52,7 +75,6 @@
   ]);
 
   messenger.WindowListener.registerOptionsPage("chrome://quicktext/content/addonoptions.xhtml")
-  messenger.WindowListener.registerStartupScript("chrome://quicktext/content/scripts/startup.js");
   
   messenger.WindowListener.registerWindow(
     "chrome://messenger/content/messengercompose/messengercompose.xhtml",

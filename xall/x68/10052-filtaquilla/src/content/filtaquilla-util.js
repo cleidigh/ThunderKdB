@@ -35,7 +35,7 @@ FiltaQuilla.Util = {
   mAppver: null,
 	mExtensionVer: null,
   VersionProxyRunning: false,
-	HARDCODED_CURRENTVERSION : "3.1", // will later be overriden call to AddonManager
+	HARDCODED_CURRENTVERSION : "3.2", // will later be overriden call to AddonManager
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "filtaquilla@mesquilla.com",
 	_prefs: null,
@@ -48,13 +48,6 @@ FiltaQuilla.Util = {
     if (!this._stringBundleSvc)
       this._stringBundleSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
     return this._stringBundleSvc;
-  },
-  
-  get Properties() {
-    if (!this._properties)
-      this._properties = this.StringBundleSvc.createBundle("chrome://filtaquilla/locale/filtaquilla.properties")
-        .QueryInterface(Components.interfaces.nsIStringBundle);
-    return this._properties;
   },
   
   
@@ -269,11 +262,9 @@ FiltaQuilla.Util = {
     return end.getHours() + ':' + end.getMinutes() + ':' + end.getSeconds() + '.' + end.getMilliseconds() + '  ' + timePassed;
   },
 
-  logToConsole: function logToConsole(msg, optionTag) {
-    let consoleService = Components.classes["@mozilla.org/consoleservice;1"].getService(Components.interfaces.nsIConsoleService);
-    consoleService.logStringMessage("FiltaQuilla "
-			+ (optionTag ? '{' + optionTag.toUpperCase() + '} ' : '')
-			+ this.logTime() + "\n"+ msg);
+  logToConsole: function logToConsole(a) {
+    let msg = "FiltaQuilla " + this.logTime() + "\n"; // (optionTag ? '{' + optionTag.toUpperCase() + '} ' : '') + 
+    console.log (msg, ...arguments);
   },
 
   // flags
@@ -303,7 +294,7 @@ FiltaQuilla.Util = {
 
   logDebug: function logDebug(msg) {
     if (this.isDebug)
-      this.logToConsole(msg);
+      this.logToConsole(...arguments);
   },
 
   isDebug: function isDebug() {
@@ -316,6 +307,14 @@ FiltaQuilla.Util = {
 		catch(e) {return false;}
 	},
 
+
+  logWithOption: function logWithOption(a) {
+    arguments[0] =  "FiltaQuilla "
+      +  '{' + arguments[0].toUpperCase() + '} ' 
+      + QuickFolders.Util.logTime() + "\n";
+    console.log(...arguments);
+  },
+  
   /**
 	* only logs if debug mode is set and specific debug option are active
 	*
@@ -328,7 +327,7 @@ FiltaQuilla.Util = {
 			for (let i=0; i<options.length; i++) {
 				let option = options[i];
 				if (this.isDebugOption(option)) {
-					this.logToConsole(msg, option);
+					this.logWithOption(msg, option);
 					break; // only log once, in case multiple log switches are on
 				}
 			}
@@ -352,24 +351,24 @@ FiltaQuilla.Util = {
   showAboutConfig: function(clickedElement, filter, readOnly) {
     const name = "Preferences:ConfigManager",
 		      util = FiltaQuilla.Util;
-    let uri = "chrome://global/content/config.xhtml";
-		if (util.Application)
-			uri += "?debug";
+          
+    let mediator = Services.wm,
+        isTbModern = util.versionGreaterOrEqual(util.AppverFull, "85"),
+        uri = (isTbModern) ? "about:config": "chrome://global/content/config.xhtml?debug";
 
-    let mediator = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator);
-    let w = mediator.getMostRecentWindow(name);
-
-    let win = clickedElement ?
+    let w = mediator.getMostRecentWindow(name),
+        win = clickedElement ?
 		          (clickedElement.ownerDocument.defaultView ? clickedElement.ownerDocument.defaultView : window)
 							: window;
     if (!w) {
       let watcher = Components.classes["@mozilla.org/embedcomp/window-watcher;1"].getService(Components.interfaces.nsIWindowWatcher);
-      w = watcher.openWindow(win, uri, name, "dependent,chrome,resizable,centerscreen,alwaysRaised,width=500px,height=350px", null);
+      w = watcher.openWindow(win, uri, name, "dependent,chrome,resizable,centerscreen,alwaysRaised,width=750px,height=450px", null);
     }
     w.focus();
     w.addEventListener('load',
       function () {
-        let flt = w.document.getElementById("textbox");
+        let id = (isTbModern) ? "about-config-search" : "textbox",
+            flt = w.document.getElementById(id);
         if (flt) {
           flt.value=filter;
           // make filter box readonly to prevent damage!
@@ -406,18 +405,38 @@ FiltaQuilla.Util = {
 	},
   
   // l10n
-
-  getBundleString: function getBundleString(id, defaultText) { 
-		let s="";
-		try {
-			s= this.Properties.GetStringFromName(id);
-		}
-		catch(e) {
-			s = defaultText;
-			this.logToConsole ("Could not retrieve bundle string: " + id + "");
-		}
+  getBundleString: function getBundleString(id, defaultText, substitions = []) { 
+    var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
+    let extension = ExtensionParent.GlobalManager.getExtension("filtaquilla@mesquilla.com");
+    let localized = extension.localeData.localizeMessage(id, substitions);
+    
+    let s = "";
+    if (localized) {
+      s = localized;
+    }
+    else {
+      s = defaultText;
+      this.logToConsole ("Could not retrieve bundle string: " + id + "");
+    }
 		return s;
 	} ,
+  
+  localize: function(window, buttons = null) {
+    var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+    var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
+    let extension = ExtensionParent.GlobalManager.getExtension("filtaquilla@mesquilla.com");
+    Services.scriptloader.loadSubScript(
+      extension.rootURI.resolve("content/i18n.js"),
+      window,
+      "UTF-8"
+    );
+    window.i18n.updateDocument({extension: extension});
+    if (buttons) {
+      for (let [name, label] of Object.entries(buttons)) {
+        window.document.documentElement.getButton(name).label =  extension.localeData.localizeMessage(label); // apply
+      }
+    }
+  } ,  
   
 	VersionProxy: async function VersionProxy(win) {
     const util = FiltaQuilla.Util,
@@ -515,7 +534,118 @@ FiltaQuilla.Util = {
 														.getService(Components.interfaces.nsIVersionComparator);
 		 return (versionComparator.compare(a, b) < 0);
 	} ,	
+  
+  bodyMimeMatch: function(aMsgHdr, searchValue, searchFlags) {
+    const util = FiltaQuilla.Util;
+    let msgBody,
+        BodyParts = [], 
+        BodyType = [], // if we need multiple bodys (e.g. plain text + html mixed)
+        r = false,
+        reg,
+        isTested = false,
+        folder = aMsgHdr.folder;
+        
+    /*** READ body ***/
+    var stream = folder.getMsgInputStream(aMsgHdr, {});
+    var messageSize = folder.hasMsgOffline(aMsgHdr.messageKey)
+      ? aMsgHdr.offlineMessageSize
+      : aMsgHdr.messageSize;
+    var data;
+    try {
+      data = NetUtil.readInputStreamToString(stream, messageSize);
+    } 
+    catch (ex) {
+      util.logDebug(ex);
+      stream.close(); // If we don't know better to return false.
+      return false;
+    }
+    stream.close();
+    
+    /** EXTRACT MIME PARTS **/
+    if (MimeParser.extractMimeMsg) {
+      // Tb 91
+      let mimeMsg = MimeParser.extractMimeMsg(data, {
+        includeAttachments: false  // ,getMimePart: partName
+      });
+      if (!mimeMsg.parts || !mimeMsg.parts.length) {
+        isTested = true;
+        msgBody = "";
+      }
+      else {
+        if (mimeMsg.body && mimeMsg.contentType && mimeMsg.contentType.startsWith("text")) {
+          BodyParts.push(mimeMsg.body); // just in case this exists too
+          BodyType.push(mimeMsg.contentType || "?")
+        }
+        else if (mimeMsg.parts && mimeMsg.parts.length) {
+          let origPart = mimeMsg.parts[0];
+          if (origPart.body && origPart.contentType && ("" + origPart.contentType).startsWith("text")) {
+            msgBody = origPart.body;
+            util.logDebug("found body element in parts[0]");
+            BodyParts.push(msgBody);
+            BodyType.push(origPart.contentType || "?")
+          }
+          if (origPart.parts) {
+            for (let p = 0; p<origPart.parts.length; p++)  {
+              let o = origPart.parts[p];
+              if (o.body && o.contentType && o.contentType.startsWith("text")) {
+                util.logDebug("found body element in parts[0].parts[" + p + "]", o);
+                BodyParts.push(o.body);
+                BodyType.push(o.contentType || "?")
+              }
+            }
+          }
+        }
+        if (!BodyParts.length) isTested=true; // no regex, as it failed.
+          
+      }
+       
+    }
+    else {
+      let [headers, body] = MimeParser.extractHeadersAndBody(data);
 
+       BodyParts.push(body); // this is only the raw mime crap!
+       BodyType.push("?");
+    }    
+    
+    if (!isTested && BodyParts.length && searchValue) {
+      reg = RegExp(searchValue, searchFlags);
+      if (BodyParts.length>0) {
+        for (let i=0;  i<BodyParts.length; i++) {
+          let p = BodyParts[i];
+          util.logDebug("testing part [" + i + "] ct = ", BodyType[i]);
+          // if it is html, strip out as much as possible:
+          // p = p;
+          if (BodyType[i].includes("html")) {
+            // remove html the dirty way
+            p = p.replace(/(<style[\w\W]+style>)/g, '').replace(/<[^>]+>/g, '').replace(/(\r\n|\r|\n){2,}/g,"").replace(/(\t){2,}/g,"");
+          }
+          let found = reg.test(p);
+          if (found) {
+            let ct=p.contentType || "unknown";
+            util.logDebug("Found pattern " + searchValue + " with content type: " + BodyType[i]);
+            r = true;
+            msgBody = p;
+            break;
+          }
+        }
+      }
+      else {
+        util.logDebug("No parts found.");
+        r = false;
+      }
+    }
+    
+    if (r === true) {
+      util.logDebug("body matches: ", r);
+      let results = reg.exec(msgBody); // the winning body part LOL
+      if (results.length) {
+        util.logDebug("Matches: ", results[0]);
+      }
+      util.logDebug("Thunderbird 78 returns the raw undecoded body. So this is what we parse and if it is encoded I give no guarantee for the regex to find ANYTHING.")
+      util.logDebug("Thunderbird 91 will have a new function MimeParser.extractMimeMsg()  which will enable proper body parsing ")
+    }    
+    return r;
+  }
 
 } // Util
 

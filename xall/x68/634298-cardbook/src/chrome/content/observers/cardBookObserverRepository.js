@@ -26,6 +26,7 @@ var cardBookObserverRepository = {
 		Services.obs.addObserver(aObserver, "cardbook.categoryDeleted", false);
 		Services.obs.addObserver(aObserver, "cardbook.categoryCreated", false);
 		Services.obs.addObserver(aObserver, "cardbook.categoryConvertedToList", false);
+		Services.obs.addObserver(aObserver, "cardbook.cardEdited", false);
 		Services.obs.addObserver(aObserver, "cardbook.cardModified", false);
 		Services.obs.addObserver(aObserver, "cardbook.cardCreated", false);
 		Services.obs.addObserver(aObserver, "cardbook.cardsDeleted", false);
@@ -55,6 +56,7 @@ var cardBookObserverRepository = {
 		Services.obs.addObserver(aObserver, "cardbook.DBOpen", false);
 		Services.obs.addObserver(aObserver, "cardbook.undoDBOpen", false);
 		Services.obs.addObserver(aObserver, "cardbook.mailPopDBOpen", false);
+		Services.obs.addObserver(aObserver, "cardbook.prefDispNameDBOpen", false);
 		Services.obs.addObserver(aObserver, "cardbook.imageDBOpen", false);
 		Services.obs.addObserver(aObserver, "cardbook.searchDBOpen", false);
 		Services.obs.addObserver(aObserver, "cardbook.complexSearchInitLoaded", false);
@@ -80,6 +82,7 @@ var cardBookObserverRepository = {
 		Services.obs.removeObserver(aObserver, "cardbook.categoryDeleted");
 		Services.obs.removeObserver(aObserver, "cardbook.categoryCreated");
 		Services.obs.removeObserver(aObserver, "cardbook.categoryConvertedToList");
+		Services.obs.removeObserver(aObserver, "cardbook.cardEdited");
 		Services.obs.removeObserver(aObserver, "cardbook.cardModified");
 		Services.obs.removeObserver(aObserver, "cardbook.cardCreated");
 		Services.obs.removeObserver(aObserver, "cardbook.cardsDeleted");
@@ -109,11 +112,11 @@ var cardBookObserverRepository = {
 		Services.obs.removeObserver(aObserver, "cardbook.DBOpen");
 		Services.obs.removeObserver(aObserver, "cardbook.undoDBOpen");
 		Services.obs.removeObserver(aObserver, "cardbook.mailPopDBOpen");
+		Services.obs.removeObserver(aObserver, "cardbook.prefDispNameDBOpen");
 		Services.obs.removeObserver(aObserver, "cardbook.imageDBOpen");
 		Services.obs.removeObserver(aObserver, "cardbook.searchDBOpen");
 		Services.obs.removeObserver(aObserver, "cardbook.complexSearchInitLoaded");
 		Services.obs.removeObserver(aObserver, "cardbook.complexSearchLoaded");
-		Services.obs.removeObserver(aObserver, "cardbook.accountsLoaded");
 
 		Services.obs.removeObserver(aObserver, "cardbook.preferencesChanged");
 

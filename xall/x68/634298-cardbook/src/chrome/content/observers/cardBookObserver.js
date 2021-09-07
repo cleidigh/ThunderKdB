@@ -7,6 +7,7 @@ var cardBookObserver = {
 	catDBOpen: false,
 	undoDBOpen: false,
 	mailPopDBOpen: false,
+	prefDispNameDBOpen: false,
 	imageDBOpen: false,
 	
 	register: function() {
@@ -18,7 +19,7 @@ var cardBookObserver = {
 	},
 	
 	upgradeDBs: function() {
-		if (this.mailPopDBOpen && this.catDBOpen && this.DBOpen && this.undoDBOpen && this.imageDBOpen) {
+		if (this.mailPopDBOpen && this.prefDispNameDBOpen && this.catDBOpen && this.DBOpen && this.undoDBOpen && this.imageDBOpen) {
 			cardbookIndexedDB.upgradeDBs();
 		}
 	},
@@ -42,6 +43,11 @@ var cardBookObserver = {
 				this.mailPopDBOpen = true;
 				this.upgradeDBs();
 				cardbookIDBMailPop.loadMailPop();
+				break;
+			case "cardbook.prefDispNameDBOpen":
+				this.prefDispNameDBOpen = true;
+				this.upgradeDBs();
+				cardbookIDBPrefDispName.loadPrefDispName();
 				break;
 			case "cardbook.catDBOpen":
 				this.catDBOpen = true;
@@ -67,6 +73,7 @@ var cardBookObserver = {
 					ovl_cardbookMailContacts.refreshBlueStars();
 				}
 				break;
+			case "cardbook.cardEdited":
 			case "cardbook.cardCreated":
 			case "cardbook.cardModified":
 			case "cardbook.cardsDeleted":

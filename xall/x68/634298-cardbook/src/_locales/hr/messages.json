@@ -2909,6 +2909,9 @@
 	"wdw_cardEditionViewListTitle": {
 		"message": "Prikaži popis"
 	},
+	"wdw_cardEditionEditTemplateTitle": {
+		"message": "Uredi predložak"
+	},
 	"wdw_cardbookPrintTitleLong": {
 		"message": "Pregled ispisa $P1$ - Kontakti - Thunderbird",
         "placeholders": {
@@ -3563,20 +3566,20 @@
 	"cardbookContactPaneItemAccesskey": {
 		"message": "O"
 	},
+	"wizard.next.label": {
+		"message": "Sljedeća"
+	},	
+	"wizard.back.label": {
+		"message": "Natrag"
+	},	
+	"wizard.create.label": {
+		"message": "Stvori"
+	},
 	"wizard.title": {
 		"message": "Unesite novu adresu"
 	},
-	"wizard.label": {
-		"message": "Unesite novi adresar"
-	},
-	"welcomePage.wizard.description": {
-		"message": "Dobro došli"
-	},
 	"welcomePage.description": {
 		"message": "??It seems that this is the first time CardBook has been run. CardBook will attempt to collect contacts from Thunderbird’s standard address books and remote address books.??"
-	},
-	"initialPage.wizard.description": {
-		"message": "Lokacija za novi adresar"
 	},
 	"initialPage.description": {
 		"message": "Je li Vaš adresar mjesni ili daleko? :"
@@ -3595,9 +3598,6 @@
 	},
 	"initialPage.find.label": {
 		"message": "??Search for remote address books??"
-	},
-	"localPage.wizard.description": {
-		"message": "Vrsta i mjesto novog lokalnog adresara."
 	},
 	"localPage.type.description": {
 		"message": "Koje vrsta je Vaš novi lokalni adresar? :"
@@ -3632,9 +3632,6 @@
 	"localPage.uributton.label": {
 		"message": "Traži"
 	},
-	"remotePage.wizard.description": {
-		"message": "Vrsta i lokacija novog udaljenog adresara."
-	},
 	"remotePage.description": {
 		"message": "Koje vrste je Vaš udaljeni adresar? : (Caution: Google does NOT conform to vCard standards)"
 	},
@@ -3646,6 +3643,9 @@
 	},
 	"remotePage.google.label": {
 		"message": "Google"
+	},
+	"remotePage.googleWorkspace.label": {
+		"message": "Google Workspace"
 	},
 	"remotePage.apple.label": {
 		"message": "Apple"
@@ -3671,14 +3671,14 @@
 	"remotePage.password.label": {
 		"message": "Lozinka:"
 	},
+	"rememberPassword": {
+		"message": "Koristi upravljača lozinki za pamćenje ove lozinke"
+	},
 	"showHidePassword.tooltip": {
 		"message": "Prikaži/sakrij lozinku"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Potvrdi"
-	},
-	"locationSearchPage.wizard.description": {
-		"message": "Definicija: sačuvano traži."
 	},
 	"locationSearchPage.label": {
 		"message": "Sačuvano Traži"
@@ -3704,9 +3704,6 @@
 	"googleOauthPage.wizard.description": {
 		"message": "Googleova ovjera"
 	},
-	"namePage.wizard.description": {
-		"message": "Svojstva adresara"
-	},
 	"namePage.selected.label": {
 		"message": "Odabrano"
 	},
@@ -3725,17 +3722,11 @@
 	"namePage.vCardVersion.label": {
 		"message": "vCard"
 	},
-	"namesPage.wizard.description": {
-		"message": "Svojstva adresara"
-	},
 	"namesPage.name.label": {
 		"message": "Nazivi"
 	},
 	"namesPage.name.description": {
 		"message": "Otkrili smo nekoliko adresara. Odaberite koji adresar želite otvoriti i njegovo ime.:"
-	},
-	"findPage.wizard.description": {
-		"message": "??Remote address book search??"
 	},
 	"findPage.name1.description": {
 		"message": "??No remote address books found.??"
@@ -3745,9 +3736,6 @@
 	},
 	"findPage.name3.description": {
 		"message": "??Multiple remote address books found. Validate remote address books to add:??"
-	},
-	"finishPage.wizard.description": {
-		"message": "??Address books configuration??"
 	},
 	"finishPage.description": {
 		"message": "Vaš novi adresar je uspješno oblikovan."
@@ -5117,6 +5105,12 @@
 	"cardbookToolbarAddListButtonTooltip": {
 		"message": "Novi popis za poštu"
 	},
+	"cardbookToolbarAddTemplateButtonLabel": {
+		"message": "??New Template??"
+	},
+	"cardbookToolbarAddTemplateButtonTooltip": {
+		"message": "??Create a new template??"
+	},
 	"cardbookToolbarEditButtonLabel": {
 		"message": "Uredi"
 	},
@@ -5315,6 +5309,15 @@
 	"searchForLocalKeyEditButton.tooltip": {
 		"message": "Uvezi iz datoteke"
 	},
+	"definitionLabel": {
+		"message": "Definicija"
+	},
+	"fieldsLabel": {
+		"message": "??Fields??"
+	},
+	"formulasLabel": {
+		"message": "??Formulas??"
+	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Podijeli putem e-pošta"
 	},
@@ -5462,6 +5465,9 @@
 	"fnFormulaExplanation": {
 		"message": "Moguće je prilagoditi način na koji Kontakti stvara svoj prikaz imena. Formula se satoji od blokova unutar znaka „()”. ??In these blocks there might be many parts delimited by „|”.??"
 	},
+	"templateFormulaExplanation": {
+		"message": "??It is possible to define templates with pre-defined fields. For example one may define a template with the email ”({{2}}).({{4}})@mycompany.org”. Once applied to a contact that has ”John” and ”Doe” as given name and family name, an email ”john.doe@mycompany.org” will be added to the contact.??"
+	},
 	"formulaExplanation1": {
 		"message": "??({{1}}|{{2}}) : If {{1}} is empty, then the block will be replaced by {{2}}.??"
 	},
@@ -5500,12 +5506,6 @@
 	},
 	"displayFieldNamesAccesskey": {
 		"message": "F"
-	},
-	"displayTypesLabel": {
-		"message": "Vrste i pripriteti"
-	},
-	"displayTypesAccesskey": {
-		"message": "y"
 	},
 	"fieldsToPrintGroupboxLabel": {
 		"message": "Što otiskati"
@@ -5698,6 +5698,12 @@
 	},
 	"saveTemplateLabel": {
 		"message": "Spremi predložak"
+	},
+	"applyTemplateLabel": {
+		"message": "??Apply template??"
+	},
+	"createTemplateLabel": {
+		"message": "??Create template??"
 	},
 	"convertVCardsLabel": {
 		"message": "??Convert vCards??"

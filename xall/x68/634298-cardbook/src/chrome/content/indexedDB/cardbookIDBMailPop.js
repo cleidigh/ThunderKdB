@@ -125,10 +125,10 @@ var cardbookIDBMailPop = {
 		}
 		aMailPop.email = aMailPop.email.toLowerCase();
 		aMailPop.count = parseInt(aMailPop.count);
-		var db = cardbookRepository.cardbookMailPopDatabase.db;
 		if (!aMailPop.mailPopId) {
 			aMailPop.mailPopId = cardbookIDBMailPop.getMailPopId();
 		}
+		var db = cardbookRepository.cardbookMailPopDatabase.db;
 		var storedMailPop = cardbookIndexedDB.encryptionEnabled ? (await cardbookEncryptor.encryptMailPop(aMailPop)) : aMailPop;
 		var transaction = db.transaction(["mailPop"], "readwrite");
 		var store = transaction.objectStore("mailPop");

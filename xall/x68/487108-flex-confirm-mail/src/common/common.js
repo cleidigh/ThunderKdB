@@ -32,6 +32,11 @@ export const configs = new Configs({
   attentionTermsSource: Constants.SOURCE_CONFIG,
   attentionTermsFile: '',
 
+  blockedDomainsEnabled: true,
+  blockedDomains: [],
+  blockedDomainsSource: Constants.SOURCE_CONFIG,
+  blockedDomainsFile: '',
+
   skipConfirmationForInternalMail: false,
   confirmMultipleRecipientDomains: false,
   minConfirmationRecipientsCount: 0,
@@ -42,6 +47,8 @@ export const configs = new Configs({
   attentionSuffixDialogMessage: '',
   confirmMultipleRecipientDomainsDialogTitle: '',
   confirmMultipleRecipientDomainsDialogMessage: '',
+  blockedDomainDialogTitle: '',
+  blockedDomainDialogMessage: '',
 
   allowCheckAllInternals: true,
   allowCheckAllExternals: false,

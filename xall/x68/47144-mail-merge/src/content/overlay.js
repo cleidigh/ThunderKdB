@@ -78,7 +78,7 @@ function init() {
 	/* attachmentreminder start */
 	try {
 		
-		if(win.gManualAttachmentReminder || (Services.prefs.getBoolPref("mail.compose.attachment_reminder_aggressive") && win.gNotification.notificationbox.getNotificationWithValue("attachmentReminder"))) {
+		if(win.gManualAttachmentReminder || (Services.prefs.getBoolPref("mail.compose.attachment_reminder_aggressive") && win.gComposeNotification.getNotificationWithValue("attachmentReminder"))) {
 			
 			let bundle = win.document.getElementById("bundle_composeMsgs");
 			let flags = (Services.prompt.BUTTON_TITLE_IS_STRING * Services.prompt.BUTTON_POS_0) + (Services.prompt.BUTTON_TITLE_IS_STRING * Services.prompt.BUTTON_POS_1);
@@ -148,84 +148,6 @@ function dialog() {
 	let params = { accept: false }
 	win.openDialog("chrome://mailmerge/content/dialog.xhtml", "_blank", "chrome,dialog,modal,centerscreen", params);
 	if(params.accept) {
-		
-		/* debug start */
-		let prefs = Services.prefs.getBranch("extensions.mailmerge.");
-		if(prefs.getBoolPref("debug")) {
-			
-			let msg = "";
-			
-			msg += "Mail Merge: Preferences" + "\n";
-			msg += "source" + " " + win.mailmergeutils.prefs.source + "\n";
-			msg += "delivermode" + " " + win.mailmergeutils.prefs.delivermode + "\n";
-			msg += "attachments" + " " + win.mailmergeutils.prefs.attachments + "\n";
-			msg += "cardbook" + " " + win.mailmergeutils.prefs.cardbook + "\n";
-			msg += "addressbook" + " " + win.mailmergeutils.prefs.addressbook + "\n";
-			msg += "csv" + " " + win.mailmergeutils.prefs.csv + "\n";
-			msg += "characterset" + " " + win.mailmergeutils.prefs.characterset + "\n";
-			msg += "fielddelimiter" + " " + win.mailmergeutils.prefs.fielddelimiter + "\n";
-			msg += "textdelimiter" + " " + win.mailmergeutils.prefs.textdelimiter + "\n";
-			msg += "json" + " " + win.mailmergeutils.prefs.json + "\n";
-			msg += "xlsx" + " " + win.mailmergeutils.prefs.xlsx + "\n";
-			msg += "sheetname" + " " + win.mailmergeutils.prefs.sheetname + "\n";
-			msg += "pause" + " " + win.mailmergeutils.prefs.pause + "\n";
-			msg += "start" + " " + win.mailmergeutils.prefs.start + "\n";
-			msg += "stop" + " " + win.mailmergeutils.prefs.stop + "\n";
-			msg += "at" + " " + win.mailmergeutils.prefs.at + "\n";
-			msg += "recur" + " " + win.mailmergeutils.prefs.recur + "\n";
-			msg += "every" + " " + win.mailmergeutils.prefs.every + "\n";
-			msg += "between" + " " + win.mailmergeutils.prefs.between + "\n";
-			msg += "only" + " " + win.mailmergeutils.prefs.only + "\n";
-			msg += "\n";
-			
-			msg += "Mail Merge: From" + "\n";
-			msg += win.mailmergeutils.template.from + "\n";
-			msg += "\n";
-			
-			msg += "Mail Merge: To" + "\n";
-			msg += win.mailmergeutils.template.to + "\n";
-			msg += "\n";
-			
-			msg += "Mail Merge: Cc" + "\n";
-			msg += win.mailmergeutils.template.cc + "\n";
-			msg += "\n";
-			
-			msg += "Mail Merge: Bcc" + "\n"
-			msg += win.mailmergeutils.template.bcc + "\n";
-			msg += "\n";
-			
-			msg += "Mail Merge: Reply" + "\n";
-			msg += win.mailmergeutils.template.reply + "\n";
-			msg += "\n";
-			
-			msg += "Mail Merge: Subject" + "\n";
-			msg += win.mailmergeutils.template.subject + "\n";
-			msg += "\n";
-			
-			msg += "Mail Merge: Body" + "\n";
-			msg += win.mailmergeutils.template.body + "\n";
-			msg += "\n";
-			
-			msg += "Mail Merge: Attachments" + "\n";
-			let attachments = win.gMsgCompose.compFields.attachments;
-			while(attachments.hasMoreElements()) {
-				
-				try {
-					
-					let attachment = attachments.getNext();
-					attachment.QueryInterface(Ci.nsIMsgAttachment);
-					
-					msg += attachment.url.trim().replace(/^file\:\/\//g, '') + "\n";
-					
-				} catch(e) { console.warn(e); }
-				
-			}
-			msg += "\n";
-			
-			console.log(msg);
-			
-		}
-		/* debug end */
 		
 		win.openDialog("chrome://mailmerge/content/progress.xhtml", "_blank", "chrome,dialog,modal,centerscreen", null);
 		win.close();

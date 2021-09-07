@@ -91,7 +91,7 @@ function getStack(ex) {
  */
 function getEmailAddressForUser() {
   try {
-    const kTypes = ["owl", "owl-ews"];
+    const kTypes = ["owl", "owl-ews", "owl-eas"];
     for (let account of /* COMPAT for TB 68 (bug 1614846) */toArray(MailServices.accounts.accounts, Ci.nsIMsgAccount)) {
       if (kTypes.includes(account.incomingServer.type)) {
         return account.defaultIdentity.email;
@@ -113,11 +113,10 @@ function getEmailAddressForUser() {
  */
 function getLoginURLForUser() {
   try {
-    const kTypes = ["owl", "owl-ews"];
+    const kTypes = ["owl", "owl-ews", "owl-eas"];
     for (let account of /* COMPAT for TB 68 (bug 1614846) */toArray(MailServices.accounts.accounts, Ci.nsIMsgAccount)) {
       if (kTypes.includes(account.incomingServer.type)) {
-        return account.incomingServer.getUnicharValue(
-            account.incomingServer.type == "owl-ews" ? "ews_url" : "owa_url");
+        return account.incomingServer.getUnicharValue((account.incomingServer.type.slice(4) || "owa") + "_url");
       }
     }
   } catch (ex) {

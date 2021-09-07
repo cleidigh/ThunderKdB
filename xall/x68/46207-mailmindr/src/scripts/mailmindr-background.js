@@ -54,9 +54,10 @@ const createSystemPresets = () => ({
 });
 
 const initializeStorage = async () => {
-    // 
-    const storage = await browser.storage.local.get(null);
-    const persistedStorageVersion = storage?.storageVersion || 1;
+    try {
+        // 
+        const storage = await browser.storage.local.get(null);
+        const persistedStorageVersion = storage?.storageVersion || 1;
 
     // 
     const storageVersion = getCurrentStorageAdapterVersion();
@@ -79,13 +80,16 @@ const initializeStorage = async () => {
     }
 
     // 
-    const restoredState = await loadState();
+        const restoredState = await loadState();
 
-    // 
-    const { time: systemGeneratedTimePresets, actions } = createSystemPresets();
-    const defaultSettings = createInitialSettings({
-        systemGeneratedTimePresets,
-        actions
+        // 
+        const {
+            time: systemGeneratedTimePresets,
+            actions
+        } = createSystemPresets();
+        const defaultSettings = createInitialSettings({
+            systemGeneratedTimePresets,
+            actions
     });
 
     // 
@@ -95,13 +99,16 @@ const initializeStorage = async () => {
     };
 
     // 
-    const userGeneratedTimePresets = (
-        restoredState?.presets?.time || []
-    ).filter(item => !item.isGenerated && item.isSelectable);
-    const time = [...systemGeneratedTimePresets, ...userGeneratedTimePresets];
+        const userGeneratedTimePresets = (
+            restoredState?.presets?.time || []
+        ).filter(item => !item.isGenerated && item.isSelectable);
+        const time = [
+            ...systemGeneratedTimePresets,
+            ...userGeneratedTimePresets
+        ];
 
-    // 
-    const localState = {
+        // 
+        const localState = {
         ...restoredState,
         settings,
         presets: {
@@ -115,9 +122,16 @@ const initializeStorage = async () => {
         __inExecution: []
     };
 
-    logger.debug(`restored state: `, localState);
+        logger.debug(`restored state: `, localState);
 
-    return localState;
+        return localState;
+    } catch (exception) {
+        logger.error(
+            `We're having a problem on storage initialization`,
+            exception
+        );
+        return null;
+    }
 };
 
 const getSettings = () => {
@@ -178,6 +192,36 @@ const onHeartBeat = async () => {
 
 const startHeartbeat = () => {
     setInterval(onHeartBeat, 1000 * 45);
+};
+
+const setMindrForCurrentMessage = async optionalCurrentMessage => {
+    const current = await messenger.tabs.query({
+        currentWindow: true,
+        active: true
+    });
+    if (current && Array.isArray(current) && current.length > 0) {
+        const { id, windowId } = current[0];
+        const mindr = await findExistingMindrForTab(
+            { id, windowId },
+            optionalCurrentMessage
+        );
+        const currentMessage =
+            optionalCurrentMessage ||
+            (await getCurrentDisplayedMessage({
+                id,
+                windowId
+            }));
+
+        if (currentMessage) {
+            await showCreateOrUpdateMindrDialog(currentMessage, mindr);
+        }
+    } else {
+        console.warn('☠️ The current message cannot be determined.');
+    }
+};
+
+const setupUI = () => {
+    /* intentionally left blank */
 };
 
 const createOrUpdateMindr = async (state, mindr) => {
@@ -291,28 +335,39 @@ const executeMindr = async mindr => {
         }
     };
 
-    for await (let folder of targetFolders) {
-        logger.log(` -- executeMindr: folder loop (${folder.name})`, {
-            correlationId,
-            folder
-        });
-
-        try {
-            await applyActionToMessageInFolder(
-                folder,
-                { headerMessageId, author },
-                applyActionToMessage,
-                true
-            );
-        } catch (ex) {
-            logger.error('ERROR: execute mindr // mailmindr: >> !!', {
+    const applyActionToFirstMessageInFolders = async () => {
+        for await (let folder of targetFolders) {
+            logger.log(` -- executeMindr: folder loop (${folder.name})`, {
                 correlationId,
+                folder
+            });
+
+            try {
+                const actionResult = await applyActionToMessageInFolder(
+                    folder,
+                    { headerMessageId, author },
+                    applyActionToMessage,
+                    true
+                );
+                const { done, value } = await actionResult.next();
+                const success = Boolean(done && value.executed);
+                if (success) {
+                    return true;
+                }
+            } catch (ex) {
+                logger.error('ERROR: execute mindr // mailmindr: >> !!', {
+                    correlationId,
                 guid,
                 exception: ex
             });
-            hasError = true;
+                hasError = true;
+            }
         }
-    }
+        return false;
+    };
+
+    await applyActionToFirstMessageInFolders();
+
     logger.log(`END targetFolder iteration`, {
         correlationId,
         guid,
@@ -627,7 +682,11 @@ const dispatch = async (action, payload) => {
                 }
             }
         } catch (exception) {
-            logger.error(`ugh, we're compromising the state:`, exception);
+            logger.error(
+                `ugh, we're compromising the state w/ msg '${theAction}' :`,
+                exception
+            );
+            throw exception;
         }
     };
 
@@ -640,7 +699,7 @@ const dispatch = async (action, payload) => {
                 action,
                 payload
             });
-            return;
+            return false;
         }
 
         state = mutatedState;
@@ -655,7 +714,11 @@ const dispatch = async (action, payload) => {
             correlationId,
             error: e
         });
+
+        return false;
     }
+
+    return true;
 };
 
 const sendConnectionMessage = async (connectionName, message) => {
@@ -838,7 +901,7 @@ const showMindrAlert = async ({ overdue, active }) => {
 
         const { width: screenWidth, availHeight: screenHeight } = screen;
         const height = 200;
-        const width = 380;
+        const width = 400;
         const left = screenWidth - width;
         const top = screenHeight - height;
         const url = `/views/dialogs/mindr-alert/index.html?${parameters}`;
@@ -898,18 +961,41 @@ const showTimespanPresetEditor = async timePreset => {
 };
 
 const handleStartup = async () => {
-    await dispatch('state:initialize');
-    startHeartbeat();
-    messenger.messageDisplayScripts.register({
-        js: [{ file: '/scripts/mailmindr-message-script.js' }]
-    });
+    const MAX_RETRIES = 5;
+    const initailze = async () => {
+        for (let retryCount = 0; retryCount < MAX_RETRIES; retryCount++) {
+            const success = await dispatch('state:initialize');
+            if (success) {
+                return true;
+            }
+            await new Promise(resolve => setTimeout(() => resolve(), 1000));
+        }
+        logger.error(
+            `Initialization failed after ${MAX_RETRIES} attempts. Aborting mailmindr.`
+        );
+        return false;
+    };
+
+    const success = await initailze();
+    if (success) {
+        setupUI();
+        startHeartbeat();
+        messenger.messageDisplayScripts.register({
+            js: [{ file: '/scripts/mailmindr-message-script.js' }]
+        });
+    } else {
+        const errorButtonCaption = browser.i18n.getMessage(
+            'errorInitializationBrowserButtonText'
+        );
+        browser.browserAction.setTitle(errorButtonCaption);
+    }
 };
 
-const findExistingMindrForTab = async tab => {
+const findExistingMindrForTab = async (tab, message) => {
     const { id, windowId } = tab;
-    const message = await getCurrentDisplayedMessage({ id, windowId });
-    if (message) {
-        const { headerMessageId } = message;
+    const msg = message || (await getCurrentDisplayedMessage({ id, windowId }));
+    if (msg) {
+        const { headerMessageId } = msg;
         const { mindrs } = getState();
         const mindr = mindrs.find(
             mindr =>
@@ -1029,11 +1115,7 @@ const refreshButtons = async () => {
 
         const { id, windowId: _ } = current[0];
 
-        if (hasMindrs) {
-            messenger.browserAction.enable(id);
-        } else {
-            messenger.browserAction.disable(id);
-        }
+        messenger.browserAction.enable(id);
 
         // 
         // 
@@ -1152,12 +1234,14 @@ const moveMessageToFolder = async (
             sourceFolder,
             messageDetails
         });
-        const success = await applyActionToMessageInFolder(
+        const actionResult = await applyActionToMessageInFolder(
             sourceFolder,
             messageDetails,
             moveMessageToFolderAction,
             true
         );
+        const { done, value } = await actionResult.next();
+        const success = Boolean(done && value.executed);
         logger.info(`result: ${success}`, { correlationId, success });
         logger.info(`END applying action to folder`, {
             correlationId,
@@ -1625,8 +1709,6 @@ const connectionHandler = async port => {
     }
 };
 
-document.addEventListener('DOMContentLoaded', handleStartup);
-
 browser.tabs.onActivated.addListener(async ({ tabId, windowId }) => {
     await refreshButtons();
 });
@@ -1636,17 +1718,53 @@ browser.mailTabs.onSelectedMessagesChanged.addListener(
 );
 
 browser.messageDisplayAction.onClicked.addListener(async ({ id, windowId }) => {
-    const mindr = await findExistingMindrForTab({ id, windowId });
     const currentMessage = await getCurrentDisplayedMessage({ id, windowId });
+    const mindr = await findExistingMindrForTab(
+        {
+            id,
+            windowId
+        },
+        currentMessage
+    );
 
     await showCreateOrUpdateMindrDialog(currentMessage, mindr);
+    // 
 });
 
 browser.menus.onShown.addListener(info => {
-    let oneMessage =
-        info.selectedMessages && info.selectedMessages.messages.length == 1;
-    browser.menus.update('mailmindr-menu', { visible: oneMessage });
-    browser.menus.refresh();
+    const contexts = ['message_list', 'page'];
+    // 
+    if (
+        info &&
+        info.contexts &&
+        (info.contexts || []).find(targetContext =>
+            contexts.includes(targetContext)
+        )
+    ) {
+        const oneMessage =
+            info.selectedMessages && info.selectedMessages.messages.length == 1;
+        const firstMessage = oneMessage
+            ? info.selectedMessages.messages[0]
+            : null;
+        const createProperties = {
+            contexts,
+            id: 'mailmindrMenuSetFollowUp',
+            onclick: () => setMindrForCurrentMessage(firstMessage),
+            title: 'Set follow-up',
+            icons: {
+                '16': 'images/mailmindr-flag.svg',
+                '32': 'images/mailmindr-flag.svg'
+            }
+        };
+
+        browser.menus.create(createProperties);
+        browser.menus.update('mailmindrMenuSetFollowUp', {
+            visible: oneMessage
+        });
+        browser.menus.refresh();
+    }
+
+    browser.menus.remove('mailmindrMenuSetFollowUp');
 });
 
 messenger.windows.onRemoved.addListener(onWindowRemoved);
@@ -1661,22 +1779,7 @@ browser.runtime.onConnect.addListener(connectionHandler);
 browser.commands.onCommand.addListener(async command => {
     switch (command) {
         case 'mailmindr_set_follow_up':
-            const current = await messenger.tabs.query({
-                currentWindow: true,
-                active: true
-            });
-            if (current && Array.isArray(current) && current.length > 0) {
-                const { id, windowId } = current[0];
-                const mindr = await findExistingMindrForTab({ id, windowId });
-                const currentMessage = await getCurrentDisplayedMessage({
-                    id,
-                    windowId
-                });
-
-                if (currentMessage) {
-                    await showCreateOrUpdateMindrDialog(currentMessage, mindr);
-                }
-            }
+            await setMindrForCurrentMessage();
 
             break;
         case 'mailmindr_open_list':
@@ -1684,3 +1787,7 @@ browser.commands.onCommand.addListener(async command => {
             break;
     }
 });
+
+// 
+
+setTimeout(() => handleStartup(), 2000);

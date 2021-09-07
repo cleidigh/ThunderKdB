@@ -148,7 +148,7 @@ var cardbookTabType = {
 						break;
 					case "cmd_print":
 					case "cmd_printpreview":
-						wdw_cardbook.print();
+						wdw_cardbook.printCards();
 						break;
 					case "cmd_selectAll":
 						wdw_cardbook.selectAllKey();

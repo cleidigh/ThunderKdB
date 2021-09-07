@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/0/244.png?modified=1510640146"
         }
     ],
-    "average_daily_users": 2081,
+    "average_daily_users": 2208,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2018-09-23T14:53:14Z",
     "current_version": {
-        "id": 2474209,
+        "id": 2476417,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "91.*",
                 "min": "68.9.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/url-link/versions/2474209",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/url-link/versions/2476417",
         "files": [
             {
-                "id": 1017371,
-                "created": "2020-09-07T13:02:18Z",
-                "hash": "sha256:6632907a7c007c3b5e41a8a5b1d964d3ba1f0331518a36d4380baf2a6a71f4eb",
+                "id": 1019577,
+                "created": "2021-09-05T13:49:58Z",
+                "hash": "sha256:3d4f85c0806a4a5be2a5cf9e47bbe8c8a39520df2fa238019ef58d05581089d4",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 107186,
+                "size": 107231,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017371/url_link-3.5.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019577/url_link-3.5.2-tb.xpi?src=",
                 "permissions": [
                     "clipboardWrite",
                     "menus",
@@ -46,7 +46,7 @@
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 3338,
             "name": {
@@ -56,8 +56,8 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/url-link/versions/3.5.1",
-        "version": "3.5.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/url-link/versions/3.5.2",
+        "version": "3.5.2"
     },
     "default_locale": "en-GB",
     "description": {
@@ -82,7 +82,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-09-07T14:34:38Z",
+    "last_updated": "2021-09-05T14:00:28Z",
     "name": {
         "en-GB": "URL Link"
     },
@@ -120,9 +120,11 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
             "comp68": true,
+            "comp69plus": true,
+            "comp78plus": true,
+            "comp61plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-09-23T14:53:14Z"
         }

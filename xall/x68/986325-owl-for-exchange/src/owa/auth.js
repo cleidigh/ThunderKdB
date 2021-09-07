@@ -123,7 +123,7 @@ OWAAccount.prototype.VerifyLogin = async function() {
  * favicon. If the version is not supported, an ExchangeVersionEror is thrown.
  */
 OWAAccount.prototype.CheckLoginPage = async function() {
-  let response = await this.TaggedFetch(this.serverURL);
+  let response = await TaggedFetch(this.serverURL);
   if (!response.ok) {
     if (response.status == 404 ||
         response.status >= 500 && response.status < 600) {
@@ -345,7 +345,7 @@ OWAAccount.prototype.LoginWithPassword = async function(aMsgWindow)
  *   password       {HTMLInputElement} The form's password field
  */
 OWAAccount.prototype.FindLoginElementsStrict = async function() {
-  let response = await this.TaggedFetch(this.serverURL);
+  let response = await TaggedFetch(this.serverURL);
   if (!response.ok) {
     return null;
   }
@@ -424,7 +424,7 @@ OWAAccount.prototype.LaxLoginWithPassword = async function(aMsgWindow) {
  *   password       {HTMLInputElement} The form's password field
  */
 OWAAccount.prototype.FindLoginElementsLax = async function() {
-  let response = await this.TaggedFetch(this.serverURL);
+  let response = await TaggedFetch(this.serverURL);
   if (!response.ok) {
     return null;
   }
@@ -488,7 +488,7 @@ OWAAccount.prototype.SubmitLoginForm = async function(aElements, aMsgWindow) {
     });
   }
   let body = new URLSearchParams(new FormData(aElements.form));
-  let response = await this.TaggedFetch(url, {
+  let response = await TaggedFetch(url, {
     method: "POST",
     body: body,
     credentials: "include",
@@ -509,30 +509,6 @@ OWAAccount.prototype.SubmitLoginForm = async function(aElements, aMsgWindow) {
 }
 
 /**
- * Performs a fetch() but tags any exception with the code "network-fail".
- *
- * @param aUrl     {String}    The resource to be fetched
- * @param aOptions {FetchInit} Options for the fetch request
- * @throws         {TypeError} If there was a network error
- */
-OWAAccount.prototype.TaggedFetch = async function(aUrl, aOptions) {
-  try {
-    return await fetch(aUrl, aOptions);
-  } catch (ex) {
-    logError(ex);
-    ex.code = "network-fail";
-    try {
-      ex.message = gStringBundle.get("error.network-fail") +
-        // Ignore useless MSG_FETCH_FAILED msg from Errors.msg, otherwise append
-        (ex.message.startsWith("NetworkError ") ? "" : " (" + ex.message + ")");
-    } catch (exTranslation) {
-      logError(exTranslation);
-    }
-    throw ex;
-  }
-}
-
-/**
  * Prompts the user to log in by opening a tab
  * with the provider login webpage.
  *
@@ -540,69 +516,33 @@ OWAAccount.prototype.TaggedFetch = async function(aUrl, aOptions) {
  * @throws           {Error}   If the login tab was closed
  */
 OWAAccount.prototype.LoginWithOAuthInTab = async function(aMsgWindow) {
-  try {
-    await browser.uiTweaks.ensureCalendarTodayPaneViews();
-  } catch (ex) {
-    logError(ex);
-  }
   // We want to skip the landing page for personal Microsoft accounts.
   let isHotmail = this.serverURL.hostname == kHotmailServer;
   let url = isHotmail ? this.serverURL + "?nlp=1" : this.serverURL.href;
   let hadPasswordError = false;
-  let alreadyClosed = false;
-  return new Promise(async (resolve, reject) => {
-    var tab;
-    async function open() {
-      tab = await browser.tabs.create({ url });
-      browser.cookies.onChanged.addListener(cookiesListener);
-      browser.tabs.onRemoved.addListener(tabsListener);
-      browser.webNavigation.onCompleted.addListener(loadListener);
-    }
-    async function close(closeTab) {
-      if (alreadyClosed) {
-        return;
+  return OpenMailBrowser({ url,
+    onCompleted: async executeScript => {
+      // If the login didn't finish when the canary was set, but we're logged in now, then finish
+      if (await this.CheckLoginFinished()) {
+        return true;
       }
-      alreadyClosed = true;
-      browser.webNavigation.onCompleted.removeListener(loadListener);
-      browser.tabs.onRemoved.removeListener(tabsListener);
-      browser.cookies.onChanged.removeListener(cookiesListener);
-      if (closeTab) {
-        await browser.tabs.remove(tab.id);
-      }
-    }
 
-    // Listen for the page to load.
-    var loadListener = async details => {
-      if (details.tabId == tab.id && details.frameId == 0) {
-        // If the login didn't finish when the canary was set, but we're logged in now, then finish
-        if (await this.CheckLoginFinished()) {
-          await close(true);
-          resolve();
-          return;
-        }
-
-        // Try to fill in the login form automatically.
-        let code = await this.autoFillLoginPage(aMsgWindow);
-        let [ status ] = await browser.tabs.executeScript(tab.id, { code });
-        if (status && status.passwordErrorMessage) {
-          if (await browser.incomingServer.promptLoginFailed(this.serverID, aMsgWindow, status.passwordErrorMessage)) {
-            code = await this.autoFillPassword(aMsgWindow);
-            await browser.tabs.executeScript(tab.id, { code });
-          } else {
-            hadPasswordError = true;
-          }
+      // Try to fill in the login form automatically.
+      let code = await autoFillLoginPage(this.serverID, aMsgWindow);
+      let [ status ] = await executeScript(code);
+      if (status && status.passwordErrorMessage) {
+        if (await browser.incomingServer.promptLoginFailed(this.serverID, aMsgWindow, status.passwordErrorMessage)) {
+          code = await autoFillPassword(this.serverID, aMsgWindow);
+          await executeScript(code);
+        } else {
+          hadPasswordError = true;
         }
       }
-    };
-    // Listen in case the tab is closed.
-    var tabsListener = async tabId => {
-      if (tabId == tab.id) {
-        await close(false);
-        reject(new ParameterError(hadPasswordError ? "password-wrong" : "auth-browser-closed"));
-      }
-    };
-
-    var cookiesListener = async details => {
+    },
+    onClosed() {
+      throw new ParameterError(hadPasswordError ? "password-wrong" : "auth-browser-closed");
+    },
+    onCookie: async details => {
       // For Hotmail, check the path to the CANARY cookie.
       if (isHotmail &&
           details.cookie.domain == kHotmailServer &&
@@ -619,14 +559,10 @@ OWAAccount.prototype.LoginWithOAuthInTab = async function(aMsgWindow) {
       if (details.cookie.name == this.cookieName &&
           details.cookie.domain == this.serverURL.hostname) {
         if (await this.CheckLoginFinished()) {
-          await close(true);
-          resolve();
-          return;
+          return true;
         }
       }
-    };
-
-    await open();
+    }
   });
 }
 
@@ -640,64 +576,35 @@ OWAAccount.prototype.LoginWithOAuthInPopup = async function() {
   // We want to skip the landing page for personal Microsoft accounts.
   let isHotmail = this.serverURL.hostname == kHotmailServer;
   let url = isHotmail ? this.serverURL + "?nlp=1" : this.serverURL.href;
-  let alreadyClosed = false;
-  return new Promise(async (resolve, reject) => {
-    async function open() {
-      browser.request.onCompleted.addListener(loadListener);
-      browser.request.onClosed.addListener(requestListener);
-      browser.cookies.onChanged.addListener(cookiesListener);
-      await browser.request.open(url);
-    }
-    async function close(closeWindow) {
-      if (alreadyClosed) {
-        return;
+  let browsingHistory = [];
+  return OpenPopup({ url,
+    onCommitted: currentURL => {
+      browsingHistory.push(stripLongQueryValues(currentURL));
+    },
+    onCompleted: async executeScript => {
+      // If the login didn't finish when the canary was set, but we're logged in now, then finish
+      if (await this.CheckLoginFinished()) {
+        return true;
       }
-      alreadyClosed = true;
-      browser.request.onCompleted.removeListener(loadListener);
-      browser.request.onClosed.removeListener(requestListener);
-      browser.cookies.onChanged.removeListener(cookiesListener);
-      if (closeWindow) {
-        await browser.request.close(url);
-      }
-    }
 
-    // Listen for the page to load.
-    var loadListener = async originalURL => {
-      if (originalURL == url) {
-        // If the login didn't finish when the canary was set, but we're logged in now, then finish
-        if (await this.CheckLoginFinished()) {
-          await close(true);
-          resolve();
-          return;
-        }
-
-        // Try to fill in the login form automatically.
-        let code = await this.autoFillLoginPage(null);
-        let [ status ] = await browser.request.executeScript(url, code);
-        if (status && status.passwordErrorMessage) {
-          await close(true);
-          reject(new ParameterError("password-wrong", status.passwordErrorMessage, { setup: true }));
-        }
+      // Try to fill in the login form automatically.
+      let code = await autoFillLoginPage(this.serverID, null);
+      let [ status ] = await executeScript(code);
+      if (status && status.passwordErrorMessage) {
+        throw new ParameterError("password-wrong", status.passwordErrorMessage, { setup: true });
       }
-    };
-    // Listen in case the window is closed.
-    var requestListener = async (originalURL, currentURL, browsingHistory) => {
-      if (originalURL == url) {
-        await close(false);
-        currentURL = stripLongQueryValues(currentURL);
-        browsingHistory = browsingHistory.map(stripLongQueryValues);
-        let cookies = await browser.cookies.getAll({ domain: this.serverURL.hostname, secure: true });
-        cookies = cookies.map(cookie => cookie.name);
-        reject(new ParameterError("auth-browser-closed", null, {
-          setup: true, // VerifyLogin()
-          originalURL,
-          currentURL,
-          browsingHistory,
-          cookies,
-        }));
-      }
-    };
-    var cookiesListener = async details => {
+    },
+    onClosed: async () => {
+      let cookies = await browser.cookies.getAll({ domain: this.serverURL.hostname, secure: true });
+      cookies = cookies.map(cookie => cookie.name);
+      throw new ParameterError("auth-browser-closed", null, {
+        setup: true, // VerifyLogin()
+        url,
+        browsingHistory,
+        cookies,
+      });
+    },
+    onCookie: async details => {
       // For Hotmail, check the path to the CANARY cookie.
       if (isHotmail &&
         details.cookie.domain == kHotmailServer &&
@@ -714,14 +621,10 @@ OWAAccount.prototype.LoginWithOAuthInPopup = async function() {
       if (details.cookie.name == this.cookieName &&
           details.cookie.domain == this.serverURL.hostname) {
         if (await this.CheckLoginFinished()) {
-          await close(true);
-          resolve();
-          return;
+          return true;
         }
       }
-    };
-
-    await open();
+    }
   });
 }
 
@@ -748,172 +651,4 @@ OWAAccount.prototype.CheckLoginFinished = async function() {
     logError(ex);
     return false;
   }
-}
-
-/**
- * Generates code to automatically fill the login page in the tab or popup
- *
- * @returns {String} The context script to be executed
- */
-OWAAccount.prototype.autoFillLoginPage = async function(aMsgWindow) {
-  let username = JSON.stringify(await browser.incomingServer.getUsername(this.serverID));
-  let password = JSON.stringify(await browser.incomingServer.getPassword(this.serverID, aMsgWindow));
-  return `
-    let observer = new MutationObserver(function(mutations) {
-      // Check whether script manipulated the user/password form.
-      for (let record of mutations) {
-        for (let node of record.addedNodes) {
-          if (node instanceof HTMLInputElement) {
-            observer.disconnect();
-            // Wait for mutations to finish before rechecking for widgets.
-            setTimeout(checkForWidgets, 100);
-            return;
-          }
-        }
-      }
-    });
-
-    function waitForInput() {
-      observer.observe(document.body, { subtree: true, childList: true });
-    }
-
-    function checkForWidgets() {
-      let inputs = [...document.querySelectorAll("input")];
-      let user = inputs.filter(input => input.type == "text" || input.type == "email");
-      let pass = inputs.filter(input => input.type == "password");
-      let submit = inputs.filter(input => input.type == "submit");
-      let button = inputs.filter(input => input.type == "button");
-
-      switch (sessionStorage.getItem("OwlAutoLoginStep")) {
-      // New login attempt, no step saved yet.
-      case null:
-        // Maybe we're trying to sign in to a personal account.
-        for (let link of document.links) {
-          if (link.dataset.m) {
-            try {
-              if (JSON.parse(link.dataset.m).cN == "SIGNIN") {
-                sessionStorage.setItem("OwlAutoLoginStep", "OtherUser");
-                link.click();
-                return;
-              }
-            } catch (ex) {
-              console.error(ex);
-            }
-          }
-        }
-        // No sign in link? Fall through to try the "Other User" element.
-
-      case "OtherUser":
-        let otherTile = document.getElementById("otherTile");
-        if (otherTile) {
-          sessionStorage.setItem("OwlAutoLoginStep", "Username");
-          otherTile.click();
-          // This click doesn't load a new page. Instead,
-          // the form to input the user name is created by script.
-          waitForInput();
-          return;
-        }
-        // No "Other User" element? Fall through to try the username.
-
-      case "Username":
-        if (user.length == 1 && pass.length == 1 && submit.length == 1 &&
-            document.activeElement == user[0]) {
-          // The page is prompting us for the email address.
-          sessionStorage.setItem("OwlAutoLoginStep", "Password");
-          user[0].value = ${username};
-          user[0].dispatchEvent(new Event("change"));
-          pass[0].value = ${password};
-          pass[0].dispatchEvent(new Event("change"));
-          submit[0].focus();
-          submit[0].click();
-          // This click doesn't load a new page. Instead,
-          // the form to input the password is manipulated by script.
-          waitForInput();
-          return;
-        }
-
-      // Try the password
-      case "Password":
-        if (user.length == 1 && pass.length == 1 && submit.length == 1 &&
-            document.activeElement == pass[0]) {
-          // The page is prompting us for the password.
-          sessionStorage.setItem("OwlAutoLoginStep", "CheckPassword");
-          // Hotmail: "[x] Keep me signed in"
-          let keep = inputs.filter(input => input.type == "checkbox");
-          if (keep.length == 1 && keep[0].name == "KMSI" && !keep[0].checked) {
-            keep[0].click();
-          }
-          pass[0].value = ${password};
-          pass[0].dispatchEvent(new Event("change"));
-          submit[0].focus();
-          submit[0].click();
-          return;
-        }
-
-      case "CheckPassword":
-        let passwordError = document.getElementById("passwordError");
-        let passwordErrorMessage = passwordError && passwordError.textContent.trim();
-        if (passwordErrorMessage) {
-          sessionStorage.setItem("OwlAutoLoginStep", "PasswordError");
-          return { passwordErrorMessage };
-        } else {
-          sessionStorage.setItem("OwlAutoLoginStep", "StaySignedIn");
-        }
-
-      // Try the "Stay signed in" prompt
-      case "StaySignedIn":
-        if (user.length == 0 && pass.length == 0 && submit.length == 1 &&
-            button.length == 1 && button[0].value) {
-          // The page is prompting us to stay logged in.
-          sessionStorage.setItem("OwlAutoLoginStep", "Complete");
-          // submit = yes, button = no
-          submit[0].focus();
-          submit[0].click();
-          return;
-        }
-        break;
-
-      case "PasswordError":
-        return; // Mute. Let user handle it.
-
-      case "Complete":
-        break; // nothing to do here
-      }
-    };
-
-    checkForWidgets();
-  `;
-}
-
-/**
- * Generates code to automatically fill the password in the tab
- *
- * @param aMsgWindow {Integer} The identifier used to prompt for a password
- * @returns          {String}  The content script to be executed
- */
-OWAAccount.prototype.autoFillPassword = async function(aMsgWindow) {
-  let password = JSON.stringify(await browser.incomingServer.getPassword(this.serverID, aMsgWindow));
-  return `
-    function retryPassword() {
-      let inputs = [...document.querySelectorAll("input")];
-      let user = inputs.filter(input => input.type == "text" || input.type == "email");
-      let pass = inputs.filter(input => input.type == "password");
-      let submit = inputs.filter(input => input.type == "submit");
-      if (user.length == 1 && pass.length == 1 && submit.length == 1 &&
-          document.activeElement == pass[0]) {
-        sessionStorage.setItem("OwlAutoLoginStep", "CheckPassword");
-        // Hotmail: "[x] Keep me signed in"
-        let keep = inputs.filter(input => input.type == "checkbox");
-        if (keep.length == 1 && keep[0].name == "KMSI" && !keep[0].checked) {
-          keep[0].click();
-        }
-        pass[0].value = ${password};
-        pass[0].dispatchEvent(new Event("change"));
-        submit[0].focus();
-        submit[0].click();
-      }
-    }
-
-    retryPassword();
-  `;
 }

@@ -53,8 +53,7 @@ pref("extensions.quickfolders.bookmarks.maxEntries", 100);
 pref("extensions.quickfolders.bookmarks.searchUri", "");
 pref("extensions.quickfolders.bookmarks.openMethod", "currentTab");
 pref("extensions.quickfolders.toolbar.minHeight", "24");
-pref("extensions.quickfolders.toolbar.onlyShowInMailWindows", false);
-pref("extensions.quickfolders.toolbar.hideInSingleMessage", true);
+pref("extensions.quickfolders.toolbar.hideInSingleMessage", false);
 pref("extensions.quickfolders.toolbar.ordinalPosition", 100);
 pref("extensions.quickfolders.behavior.nonFolderView.openNewTab", true);
 pref("extensions.quickfolders.style.transitions", true); // changing to true because of wobbly bug
@@ -96,7 +95,7 @@ pref("extensions.quickfolders.style.theme", "flatTabs");
 pref("extensions.quickfolders.buttonFontSizeN", 0);
 pref("extensions.quickfolders.showIcons", true);
 pref("extensions.quickfolders.debug", false);
-pref("extensions.quickfolders.initDelay", 2500);
+pref("extensions.quickfolders.initDelay", 250);
 pref("extensions.quickfolders.colorTabStyle",0);
 pref("extensions.quickfolders.queuedFolderUpdateDelay",500);
 pref("extensions.quickfolders.transparentButtons", false);
@@ -170,12 +169,13 @@ pref("extensions.quickfolders.debug.listeners.folder", false);
 pref("extensions.quickfolders.debug.mailTabs", false);
 pref("extensions.quickfolders.debug.mouseclicks", false);
 pref("extensions.quickfolders.debug.navigation", false);
+pref("extensions.quickfolders.debug.notifications", false); // debug notifyTools
 pref("extensions.quickfolders.debug.options", false);
 pref("extensions.quickfolders.debug.popupmenus", false);
 pref("extensions.quickfolders.debug.popupmenus.verticalOffset",0);
 pref("extensions.quickfolders.debug.popupmenus.isCommandListeners", false);
 pref("extensions.quickfolders.debug.popupmenus.isOnCommandAttr", false);
-pref("extensions.quickfolders.debug.popupmenus.folderEventType", "onclick");
+pref("extensions.quickfolders.debug.popupmenus.folderEventType", "oncommand"); // onclick
 pref("extensions.quickfolders.debug.popupmenus.subfolders", false);
 pref("extensions.quickfolders.debug.popupmenus.items", false);
 pref("extensions.quickfolders.debug.popupmenus.collapse", false);
@@ -189,6 +189,7 @@ pref("extensions.quickfolders.debug.quickMove", false);
 pref("extensions.quickfolders.debug.recentFolders", false);
 pref("extensions.quickfolders.debug.recentFolders.detail", false);
 pref("extensions.quickfolders.debug.toolbarHiding", false);
+pref("extensions.quickfolders.debug.saleDate","");
 
 pref("extensions.quickfolders.toolbarpalette.showSmallIcons", false); // unhide "small icons" in toolbar palette
 
@@ -230,7 +231,7 @@ pref("extensions.quickfolders.commandMenu.icon", false);
 pref("extensions.quickfolders.tabIcons.defaultPath","");
 pref("extensions.quickfolders.commandMenu.support", true);
 pref("extensions.quickfolders.commandMenu.help", true);
-
+pref("extensions.quickfolders.hasNews", false); /* splash screen status after update */
 pref("extensions.quickfolders.hideVersionOnUpdate", false);
 pref("extensions.quickfolders.folderTree.icons", true);
 pref("extensions.quickfolders.folderTree.icons.injectCSS", true);
@@ -245,13 +246,14 @@ pref("extensions.quickfolders.premium.categories.multiSelect",false);
 pref("extensions.quickfolders.premium.findFolder.maxParentLevel", 2);  // Bug 26088
 pref("extensions.quickfolders.premium.findFolder.maxPathItems", 3); // Bug 25991
 pref("extensions.quickfolders.premium.findFolder.folderPathDetail", 2); // Bug 25991
+pref("extensions.quickfolders.premium.findFolder.disableSpace", false); // optimization?
 pref("extensions.quickfolders.quickMove.premium.silentMode", false);
 pref("extensions.quickfolders.quickMove.premium.escapeClearsList", false); // [issue 134] 
 pref("extensions.quickfolders.quickMove.premium.excludedAccounts", "");
 pref("extensions.quickfolders.quickMove.premium.lockInAccount", false);
-pref("extensions.quickfolders.quickMove.maxResults",25);
+pref("extensions.quickfolders.quickMove.maxResults", 25);
 
-/* popupProFeature( ) counts how often these features are used */
+/* popupRestrictedFeature( ) counts how often these features are used */
 pref("extensions.quickfolders.premium.advancedTabProperties.usage", 0);
 pref("extensions.quickfolders.premium.bookmarks.usage", 0);
 pref("extensions.quickfolders.premium.findFolder.usage", 0);
@@ -262,8 +264,8 @@ pref("extensions.quickfolders.premium.skipUnreadFolder.usage", 0);
 pref("extensions.quickfolders.premium.tabIcons.usage", 0);
 pref("extensions.quickfolders.premium.tabSeparator.usage", 0);
 pref("extensions.quickfolders.licenser.forceSecondaryIdentity",false);
+pref("extensions.quickfolders.license.gracePeriodDate",""); // for future use.
 pref("extensions.quickfolders.LicenseKey", "");
-pref("extensions.quickfolders.premium.encryptionKey", ""); /* use for generating new keys */
 pref("extensions.quickfolders.menuMessageList.maxSubjectLength", 40);
 /** obsolete **/
 

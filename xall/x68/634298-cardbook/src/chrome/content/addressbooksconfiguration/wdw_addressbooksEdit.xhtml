@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://cardbook/content/skin/cardbookMain.css" type="text/css"?>
 <?xml-stylesheet href="chrome://cardbook/content/skin/cardbookAddressBooks.css" type="text/css"?>
 <?xml-stylesheet href="chrome://cardbook/content/skin/cardbookAddressBooksEdit.css" type="text/css"?>
 <!-- for the groupbox -->
@@ -10,9 +10,7 @@
 <?xml-stylesheet type="text/css" href="chrome://messenger/skin/themeableDialog.css"?>
 
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-	xmlns:html="http://www.w3.org/1999/xhtml"
-	onload="onLoadDialog();" resizable="true"
-	onclose="onCancelDialog();"
+	xmlns:html="http://www.w3.org/1999/xhtml" resizable="true"
 	id="wdw_addressbooksEdit" title="__MSG_wdw_addressbooksEditTitle__"
 	persist="screenX screenY width height sizemode"
 	windowtype="CardBook:addressbookEditionWindow"
@@ -25,6 +23,7 @@
 	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBUndo.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBImage.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBMailPop.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBPrefDispName.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBSearch.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookActions.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookCardParser.js"/>
@@ -38,194 +37,227 @@
 	<dialog id="wdw_addressbooksEditDialog"
 		buttons="accept,cancel">
 
-		<keyset id="wdw_addressbooksEdit-keys">
-			<key keycode="VK_ESCAPE" oncommand="onCancelDialog();"/>
-		</keyset>
-
 		<checkbox id="AB-enabled-checkbox" label="__MSG_enableFromAccountsOrCats__" oncommand="setupEnabledCheckbox();"/>
 
-		<tabbox id="accountPrefs" flex="1">
-
-			<tabs>
-				<tab id="generalTab" label="__MSG_generalTabLabel__"/>
-				<tab id="syncTab" label="__MSG_syncTabLabel__"/>
-				<tab id="miscTab" label="__MSG_miscTabLabel__"/>
-			</tabs>
-
-			<tabpanels flex="1">
-				<tabpanel orient="vertical" style="overflow:auto" flex="1">
-					<groupbox>
-						<label><html:h2>__MSG_generalTabLabel__</html:h2></label>
-						<hbox flex="1">
-							<grid align="center" flex="1">
-								<columns>
-									<column/>
-									<column flex="1"/>
-								</columns>
-					
-								<rows>
-									<row align="center">
+		<vbox id="rightPaneDownHbox1" flex="1">
+			<vbox>
+				<hbox id="cardbookContactButtonsBox">
+					<button id="generalTab" label="__MSG_generalTabLabel__" class="cardbookContactButtons" oncommand="showPane('generalTabPanel');"/>
+					<button id="syncTab" label="__MSG_syncTabLabel__" class="cardbookContactButtons" oncommand="showPane('syncTabPanel');"/>
+					<button id="miscTab" label="__MSG_miscTabLabel__" class="cardbookContactButtons" oncommand="showPane('miscTabPanel');"/>
+				</hbox>
+			</vbox>
+			<vbox id="generalTabPanel" class="cardbookTab" style="overflow:auto;" flex="1">	
+				<groupbox>
+					<label><html:h2>__MSG_generalTabLabel__</html:h2></label>
+					<hbox flex="1">
+						<vbox flex="1">
+							<html:table>
+								<html:tr>
+									<html:td>
 										<label id="name.ABedit.label" value="__MSG_name.ABedit.label__" accesskey="__MSG_name.ABedit.accesskey__" control="nameTextBox" disable-with-AB="true"/>
+									</html:td>
+									<html:td class="cardbook-td-input cardbook-large2-column">
 										<html:input id="nameTextBox" disable-with-AB="true"/>
-									</row>
-									<separator class="thin"/>
-									<row align="center">
+									</html:td>
+								</html:tr>
+								<html:tr>
+									<html:td>
 										<label value="__MSG_nodesLabel__" control="nodeRadiogroup" id="nodesLabel" disable-with-AB="true"/>
+									</html:td>
+									<html:td>
 										<radiogroup id="nodeRadiogroup" orient="horizontal" disable-with-AB="true">
 											<radio value="categories" label="__MSG_categoriesNodeLabel__"/>
 											<radio value="org" label="__MSG_orgNodeLabel__"/>
 										</radiogroup>
-									</row>
-									<separator class="thin"/>
-									<row align="center">
+									</html:td>
+								</html:tr>
+								<html:tr>
+									<html:td>
 										<label value="__MSG_colorLabel__" control="colorInput" disable-with-AB="true"/>
-										<hbox align="center">
-											<html:input id="colorInput" type="color" palettename="standard" disable-with-AB="true"/>
-										</hbox>
-									</row>
-									<separator class="thin"/>
-									<row align="center">
+									</html:td>
+									<html:td>
+										<html:input id="colorInput" type="color" palettename="standard" disable-with-AB="true"/>
+									</html:td>
+								</html:tr>
+								<html:tr>
+									<html:td>
 										<label id="typeLabel" value="__MSG_typeLabel__" control="typeTextBox" disable-with-AB="true"/>
+									</html:td>
+									<html:td class="cardbook-td-input">
 										<html:input id="typeTextBox" class="plain" disable-with-AB="true"/>
-									</row>
-									<separator class="thin"/>
-									<row align="center">
+									</html:td>
+								</html:tr>
+								<html:tr>
+									<html:td>
 										<label id="urlLabel" value="__MSG_urlLabel__" control="urlTextBox" disable-with-AB="true"/>
+									</html:td>
+									<html:td class="cardbook-td-input">
 										<html:input id="urlTextBox" class="plain" disable-with-AB="true"/>
-									</row>
-									<separator class="thin"/>
-									<row align="center">
+									</html:td>
+								</html:tr>
+								<html:tr>
+									<html:td>
 										<label id="username.ABedit.label" value="__MSG_username.ABedit.label__" control="usernameTextBox" disable-with-AB="true"/>
+									</html:td>
+									<html:td class="cardbook-td-input">
 										<html:input id="usernameTextBox" class="plain" disable-with-AB="true"/>
-									</row>
-									<separator class="thin"/>
-									<row align="center">
+									</html:td>
+								</html:tr>
+								<html:tr>
+									<html:td>
 										<label value="__MSG_vCardVersionLabel__" control="vCardVersionTextBox" disable-with-AB="true"/>
+									</html:td>
+									<html:td class="cardbook-td-input">
 										<html:input id="vCardVersionTextBox" class="plain" disable-with-AB="true"/>
+									</html:td>
+									<html:td>
 										<button id="convertVCardsLabel" label="__MSG_convertVCardsLabel__" accesskey="__MSG_convertVCardsAccesskey__"
 											tooltiptext="__MSG_convertVCardsTooltip__" hidden="true" oncommand="convertVCards();" disable-with-AB="true"/>
-									</row>
-									<separator class="thin"/>
-									<row align="center">
+									</html:td>
+								</html:tr>
+								<html:tr>
+									<html:td>
 										<checkbox id="readonlyCheckBox" label="__MSG_readonlyLabel__" accesskey="__MSG_readonlyAccesskey__" disable-with-AB="true"/>
-									</row>
-									<separator class="thin"/>
-									<row align="center">
+									</html:td>
+								</html:tr>
+								<html:tr>
+									<html:td>
 										<checkbox id="urnuuidCheckBox" label="__MSG_urnuuidLabel__" disabled="true" disable-capability="true"/>
-									</row>
-									<separator class="thin"/>
-									<row align="center">
+									</html:td>
+								</html:tr>
+								<html:tr>
+									<html:td>
 										<checkbox id="DBCachedCheckBox" label="__MSG_DBCachedLabel__" disabled="true" disable-capability="true"/>
-									</row>
-								</rows>
-							</grid>
-						</hbox>
-					</groupbox>
-				</tabpanel>
-	
-				<tabpanel orient="vertical" style="overflow:auto" flex="1">
-					<groupbox>
-						<label><html:h2>__MSG_autoSyncGroupboxLabel__</html:h2></label>
-						<hbox align="center">
-							<checkbox id="autoSyncCheckBox" label="__MSG_autoSyncLabel__" accesskey="__MSG_autoSyncAccesskey__"
-								oncommand="showAutoSyncInterval();" disable-with-AB="true"/>
-						</hbox>
-						<hbox align="center" class="indent">
-							<label value="__MSG_autoSyncIntervalLabel__" accesskey="__MSG_autoSyncIntervalAccesskey__"
-								control="autoSyncIntervalTextBox"
-								id="autoSyncInterval" disable-with-AB="true"/>
-							<html:input id="autoSyncIntervalTextBox" disable-with-AB="true"/>
-						</hbox>
-					</groupbox>
-				</tabpanel>
-	
-				<tabpanel orient="vertical" style="overflow:auto" flex="1">
-					<groupbox flex="1">
-						<label><html:h2>__MSG_fnFormulaCaption__</html:h2></label>
-						<description>__MSG_fnFormulaExplanation__</description>
-						<description class="indent">__MSG_formulaExplanation1__</description>
-						<description class="indent">__MSG_formulaExplanation2__</description>
-						<description class="indent">__MSG_formulaExplanation3__</description>
-						<description class="indent">__MSG_formulaExplanation4__</description>
-						<description class="indent">__MSG_formulaExplanation5__</description>
-						<description class="indent">__MSG_formulaExplanation6__</description>
-						<description id="fnFormula7" class="indent"/>
-						<description id="fnFormula8" class="indent"/>
-						<hbox flex="1">
-							<grid align="center" flex="1">
-								<columns>
-									<column/>
-									<column flex="1"/>
-									<column/>
-								</columns>
-				
-								<rows>
-									<row align="center">
+									</html:td>
+								</html:tr>
+							</html:table>
+						</vbox>
+					</hbox>
+				</groupbox>
+			</vbox>
+
+			<vbox id="syncTabPanel" class="cardbookTab" style="overflow:auto;" flex="1">	
+				<groupbox>
+					<label><html:h2>__MSG_autoSyncGroupboxLabel__</html:h2></label>
+					<hbox align="center">
+						<checkbox id="autoSyncCheckBox" label="__MSG_autoSyncLabel__" accesskey="__MSG_autoSyncAccesskey__"
+							oncommand="showAutoSyncInterval();" disable-with-AB="true"/>
+					</hbox>
+					<hbox align="center" class="indent">
+						<label value="__MSG_autoSyncIntervalLabel__" accesskey="__MSG_autoSyncIntervalAccesskey__"
+							control="autoSyncIntervalTextBox"
+							id="autoSyncInterval" disable-with-AB="true"/>
+						<html:input id="autoSyncIntervalTextBox" disable-with-AB="true"/>
+					</hbox>
+				</groupbox>
+			</vbox>
+
+			<vbox id="miscTabPanel" class="cardbookTab" style="overflow:auto;" flex="1">	
+				<groupbox flex="1">
+					<label><html:h2>__MSG_fnFormulaCaption__</html:h2></label>
+					<description>__MSG_fnFormulaExplanation__</description>
+					<description class="indent">__MSG_formulaExplanation1__</description>
+					<description class="indent">__MSG_formulaExplanation2__</description>
+					<description class="indent">__MSG_formulaExplanation3__</description>
+					<description class="indent">__MSG_formulaExplanation4__</description>
+					<description class="indent">__MSG_formulaExplanation5__</description>
+					<description class="indent">__MSG_formulaExplanation6__</description>
+					<hbox flex="1">
+						<vbox flex="1">
+							<html:table>
+								<html:tr>
+									<html:td>
 										<label value="__MSG_fnFormulaLabel__" accesskey="__MSG_fnFormulaAccesskey__" control="fnFormulaTextBox" disable-with-AB="true"/>
+									</html:td>
+									<html:td class="cardbook-td-input cardbook-large-column">
 										<html:input id="fnFormulaTextBox" disable-with-AB="true" oninput="changeFnPreview();"/>
+									</html:td>
+									<html:td>
 										<button id="resetFnFormulaButton" label="__MSG_resetFnFormulaLabel__" accesskey="__MSG_resetFnFormulaAccesskey__"
 											oncommand="resetFnFormula();" disable-with-AB="true"/>
-									</row>
-									<row align="center">
-										<label value=""/>
-										<label value=""/>
+									</html:td>
+								</html:tr>
+								<html:tr>
+									<html:td>
+									</html:td>
+									<html:td>
+									</html:td>
+									<html:td>
 										<button id="applyToABButton" type="menu" label="__MSG_applyToABButtonLabel__" accesskey="__MSG_applyToABButtonAccesskey__" 
 													sizetopopup="none" crop="center" flex="1" oncommand="applyApplyToAB(event);" disable-with-AB="true">
 											<menupopup id="applyToABMenupopup" disable-with-AB="true"/>
 										</button>
-									</row>
-								</rows>
-							</grid>
-						</hbox>
-						<separator class="thin"/>
-						<vbox flex="1" class="indent">
-							<hbox flex="1">
-								<label><html:h3>__MSG_previewLabel__</html:h3></label>
-							</hbox>
-							<hbox flex="1">
-								<vbox flex="1">
-									<grid align="center" flex="1">
-										<columns>
-											<column/>
-											<column flex="1"/>
-										</columns>
-						
-										<rows id="formulaSampleRows">
-											<row align="center">
-												<label id="formulaMemberLabel1" control="formulaSampleTextBox1"/>
-												<html:input id="formulaSampleTextBox1" oninput="changeFnPreview();"/>
-											</row>
-											<row align="center">
-												<label id="formulaMemberLabel2" control="formulaSampleTextBox2"/>
-												<html:input id="formulaSampleTextBox2" oninput="changeFnPreview();"/>
-											</row>
-											<row align="center">
-												<label id="formulaMemberLabel3" control="formulaSampleTextBox3"/>
-												<html:input id="formulaSampleTextBox3" oninput="changeFnPreview();"/>
-											</row>
-											<row align="center">
-												<label id="formulaMemberLabel4" control="formulaSampleTextBox4"/>
-												<html:input id="formulaSampleTextBox4" oninput="changeFnPreview();"/>
-											</row>
-											<row align="center">
-												<label id="formulaMemberLabel5" control="formulaSampleTextBox6"/>
-												<html:input id="formulaSampleTextBox5" oninput="changeFnPreview();"/>
-											</row>
-											<row align="center">
-												<label id="formulaMemberLabel6" control="formulaSampleTextBox6"/>
-												<html:input id="formulaSampleTextBox6" oninput="changeFnPreview();"/>
-											</row>
-										</rows>
-									</grid>
-								</vbox>
-								<vbox id="fnPreviewWrapper" flex="1">
-									<html:textarea id="fnPreviewTextBox"/>
-								</vbox>
-							</hbox>
+									</html:td>
+								</html:tr>
+							</html:table>
 						</vbox>
-					</groupbox>
-				</tabpanel>
-			</tabpanels>
-		</tabbox>
+					</hbox>
+					<separator class="thin"/>
+					<vbox flex="1" class="indent">
+						<hbox flex="1">
+							<label><html:h3>__MSG_previewLabel__</html:h3></label>
+						</hbox>
+						<hbox flex="1">
+							<vbox flex="1">
+								<html:table id="formulaSampleTable">
+									<html:tr>
+										<html:td>
+											<label id="formulaMemberLabel1" control="formulaSampleTextBox1"/>
+										</html:td>
+										<html:td class="cardbook-td-input">
+											<html:input id="formulaSampleTextBox1" oninput="changeFnPreview();"/>
+										</html:td>
+									</html:tr>
+									<html:tr>
+										<html:td>
+											<label id="formulaMemberLabel2" control="formulaSampleTextBox2"/>
+										</html:td>
+										<html:td class="cardbook-td-input">
+											<html:input id="formulaSampleTextBox2" oninput="changeFnPreview();"/>
+										</html:td>
+									</html:tr>
+									<html:tr>
+										<html:td>
+											<label id="formulaMemberLabel3" control="formulaSampleTextBox3"/>
+										</html:td>
+										<html:td class="cardbook-td-input">
+											<html:input id="formulaSampleTextBox3" oninput="changeFnPreview();"/>
+										</html:td>
+									</html:tr>
+									<html:tr>
+										<html:td>
+											<label id="formulaMemberLabel4" control="formulaSampleTextBox4"/>
+										</html:td>
+										<html:td class="cardbook-td-input">
+											<html:input id="formulaSampleTextBox4" oninput="changeFnPreview();"/>
+										</html:td>
+									</html:tr>
+									<html:tr>
+										<html:td>
+											<label id="formulaMemberLabel5" control="formulaSampleTextBox5"/>
+										</html:td>
+										<html:td class="cardbook-td-input">
+											<html:input id="formulaSampleTextBox5" oninput="changeFnPreview();"/>
+										</html:td>
+									</html:tr>
+									<html:tr>
+										<html:td>
+											<label id="formulaMemberLabel6" control="formulaSampleTextBox6"/>
+										</html:td>
+										<html:td class="cardbook-td-input">
+											<html:input id="formulaSampleTextBox6" oninput="changeFnPreview();"/>
+										</html:td>
+									</html:tr>
+								</html:table>
+							</vbox>
+							<vbox id="fnPreviewWrapper" flex="1">
+								<html:textarea id="fnPreviewTextBox"/>
+							</vbox>
+						</hbox>
+					</vbox>
+				</groupbox>
+			</vbox>
+		</vbox>
 	</dialog>
 </window>

@@ -101,10 +101,6 @@ Send.prototype = {
       } catch (ex) {
         ReportException(ex, msgWindow);
       }
-      let content = await readFileAsync(aFile);
-      let bcc = ToMailboxObjects(compFields.bcc);
-      let deliveryReceipt = compFields.DSN;
-      let message = await CallExtension(incomingServer, "ComposeMessageFromMime", { content, bcc, deliveryReceipt }, msgWindow);
       if (this.cppBase.sendReport) {
         this.cppBase.sendReport.currentProcess = Ci.nsIMsgSendReport.process_SMTP;
       }
@@ -118,7 +114,10 @@ Send.prototype = {
         sentFolder = MailServices.folderLookup.getFolderForURL(compFields.fcc2);
         save = sentFolder.getStringProperty("FolderId");
       }
-      await CallExtension(incomingServer, "SendMessage", { message, save }, msgWindow);
+      let content = await readFileAsync(aFile);
+      let bcc = ToMailboxObjects(compFields.bcc);
+      let deliveryReceipt = compFields.DSN;
+      await CallExtension(incomingServer, "SendMessageFromMime", { save, content, bcc, deliveryReceipt }, msgWindow);
       this.cppBase.notifyListenerOnStopSending(null, Cr.NS_OK, null, null);
       // XXX TODO Update the Sent Items folder
       this.cppBase.notifyListenerOnStopCopy(Cr.NS_OK);

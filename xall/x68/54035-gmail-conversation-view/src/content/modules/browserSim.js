@@ -4,10 +4,6 @@
 
 var EXPORTED_SYMBOLS = ["BrowserSim"];
 
-// This is a workaround whilst we still have stub.html being loaded in the
-// privileged scope. BrowserSim.getBrowser() simulates APIs and passes
-// them back to the webExtension process for handling by the real APIs.
-
 // For these APIs, we don't currently need the events API. Use the
 // proxy set-up so that we can gain the benefit of the field validation
 // that going through the APIs provides (namely setting unused fields
@@ -19,7 +15,10 @@ const SUPPORTED_APIS_NO_EVENTS = [
   "contacts",
   "convCompose",
   "mailTabs",
-  "messageDisplay",
+  // If "messages" is moved to SUPPORTED_BASE_APIS, then the various interfaces
+  // MUST be tested very carefully. Last time this was tried, it would end up
+  // clearing the starred flag when marking a message as read.
+  "messages",
   "runtime",
   "tabs",
   "windows",
@@ -33,10 +32,17 @@ const SUPPORTED_BASE_APIS = [
   "convMsgWindow",
   "conversations",
   "i18n",
-  "messages",
+  "messageDisplay",
   "storage",
 ];
 
+/**
+ * This class manages a WebExtension browser-like object that is used
+ * to make WebExtension APIs available to the privileged parts of the add-on.
+ *
+ * This is a workaround whilst we still have stub.html being loaded in the
+ * privileged scope.
+ */
 class _BrowserSim {
   setBrowserListener(listener, context) {
     if (!listener) {
@@ -154,9 +160,24 @@ class _BrowserSim {
 
   getTabId(win, docWin) {
     let tabmail = win.document.getElementById("tabmail");
-    let tab = tabmail.getTabForBrowser(docWin.frameElement);
+    // We assume for now (certainly TB 91) that we can get the current
+    // multi-message browser and that will be in the expected tab. This generally
+    // as the multi-message browser is shared across tabs, however, we should
+    // see if we can find a way to get the browser for the current document
+    // window (docWin), and avoid the winodw lookup altogether.
+    //
+    // Alternately, we need to complete the switch to loading as a WebExtension
+    // page, but that's a lot more work at the moment.
+    let tab = tabmail.getTabForBrowser(
+      docWin.browsingContext?.embedderElement || docWin.frameElement
+    );
     if (!tab) {
-      return null;
+      // We are probably in a window all by ourselves in Thunderbird 91,
+      // fallback to getting the selected tab.
+      //
+      // To fix this properly we'll need to be able to drop 91 and load
+      // messages in a content tab but in its own window.
+      tab = tabmail.selectedTab;
     }
     return this._context.extension.tabManager.convert(tab).id;
   }

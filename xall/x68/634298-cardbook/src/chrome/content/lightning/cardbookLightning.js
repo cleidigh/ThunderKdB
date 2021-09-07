@@ -4,12 +4,12 @@ var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardb
 var cardbookLightning = {
 	// code taken from createEventWithDialog
 	createLightningEvent: function(aContactList, aListener) {
-		let event = cal.createEvent();
+		let event = new CalEvent();
 		let calendar = cal.view.getCompositeCalendar(window).defaultCalendar;
 		let refDate = cal.dtz.now();
 		setDefaultItemValues(event, calendar, null, null, refDate, null);
 		for (let contact of aContactList) {
-			let attendee = cal.createAttendee();
+			let attendee = new CalAttendee();
 			attendee.id = contact[0];
 			attendee.commonName = contact[1];
 			attendee.isOrganizer = false;
@@ -22,7 +22,7 @@ var cardbookLightning = {
 
 	// code taken from createTodoWithDialog
 	createLightningTodo: function(aTitle, aDescription, aListener) {
-		let todo = cal.createTodo();
+		let todo = new CalTodo();
 		let calendar = cal.view.getCompositeCalendar(window).defaultCalendar;
 		let refDate = cal.dtz.now();
 		setDefaultItemValues(todo, calendar, null, null, refDate);

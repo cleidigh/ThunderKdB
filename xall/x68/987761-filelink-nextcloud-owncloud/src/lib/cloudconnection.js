@@ -6,7 +6,7 @@ const apiUrlShares = "/apps/files_sharing/api/v1/shares";
 const apiUrlGetApppassword = "/core/getapppassword";
 const apiUrlCapabilities = "/cloud/capabilities";
 const davUrlBase = "remote.php/dav/files/";
-const ncMinimalVersion = 19;
+const ncMinimalVersion = 20;
 const ocMinimalVersion = 10 * 10000 + 0 * 100 + 10;
 const DAV_MAX_FILE_SIZE = 0x100000000 - 1; /* Almost 4GB */
 //#endregion

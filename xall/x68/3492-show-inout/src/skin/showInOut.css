@@ -6,6 +6,20 @@ treecol.inoutColumnHeader {
 
 /* Using indicators */
 treechildren::-moz-tree-image(sio_inoutCol, out) {
+  list-style-image: url("out.svg");
+}
+treechildren::-moz-tree-image(sio_inoutCol, to_me) {
+  list-style-image: url("to_me.svg");
+}
+treechildren::-moz-tree-image(sio_inoutCol, to_others) {
+  list-style-image: url("to_others.svg");
+}
+treechildren::-moz-tree-image(sio_inoutCol, to_list) {
+  list-style-image: url("to_list.svg");
+}
+
+/* old icons
+treechildren::-moz-tree-image(sio_inoutCol, out) {
   list-style-image: url("indicators.png");
   -moz-image-region: rect(0px 16px 16px 0px);
 }
@@ -21,9 +35,5 @@ treechildren::-moz-tree-image(sio_inoutCol, to_list) {
   list-style-image: url("indicators.png");
   -moz-image-region: rect(0px 32px 16px 16px);
 }
-/* end indicators*/
-/* revert to old icons:
-treechildren::-moz-tree-image(sio_inoutCol) {
-  list-style-image: url("skin/inout.png");
-}
 */
+/* end indicators*/

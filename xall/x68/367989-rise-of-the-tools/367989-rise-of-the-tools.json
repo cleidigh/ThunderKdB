@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/5/5162/5162928.png?modified=1398762384"
         }
     ],
-    "average_daily_users": 2397,
+    "average_daily_users": 2485,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -18,30 +18,30 @@
     "contributions_url": "",
     "created": "2012-03-15T09:02:32Z",
     "current_version": {
-        "id": 2474594,
+        "id": 2476380,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "91.*",
                 "min": "77.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/rise-of-the-tools/versions/2474594",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/rise-of-the-tools/versions/2476380",
         "files": [
             {
-                "id": 1017756,
-                "created": "2020-10-29T16:25:42Z",
-                "hash": "sha256:54faa42ca9850bbb8fd6ef903002b0632ec8ffd3f48ab960c77ea8f558e5d472",
+                "id": 1019540,
+                "created": "2021-09-02T20:38:56Z",
+                "hash": "sha256:8d2d296e787fa5d8fa6697a079ec44f2509327e66c4ebe247e9668ec62645da8",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 3079,
+                "size": 3353,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017756/rise_of_the_tools-2.0.0.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019540/rise_of_the_tools-2.0.0.2-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 5,
             "name": {
@@ -75,12 +75,12 @@
             "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
         },
         "release_notes": {
-            "en-US": "Fixed a bug causing the display mode \"Symbols and Text\" not rendering properly.",
-            "de": "Darstellungsproblem mit dem Toolbar-Modus \"Symbole und Text\" behoben."
+            "en-US": "Added strict_max_version to potentially prevent issues in future versions of Thunderbird.",
+            "de": "Update mit strict_max_version, um möglichen Problemen mit zukünftigen Versionen von Thunderbird vorzubeugen."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/rise-of-the-tools/versions/2.0.0.1",
-        "version": "2.0.0.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/rise-of-the-tools/versions/2.0.0.2",
+        "version": "2.0.0.2"
     },
     "default_locale": "en-US",
     "description": {
@@ -105,7 +105,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-10-29T16:43:53Z",
+    "last_updated": "2021-09-02T21:42:25Z",
     "name": {
         "en-US": "Rise of the Tools",
         "de": "Rise of the Tools"
@@ -162,9 +162,12 @@
     "weekly_downloads": 67,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
-            "comp68": true,
+            "comp69plus": true,
+            "comp78plus": true,
+            "comp61plus": true,
+            "comp68pv": true,
+            "comp68pv_date": "2019-06-02T01:03:59Z",
             "comp60pv": true,
             "comp60pv_date": "2018-04-03T16:26:23Z"
         }

@@ -38,6 +38,11 @@ ChromeUtils.defineModuleGetter(this, "Base64", "resource://exquilla/Base64.jsm")
 
 ChromeUtils.defineModuleGetter(this, "EWStoPL", "resource://exquilla/EWStoPL.js");
 
+const kMigrationNeedsPrompt = 0;
+const kMigrationInapplicable = 1;
+const kMigrationNeverPrompt = 2;
+const kMigrationSucceeded = 3;
+
 // namespaces
 const nsTypes = "http://schemas.microsoft.com/exchange/services/2006/types";
 const nsMessages = "http://schemas.microsoft.com/exchange/services/2006/messages";
@@ -1646,6 +1651,53 @@ StreamingSubscriptionRequest example from:
       try {
         password = this.mailbox.password;
       } catch (e) {}
+      if (this.mailbox.ewsURL.startsWith("https://outlook.office365.com/") && authMethod != Ci.nsMsgAuthMethod.OAuth2 && authMethod != kOAuth2Password) {
+        let migrationData = {};
+        this.mailbox._postEvent("OAuthMigrationPrompt", migrationData, Cr.NS_OK);
+        if (migrationData.migrationState == kMigrationNeedsPrompt) {
+          try {
+            if (await this.mailbox.oAuth2Login.isOffice365()) {
+              let bundle = Services.strings.createBundle("chrome://exquilla/locale/exquilla.properties");
+              let title = bundle.GetStringFromName("Office365OAuthTitle");
+              let message = bundle.GetStringFromName("Office365OAuthMessage");
+              let buttons = Ci.nsIPrompt.BUTTON_TITLE_OK * Ci.nsIPrompt.BUTTON_POS_0 + Ci.nsIPrompt.BUTTON_TITLE_IS_STRING * Ci.nsIPrompt.BUTTON_POS_1;
+              let dontAskAgain = {};
+              let dontAskTitle = null;
+              if (migrationData.migrationTries++ > 2) {
+                dontAskTitle = bundle.GetStringFromName("Office365OAuthNever");
+              }
+              if (Services.prompt.confirmEx(Services.ww.activeWindow, title, message, Ci.nsIPrompt.STD_OK_CANCEL_BUTTONS, null, null, null, dontAskTitle, dontAskAgain) == 0) {
+                try {
+                  migrationData.authMethod = this.mailbox.authMethod = authMethod = await this.mailbox.oAuth2Login.detectAuthMethod();
+                  migrationData.migrationState = kMigrationSucceeded;
+                  let migrationEx = new Error();
+                  migrationEx.code = "migration-success";
+                  log.error("Migration succeeded", migrationEx);
+                } catch (ex) {
+                  ex.parameters = { type: ex.type, code: ex.code, name: ex.name, result: ex.result };
+                  ex.type = "migration-fail";
+                  log.error("Migration failure", ex);
+                }
+              }
+              if (dontAskAgain.value) {
+                migrationData.migrationState = kMigrationNeverPrompt;
+                let migrationEx = new Error();
+                migrationEx.code = "migration-never";
+                log.error("Migration never prompt", migrationEx);
+              }
+            } else {
+              migrationData.migrationState = kMigrationInapplicable;
+              let migrationEx = new Error();
+              migrationEx.code = "migration-is-hotmail";
+              log.error("Migration is Hotmail", migrationEx);
+            }
+            this.mailbox._postEvent("OAuthMigration", migrationData, Cr.NS_OK);
+          } catch (ex) {
+            // Network error detecting the account type. Try again next restart.
+            log.warn(ex);
+          }
+        }
+      }
       if (!password && authMethod == Ci.nsMsgAuthMethod.passwordCleartext) {
         rv = Cr.NS_ERROR_NOT_INITIALIZED;
         this._error("Password missing", "PasswordMissing", "");

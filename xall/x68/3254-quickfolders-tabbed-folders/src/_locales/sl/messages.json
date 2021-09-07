@@ -29,7 +29,7 @@
     "message": "Želim obnoviti licenco"
   },
   "btn-want-a-license": {
-    "message": "Želim kupiti licenco"
+    "message": "Izberite licenco"
   },
   "btn-want-to-donate": {
     "message": "Želim pomagati z enkratno donacijo."
@@ -55,8 +55,14 @@
   "buyLicense.instruct": {
     "message": "Ali zase potrebujete dovoljenje? Prejmite enojno uporabniško dovoljenje. Vezano je na vaš osebni e-poštni naslov in ga lahko uporabite na več namestitvah."
   },
-  "buyPersonalLicense.button": {
-    "message": "Kupi osebno dovoljenje!"
+  "buyProLicense.button": {
+    "message": "Nakup licence Pro!"
+  },
+  "buyStandardLicense.button": {
+    "message": "Kupite standardno licenco!"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "Ne morete si privoščiti premijskih funkcij? Pridobite zelo ugodno standardno licenco in še naprej preverjajte funkcije premium."
   },
   "chkComposerSubfolders": {
     "message": "Uveljavi tudi za podmape"
@@ -92,7 +98,7 @@
     "message": "Ozadje"
   },
   "cssBackground.tooltip": {
-    "message": "Vnesite ozadje CSS, npr. premo sorazmerni preliv (na dno, rgba(254,252,234,1) 0&#37;, rgba(241,218,54,1) 100&#37;)"
+    "message": "Vnesite ozadje CSS, npr. premo sorazmerni preliv (na dno, rgba(254,252,234,1) 0%, rgba(241,218,54,1) 100%)"
   },
   "cssColor": {
     "message": "Barva besedila"
@@ -125,7 +131,7 @@
     "message": "E-pošta:"
   },
   "enterLicenseKey.button": {
-    "message": "Vnesite ključ za dovoljenje ..."
+    "message": "Vnesite ključ za dovoljenje …"
   },
   "enterLicenseKey.tooltip": {
     "message": "Vnesite kodo ključa za dovoljenje, ki ste jo prejeli po e-pošti."
@@ -157,7 +163,7 @@
     "message": "Privzeta identiteta ob sestavljanju e-pošte"
   },
   "getQuickFolders": {
-    "message": "Prejmi QuickFolders Pro"
+    "message": "Licence QuickFolders"
   },
   "grpComposer": {
     "message": "Privzeta polja za e-pošto"
@@ -210,8 +216,41 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Zahvaljujemo se vam za nedavno podaljšanje licence ali če ste prispevali. Ker ste pomagali pri prihodnjem preverjanju tega dodatka, lahko preprosto zaprete to okno."
   },
+  "licenseComparison" : {
+    "message": "Če želite primerjati funkcije različnih različic,{linkStart} preberite ta seznam{linkEdin}."
+  },  
+  "licenseHead": {
+    "message": "Nov sistem licenciranja"
+  },  
+  "licenseTypes": {
+    "message": "QuickFolders ponuja dve licenci, Standardno in Pro; ti so potrebni za spremljanje sprememb na platformi Thunderbird in za financiranje inovacij in popravil dodatka. Ker se spremembe, ki bi potencialno motile funkcionalnost razširitve, uvedejo letno, bo licenca veljala tudi 1 leto."
+  },  
   "licenseWindow.title": {
     "message": "Dovoljenje QuickFolders Pro"
+  },
+  "license_restriced.std": {
+    "message": "Standardna licenca - omejena funkcija Pro. Izvedi več…"
+  },
+  "license_restriced.unpaid": {
+    "message": "Različica brez licence - omejena funkcija. Izvedi več…"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFolders potrebuje licenco Pro za podporo več kot zavihkom $maxTabs$.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFolders potrebuje licenco za podporo več kot zavihkom $maxTabs$.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
   "mozillas-basic-platform": {
     "message": "Mozilla ponuja samo osnovno platformo za dostavo naše programske opreme vam, končnim uporabnikom. Če moramo uporabnike prositi za plačilo ali podporo, tega ne moremo storiti z addons.thunderbird.net - to ni 'trgovina z aplikacijami' z vgrajenimi plačilnimi zidovi ali upravljanjem licenc, kot sta iTunes ali google play."
@@ -251,7 +290,7 @@
     "message": "Dodaj!"
   },
   "qf.button.configureTooltips": {
-    "message": "Nastavi orodne namige ..."
+    "message": "Nastavi orodne namige …"
   },
   "qf.button.currentFolderBackground.set": {
     "message": "Uveljavi"
@@ -310,11 +349,11 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "Osredotoči se seznam sporočil ob spreminjanju zavihkov"
   },
-  "qf.checkbox.autoHideToolbar": {
-    "message": "Skrij hitre mape, ko niso potrebne"
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "Skrij mape QuickFolders na zavihkih posameznih sporočil"
   },
-  "qf.checkbox.autoHideToolbar.tooltip": {
-    "message": "Strne orodno vrstico v posebnih zavihkih, kot so koledar, vsebina, upravitelj dodatkov."
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "Odstrani orodno vrstico QuickFolders na zavihkih, ki prikazujejo eno sporočilo."
   },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "Gumb Zapri"
@@ -473,7 +512,7 @@
     "message": "Prikaži številko bližnjice na oznakah map"
   },
   "qf.checkbox.singleMessage.currentFolder.show": {
-    "message": "... tudi v oknih posameznih sporočil"
+    "message": "… tudi v oknih posameznih sporočil"
   },
   "qf.checkbox.singleMessage.currentFolder.tooltip": {
     "message": "Prikaži orodno vrstico trenutne mape v oknu, ki se odpre, ko izberete odpiranje E-pošte v novem oknu"
@@ -527,7 +566,7 @@
     "message": "Uporabi Ctrl namesto Alt"
   },
   "qf.continueFilter.label": {
-    "message": "Ustvari filter ..."
+    "message": "Ustvari filter …"
   },
   "qf.continueFilter.shortcut": {
     "message": "U"
@@ -538,6 +577,9 @@
   "qf.copyfolders.tooltip": {
     "message": "Kopira nastavitveni niz map na odložišče"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Tema Thunderbird"
+  },
   "qf.currentFolderBackground.custom": {
     "message": "Po meri"
   },
@@ -545,7 +587,7 @@
     "message": "Temno"
   },
   "qf.currentFolderBackground.default": {
-    "message": "Privzeto"
+    "message": "Srebro"
   },
   "qf.currentFolderBackground.translucent": {
     "message": "Prosojno"
@@ -556,17 +598,22 @@
   "qf.currentfolder.rightSpacer": {
     "message": "Right Spacer:"
   },
-  "qf.description.bugzilla": {
-    "message": "Uporabite Bugzillo za vse uradne zahteve po značilnostih in poročilih o hroščih"
+  "qf.description.github": {
+    "message": "Uporabite github za vse uradne zahteve po značilnostih in poročilih o hroščih"
   },
   "qf.description.categoryusage": {
-    "message": "Temu zavihku lahko dodelite kategorijo ('Služba', 'Zasebno' ...)."
+    "message": "Temu zavihku lahko dodelite kategorijo ('Služba', 'Zasebno' …)."
   },
   "qf.description.changeCategory": {
     "message": "Desni klik na zavihek ga organizira v eno od več kategorij. Ustvari filter za kategorije ne levi stran zavihkov."
   },
   "qf.description.contactMe": {
-    "message": "Lahko tudi osebno navežete stik za mano na axelg@gofree.indigo.ie:"
+    "message": "Lahko tudi osebno navežete stik za mano na $supportMail$:",
+    "placeholders": {
+      "supportMail": {
+        "content": "$1"
+      }
+    }
   },
   "qf.description.donate": {
     "message": "Če vam je QuickFolders všeč toliko, kot nam in bi radi podprli njegov razvoj, lahko prispevate nekaj denarja za nadaljnji razvoj razširitve."
@@ -590,7 +637,7 @@
     "message": "Naslednji predmeti so preskusni, upajmo, da bodo delovali v naslednji izdaji!!"
   },
   "qf.description.languages": {
-    "message": "QuickFolders podpira lokalizacijo - pomagate lahko z dodajanjem prevoda v svoj jezik na Babelzilli:"
+    "message": "QuickFolders podpira lokalizacijo - pomagate lahko z dodajanjem prevoda v svoj jezik na github:"
   },
   "qf.description.linkNote": {
     "message": "Obiščite domačo stran razširitve QuickFolders za podrobni uporabniški priročnik, nasvete in pogosta vprašanja:"
@@ -665,7 +712,7 @@
     "message": "Ustvarjanje filtrov"
   },
   "qf.foldercontextmenu.quickfolders.customizeIcon": {
-    "message": "Prilagodi ikono ..."
+    "message": "Prilagodi ikono …"
   },
   "qf.foldercontextmenu.quickfolders.removeIcon": {
     "message": "Odstrani ikono po meri"
@@ -724,8 +771,8 @@
   "qf.label.behavior": {
     "message": "Vedenje"
   },
-  "qf.label.bugzilla": {
-    "message": "Prijavi hrošča / zahtevaj značilnost ..."
+  "qf.label.github": {
+    "message": "Prijavi hrošča / zahtevaj značilnost …"
   },
   "qf.label.buttonFontSizeNumeric": {
     "message": "Velikost pisave gumbov (0 za privzeto):"
@@ -746,7 +793,7 @@
     "message": "Prispevaj"
   },
   "qf.label.donateLink": {
-    "message": "Obišči stran za prispevke ..."
+    "message": "Obišči stran za prispevke …"
   },
   "qf.label.dragFolderLabel": {
     "message": "Sem povlecite mape, da ustvarite zavihek. Kliknite na zavihek, da greste v mapo, povlecite sporočila, da jih tja premaknete/kopirate."
@@ -788,13 +835,13 @@
     "message": "Vaš licenčni ključ je v vaši e-pošti za potrditev naročila od Fastspringa:"
   },
   "qf.label.instantApplyMsg": {
-    "message": "Opomba: V primeru, da spodaj vidite gumb [Zapri], morda barvne nastavitve ne bodo delovale - za obideneje tega poskusite z desnim klikom na prazen prostor vrstice hitrih map, da izberete možnosti ... to bo vsililo prikaz gumba [V redu], ki bi moral imeti barve."
+    "message": "Opomba: V primeru, da spodaj vidite gumb [Zapri], morda barvne nastavitve ne bodo delovale - za obideneje tega poskusite z desnim klikom na prazen prostor vrstice hitrih map, da izberete možnosti … to bo vsililo prikaz gumba [V redu], ki bi moral imeti barve."
   },
   "qf.label.keyboard": {
     "message": "Tipkovne bližnjice"
   },
   "qf.label.languagesLink": {
-    "message": "Dodaj prevod ..."
+    "message": "Dodaj prevod …"
   },
   "qf.label.licenseValid": {
     "message": "Vaše dovoljenje je veljavno do:"
@@ -869,7 +916,7 @@
     "message": "Položaj orodne vrstice QuickFolders"
   },
   "qf.label.versionhistory": {
-    "message": "Beri zgodovino različic ..."
+    "message": "Beri zgodovino različic …"
   },
   "qf.licenseValidation.expired": {
     "message": "Vneseni licenčni ključ je potekel. Pritisnite spodnji gumb, da obnovite svoje dovoljenje."
@@ -892,6 +939,9 @@
   "qf.licenseValidation.passed": {
     "message": "Hvala za registracijo razširitve QuickFolders Pro! Vse značilnosti Premium so sedaj odklenjene."
   },
+  "qf.licenseValidation.standard": {
+    "message": "Hvala za registracijo licence QuickFolders - Izjemno pomagate dodatku! Če potrebujete več funkcij, lahko vedno nadgradite na licenco Pro."
+  },  
   "qf.loadConfig": {
     "message": "Naloži konfiguracijo…"
   },
@@ -920,31 +970,31 @@
     "message": "r"
   },
   "qf.menuitem.quickfolders.filters": {
-    "message": "Ustvari filtre sporočil ..."
+    "message": "Ustvari filtre sporočil …"
   },
   "qf.menuitem.quickfolders.filtersAccess": {
     "message": "U"
   },
   "qf.menuitem.quickfolders.find": {
-    "message": "Najdi mapo ..."
+    "message": "Najdi mapo …"
   },
   "qf.menuitem.quickfolders.findAccess": {
     "message": "N"
   },
   "qf.menuitem.quickfolders.help": {
-    "message": "Pomoč QuickFolders ..."
+    "message": "Pomoč QuickFolders …"
   },
   "qf.menuitem.quickfolders.helpAccess": {
     "message": "P"
   },
   "qf.menuitem.quickfolders.options": {
-    "message": "Možnosti QuickFolders ..."
+    "message": "Možnosti QuickFolders …"
   },
   "qf.menuitem.quickfolders.optionsAccess": {
     "message": "M"
   },
   "qf.menuitem.quickfolders.register": {
-    "message": "Dovoljenje QuickFolders Pro ..."
+    "message": "Dovoljenje QuickFolders Pro …"
   },
   "qf.menuitem.quickfolders.repairTabs": {
     "message": "Osveži vidne zavihke!"
@@ -955,8 +1005,11 @@
   "qf.menuitem.quickfolders.repairTreeIcons": {
     "message": "Popravi ikone drevesa"
   },
+  "qf.menuitem.quickfolders.splash" : {
+    "message": "Prikaži začetni zaslon"
+  },
   "qf.menuitem.quickfolders.support": {
-    "message": "Podpora QuickFolders ..."
+    "message": "Podpora QuickFolders …"
   },
   "qf.menuitem.quickfolders.supportAccess": {
     "message": "d"
@@ -973,6 +1026,15 @@
   "qf.notification.dontShowAgain": {
     "message": "Tega sporočila ne prikaži več."
   },
+  "qf.notification.newsFlash": {
+    "message": "$addonName$ je bil posodobljen! Pomembne novice…",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "qf.notification.premium.btn.extendLicense": {
     "message": "Extend License"
   },
@@ -988,17 +1050,46 @@
   "qf.notification.premium.btn.renewLicense": {
     "message": "Obnovi dovoljenje"
   },
+  "qf.notification.premium.btn.upgrade": {
+    "message": "Nadgradnja na profesionalni nivo"
+  },
   "qf.notification.premium.readingList": {
     "message": "Sedaj imate določenih {1} zaznamkov. Brezplačna različica razširitve QuickFolders omogoča največ {2} zaznamkov."
   },
+  "qf.notification.premium.shortcut": {
+    "message": "Premijska licenca vam poleg tega omogoča nastavljivo bližnjico na tipkovnici."
+  },
   "qf.notification.premium.tabIcons": {
-    "message": "Sedaj imate določenih {1} ikon. Brezplačna različica razširitve QuickFolders omogoča največ {2} ikon."
+    "message": "Zdaj uporabljate $cntIcons$ ikone po meri za zavihke. Brezplačna različica QuickFolders podpira največ $maxFreeIcons$. Standardna licenca podpira $maxStdIcons$. QuickFolders Pro nima omejitev.",
+    "placeholders": {
+      "cntIcons": {
+        "content": "$1",
+        "example": "10"
+      },
+      "maxFreeIcons": {
+        "content": "$2",
+        "example": "5"
+      },
+      "maxStdIcons": {
+        "content": "$3",
+        "example": "12"
+      }
+    }
   },
   "qf.notification.premium.text": {
-    "message": "{1} je značilnost Premium, pridobite si dovoljenje QuickFolders Pro, da jo boste lahko trajno uporabljali."
+    "message": "{1} je funkcija Premium, za uporabo pridobite licenco QuickFolders Pro."
   },
   "qf.notification.premium.title": {
     "message": "Značilnost Premium"
+  },
+  "qf.notification.standard.readingList": {
+    "message": "Zdaj imate definirane zaznamke {1}. Standardna licenca QuickFolders omogoča največ {2}."
+  },
+  "qf.notification.standard.text": {
+    "message": "{1} je funkcija z omejitvami licenc, za njeno uporabo pridobite licenco QuickFolders."
+  },
+  "qf.notification.standard.title": {
+    "message": "Standardna funkcija"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Videz barve posameznega zavihka"
@@ -1028,7 +1119,7 @@
     "message": "Vedno prikaži obrobe"
   },
   "qf.options.versionnumber.tooltip": {
-    "message": "Kliknite z desnim miškinim gumbom za zgodovino različic."
+    "message": "Kliknite za prikaz zgodovine različic."
   },
   "qf.palette.inactive": {
     "message": "Kot nedejavni zavihki"
@@ -1100,7 +1191,7 @@
     "message": "Nova mapa"
   },
   "qf.prompt.pasteFolders": {
-    "message": "To bo izbrisalo vse zavihke s hitrimi mapami in jih nadomestilo s predmeti na odložišču.\\nNo odložišču je bilo najdenih {0} predmetov.\\Ali ste prepričani?"
+    "message": "To bo izbrisalo vse zavihke s hitrimi mapami in jih nadomestilo s predmeti na odložišču.\nNo odložišču je bilo najdenih {0} predmetov.\nAli ste prepričani?"
   },
   "qf.prompt.pasteFolders.confirm": {
     "message": "Ohrani prikazane zavihke?"
@@ -1109,10 +1200,10 @@
     "message": "Odstrani ta predmet?"
   },
   "qf.prompt.readingList.searchMissingItem": {
-    "message": "Pošte ni mogoče najti, morda je bila med tem premaknjena drugam .\\n{1}\\n\\nAli jo želite poiskati?"
+    "message": "Pošte ni mogoče najti, morda je bila med tem premaknjena drugam .\n{1}\n\nAli jo želite poiskati?"
   },
   "qf.prompt.restoreFolders": {
-    "message": "This will delete all QuickFolders tabs and replace with the items from the file.\\n{0} entries were read.\\nReplace tabs?"
+    "message": "This will delete all QuickFolders tabs and replace with the items from the file.\n{0} entries were read.\nReplace tabs?"
   },
   "qf.prompt.switchDomainLicense": {
     "message": "Preklopi na domensko dovoljenje?"
@@ -1151,7 +1242,7 @@
     "message": "Splošno"
   },
   "qf.tab.gopro": {
-    "message": "QuickFolders Pro"
+    "message": "Licence"
   },
   "qf.tab.layout": {
     "message": "Poudari moje zavihke!"
@@ -1163,7 +1254,7 @@
     "message": "Podpora"
   },
   "qf.textbox.searchBox.emptyText": {
-    "message": "Išči filtre po imenu ..."
+    "message": "Išči filtre po imenu …"
   },
   "qf.textbox.searchBox.toolTip": {
     "message": "vnesite ključno besedo, da poiščete filtre po imenu"
@@ -1523,7 +1614,7 @@
     "message": ": To je zavihek, ki kaže na neveljavno mapo:"
   },
   "qfTidyDeadFolders": {
-    "message": "To bo odstranilo zavihke, ki nimajo dodeljenih veljavnih map.\\nTo se včasih zgodi, če je mapa izbrisana ali premaknjena brez obveščanja razširitve QuickFolders."
+    "message": "To bo odstranilo zavihke, ki nimajo dodeljenih veljavnih map.\nTo se včasih zgodi, če je mapa izbrisana ali premaknjena brez obveščanja razširitve QuickFolders."
   },
   "qfTreeIconsInvalidCount": {
     "message": "{0} ikon manjka"
@@ -1543,6 +1634,33 @@
   "qfVersionDisableOnUpdate": {
     "message": "Ustavi prikaz zgodovine različic po posodobitvah?"
   },
+  "quickMove.help.head": {
+    "message" : "Pomoč za {1}"
+  },
+  "quickMove.help.head.advanced": {
+    "message" : "Napredne funkcije"
+  },
+  "quickMove.help.l1a": {
+    "message" : "Vnesite začetek imena mape ali besed v njej, ločenih s presledkom."
+  }, 
+  "quickMove.help.l1b": {
+    "message" : "Naslednji znaki so meje besed in jih ni treba vnašati:"
+  }, 
+  "quickMove.help.l2a": {
+    "message" : "Vnesite {1} za vnos mape starih staršev/staršev/iskane strani."
+  }, 
+  "quickMove.help.l2b": {
+    "message" : "Običajno zadoščata prvi dve črki katere koli nadrejene mape. S to sintakso lahko ustvarite tudi nove podmape."
+  }, 
+  "quickMove.help.l3a": {
+    "message" : "Vnesite {1}, če želite preskočiti mape vmes."
+  }, 
+  "quickMove.help.l3b": {
+    "message" : "To je uporabno za globlje, bolj zapletene ali neznane hierarhije map."
+  },   
+  "quickMove.help.advanced": {
+    "message" : "Naprednejše funkcije, kot so bližnjice na tipkovnici za prehod v mapo / premikanje pošte ali izključitev map iz rezultatov iskanja, lahko nastavite na zavihku QuickFolders Pro. Če želite dostopati do teh in drugih premium funkcij, pridobite licenco Pro in podprite prihodnost QuickFolders."
+  },  
   "quickMove.singleMessage.goNext": {
     "message": "Prikaže naslednje sporočilo po premikanju trenutnega"
   },
@@ -1592,7 +1710,33 @@
     "message": "Obnovite licenco."
   },
   "special-offer-content": {
-    "message": "Pripravite QuickFolders v prihodnje in pridobite licenco, medtem ko je cena programa QuickFolders Pro {boldStart} 40% znižana {boldEnd}! Ta posebna ponudba bo na voljo do {boldStart} 1. maja {boldEnd}."
+    "message": "Nadgradite svoje funkcije in prihranite {boldStart} $reduction$ {boldEnd} z nakupom licence QuickFolders Pro! Ta posebna ponudba bo na voljo do {boldStart} $expirydate$ {boldEnd}. Ali pa izberite standardne funkcije z novo {linkStart} standardno licenco {linkEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "16. aprila"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-upgrade": {
+    "message": "Nadgradite zdaj iz QuickFolders Standard na Pro in prihranite {boldStart}$reduction${boldEnd}! Ta posebna ponudba bo na voljo do {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
+  "special-offer-expiry": {
+    "message": "11. september"
   },
   "special-offer-head": {
     "message": "Naj bodo QuickFolders prihodnji dokaz!"
@@ -1671,13 +1815,13 @@
     "message": "Kaj je novega?"
   },
   "whats-new-head": {
-    "message": "Poudarki"
+    "message": "Pomembne spremembe"
   },
   "whats-new-intro": {
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} 5.5.2 - hitri popravek - v Thunderbirdu 89 element menija z možnostmi ni bil prikazan v upravitelju dodatkov {L2}{L1} 5.5.2 - hitri popravek za quickMove - nadrejena mapa, ki vsebuje podčrtaj, ni predlagana kot nadrejena {L2}{L1} 5.5.1 - hitri popravek za funkcijo »Označi mape in podmape kot prebrane« {L2}{L1} Izpolnil sem tudi madžarski, poenostavljeni kitajski in katalonski jezik. {L2}Ta različica nadalje razširja funkcijo quickMove z naslednjimi funkcijami: {L1} Zavihek za eno sporočilo: možnost samodejnega odpiranja naslednjega e-poštnega sporočila na istem zavihku po premikanju sporočila {L2} {L1} Možnost popolnega preklica quickMove (in izpraznite seznam sporočila) z enim samim pritiskom tipke ESCAPE. {L2} {L1} Napredno ujemanje nadrejenih map z branjem iz _ in ločevalnikov presledkov ter z njimi ravna kot z začetkom iskanega imena. {L2} {L1} Popravljeno: iskanje map med ogledom sporočila, prikazana v rezultatih iskanja ali iz pogovora v več mapah. {L2} {L1} Te in dodatne funkcije za omejevanje rezultatov iskanja iz določenih računov lahko nastavite v naprednih nastavitvah iskanja na zavihku QuickFolders Pro. {L2}"
+    "message": "{L1} Odpravljeno v 5.7.2: Ko quickFilters aktivira pomočnika, bodo vse ikone na levi strani zavihkov bele {L2} {L1} Odpravljeno v 5.7.1: Pri iskanju map s sintakso 'nadrejena mapa/nadrejena mapa/želena mapa' starševske mape z imeni z eno dolžino znakov niso bile upoštevane. {L2} {L1} Izdelane QuickFolders združljive s Thunderbird 91. {L2} {L1} Izboljšana podpora temnim temam in temam drugih proizvajalcev, tako na zaslonu z možnostmi kot v orodni vrstici za krmarjenje. {L2} {L1} Izboljšana vidnost gumba [novosti] z ne -standardna tema QuickFolders {L2} {L1} Popravljeno: Včasih je bila seja ponastavljena ob ponovnem zagonu ali po namestitvi drugih dodatkov ali posodobitev, tako da so bile prikazane vse kategorije. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

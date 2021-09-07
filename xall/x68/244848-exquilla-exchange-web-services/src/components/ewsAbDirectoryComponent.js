@@ -11,6 +11,11 @@
 
 const { classes: Cc, Constructor: CC, interfaces: Ci, utils: Cu, Exception: CE, results: Cr, } = Components;
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
+try { // COMPAT for TB 78 (bug 1649554)
+  var { ComponentUtils } = ChromeUtils.import("resource://gre/modules/ComponentUtils.jsm");
+} catch (ex) { // COMPAT for TB 78 (bug 1649554)
+  var ComponentUtils = XPCOMUtils; // COMPAT for TB 78 (bug 1649554)
+} // COMPAT for TB 78 (bug 1649554)
 ChromeUtils.defineModuleGetter(this, "Utils",
   "resource://exquilla/ewsUtils.jsm");
 ChromeUtils.defineModuleGetter(this, "Services",
@@ -36,6 +41,16 @@ ChromeUtils.defineModuleGetter(this, "PromiseUtils",
 
 ChromeUtils.defineModuleGetter(this, "JSAccountUtils", "resource://exquilla/JSAccountUtils.jsm");
 
+/* defined in nsDirPrefs.h */
+const MAPI_DIRECTORY_TYPE = 3;
+
+function convertQueryStringToExpression(aQuery) {
+  if (MailServices.ab.convertQueryStringToExpression) { // COMPAT for TB 78
+    return MailServices.ab.convertQueryStringToExpression(aQuery); // COMPAT for TB 78
+  } // COMPAT for TB 78
+  return ChromeUtils.import("resource:///modules/QueryStringToExpression.jsm").QueryStringToExpression.convert(aQuery);
+}
+
 // Main class.
 var global = this;
 function EwsAbDirectory(aDelegator, aBaseInterfaces) {
@@ -52,6 +67,7 @@ function EwsAbDirectory(aDelegator, aBaseInterfaces) {
   // this.wrap and not simply this.
   this.wrap = this;
 
+  this.isPreTB91 = true; // COMPAT for TB 78 (bug 1682940)
   // instance variables
 
   this.mNativeFolder = null;
@@ -146,12 +162,12 @@ EwsAbDirectory.prototype = {
       this.mailbox.getNewItems(this.nativeFolder, this);
       this.gettingNewItems = true;
     }
-    return new ArrayEnumerator(cardArray);
+    return /* COMPAT for TB 78 (bug 1682940) */this.isPreTB91 ? new ArrayEnumerator(cardArray) : cardArray;
   } catch(e) {re(e);}},
 
   get childNodes()
   {
-    return new ArrayEnumerator(this.wrap.mailLists);
+    return /* COMPAT for TB 78 (bug 1682940) */this.isPreTB91 ? new ArrayEnumerator(this.wrap.mailLists) : this.wrap.mailLists;
   },
 
   get URI()
@@ -162,6 +178,11 @@ EwsAbDirectory.prototype = {
   get readOnly()
   {
     return this.isMailList || this.mIsGAL;
+  },
+
+  get dirType()
+  {
+    return MAPI_DIRECTORY_TYPE;
   },
 
   useForAutocomplete: function _useForAutocomplete(aIdentityKey)
@@ -198,7 +219,10 @@ EwsAbDirectory.prototype = {
       return;
     }
     this.wrap.mailLists.push(aDirectory);
-    MailServices.ab.notifyDirectoryItemAdded(this, aDirectory);
+    if (MailServices.ab.notifyDirectoryItemAdded) { // COMPAT for TB 78 (bug 1633998)
+      MailServices.ab.notifyDirectoryItemAdded(this, aDirectory); // COMPAT for TB 78 (bug 1633998)
+    } // COMPAT for TB 78 (bug 1633998)
+    Services.obs.notifyObservers(aDirectory, "addrbook-list-created", this.UID);
   },
 
   hasDirectory: function _hasDirectory(aDirectory)
@@ -217,7 +241,7 @@ EwsAbDirectory.prototype = {
   { try {
     log.config('ewsAbDirectory.init(' + aUri + ')');
     this.mURI = aUri;
-    // query-related stuff
+    // query-related stuff COMPAT for TB 78 (bug 1633996) 68 (bug 1633620)
     this.mURINoQuery = aUri;
     let searchCharLocation = aUri.indexOf("?");
     if (searchCharLocation != -1)
@@ -237,12 +261,18 @@ EwsAbDirectory.prototype = {
     }
     else
     {
+      /* COMPAT for TB 78 (bug 1682940) */
       // We set the prefID to use by escaping the true URL to eliminate "."
       let util = Cc["@mozilla.org/network/util;1"]
                    .getService(Ci.nsINetUtil);
       let postScheme = aUri.substr(aUri.indexOf("://") + 3);
       let escapedPostScheme = util.escapeURL(postScheme, Ci.nsINetUtil.ESCAPE_URL_FILE_EXTENSION);
-      this.dirPrefId = "ldap_2.servers.ews://" + escapedPostScheme;
+      try {
+        this.dirPrefId = "ldap_2.servers.ews://" + escapedPostScheme;
+      } catch (ex) {
+        this.isPreTB91 = false;
+      }
+      /* COMPAT for TB 78 (bug 1682940) */
       if (this.distinguishedFolderId == "msgfolderroot")
         this.mIsGAL = true;
     }
@@ -302,7 +332,7 @@ EwsAbDirectory.prototype = {
     //dl('card has item id ' + itemId);
     let nativeItem = this.mailbox.getItem(itemId);
     let newProperties = nativeItem.properties.clone(null);
-    let didChange =  this.updatePropertiesFromCard(aCard, newProperties, true);
+    let didChange =  this.updatePropertiesFromCard(aCard, newProperties, /* COMPAT for TB 78 (bug 1633998) */true);
     //nativeItem.raiseFlags(nativeItem.UpdatedLocally);
     if (didChange)
     {
@@ -322,10 +352,14 @@ EwsAbDirectory.prototype = {
     }
     log.debug('EwsAbDirectoryOverride.addCard');
     let properties = new PropertyList();
-    this.updatePropertiesFromCard(aCard, properties, false);
+    this.updatePropertiesFromCard(aCard, properties, /* COMPAT for TB 78 (bug 1633998) */false);
     let newCard = Cc['@mozilla.org/addressbook/cardproperty;1']
                     .createInstance(Ci.nsIAbCard);
-    newCard.directoryId = this.uuid;
+    if (this.uuid) { // COMPAT for TB 78 (bug 1662033)
+      newCard.directoryId = this.uuid; // COMPAT for TB 78 (bug 1662033)
+    } else { // COMPAT for TB 78 (bug 1662033)
+      newCard.directoryUID = this.UID;
+    } // COMPAT for TB 78 (bug 1662033)
     let newNativeContact = this.mailbox.createItem(null, "IPM.Contact", this.nativeFolder);
     newNativeContact.properties = properties;
     this.updateCardFromItem(newNativeContact, newCard);
@@ -347,14 +381,14 @@ EwsAbDirectory.prototype = {
 
   setStringValue: function _setStringValue(aName, aValue)
   {
-    if (this.isMailList)
+    if (!this.dirPrefId)
       this.stringValues[aName] = aValue;
     else
       this.cppBase.QueryInterface(Ci.nsIAbDirectory).setStringValue(aName, aValue);
   },
   getStringValue: function _getStringValue(aName, aDefaultValue)
   {
-    if (this.isMailList)
+    if (!this.dirPrefId)
     {
       if (aName in this.stringValues)
         return this.stringValues[aName];
@@ -418,7 +452,11 @@ EwsAbDirectory.prototype = {
   addCardFromItem: function _addCardFromItem(aItem)
   {
     let card = Cc['@mozilla.org/addressbook/cardproperty;1'].createInstance(Ci.nsIAbCard);
-    card.directoryId = this.uuid;
+    if (this.uuid) { // COMPAT for TB 78 (bug 1662033)
+      card.directoryId = this.uuid; // COMPAT for TB 78 (bug 1662033)
+    } else { // COMPAT for TB 78 (bug 1662033)
+      card.directoryUID = this.UID;
+    } // COMPAT for TB 78 (bug 1662033)
     this.updateCardFromItem(aItem, card);
     return card;
   },
@@ -427,7 +465,7 @@ EwsAbDirectory.prototype = {
   //  true if something changed. Note this gets called from modify card, which
   //  gets called routinely during compose to update a frequency count (which we do not
   //  support).
-  updatePropertiesFromCard: function _updatePropertiesFromCard(aCard, aProperties, aNotify)
+  updatePropertiesFromCard: function _updatePropertiesFromCard(aCard, aProperties, /* COMPAT for TB 78 (bug 1633998) */aNotify)
   {
     let didChange = false;
     if (this.mIsGAL)
@@ -435,6 +473,9 @@ EwsAbDirectory.prototype = {
       log.debug("Can't update properties in the GAL");
       return didChange;
     }
+    if (!MailServices.ab.notifyItemPropertyChanged) { // COMPAT for TB 78 (bug 1633998)
+      aNotify = false; // COMPAT for TB 78 (bug 1633998)
+    } // COMPAT for TB 78 (bug 1633998)
     for (let skinkName in gSkinkEwsMap)
     {
       let oldValue = aProperties.getAString(gSkinkEwsMap[skinkName]);
@@ -442,8 +483,8 @@ EwsAbDirectory.prototype = {
       if (oldValue != newValue)
       {
         aProperties.setAString(gSkinkEwsMap[skinkName], newValue);
-        if (aNotify)
-          MailServices.ab.notifyItemPropertyChanged(aCard, skinkName, oldValue, newValue);
+        if (aNotify) // COMPAT for TB 78 (bug 1633998)
+          MailServices.ab.notifyItemPropertyChanged(aCard, skinkName, oldValue, newValue); // COMPAT for TB 78 (bug 1633998)
         didChange = true;
       }
     }
@@ -468,8 +509,8 @@ EwsAbDirectory.prototype = {
         emailAddressPL.setAString("$value", newEmail);
       }
       // else add to delete list
-      if (aNotify)
-        MailServices.ab.notifyItemPropertyChanged(aCard, "PrimaryEmail", oldEmail, newEmail);
+      if (aNotify) // COMPAT for TB 78 (bug 1633998)
+        MailServices.ab.notifyItemPropertyChanged(aCard, "PrimaryEmail", oldEmail, newEmail); // COMPAT for TB 78 (bug 1633998)
       this.removeFromAddressMap(oldEmail, itemId);
       this.addToAddressMap(newEmail, itemId);
       didChange = true;
@@ -487,8 +528,8 @@ EwsAbDirectory.prototype = {
         emailAddressPL.setAString("$value", newEmail);
       }
       // else add to delete list
-      if (aNotify)
-        MailServices.ab.notifyItemPropertyChanged(aCard, "SecondEmail", oldEmail, newEmail);
+      if (aNotify) // COMPAT for TB 78 (bug 1633998)
+        MailServices.ab.notifyItemPropertyChanged(aCard, "SecondEmail", oldEmail, newEmail); // COMPAT for TB 78 (bug 1633998)
       this.removeFromAddressMap(oldEmail, itemId);
       this.addToAddressMap(newEmail, itemId);
       didChange = true;
@@ -507,8 +548,8 @@ EwsAbDirectory.prototype = {
       //  just set it to blank instead if changed in TB
       aProperties.setAString('GivenName', newFirstName);
       aProperties.setAString('MiddleName', '');
-      if (aNotify)
-        MailServices.ab.notifyItemPropertyChanged(aCard, 'FirstName', oldFirstName, newFirstName);
+      if (aNotify) // COMPAT for TB 78 (bug 1633998)
+        MailServices.ab.notifyItemPropertyChanged(aCard, 'FirstName', oldFirstName, newFirstName); // COMPAT for TB 78 (bug 1633998)
       didChange = true;
     }
 
@@ -569,14 +610,18 @@ EwsAbDirectory.prototype = {
                 address = createKeyedEntry(aProperties, "PhysicalAddresses", key);
               address.setAString('Street', newStreet);
             }
-            if (oldAddress != newAddress && aNotify)
+            if (oldAddress != newAddress)
             {
-              MailServices.ab.notifyItemPropertyChanged(aCard, prefix + 'Address', oldAddress, newAddress);
+              if (aNotify) { // COMPAT for TB 78 (bug 1633998)
+                MailServices.ab.notifyItemPropertyChanged(aCard, prefix + 'Address', oldAddress, newAddress); // COMPAT for TB 78 (bug 1633998)
+              } // COMPAT for TB 78 (bug 1633998)
               didChange = true;
             }
-            if (oldAddress2 != newAddress2 && aNotify)
+            if (oldAddress2 != newAddress2)
             {
-              MailServices.ab.notifyItemPropertyChanged(aCard, prefix + 'Address2', oldAddress2, newAddress2);
+              if (aNotify) { // COMPAT for TB 78 (bug 1633998)
+                MailServices.ab.notifyItemPropertyChanged(aCard, prefix + 'Address2', oldAddress2, newAddress2); // COMPAT for TB 78 (bug 1633998)
+              } // COMPAT for TB 78 (bug 1633998)
               didChange = true;
             }
           }
@@ -594,8 +639,8 @@ EwsAbDirectory.prototype = {
                 address = createKeyedEntry(aProperties, "PhysicalAddresses", key);
               address.setAString(gSkinkEwsAddressMap[skinkName], newProperty);
             }
-            if (aNotify)
-              MailServices.ab.notifyItemPropertyChanged(aCard, prefix + skinkName, oldProperty, newProperty);
+            if (aNotify) // COMPAT for TB 78 (bug 1633998)
+              MailServices.ab.notifyItemPropertyChanged(aCard, prefix + skinkName, oldProperty, newProperty); // COMPAT for TB 78 (bug 1633998)
             didChange = true;
           }
         }
@@ -633,8 +678,8 @@ EwsAbDirectory.prototype = {
             phone = createKeyedEntry(aProperties, "PhoneNumbers", key);
           phone.setAString('$value', newPhoneNumber);
         }
-        if (aNotify)
-          MailServices.ab.notifyItemPropertyChanged(aCard, skinkName, oldPhoneNumber, newPhoneNumber);
+        if (aNotify) // COMPAT for TB 78 (bug 1633998)
+          MailServices.ab.notifyItemPropertyChanged(aCard, skinkName, oldPhoneNumber, newPhoneNumber); // COMPAT for TB 78 (bug 1633998)
         didChange = true;
       }
     }
@@ -679,6 +724,7 @@ EwsAbDirectory.prototype = {
       else
         aProperties.removeElement("Birthday");
       log.debug("Setting birthdayString to " + aProperties.getAString("Birthday"));
+      /* COMPAT for TB 78 (bug 1633998) */
       if (aNotify)
       {
         if (birthDay != oldBirthDay)
@@ -688,6 +734,7 @@ EwsAbDirectory.prototype = {
         if (birthYear != oldBirthYear)
           MailServices.ab.notifyItemPropertyChanged(aCard, "BirthYear", oldBirthYear, birthYear);
       }
+      /* COMPAT for TB 78 (bug 1633998) */
       didChange = true;
     }
     return didChange;
@@ -700,7 +747,9 @@ EwsAbDirectory.prototype = {
     if (oldValue != aNewValue)
     {
       aCard.setProperty(aSkinkName, aNewValue);
-      MailServices.ab.notifyItemPropertyChanged(aCard, aSkinkName, oldValue, aNewValue);
+      if (MailServices.ab.notifyItemPropertyChanged) { // COMPAT for TB 78 (bug 1633998)
+        MailServices.ab.notifyItemPropertyChanged(aCard, aSkinkName, oldValue, aNewValue); // COMPAT for TB 78 (bug 1633998)
+      } // COMPAT for TB 78 (bug 1633998)
     }
   },
 
@@ -905,12 +954,12 @@ EwsAbDirectory.prototype = {
   },
 
   // returns the card that was added or modified
-  updateItem: function _updateItem(aItem)
+  updateItem: function _updateItem(aItem, aNotify)
   {
     let itemClass = aItem.itemClass;
 
     if (/^IPM\.Contact/.test(itemClass))
-      return this.updateContact(aItem);
+      return this.updateContact(aItem, aNotify);
     if (/^IPM\.DistList/.test(itemClass))
       return this.updateDistList(aItem);
     // This seems to happen when a new directory is added and the address book is open
@@ -918,7 +967,7 @@ EwsAbDirectory.prototype = {
     return null;
   },
 
-  updateContact: function _updateContact(aItem)
+  updateContact: function _updateContact(aItem, aNotify)
   {
     let itemId = aItem.itemId;
     if (!this.cards)
@@ -934,7 +983,12 @@ EwsAbDirectory.prototype = {
       //MailServices.ab.notifyDirectoryItemDeleted(this.cppBase, card);
       if (aItem.deletedOnServer)
       {
-        MailServices.ab.notifyDirectoryItemDeleted(this.delegator, card);
+        if (MailServices.ab.notifyDirectoryItemDeleted) { // COMPAT for TB 78 (bug 1633998)
+          MailServices.ab.notifyDirectoryItemDeleted(this.delegator, card); // COMPAT for TB 78 (bug 1633998)
+        } // COMPAT for TB 78 (bug 1633998)
+        if (aNotify) {
+          Services.obs.notifyObservers(card, "addrbook-contact-deleted", this.UID);
+        }
         this.removeFromAddressMap(card.primaryEmail, itemId);
         this.removeFromAddressMap(card.getProperty('SecondEmail', ''), itemId);
         log.debug('updateContact: card deleting');
@@ -948,7 +1002,12 @@ EwsAbDirectory.prototype = {
     {
       card = this.addCardFromItem(aItem);
       this.cards.set(itemId, card);
-      MailServices.ab.notifyDirectoryItemAdded(this.delegator, card);
+      if (MailServices.ab.notifyDirectoryItemAdded) { // COMPAT for TB 78 (bug 1633998)
+        MailServices.ab.notifyDirectoryItemAdded(this.delegator, card); // COMPAT for TB 78 (bug 1633998)
+      } // COMPAT for TB 78 (bug 1633998)
+      if (aNotify) {
+        Services.obs.notifyObservers(card, "addrbook-contact-created", this.UID);
+      }
     }
     if (card)
     {
@@ -1000,7 +1059,10 @@ EwsAbDirectory.prototype = {
       else
       {
         // We'll send a delete notification, since we'll do an add at the end
-        MailServices.ab.notifyDirectoryItemDeleted(this.delegator, itemDirectory);
+        if (MailServices.ab.notifyDirectoryItemDeleted) { // COMPAT for TB 78 (bug 1633998)
+          MailServices.ab.notifyDirectoryItemDeleted(this.delegator, itemDirectory); // COMPAT for TB 78 (bug 1633998)
+        } // COMPAT for TB 78 (bug 1633998)
+        Services.obs.notifyObservers(itemDirectory, "addrbook-list-deleted", this.UID);
       }
 
       itemDirectory.dirName = itemName;
@@ -1029,7 +1091,11 @@ EwsAbDirectory.prototype = {
           }
         } catch (e) {continue;}
         let card = Cc['@mozilla.org/addressbook/cardproperty;1'].createInstance(Ci.nsIAbCard);
-        card.directoryId = this.uuid;
+        if (this.uuid) { // COMPAT for TB 78 (bug 1662033)
+          card.directoryId = this.uuid; // COMPAT for TB 78 (bug 1662033)
+        } else { // COMPAT for TB 78 (bug 1662033)
+          card.directoryUID = this.UID;
+        } // COMPAT for TB 78 (bug 1662033)
 
         card.displayName = itemMailbox.getAString('Name');
         card.primaryEmail = itemMailbox.getAString('EmailAddress');
@@ -1224,7 +1290,7 @@ EwsAbDirectory.prototype = {
                       let id = idArray.getAt(i);
                       let item = self.mailbox.getItem(id);
                       if (item.properties)
-                        self.updateItem(item);
+                        self.updateItem(item, true);
                       else
                       {
                         // Item has bad properties, set dirty to reload
@@ -1249,7 +1315,7 @@ EwsAbDirectory.prototype = {
     this.wrap.cards = new Map();
     let qarguments = Cc["@mozilla.org/addressbook/directory/query-arguments;1"]
                       .createInstance(Ci.nsIAbDirectoryQueryArguments);
-    qarguments.expression = MailServices.ab.convertQueryStringToExpression(this.wrap.mQueryString);
+    qarguments.expression = convertQueryStringToExpression(this.wrap.mQueryString);
     // Don't search the subdirectories which are mailing lists. Is this correct?
     qarguments.querySubDirectories = false;
     let queryProxy = Cc["@mozilla.org/addressbook/directory-query/proxy;1"]
@@ -1258,23 +1324,29 @@ EwsAbDirectory.prototype = {
     queryProxy.doQuery(this.wrap.mNoQueryDirectory, qarguments, this.wrap, -1, 0);
   },
 
-  search: async function _search(aQuery, aListener)
+  search: async function _search(aQuery, aSearchString, aListener)
   {
+    if (!aListener) { // COMPAT for TB 78 (bug 1670752)
+      aListener = aSearchString; // COMPAT for TB 78 (bug 1670752)
+      aSearchString = ''; // COMPAT for TB 78 (bug 1670752)
+    } // COMPAT for TB 78 (bug 1670752)
     let qarguments = Cc["@mozilla.org/addressbook/directory/query-arguments;1"]
                       .createInstance(Ci.nsIAbDirectoryQueryArguments);
-    let expression = MailServices.ab.convertQueryStringToExpression(aQuery);
+    let expression = convertQueryStringToExpression(aQuery);
     qarguments.expression = expression;
     // Don't search the subdirectories which are mailing lists. Is this correct?
     qarguments.querySubDirectories = false;
 
     if (this.mIsGAL) {
-      while (expression instanceof Ci.nsIAbBooleanExpression) {
-        expression = toArray(expression.expressions, Ci.nsISupports)[0];
+      if (!aSearchString) {
+        while (expression instanceof Ci.nsIAbBooleanExpression) {
+          expression = toArray(expression.expressions, Ci.nsISupports)[0];
+        }
+        aSearchString = expression.QueryInterface(Ci.nsIAbBooleanConditionString).value;
       }
-      let term = expression.QueryInterface(Ci.nsIAbBooleanConditionString).value;
       let listener = new PromiseUtils.MachineListener();
       let dirListener = new SearchGALListener(this, listener);
-      this.mailbox.resolveNames(term, true, dirListener);
+      this.mailbox.resolveNames(aSearchString, true, dirListener);
       await listener.promise;
     }
 
@@ -1348,7 +1420,10 @@ EwsAbDirectory.prototype = {
         this.wrap.cards.delete(itemId);
         this.wrap.removeFromAddressMap(card.primaryEmail, itemId);
         this.wrap.removeFromAddressMap(card.getProperty('SecondEmail', ''), itemId);
-        MailServices.ab.notifyDirectoryItemDeleted(this.wrap.delegator, card);
+        if (MailServices.ab.notifyDirectoryItemDeleted) { // COMPAT for TB 78 (bug 1633998)
+          MailServices.ab.notifyDirectoryItemDeleted(this.wrap.delegator, card); // COMPAT for TB 78 (bug 1633998)
+        } // COMPAT for TB 78 (bug 1633998)
+        Services.obs.notifyObservers(card, "addrbook-contact-deleted", this.UID);
       }
       else
         log.warn('card with address ' + card.primaryEmail + ' has no item id');
@@ -1454,7 +1529,7 @@ EwsAbDirectory.prototype = {
     else if (aEvent == "ItemChanged")
     {
       if (aData.EwsNativeItem)
-        this.wrap.updateItem(aData);
+        this.wrap.updateItem(aData, true);
     }
 
   } catch (e) {re(e);}},
@@ -1502,6 +1577,7 @@ EwsAbDirectoryConstructor.prototype = {
   _xpcom_factory: JSAccountUtils.jaFactory(EwsAbDirectory.Properties, EwsAbDirectory),
 }
 
+/* COMPAT for TB 68 (bug 1614265) */
 function EwsAbDirFactory()
 {
 }
@@ -1509,7 +1585,7 @@ function EwsAbDirFactory()
 EwsAbDirFactory.prototype = 
 {
   classID:          Components.ID("{BDE94D3E-5A66-4027-AADA-13CE8FE762E6}"),
-  QueryInterface:   ChromeUtils.generateQI([Ci.nsIAbDirFactory]),
+  QueryInterface:   ChromeUtils.generateQI([Ci.nsIAbDirFactory].filter(i => i)),
 
   // nsIAbDirFactory implementation
 
@@ -1549,6 +1625,7 @@ EwsAbDirFactory.prototype =
       prefBranch.deleteBranch('');
   },
 }
+/* COMPAT for TB 68 (bug 1614265) */
 
 // helper functions
 
@@ -1665,8 +1742,12 @@ EwsRebuildListener.prototype.onEvent = function EwsRebuildListener_onEvent(aItem
     {
       let directory = this.mDirectory;
       // remove all existing cards from the skink AB representation
-      for (let card of directory.cards)
-        MailServices.ab.notifyDirectoryItemDeleted(directory.delegator, card);
+      for (let card of directory.cards) {
+        if (MailServices.ab.notifyDirectoryItemDeleted) { // COMPAT for TB 78 (bug 1633998)
+          MailServices.ab.notifyDirectoryItemDeleted(directory.delegator, card); // COMPAT for TB 78 (bug 1633998)
+        } // COMPAT for TB 78 (bug 1633998)
+        Services.obs.notifyObservers(card, "addrbook-contact-deleted", this.UID);
+      }
       directory.addressMap = (addressMapCache[directory.URI] = {});
       directory.cards = (cardCache[directory.URI] = {});
 
@@ -1734,7 +1815,7 @@ UpdateDirectoryListener.prototype.onEvent = function UpdateDirectoryListener_OnE
     }
     case "ItemChanged":
       if (!!aData.EwsNativeItem)
-        directory.updateItem(aData);
+        directory.updateItem(aData, true);
       break;
     case "MachineError":
     {
@@ -1795,7 +1876,10 @@ function NewCardListener_onEvent(aItem, aEvent, aData, result)
     this.directory.cards.set(itemId, this.card);
     this.directory.addToAddressMap(this.card.primaryEmail, itemId);
     this.directory.addToAddressMap(this.card.getProperty('SecondEmail', ''), itemId);
-    MailServices.ab.notifyDirectoryItemAdded(this.directory.delegator, this.card);
+    if (MailServices.ab.notifyDirectoryItemAdded) { // COMPAT for TB 78 (bug 1633998)
+      MailServices.ab.notifyDirectoryItemAdded(this.directory.delegator, this.card); // COMPAT for TB 78 (bug 1633998)
+    } // COMPAT for TB 78 (bug 1633998)
+    Services.obs.notifyObservers(this.card, "addrbook-contact-created", this.directory.UID);
   }
 }
 
@@ -1837,5 +1921,5 @@ function SearchGALListener_onEvent(aItem, aEvent, aData, result)
   }
 } catch(e) {re(e);}}
 
-var NSGetFactory = XPCOMUtils.generateNSGetFactory([EwsAbDirectoryConstructor, EwsAbDirFactory]);
+var NSGetFactory = ComponentUtils.generateNSGetFactory([EwsAbDirectoryConstructor, /* COMPAT for TB 68 (bug 1614265) */EwsAbDirFactory]);
 var EXPORTED_SYMBOLS = ["NSGetFactory"];

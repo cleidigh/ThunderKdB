@@ -87,12 +87,12 @@ const findMessage = async (
     return null;
 };
 
-export const applyActionToMessageInFolder = async (
+export async function* applyActionToMessageInFolder(
     folder,
     msg,
     action,
     returnOnFirstMessage
-) => {
+) {
     const correlationId = createCorrelationId('applyActionToMessagesInFolder');
     const { headerMessageId, author } = msg;
     const queryInfo = buildQueryInfoForMessageAndFolder(
@@ -140,10 +140,12 @@ export const applyActionToMessageInFolder = async (
         );
         if (message) {
             if (returnOnFirstMessage) {
-                return await action(message, folder);
+                await action(message, folder);
+                return Promise.resolve({ message, folder, executed: true });
             }
 
             await action(message, folder);
+            yield Promise.resolve({ message, folder, executed: true });
         }
 
         if (queryResult.id !== null) {
@@ -155,5 +157,5 @@ export const applyActionToMessageInFolder = async (
         }
     } while (continueIteration); // queryResult.id !== null); // && continueIteration);
 
-    return null;
-};
+    return Promise.resolve(null);
+}

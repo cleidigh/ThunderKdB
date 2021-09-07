@@ -1,7 +1,29 @@
-<!doctype html>
+<!--
+Copyright 2019-2021 Brummolix (AutoarchiveReloaded, https://github.com/Brummolix/AutoarchiveReloaded )
+
+ This file is part of AutoarchiveReloaded.
+
+    AutoarchiveReloaded is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    AutoarchiveReloaded is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with AutoarchiveReloaded.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="popup.css" />
+
+		<link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
 		<script type="application/javascript" src="libs/webextensions-lib-l10n/l10n.js"></script>
 		<script src="libs/jquery/jquery-3.4.1.slim.min.js"></script>
@@ -9,8 +31,12 @@
 	</head>
 	<body>
 		<div></div>
-		<div id="text"></div>
-		<button id="button" type="button">__MSG_buttonArchive__</button>
+		<div id="text" class="alert alert-warning" role="alert"></div>
+		<div>
+			<button id="button" type="button" class="btn btn-primary btn-lg">__MSG_buttonArchive__</button>
+		</div>
 		<div></div>
+		<script src="libs/jquery/jquery-3.4.1.slim.min.js"></script>
+		<script src="libs/bootstrap/js/bootstrap.bundle.min.js"></script>
 	</body>
 </html>

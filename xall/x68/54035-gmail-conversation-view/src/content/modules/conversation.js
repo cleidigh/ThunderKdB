@@ -13,16 +13,12 @@ const { XPCOMUtils } = ChromeUtils.import(
 XPCOMUtils.defineLazyModuleGetters(this, {
   BrowserSim: "chrome://conversations/content/modules/browserSim.js",
   Gloda: "resource:///modules/gloda/GlodaPublic.jsm",
-  groupArray: "chrome://conversations/content/modules/misc.js",
-  MailServices: "resource:///modules/MailServices.jsm",
   MessageFromDbHdr: "chrome://conversations/content/modules/message.js",
   MessageFromGloda: "chrome://conversations/content/modules/message.js",
   msgHdrGetUri: "chrome://conversations/content/modules/misc.js",
   msgUriToMsgHdr: "chrome://conversations/content/modules/misc.js",
-  Prefs: "chrome://conversations/content/modules/prefs.js",
   setupLogging: "chrome://conversations/content/modules/misc.js",
   Services: "resource://gre/modules/Services.jsm",
-  topMail3Pane: "chrome://conversations/content/modules/misc.js",
   messageActions: "chrome://conversations/content/modules/misc.js",
 });
 
@@ -34,16 +30,21 @@ XPCOMUtils.defineLazyGetter(this, "Log", () => {
   return setupLogging("Conversations.Conversation");
 });
 
+/**
+ * @typedef Message
+ * @see message.js
+ */
+
+/**
+ * @typedef nsIMsgDBHdr
+ * @see https://searchfox.org/comm-central/rev/9d9fac50cddfd9606a51c4ec3059728c33d58028/mailnews/base/public/nsIMsgHdr.idl#14
+ */
+
 const kMsgDbHdr = 0;
 const kMsgGloda = 1;
 
-const nsMsgViewIndex_None = 0xffffffff;
-
 // from mailnews/base/public/nsMsgFolderFlags.idl
-const nsMsgFolderFlags_SentMail = 0x00000200;
 const nsMsgFolderFlags_Drafts = 0x00000400;
-const nsMsgFolderFlags_Archive = 0x00004000;
-const nsMsgFolderFlags_Inbox = 0x00001000;
 
 // -- Some helpers for our message type
 
@@ -93,8 +94,7 @@ async function messageFromGlodaIfOffline(conversation, glodaMsg, debug) {
     (!(msgHdr.folder instanceof Ci.nsIMsgLocalMailFolder) &&
       !(msgHdr.folder.flags & Ci.nsMsgFolderFlags.Offline)) || // online IMAP
     glodaMsg.isEncrypted || // encrypted message
-    (glodaMsg.contentType + "").search(/^multipart\/encrypted(;|$)/i) == 0 || // encrypted message
-    Prefs.extra_attachments; // user request
+    (glodaMsg.contentType + "").search(/^multipart\/encrypted(;|$)/i) == 0; // encrypted message
   const message = new MessageFromGloda(
     conversation,
     msgHdr,
@@ -122,63 +122,22 @@ async function messageFromDbHdr(conversation, msgHdr, debug) {
   };
 }
 
-function ViewWrapper(aConversation) {
-  this.mainWindow = topMail3Pane(aConversation);
-  // The trick is, if a thread is collapsed, this._initialSet contains all the
-  //  messages in the thread. We want these to be selected. If a thread is
-  //  expanded, we want messages which are in the current view to be selected.
-  // We cannot compare messages by message-id (they have the same!), we cannot
-  //  compare them by messageKey (not reliable), but URLs should be enough.
-  this.byUri = {};
-  if (this.mainWindow.gFolderDisplay.selectedMessages) {
-    this.mainWindow.gFolderDisplay.selectedMessages.map(
-      (x) => (this.byUri[msgHdrGetUri(x)] = true)
-    );
-  }
-}
-
-ViewWrapper.prototype = {
-  isInView(aMsg) {
-    if (this.mainWindow.gDBView) {
-      let msgHdr = toMsgHdr(aMsg);
-      if (!msgHdr) {
-        return false;
-      }
-      let r =
-        msgHdrGetUri(msgHdr) in this.byUri ||
-        this.mainWindow.gDBView.findIndexOfMsgHdr(msgHdr, false) !=
-          nsMsgViewIndex_None;
-      return r;
-    }
-
-    return false;
-  },
-};
-
 // -- The actual conversation object
 
 // We maintain the invariant that, once the conversation is built, this.messages
 // matches exactly the DOM nodes with class "message" inside the displayed
 // message list.
 // So the i-th _message is also the i-th DOM node.
-function Conversation(
-  win,
-  selectedMessages,
-  isSelectionThreaded,
-  counter,
-  isInTab = false
-) {
+function Conversation(win, selectedMessages, counter, isInTab = false) {
   this._window = win;
   this._isInTab = isInTab;
-  // This is set by the monkey-patch which knows whether we were viewing a
-  //  message inside a thread or viewing a closed thread.
-  this.isSelectionThreaded = isSelectionThreaded;
+  this._loadingStartedTime = Date.now();
+
   // We have the COOL invariant that this._initialSet is a subset of
   //   this.messages.map(x => toMsgHdr(x))
   // This is actually trickier than it seems because of the different view modes
   //  and because we can't directly tell whether a message is in the view if
-  //  it's under a collapsed thread. See the lengthy discussion in
-  //  _filterOutDuplicates
+  //  it's under a collapsed thread.
   // The invariant doesn't hold if the same message is present twice in the
   //  thread (like, you sent a message to yourself so it appears twice in your
   //  inbox that also searches sent folders). But we handle that case well.
@@ -204,7 +163,6 @@ function Conversation(
   this._query = null;
   // Function provided by the monkey-patch to do cleanup
   this._onComplete = null;
-  this.viewWrapper = null;
   // Set to true by the monkey-patch once the conversation is fully built.
   this.completed = false;
   // Ok, interesting bit. Thunderbird has that non-strict threading thing, i.e.
@@ -217,7 +175,7 @@ function Conversation(
   //  underlying conversation,
   //  - merge the results for the conversations with the initially selected set,
   //  - re-stream all other messages except for the first one, because we only
-  //  have their nsIMsgDbHdr.
+  //  have their nsIMsgDBHdr.
   // That's sub-optimal, because we actually have the other message's Gloda
   //  representations at hand, it's just that because the headers do not set the
   //  threading, gloda hasn't attached them to the first message.
@@ -280,7 +238,7 @@ Conversation.prototype = {
               messageFromDbHdr(self, msgHdr, "MI+NG")
             );
             self.messages = await Promise.all(messagePromises);
-            self._whenReady();
+            self._outputMessages().catch(console.error);
           } else {
             self._intermediateResults = aItems;
             self._query = aItems[0].conversation.getMessagesCollection(
@@ -381,6 +339,7 @@ Conversation.prototype = {
     for (const x of this.messages) {
       byMessageId.set(getMessageId(x), x.message);
     }
+    const htmlPane = this._htmlPane;
     for (const glodaMsg of aItems) {
       // If you see big failures coming from the lines below, don't worry: it's
       //  just that an old conversation hasn't been GC'd and still receives
@@ -390,10 +349,13 @@ Conversation.prototype = {
       if (message) {
         (async () => {
           try {
-            const msgData = await message.toReactData();
+            const data = await message.toReactData();
             this.dispatch(
-              messageActions.msgUpdateData({
-                msgData,
+              htmlPane.conversationControllerActions.updateConversation({
+                messages: {
+                  msgData: [data],
+                },
+                mode: "replaceMsg",
               })
             );
           } catch (ex) {
@@ -482,67 +444,16 @@ Conversation.prototype = {
         // We can sort now because we don't need the Message instance to be
         // fully created to get the date of a message.
         this.messages.sort(compare);
-        this._whenReady();
+        this._outputMessages();
       } catch (e) {
         console.error(e);
       }
     });
   },
 
-  // This is the function that waits for everyone to be ready (that was a useful
-  //  comment)
-  _whenReady(n) {
-    this._filterOutDuplicates();
-    this._outputMessages().catch(console.error);
-  },
-
-  // This is a core function. It decides which messages to keep and which
-  //  messages to filter out. Because Gloda might return many copies of a single
-  //  message, each in a different folder, we use the messageId as the key.
-  // Then, for different candidates for a single message id, we need to pick the
-  //  best one, giving precedence to those which are selected and/or in the
-  //  current view.
-  _filterOutDuplicates() {
-    let messages = this.messages;
-    this.viewWrapper = new ViewWrapper(this);
-    // Wicked cases, when we're asked to display a draft that's half-saved...
-    messages = messages.filter((x) => toMsgHdr(x) && getMessageId(x));
-    messages = groupArray(this.messages, getMessageId);
-    // The message that's selected has the highest priority to avoid
-    //  inconsistencies in case multiple identical messages are present in the
-    //  same thread (e.g. message from to me).
-    let selectRightMessage = (aSimilarMessages) => {
-      let findForCriterion = (aCriterion) => {
-        let bestChoice;
-        for (let msg of aSimilarMessages) {
-          if (!toMsgHdr(msg)) {
-            continue;
-          }
-          if (aCriterion(msg)) {
-            bestChoice = msg;
-            break;
-          }
-        }
-        return bestChoice;
-      };
-      let r =
-        findForCriterion((aMsg) => this.viewWrapper.isInView(aMsg)) ||
-        findForCriterion((aMsg) => msgHdrIsInbox(toMsgHdr(aMsg))) ||
-        findForCriterion((aMsg) => msgHdrIsSent(toMsgHdr(aMsg))) ||
-        findForCriterion((aMsg) => !msgHdrIsArchive(toMsgHdr(aMsg))) ||
-        aSimilarMessages[0];
-      return r;
-    };
-    // Select right message will try to pick the message that has an
-    //  existing msgHdr.
-    messages = messages.map((group) => selectRightMessage(group));
-    // But sometimes it just fails, and gloda remembers dead messages...
-    messages = messages.filter(toMsgHdr);
-    this.messages = messages;
-  },
-
   /**
    * Remove a given message from the conversation.
+   *
    * @param {Message} msg a Message as in modules/message.js
    */
   removeMessage(msg) {
@@ -591,20 +502,6 @@ Conversation.prototype = {
     }
     this.messages = this.messages.concat(newMsgs);
 
-    for (let i = 0; i < newMsgs.length; i++) {
-      let oldMsg;
-      if (i == 0) {
-        if (this.messages.length) {
-          oldMsg = this.messages[this.messages.length - 1].message;
-        } else {
-          oldMsg = null;
-        }
-      } else {
-        oldMsg = newMsgs[i - 1].message;
-      }
-      let msg = newMsgs[i].message;
-      msg.updateTmplData(oldMsg);
-    }
     // Update initialPosition
     for (
       let i = this.messages.length - newMsgs.length;
@@ -613,23 +510,14 @@ Conversation.prototype = {
     ) {
       this.messages[i].message.initialPosition = i;
     }
-    this.viewWrapper = new ViewWrapper(this);
     const reactMsgData = [];
     for (const m of newMsgs) {
-      const msgData = await m.message.toReactData();
-      // inView indicates if the message is currently in the message list
-      // view or not. If it isn't we don't show the folder tags.
-      m.message.inView = this.viewWrapper.isInView(m);
-      reactMsgData.push(msgData);
+      reactMsgData.push(await m.message.toReactData());
     }
 
-    // We don't want to disturb the user's viewing, so only expand the new
-    // messages if required, not scroll to them.
-    this._tellMeWhoToExpand(newMsgs, reactMsgData, -1);
-
     this.dispatch(
-      this._htmlPane.conversationSummaryActions.updateConversation({
-        append: true,
+      this._htmlPane.conversationControllerActions.updateConversation({
+        mode: "append",
         messages: {
           msgData: reactMsgData,
         },
@@ -680,9 +568,6 @@ Conversation.prototype = {
       // We need to set this before the call to reactMsgData.
       let msg = this.messages[i].message;
       msg.initialPosition = i;
-
-      let oldMsg = i > 0 ? this.messages[i - 1].message : null;
-      msg.updateTmplData(oldMsg);
     }
 
     let reactMsgData = [];
@@ -690,7 +575,7 @@ Conversation.prototype = {
     for (let [i, m] of this.messages.entries()) {
       let msgData;
       try {
-        msgData = await m.message.toReactData();
+        msgData = m.message.toReactData();
       } catch (ex) {
         if (ex.message != "Message no longer exists") {
           throw ex;
@@ -703,15 +588,11 @@ Conversation.prototype = {
       }
       // inView indicates if the message is currently in the message list
       // view or not. If it isn't we don't show the folder name.
-      msgData.inView = this.viewWrapper.isInView(m);
       msgData.initialPosition = i - skippedMessages;
       reactMsgData.push(msgData);
     }
     this.messages = this.messages.filter((m, i) => !!reactMsgData[i]);
     reactMsgData = reactMsgData.filter((m) => m);
-
-    // Move on to the next step
-    this._expandAndScroll(this.messages, reactMsgData);
 
     // Final check to see if another conversation has started loading whilst
     // we've been creating. If so, abort and get out of here.
@@ -725,22 +606,28 @@ Conversation.prototype = {
       return;
     }
 
+    let initialSet = [];
+    for (let msg of this._initialSet) {
+      initialSet.push(
+        await browser.conversations.getMessageIdForUri(msgHdrGetUri(msg))
+      );
+    }
+
+    // We've completed the queries and we've only got the rendering left,
+    // but we do want to receive the updates from gloda, so set this as
+    // complete now to avoid potentially loosing data.
+    this.completed = true;
+
     this.dispatch(
-      this._htmlPane.conversationSummaryActions.updateConversation({
-        append: false,
+      this._htmlPane.conversationControllerActions.updateConversation({
+        mode: "replaceAll",
         summary: {
-          conversation: { getMessage: (uri) => this.getMessage(uri) },
-          subject: this.messages[this.messages.length - 1].message.subject,
           loading: false,
-          prefs: {
-            hideSigs: Prefs.hide_sigs,
-            hideQuoteLength: Prefs.hide_quote_length,
-            tweakBodies: Prefs.tweak_bodies,
-            tweakChrome: Prefs.tweak_chrome,
-          },
+          loadingStartedTime: this._loadingStartedTime,
           autoMarkAsRead:
             Services.prefs.getBoolPref("mailnews.mark_message_read.auto") &&
             !Services.prefs.getBoolPref("mailnews.mark_message_read.delay"),
+          initialSet,
         },
         messages: {
           msgData: reactMsgData,
@@ -754,17 +641,6 @@ Conversation.prototype = {
     );
   },
 
-  // Do all the penible stuff about scrolling to the right message and expanding
-  // the right message
-  _expandAndScroll(messages, reactMsgData, aStart) {
-    if (aStart === undefined) {
-      aStart = 0;
-    }
-    let focusThis = this._tellMeWhoToScroll(messages);
-    reactMsgData[focusThis].scrollTo = true;
-    this._tellMeWhoToExpand(messages, reactMsgData, focusThis);
-  },
-
   // This is the starting point, this is where the Monkey-Patched threadSummary
   // or the event handlers ask for a conversation.
   outputInto(aHtmlPane, k) {
@@ -772,162 +648,14 @@ Conversation.prototype = {
     this._onComplete = () => k(this);
     this._fetchMessages();
   },
-
-  async forward() {
-    let fields = Cc[
-      "@mozilla.org/messengercompose/composefields;1"
-    ].createInstance(Ci.nsIMsgCompFields);
-    // Thunderbird 82 set this to UTF-8 by default and dropped the setting.
-    if ("characterSet" in fields) {
-      fields.characterSet = "UTF-8";
-    }
-    fields.bodyIsAsciiOnly = false;
-    fields.forcePlainText = false;
-    fields.body = await this.exportAsHtml();
-    let params = Cc[
-      "@mozilla.org/messengercompose/composeparams;1"
-    ].createInstance(Ci.nsIMsgComposeParams);
-    params.format = Ci.nsIMsgCompFormat.HTML;
-    params.composeFields = fields;
-    return MailServices.compose.OpenComposeWindowWithParams(null, params);
-  },
-
-  // For the "forward conversation" action
-  async exportAsHtml() {
-    // Somehow this seems to be needed... why? Dunno.
-    let start = "<html><body>";
-    let hr =
-      '<div style="border-top: 1px solid #888; height: 15px; width: 70%; margin: 0 auto; margin-top: 15px">&nbsp;</div>';
-    let html =
-      start +
-      "<p>" +
-      browser.i18n.getMessage("conversation.forwardFillInText") +
-      "</p>" +
-      hr;
-    let promises = [];
-    for (const msg of this.messages) {
-      promises.push(msg.message.exportAsHtml());
-    }
-
-    let messagesHtml = await Promise.all(promises);
-
-    html +=
-      '<div style="font-family: sans-serif !important;">' +
-      messagesHtml.join(hr) +
-      "</div>";
-    Log.debug("The HTML: ---------\n", html, "\n\n");
-    return html;
-  },
-
-  // Go through all the messages and determine which one is going to be focused
-  //  according to the prefs
-  _tellMeWhoToScroll(messages) {
-    // Determine which message is going to be scrolled into view
-    let needsScroll = -1;
-    if (this.isSelectionThreaded) {
-      needsScroll = messages.length - 1;
-      for (let i = 0; i < messages.length; ++i) {
-        if (!messages[i].message.read) {
-          needsScroll = i;
-          break;
-        }
-      }
-    } else {
-      let gFolderDisplay = topMail3Pane(this).gFolderDisplay;
-      let key = msgHdrGetUri(gFolderDisplay.selectedMessage);
-      for (let i = 0; i < messages.length; ++i) {
-        if (messages[i].message._uri == key) {
-          needsScroll = i;
-          break;
-        }
-      }
-      // I can't see why we wouldn't break at some point in the loop below, but
-      //  just in case...
-      if (needsScroll < 0) {
-        Log.error("kScrollSelected && didn't find the selected message");
-        needsScroll = messages.length - 1;
-      }
-    }
-
-    return needsScroll;
-  },
-
-  // Go through all the messages and for each one of them, give the expected
-  //  action
-  _tellMeWhoToExpand(messages, reactMsgData, aNeedsFocus) {
-    switch (Prefs.expand_who) {
-      default:
-        Log.error(
-          false,
-          `Unknown value '${Prefs.expand_who}' for pref expand_who, try changing in the add-on preferences.`
-        );
-      // Falls through so we can default to the same as the pref and keep going.
-      case Prefs.kExpandAuto: {
-        if (this.isSelectionThreaded) {
-          // In this mode, we scroll to the first unread message (or the last
-          //  message if all messages are read), and we expand all unread messages
-          //  + the last one (which will probably be unread as well).
-          for (const [i, { message }] of messages.entries()) {
-            reactMsgData[i].expanded =
-              !message.read || i == messages.length - 1;
-          }
-        } else {
-          // In this mode, we scroll to the selected message, and we only expand
-          //  the selected message.
-          for (const [i] of messages.entries()) {
-            reactMsgData[i].expanded = i == aNeedsFocus;
-          }
-        }
-        break;
-      }
-      case Prefs.kExpandAll: {
-        for (const msgData of reactMsgData) {
-          msgData.expanded = true;
-        }
-        break;
-      }
-      case Prefs.kExpandNone: {
-        for (const msgData of reactMsgData) {
-          msgData.expanded = false;
-        }
-        break;
-      }
-    }
-  },
 };
 
 /**
- * Tells if the message is an archived message
- * @param {nsIMsgDbHdr} msgHdr The message header to examine
- * @return {bool}
- */
-function msgHdrIsArchive(msgHdr) {
-  return msgHdr.folder.getFlag(nsMsgFolderFlags_Archive);
-}
-
-/**
  * Tells if the message is a draft message
- * @param {nsIMsgDbHdr} msgHdr The message header to examine
- * @return {bool}
+ *
+ * @param {nsIMsgDBHdr} msgHdr The message header to examine
+ * @returns {boolean}
  */
 function msgHdrIsDraft(msgHdr) {
   return msgHdr.folder.getFlag(nsMsgFolderFlags_Drafts);
-}
-
-/**
- * Tells if the message is in the account's inbox
- * @param {nsIMsgDbHdr} msgHdr The message header to examine
- * @return {bool}
- */
-function msgHdrIsInbox(msgHdr) {
-  return msgHdr.folder.getFlag(nsMsgFolderFlags_Inbox);
-}
-
-/**
- * Tells if the message is a sent message
- * @param {nsIMsgDbHdr} msgHdr The message header to examine
- * @return {bool}
- */
-function msgHdrIsSent(msgHdr) {
-  return msgHdr.folder.getFlag(nsMsgFolderFlags_SentMail);
 }

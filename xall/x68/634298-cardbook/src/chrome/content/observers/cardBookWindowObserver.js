@@ -61,6 +61,7 @@ var cardBookWindowObserver = {
 				wdw_cardbook.setSearchRemoteHboxOnSyncFinished(aData);
 			case "cardbook.syncRunning":
 			case "cardbook.cardCreated":
+			case "cardbook.cardEdited":
 			case "cardbook.cardModified":
 			case "cardbook.cardsConverted":
 			case "cardbook.cardsDeleted":
@@ -137,3 +138,21 @@ var cardboookModeMutationObserver = {
 		});
 	}
 };
+
+Services.obs.addObserver({
+		async observe(subDialogWindow) {
+			if (!subDialogWindow.location.href.startsWith("chrome://global/content/print.html?")) {
+				return;
+			}
+
+			await new Promise(resolve =>
+				subDialogWindow.document.addEventListener("print-settings", resolve, { once: true })
+			);
+		
+			if (subDialogWindow.PrintEventHandler.activeCurrentURI != "chrome://cardbook/content/print/printing-template.html") {
+				return;
+			}
+			Services.scriptloader.loadSubScript("chrome://cardbook/content/print/cardbookPrint.js", subDialogWindow);
+			Services.scriptloader.loadSubScript("chrome://cardbook/content/print/wdw_cardbookPrint.js", subDialogWindow);		
+		},
+	},  "subdialog-loaded");

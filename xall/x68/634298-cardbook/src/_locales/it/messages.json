@@ -2909,6 +2909,9 @@
 	"wdw_cardEditionViewListTitle": {
 		"message": "Mostra lista"
 	},
+	"wdw_cardEditionEditTemplateTitle": {
+		"message": "Modifica modello"
+	},
 	"wdw_cardbookPrintTitleLong": {
 		"message": "Anteprima di stampa di $P1$ - CardBook - Thunderbird",
         "placeholders": {
@@ -3563,20 +3566,20 @@
 	"cardbookContactPaneItemAccesskey": {
 		"message": "O"
 	},
+	"wizard.next.label": {
+		"message": "Successiva"
+	},	
+	"wizard.back.label": {
+		"message": "Indietro"
+	},	
+	"wizard.create.label": {
+		"message": "Crea"
+	},
 	"wizard.title": {
 		"message": "Aggiungi una nuova rubrica"
 	},
-	"wizard.label": {
-		"message": "Aggiungi una nuova rubrica"
-	},
-	"welcomePage.wizard.description": {
-		"message": "Benvenuto"
-	},
 	"welcomePage.description": {
 		"message": "Sembra che sia la prima volta che CardBook viene eseguito. CardBook tenterà di recuperare i contatti dalle rubriche standard di Thunderbird e dalle rubriche remote."
-	},
-	"initialPage.wizard.description": {
-		"message": "Percorso per la nuova rubrica."
 	},
 	"initialPage.description": {
 		"message": "La tua rubrica è locale (situata nel tuo computer) o remota?"
@@ -3595,9 +3598,6 @@
 	},
 	"initialPage.find.label": {
 		"message": "Cerca rubriche remote"
-	},
-	"localPage.wizard.description": {
-		"message": "Tipo e percorso della nuova rubrica locale."
 	},
 	"localPage.type.description": {
 		"message": "Di che tipo è la tua rubrica locale?"
@@ -3632,9 +3632,6 @@
 	"localPage.uributton.label": {
 		"message": "Sfoglia"
 	},
-	"remotePage.wizard.description": {
-		"message": "Tipo e percorso della nuova rubrica remota."
-	},
 	"remotePage.description": {
 		"message": "Di che tipo è la tua rubrica remota? (Attenzione: Google NON utilizza lo standard vCard)"
 	},
@@ -3646,6 +3643,9 @@
 	},
 	"remotePage.google.label": {
 		"message": "Google"
+	},
+	"remotePage.googleWorkspace.label": {
+		"message": "Google Workspace"
 	},
 	"remotePage.apple.label": {
 		"message": "Apple"
@@ -3671,14 +3671,14 @@
 	"remotePage.password.label": {
 		"message": "Password:"
 	},
+	"rememberPassword": {
+		"message": "Utilizzare Gestione password per memorizzare questa password"
+	},
 	"showHidePassword.tooltip": {
 		"message": "Mostra/Nascondi password"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Conferma"
-	},
-	"locationSearchPage.wizard.description": {
-		"message": "Definizione della ricerca avanzata."
 	},
 	"locationSearchPage.label": {
 		"message": "Ricerca avanzata"
@@ -3704,9 +3704,6 @@
 	"googleOauthPage.wizard.description": {
 		"message": "Autenticazione Google"
 	},
-	"namePage.wizard.description": {
-		"message": "Proprietà della rubrica"
-	},
 	"namePage.selected.label": {
 		"message": "Selezionato"
 	},
@@ -3725,17 +3722,11 @@
 	"namePage.vCardVersion.label": {
 		"message": "vCard"
 	},
-	"namesPage.wizard.description": {
-		"message": "Proprietà delle rubriche"
-	},
 	"namesPage.name.label": {
 		"message": "Nomi"
 	},
 	"namesPage.name.description": {
 		"message": "Sono state trovate rubriche multiple. Scegli quali rubriche vuoi aprire e il loro nome:"
-	},
-	"findPage.wizard.description": {
-		"message": "Ricerca rubriche remote"
 	},
 	"findPage.name1.description": {
 		"message": "Nessuna rubrica remota trovata."
@@ -3745,9 +3736,6 @@
 	},
 	"findPage.name3.description": {
 		"message": "Trovate diverse rubriche remote. Validare le rubriche remote da aggiungere:"
-	},
-	"finishPage.wizard.description": {
-		"message": "Configurazione rubriche"
 	},
 	"finishPage.description": {
 		"message": "La tua nuova rubrica è stata configurata correttamente."
@@ -5117,6 +5105,12 @@
 	"cardbookToolbarAddListButtonTooltip": {
 		"message": "Crea una nuova lista"
 	},
+	"cardbookToolbarAddTemplateButtonLabel": {
+		"message": "Nuovo Modello"
+	},
+	"cardbookToolbarAddTemplateButtonTooltip": {
+		"message": "Crea un nuovo modello"
+	},
 	"cardbookToolbarEditButtonLabel": {
 		"message": "Modifica"
 	},
@@ -5315,6 +5309,15 @@
 	"searchForLocalKeyEditButton.tooltip": {
 		"message": "Importa da file"
 	},
+	"definitionLabel": {
+		"message": "Definizioni"
+	},
+	"fieldsLabel": {
+		"message": "Campi"
+	},
+	"formulasLabel": {
+		"message": "Formule"
+	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Condividi con email"
 	},
@@ -5462,6 +5465,9 @@
 	"fnFormulaExplanation": {
 		"message": "È possibile personalizzare il modo in cui CardBook genera il suo Nome Visualizzato. Questa formula consiste in blocchi racchiusi tra «()». In questi blocchi potrebbero esserci molte parti delimitate da «|»."
 	},
+	"templateFormulaExplanation": {
+		"message": "E' possibile definire modelli con campi predefiniti. Ad esempio si può definire un modello con l'email «({{2}}).({{4}})@mycompany.org». Una volta applicato a un contatto che ha «John» e «Doe» come nome e cognome, verrà aggiunta una email «john.doe@mycompany.org» al contatto."
+	},
 	"formulaExplanation1": {
 		"message": "({{1}}|{{2}}) : Se {{1}} è vuoto, il blocco verrà sostituito da {{2}}."
 	},
@@ -5500,12 +5506,6 @@
 	},
 	"displayFieldNamesAccesskey": {
 		"message": "c"
-	},
-	"displayTypesLabel": {
-		"message": "Modalità e preferenze"
-	},
-	"displayTypesAccesskey": {
-		"message": "y"
 	},
 	"fieldsToPrintGroupboxLabel": {
 		"message": "Cosa stampare"
@@ -5698,6 +5698,12 @@
 	},
 	"saveTemplateLabel": {
 		"message": "Salva modello"
+	},
+	"applyTemplateLabel": {
+		"message": "Applica modello"
+	},
+	"createTemplateLabel": {
+		"message": "Crea modello"
 	},
 	"convertVCardsLabel": {
 		"message": "Converti vCard"

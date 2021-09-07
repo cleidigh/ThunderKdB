@@ -2,7 +2,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 	var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 	var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
-
+	
 	var CardBookResultsPaneObserver = {
 		onDragStart: function (aEvent) {
 			let listOfEmails = wdw_cardbookContactsSidebar.getSelectedEmails().join(", ");
@@ -361,16 +361,10 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 				}
 			}
 			if (!cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.exclusive")) {
-				var contactManager = MailServices.ab;
-				var contacts = contactManager.directories;
 				var lastnamefirst = Services.prefs.getIntPref("mail.addr_book.lastnamefirst");
-				while ( contacts.hasMoreElements() ) {
-					var contact = contacts.getNext().QueryInterface(Components.interfaces.nsIAbDirectory);
-					if (cardbookRepository.verifyABRestrictions(contact.dirPrefId, searchAB, wdw_cardbookContactsSidebar.ABExclRestrictions, wdw_cardbookContactsSidebar.ABInclRestrictions)) {
-						var abCardsEnumerator = contact.childCards;
-						while (abCardsEnumerator.hasMoreElements()) {
-							var myABCard = abCardsEnumerator.getNext();
-							myABCard = myABCard.QueryInterface(Components.interfaces.nsIAbCard);
+				for (let addrbook of MailServices.ab.directories) {
+					if (cardbookRepository.verifyABRestrictions(addrbook.dirPrefId, searchAB, wdw_cardbookContactsSidebar.ABExclRestrictions, wdw_cardbookContactsSidebar.ABInclRestrictions)) {
+						for (let myABCard of addrbook.childCards) {					
 							var myEmails = myABCard.getProperty("PrimaryEmail","");
 							var myDisplayName = myABCard.generateName(lastnamefirst);
 							if (!myABCard.isMailList) {
@@ -383,18 +377,18 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 											myDisplayName = myEmails.substr(0,delim);
 										}
 										if (useOnlyEmail) {
-											wdw_cardbookContactsSidebar.searchResults.push([myDisplayName, contact.dirName, myEmails, false, "CARDCORE", myABCard, myEmails, contact.dirPrefId]);
+											wdw_cardbookContactsSidebar.searchResults.push([myDisplayName, addrbook.dirName, myEmails, false, "CARDCORE", myABCard, myEmails, addrbook.dirPrefId]);
 										} else {
-											wdw_cardbookContactsSidebar.searchResults.push([myDisplayName, contact.dirName, myEmails, false, "CARDCORE", myABCard, MailServices.headerParser.makeMimeAddress(myDisplayName, myEmails), contact.dirPrefId]);
+											wdw_cardbookContactsSidebar.searchResults.push([myDisplayName, addrbook.dirName, myEmails, false, "CARDCORE", myABCard, MailServices.headerParser.makeMimeAddress(myDisplayName, myEmails), addrbook.dirPrefId]);
 										}
 									}
 								}
 							} else {
-								var myABList = contactManager.getDirectory(myABCard.mailListURI);
+								var myABList = MailServices.ab.getDirectory(myABCard.mailListURI);
 								var lSearchString = myDisplayName + myABList.listNickName + myABList.description;
 								lSearchString = cardbookRepository.makeSearchString(lSearchString);
 								if (lSearchString.includes(searchInput) || searchInput == "") {
-										wdw_cardbookContactsSidebar.searchResults.push([myDisplayName, contact.dirName, "", true, "LISTCORE", myABCard, MailServices.headerParser.makeMimeAddress(myDisplayName, myDisplayName), contact.dirPrefId]);
+										wdw_cardbookContactsSidebar.searchResults.push([myDisplayName, addrbook.dirName, "", true, "LISTCORE", myABCard, MailServices.headerParser.makeMimeAddress(myDisplayName, myDisplayName), addrbook.dirPrefId]);
 								}
 							}
 						}
@@ -638,28 +632,18 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 			cardBookSideBarPrefObserver.unregister();
 		},
 		
-		loadRestrictions: function () {
-			// Mail Redirect has no content
-			if (content) {
-				var mailWindow = Services.wm.getMostRecentWindow("msgcompose");
-				var outerID = mailWindow.windowUtils.outerWindowID;
-				var msgIdentity = cardbookRepository.composeMsgIdentity[outerID];
-			} else {
-				var msgIdentity = "";
-			}
-			var result = [];
+		loadRestrictions: async function () {
+			let result = [];
+			let composeWindow = Services.wm.getMostRecentWindow("msgcompose");
+			let identityId = composeWindow.document.getElementById("msgIdentity").selectedItem.getAttribute("identitykey");
 			result = cardbookRepository.cardbookPreferences.getAllRestrictions();
 			wdw_cardbookContactsSidebar.ABInclRestrictions = {};
 			wdw_cardbookContactsSidebar.ABExclRestrictions = {};
 			wdw_cardbookContactsSidebar.catInclRestrictions = {};
 			wdw_cardbookContactsSidebar.catExclRestrictions = {};
-			if (msgIdentity == "") {
-				wdw_cardbookContactsSidebar.ABInclRestrictions["length"] = 0;
-				return;
-			}
 			for (var i = 0; i < result.length; i++) {
 				var resultArray = result[i];
-				if ((resultArray[0] == "true") && (resultArray[3] != "") && ((resultArray[2] == msgIdentity) || (resultArray[2] == "allMailAccounts"))) {
+				if ((resultArray[0] == "true") && (resultArray[3] != "") && ((resultArray[2] == identityId) || (resultArray[2] == "allMailAccounts"))) {
 					if (resultArray[1] == "include") {
 						wdw_cardbookContactsSidebar.ABInclRestrictions[resultArray[3]] = 1;
 						if (resultArray[4]) {
@@ -740,7 +724,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 					document.getElementById('categoriesPickerLabel').removeAttribute('hidden');
 					document.getElementById('categoriesMenulist').removeAttribute('hidden');
 				}
-				
+			
 				wdw_cardbookContactsSidebar.search();
 			}
 		},
@@ -766,24 +750,19 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 				wdw_cardbookContactsSidebar.search();
 			}
 		},
-		
+
 		// works only when the restrictions are changed
 		onRestrictionsChanged: function () {
 			wdw_cardbookContactsSidebar.loadAB();
 		},
-		
-		// works only when the identity is changed, not for the initial start
-		onIdentityChanged: function (aWindowId) {
-			var mailWindow = Services.wm.getMostRecentWindow("msgcompose");
-			var outerID = mailWindow.windowUtils.outerWindowID;
-			if (aWindowId == outerID) {
-				wdw_cardbookContactsSidebar.loadAB();
-			}
+
+		onIdentityChanged: function () {
+			wdw_cardbookContactsSidebar.loadAB();
 		},
-		
+
 		onCategoryChange: function () {
 			wdw_cardbookContactsSidebar.search();
 		}
-		
+
 	}
 };

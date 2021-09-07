@@ -2909,6 +2909,9 @@
 	"wdw_cardEditionViewListTitle": {
 		"message": "목록보기"
 	},
+	"wdw_cardEditionEditTemplateTitle": {
+		"message": "템플릿 편집"
+	},
 	"wdw_cardbookPrintTitleLong": {
 		"message": "$P1$ - 인쇄 미리보기 – CardBook - Thunderbird",
         "placeholders": {
@@ -3563,20 +3566,20 @@
 	"cardbookContactPaneItemAccesskey": {
 		"message": "O"
 	},
+	"wizard.next.label": {
+		"message": "다음"
+	},	
+	"wizard.back.label": {
+		"message": "뒤로"
+	},	
+	"wizard.create.label": {
+		"message": "생성"
+	},
 	"wizard.title": {
 		"message": "새 주소록 추가"
 	},
-	"wizard.label": {
-		"message": "새 주소록 추가"
-	},
-	"welcomePage.wizard.description": {
-		"message": "환영합니다"
-	},
 	"welcomePage.description": {
 		"message": "CardBook이 최초로 실행된 것 같습니다. CardBook은 Thunderbird의 기본 주소록과 원격 주소록에서 연락처 수집을 시도할 것입니다."
-	},
-	"initialPage.wizard.description": {
-		"message": "새 주소록 위치."
 	},
 	"initialPage.description": {
 		"message": "주소록 위치:"
@@ -3595,9 +3598,6 @@
 	},
 	"initialPage.find.label": {
 		"message": "원격 주소록 검색"
-	},
-	"localPage.wizard.description": {
-		"message": "새 로컬 주소록의 유형 및 위치."
 	},
 	"localPage.type.description": {
 		"message": "로컬 주소록 유형:"
@@ -3632,9 +3632,6 @@
 	"localPage.uributton.label": {
 		"message": "찾아보기"
 	},
-	"remotePage.wizard.description": {
-		"message": "새 원격 주소록의 유형과 위치."
-	},
 	"remotePage.description": {
 		"message": "원격 주소록의 유형은 무엇입니까? (주의 : Google은 vCard 표준을 준수하지 않습니다.)"
 	},
@@ -3646,6 +3643,9 @@
 	},
 	"remotePage.google.label": {
 		"message": "Google"
+	},
+	"remotePage.googleWorkspace.label": {
+		"message": "Google Workspace"
 	},
 	"remotePage.apple.label": {
 		"message": "Apple"
@@ -3671,14 +3671,14 @@
 	"remotePage.password.label": {
 		"message": "암호:"
 	},
+	"rememberPassword": {
+		"message": "이 비밀번호를 기억하는데 비밀번호 관리자를 사용합니다"
+	},
 	"showHidePassword.tooltip": {
 		"message": "비밀번호 표시/숨기기"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "유효성 검사"
-	},
-	"locationSearchPage.wizard.description": {
-		"message": "저장된 검색의 정의."
 	},
 	"locationSearchPage.label": {
 		"message": "이전 검색"
@@ -3704,9 +3704,6 @@
 	"googleOauthPage.wizard.description": {
 		"message": "구글 인증"
 	},
-	"namePage.wizard.description": {
-		"message": "주소록 속성"
-	},
 	"namePage.selected.label": {
 		"message": "선택됨"
 	},
@@ -3725,17 +3722,11 @@
 	"namePage.vCardVersion.label": {
 		"message": "vCard"
 	},
-	"namesPage.wizard.description": {
-		"message": "주소록 속성"
-	},
 	"namesPage.name.label": {
 		"message": "이름"
 	},
 	"namesPage.name.description": {
 		"message": "여러 주소록이 발견되었습니다. 열려는 주소록과 이름을 선택하십시오:"
-	},
-	"findPage.wizard.description": {
-		"message": "원격 주소록 검색"
 	},
 	"findPage.name1.description": {
 		"message": "검색된 원격 주소록이 없습니다."
@@ -3745,9 +3736,6 @@
 	},
 	"findPage.name3.description": {
 		"message": "다수의 원격 주소록이 검색되었습니다. 추가하기 위해 유효성을 확인하십시오:"
-	},
-	"finishPage.wizard.description": {
-		"message": "주소록 설정"
 	},
 	"finishPage.description": {
 		"message": "새 주소록이 성공적으로 구성되었습니다."
@@ -5117,6 +5105,12 @@
 	"cardbookToolbarAddListButtonTooltip": {
 		"message": "새 메일링 목록"
 	},
+	"cardbookToolbarAddTemplateButtonLabel": {
+		"message": "새 템플릿"
+	},
+	"cardbookToolbarAddTemplateButtonTooltip": {
+		"message": "새 템플릿 만들기"
+	},
 	"cardbookToolbarEditButtonLabel": {
 		"message": "수정"
 	},
@@ -5315,6 +5309,15 @@
 	"searchForLocalKeyEditButton.tooltip": {
 		"message": "파일에서 가져오기"
 	},
+	"definitionLabel": {
+		"message": "정의"
+	},
+	"fieldsLabel": {
+		"message": "필드"
+	},
+	"formulasLabel": {
+		"message": "공식"
+	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "이메일로 공유"
 	},
@@ -5462,6 +5465,9 @@
 	"fnFormulaExplanation": {
 		"message": "CardBook 에서 생성하는 표시 이름을 사용자화 할 수 있습니다. 이 공식은 «()»으로 닫힌 블록들로 구성됩니다. 이 블록 안에는 구분자 «|»로 나뉜 다수 집합이 있을 수 있습니다."
 	},
+	"templateFormulaExplanation": {
+		"message": "사전 정의된 필드로 템플릿을 정의할 수 있습니다. 예를 들어, 이메일 주소 «({{2}}).({{4}})@mycompany.org» 라는 템플릿을 정의한 후 이를 «John» 이라는 이름과 «Doe» 라는 성을 가진 연락처에 적용하면 «john.doe@mycompany.org» 라는 이메일 주소가 연락처에 추가됩니다."
+	},
 	"formulaExplanation1": {
 		"message": "({{1}}|{{2}}) : 만약 {{1}}이 비어 있다면, 해당 블록은 {{2}}로 대체됩니다."
 	},
@@ -5500,12 +5506,6 @@
 	},
 	"displayFieldNamesAccesskey": {
 		"message": "F"
-	},
-	"displayTypesLabel": {
-		"message": "유형 및 환경 설정"
-	},
-	"displayTypesAccesskey": {
-		"message": "y"
 	},
 	"fieldsToPrintGroupboxLabel": {
 		"message": "인쇄할 필드"
@@ -5698,6 +5698,12 @@
 	},
 	"saveTemplateLabel": {
 		"message": "템플릿 저장"
+	},
+	"applyTemplateLabel": {
+		"message": "템플릿 적용"
+	},
+	"createTemplateLabel": {
+		"message": "템플릿 만들기"
 	},
 	"convertVCardsLabel": {
 		"message": "vCard 변환"

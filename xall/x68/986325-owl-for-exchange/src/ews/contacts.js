@@ -684,15 +684,18 @@ EWSAccount.prototype.ResyncAddressBooks = async function(aMsgWindow) {
   let enableGAL = await browser.incomingServer.getBooleanValue(this.serverID, "GAL_enabled");
   if (enableGAL) {
     noAwait(this.DownloadGAL(aMsgWindow), logError);
-  } else if (browser.autoComplete && !this.autoCompleteListener) {
+  } else if (browser.addressBooks.provider && !this.autoCompleteListener) {
     let identity = await browser.incomingServer.getIdentity(this.serverID);
-    let dirName = identity.email.slice(identity.email.indexOf("@") + 1) + " GAL";
+    let addressBookName = identity.email.slice(identity.email.indexOf("@") + 1) + " GAL";
     this.autoCompleteListener = this.AutoComplete.bind(this);
-    browser.autoComplete.onAutoComplete.addListener(this.autoCompleteListener, {dirName, isSecure: true});
+    browser.addressBooks.provider.onSearchRequest.addListener(this.autoCompleteListener, {addressBookName, isSecure: true});
+  } else if (browser.autoComplete && !this.autoCompleteListener) { // COMPAT for TB 78 (bug 1670752)
+    this.autoCompleteListener = this.AutoComplete.bind(this); // COMPAT for TB 78 (bug 1670752)
+    browser.autoComplete.onAutoComplete.addListener(this.autoCompleteListener); // COMPAT for TB 78 (bug 1670752)
   }
 }
 
-EWSAccount.prototype.AutoComplete = async function(aSearchString) {
+EWSAccount.prototype.AutoComplete = async function(aAddressBook, aSearchString, aQuery) {
   let query = {
     m$ResolveNames: {
       m$UnresolvedEntry: 'smtp:' + aSearchString,
@@ -703,7 +706,7 @@ EWSAccount.prototype.AutoComplete = async function(aSearchString) {
     response = await this.CallService(null, query); // ews.js
   } catch (ex) {
     if (ex.type == "ErrorNameResolutionNoResults") {
-      return [];
+      return { results: [], isCompleteResult: true };
     }
     logError(ex);
     throw ex;
@@ -733,7 +736,7 @@ EWSAccount.prototype.AutoComplete = async function(aSearchString) {
     };
     results.push(this.convertContact(resolution.Contact));
   }
-  return results;
+  return { results, isCompleteResult: results.length < 100 };
 }
 
 /**

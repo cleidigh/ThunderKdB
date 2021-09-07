@@ -9,9 +9,10 @@ var cardbookRepository = {
 	cardbookDatabase: {},
 	cardbookActionsDatabase: {},
 	cardbookMailPopDatabase: {},
+	cardbookPrefDispNameDatabase: {},
 	cardbookSearchDatabase: {},
 	cardbookImageDatabase: {},
-	
+
 	extension: ExtensionParent.GlobalManager.getExtension("cardbook@vigneau.philippe"),
 	
 	windowParams: "chrome,titlebar,resizable,all,dialog=no",
@@ -87,6 +88,12 @@ var cardbookRepository = {
  										"url" : [ ["hometype", "home"], ["worktype", "work"], ["othertype", "other"], ["blogtype", "blog"], ["homepagetype", "homePage"], ["profiletype", "profile"] ],
 										"impp" : [ ["hometype", "home"], ["worktype", "work"], ["othertype", "other"] ],
 										"addnew" : true },
+						"GOOGLE3": { "adr" : [ ["hometype", "home"], ["worktype", "work"], ["othertype", "other"] ],
+										"email" : [ ["hometype", "home"], ["worktype", "work"], ["othertype", "other"] ],
+										"tel" : [ ["hometype", "home"], ["worktype", "work"], ["celltype", "mobile"], ["pagertype", "pager"], ["workfaxtype", "workFax"], ["homefaxtype", "homeFax"], ["othertype", "other"], ["maintype", "main"] ],
+ 										"url" : [ ["hometype", "home"], ["worktype", "work"], ["othertype", "other"], ["blogtype", "blog"], ["homepagetype", "homePage"], ["profiletype", "profile"] ],
+										"impp" : [ ["hometype", "home"], ["worktype", "work"], ["othertype", "other"] ],
+										"addnew" : true },
 						"APPLE": { "adr" : [ ["hometype", "HOME"], ["worktype", "WORK"] ],
 									"email" : [ ["hometype", "HOME;HOME,INTERNET"], ["worktype", "WORK;WORK,INTERNET"], ["othertype", "OTHER;OTHER,INTERNET"] ],
 									"tel" : [ ["hometype", "HOME;HOME,VOICE"], ["worktype", "WORK;WORK,VOICE"], ["celltype", "CELL;CELL,VOICE"], ["faxtype", "FAX;FAX,VOICE"], ["pagertype", "PAGER"],
@@ -103,8 +110,8 @@ var cardbookRepository = {
 									"addnew" : false },
 						"CARDDAV": { "adr" : [ ["hometype", "HOME"], ["worktype", "WORK"] ],
 									"email" : [ ["hometype", "HOME"], ["worktype", "WORK"], ["othertype", "OTHER"] ],
-									"tel" : [ ["hometype", "HOME"], ["worktype", "WORK"], ["celltype", "CELL;CELL,IPHONE"], ["faxtype", "FAX"], ["pagertype", "PAGER"], ["workfaxtype", "FAX,WORK"], ["homefaxtype", "FAX,HOME"],
-												["othertype", "OTHER"], ["maintype", "MAIN"] ],
+									"tel" : [ ["hometype", "HOME;HOME,VOICE"], ["worktype", "WORK;WORK,VOICE"], ["celltype", "CELL;CELL,IPHONE;CELL,VOICE"], ["faxtype", "FAX;FAX,VOICE"], ["pagertype", "PAGER"], ["workfaxtype", "FAX,WORK;FAX,WORK,VOICE"], ["homefaxtype", "FAX,HOME;FAX,HOME,VOICE"],
+												["othertype", "OTHER;OTHER,VOICE"], ["maintype", "MAIN"] ],
 									"url" : [ ["hometype", "HOME"], ["worktype", "WORK"], ["othertype", "OTHER"] ],
 									"impp" : [ ["hometype", "HOME"], ["worktype", "WORK"] ],
 									"addnew" : true } },
@@ -145,6 +152,7 @@ var cardbookRepository = {
 	cardbookMailPopularityLastIndex: 1,
 
 	cardbookPreferDisplayNameIndex: {},
+	cardbookPreferDisplayNameLastIndex: 1,
 	cardbookDuplicateIndex: {},
 
 	cardbookDirRequest: {},
@@ -287,9 +295,6 @@ var cardbookRepository = {
 	// used to ensure that the initial load is done only once
 	firstLoad: false,
 
-	// used to store the msgIdentityKey by window
-	composeMsgIdentity: {},
-	
 	// used to remember the choice of name and dates format
 	showNameAs: "",
 	dateDisplayedFormat: "0",
@@ -355,6 +360,7 @@ var cardbookRepository = {
 							GET_PERSON_FIELDS:          "addresses,biographies,birthdays,emailAddresses,events,imClients,memberships,metadata,names,nicknames,organizations,phoneNumbers,photos,urls,userDefined",
 							UPDATE_PERSON_FIELDS:       "addresses,biographies,birthdays,emailAddresses,events,imClients,memberships,names,nicknames,organizations,phoneNumbers,urls,userDefined",
 							CREATE_PERSON_FIELDS:       "addresses,biographies,birthdays,emailAddresses,events,imClients,memberships,metadata,names,nicknames,organizations,phoneNumbers,urls,userDefined",
+							OBJECT_TYPE:				"CONTACT",
 							UPDATEPHOTO_PERSON_FIELDS:  "metadata",
 							DELETEPHOTO_PERSON_FIELDS:  "metadata",
 							OAUTH_URL:                  "https://accounts.google.com/o/oauth2/auth",
@@ -365,29 +371,47 @@ var cardbookRepository = {
 							REFRESH_REQUEST_TYPE:       "POST",
 							REFRESH_REQUEST_GRANT_TYPE: "refresh_token",
 							ROOT_API:                   "https://www.googleapis.com"},
-						"YAHOO": {
-							EMAIL_TYPE:                 "@yahoo.com",
+						"GOOGLE3": {
 							VCARD_VERSIONS:             [ "3.0" ],
-							CLIENT_ID:                  "dj0yJmk9eWRXYWc2QmNYWndYJmQ9WVdrOVZuVkdlazl3TXpZbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD0xOQ--",
-							CLIENT_SECRET:              "a2d17e955c6c96e4d3ec08cff76f4c39fe084f78",
-							REDIRECT_URI:               "oob",
-							REDIRECT_TITLE:             "Sharing approval",
-							AUTH_PREFIX_CONTACTS:       "chrome://cardbook/oauth",
+							CLIENT_ID:                  "779554755808-957jloa2c3c8n0rrm1a5304fkik7onf0.apps.googleusercontent.com",
+							CLIENT_SECRET:              "h3NUkhofCKAW2E1X_NKSn4C_",
+							REDIRECT_URI:               "urn:ietf:wg:oauth:2.0:oob",
+							REDIRECT_TITLE:             "Success code=",
 							RESPONSE_TYPE:              "code",
-							LANGUAGE:                   "en-us",
-							OAUTH_URL:                  "https://api.login.yahoo.com/oauth2/request_auth",
-							TOKEN_REQUEST_URL:          "https://api.login.yahoo.com/oauth2/get_token",
-							TOKEN_REQUEST_TYPE:         "POST",
+							SCOPE_CONTACTS:             "https://www.googleapis.com/auth/directory.readonly",
+							AUTH_PREFIX_CONTACTS:       "chrome://cardbook/oauth/directory",
+							LABELS:                     "contactGroups",
+							LABELS_URL:                 "https://people.googleapis.com/v1/contactGroups",
+							LABELS_URL_SIZE:            "1000",
+							CONTACTS_URL:               "https://people.googleapis.com/v1/people:listDirectoryPeople",
+							CONTACTS_URL_SIZE:          "1000",
+							CONTACTS_SOURCES:			"DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE",
+							OBJECT_TYPE:				"DOMAIN_PROFILE",
+							CONTACT_URL:                "https://people.googleapis.com/v1/people",
+							BATCH_GET_URL:              "https://people.googleapis.com/v1/people:batchGet",
+							BATCH_GET_URL_SIZE:         "50",
+							SYNC_PERSON_FIELDS:         "metadata,memberships",
+							GET_PERSON_FIELDS:          "addresses,biographies,birthdays,emailAddresses,events,imClients,memberships,metadata,names,nicknames,organizations,phoneNumbers,photos,urls,userDefined",
+							UPDATE_PERSON_FIELDS:       "addresses,biographies,birthdays,emailAddresses,events,imClients,memberships,names,nicknames,organizations,phoneNumbers,urls,userDefined",
+							CREATE_PERSON_FIELDS:       "addresses,biographies,birthdays,emailAddresses,events,imClients,memberships,metadata,names,nicknames,organizations,phoneNumbers,urls,userDefined",
+							UPDATEPHOTO_PERSON_FIELDS:  "metadata",
+							DELETEPHOTO_PERSON_FIELDS:  "metadata",
+							OAUTH_URL:                  "https://accounts.google.com/o/oauth2/auth",
+							TOKEN_REQUEST_URL:          "https://accounts.google.com/o/oauth2/token",
+							TOKEN_REQUEST_TYPE:         "POST",                                                                      
 							TOKEN_REQUEST_GRANT_TYPE:   "authorization_code",
-							REFRESH_REQUEST_URL:        "https://api.login.yahoo.com/oauth2/get_token",
+							REFRESH_REQUEST_URL:        "https://accounts.google.com/o/oauth2/token",
 							REFRESH_REQUEST_TYPE:       "POST",
 							REFRESH_REQUEST_GRANT_TYPE: "refresh_token",
-							ROOT_API:                   "https://carddav.address.yahoo.com"}
-						},
+							ROOT_API:                   "https://www.googleapis.com"}
+							},
 
 	APPLE_API: "https://contacts.icloud.com",
 	APPLE_VCARD_VERSIONS: [ "3.0" ],
-	
+
+	YAHOO_API: "https://carddav.address.yahoo.com",
+	YAHOO_VCARD_VERSIONS: [ "3.0" ],
+
 	cardbookBirthdayPopup: 0,
 
 	// actions
@@ -965,7 +989,7 @@ var cardbookRepository = {
 	addCardToRepository: async function (aCard, aMode) {
 		try {
 			// needed only once when using > 55.2
-			if ((cardbookRepository.cardbookPreferences.getType(aCard.dirPrefId) == "GOOGLE" || cardbookRepository.cardbookPreferences.getType(aCard.dirPrefId) == "GOOGLE2")
+			if ((cardbookRepository.cardbookPreferences.getType(aCard.dirPrefId) == "GOOGLE")
 					&& !aCard.created && !aCard.updated) {
 				for (let category of aCard.categories) {
 					if (!cardbookRepository.cardbookCategories[aCard.dirPrefId+"::"+category]) {
@@ -1857,7 +1881,7 @@ var cardbookRepository = {
 				}
 				var myDirPrefIdName = cardbookRepository.cardbookPreferences.getName(myDirPrefId);
 				var myDirPrefIdType = cardbookRepository.cardbookPreferences.getType(myDirPrefId);
-				if (myDirPrefIdType == "GOOGLE" || myDirPrefIdType == "GOOGLE2") {
+				if (myDirPrefIdType == "GOOGLE" || myDirPrefIdType == "GOOGLE2" || myDirPrefIdType == "GOOGLE3") {
 					if (aListOfCategories[i].created) {
 						cardbookRepository.removeCategoryFromRepository(aListOfCategories[i], true, myDirPrefId);
 					} else {
@@ -2111,6 +2135,13 @@ var cardbookRepository = {
 		}
 	},
 
+	updateMailPop: function (aAddresses) {
+		let addresses = MailServices.headerParser.parseEncodedHeaderW(aAddresses);
+		for (let address of addresses) {
+			cardbookIDBMailPop.updateMailPop(address.email);
+		}
+	},
+
 	addMailPop: function (aEmail, aValue) {
 		cardbookIDBMailPop.updateMailPop(aEmail, aValue);
 	},
@@ -2219,7 +2250,7 @@ var cardbookRepository = {
 
 	getDateFormat: function (aDirPrefId, aVersion) {
 		var myType = cardbookRepository.cardbookPreferences.getType(aDirPrefId);
-		if ( myType == 'GOOGLE' || myType == 'APPLE') {
+		if ( myType == 'GOOGLE' || myType == 'APPLE' || myType == 'YAHOO') {
 			return "YYYY-MM-DD";
 		} else {
 			return aVersion;
@@ -2241,6 +2272,7 @@ var cardbookRepository = {
 			case "CARDDAV":
 			case "GOOGLE":
 			case "GOOGLE2":
+			case "GOOGLE3":
 			case "YAHOO":
 				return "remote";
 				break;
@@ -2285,24 +2317,26 @@ loader.loadSubScript("chrome://cardbook/content/cardbookUtils.jsm", cardbookRepo
 loader.loadSubScript("chrome://cardbook/content/cardbookSynchronization.jsm", cardbookRepository);
 loader.loadSubScript("chrome://cardbook/content/cardbookSynchronizationGoogle.jsm", cardbookRepository);
 loader.loadSubScript("chrome://cardbook/content/cardbookSynchronizationGoogle2.jsm", cardbookRepository);
-loader.loadSubScript("chrome://cardbook/content/cardbookSynchronizationYahoo.jsm", cardbookRepository);
 loader.loadSubScript("chrome://cardbook/content/cardbookLog.jsm", cardbookRepository);
 loader.loadSubScript("chrome://cardbook/content/cardbookPasswordManager.jsm", cardbookRepository);
 loader.loadSubScript("chrome://cardbook/content/cardbookTypes.jsm", cardbookRepository);
 loader.loadSubScript("chrome://cardbook/content/cardbookDiscovery.jsm", cardbookRepository);
-loader.loadSubScript("chrome://cardbook/content/cardbookPreferDisplayName.jsm", cardbookRepository);
 loader.loadSubScript("chrome://cardbook/content/cardbookDates.jsm", cardbookRepository);
 loader.loadSubScript("chrome://cardbook/content/migrate/cardbookMigrate.jsm", cardbookRepository);
+loader.loadSubScript("chrome://cardbook/content/collected/cardbookCollection.jsm", cardbookRepository);
+loader.loadSubScript("chrome://cardbook/content/attachvCard/cardbookAttachvCard.jsm", cardbookRepository);
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIndexedDB.js", this); //doesn't work with cardbookRepository instead of this
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBCard.js", this);
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBCat.js", this);
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBUndo.js", this);
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBImage.js", this);
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBMailPop.js", this);
+loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBPrefDispName.js", this);
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBSearch.js", this);
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookEncryptor.js", this);
 loader.loadSubScript("chrome://cardbook/content/cardbookCategoryParser.js", this);
 loader.loadSubScript("chrome://cardbook/content/cardbookCardParser.js", this);
 loader.loadSubScript("chrome://cardbook/content/lists/cardbookListConversion.js", this);
 loader.loadSubScript("chrome://cardbook/content/scripts/notifyTools.js", this);
-loader.loadSubScript("chrome://cardbook/content/simpleMailRedirection/api_exp.js", this);
+loader.loadSubScript("chrome://cardbook/content/simpleMailRedirection/simpleMailRedirection.js", this);
+loader.loadSubScript("chrome://cardbook/content/CardBookNotifyListener.js", cardbookRepository);

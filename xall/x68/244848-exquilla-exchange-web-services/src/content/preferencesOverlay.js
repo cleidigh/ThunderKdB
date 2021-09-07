@@ -32,13 +32,16 @@ exquilla.prefsOverlay = (function _prefsOverlay()
     log.debug("exquilla.prefsOverlay.onLoad");
     // locate the "Addressing Autocompletion" groupbox
     let addressingCheckbox = document.getElementById("addressingAutocomplete");
+    if (!addressingCheckbox) {
+      return; // wait for the composition pane to be loaded
+    }
+    window.removeEventListener("paneSelected", onLoad, false);
     let autocompleteGroupbox = addressingCheckbox.parentElement.parentElement;
     let autocompleteSeparator = addressingCheckbox.parentElement.nextElementSibling.nextElementSibling;
     // add an entry for ExQuilla accounts
     let galHbox = document.createXULElement("hbox");
     let abHbox = document.createXULElement("hbox");
-    autocompleteGroupbox.insertBefore(galHbox, autocompleteSeparator);
-    autocompleteGroupbox.insertBefore(abHbox, autocompleteSeparator);
+    autocompleteSeparator.before(galHbox, abHbox);
     let galCheckbox = document.createXULElement("checkbox");
     galHbox.appendChild(galCheckbox);
     let abCheckbox = document.createXULElement("checkbox");
@@ -64,4 +67,4 @@ exquilla.prefsOverlay = (function _prefsOverlay()
   return pub;
 })();
 
-window.addEventListener("load", function() { exquilla.prefsOverlay.onLoad();}, false);
+window.addEventListener("paneSelected", exquilla.prefsOverlay.onLoad, false);

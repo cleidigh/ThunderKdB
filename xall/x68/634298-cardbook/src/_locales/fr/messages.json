@@ -2909,6 +2909,9 @@
 	"wdw_cardEditionViewListTitle": {
 		"message": "Consulter la liste"
 	},
+	"wdw_cardEditionEditTemplateTitle": {
+		"message": "Modifier le modèle"
+	},
 	"wdw_cardbookPrintTitleLong": {
 		"message": "Aperçu avant impression de $P1$ - CardBook - Thunderbird",
         "placeholders": {
@@ -3165,7 +3168,7 @@
 		"message": "Définition d'une restriction sur un compte courrier"
 	},
 	"wdw_cardbookConfigurationAddEmailsCollectionTitle": {
-		"message": "Définition d'une collecte d'emails sortants sur un compte courrier"
+		"message": "Définition d'une collecte d'adresses de courriel sortants sur un compte courrier"
 	},
 	"ignoreCaseIgnoreDiacriticLabel": {
 		"message": "Ignorer la casse et les diacritiques"
@@ -3563,20 +3566,20 @@
 	"cardbookContactPaneItemAccesskey": {
 		"message": "O"
 	},
+	"wizard.next.label": {
+		"message": "Suivant"
+	},	
+	"wizard.back.label": {
+		"message": "Retour"
+	},	
+	"wizard.create.label": {
+		"message": "Créer"
+	},
 	"wizard.title": {
 		"message": "Ajouter un nouveau carnet d'adresses"
 	},
-	"wizard.label": {
-		"message": "Ajouter un nouveau carnet d'adresses"
-	},
-	"welcomePage.wizard.description": {
-		"message": "Bienvenue"
-	},
 	"welcomePage.description": {
 		"message": "Il semblerait que cela soit la première fois que vous utilisez CardBook, nous allons donc essayer de rechercher des contacts. Nous allons d'abord tenter d'importer les contacts existants dans CardBook, puis nous rechercherons de possibles carnets d'adresses distants."
-	},
-	"initialPage.wizard.description": {
-		"message": "Emplacement du nouveau carnet d'adresses."
 	},
 	"initialPage.description": {
 		"message": "Emplacement de votre carnet d'adresses :"
@@ -3595,9 +3598,6 @@
 	},
 	"initialPage.find.label": {
 		"message": "Recherche de carnets d'adresses distants"
-	},
-	"localPage.wizard.description": {
-		"message": "Type et emplacement du nouveau carnet d'adresses local."
 	},
 	"localPage.type.description": {
 		"message": "Type de votre carnet d'adresses local :"
@@ -3632,9 +3632,6 @@
 	"localPage.uributton.label": {
 		"message": "Naviguer"
 	},
-	"remotePage.wizard.description": {
-		"message": "Type et emplacement du nouveau carnet d'adresses distant."
-	},
 	"remotePage.description": {
 		"message": "Quel est le type de votre carnet d'adresses distant ? : (Attention avec Google, qui ne respecte pas le standard vCard)"
 	},
@@ -3646,6 +3643,9 @@
 	},
 	"remotePage.google.label": {
 		"message": "Google"
+	},
+	"remotePage.googleWorkspace.label": {
+		"message": "Google Workspace"
 	},
 	"remotePage.apple.label": {
 		"message": "Apple"
@@ -3671,14 +3671,14 @@
 	"remotePage.password.label": {
 		"message": "Mot de passe :"
 	},
+	"rememberPassword": {
+		"message": "Utiliser le gestionnaire de mots de passe pour se souvenir de ce mot de passe"
+	},
 	"showHidePassword.tooltip": {
 		"message": "Afficher/masquer le mot de passe"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Valider"
-	},
-	"locationSearchPage.wizard.description": {
-		"message": "Définition de la recherche."
 	},
 	"locationSearchPage.label": {
 		"message": "Recherche avancée"
@@ -3704,9 +3704,6 @@
 	"googleOauthPage.wizard.description": {
 		"message": "Authentification Google"
 	},
-	"namePage.wizard.description": {
-		"message": "Propriétés du carnet d'adresses"
-	},
 	"namePage.selected.label": {
 		"message": "Selectionné"
 	},
@@ -3725,17 +3722,11 @@
 	"namePage.vCardVersion.label": {
 		"message": "vCard"
 	},
-	"namesPage.wizard.description": {
-		"message": "Propriétés des nouveaux carnets d'adresses"
-	},
 	"namesPage.name.label": {
 		"message": "Noms"
 	},
 	"namesPage.name.description": {
 		"message": "Plusieurs carnets d'adresses ont été découverts. Choisissez quels carnets d'adresses vous désirez ouvrir ainsi que leurs noms :"
-	},
-	"findPage.wizard.description": {
-		"message": "Recherche de carnet d'adresses distants"
 	},
 	"findPage.name1.description": {
 		"message": "Aucun carnet d'adresses distant ne peut être ajouté."
@@ -3745,9 +3736,6 @@
 	},
 	"findPage.name3.description": {
 		"message": "Plusieurs carnets d'adresses distants peuvent être ajoutés. Choisissez ceux que vous souhaitez ajouter :"
-	},
-	"finishPage.wizard.description": {
-		"message": "Configuration des nouveaux carnets d'adresses"
 	},
 	"finishPage.description": {
 		"message": "Votre nouveau carnet d'adresses a été configuré avec succès."
@@ -3996,7 +3984,7 @@
 		"message": "Remplace la suggestion d'emails standard par celle fournie par CardBook. Si active, les emails vont être récupérés dans les carnets d'adresses CardBook et dans les emails collectés."
 	},
 	"autocompleteSortByPopularityLabel": {
-		"message": "Trier les courriels par popularité"
+		"message": "Trier les adresses de courriel par popularité"
 	},
 	"autocompleteSortByPopularityAccesskey": {
 		"message": "T"
@@ -5117,6 +5105,12 @@
 	"cardbookToolbarAddListButtonTooltip": {
 		"message": "Créer une nouvelle liste de diffusion"
 	},
+	"cardbookToolbarAddTemplateButtonLabel": {
+		"message": "Nouveau modèle"
+	},
+	"cardbookToolbarAddTemplateButtonTooltip": {
+		"message": "Créer un nouveau modèle"
+	},
 	"cardbookToolbarEditButtonLabel": {
 		"message": "Modifier"
 	},
@@ -5315,6 +5309,15 @@
 	"searchForLocalKeyEditButton.tooltip": {
 		"message": "Importer depuis un fichier"
 	},
+	"definitionLabel": {
+		"message": "Définition"
+	},
+	"fieldsLabel": {
+		"message": "Champs"
+	},
+	"formulasLabel": {
+		"message": "Formules"
+	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Partager par email"
 	},
@@ -5462,6 +5465,9 @@
 	"fnFormulaExplanation": {
 		"message": "Il est possible de choisir comment CardBook génère ses Noms affichés. Cette formule est une succession de blocs délimités par « () ». Ces blocs peuvent être constitués de plusieurs parties délimitées par « | »."
 	},
+	"templateFormulaExplanation": {
+		"message": "Il est possible de définir des modèles avec des champs pré-définis. Par exemple on peut définir un modèle qui contient l'email  ”({{2}}).({{4}})@mycompany.org”. Une fois le modèle appliqué à un contact qui a ”John” et ”Doe” comme prénom et nom de famille, un email ”john.doe@mycompany.org” sera ajouté au contact."
+	},
 	"formulaExplanation1": {
 		"message": "({{1}}|{{2}}) : Si {{1}} est vide, alors le bloc est remplacé par {{2}}."
 	},
@@ -5500,12 +5506,6 @@
 	},
 	"displayFieldNamesAccesskey": {
 		"message": "m"
-	},
-	"displayTypesLabel": {
-		"message": "Types et préférences"
-	},
-	"displayTypesAccesskey": {
-		"message": "y"
 	},
 	"fieldsToPrintGroupboxLabel": {
 		"message": "Champs à imprimer"
@@ -5698,6 +5698,12 @@
 	},
 	"saveTemplateLabel": {
 		"message": "Sauver le modèle"
+	},
+	"applyTemplateLabel": {
+		"message": "Appliquer le modèle"
+	},
+	"createTemplateLabel": {
+		"message": "Créer un modèle"
 	},
 	"convertVCardsLabel": {
 		"message": "Convertir les vCards"

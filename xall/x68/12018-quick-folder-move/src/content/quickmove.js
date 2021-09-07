@@ -178,10 +178,13 @@ var quickmove = (function() {
      * @param popup       The popup to add to
      * @param targetValue The searched text
      */
-    addFolders: function(folders, popup, targetValue) {
+    addFolders: async function(folders, popup, targetValue) {
       let dupeMap = {};
       let serverMap = {};
       let fullPathMap = {};
+      let alwaysShowFullPath = await Quickmove.getPref("alwaysShowFullPath", false);
+      let alwaysShowMailbox = await Quickmove.getPref("alwaysShowMailbox", false);
+      let doNotCrop = await Quickmove.getPref("doNotCrop", false);
 
       // First create a map of pretty names to find possible duplicates.
       for (let folder of folders) {
@@ -214,14 +217,17 @@ var quickmove = (function() {
       // itself would appear more than once.
       for (let folder of folders) {
         let node = document.createXULElement("menuitem");
+        if (doNotCrop) {
+          node.setAttribute("crop", "none");
+        }
         let label = folder.prettyName;
         let lowerLabel = label.toLowerCase();
 
-        if (lowerLabel in fullPathMap) {
+        if (lowerLabel in fullPathMap || alwaysShowFullPath) {
           label = Quickmove.getFullName(folder);
         }
 
-        if (lowerLabel in dupeMap && dupeMap[lowerLabel] > 1) {
+        if ((lowerLabel in dupeMap && dupeMap[lowerLabel] > 1) || alwaysShowMailbox) {
           label += " - " + folder.server.prettyName;
         }
         node.setAttribute("label", label);
@@ -266,9 +272,8 @@ var quickmove = (function() {
         allNames.push(aFolder.prettyName.toLowerCase());
 
         if (aFolder.hasSubFolders) {
-          let myenum = aFolder.subFolders;
-          while (myenum.hasMoreElements()) {
-            processFolder(myenum.getNext().QueryInterface(Ci.nsIMsgFolder), excludeArchives);
+          for (let xFolder of aFolder.subFolders) {
+            processFolder(xFolder, excludeArchives);
           }
         }
       }
@@ -306,7 +311,7 @@ var quickmove = (function() {
       let maxRecent = await Quickmove.getPref("maxRecentFolders", 15);
       let excludeArchives = await Quickmove.getPref("excludeArchives", false);
 
-      for (let acct of fixIterator(MailServices.accounts.accounts, Ci.nsIMsgAccount)) {
+      for (let acct of MailServices.accounts.accounts) {
         if (acct.incomingServer) {
           processFolder(acct.incomingServer.rootFolder, excludeArchives);
         }
@@ -325,9 +330,7 @@ var quickmove = (function() {
       let popup = textboxNode.parentNode;
       Quickmove.clearItems(popup);
       dump(`=== text |${textboxNode.value}|\n`);
-      if (textboxNode.value.length == 0) {
-        quickmove.addFolders(quickmove.recentFolders, popup, textboxNode.value);
-      } else {
+      if (textboxNode.value.length) {
         let folders = quickmove.suffixTree
           .findMatches(textboxNode.value.toLowerCase())
           .filter(x => x.canFileMessages);
@@ -340,6 +343,8 @@ var quickmove = (function() {
           node.setAttribute("label", Quickmove.getString("noResults"));
           popup.appendChild(node);
         }
+      } else {
+        quickmove.addFolders(quickmove.recentFolders, popup, textboxNode.value);
       }
 
       // The search is done, reset the dirty count and call the search complete

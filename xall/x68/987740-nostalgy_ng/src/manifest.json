@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "Manage Emails/ Nostalgy++",
     "description": "Adds shortcuts to change folder, move/copy messages, with folder completion, and other utilities to archive or organise emails. User instructions at tools->addon settings->nostalgy++->  Nostalgy++ usage directions",
-	"version": "2.3.1",
+	"version": "3.0.4",
 	"author": "Alain Frisch, opto (Klaus Buecher)",
 	"developer": {
 		"name": "Alain Frisch, opto (Klaus Buecher)"
@@ -12,6 +12,7 @@
 		"gecko": {
 			"id": "nostalgy@opto.one",
 			"strict_min_version": "78.0"
+
 		}
 	},
 	"icons": {
@@ -20,7 +21,12 @@
 		"48": "/skin/iconmonstr-copy-14-48.png",
 		"96": "/skin/iconmonstr-copy-14-96.png"
 
-    },
+	},
+	
+	"permissions": [
+		"notifications", "messagesRead"
+	],
+
 	"background": {
 		"scripts": ["me-background.js"]
 	  },
@@ -57,11 +63,12 @@
 		  "parent": {
 			"scopes": ["addon_parent"],
 			"paths": [["NotifyTools"]],
-			"script": "chrome/content/api/NotifyTools/implementation.js"
+			"script": "chrome/content/api/NotifyTools/implementation.js",
+			"events": ["startup"]
 		  }
 		}
 		  }
 		
 
 }
-                                                                                                                                                        
+ 

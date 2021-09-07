@@ -7,7 +7,6 @@ var { XPCOMUtils } = ChromeUtils.import(
 );
 
 XPCOMUtils.defineLazyModuleGetters(this, {
-  BrowserSim: "chrome://conversations/content/modules/browserSim.js",
   Conversation: "chrome://conversations/content/modules/conversation.js",
   ExtensionCommon: "resource://gre/modules/ExtensionCommon.jsm",
   msgHdrGetUri: "chrome://conversations/content/modules/misc.js",
@@ -19,16 +18,21 @@ XPCOMUtils.defineLazyGetter(this, "Log", () => {
   return setupLogging("Conversations.msgWindowApi");
 });
 
-XPCOMUtils.defineLazyGetter(this, "browser", function () {
-  return BrowserSim.getBrowser();
-});
-
 const kMultiMessageUrl = "chrome://messenger/content/multimessageview.xhtml";
 
+/**
+ * @typedef nsIMsgDBHdr
+ * @see https://searchfox.org/comm-central/rev/9d9fac50cddfd9606a51c4ec3059728c33d58028/mailnews/base/public/nsIMsgHdr.idl#14
+ */
+
+/**
+ * Handles observing updates on windows.
+ */
 class WindowObserver {
-  constructor(windowManager, callback) {
+  constructor(windowManager, callback, context) {
     this._windowManager = windowManager;
     this._callback = callback;
+    this._context = context;
   }
 
   observe(subject, topic, data) {
@@ -51,7 +55,8 @@ class WindowObserver {
       }
       this._callback(
         subject.window,
-        this._windowManager.getWrapper(subject.window).id
+        this._windowManager.getWrapper(subject.window).id,
+        this._context
       );
     });
   }
@@ -64,40 +69,6 @@ var convMsgWindow = class extends ExtensionCommon.ExtensionAPI {
     const { messageManager, tabManager, windowManager } = extension;
     return {
       convMsgWindow: {
-        async isSelectionExpanded(windowId) {
-          const win = getWindowFromId(windowManager, context, windowId);
-          const msgIndex = win.gFolderDisplay
-            ? win.gFolderDisplay.selectedIndices[0]
-            : -1;
-          if (msgIndex >= 0) {
-            try {
-              let viewThread = win.gDBView.getThreadContainingIndex(msgIndex);
-              let rootIndex = win.gDBView.findIndexOfMsgHdr(
-                viewThread.getChildHdrAt(0),
-                false
-              );
-              if (rootIndex >= 0) {
-                return (
-                  win.gDBView.isContainer(rootIndex) &&
-                  !win.gFolderDisplay.view.isCollapsedThreadAtIndex(rootIndex)
-                );
-              }
-            } catch (ex) {
-              console.error("Error in the onLocationChange handler", ex);
-            }
-          }
-          return false;
-        },
-        async isSelectionThreaded(windowId) {
-          const win = getWindowFromId(windowManager, context, windowId);
-          // If we're not showing threaded, then we only worry about how many
-          // messages are selected.
-          if (!win.gFolderDisplay.view.showThreaded) {
-            return false;
-          }
-
-          return !(await this.isSelectionExpanded(windowId));
-        },
         async getDisplayedMessages(tabId) {
           let tab = tabManager.get(tabId);
           let displayedMessages;
@@ -128,15 +99,27 @@ var convMsgWindow = class extends ExtensionCommon.ExtensionAPI {
           }
           return result;
         },
-        async openNewWindow(url) {
+        async openNewWindow(url, params) {
           const win = getWindowFromId();
           // Counting some extra pixels for window decorations.
           let height = Math.min(win.screen.availHeight - 30, 1024);
-          win.open(
-            url,
-            "_blank",
-            "chrome,resizable,width=640,height=" + height
-          );
+          const args = { params };
+          let features = "chrome,resizable,titlebar,minimizable";
+          if (!params) {
+            // In Thunderbird 78, we do not have the capability to persist the
+            // size, so we force it.
+            features += ",width=640,height=" + height;
+          }
+          win.openDialog(url, "_blank", features, args);
+        },
+        async print(winId, iframeId) {
+          let win = getWindowFromId(winId);
+          let multimessage = win.document.getElementById("multimessage");
+          let messageIframe =
+            multimessage.contentDocument.getElementById(iframeId);
+          win.PrintUtils.startPrintWindow(messageIframe.browsingContext, {
+            printFrameOnly: true,
+          });
         },
         onThreadPaneDoubleClick: new ExtensionCommon.EventManager({
           context,
@@ -292,10 +275,42 @@ var convMsgWindow = class extends ExtensionCommon.ExtensionAPI {
             };
           },
         }).api(),
+        onPrint: new ExtensionCommon.EventManager({
+          context,
+          name: "convMsgWindow.onPrint",
+          register(fire) {
+            if (printListeners.size == 0) {
+              printWindowListener = new WindowObserver(
+                windowManager,
+                printPatch,
+                context
+              );
+              monkeyPatchAllWindows(windowManager, printPatch, context);
+              Services.ww.registerNotification(printWindowListener);
+            }
+            printListeners.add(fire);
+
+            return function () {
+              printListeners.delete(fire);
+              if (printListeners.size == 0) {
+                Services.ww.unregisterNotification(printWindowListener);
+                monkeyPatchAllWindows(windowManager, (win) => {
+                  win.controllers.removeController(
+                    win.conversationsPrintController
+                  );
+                  delete win.conversationsPrintController;
+                });
+              }
+            };
+          },
+        }).api(),
       },
     };
   }
 };
+
+let printListeners = new Set();
+let printWindowListener = null;
 
 function getWindowFromId(windowManager, context, id) {
   return id !== null && id !== undefined
@@ -319,13 +334,107 @@ function waitForWindow(win) {
   });
 }
 
-function monkeyPatchAllWindows(windowManager, callback) {
+function monkeyPatchAllWindows(windowManager, callback, context) {
   for (const win of Services.wm.getEnumerator("mail:3pane")) {
     waitForWindow(win).then(() => {
-      callback(win, windowManager.getWrapper(win).id);
+      callback(win, windowManager.getWrapper(win).id, context);
     });
   }
 }
+
+const printPatch = (win, winId, context) => {
+  let tabmail = win.document.getElementById("tabmail");
+  var PrintController = {
+    supportsCommand(command) {
+      switch (command) {
+        case "button_print":
+        case "cmd_print":
+          return (
+            tabmail.selectedTab.mode?.type == "folder" ||
+            (tabmail.selectedTab.mode?.type == "contentTab" &&
+              tabmail.selectedBrowser.browsingContext.currentURI.spec.startsWith(
+                "chrome://conversations/content/stub.html"
+              ))
+          );
+        default:
+          return false;
+      }
+    },
+    isCommandEnabled(command) {
+      switch (command) {
+        case "button_print":
+        case "cmd_print":
+          if (tabmail.selectedTab.mode?.type == "folder") {
+            let numSelected = win.gFolderDisplay.selectedCount;
+            // TODO: Allow printing multiple selected messages if TB allows it.
+            if (numSelected != 1) {
+              return false;
+            }
+            if (
+              !win.gFolderDisplay.getCommandStatus(
+                Ci.nsMsgViewCommandType.cmdRequiringMsgBody
+              )
+            ) {
+              return false;
+            }
+
+            // Check if we have a collapsed thread selected and are summarizing it.
+            // If so, selectedIndices.length won't match numSelected. Also check
+            // that we're not displaying a message, which handles the case
+            // where we failed to summarize the selection and fell back to
+            // displaying a message.
+            if (
+              win.gFolderDisplay.selectedIndices.length != numSelected &&
+              command != "cmd_applyFiltersToSelection" &&
+              win.gDBView &&
+              win.gDBView.currentlyDisplayedMessage == win.nsMsgViewIndex_None
+            ) {
+              return false;
+            }
+            return true;
+          }
+          // else, must be a content tab, so return false for now.
+          return false;
+        default:
+          return false;
+      }
+    },
+    async doCommand(command) {
+      switch (command) {
+        case "button_print":
+        case "cmd_print":
+          let id = (
+            await context.extension.messageManager.convert(
+              win.gFolderDisplay.selectedMessage
+            )
+          ).id;
+          for (let listener of printListeners) {
+            listener.async(winId, id);
+          }
+          break;
+      }
+    },
+    QueryInterface: ChromeUtils.generateQI(["nsIController"]),
+  };
+
+  let toolbox = win.document.getElementById("mail-toolbox");
+  // Use this as a proxy for if mail-startup-done has been called.
+  if (toolbox.customizeDone) {
+    win.controllers.insertControllerAt(0, PrintController);
+  } else {
+    // The main window is loaded when the monkey-patch is applied
+    let observer = {
+      observe(msgWin, aTopic, aData) {
+        if (msgWin == win) {
+          Services.obs.removeObserver(observer, "mail-startup-done");
+          win.controllers.insertControllerAt(0, PrintController);
+        }
+      },
+    };
+    Services.obs.addObserver(observer, "mail-startup-done");
+  }
+  win.conversationsPrintController = PrintController;
+};
 
 const specialPatches = (win) => {
   win.conversationUndoFuncs = [];
@@ -396,7 +505,7 @@ const specialPatches = (win) => {
   );
 
   function fightAboutBlank() {
-    if (messagepane.contentWindow.location.href == "about:blank") {
+    if (messagepane.contentWindow?.location.href == "about:blank") {
       // Workaround the "feature" that disables the context menu when the
       // messagepane points to about:blank
       messagepane.contentWindow.location.href = "about:blank?";
@@ -412,12 +521,38 @@ const specialPatches = (win) => {
   htmlpane.docShell.allowDNSPrefetch = false;
 };
 
-function clearTimer(win) {
-  // If we changed conversations fast, clear the timeout
-  if (win.conversationsMarkReadTimeout) {
-    win.clearTimeout(win.conversationsMarkReadTimeout);
-    delete win.conversationsMarkReadTimeout;
+function isSelectionExpanded(win) {
+  const msgIndex = win.gFolderDisplay
+    ? win.gFolderDisplay.selectedIndices[0]
+    : -1;
+  if (msgIndex >= 0) {
+    try {
+      let viewThread = win.gDBView.getThreadContainingIndex(msgIndex);
+      let rootIndex = win.gDBView.findIndexOfMsgHdr(
+        viewThread.getChildHdrAt(0),
+        false
+      );
+      if (rootIndex >= 0) {
+        return (
+          win.gDBView.isContainer(rootIndex) &&
+          !win.gFolderDisplay.view.isCollapsedThreadAtIndex(rootIndex)
+        );
+      }
+    } catch (ex) {
+      console.error("Error in the onLocationChange handler", ex);
+    }
   }
+  return false;
+}
+
+function determineIfSelectionIsThreaded(win) {
+  // If we're not showing threaded, then we only worry about how many
+  // messages are selected.
+  if (!win.gFolderDisplay.view.showThreaded) {
+    return false;
+  }
+
+  return !isSelectionExpanded(win);
 }
 
 function summarizeThreadHandler(win, id) {
@@ -477,157 +612,81 @@ function summarizeThreadHandler(win, id) {
           });
         }
 
-        (async () => {
-          // Should cancel most intempestive view refreshes, but only after we
-          //  made sure the multimessage pane is shown. The logic behind this
-          //  is the conversation in the message pane is already alive, and
-          //  the gloda query is updating messages just fine, so we should not
-          //  worry about messages which are not in the view.
-          let newlySelectedUris = aSelectedMessages.map((m) => msgHdrGetUri(m));
-          let isSelectionThreaded =
-            await browser.convMsgWindow.isSelectionThreaded(this._windowId);
+        // Should cancel most intempestive view refreshes, but only after we
+        //  made sure the multimessage pane is shown. The logic behind this
+        //  is the conversation in the message pane is already alive, and
+        //  the gloda query is updating messages just fine, so we should not
+        //  worry about messages which are not in the view.
+        let newlySelectedUris = aSelectedMessages.map((m) => msgHdrGetUri(m));
+        let isSelectionThreaded = determineIfSelectionIsThreaded(win);
 
-          function isSubSetOrEqual(a1, a2) {
-            if (!a1.length || !a2.length || a1.length > a2.length) {
-              return false;
-            }
-
-            return a1.every((v, i) => {
-              return v == a2[i];
-            });
+        function isSubSetOrEqual(a1, a2) {
+          if (!a1.length || !a2.length || a1.length > a2.length) {
+            return false;
           }
-          // If the selection is still threaded (or still not threaded), then
-          // avoid redisplaying if we're displaying the same set or super-set.
-          //
-          // We avoid redisplay for the same set, as sometimes Thunderbird will
-          // call the selection update twice when it hasn't changed.
-          //
-          // We avoid redisplay for the case when the previous set is a subset
-          // as this can occur when:
-          // - we've received a new message(s), but Gloda hasn't told us about
-          //   it yet, and we pick it up in a future onItemsAddedn notification.
-          // - the user has expended the selection. We won't update the
-          //   expanded state of messages in this case, but that's probably okay
-          //   since the user is probably selecting them to move them or
-          //   something, rather than getting them expanded in the conversation
-          //   view.
-          //
-          // In both cases, we should be safe to avoid regenerating the
-          // conversation. If we find issues, we might need to revisit this
-          // assumption.
-          if (
-            isSubSetOrEqual(previouslySelectedUris, newlySelectedUris) &&
-            previousIsSelectionThreaded == isSelectionThreaded
-          ) {
-            Log.debug(
-              "Hey, know what? The selection hasn't changed, so we're good!"
-            );
-            return;
-          }
-          // Remember the previously selected URIs now, so that if we get
-          // a duplicate conversation, we don't try to start rending the same
-          // conversation again whilst the previous one is still in progress.
-          previouslySelectedUris = newlySelectedUris;
-          previousIsSelectionThreaded = isSelectionThreaded;
 
-          let freshConversation = new Conversation(
-            win,
-            aSelectedMessages,
-            isSelectionThreaded,
-            ++win.Conversations.counter
-          );
+          return a1.every((v, i) => {
+            return v == a2[i];
+          });
+        }
+        // If the selection is still threaded (or still not threaded), then
+        // avoid redisplaying if we're displaying the same set or super-set.
+        //
+        // We avoid redisplay for the same set, as sometimes Thunderbird will
+        // call the selection update twice when it hasn't changed.
+        //
+        // We avoid redisplay for the case when the previous set is a subset
+        // as this can occur when:
+        // - we've received a new message(s), but Gloda hasn't told us about
+        //   it yet, and we pick it up in a future onItemsAddedn notification.
+        // - the user has expended the selection. We won't update the
+        //   expanded state of messages in this case, but that's probably okay
+        //   since the user is probably selecting them to move them or
+        //   something, rather than getting them expanded in the conversation
+        //   view.
+        //
+        // In both cases, we should be safe to avoid regenerating the
+        // conversation. If we find issues, we might need to revisit this
+        // assumption.
+        if (
+          isSubSetOrEqual(previouslySelectedUris, newlySelectedUris) &&
+          previousIsSelectionThreaded == isSelectionThreaded
+        ) {
           Log.debug(
-            "New conversation:",
-            freshConversation.counter,
-            "Old conversation:",
-            win.Conversations.currentConversation &&
-              win.Conversations.currentConversation.counter
+            "Hey, know what? The selection hasn't changed, so we're good!"
           );
-          if (win.Conversations.currentConversation) {
-            win.Conversations.currentConversation.cleanup();
-          }
-          win.Conversations.currentConversation = freshConversation;
-          freshConversation.outputInto(
-            htmlpane.contentWindow,
-            async function (aConversation) {
-              if (!aConversation.messages.length) {
-                Log.debug("0 messages in aConversation");
-                return;
-              }
-              // One nasty behavior of the folder tree view is that it calls us
-              //  every time a new message has been downloaded. So if you open
-              //  your inbox all of a sudden and select a conversation, it's not
-              //  uncommon to see the conversation being rebuilt 5 times in a
-              //  row because sumarizeThread is constantly re-called.
-              // To workaround this, even though we create a fresh conversation,
-              //  that conversation might end up recycling the old one as long
-              //  as the old conversation's message set is a prefix of that of
-              //  the new conversation. So because we're not sure
-              //  freshConversation will actually end up being used, we take the
-              //  new conversation as parameter.
-              Log.assert(
-                aConversation.isSelectionThreaded == isSelectionThreaded,
-                "Someone forgot to put the right scroll mode!"
-              );
-              // Here, put the final touches to our new conversation object.
-              // TODO: Maybe re-enable this.
-              // htmlpane.contentWindow.newComposeSessionByDraftIf();
-              aConversation.completed = true;
-              // TODO: Re-enable this.
-              // htmlpane.contentWindow.registerQuickReply();
+          return;
+        }
+        // Remember the previously selected URIs now, so that if we get
+        // a duplicate conversation, we don't try to start rending the same
+        // conversation again whilst the previous one is still in progress.
+        previouslySelectedUris = newlySelectedUris;
+        previousIsSelectionThreaded = isSelectionThreaded;
 
-              win.gMessageDisplay.onLoadCompleted();
-
-              // Make sure we respect the user's preferences.
-              if (
-                Services.prefs.getBoolPref("mailnews.mark_message_read.auto")
-              ) {
-                win.conversationsMarkReadTimeout = win.setTimeout(
-                  async function () {
-                    // The idea is that usually, we're selecting a thread (so we
-                    //  have kScrollUnreadOrLast). This means we mark the whole
-                    //  conversation as read. However, sometimes the user selects
-                    //  individual messages. In that case, don't do something weird!
-                    //  Just mark the selected messages as read.
-                    if (isSelectionThreaded) {
-                      Log.debug("Marking the whole conversation as read");
-                      for (const m of aConversation.messages) {
-                        if (!m.message.read) {
-                          await browser.messages.update(m.message._id, {
-                            read: true,
-                          });
-                        }
-                      }
-                    } else {
-                      // We don't seem to have a reflow when the thread is expanded
-                      //  so no risk of silently marking conversations as read.
-                      Log.debug("Marking selected messages as read");
-                      for (const msgHdr of aSelectedMessages) {
-                        const id =
-                          await browser.conversations.getMessageIdForUri(
-                            msgHdrGetUri(msgHdr)
-                          );
-                        if (!msgHdr.read) {
-                          await browser.messages.update(id, {
-                            read: true,
-                          });
-                        }
-                      }
-                    }
-                    win.conversationsMarkReadTimeout = null;
-                  },
-                  Services.prefs.getIntPref(
-                    "mailnews.mark_message_read.delay.interval"
-                  ) *
-                    Services.prefs.getBoolPref(
-                      "mailnews.mark_message_read.delay"
-                    ) *
-                    1000
-                );
-              }
+        let freshConversation = new Conversation(
+          win,
+          aSelectedMessages,
+          ++win.Conversations.counter
+        );
+        Log.debug(
+          "New conversation:",
+          freshConversation.counter,
+          "Old conversation:",
+          win.Conversations.currentConversation?.counter
+        );
+        win.Conversations.currentConversation?.cleanup();
+        win.Conversations.currentConversation = freshConversation;
+        freshConversation.outputInto(
+          htmlpane.contentWindow,
+          async function (aConversation) {
+            if (!aConversation.messages.length) {
+              Log.debug("0 messages in aConversation");
+              return;
             }
-          );
-        })().catch(console.error);
+
+            win.gMessageDisplay.onLoadCompleted();
+          }
+        );
       }
     );
   };
@@ -648,7 +707,6 @@ function summarizeThreadHandler(win, id) {
           return true;
         }
         win.ClearPendingReadTimer();
-        clearTimer(win);
 
         let selectedCount = this.folderDisplay.selectedCount;
         Log.debug(
@@ -671,30 +729,6 @@ function summarizeThreadHandler(win, id) {
           // leave it up to the standard message reader. If the user explicitely
           // asked for the old message reader, we give up as well.
           if (msgHdrIsRss(msgHdr) || msgHdrIsNntp(msgHdr)) {
-            // Use the default pref.
-            if (Services.prefs.getBoolPref("mailnews.mark_message_read.auto")) {
-              win.conversationsMarkReadTimeout = win.setTimeout(
-                async function () {
-                  Log.debug("Marking as read:", msgHdr);
-                  const id = await browser.conversations.getMessageIdForUri(
-                    msgHdrGetUri(msgHdr)
-                  );
-                  if (!msgHdr.read) {
-                    await browser.messages.update(id, {
-                      read: true,
-                    });
-                  }
-                  win.conversationsMarkReadTimeout = null;
-                },
-                Services.prefs.getIntPref(
-                  "mailnews.mark_message_read.delay.interval"
-                ) *
-                  Services.prefs.getBoolPref(
-                    "mailnews.mark_message_read.delay"
-                  ) *
-                  1000
-              );
-            }
             this.singleMessageDisplay = true;
             return false;
           }
@@ -719,18 +753,20 @@ function summarizeThreadHandler(win, id) {
 }
 
 /**
- * Tell if a message is an RSS feed iteme
- * @param {nsIMsgDbHdr} msgHdr The message header
- * @return {Bool}
+ * Tell if a message is an RSS feed item.
+ *
+ * @param {nsIMsgDBHdr} msgHdr The message header
+ * @returns {boolean}
  */
 function msgHdrIsRss(msgHdr) {
   return msgHdr.folder.server instanceof Ci.nsIRssIncomingServer;
 }
 
 /**
- * Tell if a message is a NNTP message
- * @param {nsIMsgDbHdr} msgHdr The message header
- * @return {Bool}
+ * Tell if a message is a NNTP message.
+ *
+ * @param {nsIMsgDBHdr} msgHdr The message header
+ * @returns {boolean}
  */
 function msgHdrIsNntp(msgHdr) {
   return msgHdr.folder.server instanceof Ci.nsINntpIncomingServer;

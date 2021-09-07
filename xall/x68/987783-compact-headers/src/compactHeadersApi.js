@@ -309,7 +309,11 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
 
                   if (expandedHeaders2.getAttribute("compact") == "compact") {
                     checkToolbar();
-                    compactHeadersButton.setAttribute("image", "chrome://global/skin/icons/twisty-collapsed.svg");
+                    if (xulAppInfo.version < "91") {
+                      compactHeadersButton.setAttribute("image", "chrome://global/skin/icons/twisty-collapsed.svg");
+                    } else {
+                      compactHeadersButton.setAttribute("image", "chrome://global/skin/icons/arrow-right-12.svg");
+                    }
                     compactHeadersButton.setAttribute("tooltiptext", "Show Details");
                     msgHeaderViewDeck.setAttribute("style", "margin-block: -4px -2px;");
                     hideCryptoBox();
@@ -322,7 +326,11 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
                     }
                   } else {
                     checkToolbar();
-                    compactHeadersButton.setAttribute("image", "chrome://global/skin/icons/twisty-expanded.svg");
+                    if (xulAppInfo.version < "91") {
+                      compactHeadersButton.setAttribute("image", "chrome://global/skin/icons/twisty-expanded.svg");
+                    } else {
+                      compactHeadersButton.setAttribute("image", "chrome://global/skin/icons/arrow-down-12.svg");
+                    }
                     compactHeadersButton.setAttribute("tooltiptext", "Hide Details");
                     msgHeaderViewDeck.setAttribute("style", "margin-block: -4px 0px;");
                     showCryptoBox();
@@ -354,7 +362,11 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
                     expandedccBox.firstChild.removeAttribute("style");
                     expandedtoBox.lastChild.removeEventListener("click", doToggle);
                     expandedccBox.lastChild.removeEventListener("click", doToggle);
-                    compactHeadersButton.setAttribute("image", "chrome://global/skin/icons/twisty-expanded.svg");
+                    if (xulAppInfo.version < "91") {
+                      compactHeadersButton.setAttribute("image", "chrome://global/skin/icons/twisty-expanded.svg");
+                    } else {
+                      compactHeadersButton.setAttribute("image", "chrome://global/skin/icons/arrow-down-12.svg");
+                    }
                     compactHeadersButton.setAttribute("tooltiptext", "Hide Details");
                     if (expandedHeaders2.getAttribute("showall") == "showall") window.MsgViewAllHeaders();
                     else window.MsgViewNormalHeaders();
@@ -375,7 +387,11 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
                     expandedccBox.firstChild.setAttribute("style", "overflow-x: hidden;");
                     expandedtoBox.lastChild.addEventListener("click", doToggle);
                     expandedccBox.lastChild.addEventListener("click", doToggle);
-                    compactHeadersButton.setAttribute("image", "chrome://global/skin/icons/twisty-collapsed.svg");
+                    if (xulAppInfo.version < "91") {
+                      compactHeadersButton.setAttribute("image", "chrome://global/skin/icons/twisty-collapsed.svg");
+                    } else {
+                      compactHeadersButton.setAttribute("image", "chrome://global/skin/icons/arrow-right-12.svg");
+                    }
                     compactHeadersButton.setAttribute("tooltiptext", "Show Details");
                     window.MsgViewNormalHeaders();
                     msgHeaderViewDeck.setAttribute("style", "margin-block: -4px -2px;");

@@ -1,5 +1,56 @@
 [
     {
+        "id": 2476432,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "91.*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/clippings-tb/versions/2476432",
+        "files": [
+            {
+                "id": 1019592,
+                "created": "2021-09-07T05:18:14Z",
+                "hash": "sha256:b1767cbc7a88ac719c908c86a9cf9932c341c9b82f1d9fc2ece9bfde29944675",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 815245,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019592/clippings_for_thunderbird-6.1.1-tb.xpi?src=",
+                "permissions": [
+                    "alarms",
+                    "downloads",
+                    "management",
+                    "nativeMessaging",
+                    "notifications",
+                    "storage",
+                    "unlimitedStorage"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "What's New in Clippings for Thunderbird 6.1.1:\n• Cosmetic improvements to dialog buttons on macOS\n• Other fixes and improvements"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/clippings-tb/versions/6.1.1",
+        "version": "6.1.1"
+    },
+    {
         "id": 2476279,
         "channel": "listed",
         "compatibility": {
@@ -32,7 +83,7 @@
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 3338,
             "name": {
@@ -44,7 +95,7 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "What's New in Clippings for Thunderbird 6.1:\n• Improvements to Clippings Manager. On Windows, Clippings Manager now remembers its window size and position\n• Improvements to support for multiple displays on Windows. Clippings popup windows and dialogs will now be positioned within the Thunderbird window from which they were opened, instead of always centered on the primary display. This feature is experimental on macOS and Linux, where it is turned off by default\n• New option to skip backup reminders if there were no changes to your clippings since the last backup\n• In Clippings Manager, the Details Pane can be shown or hidden by pressing CTRL+D (Command+D on macOS)\n• User interface improvements to more closely match the rest of Thunderbird, as well as improved support for Dark Mode system themes on macOS and Windows (requires Thunderbird 91 or newer)\n• Bug fix: First-time backup dialog doesn't regain focus after Save As dialog dismissed\n• Added support for Dutch, French, German, and Portuguese (Brazil)"
+            "en-US": "What's New in Clippings for Thunderbird 6.1:\n• Improvements to Clippings Manager. On Windows, Clippings Manager now remembers its window size and position\n• Improved support for multiple displays on Windows. Clippings popup windows and dialogs will now be positioned within the Thunderbird window from which they were opened, instead of always centered on the primary display. This feature is experimental on macOS and Linux, where it is turned off by default\n• New option to skip backup reminders if there were no changes to your clippings since the last backup\n• In Clippings Manager, the Details Pane can be shown or hidden by pressing CTRL+D (Command+D on macOS)\n• User interface improvements to more closely match the rest of Thunderbird, as well as improved support for Dark Mode system themes on macOS and Windows (requires Thunderbird 91 or newer)\n• Bug fix: First-time backup dialog doesn't regain focus after Save As dialog dismissed\n• Added support for Dutch, French, German, and Portuguese (Brazil)"
         },
         "reviewed": "2021-08-16T09:09:52Z",
         "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/clippings-tb/versions/6.1",

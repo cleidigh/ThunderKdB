@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 2034,
+    "average_daily_users": 2235,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -18,26 +18,26 @@
     "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CCFL84AMQKV4S&source=url",
     "created": "2020-09-15T23:42:12Z",
     "current_version": {
-        "id": 2474895,
+        "id": 2476372,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "93.0",
                 "min": "68.2.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/qnote/versions/2474895",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/qnote/versions/2476372",
         "files": [
             {
-                "id": 1018057,
-                "created": "2020-11-30T23:55:44Z",
-                "hash": "sha256:12d1e5192650f6044be213c5262672f678a1c07b15cfe40be5f64540dd02e1a3",
+                "id": 1019532,
+                "created": "2021-09-02T10:03:53Z",
+                "hash": "sha256:30c0c7f7ce65434bda4437f4592e966fb9a8b7604debf2d049903bb8240ef50b",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 147998,
+                "size": 145449,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018057/qnote-0.10.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019532/qnote-0.10.3-tb.xpi?src=",
                 "permissions": [
                     "messagesRead",
                     "storage",
@@ -48,7 +48,7 @@
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 6,
             "name": {
@@ -78,15 +78,15 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "Options:\n-Auto save\n-Reset to defaults\n-Custom date format localization\n-More default positions to choose from\n-Opt always use default size and position\n-Styling tweaks\n\nOther:\n-Bug fixes"
+            "en-US": "Bug fix release\n- Use Webextension headerMessageId property (starting with TB85)\n- Fix unnecessary trimming when message-id is w/o brackets (#6)\n- Fix note movement for TB &lt; 91 (#9)"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/qnote/versions/0.10.1",
-        "version": "0.10.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/qnote/versions/0.10.3",
+        "version": "0.10.3"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "QNote extension development was started after <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/xnotepp/\">XNote++</a> support was dropped. It aims to be XNote++ drop-in replacement. Please report any issues and/or ideas to support e-mail or <a rel=\"nofollow\" href=\"https://github.com/mlazdans/qnote/issues\">GitHub</a> (please do <em>not</em> use reviews section for that).\n\n<b><em>In order to improve quality of the QNote extension I'm looking for beta testers. Please send request to support e-mail if you would like to participate.Thank you!</em></b>\n\n<b>Features:</b>\n<ul>\t<li>Add notes to messages</li>\t<li>Save note position, size</li>\t<li>Column with note icon and/or text preview</li>\t<li>Note attaching to message</li>\t<li>Note printing together with message</li>\t<li>Fully <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/xnotepp/\">XNote++</a> compatible</li></ul>\n<b>Usage:</b>\n<ul>\t<li>Use right click context menu to delete note or reset note window</li>\t<li>Use ESC to close note without saving</li>\t<li>Use Alt+Q to toggle note</li></ul>\n<b>If you are using internal storage (not folder) then don't forget to export data before removing extension !</b>\n\n<b>History:</b>\n<ul>\t<li>Version 0.10: configurable localized date format, set default note placement, optional confirm delete, save options w/o extension reload, options page styling according to selected theme</li>\t<li>Version 0.9: attaching note to message and printer, major rewrite</li>\t<li>Version 0.8: <em>non published</em></li>\t<li>Version 0.7: note search feature using QuickFilter</li>\t<li>Version 0.6: save notes using JSON file format instead of dated XNote++ format</li>\t<li>Version 0.5: add QNote column and two options for popup window style - floating panel (preferred) or windows using TB new API</li>\t<li>Version 0.4: two storage options - internal extension or XNote++ local folder (compatible with original extension)</li></ul>\n<b>Know issues:</b>\n<ul>\t<li>Search is broken and currently disabled and will come back once a better solution is found</li>\t<li>Does not work very well together with <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/gmail-conversation-view/\">Conversations</a> plugin because it does some heavy modifications to TB internals</li>\t<li>Strange behavior can be experienced when using with multiple TB windows</li></ul>"
+        "en-US": "<b>Read about: <a rel=\"nofollow\" href=\"https://github.com/mlazdans/qnote/issues/10\">excessive permissions</a></b>\n\nQNote extension development was started after <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/xnotepp/\">XNote++</a> support was dropped. It aims to be XNote++ drop-in replacement. Please report any issues and/or ideas to support e-mail or <a rel=\"nofollow\" href=\"https://github.com/mlazdans/qnote/issues\">GitHub</a> (please do <em>not</em> use reviews section for that).\n\n<b><em>In order to improve quality of the QNote extension I'm looking for beta testers. Please send request to support e-mail if you would like to participate.Thank you!</em></b>\n\n<b>Features:</b>\n<ul>\t<li>Add notes to messages</li>\t<li>Save note position, size</li>\t<li>Column with note icon and/or text preview</li>\t<li>Note attaching to message</li>\t<li>Note printing together with message</li>\t<li>Fully <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/xnotepp/\">XNote++</a> compatible</li></ul>\n<b>Usage:</b>\n<ul>\t<li>Use right click context menu to delete note or reset note window</li>\t<li>Use ESC to close note without saving</li>\t<li>Use Alt+Q to toggle note</li></ul>\n<b>If you are using internal storage (not folder) then don't forget to export data before removing extension !</b>\n\n<b>History:</b>\n<ul>\t<li>Version 0.10: configurable localized date format, set default note placement, optional confirm delete, save options w/o extension reload, options page styling according to selected theme</li>\t<li>Version 0.9: attaching note to message and printer, major rewrite</li>\t<li>Version 0.8: <em>non published</em></li>\t<li>Version 0.7: note search feature using QuickFilter</li>\t<li>Version 0.6: save notes using JSON file format instead of dated XNote++ format</li>\t<li>Version 0.5: add QNote column and two options for popup window style - floating panel (preferred) or windows using TB new API</li>\t<li>Version 0.4: two storage options - internal extension or XNote++ local folder (compatible with original extension)</li></ul>\n<b>Know issues:</b>\n<ul>\t<li>Search is broken and currently disabled and will come back once a better solution is found</li>\t<li>Does not work very well together with <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/gmail-conversation-view/\">Conversations</a> plugin because it does some heavy modifications to TB internals</li>\t<li>Strange behavior can be experienced when using with multiple TB windows</li></ul>"
     },
     "developer_comments": {
         "en-US": "Please send bug reports or issues to support email. Backup your XNote++ folder."
@@ -105,7 +105,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-12-01T16:05:20Z",
+    "last_updated": "2021-09-03T07:31:56Z",
     "name": {
         "en-US": "QNote"
     },
@@ -241,10 +241,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.54534,
-        "count": 36,
-        "average": 4.5833,
-        "text_count": 36
+        "bayesian_average": 4.54293,
+        "count": 38,
+        "average": 4.5789,
+        "text_count": 38
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/qnote/reviews/",
     "requires_payment": false,
@@ -268,9 +268,11 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
             "comp68": true,
+            "comp69plus": true,
+            "comp78plus": true,
+            "comp61plus": true,
             "comp78pv": true,
             "comp78pv_date": "2020-09-15T23:42:12Z",
             "comp78pv_version": "0.2",

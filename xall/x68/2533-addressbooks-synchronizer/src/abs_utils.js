@@ -68,7 +68,10 @@ let strings={
 	"hiddenwinclosed": '',
 	"hiddenwin": '',
 	"hiddenwintitle": '',
-  "ftpwarn": ''
+  "ftpwarn": '',
+	"cleartext_details": '',
+	"url_scheme_error": '',
+	"url_parsing_error": '',
 };
 
 Object.keys(strings).forEach(key=>{
@@ -1047,6 +1050,7 @@ function errorstr(aError) {
   //Errorcodes:
   //    xpcom/base/nsError.h
   //    netwerk/base/public/nsNetError.h
+debug('original Error: '+aError);
   switch(aError){
   // internal errors
     case -1:

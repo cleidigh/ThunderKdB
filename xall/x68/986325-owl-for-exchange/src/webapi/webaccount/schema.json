@@ -269,6 +269,56 @@
       "description": "The folder hierarchy."
     }]
   }, {
+    "name": "getSyncState",
+    "type": "function",
+    "description": "Retrieves the sync state for a folder.",
+    "async": "true",
+    "parameters": [{
+      "name": "key",
+      "type": "string",
+      "description": "The key for the JsAccount server."
+    }, {
+      "name": "folder",
+      "type": "string",
+      "description": "The folder id."
+    }],
+    "returns": {
+      "name": "state",
+      "type": "string"
+    }
+  }, {
+    "name": "setSyncState",
+    "type": "function",
+    "description": "Updates the sync state for a folder.",
+    "async": "true",
+    "parameters": [{
+      "name": "key",
+      "type": "string",
+      "description": "The key for the JsAccount server."
+    }, {
+      "name": "folder",
+      "type": "string",
+      "description": "The folder id."
+    }, {
+      "name": "state",
+      "type": "string",
+      "description": "The new sync state."
+    }]
+  }, {
+    "name": "notifyFolderResync",
+    "type": "function",
+    "description": "Notifies that a folder needs to be resynchronised.",
+    "async": "true",
+    "parameters": [{
+      "name": "key",
+      "type": "string",
+      "description": "The key for the JsAccount server."
+    }, {
+      "name": "oldFolder",
+      "type": "string",
+      "description": "The folder id of the folder to synchronise."
+    }]
+  }, {
     "name": "notifyFolderCopied",
     "type": "function",
     "description": "Notifies that a folder was copied on the server.",
@@ -282,17 +332,13 @@
       "type": "string",
       "description": "The folder id of the copied folder."
     }, {
-      "name": "oldParent",
-      "type": "string",
-      "description": "The folder id containing the copied folder."
-    }, {
-      "name": "newFolder",
-      "type": "string",
-      "description": "The folder id of the copy."
-    }, {
       "name": "newParent",
       "type": "string",
       "description": "The folder id containing the copy."
+    }, {
+      "name": "newFolder",
+      "type": "string",
+      "description": "The folder id of the new copy."
     }]
   }, {
     "name": "notifyFolderCreated",
@@ -318,11 +364,18 @@
     }, {
       "name": "total",
       "type": "number",
+      "optional": true,
       "description": "The total item count of the new folder."
     }, {
       "name": "unread",
       "type": "number",
+      "optional": true,
       "description": "The unread count of the new folder."
+    }, {
+      "name": "type",
+      "type": "string",
+      "optional": true,
+      "description": "The type of the new folder, if any."
     }]
   }, {
     "name": "notifyFolderDeleted",
@@ -336,11 +389,7 @@
     }, {
       "name": "folder",
       "type": "string",
-      "description": "The item id of the deleted folder."
-    }, {
-      "name": "parent",
-      "type": "string",
-      "description": "The folder id containing the deleted folder."
+      "description": "The folder id of the deleted folder."
     }]
   }, {
     "name": "notifyFolderModified",
@@ -362,10 +411,12 @@
     }, {
       "name": "total",
       "type": "number",
+      "optional": true,
       "description": "The total item count of the modified folder."
     }, {
       "name": "unread",
       "type": "number",
+      "optional": true,
       "description": "The unread count of the modified folder."
     }]
   }, {
@@ -382,17 +433,13 @@
       "type": "string",
       "description": "The old folder id of the moved folder."
     }, {
-      "name": "oldParent",
+      "name": "newParent",
       "type": "string",
-      "description": "The folder id from which the folder was moved."
+      "description": "The folder id to which the folder was moved."
     }, {
       "name": "newFolder",
       "type": "string",
       "description": "The new folder id of the folder."
-    }, {
-      "name": "newParent",
-      "type": "string",
-      "description": "The folder id to which the folder was moved."
     }]
   }, {
     "name": "notifyMessageCopied",
@@ -404,21 +451,21 @@
       "type": "string",
       "description": "The key for the JsAccount server."
     }, {
-      "name": "oldMessage",
-      "type": "string",
-      "description": "The item id of the copied message."
-    }, {
       "name": "oldFolder",
       "type": "string",
       "description": "The folder id containing the copied message."
     }, {
-      "name": "newMessage",
+      "name": "oldMessage",
       "type": "string",
-      "description": "The item id of the copy."
+      "description": "The item id of the copied message."
     }, {
       "name": "newFolder",
       "type": "string",
-      "description": "The folder id containing the copy."
+      "description": "The folder id containing the new copy."
+    }, {
+      "name": "newMessage",
+      "type": "string",
+      "description": "The item id of the new copy."
     }]
   }, {
     "name": "notifyMessageCreated",
@@ -430,13 +477,13 @@
       "type": "string",
       "description": "The key for the JsAccount server."
     }, {
-      "name": "newMessage",
-      "type": "string",
-      "description": "The item id of the new message."
-    }, {
       "name": "folder",
       "type": "string",
       "description": "The folder id containing the new message."
+    }, {
+      "name": "newMessage",
+      "type": "string",
+      "description": "The item id of the new message."
     }]
   }, {
     "name": "notifyMessageDeleted",
@@ -448,13 +495,13 @@
       "type": "string",
       "description": "The key for the JsAccount server."
     }, {
-      "name": "oldMessage",
-      "type": "string",
-      "description": "The item id of the deleted message."
-    }, {
       "name": "folder",
       "type": "string",
       "description": "The folder id containing the deleted message."
+    }, {
+      "name": "oldMessage",
+      "type": "string",
+      "description": "The item id of the deleted message."
     }]
   }, {
     "name": "notifyMessageModified",
@@ -466,13 +513,13 @@
       "type": "string",
       "description": "The key for the JsAccount server."
     }, {
-      "name": "message",
-      "type": "string",
-      "description": "The item id of the modified message."
-    }, {
       "name": "folder",
       "type": "string",
       "description": "The folder id containing the modified message."
+    }, {
+      "name": "message",
+      "type": "string",
+      "description": "The item id of the modified message."
     }]
   }, {
     "name": "notifyMessageMoved",
@@ -484,21 +531,21 @@
       "type": "string",
       "description": "The key for the JsAccount server."
     }, {
-      "name": "oldMessage",
-      "type": "string",
-      "description": "The old item id of the moved message."
-    }, {
       "name": "oldFolder",
       "type": "string",
       "description": "The folder id from which the message was moved."
     }, {
-      "name": "newMessage",
+      "name": "oldMessage",
       "type": "string",
-      "description": "The new item id of the message."
+      "description": "The old item id of the moved message."
     }, {
       "name": "newFolder",
       "type": "string",
       "description": "The folder id to which the message was moved."
+    }, {
+      "name": "newMessage",
+      "type": "string",
+      "description": "The new item id of the message."
     }]
   }, {
     "name": "getServersOfTypes",
@@ -624,6 +671,52 @@
       "description": "Additional options used by this account type.",
       "additionalProperties": true
     }]
+  }, {
+    "name": "extractMailboxes",
+    "type": "function",
+    "description": "Parse display address(es) into name and email address.",
+    "async": true,
+    "parameters": [{
+      "name": "addresses",
+      "type": "string",
+      "description": "The display address(es)."
+    }],
+    "returns": {
+      "name": "display",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "description": "The display name."
+          },
+          "EmailAddress": {
+            "type": "string",
+            "description": "The email address."
+          }
+        }
+      }
+    }
+  }, {
+    "name": "formatDisplayName",
+    "type": "function",
+    "description": "Create a display name from a first and last name.",
+    "async": true,
+    "parameters": [{
+      "name": "first",
+      "type": "string",
+      "description": "The first name."
+    }, {
+      "name": "last",
+      "type": "string",
+      "description": "The last name."
+    }],
+    "returns": {
+      "name": "display",
+      "type": "string",
+      "description": "The display name."
+    }
   }],
   "events": [{
     "name": "dispatcher",

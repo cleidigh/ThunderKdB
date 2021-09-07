@@ -1,14 +1,46 @@
-const MPE_ADDON_VERSION = "3.0.12";
+const MPE_ADDON_VERSION = "3.0.17";
 
 Components.utils.import("resource://gre/modules/FileUtils.jsm");
 var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var cal = ChromeUtils.import("resource:///modules/calendar/calUtils.jsm").cal;
 var obs = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
 var EXPORTED_SYMBOLS = ["mpe"];
 var debugMode = false;
+var cb = null;
+var cardbookRepository = null;
+var cardbookActionId = 0;
 
 function debugPrint(text){
 	if (debugMode == true){console.log(text);}
+}
+
+function debug(text){
+	if (debugMode == true){console.log(text);}
+}
+
+function loadCardbook(){
+	
+	if (cb != null){
+		return true;
+	}
+	else{
+		try {
+			debugPrint('cb: try loading cardbookRepository');
+			var x = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
+			cb = x.cardbookRepository;
+			cardbookRepository = x.cardbookRepository;
+			debugPrint('cb: try loading cardbookRepository: ok');
+			if (cb != null){
+					var loader = Services.scriptloader;
+					loader.loadSubScript("chrome://cardbook/content/cardbookCardParser.js", this);
+			}
+			return (cb != null);
+		} catch(e) {
+			debugPrint('SMR: cardbook not installed: '+e);
+			return false;
+		}
+	}
 }
 
 // UUID-Generator inspired by http://www.scriptsearch.com/cgi-bin/jump.cgi?ID=3530
@@ -101,6 +133,18 @@ function CreateUUID()
 	return tl + h + tm + h + thv + h + csar + csl + h + n; 
 }
 	
+	
+function getMethods(obj)
+{
+    var res = [];
+    for(var m in obj) {
+        //if(typeof obj[m] == "function") {
+            res.push(m + " " + typeof obj[m])
+        //}
+    }
+    return res;
+}
+
 function GetPref(prefname,defaultvalue)
 {
 	var prefvalue = defaultvalue;
@@ -731,9 +775,35 @@ CardsSimpleEnum.prototype = {
 	}
 };
 
+function CardsArrayEnum() {};
+
+CardsArrayEnum.prototype = {
+	data : null,
+	curIdx : -1,
+
+	hasMoreElements : function () {
+		return (this.curIdx + 1 < this.data.length && this.data.length > 0);
+	},
+
+	getNext : function () {
+		this.curIdx = this.curIdx + 1;
+		if (this.curIdx < this.data.length){
+			return this.data[this.curIdx];
+		}else{
+			return null;
+		}
+	}
+};
+
 function GetCards(ab)
 {
 	var cards_enum = ab.childCards;
+
+	if (Array.isArray(cards_enum)){
+		var cae = new CardsArrayEnum();
+		cae.data = cards_enum;
+		return cae;
+	}
 
 	try {
 		cards_enum.hasMoreElements();
@@ -745,9 +815,7 @@ function GetCards(ab)
 		catch(ex) {}
 
 		var cse = new CardsSimpleEnum();
-
 		cse.enumerator = cards_enum;
-
 		return cse;
 	}
 
@@ -757,7 +825,7 @@ function GetCards(ab)
 function GetNextValidCard(cards_enum)
 {
 	var card;
-
+	
 	while(cards_enum.hasMoreElements()) {
 		card = cards_enum.getNext();
 		card = card.QueryInterface(Components.interfaces.nsIAbCard);
@@ -886,11 +954,11 @@ function Date2String(dt, realyear)
 
 		if(realyear != null) {
 			while(realyear < dt2.year) {
-				nativetime = eval(nativetime + '-86400*365');
+				nativetime = nativetime - 86400 * 365;
 
 				if((dt.month < 2 && realyear%4 == 0 && (realyear%100 != 0 || realyear%400 == 0)) ||
 				   (dt.month > 1 && (realyear+1)%4 == 0 && ((realyear+1)%100 != 0 || (realyear+1)%400 == 0))) {
-					nativetime = eval(nativetime + '-86400');
+					nativetime = nativetime - 86400;
 				}
 
 				realyear++;
@@ -1075,7 +1143,7 @@ function ItemToLine(Item, ReadOnly)
 	var realyear = null;
 
 	if(description != null && description.match(/^\d{4}$/) && recurrence != '') {
-		realyear = eval(description);
+		realyear = parseInt(description, 10);
 	}
 
 	if(isEvent(Item)) {
@@ -1239,12 +1307,21 @@ var mpe = {
 	
   	ListInfo: function()
 	{
+		loadCardbook();
 		return "Version:     "+this.VERSION+"\r\n"+
 						   "Addressbook: "+(this.HasABook ? "YES" : "NO")+"\r\n"+
+						   "Cardbook:    "+(cb != null ? "YES" : "NO")+"\r\n"+
 						   "Calendar:    "+(this.HasCalendar ? "YES" : "NO")+"\r\n"+
-						   "Commands:    version,info,list-info,list-abooks,list-addressbooks,export-cards,import-cards,add-card,edit-card,delete-card,list-cals,list-calendars,export-items,import-items,add-item,edit-item,delete-item";
+						   "Commands:    version,info,list-info,refresh-cardbook,list-abooks,list-addressbooks,export-cards,export-vcards,import-cards,add-card,edit-card,delete-card,list-cals,list-calendars,export-items,import-items,add-item,edit-item,delete-item";
 	},
 	
+	test: function(){
+		debugPrint("Test Function3");
+
+		if (loadCardbook()){
+
+		}
+	},
 	
 	
 	get HasABook()
@@ -1268,7 +1345,7 @@ var mpe = {
 		return false;
 	},
   
-  	ListABooks: function()
+  	ListABooks: function(includeCardbook)
 	{
 		var folderlist = new Array();
 		let directories = MailServices.ab.directories;
@@ -1281,80 +1358,184 @@ var mpe = {
 		} 
 	
 		folderlist.sort();
-		return folderlist.join('');
+		
+		if (includeCardbook){
+			if (loadCardbook()){
+				var t = cb.cardbookPreferences.getAllPrefIds();
+				for (let i = 0; i < t.length; i++) {
+					if (cb.cardbookPreferences.getType(t[i]) == "SEARCH"){
+						t[i] = '';
+					}else{
+						var u = cb.cardbookPreferences.getUrl(t[i]);
+						if (u != ""){u = "\t" + u;}
+						t[i] = "Cardbook - " + cb.cardbookPreferences.getName(t[i]) + "\t" + "cardbook-" + t[i] + u + "\r\n";
+					}
+				}
+				return folderlist.join('') + t.join('');
+			}
+			else{
+				return folderlist.join('');
+			}
+		}
+		else{
+			return folderlist.join('');
+		}
 	},
 	
+	RefreshCardbook: function()
+	{
+		if (loadCardbook()){
+			cb.cardbookRepository.cardbookUtils.notifyObservers("simpleMailRedirection.syncFisnished", null);
+			if (cardbookActionId != 0){
+				cb.cardbookRepository.cardbookActions.endAction(cardbookActionId, true);
+				cardbookActionId = 0;
+				debugPrint("Refresh sent");
+				return "OK";
+			}
+		}
+		return "FAILED";
+	},
 	
 	WriteCards: function(abook)
 	{
 		var abooks = abook.split('|');
 		var cards = 'AddOn-Version='+MPE_ADDON_VERSION+'\r\n';
-	
 		var ab;
 	
 		for(var i = 0;i < abooks.length;i++) {
+			debugPrint("Get cards for: " + abooks[i]);
 			ab = GetAddressBook(abooks[i]);
 			var cards_enum = GetCards(ab);
 			var nextCard;
-	
 			while(nextCard = GetNextValidCard(cards_enum)) {
 				cards += CardToLine(nextCard,ab,abooks[i]) + '\r\n';
 			}
 		}
-	
+		debugPrint(cards);
 		return cards;
+	},
+	
+	WriteVcards: async function(abook)
+	{
+		if (loadCardbook() != true){return "";}
+		var abooks = abook.split('|');
+		var cards = 'AddOn-Version='+MPE_ADDON_VERSION+'\r\n';
+		var sdata = [];
+
+		for(var i = 0;i < abooks.length;i++) {
+			if (abooks[i].indexOf("cardbook-") == 0){
+				var abId = abooks[i].substr(9);
+				debugPrint("getCards: " + abId);
+				var cList = cb.cardbookRepository.cardbookDisplayCards[abId].cards;
+				for (var x = 0; x < cList.length; x++) {
+					var data = await cb.cardbookUtils.cardToVcardData(cList[x], false);
+					data = data.replace(/\nUID:/g,"\nUID:" + abooks[i] + "|");
+					sdata.push(data);
+				}
+			}
+		}
+	
+		var ret = cards + sdata.join("\r\n");
+		obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result export-vcards\r\n" + ret);
 	},
 	
 	AddCard: function(data)
 	{
-		var lines = data.split("\r\n");
-		var abook = GetV('ABKID',lines[1]);
-		if (abook.length > 0){
-			var ab = GetAddressBook(abook);
-			if (ab == null){
-				throw new Error("Addressbook not found!");
-			}else{
-				var card = Components.classes["@mozilla.org/addressbook/cardproperty;1"].createInstance(Components.interfaces.nsIAbCard);
-				LineToCard(card,lines[1]);
-				var newcard = ab.addCard(card);
-				return CardToLine(newcard, ab, abook);
+		if (data.indexOf("cardbook-") == 0){
+			var i = data.indexOf("\r\n");
+			if(i >= 0 && loadCardbook() == true) {
+				if (cardbookActionId == 0){cardbookActionId = cb.cardbookRepository.cardbookActions.startAction("syncMyPhoneExplorer");}
+				var vcard = data.substring(i+2);
+				var dirId = data.substring(9,i);
+				var myCard = new cardbookCardParser(vcard, "", "", dirId);
+				cb.cardbookRepository.saveCard({},myCard,cardbookActionId,true);
+				return "cardbook-" + dirId + "|" + myCard.uid;
+			}	
+		}else{
+			var lines = data.split("\r\n");
+			var abook = GetV('ABKID',lines[1]);
+			if (abook.length > 0){
+				var ab = GetAddressBook(abook);
+				if (ab == null){
+					throw new Error("Addressbook not found!");
+				}else{
+					var card = Components.classes["@mozilla.org/addressbook/cardproperty;1"].createInstance(Components.interfaces.nsIAbCard);
+					LineToCard(card,lines[1]);
+					var newcard = ab.addCard(card);
+					return CardToLine(newcard, ab, abook);
+				}
 			}
 		}
 	},
 	
 	EditCard: function(data)
 	{
-		var lines = data.split("\r\n");
-		var abook = GetV('ABKID',lines[1]);
-		var ab = GetAddressBook(abook);
-		var cards = ScanCards(ab);
-		var card = FindCard(ab,cards,GetV('CARID',lines[1]));
-		if (ab == null){
-			throw new Error("Addressbook not found!");
-		}else if (card == null){
-		   throw new Error("Card not found in Addressbook");
+		if (data.indexOf("cardbook-") == 0){
+			var i = data.indexOf("\r\n");
+			if(i >= 0 && loadCardbook() == true) {
+				if (cardbookActionId == 0){cardbookActionId = cb.cardbookRepository.cardbookActions.startAction("syncMyPhoneExplorer");}
+				var vcard = data.substring(i+2);
+				var cId = data.substring(9,i).split("|").join("::");
+				debugPrint("ID=" + cId);
+				var c = cb.cardbookRepository.cardbookCards[cId];
+				if (c == null){
+					throw new Error("Card not found in Repository");
+				}else{
+					vcard = vcard.replace(/\nUID:.*\r\n/g,"\nUID:" + c.uid + "\r\n");
+					var myCard = new cardbookCardParser(vcard, "", "", c.dirPrefId);
+					cb.cardbookRepository.saveCard(c,myCard,cardbookActionId,true);
+					return "cardbook-" + myCard.dirPrefId + "|" + myCard.uid;
+				}
+			}	
 		}else{
-			LineToCard(card,lines[1]);
-			SaveCard(ab,card);
-			return CardToLine(card, ab, abook);
+			var lines = data.split("\r\n");
+			var abook = GetV('ABKID',lines[1]);
+			var ab = GetAddressBook(abook);
+			var cards = ScanCards(ab);
+			var card = FindCard(ab,cards,GetV('CARID',lines[1]));
+			if (ab == null){
+				throw new Error("Addressbook not found!");
+			}else if (card == null){
+			   throw new Error("Card not found in Addressbook");
+			}else{
+				LineToCard(card,lines[1]);
+				SaveCard(ab,card);
+				return CardToLine(card, ab, abook);
+			}
 		}
 	},
 	
 	DeleteCard: function(data)
 	{
 		var lines = data.split("\r\n");
-		lines[1] = lines[1] + ";"
-		var abook = GetV('ABKID',lines[1]);
-		var ab = GetAddressBook(abook);
-		var cards = ScanCards(ab);
-		var card = FindCard(ab,cards,GetV('CARID',lines[1]));
-		if (ab == null){
-			throw new Error("Addressbook not found!");
-		}else if (card == null){
-		   throw new Error("Card not found in Addressbook");
+		if (lines[0].indexOf("cardbook-") == 0){
+			if (loadCardbook()){
+				if (cardbookActionId == 0){cardbookActionId = cb.cardbookRepository.cardbookActions.startAction("syncMyPhoneExplorer");}
+				var cId = lines[0].substr(9).split("|").join("::");
+				var c = cb.cardbookRepository.cardbookCards[cId];
+				if (c == null){
+					throw new Error("Card not found in Repository");
+				}else{
+					var aList = new Array();
+					aList.push(c);
+					cb.cardbookRepository.deleteCards(aList,cardbookActionId);
+					return "DELETED";
+				}
+			}
 		}else{
-			ab.deleteCards([card]);
-			return "DELETED";
+			lines[1] = lines[1] + ";"
+			var abook = GetV('ABKID',lines[1]);
+			var ab = GetAddressBook(abook);
+			var cards = ScanCards(ab);
+			var card = FindCard(ab,cards,GetV('CARID',lines[1]));
+			if (ab == null){
+				throw new Error("Addressbook not found!");
+			}else if (card == null){
+			   throw new Error("Card not found in Addressbook");
+			}else{
+				ab.deleteCards([card]);
+				return "DELETED";
+			}
 		}
 	},
 	

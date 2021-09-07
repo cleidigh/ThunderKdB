@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 1451,
+    "average_daily_users": 1602,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -19,32 +19,32 @@
     "contributions_url": "",
     "created": "2020-09-05T13:47:07Z",
     "current_version": {
-        "id": 2474935,
+        "id": 2476402,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "102.0",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/tbkeys-lite/versions/2474935",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/tbkeys-lite/versions/2476402",
         "files": [
             {
-                "id": 1018097,
-                "created": "2020-12-04T19:18:23Z",
-                "hash": "sha256:2120a9a0b813d4fd7e5466189db8e63a8aee955d3d2b7e399e3362373f4b9fe0",
+                "id": 1019562,
+                "created": "2021-09-03T20:02:38Z",
+                "hash": "sha256:e993731b99d44dc9e46a976fc29cf364ec1addc0cb005cd3e91761f2754d91e8",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 20676,
+                "size": 21920,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018097/tbkeys_lite-2.1.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019562/tbkeys_lite-2.1.3-tb.xpi?src=",
                 "permissions": [
                     "storage"
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 3338,
             "name": {
@@ -53,11 +53,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "* Prevent tbkeys-lite from capturing keys in some text fields like the signature entry box in account settings."
+            "en-US": "* Improve code to avoid timing conflicts with other extensions that would occasionally cause tbkeys-lite not to load on startup\n* Ignore keypresses in the builtin browser tabs"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/tbkeys-lite/versions/2.1.1",
-        "version": "2.1.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/tbkeys-lite/versions/2.1.3",
+        "version": "2.1.3"
     },
     "default_locale": "en-US",
     "description": null,
@@ -76,7 +76,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-12-05T21:51:51Z",
+    "last_updated": "2021-09-04T09:17:29Z",
     "name": {
         "en-US": "tbkeys-lite"
     },
@@ -110,9 +110,11 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
-            "comp68": true
+            "comp68": true,
+            "comp69plus": true,
+            "comp78plus": true,
+            "comp61plus": true
         }
     }
 }

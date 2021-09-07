@@ -79,7 +79,7 @@ function getStack(ex) {
  */
 async function getEmailAddressForUser() {
   try {
-    let serverIds = await browser.incomingServer.getServersOfTypes(["owl", "owl-ews"]);
+    let serverIds = await browser.incomingServer.getServersOfTypes(["owl", "owl-ews", "owl-eas"]);
     if (serverIds.length) {
       let serverId = serverIds[0];
       let identities = await browser.incomingServer.getIdentities(serverId);
@@ -112,10 +112,10 @@ async function getEmailAddressForUser() {
  */
 async function getLoginURLForUser() {
   try {
-    let serverIds = await browser.incomingServer.getServersOfTypes(["owl", "owl-ews"]);
+    let serverIds = await browser.incomingServer.getServersOfTypes(["owl", "owl-ews", "owl-eas"]);
     if (serverIds.length) {
       let type = await browser.incomingServer.getStringValue(serverIds[0], "type");
-      return await browser.incomingServer.getStringValue(serverIds[0], type == "owl-ews" ? "ews_url" : "owa_url");
+      return await browser.incomingServer.getStringValue(serverIds[0], (type.slice(4) || "owa") + "_url");
     }
   } catch (ex) {
     console.error(ex);

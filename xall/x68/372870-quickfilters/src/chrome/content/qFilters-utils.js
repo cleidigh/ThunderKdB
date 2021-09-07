@@ -10,17 +10,6 @@ END LICENSE BLOCK
 */
 
 // moved import code to bottom for app version detection...
-quickFilters.Properties = {
-  bundle: Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService).createBundle("chrome://quickfilters/locale/overlay.properties"),
-
-  getLocalized: function QFProps_getLocalized(msg) {
-    let b = this.bundle;
-    if (!b)
-      b = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService).createBundle("chrome://quickfilters/locale/overlay.properties");
-    return b.GetStringFromName(msg);
-    //return quickFilters.Properties.bundle.GetStringFromName(msg);
-  }
-};
 
 var QuickFilters_TabURIregexp = {
   get _thunderbirdRegExp() {
@@ -31,29 +20,69 @@ var QuickFilters_TabURIregexp = {
 
 
 quickFilters.Util = {
-  HARDCODED_CURRENTVERSION : "5.2.1",
-  HARDCODED_EXTENSION_TOKEN : ".hc",
   ADDON_ID: "quickFilters@axelg.com",
-  VersionProxyRunning: false,
+  ADDON_SUPPORT_MAIL: "axel.grude@gmail.com",
+  AssistantActive: null, // replace worker.FilterMode
   mAppver: null,
   mAppName: null,
   mHost: null,
-  mExtensionVer: null,
 	mPlatformVer: null,
   ConsoleService: null,
   lastTime: 0,
   _tabContainer: null,
   tempFolderTab: null,	 // likely obsolete ###
-	get Licenser() { // retrieve Licenser always from the main window to keep everything in sync
-		const util = quickFilters.Util;
-	  try { 
-			return util.getMail3PaneWindow().quickFilters.Licenser;
-		}
-		catch(ex) {
-			util.logException('Retrieve Licenser failed: ', ex);
-		}
-		return quickFilters.Licenser;
-	} ,
+  
+  async init() {
+
+    const onBackgroundUpdates = (data) => {
+      if (data.licenseInfo) {
+        quickFilters.Util.licenseInfo = data.licenseInfo;
+        quickFilters.Util.logDebugOptional("notifications", "onBackgroundUpdates - dispatching licenseInfo ");
+        const event = new CustomEvent("quickFilters.BackgroundUpdate");
+        window.dispatchEvent(event); 
+      }
+      // Event forwarder - take event from background script and forward to windows with appropriate listeners
+      if (data.event) {
+        let loc = "";
+        try {
+          loc = window.document.URL || window.document.location ? window.document.location.href.toString() : "";
+        }
+        catch(ex){;}
+        if (!data.hasOwnProperty("window") || data.window.includes(loc)) {
+          quickFilters.Util.logDebugOptional("notifications", 
+            `onBackgroundUpdates - dispatching custom event quickFilters.BackgroundUpdate.${data.event}\n` +
+            `into ${loc}`);
+          let event;
+          if (data.event == "setAssistantMode") {
+            if (data.detail)
+              quickFilters.Util.AssistantActive = data.detail.active;
+            return;
+          }
+          
+          if (data.detail) {
+            event = new CustomEvent(`quickFilters.BackgroundUpdate.${data.event}`, {detail: data.detail}) 
+          }
+          else {
+            event =  new CustomEvent(`quickFilters.BackgroundUpdate.${data.event}`) ;
+          }
+          window.dispatchEvent(event); 
+        }       
+      }      
+    }   
+    quickFilters.Util.notifyTools.registerListener(onBackgroundUpdates);
+    
+    quickFilters.Util.AssistantActive = await quickFilters.Util.notifyTools.notifyBackground({ func: "getAssistantMode" }); // replace worker.FilterMode
+    quickFilters.Util.licenseInfo = await quickFilters.Util.notifyTools.notifyBackground({ func: "getLicenseInfo" });
+    quickFilters.Util.platformInfo = await quickFilters.Util.notifyTools.notifyBackground({ func: "getPlatformInfo" });
+    quickFilters.Util.browserInfo = await quickFilters.Util.notifyTools.notifyBackground({ func: "getBrowserInfo" });
+    quickFilters.Util.addonInfo = await quickFilters.Util.notifyTools.notifyBackground({ func: "getAddonInfo" });
+    quickFilters.Util.logDebugOptional("notifications",
+    {
+      platformInfo: quickFilters.Util.platformInfo,
+      browserInfo: quickFilters.Util.browserInfo,
+      addonInfo: quickFilters.Util.addonInfo,
+    });
+  },  
 
   // return main quickFilters instance (if we are in a child window / dialog or come from an event)
   get mainInstance() {
@@ -99,18 +128,37 @@ quickFilters.Util = {
     return msgfolder;
   } ,
 
-  // gets string from overlay.properties
-  getBundleString: function getBundleString(id, defaultText) {
-    let s;
-    try {
-      s= quickFilters.Properties.getLocalized(id); 
+  getBundleString: function getBundleString(id, defaultText, substitions = []) { // moved from local copies in various modules.
+    // [mx-l10n]
+    var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
+    let extension = ExtensionParent.GlobalManager.getExtension('quickFilters@axelg.com');
+    let localized = extension.localeData.localizeMessage(id, substitions);
+  
+    let s = "";
+    if (localized) {
+      s = localized;
     }
-    catch(e) {
+    else {
       s = defaultText;
-      this.logException ("Could not retrieve bundle string: " + id, e);
+      this.logToConsole ("Could not retrieve bundle string: " + id + "");
     }
     return s;
   } ,
+  
+  localize: function(window, buttons = null) {
+    Services.scriptloader.loadSubScript(
+      quickFilters.Util.extension.rootURI.resolve("chrome/content/i18n.js"),
+      window,
+      "UTF-8"
+    );
+    window.i18n.updateDocument({extension: quickFilters.Util.extension});
+    if (buttons) {
+      for (let [name, label] of Object.entries(buttons)) {
+        window.document.documentElement.getButton(name).label =  quickFilters.Util.extension.localeData.localizeMessage(label); // apply
+      }
+    }
+  } ,
+  
 
   getMail3PaneWindow: function getMail3PaneWindow() {
     let windowManager = Components.classes['@mozilla.org/appshell/window-mediator;1']
@@ -173,63 +221,10 @@ quickFilters.Util = {
     return this.mHost; // linux - winnt - darwin
   },
 
-  // this is done asynchronously, so it respawns itself
-  VersionProxy: function VersionProxy() {
-		const util = quickFilters.Util;
-    try {
-      if (util.mExtensionVer // early exit, we got the version!
-        ||
-          util.VersionProxyRunning) // no recursion...
-        return;
-      util.VersionProxyRunning = true;
-      util.logDebug("Util.VersionProxy() started.");
-      if (Components.utils.import) {
-				
-				let versionCallback = function(addon) {
-          util.mExtensionVer = addon.version;
-          util.logDebug("AddonManager: quickFilters extension's version is " + addon.version);
-          let versionLabel = window.document.getElementById("qf-options-version");
-          if(versionLabel) {
-            versionLabel.setAttribute("value", addon.version);
-            // move version into the box, depending on label length
-            // boxObject is deprecated:
-            util.logDebug("Version Box: " + versionLabel.getBoundingClientRect().width + "px");
-            // versionLabel.style.setProperty('margin-left', ((versionLabel.boxObject.width + 32)*(-1)).toString() + 'px', 'important');
-          }
-        }
-
-				Components.utils.import("resource://gre/modules/AddonManager.jsm");
-				const addonId = util.ADDON_ID.toString(); // for some reason this ended up being an object?
-				if (util.versionGreaterOrEqual(util.AppverFull, "61")) 
-					AddonManager.getAddonByID(addonId).then(function(addonId) { versionCallback(addonId); } ); // this function is now a promise
-				else
-					AddonManager.getAddonByID(addonId, versionCallback);
-      }
-      util.logDebug("AddonManager.getAddonByID .. added callback for setting extensionVer.");
-
-    }
-    catch(ex) {
-      util.logToConsole("QuickFilters VersionProxy failed - are you using an old version of " + util.Application + "?"
-        + "\n" + ex);
-    }
-    finally {
-      util.VersionProxyRunning=false;
-    }
-  },
-
   get Version() {
-		const util = quickFilters.Util,
-					Cc = Components.classes;
-    //returns the current QF version number.
-    if (util.mExtensionVer)
-      return util.mExtensionVer; // this is set asynchronously, see VersionProxy
-		// temporary value
-    let current = util.HARDCODED_CURRENTVERSION + util.HARDCODED_EXTENSION_TOKEN; 
-		// Addon Manager: use Proxy code to retrieve version asynchronously
-		util.VersionProxy(); // modern Mozilla builds.
-											// these will set mExtensionVer (eventually)
-											// also we will delay FirstRun.init() until we _know_ the version number
-    return current;
+    // this used to call VersionProxy() which opened quickfolders.init
+    quickFilters.Util.logDebug("Version() getter. addonInfo:", quickFilters.Util.addonInfo);
+    return quickFilters.Util.addonInfo.version;
   } ,
 
   get VersionSanitized() {
@@ -249,12 +244,11 @@ quickFilters.Util = {
 	get PlatformVersion() {
 		if (null==this.mPlatformVer)
 			try {
-				let appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
-				                        .getService(Components.interfaces.nsIXULAppInfo);
+				let appInfo = Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULAppInfo);
 				this.mPlatformVer = parseFloat(appInfo.platformVersion);
 			}
 			catch(ex) {
-				this.mPlatformVer = 1.0; // just a guess
+				this.mPlatformVer = 78.0; // just a guess
 			}
 		return this.mPlatformVer;
 	} ,
@@ -461,10 +455,9 @@ quickFilters.Util = {
 	// featureName: namne of the feature used (will be transmitted to shop when purchasing)
 	// isRegister: show registration button
 	popupProFeature: function popupProFeature(featureName, isRegister, additionalText) {
-		let notificationId,
-        util = quickFilters.Util,
+		let util = quickFilters.Util,
 				prefs = quickFilters.Preferences;
-    if (util.hasPremiumLicense(false))
+    if (util.hasPremiumLicense())
       return;
 		
 		let notifyBox,
@@ -474,13 +467,6 @@ quickFilters.Util = {
 		}
 		else if( typeof gNotification == 'object' && gNotification.notificationbox) { // Tb 68
 			notifyBox = gNotification.notificationbox;
-		}
-		else {
-			notificationId = 'mail-notification-box'
-			notifyBox = document.getElementById (notificationId);
-			if (!notifyBox) {
-				notifyBox = mainWin.document.getElementById (notificationId);
-			}
 		}
 
 		let title = util.getBundleString("quickfilters.notification.proFeature.title", "Premium Feature"),
@@ -519,31 +505,27 @@ quickFilters.Util = {
 			catch(ex) {};
       
 			if (!hotKey) hotKey='L'; // we also use this for hacking the style of the "Buy" button!
-			// button for disabling this notification in the future
-//			if (countDown>-10) {
-				const State = util.Licenser.ELicenseState;
-				switch(util.Licenser.ValidationStatus) {
-					case State.Expired:
-						regBtn = util.getBundleString("quickfilters.notification.premium.btn.renewLicense", "Renew License!");
-						break;
-					default:
-						regBtn = util.getBundleString("quickfilters.notification.premium.btn.getLicense", "Buy License!");
-				}
-						
-        // registration button
-        if (isRegister) {
-					
-          nbox_buttons.push(
-						{
-							label: regBtn,
-							accessKey: hotKey,   
-							callback: function() { 
-								util.mainInstance.Util.Licenser.showDialog(featureName); 
-							},
-							popup: null
-						}
-          )
-        }
+      if (util.licenseInfo.isExpired) {
+        regBtn = util.getBundleString("quickfilters.notification.premium.btn.renewLicense", "Renew License!");
+      }
+      else {
+			  regBtn = util.getBundleString("quickfilters.notification.premium.btn.getLicense", "Buy License!");
+      }
+      
+      // registration button
+      if (isRegister) {
+        
+        nbox_buttons.push(
+          {
+            label: regBtn,
+            accessKey: hotKey,   
+            callback: function() { 
+              quickFilters.Util.showLicenseDialog(featureName); 
+            },
+            popup: null
+          }
+        );
+      }
         
  /*		  }
   *			else {
@@ -563,12 +545,23 @@ quickFilters.Util = {
 				if (item)
 					notifyBox.removeNotification(item, false);
 			}
-		
-			notifyBox.appendNotification( theText, 
+		  const imgSrc = "chrome://quickfilters/content/skin/proFeature.png";
+    
+			let newNotification = 
+        notifyBox.appendNotification( theText, 
 					notificationKey , 
-					"chrome://quickfilters/content/skin/proFeature.png" , 
+					imgSrc, 
 					notifyBox.PRIORITY_WARNING_HIGH, 
 					nbox_buttons ); // , eventCallback
+      // setting img was removed in Tb91
+      if (newNotification.messageImage.tagName == "span") {
+        let container = newNotification.shadowRoot.querySelector(".container");
+        if (container) {
+          let im = document.createElement("img");
+          im.setAttribute("src", imgSrc);
+          container.insertBefore(im, newNotification.shadowRoot.querySelector(".icon"));
+        }
+      }
 		}
 		else {
 			// fallback for systems that do not support notification (currently: SeaMonkey)
@@ -1027,13 +1020,10 @@ quickFilters.Util = {
     }
   }  ,
 
-  showVersionHistory: function showVersionHistory(ask) {
+  showVersionHistory: function showVersionHistory() {
 		const util = quickFilters.Util;
-    let version = util.VersionSanitized,
-        sPrompt = util.getBundleString("quickfilters.confirmVersionLink", "Display version history for quickFilters");
-    if (!ask || confirm(sPrompt)) {
-      util.openURL(null, util.makeUriPremium("https://quickfilters.quickfolders.org/version.html") + "#" + version);
-    }
+    let version = util.VersionSanitized;
+    util.openURL(null, util.makeUriPremium("https://quickfilters.quickfolders.org/version.html") + "#" + version);
   } ,
 
   showLicensePage: function showLicensePage() {
@@ -1050,7 +1040,7 @@ quickFilters.Util = {
   } ,
 	
   showBug: function showBug(bugNumber) {
-    quickFilters.Util.openURLInTab('https://www.mozdev.org/bugs/show_bug.cgi?id=' + bugNumber);
+    quickFilters.Util.openURLInTab('https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=' + bugNumber);
   } ,
   
   showIssue: function showIssue(issueNumber) {
@@ -1693,6 +1683,7 @@ quickFilters.Util = {
   } ,
   
   extractEmail: function extractEmail(address, domainSwitch) {
+    if (!address) return "";
     // filter out only mail portion
     let adp = address.match(/[^@<\s]+@[^@\s>]+/g)[0];
     if (!adp) adp = address
@@ -1847,32 +1838,16 @@ quickFilters.Util = {
     }
   } ,
 	
-  hasPremiumLicense: function hasPremiumLicense(reset) {
-		const licenser = quickFilters.Util.Licenser;
-    // early exit for Licensed copies
-    if (licenser.isValidated) 
-      return true;
-    // short circuit if we already validated:
-    if (!reset && licenser.wasValidityTested)
-      return licenser.isValidated;
-    let licenseKey = quickFilters.Preferences.getStringPref('LicenseKey'),
-        util = quickFilters.Util;
-    if (!licenseKey) 
-      return false; // short circuit if no license key!
-    if (!licenser.isValidated || reset) {
-      licenser.wasValidityTested = false;
-      licenser.validateLicense(licenseKey);
-    }
-    if (licenser.isValidated) 
-      return true;
-    return false;
+  hasPremiumLicense: function hasPremiumLicense() {
+    if (!quickFilters.Util.licenseInfo) return false;
+    return quickFilters.Util.licenseInfo.status == "Valid";
   } ,
 	
 	// appends user=pro OR user=proRenew if user has a valid / expired license
 	makeUriPremium: function makeUriPremium(URL) {
 		const util = quickFilters.Util,
-					isPremiumLicense = util.hasPremiumLicense(false),
-					isExpired = util.Licenser.isExpired;
+					isPremiumLicense = util.hasPremiumLicense(),
+					isExpired = util.licenseInfo.isExpired;
 		try {
 			let uType = "";
 			if (isExpired) 
@@ -2002,22 +1977,24 @@ quickFilters.Util = {
 		      util = quickFilters.Util,
           Ci = Components.interfaces, 
           Cc = Components.classes;
-    let uri = "chrome://global/content/config.xhtml";
-		uri += "?debug";
-
-    let mediator = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator),
-        w = mediator.getMostRecentWindow(name),
+    let mediator = Services.wm,
+        isTbModern = util.versionGreaterOrEqual(util.AppverFull, "85"),
+        uri = (isTbModern) ? "about:config": "chrome://global/content/config.xhtml?debug";
+    
+    let w = mediator.getMostRecentWindow(name),
         win = clickedElement ?
-		          (clickedElement.ownerDocument.defaultView ? clickedElement.ownerDocument.defaultView : window)
-							: window;
+              (clickedElement.ownerDocument.defaultView ? clickedElement.ownerDocument.defaultView : window)
+              : window;
     if (!w) {
       let watcher = Cc["@mozilla.org/embedcomp/window-watcher;1"].getService(Ci.nsIWindowWatcher);
-      w = watcher.openWindow(win, uri, name, "dependent,chrome,resizable,centerscreen,alwaysRaised,width=500px,height=350px", null);
+      w = watcher.openWindow(win, uri, name, "dependent,chrome,resizable,centerscreen,alwaysRaised,width=750px,height=450px", null);
     }
     w.focus();
     w.addEventListener('load', 
       function () {
-        let flt = w.document.getElementById("textbox");
+        let id = (isTbModern) ? "about-config-search" : "textbox",
+            flt = w.document.getElementById(id);
+            
         if (flt) {
           flt.value=filter;
           // make filter box readonly to prevent damage!
@@ -2165,7 +2142,38 @@ quickFilters.Util = {
       
     }
   } ,
+  
+  setAssistantButton: function(isActive) {
+    let doc = document,
+        button = doc.getElementById('quickfilters-toolbar-button');
+    if (button) 
+      button.checked = isActive;
+    let menuItem = doc.getElementById('quickFilters-wizard');
+    if (menuItem) {
+      menuItem.checked = isActive;
+      menuItem.label = quickFilters.Util.getBundleString(
+                          isActive ? "quickfilters.FilterAssistant.stop" : "quickfilters.FilterAssistant.start",
+                          isActive ? "stop filter assistant" : "start filter assistant");
+    }    
+  } ,
 
+  showLicenseDialog: function showLicenseDialog(featureName) {
+		let params = {
+      inn:{
+        referrer: featureName, 
+        instance: quickFilters   // Why? should this be the main interface? make obsolete!
+      }, 
+      out:null
+    };
+    window.openDialog("chrome://quickfilters/content/register.xhtml",
+      "quickfilters-register","chrome,titlebar,centerscreen,resizable,alwaysRaised,instantApply",
+      quickFilters,
+      params).focus();
+  } , 
+  
+  viewSplash: function() {
+    quickFilters.Util.notifyTools.notifyBackground({ func: "splashScreen" });
+  } ,
 	
   dummy: function() {
 		/* 
@@ -2368,19 +2376,9 @@ quickFilters.mimeDecoder = {
 				}
 			}
 			else {
-				// for Mailers who have no manners.
-				if (util.versionGreaterOrEqual(util.AppverFull, "61")) {
-					util.logDebug("Mailer has no manners, trying to decode string: " + theString);
-					decodedStr = decodeURIComponent(escape(theString));
-					util.logDebug("...decoded string: " + decodedStr);
-				}	
-				else {
-					if (charset === "")
-						charset = this.detectCharset(theString);
-					let skip = charset.search(/ISO-2022|HZ-GB|UTF-7/gmi) !== -1,
-					    cvtUTF8 = Components.classes["@mozilla.org/intl/utf8converterservice;1"].getService(Components.interfaces.nsIUTF8ConverterService),
-					decodedStr = this.cvtUTF8.convertStringToUTF8(theString, charset, skip);
-				}
+        util.logDebug("Mailer has no manners, trying to decode string: " + theString);
+        decodedStr = decodeURIComponent(escape(theString));
+        util.logDebug("...decoded string: " + decodedStr);
 			}
 		}
 		catch(ex) {
@@ -2742,12 +2740,12 @@ if (!quickFilters.Shim) {
 		findInboxFromRoot: function findInboxFromRoot(root, fflags) {
 			const Ci = Components.interfaces,
 			      util = quickFilters.Util;
-			if (typeof ChromeUtils.import == "undefined")
+/*			if (typeof ChromeUtils.import == "undefined")
 				Components.utils.import("resource:///modules/iteratorUtils.jsm");
 			else
-				var { fixIterator } = ChromeUtils.import("resource:///modules/iteratorUtils.jsm");
+				var { fixIterator } = ChromeUtils.import("resource:///modules/iteratorUtils.jsm"); */
 						
-			for (let folder of fixIterator(root.subFolders, Ci.nsIMsgFolder)) {
+			for (let folder of root.subFolders) {  // fixIterator(, Ci.nsIMsgFolder)
 				if (folder.getFlag && folder.getFlag(fflags.Inbox) || folder.getFlag(fflags.Newsgroup)) {
 					util.logDebugOptional('createFilter', "sourceFolder: determined Inbox " + folder.prettyName);
 					return folder;
@@ -2756,8 +2754,19 @@ if (!quickFilters.Shim) {
 			return null;
 		} ,
 		
-		dummy: ', <== end Shim properties here'
+		dummy: ", <== end Shim properties here"
 	} // end of Shim definition
 };
 /*** <<<===== END Code moved from chimEcma/qFilters-shim-ecma.js  **/
 
+
+// the following adds the notifyTools API as a util method to communicate with the background page
+// this mechanism will be used to replace legacy code with API calls.
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
+quickFilters.Util.extension = ExtensionParent.GlobalManager.getExtension("quickFilters@axelg.com");
+Services.scriptloader.loadSubScript(
+  quickFilters.Util.extension.rootURI.resolve("chrome/content/scripts/notifyTools.js"),
+  quickFilters.Util,
+  "UTF-8"
+);

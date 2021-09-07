@@ -147,7 +147,7 @@ exquilla.msgHVOoverlay = (function _msgHVOoverlay()
       let hdr = messenger.msgHdrFromURI(attachments[0].uri);
       let ewsServer = safeGetJS(hdr.folder.server);
       let ewsService = Cc["@mozilla.org/messenger/messageservice;1?type=exquilla"]
-                         .getService(Ci.nsIMsgMessageService);
+                         .getService(Ci.nsIMsgMessageService)/* COMPAT for TB 78 (bug 1667338) */.wrappedJSObject;
       let mailbox = ewsServer.nativeMailbox;
 
       // Get if needed the attachment, and copy
@@ -166,9 +166,7 @@ exquilla.msgHVOoverlay = (function _msgHVOoverlay()
           continue;
         }
         
-        let neckoURL = {};
-        ewsService.GetUrlForUri(attachment.url, neckoURL, null);
-        let url = neckoURL.value;
+        let url = ewsService.getUrlForUri(attachment.url, null);
         let ewsUrl = safeGetJS(url, "EwsUrl");
         if (!ewsUrl)
         {

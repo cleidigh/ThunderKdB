@@ -2909,6 +2909,9 @@
 	"wdw_cardEditionViewListTitle": {
 		"message": "Danh sách xem"
 	},
+	"wdw_cardEditionEditTemplateTitle": {
+		"message": "Chỉnh sửa mẫu"
+	},
 	"wdw_cardbookPrintTitleLong": {
 		"message": "$P1$ - Xem trước Bản in - Danh bạ - Thunderbird",
         "placeholders": {
@@ -3563,20 +3566,20 @@
 	"cardbookContactPaneItemAccesskey": {
 		"message": "O"
 	},
+	"wizard.next.label": {
+		"message": "Tiếp"
+	},	
+	"wizard.back.label": {
+		"message": "Quay lại"
+	},	
+	"wizard.create.label": {
+		"message": "Tạo"
+	},
 	"wizard.title": {
 		"message": "Thêm sổ địa chỉ mới"
 	},
-	"wizard.label": {
-		"message": "Thêm sổ địa chỉ mới"
-	},
-	"welcomePage.wizard.description": {
-		"message": "Chào mừng!"
-	},
 	"welcomePage.description": {
 		"message": "??It seems that this is the first time CardBook has been run. CardBook will attempt to collect contacts from Thunderbird’s standard address books and remote address books.??"
-	},
-	"initialPage.wizard.description": {
-		"message": "Vị trí của sổ địa chỉ mới."
 	},
 	"initialPage.description": {
 		"message": "Vị trí của sổ địa chỉ:"
@@ -3595,9 +3598,6 @@
 	},
 	"initialPage.find.label": {
 		"message": "??Search for remote address books??"
-	},
-	"localPage.wizard.description": {
-		"message": "Nhập và vị trí của sổ địa chỉ địa phương mới."
 	},
 	"localPage.type.description": {
 		"message": "Loại sổ địa chỉ địa phương:"
@@ -3632,9 +3632,6 @@
 	"localPage.uributton.label": {
 		"message": "Duyệtn"
 	},
-	"remotePage.wizard.description": {
-		"message": "Loại và vị trí của sổ địa chỉ mới từ xa."
-	},
 	"remotePage.description": {
 		"message": "Loại sổ địa chỉ từ xa của bạn là gì (Chú ý: Google KHÔNG tuân thủ các tiêu chuẩn vCard)?"
 	},
@@ -3646,6 +3643,9 @@
 	},
 	"remotePage.google.label": {
 		"message": "Google"
+	},
+	"remotePage.googleWorkspace.label": {
+		"message": "Google Workspace"
 	},
 	"remotePage.apple.label": {
 		"message": "Apple"
@@ -3671,14 +3671,14 @@
 	"remotePage.password.label": {
 		"message": "Mật khẩu:"
 	},
+	"rememberPassword": {
+		"message": "Dùng Trình quản lí mật khẩu để ghi nhớ mật khẩu này"
+	},
 	"showHidePassword.tooltip": {
 		"message": "Hiện/ẩn mật khẩu"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Xác thực"
-	},
-	"locationSearchPage.wizard.description": {
-		"message": "Tìm kiếm Được lưu Định nghĩa."
 	},
 	"locationSearchPage.label": {
 		"message": "Tìm kiếm Được lưu"
@@ -3704,9 +3704,6 @@
 	"googleOauthPage.wizard.description": {
 		"message": "Xác thực của Google"
 	},
-	"namePage.wizard.description": {
-		"message": "Thuộc tính của sổ địa chỉ"
-	},
 	"namePage.selected.label": {
 		"message": "Đã chọn"
 	},
@@ -3725,17 +3722,11 @@
 	"namePage.vCardVersion.label": {
 		"message": "Thẻ Ảo"
 	},
-	"namesPage.wizard.description": {
-		"message": "Thuộc tính của sổ địa chỉ"
-	},
 	"namesPage.name.label": {
 		"message": "Tên"
 	},
 	"namesPage.name.description": {
 		"message": "Nhiều cuốn sách địa chỉ đã được phát hiện. Chọn sách địa chỉ bạn muốn mở và tên của họ:"
-	},
-	"findPage.wizard.description": {
-		"message": "??Remote address book search??"
 	},
 	"findPage.name1.description": {
 		"message": "??No remote address books found.??"
@@ -3745,9 +3736,6 @@
 	},
 	"findPage.name3.description": {
 		"message": "??Multiple remote address books found. Validate remote address books to add:??"
-	},
-	"finishPage.wizard.description": {
-		"message": "??Address books configuration??"
 	},
 	"finishPage.description": {
 		"message": "Sổ địa chỉ mới của bạn đã được định cấu hình thành công."
@@ -5117,6 +5105,12 @@
 	"cardbookToolbarAddListButtonTooltip": {
 		"message": "Danh sách Mới"
 	},
+	"cardbookToolbarAddTemplateButtonLabel": {
+		"message": "??New Template??"
+	},
+	"cardbookToolbarAddTemplateButtonTooltip": {
+		"message": "??Create a new template??"
+	},
 	"cardbookToolbarEditButtonLabel": {
 		"message": "Chỉnh sửa"
 	},
@@ -5315,6 +5309,15 @@
 	"searchForLocalKeyEditButton.tooltip": {
 		"message": "Nhập từ tập tin"
 	},
+	"definitionLabel": {
+		"message": "Định nghĩa"
+	},
+	"fieldsLabel": {
+		"message": "??Fields??"
+	},
+	"formulasLabel": {
+		"message": "??Formulas??"
+	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Chia sẻ qua email"
 	},
@@ -5462,6 +5465,9 @@
 	"fnFormulaExplanation": {
 		"message": "Có thể tùy chỉnh cách Danh bạ tạo Tên hiển thị. Công thức này bao gồm các khối kèm theo “()”. ??In these blocks there might be many parts delimited by “|”.??"
 	},
+	"templateFormulaExplanation": {
+		"message": "??It is possible to define templates with pre-defined fields. For example one may define a template with the email ”({{2}}).({{4}})@mycompany.org”. Once applied to a contact that has ”John” and ”Doe” as given name and family name, an email ”john.doe@mycompany.org” will be added to the contact.??"
+	},
 	"formulaExplanation1": {
 		"message": "??({{1}}|{{2}}) : If {{1}} is empty, then the block will be replaced by {{2}}.??"
 	},
@@ -5500,12 +5506,6 @@
 	},
 	"displayFieldNamesAccesskey": {
 		"message": "T"
-	},
-	"displayTypesLabel": {
-		"message": "Loại và Tùy chỉnh"
-	},
-	"displayTypesAccesskey": {
-		"message": "y"
 	},
 	"fieldsToPrintGroupboxLabel": {
 		"message": "Các trường để in"
@@ -5698,6 +5698,12 @@
 	},
 	"saveTemplateLabel": {
 		"message": "Lưu mẫu"
+	},
+	"applyTemplateLabel": {
+		"message": "??Apply template??"
+	},
+	"createTemplateLabel": {
+		"message": "??Create template??"
 	},
 	"convertVCardsLabel": {
 		"message": "??Convert vCards??"

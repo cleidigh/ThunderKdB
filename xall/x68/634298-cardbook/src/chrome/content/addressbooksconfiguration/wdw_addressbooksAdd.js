@@ -33,8 +33,8 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 		gFirstFirstStepDone: false,
 		
 		lTimerRefreshTokenAll : {},
-		lTimerDiscoveryAll : {},
-		
+		lTimerDiscoveryAll: {},
+
 		initSearchDefinition: function () {
 			if (window.arguments[0].dirPrefId && cardbookRepository.cardbookComplexSearch[window.arguments[0].dirPrefId]) {
 				wdw_addressbooksAdd.gSearchDefinition.searchAB = cardbookRepository.cardbookComplexSearch[window.arguments[0].dirPrefId].searchAB;
@@ -54,37 +54,9 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 		},
 		
 		initWizardEvents: function () {
-			document.addEventListener("wizardfinish", wdw_addressbooksAdd.closeWizard);
-			document.addEventListener("wizardcancel", wdw_addressbooksAdd.cancelWizard);
-
-			let welcomePage = document.getElementById("welcomePage");
-			welcomePage.addEventListener("pageshow", wdw_addressbooksAdd.welcomePageShow);
-			welcomePage.addEventListener("pageadvanced", wdw_addressbooksAdd.loadStandardAddressBooks);
-			let initialPage = document.getElementById("initialPage");
-			initialPage.addEventListener("pageshow", wdw_addressbooksAdd.initialPageShow);
-			initialPage.addEventListener("pageadvanced", wdw_addressbooksAdd.initialPageAdvance);
-			let localPage = document.getElementById("localPage");
-			localPage.addEventListener("pageshow", wdw_addressbooksAdd.checkRequired);
-			localPage.addEventListener("pageadvanced", wdw_addressbooksAdd.localPageAdvance);
-			let remotePage = document.getElementById("remotePage");
-			remotePage.addEventListener("pageshow", wdw_addressbooksAdd.remotePageShow);
-			remotePage.addEventListener("pageadvanced", wdw_addressbooksAdd.remotePageAdvance);
-			let searchPage = document.getElementById("searchPage");
-			searchPage.addEventListener("pageshow", wdw_addressbooksAdd.checkSearch);
-			searchPage.addEventListener("pageadvanced", wdw_addressbooksAdd.searchPageAdvance);
-			let searchNamePage = document.getElementById("searchNamePage");
-			searchNamePage.addEventListener("pageshow", wdw_addressbooksAdd.loadSearchName);
-			searchNamePage.addEventListener("pageadvanced", wdw_addressbooksAdd.prepareSearchAddressbook);
-			let findPage = document.getElementById("findPage");
-			findPage.addEventListener("pageshow", wdw_addressbooksAdd.loadFinds);
-			findPage.addEventListener("pageadvanced", wdw_addressbooksAdd.findAdvance);
-			let namesPage = document.getElementById("namesPage");
-			namesPage.addEventListener("pageshow", wdw_addressbooksAdd.loadNames);
-			namesPage.addEventListener("pageadvanced", wdw_addressbooksAdd.namesAdvance);
-			let finishFirstPage = document.getElementById("finishFirstPage");
-			finishFirstPage.addEventListener("pageshow", wdw_addressbooksAdd.finishFirstPageShow);
-			let finishPage = document.getElementById("finishPage");
-			finishPage.addEventListener("pageshow", wdw_addressbooksAdd.finishPageShow);
+			document.addEventListener("cancel", wdw_addressbooksAdd.cancelWizard);
+			document.addEventListener("dialogextra2", wdw_addressbooksAdd.showPreviousPage);
+			document.addEventListener("dialogaccept", wdw_addressbooksAdd.showNextPage);
 		},
 		
 		loadWizard: function () {
@@ -92,50 +64,121 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			wdw_addressbooksAdd.initWizardEvents();
 
 			if (window.arguments[0].action == "first") {
-				if (!cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.exclusive")) {
-					document.getElementById('addressbook-wizard').goTo("welcomePage");
-				} else {
-					document.getElementById('addressbook-wizard').goTo("findPage");
-				}
+				wdw_addressbooksAdd.showPage("welcomePage");
 			} else if (window.arguments[0].action == "search") {
 				wdw_addressbooksAdd.initSearchDefinition();
-				document.getElementById('addressbook-wizard').goTo("searchPage");
+				wdw_addressbooksAdd.showPage("searchPage");
 			} else if (window.arguments[0].action == "discovery") {
 				wdw_addressbooksAdd.gAccountsFound = window.arguments[0].accountsToAdd;
-				document.getElementById('addressbook-wizard').goTo("namesPage");
+				wdw_addressbooksAdd.showPage("namesPage");
 			} else {
-				document.getElementById('addressbook-wizard').goTo("initialPage");
+				wdw_addressbooksAdd.showPage("initialPage");
 			}
 		},
 
 		loadStandardAddressBooks: function () {
-			var contactManager = MailServices.ab;
-			var contacts = contactManager.directories;
-			while ( contacts.hasMoreElements() ) {
-				var contact = contacts.getNext().QueryInterface(Components.interfaces.nsIAbDirectory);
-				if (contact.dirPrefId == "ldap_2.servers.history") {
-					wdw_addressbooksAdd.gAccountsFound.push(["STANDARD", "", "", contact.dirName, cardbookRepository.supportedVersion, "", contact.dirPrefId, true]);
+			for (let addrbook of MailServices.ab.directories) {
+				if (addrbook.dirPrefId == "ldap_2.servers.history") {
+					wdw_addressbooksAdd.gAccountsFound.push(["STANDARD", "", "", addrbook.dirName, cardbookRepository.supportedVersion, "", addrbook.dirPrefId, true]);
 				} else {
-					wdw_addressbooksAdd.gAccountsFound.push(["STANDARD", "", "", contact.dirName, cardbookRepository.supportedVersion, "", contact.dirPrefId, false]);
+					wdw_addressbooksAdd.gAccountsFound.push(["STANDARD", "", "", addrbook.dirName, cardbookRepository.supportedVersion, "", addrbook.dirPrefId, false]);
 				}
+			}
+		},
+
+		getCurrentPage: function () {
+			let page = document.getElementById("addressbook-creation-dialog").querySelector(".cardbook-page:not([hidden])");
+			return page.id;
+		},
+
+		getRequiredElements: function (aPageID) {
+			let elements = document.getElementById(aPageID).querySelectorAll("[required]:not([disabled]");
+			return elements;
+		},
+
+		showPreviousPage: function (aEvent) {
+			let currentPage = wdw_addressbooksAdd.getCurrentPage();
+			if (pageMap[currentPage]["previousAction"]) {
+				pageMap[currentPage]["previousAction"].apply();
+			}
+			aEvent.preventDefault();
+			aEvent.stopPropagation();
+			if (pageMap[currentPage]["extra2Page"] != "null") {
+				let previousPage = pageMap[currentPage]["extra2Page"];
+				wdw_addressbooksAdd.showPage(previousPage);
+			}
+		},
+
+		showNextPage: function (aEvent) {
+			let currentPage = wdw_addressbooksAdd.getCurrentPage();
+			if (pageMap[currentPage]["nextAction"]) {
+				pageMap[currentPage]["nextAction"].apply();
+			}
+			aEvent.preventDefault();
+			aEvent.stopPropagation();
+			if (pageMap[currentPage]["acceptPage"] != "null") {
+				let nextPage = pageMap[currentPage]["acceptPage"];
+				pageMap[nextPage]["extra2Page"] = currentPage;
+				wdw_addressbooksAdd.showPage(nextPage);
+			}
+		},
+
+		showPage: function (pageID) {
+			if (!pageID) {
+				return;
+			}
+			let page = document.getElementById(pageID);
+			if (!page) {
+				return;
+			}
+			// show correct node
+			let nodes = document.getElementById("addressbook-creation-dialog").querySelectorAll(".cardbook-page");
+			for (let node of nodes) {
+				if (node.id == pageID) {
+					node.hidden = false;
+				} else {
+					node.hidden = true;
+				}
+			}
+			// update buttons
+			for (let buttonName in pageHandlers) {
+				// labels
+				let dialog = document.getElementById("addressbook-creation-dialog");
+				let button = dialog.getButton(buttonName);
+				if (pageMap[pageID][buttonName + "Page"]) {
+					let label = page.getAttribute("buttonlabel" + buttonName);
+					button.setAttribute("label", label);
+					button.hidden = false;
+				} else {
+					button.hidden = true;
+				}
+			}
+			// action
+			if (pageMap[pageID].onpageshow) {
+				pageMap[pageID].onpageshow.apply();
 			}
 		},
 
 		checkRequired: function () {
-			var canAdvance = true;
-			var curPage = document.getElementById('addressbook-wizard').currentPage;
-			if (curPage) {
-				let eList = curPage.getElementsByAttribute('required', 'true');
+			let canAdvance = true;
+			let dialog = document.getElementById("addressbook-creation-dialog");
+			let currentPage = wdw_addressbooksAdd.getCurrentPage();
+			if (currentPage) {
+				let eList = wdw_addressbooksAdd.getRequiredElements(currentPage);
 				for (let i = 0; i < eList.length && canAdvance; ++i) {
 					canAdvance = (eList[i].value != "");
 				}
-				document.getElementById('addressbook-wizard').canAdvance = canAdvance;
+				if (canAdvance) {
+					dialog.removeAttribute("buttondisabledaccept");
+				} else {
+					dialog.setAttribute("buttondisabledaccept", "true");
+				}
 			}
 		},
 
 		checkFindLinesRequired: function () {
-			var canAdvance = false;
-			var i = 0;
+			let canAdvance = false;
+			let i = 0;
 			while (true) {
 				if (document.getElementById('findPageValidateButton' + i)) {
 					if (document.getElementById('findPageValidateButton' + i).getAttribute('validated') == "true") {
@@ -147,17 +190,23 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 					break;
 				}
 			}
-			document.getElementById('addressbook-wizard').canAdvance = canAdvance;
+			let dialog = document.getElementById("addressbook-creation-dialog");
+			if (canAdvance) {
+				dialog.removeAttribute("buttondisabledaccept");
+			} else {
+				dialog.setAttribute("buttondisabledaccept", "true");
+			}
 		},
 
 		checkNamesLinesRequired: function () {
-			var canAdvance = true;
-			var oneChecked = false;
-			var i = 0;
+			let dialog = document.getElementById("addressbook-creation-dialog");
+			let canAdvance = true;
+			let oneChecked = false;
+			let i = 0;
 			while (true) {
 				if (document.getElementById('namesCheckbox' + i)) {
-					var aCheckbox = document.getElementById('namesCheckbox' + i);
-					var aAddressbookName = document.getElementById('namesTextbox' + i);
+					let aCheckbox = document.getElementById('namesCheckbox' + i);
+					let aAddressbookName = document.getElementById('namesTextbox' + i);
 					if (aCheckbox.checked) {
 						oneChecked = true;
 						 if (aAddressbookName.value == "") {
@@ -171,14 +220,22 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				}
 			}
 			if (window.arguments[0].action == "first") {
-				document.getElementById('addressbook-wizard').canAdvance = ((canAdvance && oneChecked) || !oneChecked);
+				if ((canAdvance && oneChecked) || !oneChecked) {
+					dialog.removeAttribute("buttondisabledaccept");
+				} else {
+					dialog.setAttribute("buttondisabledaccept", "true");
+				}
 			} else {
-				document.getElementById('addressbook-wizard').canAdvance = (canAdvance && oneChecked);
+				if (canAdvance && oneChecked) {
+					dialog.removeAttribute("buttondisabledaccept");
+				} else {
+					dialog.setAttribute("buttondisabledaccept", "true");
+				}
 			}
 		},
 
 		welcomePageShow: function () {
-			document.getElementById('addressbook-wizard').canAdvance = true;
+			wdw_addressbooksAdd.checkRequired();
 		},
 
 		initialPageShow: function () {
@@ -187,21 +244,23 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 		},
 
 		initialPageAdvance: function () {
-			var type = document.getElementById('addressbookType').value;
-			var page = document.getElementsByAttribute('pageid', 'initialPage')[0];
+			let currentPage = wdw_addressbooksAdd.getCurrentPage();
+			let type = document.getElementById('addressbookType').value;
+			let nextPage = "";
 			if (type == 'local') {
-				page.next = 'localPage';
+				nextPage = 'localPage';
 			} else if (type == 'remote') {
-				page.next = 'remotePage';
+				nextPage = 'remotePage';
 			} else if (type == 'standard') {
 				wdw_addressbooksAdd.loadStandardAddressBooks();
-				page.next = 'namesPage';
+				nextPage = 'namesPage';
 			} else if (type == 'find') {
-				page.next = 'findPage';
+				nextPage = 'findPage';
 			} else if (type == 'search') {
 				wdw_addressbooksAdd.initSearchDefinition();
-				page.next = 'searchPage';
+				nextPage = 'searchPage';
 			}
+			pageMap[currentPage]["acceptPage"] = nextPage;
 		},
 
 		localPageSelect: function () {
@@ -320,17 +379,20 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 		},
 
 		checklocationNetwork: function () {
+			let dialog = document.getElementById("addressbook-creation-dialog");
 			let canValidate = true;
-			let curPage = document.getElementById('addressbook-wizard').currentPage;
-			if (curPage) {
-				document.getElementById('addressbook-wizard').canAdvance = wdw_addressbooksAdd.gValidateURL;
+			let currentPage = wdw_addressbooksAdd.getCurrentPage();
+			if (currentPage) {
+				if (wdw_addressbooksAdd.gValidateURL) {
+					dialog.removeAttribute("buttondisabledaccept");
+				} else {
+					dialog.setAttribute("buttondisabledaccept", "true");
+				}
 				if (wdw_addressbooksAdd.gValidateURL) {
 					document.getElementById('validateButton').disabled = !wdw_addressbooksAdd.gValidateURL;
 				} else {
-					let type = document.getElementById('remotePageType').value;
-					let username = document.getElementById('remotePageUsername').value;
 					canValidate = wdw_addressbooksAdd.validateEmail();
-					let eList = curPage.getElementsByAttribute('required', 'true');
+					let eList = wdw_addressbooksAdd.getRequiredElements(currentPage);
 					for (let i = 0; i < eList.length && canValidate; ++i) {
 						canValidate = (eList[i].value != "");
 					}
@@ -348,13 +410,13 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			let type = document.getElementById('remotePageType').value;
 			let username = document.getElementById('remotePageUsername').value;
 			let myRemotePageUsernameInfo = document.getElementById("remotePageUsernameInfo");
-			if (type == 'GOOGLE2' || type == 'YAHOO') {
+			if (type == 'GOOGLE2' || type == 'GOOGLE3') {
 				canValidate = wdw_addressbooksAdd.isValidAddress(username);
 				if (canValidate) {
-					myRemotePageUsernameInfo.classList.remove("icon-warning");
+					myRemotePageUsernameInfo.src="";
 					myRemotePageUsernameInfo.removeAttribute('tooltiptext');
 				} else {
-					myRemotePageUsernameInfo.classList.add("icon-warning");
+					myRemotePageUsernameInfo.src="chrome://global/skin/icons/warning.svg";
 					myRemotePageUsernameInfo.setAttribute('tooltiptext', cardbookRepository.extension.localeData.localizeMessage("ValidatingEmailFailedLabel"));
 				}
 			}
@@ -370,7 +432,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			document.getElementById('remotePagePassword').value = "";
 			
 			var type = document.getElementById('remotePageType').value;
-			if (type == 'GOOGLE2') {
+			if (type == 'GOOGLE2' || type == 'GOOGLE3') {
 				document.getElementById('remotePageUriLabel').disabled=true;
 				document.getElementById('remotePageURI').disabled=true;
 				document.getElementById('remotePageURI').setAttribute('required', 'false');
@@ -378,15 +440,9 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				document.getElementById('remotePagePassword').disabled=true;
 				document.getElementById('remotePagePassword').setAttribute('required', 'false');
 				document.getElementById('rememberPasswordCheckbox').disabled=true;
-			} else if (type == 'YAHOO') {
-				document.getElementById('remotePageUriLabel').disabled=true;
-				document.getElementById('remotePageURI').disabled=true;
-				document.getElementById('remotePageURI').setAttribute('required', 'false');
-				document.getElementById('remotePagePasswordLabel').disabled=true;
-				document.getElementById('remotePagePassword').disabled=true;
-				document.getElementById('remotePagePassword').setAttribute('required', 'false');
-				document.getElementById('rememberPasswordCheckbox').disabled=true;
-			} else if (type == 'APPLE') {
+				document.getElementById('validateButton').hidden=true;
+				document.getElementById('validateGoogleButton').hidden=false;
+			} else if (type == 'APPLE' || type == 'YAHOO') {
 				document.getElementById('remotePageUriLabel').disabled=true;
 				document.getElementById('remotePageURI').disabled=true;
 				document.getElementById('remotePageURI').setAttribute('required', 'false');
@@ -394,6 +450,8 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				document.getElementById('remotePagePassword').disabled=false;
 				document.getElementById('remotePagePassword').setAttribute('required', 'true');
 				document.getElementById('rememberPasswordCheckbox').disabled=false;
+				document.getElementById('validateButton').hidden=false;
+				document.getElementById('validateGoogleButton').hidden=true;
 			} else {
 				document.getElementById('remotePageUriLabel').disabled=false;
 				document.getElementById('remotePageURI').disabled=false;
@@ -402,6 +460,8 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				document.getElementById('remotePagePassword').disabled=false;
 				document.getElementById('remotePagePassword').setAttribute('required', 'true');
 				document.getElementById('rememberPasswordCheckbox').disabled=false;
+				document.getElementById('validateButton').hidden=false;
+				document.getElementById('validateGoogleButton').hidden=true;
 			}
 			wdw_addressbooksAdd.checklocationNetwork();
 			cardbookNotifications.setNotification(ABAddNotification.resultNotifications, "OK");
@@ -414,8 +474,6 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 		},
 
 		remotePageShow: function () {
-			var pwdMgrBundle = Services.strings.createBundle("chrome://passwordmgr/locale/passwordmgr.properties");
-			document.getElementById('rememberPasswordCheckbox').setAttribute('label', pwdMgrBundle.GetStringFromName("rememberPassword"));
 			wdw_addressbooksAdd.checklocationNetwork();
 			wdw_addressbooksAdd.validateEmail();
 			wdw_addressbooksAdd.remotePageSelect();
@@ -423,8 +481,8 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 
 		remotePageAdvance: function () {
 			let myType = document.getElementById('remotePageType').value;
-			// APPLE or CARDDAV have already been added to gAccountsFound
-			if (myType == "GOOGLE2" || myType == "YAHOO") {
+			// APPLE, YAHOO or CARDDAV have already been added to gAccountsFound
+			if (myType == "GOOGLE2" || myType == "GOOGLE3") {
 				wdw_addressbooksAdd.gAccountsFound = [];
 				wdw_addressbooksAdd.gAccountsFound.push([myType,
 															cardbookRepository.cardbookOAuthData[myType].ROOT_API,
@@ -448,12 +506,13 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 
 		checkSearch: function () {
 			wdw_addressbooksAdd.constructComplexSearch();
-			document.getElementById('addressbook-wizard').canAdvance = false;
+			let dialog = document.getElementById("addressbook-creation-dialog");
+			dialog.setAttribute("buttondisabledaccept", "true");
 			function checkTerms() {
 				if (cardbookComplexSearch.getSearch().rules.length) {
-					document.getElementById('addressbook-wizard').canAdvance = true;
+					dialog.removeAttribute("buttondisabledaccept");
 				} else {
-					document.getElementById('addressbook-wizard').canAdvance = false;
+					dialog.setAttribute("buttondisabledaccept", "true");
 				}
 			};
 			checkTerms();
@@ -478,30 +537,33 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			let myPasswordTextboxInfo = document.getElementById("remotePagePasswordInfo");
 			if (myPasswordTextbox.type == "password") {
 				myPasswordTextbox.type = "text";
-				myPasswordTextboxInfo.classList.add("icon-visible");
+				myPasswordTextboxInfo.src = "chrome://messenger/skin/icons/visible.svg";
 			} else {
 				myPasswordTextbox.type = "password";
-				myPasswordTextboxInfo.classList.remove("icon-visible");
+				myPasswordTextboxInfo.src = "chrome://messenger/skin/icons/hidden.svg";
 			}
 		},
 
 		validateURL: function () {
-			document.getElementById('addressbook-wizard').canAdvance = false;
+			let dialog = document.getElementById("addressbook-creation-dialog");
+			dialog.setAttribute("buttondisabledaccept", "true");
 			document.getElementById('remotePageURI').value = cardbookRepository.cardbookUtils.decodeURL(document.getElementById('remotePageURI').value.trim());
 			document.getElementById('validateButton').disabled = true;
 
-			var type = document.getElementById('remotePageType').value;
-			var username = document.getElementById('remotePageUsername').value;
-			var password = document.getElementById('remotePagePassword').value;
-			if (type == 'GOOGLE2') {
-				var url = cardbookRepository.cardbookOAuthData.GOOGLE2.ROOT_API;
+			let type = document.getElementById('remotePageType').value;
+			let username = document.getElementById('remotePageUsername').value;
+			let password = document.getElementById('remotePagePassword').value;
+			let url;
+			if (type == 'GOOGLE2' || type == 'GOOGLE3') {
+				url = cardbookRepository.cardbookOAuthData[type].ROOT_API;
 			} else if (type == 'YAHOO') {
-				var url = cardbookRepository.cardbookOAuthData.YAHOO.ROOT_API;
+				url = cardbookRepository.YAHOO_API;
+				wdw_addressbooksAdd.gCardDAVURLs.push([cardbookRepository.cardbookSynchronization.getSlashedUrl(url), true]); // [url, discovery]
 			} else if (type == 'APPLE') {
-				var url = cardbookRepository.APPLE_API;
+				url = cardbookRepository.APPLE_API;
 				wdw_addressbooksAdd.gCardDAVURLs.push([cardbookRepository.cardbookSynchronization.getSlashedUrl(url), true]); // [url, discovery]
 			} else {
-				var url = document.getElementById('remotePageURI').value;
+				url = document.getElementById('remotePageURI').value;
 				if (cardbookRepository.cardbookSynchronization.getRootUrl(url) == "") {
 					cardbookNotifications.setNotification(ABAddNotification.resultNotifications, "ValidatingURLFailedLabel");
 					return;
@@ -511,20 +573,13 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				wdw_addressbooksAdd.gCardDAVURLs.push([cardbookRepository.cardbookSynchronization.getWellKnownUrl(url), true]);
 			}
 			
-			var dirPrefId = cardbookRepository.cardbookUtils.getUUID();
-			if (type == 'GOOGLE2') {
+			let dirPrefId = cardbookRepository.cardbookUtils.getUUID();
+			if (type == 'GOOGLE2' || type == 'GOOGLE3') {
 				cardbookNotifications.setNotification(ABAddNotification.resultNotifications, "Validating1Label", [url], "PRIORITY_INFO_MEDIUM");
 				cardbookRepository.cardbookSynchronization.initMultipleOperations(dirPrefId);
 				cardbookRepository.cardbookServerSyncRequest[dirPrefId]++;
-				var connection = {connUser: username, connPrefId: dirPrefId, connDescription: wdw_addressbooksAdd.gValidateDescription};
+				let connection = {connUser: username, connPrefId: dirPrefId, connType: type, connDescription: wdw_addressbooksAdd.gValidateDescription};
 				cardbookRepository.cardbookSynchronizationGoogle2.requestNewRefreshTokenForGooglePeople(connection, null, type, null);
-				wdw_addressbooksAdd.waitForRefreshTokenFinished(dirPrefId, url, type, username);
-			} else if (type == 'YAHOO') {
-				cardbookNotifications.setNotification(ABAddNotification.resultNotifications, "Validating1Label", [url], "PRIORITY_INFO_MEDIUM");
-				cardbookRepository.cardbookSynchronization.initMultipleOperations(dirPrefId);
-				cardbookRepository.cardbookServerSyncRequest[dirPrefId]++;
-				var connection = {connUser: username, connPrefId: dirPrefId, connDescription: wdw_addressbooksAdd.gValidateDescription};
-				cardbookRepository.cardbookSynchronizationYahoo.requestNewRefreshTokenForYahoo(connection, null, type, null);
 				wdw_addressbooksAdd.waitForRefreshTokenFinished(dirPrefId, url, type, username);
 			} else {
 				cardbookRepository.cardbookSynchronization.initDiscoveryOperations(dirPrefId);
@@ -565,17 +620,11 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			var myURL = document.getElementById('findPageURLTextbox' + aRowId).value;
 			var myUsername = document.getElementById('findUsernameTextbox' + aRowId).value;
 
-			if (myType == 'GOOGLE2') {
+			if (myType == 'GOOGLE2' || myType == 'GOOGLE3') {
 				cardbookRepository.cardbookSynchronization.initMultipleOperations(dirPrefId);
 				cardbookRepository.cardbookServerSyncRequest[dirPrefId]++;
-				var connection = {connUser: myUsername, connPrefId: dirPrefId, connDescription: wdw_addressbooksAdd.gValidateDescription};
+				var connection = {connUser: myUsername, connPrefId: dirPrefId, connType: myType, connDescription: wdw_addressbooksAdd.gValidateDescription};
 				cardbookRepository.cardbookSynchronizationGoogle2.requestNewRefreshTokenForGooglePeople(connection, null, myType, null);
-				wdw_addressbooksAdd.waitForFindRefreshTokenFinished(aRowId, dirPrefId, myURL, myType, myUsername);
-			} else if (myType == 'YAHOO') {
-				cardbookRepository.cardbookSynchronization.initMultipleOperations(dirPrefId);
-				cardbookRepository.cardbookServerSyncRequest[dirPrefId]++;
-				var connection = {connUser: myUsername, connPrefId: dirPrefId, connDescription: wdw_addressbooksAdd.gValidateDescription};
-				cardbookRepository.cardbookSynchronizationYahoo.requestNewRefreshTokenForYahoo(connection, null, myType, null);
 				wdw_addressbooksAdd.waitForFindRefreshTokenFinished(aRowId, dirPrefId, myURL, myType, myUsername);
 			} else {
 				var myPassword = document.getElementById('findPasswordTextbox' + aRowId).value;
@@ -741,94 +790,85 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			wdw_addressbooksAdd.checkRequired();
 		},
 
-		deleteBoxes: function (aRowName, aHeaderRowName) {
-			var aListRows = document.getElementById(aRowName);
-			var childNodes = aListRows.childNodes;
-			var toDelete = [];
-			for (var i = 0; i < childNodes.length; i++) {
-				var child = childNodes[i];
-				if (child.getAttribute('id') != aHeaderRowName) {
-					toDelete.push(child);
-				}
-			}
-			for (var i = 0; i < toDelete.length; i++) {
-				var oldChild = aListRows.removeChild(toDelete[i]);
-			}
-		},
-
 		createBoxesForNames: function (aType, aURL, aName, aVersionList, aUsername, aActionType, aSourceDirPrefId, aSourceCollected) {
-			var aListRows = document.getElementById('namesRows');
-			var aId = aListRows.childNodes.length - 1;
-			var aRow = cardbookElementTools.addGridRow(aListRows, 'namesRow' + aId, {flex: '1'});
+			let table = document.getElementById('namesTable');
+			let aId = table.rows.length - 1;
+			let aRow = cardbookElementTools.addTableRow(table, 'namesRow' + aId);
 
-			var aCheckbox = document.createXULElement('checkbox');
-			aRow.appendChild(aCheckbox);
-			aCheckbox.setAttribute('checked', true);
-			aCheckbox.setAttribute('id', 'namesCheckbox' + aId);
-			aCheckbox.setAttribute('validationType', aType);
-			aCheckbox.setAttribute('username', aUsername);
-			aCheckbox.setAttribute('actionType', aActionType);
-			aCheckbox.setAttribute('sourceDirPrefId', aSourceDirPrefId);
-			aCheckbox.setAttribute('sourceCollected', aSourceCollected.toString());
-			aCheckbox.setAttribute("aria-labelledby", "namesPageSelectedLabel");
-			aCheckbox.addEventListener("command", function() {
-					var aTextBox = document.getElementById('namesTextbox' + this.id.replace("namesCheckbox",""));
+			let checkboxData = cardbookElementTools.addTableData(aRow, 'namesTableData.' + aId + '.1');
+			let checkbox = document.createXULElement('checkbox');
+			checkboxData.appendChild(checkbox);
+			checkbox.setAttribute('checked', true);
+			checkbox.setAttribute('id', 'namesCheckbox' + aId);
+			checkbox.setAttribute('validationType', aType);
+			checkbox.setAttribute('username', aUsername);
+			checkbox.setAttribute('actionType', aActionType);
+			checkbox.setAttribute('sourceDirPrefId', aSourceDirPrefId);
+			checkbox.setAttribute('sourceCollected', aSourceCollected.toString());
+			checkbox.setAttribute("aria-labelledby", "namesPageSelectedLabel");
+			checkbox.addEventListener("command", function() {
+					let textbox = document.getElementById('namesTextbox' + this.id.replace("namesCheckbox",""));
 					if (this.checked) {
-						aTextBox.setAttribute('required', true);
+						textbox.setAttribute('required', true);
 					} else {
-						aTextBox.setAttribute('required', false);
+						textbox.setAttribute('required', false);
 					}
 					wdw_addressbooksAdd.checkNamesLinesRequired();
 				}, false);
 
-			var aTextbox = document.createElementNS("http://www.w3.org/1999/xhtml","html:input");
-			aRow.appendChild(aTextbox);
-			aTextbox.setAttribute('id', 'namesTextbox' + aId);
-			aTextbox.setAttribute("aria-labelledby", "namesPageNameLabel");
-			aTextbox.setAttribute('required', true);
-			aTextbox.value = aName;
-			aTextbox.addEventListener("input", function() {
+			let nameData = cardbookElementTools.addTableData(aRow, 'namesTableData.' + aId + '.2');
+			let nameTextbox = document.createElementNS("http://www.w3.org/1999/xhtml","html:input");
+			nameData.appendChild(nameTextbox);
+			nameTextbox.setAttribute('id', 'namesTextbox' + aId);
+			nameTextbox.setAttribute("aria-labelledby", "namesPageNameLabel");
+			nameTextbox.setAttribute('required', true);
+			nameTextbox.value = aName;
+			nameTextbox.addEventListener("input", function() {
 					wdw_addressbooksAdd.checkNamesLinesRequired();
 				}, false);
 
-			var aColorbox =  document.createElementNS("http://www.w3.org/1999/xhtml","html:input");
-			aRow.appendChild(aColorbox);
-			aColorbox.setAttribute('id', 'serverColorInput' + aId);
-			aColorbox.setAttribute("aria-labelledby", "namesPageColorLabel");
-			aColorbox.setAttribute('palettename', "standard");
-			aColorbox.setAttribute('type', "color");
-			aColorbox.value = cardbookRepository.cardbookUtils.randomColor(100);
+			let colorData = cardbookElementTools.addTableData(aRow, 'namesTableData.' + aId + '.3');
+			let colorbox =  document.createElementNS("http://www.w3.org/1999/xhtml","html:input");
+			colorData.appendChild(colorbox);
+			colorbox.setAttribute('id', 'serverColorInput' + aId);
+			colorbox.setAttribute("aria-labelledby", "namesPageColorLabel");
+			colorbox.setAttribute('palettename', "standard");
+			colorbox.setAttribute('type', "color");
+			colorbox.value = cardbookRepository.cardbookUtils.randomColor(100);
 			
-			var aMenuList = document.createXULElement('menulist');
-			aRow.appendChild(aMenuList);
-			aMenuList.setAttribute('id', 'vCardVersionPageName' + aId);
-			aMenuList.setAttribute("aria-labelledby", "namesPageVCardVersionLabel");
-			var aMenuPopup = document.createXULElement('menupopup');
-			aMenuList.appendChild(aMenuPopup);
-			aMenuPopup.setAttribute('id', 'vCardVersionPageNameMenupopup' + aId);
-			cardbookElementTools.loadVCardVersions(aMenuPopup.id, aMenuList.id, aVersionList);
+			let menuData = cardbookElementTools.addTableData(aRow, 'namesTableData.' + aId + '.4');
+			let menuList = document.createXULElement('menulist');
+			menuData.appendChild(menuList);
+			menuList.setAttribute('id', 'vCardVersionPageName' + aId);
+			menuList.setAttribute("aria-labelledby", "namesPageVCardVersionLabel");
+			let menuPopup = document.createXULElement('menupopup');
+			menuList.appendChild(menuPopup);
+			menuPopup.setAttribute('id', 'vCardVersionPageNameMenupopup' + aId);
+			cardbookElementTools.loadVCardVersions(menuPopup.id, menuList.id, aVersionList);
 
-			var aTextbox = document.createElementNS("http://www.w3.org/1999/xhtml","html:input");
-			aRow.appendChild(aTextbox);
-			aTextbox.setAttribute('id', 'URLTextbox' + aId);
-			aTextbox.setAttribute("aria-labelledby", "namesPageURLLabel");
-			aTextbox.setAttribute('hidden', 'true');
-			aTextbox.value = aURL;
+			let URLData = cardbookElementTools.addTableData(aRow, 'namesTableData.' + aId + '.5');
+			let URLTextbox = document.createElementNS("http://www.w3.org/1999/xhtml","html:input");
+			URLData.appendChild(URLTextbox);
+			URLTextbox.setAttribute('id', 'URLTextbox' + aId);
+			URLTextbox.setAttribute("aria-labelledby", "namesPageURLLabel");
+			URLTextbox.setAttribute('hidden', 'true');
+			URLTextbox.value = aURL;
 
-			var aCheckbox1 = document.createXULElement('checkbox');
-			aRow.appendChild(aCheckbox1);
-			aCheckbox1.setAttribute('checked', true);
-			aCheckbox1.setAttribute('id', 'DBCachedCheckbox' + aId);
-			aCheckbox1.setAttribute("aria-labelledby", "namesPageDBCachedLabel");
+			let checkbox1Data = cardbookElementTools.addTableData(aRow, 'namesTableData.' + aId + '.6');
+			let checkbox1 = document.createXULElement('checkbox');
+			checkbox1Data.appendChild(checkbox1);
+			checkbox1.setAttribute('checked', true);
+			checkbox1.setAttribute('id', 'DBCachedCheckbox' + aId);
+			checkbox1.setAttribute("aria-labelledby", "namesPageDBCachedLabel");
 			if (aType == "CARDDAV") {
-				aCheckbox1.setAttribute('disabled', false);
+				checkbox1.setAttribute('disabled', false);
 			} else {
-				aCheckbox1.setAttribute('disabled', true);
+				checkbox1.setAttribute('disabled', true);
 			}
 		},
 
 		loadNames: function () {
-			wdw_addressbooksAdd.deleteBoxes('namesRows', 'namesHeadersRow');
+			cardbookElementTools.deleteTableRows('namesTable', 'namesTableRow');
 			if (window.arguments[0].action == "discovery") {
 				wdw_addressbooksAdd.setCanRewindFalse();
 			}
@@ -850,12 +890,11 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 		},
 
 		namesAdvance: function () {
-			var page = document.getElementsByAttribute('pageid', 'namesPage')[0];
 			wdw_addressbooksAdd.prepareAddressbook();
 			if (window.arguments[0].action == "first" && !wdw_addressbooksAdd.gFirstFirstStepDone) {
-				page.next = 'finishFirstPage';
+				pageMap["namesPage"]["acceptPage"] = 'finishFirstPage';
 			} else {
-				page.next = 'finishPage';
+				pageMap["namesPage"]["acceptPage"] = 'finishPage';
 			}
 		},
 
@@ -904,77 +943,80 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 		},
 
 		createBoxesForFinds: function (aType, aUsername, aPassword, aVCardVersion, aUrl, aABName) {
-			var aListRows = document.getElementById('findRows');
-			var aId = aListRows.childNodes.length - 1;
-			var aRow = cardbookElementTools.addGridRow(aListRows, 'findRows' + aId, {flex: '1'});
+			let table = document.getElementById('findTable');
+			let aId = table.rows.length - 1;
+			let aRow = cardbookElementTools.addTableRow(table, 'findTable.' + aId);
 			
-			var aButton = document.createXULElement('button');
-			aRow.appendChild(aButton);
-			aButton.setAttribute('id', 'findPageValidateButton' + aId);
-			aButton.setAttribute("aria-labelledby", "findPageValidateLabel");
-			aButton.setAttribute('flex', '1');
-			aButton.setAttribute('validationType', aType);
-			aButton.setAttribute('validated', 'false');
-			aButton.setAttribute('label', cardbookRepository.extension.localeData.localizeMessage("noValidatedEntryTooltip"));
-			aButton.addEventListener("command", function() {
+			let buttonData = cardbookElementTools.addTableData(aRow, 'findTableData.' + aId + '.1');
+			let button = document.createXULElement('button');
+			buttonData.appendChild(button);
+			button.setAttribute('id', 'findPageValidateButton' + aId);
+			button.setAttribute("aria-labelledby", "findPageValidateLabel");
+			button.setAttribute('flex', '1');
+			button.setAttribute('validationType', aType);
+			button.setAttribute('validated', 'false');
+			button.setAttribute('label', cardbookRepository.extension.localeData.localizeMessage("noValidatedEntryTooltip"));
+			button.addEventListener("command", function() {
 					var myId = this.id.replace("findPageValidateButton","");
 					wdw_addressbooksAdd.validateFindLine(myId);
 				}, false);
 
-			var aTextbox = document.createElementNS("http://www.w3.org/1999/xhtml","html:input");
-			aRow.appendChild(aTextbox);
-			aTextbox.setAttribute('id', 'findUsernameTextbox' + aId);
-			aTextbox.setAttribute("aria-labelledby", "findPageUserLabel");
-			aTextbox.setAttribute('required', true);
-			aTextbox.setAttribute('disabled', true);
-			aTextbox.value = aUsername;
+			let usernameData = cardbookElementTools.addTableData(aRow, 'findTableData.' + aId + '.2');
+			let usernameTextbox = document.createElementNS("http://www.w3.org/1999/xhtml","html:input");
+			usernameData.appendChild(usernameTextbox);
+			usernameTextbox.setAttribute('id', 'findUsernameTextbox' + aId);
+			usernameTextbox.setAttribute("aria-labelledby", "findPageUserLabel");
+			usernameTextbox.setAttribute('required', true);
+			usernameTextbox.setAttribute('disabled', true);
+			usernameTextbox.setAttribute('class', 'cardbook-large-column');
+			usernameTextbox.value = aUsername;
 
+			let paswordData = cardbookElementTools.addTableData(aRow, 'findTableData.' + aId + '.3');
+			let checkboxData = cardbookElementTools.addTableData(aRow, 'findTableData.' + aId + '.4');
 			if (aPassword != null) {
-				var aTextbox = document.createElementNS("http://www.w3.org/1999/xhtml","html:input");
-				aRow.appendChild(aTextbox);
-				aTextbox.setAttribute('id', 'findPasswordTextbox' + aId);
-				aTextbox.setAttribute("aria-labelledby", "findPagePasswordLabel");
-				aTextbox.setAttribute('type', 'password');
-				aTextbox.setAttribute('required', true);
-				aTextbox.value = aPassword;
+				let passwordTextbox = document.createElementNS("http://www.w3.org/1999/xhtml","html:input");
+				paswordData.appendChild(passwordTextbox);
+				passwordTextbox.setAttribute('id', 'findPasswordTextbox' + aId);
+				passwordTextbox.setAttribute("aria-labelledby", "findPagePasswordLabel");
+				passwordTextbox.setAttribute('type', 'password');
+				passwordTextbox.setAttribute('required', true);
+				passwordTextbox.value = aPassword;
 
-				var aCheckbox = document.createXULElement('checkbox');
-				aRow.appendChild(aCheckbox);
-				aCheckbox.setAttribute('id', 'findPasswordTextbox' + aId + 'Checkbox');
-				aCheckbox.setAttribute("aria-labelledby", "findPagePasswordShowLabel");
-				aCheckbox.addEventListener("command", function() {
+				let passwordCheckbox = document.createXULElement('checkbox');
+				checkboxData.appendChild(passwordCheckbox);
+				passwordCheckbox.setAttribute('id', 'findPasswordTextbox' + aId + 'Checkbox');
+				passwordCheckbox.setAttribute("aria-labelledby", "findPagePasswordShowLabel");
+				passwordCheckbox.addEventListener("command", function() {
 						wdw_addressbooksAdd.showPassword(this);
 					}, false);
-			} else {
-				var aHbox = document.createXULElement('hbox');
-				aRow.appendChild(aHbox);
-				aHbox.setAttribute('align', 'center');
-				aHbox.setAttribute('flex', '1');
 			}
 
-			var aTextbox = document.createElementNS("http://www.w3.org/1999/xhtml","html:input");
-			aRow.appendChild(aTextbox);
-			aTextbox.setAttribute('id', 'findPageVCardVersionsTextbox' + aId);
-			aTextbox.setAttribute("aria-labelledby", "findPageVCardVersionsLabel");
-			aTextbox.setAttribute('hidden', 'true');
-			aTextbox.value = aVCardVersion;
+			let versionData = cardbookElementTools.addTableData(aRow, 'findTableData.' + aId + '.5');
+			let versionTextbox = document.createElementNS("http://www.w3.org/1999/xhtml","html:input");
+			versionData.appendChild(versionTextbox);
+			versionTextbox.setAttribute('id', 'findPageVCardVersionsTextbox' + aId);
+			versionTextbox.setAttribute("aria-labelledby", "findPageVCardVersionsLabel");
+			versionTextbox.setAttribute('hidden', 'true');
+			versionTextbox.value = aVCardVersion;
 
-			var aTextbox = document.createElementNS("http://www.w3.org/1999/xhtml","html:input");
-			aRow.appendChild(aTextbox);
-			aTextbox.setAttribute('id', 'findPageURLTextbox' + aId);
-			aTextbox.setAttribute("aria-labelledby", "findPageURLLabel");
-			aTextbox.setAttribute('hidden', 'true');
-			aTextbox.value = aUrl;
+			let URLData = cardbookElementTools.addTableData(aRow, 'findTableData.' + aId + '.6');
+			let URLTextbox = document.createElementNS("http://www.w3.org/1999/xhtml","html:input");
+			URLData.appendChild(URLTextbox);
+			URLTextbox.setAttribute('id', 'findPageURLTextbox' + aId);
+			URLTextbox.setAttribute("aria-labelledby", "findPageURLLabel");
+			URLTextbox.setAttribute('hidden', 'true');
+			URLTextbox.value = aUrl;
 
-			var aTextbox = document.createElementNS("http://www.w3.org/1999/xhtml","html:input");
-			aRow.appendChild(aTextbox);
-			aTextbox.setAttribute('id', 'findPageABNameTextbox' + aId);
-			aTextbox.setAttribute("aria-labelledby", "findPageABNameLabel");
-			aTextbox.setAttribute('hidden', 'true');
-			aTextbox.value = aABName;
+			let ABNameData = cardbookElementTools.addTableData(aRow, 'findTableData.' + aId + '.7');
+			let ABNameTextbox = document.createElementNS("http://www.w3.org/1999/xhtml","html:input");
+			ABNameData.appendChild(ABNameTextbox);
+			ABNameTextbox.setAttribute('id', 'findPageABNameTextbox' + aId);
+			ABNameTextbox.setAttribute("aria-labelledby", "findPageABNameLabel");
+			ABNameTextbox.setAttribute('hidden', 'true');
+			ABNameTextbox.value = aABName;
 
 			var found = false;
-			for (var i = 0; i < aListRows.childNodes.length; i++) {
+			for (var i = 0; i < table.rows.length; i++) {
 				if (document.getElementById('findPasswordTextbox' + i)) {
 					found = true;
 					break;
@@ -990,7 +1032,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 		},
 
 		loadFinds: function () {
-			wdw_addressbooksAdd.deleteBoxes('findRows', 'findHeadersRow');
+			cardbookElementTools.deleteTableRows('findTable', 'findHeadersRow');
 			if (window.arguments[0].action == "first") {
 				wdw_addressbooksAdd.setCanRewindFalse();
 			}
@@ -1021,7 +1063,10 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				let found = false;
 				// first OAuth 
 				for (var j in cardbookRepository.cardbookOAuthData) {
-					if (email.endsWith(cardbookRepository.cardbookOAuthData[j].EMAIL_TYPE)) {
+					if (j == "GOOGLE" || j == "GOOGLE3"){
+						continue;
+					}
+					if (cardbookRepository.cardbookOAuthData[j].EMAIL_TYPE && email.endsWith(cardbookRepository.cardbookOAuthData[j].EMAIL_TYPE)) {
 						wdw_addressbooksAdd.createBoxesForFinds(j, email, null, cardbookRepository.cardbookOAuthData[j].VCARD_VERSIONS.toString(),
 																	cardbookRepository.cardbookOAuthData[j].ROOT_API, email);
 						found = true;
@@ -1039,12 +1084,12 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 		},
 
 		setFindLinesHeader: function () {
-			if (document.getElementById('findRows').childNodes.length == 1) {
+			if (document.getElementById('findTable').rows.length == 1) {
 				document.getElementById('findHeadersRow').setAttribute('hidden', 'true');
 				document.getElementById('findPageName1Description').removeAttribute('hidden');
 				document.getElementById('findPageName2Description').setAttribute('hidden', 'true');
 				document.getElementById('findPageName3Description').setAttribute('hidden', 'true');
-			} else if (document.getElementById('findRows').childNodes.length == 2) {
+			} else if (document.getElementById('findTable').rows.length == 2) {
 				document.getElementById('findHeadersRow').removeAttribute('hidden');
 				document.getElementById('findPageName1Description').setAttribute('hidden', 'true');
 				document.getElementById('findPageName2Description').removeAttribute('hidden');
@@ -1165,9 +1210,15 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 							// the discover should be redone at every sync
 							if (myType == 'APPLE') {
 								aAddressbookURL = cardbookRepository.APPLE_API;
+							} else if (myType == 'YAHOO') {
+								aAddressbookURL = cardbookRepository.YAHOO_API;
+							}
+							let aReadonly = false;
+							if (myType == 'GOOGLE3') {
+								aReadonly = true;
 							}
 							wdw_addressbooksAdd.gFinishParams.push({type: aAddressbookValidationType, url: aAddressbookURL, name: aAddressbookName, username: aAddressbookUsername, color: aAddressbookColor,
-																	vcard: aAddressbookVCard, readonly: false, dirPrefId: aAddressbookId,
+																	vcard: aAddressbookVCard, readonly: aReadonly, dirPrefId: aAddressbookId,
 																	DBcached: aAddressbookDBCached, firstAction: false});
 						} else if (myType == "LOCALDB") {
 							wdw_addressbooksAdd.gFinishParams.push({type: aAddressbookValidationType, name: aAddressbookName, username: "", color: aAddressbookColor, vcard: aAddressbookVCard, readonly: false, dirPrefId: aAddressbookId,
@@ -1195,7 +1246,9 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 		},
 
 		setCanRewindFalse: function () {
-			document.getElementById('addressbook-wizard').canRewind = false;
+			let dialog = document.getElementById("addressbook-creation-dialog");
+			let button = dialog.getButton("extra2");
+			button.hidden = true;
 		},
 
 		createAddressbook: function () {
@@ -1301,7 +1354,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 
 		cancelWizard: function () {
 			for (var dirPrefId of wdw_addressbooksAdd.gRunningDirPrefId) {
-				cardbookRepository.cardbookPreferences.delBranch(dirPrefId);
+				cardbookRepository.cardbookPreferences.delAccount(dirPrefId);
 				cardbookRepository.cardbookSynchronization.finishMultipleOperations(dirPrefId);
 				cardbookRepository.cardbookSynchronization.stopDiscoveryOperations(dirPrefId);
 			}
@@ -1315,7 +1368,9 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 					wdw_addressbooksAdd.lTimerDiscoveryAll[dirPrefId].cancel();
 				} catch(e) {}
 			}
-			document.getElementById('addressbook-wizard').canAdvance = false;
+			let dialog = document.getElementById("addressbook-creation-dialog");
+			dialog.setAttribute("buttondisabledaccept", "true");
+			window.close();
 		},
 
 		closeWizard: function () {
@@ -1325,4 +1380,42 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 
 	};
 
+	// initial --> local --> names --> finish
+	// initial --> remote --> names --> finish
+	// initial --> names --> finish (import standard AB)
+	// initial --> search --> searchName --> finish
+	// initial --> find --> names --> finish
+	// search --> searchName --> finish
+	// welcome --> names --> finishFirst --> find --> names --> finish
+	// names --> finish (discovery)
+	var pageMap = { "welcomePage": {"extra2Page": null, "acceptPage": "namesPage", 
+						onpageshow: wdw_addressbooksAdd.welcomePageShow,
+						nextAction: wdw_addressbooksAdd.loadStandardAddressBooks},
+					"initialPage": {"extra2Page": null, "acceptPage": "localPage",
+						onpageshow: wdw_addressbooksAdd.initialPageShow,
+						nextAction: wdw_addressbooksAdd.initialPageAdvance},
+					"localPage": {"extra2Page": null, "acceptPage": "namesPage",
+						onpageshow: wdw_addressbooksAdd.checkRequired,
+						nextAction: wdw_addressbooksAdd.localPageAdvance},
+					"remotePage": {"extra2Page": null, "acceptPage": "namesPage",
+						onpageshow: wdw_addressbooksAdd.remotePageShow,
+						nextAction: wdw_addressbooksAdd.remotePageAdvance},
+					"searchPage": {"extra2Page": null, "acceptPage": "searchNamePage",
+						onpageshow: wdw_addressbooksAdd.checkSearch,
+						nextAction: wdw_addressbooksAdd.searchPageAdvance},
+					"searchNamePage": {"extra2Page": null, "acceptPage": "finishPage",
+						onpageshow: wdw_addressbooksAdd.loadSearchName,
+						nextAction: wdw_addressbooksAdd.prepareSearchAddressbook},
+					"findPage": {"extra2Page": null, "acceptPage": "namesPage",
+						onpageshow: wdw_addressbooksAdd.loadFinds,
+						nextAction: wdw_addressbooksAdd.findAdvance},
+					"namesPage": {"extra2Page": null, "acceptPage": "finishPage",
+						onpageshow: wdw_addressbooksAdd.loadNames,
+						nextAction: wdw_addressbooksAdd.namesAdvance},
+					"finishFirstPage": {"extra2Page": null, "acceptPage": "findPage",
+						onpageshow: wdw_addressbooksAdd.finishFirstPageShow},
+					"finishPage": {"extra2Page": null, "acceptPage": "null",
+						onpageshow: wdw_addressbooksAdd.finishPageShow,
+						nextAction: wdw_addressbooksAdd.closeWizard}};
+	var pageHandlers = {"extra2": null, "accept": null};
 };

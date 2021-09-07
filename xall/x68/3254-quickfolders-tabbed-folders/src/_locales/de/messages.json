@@ -29,7 +29,7 @@
     "message": "Ich möchte meine Lizenz erneuern"
   },
   "btn-want-a-license": {
-    "message": "Ich möchte eine Lizenz kaufen"
+    "message": "Lizenz auswählen"
   },
   "btn-want-to-donate": {
     "message": "Ich möchte mit einer einmaligen Spende helfen."
@@ -50,13 +50,19 @@
     "message": "Domänen Lizenz erwerben"
   },
   "buyDomainLicense.instruct": {
-    "message": "Sie benötigen Lizenzen für eine Firma mit mehr als 5 Benutzern? Eine Domänen-Lizenz ist hier billiger:"
+    "message": "Sie benötigen Pro-Lizenzen für eine Firma mit mehr als 5 Benutzern? Eine Domänen-Lizenz ist hier billiger:"
   },
   "buyLicense.instruct": {
-    "message": "Sie benutzen QuickFolders persönlich? Holen Sie sich eine Einzelplatz-Lizenz. Diese Lizenz ist an Ihre persönliche Email Adressen gebunden. Sie kann auf mehreren Installationen verwendet werden."
+    "message": "Sie wollen alle Premium Funktionen von QuickFolders unbegrenzt nutzen? Holen Sie sich eine QuickFolders Pro Einzelplatz-Lizenz. Diese Lizenz ist an Ihre persönliche Email Adressen gebunden. Sie kann auf mehreren Installationen verwendet werden."
   },
-  "buyPersonalLicense.button": {
-    "message": "Einzel-Lizenz erwerben!"
+  "buyProLicense.button": {
+    "message": "Pro-Lizenz erwerben!"
+  },
+  "buyStandardLicense.button": {
+    "message": "Standard Lizenz erwerben!"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "Sie wollen nur die Standardfunktionen? Kaufen sie jetzt eine verbilligte Standard-Lizenz und testen Sie weiter die Premium Funktionen."
   },
   "chkComposerSubfolders": {
     "message": "Gilt auch für Unterverzeichnisse"
@@ -92,7 +98,7 @@
     "message": "Hintergrund"
   },
   "cssBackground.tooltip": {
-    "message": "Einen CSS Hintergrund angeben, z.B. linear-gradient(to bottom, rgba(254,252,234,1) 0&#37;,rgba(241,218,54,1) 100&#37;)"
+    "message": "Einen CSS Hintergrund angeben, z.B. linear-gradient(to bottom, rgba(254,252,234,1) 0%,rgba(241,218,54,1) 100%)"
   },
   "cssColor": {
     "message": "Textfarbe"
@@ -157,7 +163,7 @@
     "message": "Diese Identität als Absender für neue Emails wählen"
   },
   "getQuickFolders": {
-    "message": "Holen Sie sich QuickFolders Pro"
+    "message": "QuickFolders-Lizenzen"
   },
   "grpComposer": {
     "message": "Email Standardfelder"
@@ -210,8 +216,41 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Vielen Dank, dass Sie kürzlich Ihre Lizenz verlängert haben oder gespendet haben. Da Sie zur Zukunftssicherung dieses Add-ons beigetragen haben, können Sie dieses Fenster einfach schließen."
   },
+  "licenseComparison" : {
+    "message": "Um die Funktionen der verschiedenen Versionen zu vergleichen, {linkStart}lesen Sie diese Liste{linkEnd}."
+  },  
+  "licenseHead": {
+    "message": "Neues Lizenzsystem"
+  },  
+  "licenseTypes": {
+    "message": "QuickFolders  bietet zwei Lizenztypen an, Standard und Pro; diese sind notwendig um mit den Änderungen in der Thunderbird Plattform Schritt zu halten und nötige Reparaturen und Innovationen zu finanzieren. Da Änderungen, die möglicherweise die Erweiterungsfunktionalität beeinträchtigen, jährlich eingeführt werden, ist die Lizenz auch 1 Jahr gültig."
+  },
   "licenseWindow.title": {
     "message": "QuickFolders Pro Lizenz"
+  },
+  "license_restriced.unpaid": {
+    "message": "Nicht lizenzierte Version - eingeschränkte Funktion. Mehr Info…"
+  },
+  "license_restriced.std": {
+    "message": "Standardlizenz - eingeschränkte Pro-Funktion. Mehr Info…"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFolders benötigt eine Pro-Lizenz, um mehr als $maxTabs$ Registerkarten zu unterstützen.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFolders benötigt eine Lizenz, um mehr als $maxTabs$ Registerkarten zu unterstützen.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
   "mozillas-basic-platform": {
     "message": "Mozilla bietet nur eine Basis-Plattform, um unsere Software für Sie als Endbenutzer weiterzuleiten. Wenn wir unsere Benutzer um Zahlung oder Support bitten müssen, können wir dies nicht über addons.thunderbird.net tun - es handelt sich nicht um einen App Store mit integrierten Paywalls oder Lizenzverwaltung wie iTunes oder Google Play."
@@ -310,11 +349,11 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "Bei Verzeichniswechsel Eingabefokus auf EMail-Liste"
   },
-  "qf.checkbox.autoHideToolbar": {
-    "message": "QuickFolders ausblenden wenn unnötig"
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "QuickFolders in Einzelnachtrichten-Tabs ausblenden"
   },
-  "qf.checkbox.autoHideToolbar.tooltip": {
-    "message": "Versteckt die Werkzeugleiste bei Aktivierung bestimmter Thunderbird Tabs, wie z.B. Kalender (Lightning), Addon Manager."
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "Versteckt die QuickFolders-Leiste wenn eine einzelne Mail im Tab angezeigt wird."
   },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "Schliessen Schaltfläche"
@@ -538,14 +577,17 @@
   "qf.copyfolders.tooltip": {
     "message": "Kopiert die komplette Verzeichniskonfiguration in die Zwischenablage"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Thunderbird-Theme"
+  },
   "qf.currentFolderBackground.custom": {
-    "message": "benutzerdefiniert"
+    "message": "Benutzerdefiniert"
   },
   "qf.currentFolderBackground.dark": {
-    "message": "dunkel"
+    "message": "Dunkel"
   },
   "qf.currentFolderBackground.default": {
-    "message": "standard"
+    "message": "Silber"
   },
   "qf.currentFolderBackground.translucent": {
     "message": "Milchglas"
@@ -556,8 +598,8 @@
   "qf.currentfolder.rightSpacer": {
     "message": "Abstand rechts:"
   },
-  "qf.description.bugzilla": {
-    "message": "Für alle offiziellen Änderungsvorschläge und Fehlermeldungen bitte Bugzilla verwenden."
+  "qf.description.github": {
+    "message": "Für alle offiziellen Änderungsvorschläge und Fehlermeldungen bitte github verwenden."
   },
   "qf.description.categoryusage": {
     "message": "Sie können dieses Verzeichnis einer Kategorie zuteilen (z.B. 'Arbeit', 'Privat', usw.)."
@@ -566,7 +608,12 @@
     "message": "Per Rechts-klick kann man die Tabs kategorisieren. Am linken Ende der QuickFolders Werkzeugleiste wird dann ein Aufklappmenü angezeigt womit man eine Untergruppe von Tabs anzeigen kann."
   },
   "qf.description.contactMe": {
-    "message": "Sie können mich auch jederzeit persönlich unter axelg@gofree.indigo.ie kontaktieren:"
+    "message": "Sie können mich auch jederzeit persönlich unter $supportMail$ kontaktieren:",
+    "placeholders": {
+      "supportMail": {
+        "content": "$1"
+      }
+    }
   },
   "qf.description.donate": {
     "message": "Falls Sie QuickFolders so sehr lieben wie wir, und die weitere Software-Entwicklung unterstützen wollen, können Sie uns hier eine Spende hinterlassen:"
@@ -724,7 +771,7 @@
   "qf.label.behavior": {
     "message": "Verhalten bei Aktionen"
   },
-  "qf.label.bugzilla": {
+  "qf.label.github": {
     "message": "Bug melden oder Neues Feature vorschlagen…"
   },
   "qf.label.buttonFontSizeNumeric": {
@@ -892,6 +939,9 @@
   "qf.licenseValidation.passed": {
     "message": "Vielen Dank für's Registrieren von Quickfolders Pro! Alle Premium-Funktionen sind nun freigeschaltet."
   },
+  "qf.licenseValidation.standard": {
+    "message": "Vielen Dank für die Registrierung einer QuickFolders-Lizenz - Sie helfen dem Add-on ungemein! Wenn Sie weitere Funktionen benötigen, können Sie jederzeit auf die Pro-Lizenz upgraden."
+  },  
   "qf.loadConfig": {
     "message": "Konfiguration laden…"
   },
@@ -955,6 +1005,9 @@
   "qf.menuitem.quickfolders.repairTreeIcons": {
     "message": "Icons im Verzeichnisbaum reparieren"
   },
+  "qf.menuitem.quickfolders.splash" : {
+    "message": "Begrüßungsbildschirm anzeigen"
+  },
   "qf.menuitem.quickfolders.support": {
     "message": "QuickFolders Support…"
   },
@@ -973,6 +1026,15 @@
   "qf.notification.dontShowAgain": {
     "message": "Diese Meldung in Zukunft nicht mehr anzeigen."
   },
+  "qf.notification.newsFlash": {
+    "message": "$addonName$ wurde aktualisiert! Wichtige Neuigkeiten…",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "qf.notification.premium.btn.extendLicense": {
     "message": "Lizenz verlängern"
   },
@@ -988,17 +1050,46 @@
   "qf.notification.premium.btn.renewLicense": {
     "message": "Lizenz erneuern"
   },
+  "qf.notification.premium.btn.upgrade": {
+    "message": "Auf Pro Upgraden"
+  },
   "qf.notification.premium.readingList": {
     "message": "Es sind jetzt {1} Lesezeichen definiert. Die Gratisversion von QuickFolders unterstützt maximal {2}."
   },
+  "qf.notification.premium.shortcut": {
+    "message": "Die Premium-Lizenz bietet Ihnen zusätzlich eine konfigurierbare Tastenkombination."
+  },
   "qf.notification.premium.tabIcons": {
-    "message": "Es sind jetzt {1} Symbole definiert. Die Gratisversion von QuickFolders unterstützt maximal {2}."
+    "message": "Sie verwenden jetzt $cntIcons$ benutzerdefinierte Symbole für Tabs. Die kostenlose Version von QuickFolders unterstützt maximal $maxFreeIcons$. Die Standardlizenz unterstützt $maxStdIcons$. QuickFolders Pro hat keine Begrenzung.",
+    "placeholders": {
+      "cntIcons": {
+        "content": "$1",
+        "example": "10"
+      },
+      "maxFreeIcons": {
+        "content": "$2",
+        "example": "5"
+      },
+      "maxStdIcons": {
+        "content": "$3",
+        "example": "12"
+      }
+    }
   },
   "qf.notification.premium.text": {
-    "message": "{1} ist eine Premium Funktion, bitte registrieren Sie QuickFolders um diese permanent zu benutzen."
+    "message": "{1} ist eine Premium Funktion, bitte registrieren Sie QuickFolders Pro um diese zu benutzen."
   },
   "qf.notification.premium.title": {
     "message": "Premium Funktion"
+  },
+  "qf.notification.standard.readingList": {
+    "message": "Sie haben jetzt {1} Lesezeichen definiert. Die Standardlizenz von QuickFolders erlaubt maximal {2}."
+  },
+  "qf.notification.standard.text": {
+    "message": "{1} ist eine lizenzbeschränkte Funktion. Bitte erwerben Sie eine QuickFolders-Lizenz, um sie zu verwenden."
+  },
+  "qf.notification.standard.title": {
+    "message": "Standardfunktion"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Individuelle Tab-Farben"
@@ -1028,7 +1119,7 @@
     "message": "Ränder immer anzeigen"
   },
   "qf.options.versionnumber.tooltip": {
-    "message": "Rechts-klick um die Versionsgeschichte zu sehen."
+    "message": "Klicken Sie hier um die Versionsgeschichte zu sehen."
   },
   "qf.palette.inactive": {
     "message": "Wie normale Tabs"
@@ -1100,7 +1191,7 @@
     "message": "Neues Verzeichnis"
   },
   "qf.prompt.pasteFolders": {
-    "message": "Löscht all QuickFolder Tabs und erzeugt neue aus der Zwischenablage.\\nEs wurden {0} Einträge gefunden.\\nSind Sie sicher?"
+    "message": "Löscht all QuickFolder Tabs und erzeugt neue aus der Zwischenablage.\nEs wurden {0} Einträge gefunden.\nSind Sie sicher?"
   },
   "qf.prompt.pasteFolders.confirm": {
     "message": "Die angezeigten Tabs beibehalten?"
@@ -1109,10 +1200,10 @@
     "message": "Diesen Eintrag entfernen?"
   },
   "qf.prompt.readingList.searchMissingItem": {
-    "message": "Diese Email kann nicht gefunden werden, sie wurde vielleicht in ein anderes Verzeichnis verschoben.\\n{1}\\n\\nDanach suchen?"
+    "message": "Diese Email kann nicht gefunden werden, sie wurde vielleicht in ein anderes Verzeichnis verschoben.\n{1}\n\nDanach suchen?"
   },
   "qf.prompt.restoreFolders": {
-    "message": "Löscht all QuickFolder Tabs und erzeugt neue aus der Datei.\\nEs wurden {0} Einträge gefunden.\\nTabs ersetzen?"
+    "message": "Löscht all QuickFolder Tabs und erzeugt neue aus der Datei.\nEs wurden {0} Einträge gefunden.\nTabs ersetzen?"
   },
   "qf.prompt.switchDomainLicense": {
     "message": "Domänenlizenz aktivieren?"
@@ -1133,7 +1224,7 @@
     "message": "Anzeigeformat:"
   },
   "qf.quickMove.silent": {
-    "message": "Keine Benachrichtigungen nach dem Verschieben von Mails weg."
+    "message": "Benachrichtigungen nach dem Verschieben von Mails unterdrücken."
   },
   "qf.register.licenseValid.expired": {
     "message": "Ihre Lizenz lief ab am:"
@@ -1151,7 +1242,7 @@
     "message": "Allgemein"
   },
   "qf.tab.gopro": {
-    "message": "QuickFolders Pro"
+    "message": "Lizenzen"
   },
   "qf.tab.layout": {
     "message": "Layout"
@@ -1523,7 +1614,7 @@
     "message": ": Dieser Tab verweist auf ein ungültiges Verzeichnis."
   },
   "qfTidyDeadFolders": {
-    "message": "Löscht die Tabs die keinem gültigen Verzeichnis zugehören.\\nDies kann passieren, wenn ein Verzeichnis gelöscht oder verschoben wird ohne daß QuickFolders dies erkennt."
+    "message": "Löscht die Tabs die keinem gültigen Verzeichnis zugehören.\nDies kann passieren, wenn ein Verzeichnis gelöscht oder verschoben wird ohne daß QuickFolders dies erkennt."
   },
   "qfTreeIconsInvalidCount": {
     "message": "{0} fehlende Symbole"
@@ -1543,6 +1634,33 @@
   "qfVersionDisableOnUpdate": {
     "message": "Das Versionslog nach Updates nicht mehr anzeigen?"
   },
+  "quickMove.help.head": {
+    "message" : "Hilfe für {1}"
+  },
+  "quickMove.help.head.advanced": {
+    "message" : "Erweiterte Funktionen"
+  },
+  "quickMove.help.l1a": {
+    "message" : "Tippen Sie den Anfang eines Ordnernamens, oder enthaltene Wörter getrennt durch Leerzeichen."
+  }, 
+  "quickMove.help.l1b": {
+    "message" : "Die folgenden Zeichen gelten als Wortgrenzen und müssen nicht eingegeben werden:"
+  }, 
+  "quickMove.help.l2a": {
+    "message" : "Geben Sie {1} ein, um das Großeltern-/Eltern-/gesuchte Verzeichnis einzugeben."
+  }, 
+  "quickMove.help.l2b": {
+    "message" : "Die ersten 2 Buchstaben eines Elternverzeichnisses sind in der Regel ausreichend. Sie können mit dieser Syntax auch neue Unterordner erstellen."
+  }, 
+  "quickMove.help.l3a": {
+    "message" : "Verwenden Sie {1}, um alle Ordner dazwischen zu überspringen."
+  }, 
+  "quickMove.help.l3b": {
+    "message" : "Dies ist nützlich für tiefere, kompliziertere oder unbekannte Ordnerhierarchien."
+  },   
+  "quickMove.help.advanced": {
+    "message" : "Auf der Registerkarte QuickFolders Pro können erweiterte Funktionen wie Tastaturkürzel zum Aufrufen eines Ordners / Verschieben von E-Mails oder das Ausschließen von Ordnern aus den Suchergebnissen konfiguriert werden. Um auf diese und andere Premium-Funktionen zuzugreifen, erwerben Sie eine Pro-Lizenz und unterstützen Sie die Zukunft von QuickFolders."
+  },  
   "quickMove.singleMessage.goNext": {
     "message": "Nach Verschieben der aktuellen Nachricht die nächste E-Mail öffnen"
   },
@@ -1592,10 +1710,36 @@
     "message": "Erneuern Sie Ihre Lizenz."
   },
   "special-offer-content": {
-    "message": "Machen Sie QuickFolders zukunftssicher und holen Sie sich eine Lizenz, während der Preis von QuickFolders Pro {boldStart}um 40% gesenkt{boldEnd} ist! Dieses Sonderangebot gilt bis zum {boldStart}1. Mai.{boldEnd}."
+    "message": "Upgraden Sie Ihre Funktionen und sparen Sie {boldStart}$reduction${boldEnd}, indem Sie eine QuickFolders Pro-Lizenz kaufen! Dieses Sonderangebot ist bis zum {boldStart}$expirydate${boldEnd} verfügbar. Oder wählen Sie die Standardfunktionen mit der neuen {linkStart}Standardlizenz{linkEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "16. April"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-upgrade": {
+    "message": "Jetzt von QuickFolders Standard auf Pro upgraden und {boldStart}$reduction${boldEnd} sparen! Dieses Sonderangebot ist bis zum {boldStart}$expirydate${boldEnd} verfügbar.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
+  "special-offer-expiry": {
+    "message": "11. September"    
   },
   "special-offer-head": {
-    "message": "Machen Sie QuickFolders zukunftssicher!"
+    "message": "Machen Sie QuickFolders nachhaltig"
   },
   "special-offer-intro": {
     "message": "{boldStart} Liebe(r) {name} {boldEnd}, wenn Sie noch keine Lizenz haben, sollten Sie QuickFolders für die Zukunft unterstützen. Weitere große Änderungen an Thunderbird kommen und ich brauche {boldStart}Ihre Hilfe{boldEnd}, um Schritt zu halten!"
@@ -1671,13 +1815,13 @@
     "message": "Was gibt's Neues?"
   },
   "whats-new-head": {
-    "message": "Highlights"
+    "message": "Wichtige Änderungen"
   },
   "whats-new-intro": {
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1} 5.5.2 - Hotfix - In Thunderbird 89 wurde der Optionsmenüpunkt im Add-On-Manager nicht angezeigt.{L2}{L1} 5.5.2 - Hotfix für quickMove - übergeordneter Ordner mit einem Unterstrich, wird nicht als übergeordneter vorgeschlagen.{L2}{L1} 5.5.1 - Hotfix für die Funktion 'Ordner + Unterordner als gelesen markieren'{L2}{L1}Vervollständigte Übersetzungen für ungarische, vereinfachte chinesische und katalanische Sprache.{L2}Diese Version erweitert die quickMove-Funktion um die folgenden Funktionen: {L1} Im dedizierten Mail-Tab: Nach Verschieben der aktuellen Nachricht die nächste E-Mail im selben Tab öffnen {L2} {L1} Option zum vollständigen Abbruch von quickMove (und Leeren der Nachrichten-Liste) mit einem einzigen Druck auf ESCAPE. {L2} {L1}Erweiterte Suche von Elternverzeichnissen indem _ und Leerzeichen als Start eines gesuchten Namens behandelt werden. {L2} {L1}Repariert: Durchsuchen von Ordnern während der Anzeige Nachrichten, die in Suchergebnissen oder aus Konversationen mit mehreren Ordnern angezeigt werden. {L2} {L1}Diese und zusätzliche Funktionen zum Einschränken der Suchergebnisse bestimmter Konten können über die erweiterten Sucheinstellungen auf der Registerkarte QuickFolders Pro konfiguriert werden. {L2}"
+    "message": "{L1}Behoben in 5.7.2: Wenn quickFilters seinen Assistenten aktiviert, sind alle Symbole links neben den Registerkarten weiß{L2}{L1} Behoben in 5.7.1: Bei der Suche nach Ordnern mit der Syntax 'übergeordneter Ordner/übergeordneter Ordner/gesuchter Ordner' wurden übergeordnete Ordner mit Namen mit einer einzigen Zeichenlänge nicht berücksichtigt.{L2} {L1}QuickFolders ist jetzt mit Thunderbird 91 kompatibel.{L2} {L1}Verbesserte Unterstützung für dunkle und Drittanbieter-Themen, sowohl im Optionsbildschirm als auch in der Navigationssymbolleiste.{L2} {L1}Verbesserte Sichtbarkeit der Schaltfläche [Neuigkeiten] mit nicht-standard QuickFolders Theme{L2} {L1}Behoben: Manchmal wurden bei Neustart oder nach Installation anderer Addons oder updates die Session zurückgesetzt, so das alle Kategorien angezeigt wurden.{L2}"
   },
   "window-title": {
     "description": "Seitentitel. Der erste placeholder wird durch den Add-on Namen ersetzt",

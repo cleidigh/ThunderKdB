@@ -2909,6 +2909,9 @@
 	"wdw_cardEditionViewListTitle": {
 		"message": "Ver Lista"
 	},
+	"wdw_cardEditionEditTemplateTitle": {
+		"message": "Editar modelo"
+	},
 	"wdw_cardbookPrintTitleLong": {
 		"message": "Pré-visualização de impressão de $P1$ — CardBook — Thunderbird",
         "placeholders": {
@@ -3563,20 +3566,20 @@
 	"cardbookContactPaneItemAccesskey": {
 		"message": "O"
 	},
+	"wizard.next.label": {
+		"message": "Seguinte"
+	},	
+	"wizard.back.label": {
+		"message": "Retroceder"
+	},	
+	"wizard.create.label": {
+		"message": "Criar"
+	},
 	"wizard.title": {
 		"message": "Adicionar novo livro de endereços"
 	},
-	"wizard.label": {
-		"message": "Adicionar novo livro de endereços"
-	},
-	"welcomePage.wizard.description": {
-		"message": "Bem-vindo"
-	},
 	"welcomePage.description": {
 		"message": "Parece ser a primeira vez que o CardBook é executado. O CardBook vai tentar coletar os contactos dos livros de endereços padrão do Thunderbird e livros de endereços remotos."
-	},
-	"initialPage.wizard.description": {
-		"message": "Localização para o novo livro de endereços."
 	},
 	"initialPage.description": {
 		"message": "Localização do livro de endereços:"
@@ -3595,9 +3598,6 @@
 	},
 	"initialPage.find.label": {
 		"message": "Procurar por livros de endereços remotos"
-	},
-	"localPage.wizard.description": {
-		"message": "Tipo e localização do novo livro de endereços local."
 	},
 	"localPage.type.description": {
 		"message": "Tipo de livro de endereços local:"
@@ -3632,9 +3632,6 @@
 	"localPage.uributton.label": {
 		"message": "Navegar"
 	},
-	"remotePage.wizard.description": {
-		"message": "Tipo e localização do novo livro de endereços remoto."
-	},
 	"remotePage.description": {
 		"message": "Qual o tipo do teu livro de endereços remoto (Atenção: o Google NÃO utiliza standards de vCard)?"
 	},
@@ -3646,6 +3643,9 @@
 	},
 	"remotePage.google.label": {
 		"message": "Google"
+	},
+	"remotePage.googleWorkspace.label": {
+		"message": "Google Workspace"
 	},
 	"remotePage.apple.label": {
 		"message": "Apple"
@@ -3671,14 +3671,14 @@
 	"remotePage.password.label": {
 		"message": "Senha:"
 	},
+	"rememberPassword": {
+		"message": "Utilizar o gestor de palavras-passe para memorizar esta palavra-passe"
+	},
 	"showHidePassword.tooltip": {
 		"message": "Mostrar/Esconder palavra-passe"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Validar"
-	},
-	"locationSearchPage.wizard.description": {
-		"message": "Definição da pesquisa guardada."
 	},
 	"locationSearchPage.label": {
 		"message": "Procura Guardada"
@@ -3704,9 +3704,6 @@
 	"googleOauthPage.wizard.description": {
 		"message": "Autenticação Google"
 	},
-	"namePage.wizard.description": {
-		"message": "Propriedades do Livro de Endereços"
-	},
 	"namePage.selected.label": {
 		"message": "Selecionado"
 	},
@@ -3725,17 +3722,11 @@
 	"namePage.vCardVersion.label": {
 		"message": "vCard"
 	},
-	"namesPage.wizard.description": {
-		"message": "Propriedades dos Livros de Endereços"
-	},
 	"namesPage.name.label": {
 		"message": "Nomes"
 	},
 	"namesPage.name.description": {
 		"message": "Foram descobertos vários livros de endereços. Escolhe quais queres abrir e os seus nomes:"
-	},
-	"findPage.wizard.description": {
-		"message": "Procura remota de livro de endereços"
 	},
 	"findPage.name1.description": {
 		"message": "Não foram encontrados livros de endereços remotos."
@@ -3745,9 +3736,6 @@
 	},
 	"findPage.name3.description": {
 		"message": "Vários livros de endereços remotos encontrados. Valida os livros de endereços remotos a adicionar:"
-	},
-	"finishPage.wizard.description": {
-		"message": "Configuração dos livros de endereços"
 	},
 	"finishPage.description": {
 		"message": "O teu novo livro de endereços foi configurado com sucesso."
@@ -5117,6 +5105,12 @@
 	"cardbookToolbarAddListButtonTooltip": {
 		"message": "Nova Lista de Correspondência"
 	},
+	"cardbookToolbarAddTemplateButtonLabel": {
+		"message": "Novo Template"
+	},
+	"cardbookToolbarAddTemplateButtonTooltip": {
+		"message": "Criar um template"
+	},
 	"cardbookToolbarEditButtonLabel": {
 		"message": "Editar"
 	},
@@ -5315,6 +5309,15 @@
 	"searchForLocalKeyEditButton.tooltip": {
 		"message": "Importar de um ficheiro"
 	},
+	"definitionLabel": {
+		"message": "Definição"
+	},
+	"fieldsLabel": {
+		"message": "Campos"
+	},
+	"formulasLabel": {
+		"message": "Fórmulas"
+	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Partilhar por E-mail"
 	},
@@ -5462,6 +5465,9 @@
 	"fnFormulaExplanation": {
 		"message": "É possível personalizar a forma como o CardBook gera o Nome a Mostrar. Esta fórmula consiste em blocos fechados por “()”. Nesses blocos poderá haver várias partes delimitadas por “|”."
 	},
+	"templateFormulaExplanation": {
+		"message": "É possível definir templates com campos predefinidos. Por exemplo, pode-se definir um template com o e-mail ”({{2}}).({{4}})@mycompany.org”. Uma vez aplicado a um contacto que tem ”John” e ”Doe” como nome e apelido, um e-mail ”john.doe@mycompany.org” será adicionado ao contacto."
+	},
 	"formulaExplanation1": {
 		"message": "({{1}}|{{2}}) : Se {{1}} estiver vazio, então o bloco será substituído por {{2}}."
 	},
@@ -5500,12 +5506,6 @@
 	},
 	"displayFieldNamesAccesskey": {
 		"message": "F"
-	},
-	"displayTypesLabel": {
-		"message": "Tipos e Preferências"
-	},
-	"displayTypesAccesskey": {
-		"message": "y"
 	},
 	"fieldsToPrintGroupboxLabel": {
 		"message": "Campos a Imprimir"
@@ -5698,6 +5698,12 @@
 	},
 	"saveTemplateLabel": {
 		"message": "Gravar modelo"
+	},
+	"applyTemplateLabel": {
+		"message": "Aplicar template"
+	},
+	"createTemplateLabel": {
+		"message": "Criar template"
 	},
 	"convertVCardsLabel": {
 		"message": "Converter vCards"

@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 492,
+    "average_daily_users": 544,
     "categories": {
         "thunderbird": [
             "composition"
@@ -64,14 +64,14 @@
     "default_locale": "en-US",
     "description": {
         "el": "Βοηθάει στην αποφυγή τυχαίας αποκάλυψης διευθύνσεων ηλεκτρονικού ταχυδρομείου άλλων παραληπτών, ίσως με την εισαγωγή μιας λίστας αλληλογραφίας σε κοιν και όχι σε κρυφή κοιν.\n\nΟρίζετε έναν μέγιστο αριθμό παραληπτών μη κρυφή κοιν (προς και κοιν) και αν ο αριθμός αυτός ξεπεραστεί, θα λάβετε μια προειδοποίηση όταν στέλνετε το μήνυμα ηλεκτρονικού ταχυδρομείου. Μπορείτε να συνεχίσετε ή να ακυρώσετε. Μπορείτε επίσης να μετακινήσετε όλους τους παραλήπτες σε κρυφή κοιν και να στείλετε το μήνυμα ηλεκτρονικού ταχυδρομείου.\n\nΤο πρόσθετο πρόσθετο, Αναπτύξτε λίστες αλληλογραφίας, θα μετατρέψει όλες τις λίστες αλληλογραφίας στους συντάκτες τους, αφαιρώντας τα διπλά.",
-        "fr": "Aide à vous empêcher de révéler accidentellement les adresses e-mail des autres destinataires, peut-être en insérant une liste de diffusion dans CC plutôt que BCC.\n\nVous spécifiez un nombre maximum de destinataires non cachés (POUR ou COPIE) et si ce nombre est dépassé, vous recevrez un avertissement lorsque vous enverrez l'e-mail. Vous pouvez continuer ou annuler. Vous pouvez également déplacer tous les destinataires dans copie cachée et envoyer l'e-mail.\n\nL'addon complémentaire, Étendez les listes de diffusion, convertira toutes les listes de diffusion en leurs destinataires constitutifs, supprimant les doublons.",
-        "de": "Verhindert, dass Sie versehentlich die E-Mail-Adressen anderer Empfänger preisgeben, indem Sie möglicherweise eine Verteilerliste in CC anstelle von BCC einfügen.\n\nSie geben eine maximale Anzahl von Nicht-BCC-Empfängern (An oder CC) an. Wenn diese Anzahl überschritten wird, erhalten Sie beim Senden der E-Mail eine Warnung. Sie können fortfahren oder abbrechen. Sie können auch alle Empfänger in BCC verschieben und die E-Mail senden.\n\nDas Companion-Addon \"Mailinglisten erweitern\" konvertiert alle Mailinglisten in ihre Empfänger und entfernt Duplikate.",
+        "fr": "Aide à vous empêcher de révéler accidentellement les adresses e-mail des autres destinataires, peut-être en insérant une liste de diffusion dans CC plutôt que BCC.\n\nVous spécifiez un nombre maximum de destinataires non cachés (POUR ou COPIE) et si ce nombre est dépassé, vous recevrez un avertissement lorsque vous enverrez l'e-mail. Vous pouvez continuer ou annuler. Vous pouvez également déplacer tous les destinataires dans copie cachée et envoyer l'e-mail.\n\nL'option 'Limite stricte' garantit que vous ne pouvez pas envoyer d'e-mails dépassant la limite.\n\nL'addon complémentaire, Étendez les listes de diffusion, convertira toutes les listes de diffusion en leurs destinataires constitutifs, supprimant les doublons.\n\n<b>Thunderbird 91</b>\nTB 91 inclut un avertissement intégré lorsque trop de destinataires publics (POUR ou COPIE) sont entrés. La valeur par défaut est 15 et peut être définie dans Préférences, Config editor:\nmail.compose.warn_public_recipients.threshold\nIl ne vérifie pas les doublons (par exemple dans les listes) et peut donc surestimer.\nIl ne compte pas les destinataires dans les listes d'adresses imbriquées (qui ne sont de toute façon pas recommandées).\nTB 93  inclut une vérification supplémentaire facultative à l'envoi, au cas où la première aurait été ignorée :\nmail.compose.warn_public_recipients.aggressive (la valeur par défaut est false)\nCela avertira à nouveau, mais n'empêchera pas l'envoi du courrier comme le fait 'Limite stricte'.",
+        "de": "Verhindert, dass Sie versehentlich die E-Mail-Adressen anderer Empfänger preisgeben, indem Sie möglicherweise eine Verteilerliste in CC anstelle von BCC einfügen.\n\nSie geben eine maximale Anzahl von Nicht-BCC-Empfängern (An oder CC) an. Wenn diese Anzahl überschritten wird, erhalten Sie beim Senden der E-Mail eine Warnung. Sie können fortfahren oder abbrechen. Sie können auch alle Empfänger in BCC verschieben und die E-Mail senden.\n\nDie Option 'Strict Limit' stellt sicher, dass Sie keine E-Mails versenden können, die das Limit überschreiten.\n\nDas Companion-Addon \"Mailinglisten erweitern\" konvertiert alle Mailinglisten in ihre Empfänger und entfernt Duplikate.\n\n<b>Thunderbird 91</b>\nTB 91 enthält eine integrierte Warnung, wenn zu viele öffentliche (TO oder CC) Empfänger eingegeben werden.\nDer Standardwert ist 15 und kann in Preferences, Config Editor eingestellt werden:\nmail.compose.warn_public_recipients.threshold\nEs prüft nicht auf Duplikate (z. B. in Listen) und kann daher überschätzen.\nEs zählt keine Empfänger in verschachtelten Adresslisten (die ohnehin nicht empfohlen werden).\nTB 93  enthält eine optionale zusätzliche Prüfung beim Senden, falls die erste ignoriert wurde:\nmail.compose.warn_public_recipients.aggressive (Standard ist false)\nDas wird wieder warnen, aber nicht verhindern, dass die E-Mail gesendet wird, wie dies bei 'Strict Limit' der Fall ist.",
         "nl": "Helpt voorkomen dat u per ongeluk de e-mailadressen van andere ontvangers onthult, bijvoorbeeld door een mailinglijst in CC in te voegen in plaats van BCC.\n\nU specificeert een maximum aantal niet-BCC (AAn en CC) ontvangers en als dit aantal wordt overschreden, ontvangt u een waarschuwing wanneer u de e-mail verzendt. U kunt doorgaan of annuleren. U kunt ook alle ontvangers naar BCC verplaatsen en de e-mail verzenden.\n\nDe bijbehorende add-on, Uitvouwen mailinglijsten, converteert alle mailinglijsten naar hun samenstellende ontvangers en verwijdert duplicaten.",
         "pt-PT": "Ajuda a impedir que você revele acidentalmente os endereços de e-mail de outros destinatários, talvez inserindo uma lista de correio no CC e não no BCC.\n\nVocê especifica um número máximo de destinatários não BCC (TO e CC) e, se esse número for excedido, você receberá um aviso quando enviar o email. Você pode continuar ou cancelar. Você também pode mover todos os destinatários para o BCC e enviar o email.\n\nO complemento complementar, Expandir listas de correio, converterá todas as listas de correio em seus destinatários constituintes, removendo duplicatas.",
-        "en-US": "Helps prevent you accidentally revealing other recipients' email addresses, perhaps by inserting a mailing list in CC rather than BCC.\n\nYou specify a maximum number of non-BCC (TO and CC) recipients and if this number is exceeded you will receive a warning when you send the email. You can continue or cancel. You can also move all recipients into BCC and send the email.\n\nThe companion addon, Expand mailing lists, will convert all mailing lists into their constituent recipients, removing duplicates.",
+        "en-US": "Helps prevent you accidentally revealing other recipients' email addresses, perhaps by inserting a mailing list in CC rather than BCC.\n\nYou specify a maximum number of non-BCC (TO and CC) recipients and if this number is exceeded you will receive a warning when you send the email. You can continue or cancel. You can also move all recipients into BCC and send the email.\n\nThe option 'Strict Limit' ensures that you cannot send an email that exceeds the limit.\n\nThe companion addon, Expand mailing lists, will convert all mailing lists into their constituent recipients, removing duplicates.\n\n<b>Thunderbird 91</b>\nTB 91 includes a built-in warning when too many public (TO or CC) recipient are entered.\nThe default value is 15 and can be set in Preferences, Config editor:\nmail.compose.warn_public_recipients.threshold\nIt does not check for duplicates (e.g. in lists) so may overestimate. \nIt does not count recipients in nested address lists (which are not recommended anyway).\nTB  93 includes an optional additional check on sending, in case the first was ignored:\nmail.compose.warn_public_recipients.aggressive (default is false)\nThat will warn again, but not prevent the mail being sent like 'Strict Limit' does.",
         "it": "Ti aiuta a non rivelare accidentalmente gli indirizzi e-mail degli altri destinatari, magari inserendo una liste di distribuzione in Cc anziché in Cnn.\n\nSi specifica un numero massimo di destinatari non Cnn (A e Cc) e se questo numero viene superato, si riceverà un avviso quando si invia l'e-mail. Puoi continuare o cancellare. Puoi anche spostare tutti i destinatari in Cnn e inviare l'e-mail.\n\nIl componente aggiuntivo associato, Espandi le liste di distribuzione, convertirà tutte le mailing list nei rispettivi destinatari, rimuovendo i duplicati.",
         "hu": "Ez a bővítmény segít Önnek, hogy a nagyobb közösségeknek küld levelet, a címzettek ne lássák egymás e-mail címét. Ez különösen hasznos, ha mondjuk címlistára küld ki levelet, és véletlenül a Másolat mezőbe írja a címlistát a Titkos másolat helyett.\n\nMindössze meg kell adnia, hogy mennyi olyan címzettje lehet egy levélnek legfeljebb, akik láthatják egymás címét. Amennyiben egy levélnek több címzettje van (beleértve a másolatot kapó személyeket is), mint az Ön által beállított érték, a levél elküldése előtt figyelmeztetést fog kapni. Ilyenkor dönthet a kiküldés mellett, visszavonhatja a küldést, vagy átmozgathat minden címzettet a titkos másolatot kapók közé.\n\nVan tovább egy kapcsolódó kiegészítő, az \"Expand mailing lists\", amely a címlistákat kicseréli a bennük szereplő címekre, és eltávolítja az ismétlődő címzetteket.",
-        "pl": "Pomaga zapobiegać przypadkowemu ujawnieniu adresów e-mail innych odbiorców, być może poprzez wstawienie listy dystrybuvyjna w kopia zamiast w ukryta kopia.\n\nPodajesz maksymalną liczbę odbiorców nie ukryta (Do i Kopia), a jeśli liczba ta zostanie przekroczona, otrzymasz ostrzeżenie podczas wysyłania wiadomości e-mail. Możesz kontynuować lub anulować. Możesz także przenieść wszystkich odbiorców do ukryta kopia i wysłać wiadomość e-mail.\n\nDodatek towarzyszący, Rozwiń listy dystrybuvyjna, przekształci wszystkie listy dystrybuvyjna w swoich adresatów, usuwając duplikaty.",
+        "pl": "Pomaga zapobiegać przypadkowemu ujawnieniu adresów e-mail innych odbiorców, być może poprzez wstawienie listy dystrybuvyjna w kopia zamiast w ukryta kopia.\n\nPodajesz maksymalną liczbę odbiorców nie ukryta (Do i Kopia), a jeśli liczba ta zostanie przekroczona, otrzymasz ostrzeżenie podczas wysyłania wiadomości e-mail. Możesz kontynuować lub anulować. Możesz także przenieść wszystkich odbiorców do ukryta kopia i wysłać wiadomość e-mail.\n\nOpcja 'Ścisły limit' gwarantuje, że nie możesz wysyłać wiadomości e-mail, które przekraczają limit.\n\nDodatek towarzyszący, Rozwiń listy dystrybuvyjna, przekształci wszystkie listy dystrybuvyjna w swoich adresatów, usuwając duplikaty.",
         "ja": "他の受信者の電子メールアドレスを誤って公開するのを防ぐのに役立ちます。\n\n非BCC（TOおよびCC）受信者の最大数を指定する必要があります。この数を超えると、メールを送信するときに警告が表示されます。 続行またはキャンセルできます。 メールを送信する前に、すべての受信者をBCCに変更することもできます。\n\nコンパニオンアドオン「アドレスリストを全部展開する」は、すべてのメーリングリストを構成する受信者に変換し、重複を削除します。",
         "es": "Ayuda a evitar que reveles accidentalmente las direcciones de correo electrónico de otros destinatarios, quizás insertando una lista de correo en CC en lugar de BCC.\n\nUsted especifica un número máximo de destinatarios que no son BCC (TO y CC) y si se excede este número, recibirá una advertencia cuando envíe el correo electrónico. Puedes continuar o cancelar. También puede mover a todos los destinatarios a BCC y enviar el correo electrónico.\n\nEl complemento complementario, Expandir listas de correo, convertirá todas las listas de correo en sus destinatarios constitutivos, eliminando duplicados."
     },
@@ -105,43 +105,77 @@
     },
     "previews": [
         {
-            "id": 205945,
+            "id": 206618,
             "caption": {
-                "fr": "",
-                "en-US": "Preferences."
+                "en-GB": "",
+                "en-US": "Preferences"
             },
             "image_size": [
-                695,
-                215
+                681,
+                246
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205945.png?modified=1585492441",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206618.png?modified=1629969305",
             "thumbnail_size": [
                 320,
-                99
+                116
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205945.png?modified=1585492441"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206618.png?modified=1629969305"
         },
         {
-            "id": 205946,
+            "id": 206619,
             "caption": {
-                "fr": "",
-                "en-US": "Warning: non-BCC limit exceeded on sending."
+                "en-GB": "",
+                "en-US": "Warning on sending when limit exceeded"
             },
             "image_size": [
-                606,
-                332
+                610,
+                334
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205946.png?modified=1585492441",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206619.png?modified=1629969302",
             "thumbnail_size": [
                 320,
                 175
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205946.png?modified=1585492441"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206619.png?modified=1629969302"
+        },
+        {
+            "id": 206620,
+            "caption": {
+                "en-GB": "",
+                "en-US": "Warning on sending when limit exceeded and 'Strict Limit' has been set in preferences"
+            },
+            "image_size": [
+                610,
+                334
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206620.png?modified=1629969305",
+            "thumbnail_size": [
+                320,
+                175
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206620.png?modified=1629969305"
+        },
+        {
+            "id": 206621,
+            "caption": {
+                "en-GB": "",
+                "en-US": "If Strict Limit' has been set in preferences you cannot override 'Change all to BCC'"
+            },
+            "image_size": [
+                610,
+                334
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206621.png?modified=1629969302",
+            "thumbnail_size": [
+                320,
+                175
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206621.png?modified=1629969302"
         }
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.81801,
+        "bayesian_average": 4.81795,
         "count": 8,
         "average": 5,
         "text_count": 8

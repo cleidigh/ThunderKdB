@@ -5,6 +5,35 @@
   "account.label": {
     "message": "Selecciona una cuenta:"
   },
+  "active-version-info": {
+    "description": "The boldStart and boldEnd parts will be replaced with html tags",
+    "message": "Ahora está ejecutando la versión de {boldStart} $addonVer$ {boldEnd} en Thunderbird $appVer$.",
+    "placeholders": {
+      "addonVer": {
+        "content": "$1",
+        "example": "Version 1.1"
+      },
+      "appVer": {
+        "content": "$2",
+        "example": "78.0b4"
+      }
+    }
+  },
+  "addon-authors-struggle": {
+    "message": "Para seguir siendo útiles, los desarrolladores de complementos ahora debemos financiar los recursos necesarios para corregir y reescribir, de modo que nuestros usuarios puedan seguir beneficiándose de la funcionalidad que ofrecemos."
+  },
+  "btn-extend-license": {
+    "message": "Quiero extender mi licencia por un año"
+  },
+  "btn-renew-license": {
+    "message": "Quiero renovar mi licencia"
+  },
+  "btn-want-a-license": {
+    "message": "Elija una licencia"
+  },
+  "btn-want-to-donate": {
+    "message": "Quiero ayudar con una donación única."
+  },
   "btnApply": {
     "message": "Aplicar"
   },
@@ -26,8 +55,14 @@
   "buyLicense.instruct": {
     "message": "¿Necesitas una licencia para ti? Consigue una licencia personal. Se ligará a tu cuenta de correo y puede ser utilizada en múltiples instalaciones."
   },
-  "buyPersonalLicense.button": {
-    "message": "¡Compra ua licencia personal!"
+  "buyProLicense.button": {
+    "message": "¡Compra ua licencia Pro!"
+  },
+  "buyStandardLicense.button": {
+    "message": "¡Comprar licencia estándar!"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "¿No puede permitirse el lujo de las funciones premium? Obtenga una licencia estándar altamente asequible y siga probando funciones premium."
   },
   "chkComposerSubfolders": {
     "message": "Aplicar lo mismo a las sub carpetas"
@@ -56,11 +91,14 @@
   "chkSetMailsUnread.tooltip": {
     "message": "Si mueves este mensaje a esta carpeta se marcará como no leído."
   },
+  "cost-of-independence": {
+    "message": "El desarrollo de software cuesta tiempo y dinero; a diferencia de muchas aplicaciones de plataforma, los complementos no están escritos por grandes corporaciones ni están patrocinados de ninguna manera por Mozilla."
+  },
   "cssBackground": {
     "message": "Fondo"
   },
   "cssBackground.tooltip": {
-    "message": "Introduzca un fondo CSS, por ejemplo, linear-gradient(to bottom, rgba(254,252,234,1) 0&#37;,rgba(241,218,54,1) 100&#37;)"
+    "message": "Introduzca un fondo CSS, por ejemplo, linear-gradient(to bottom, rgba(254,252,234,1) 0%,rgba(241,218,54,1) 100%)"
   },
   "cssColor": {
     "message": "Color del texto"
@@ -83,6 +121,12 @@
   "domainLicense.validate": {
     "message": "Asegúrese de introducir el nombre de dominio *exactamente como es el correo electrónico* en las direcciones de correo electrónico de su compañía (la parte * después * el signo @), ya que se utilizará para autorizar a las direcciones de correo electrónico de sus usuarios."
   },
+  "donate": {
+    "message": "Ayude con una donación única."
+  },
+  "donate-heading": {
+    "message": "¡Ayuda donando!"
+  },
   "email.label": {
     "message": "Correo electrónico:"
   },
@@ -91,6 +135,17 @@
   },
   "enterLicenseKey.tooltip": {
     "message": "Ingrese el código de licencia que se envió por correo electrónico."
+  },
+  "extend-your-license": {
+    "message": "Considere extender su licencia por un año."
+  },
+  "extensionDescription": {
+    "description": "Description of the extension.",
+    "message": "Bookmark your favorite mail folders in Thunderbird."
+  },
+  "extensionName": {
+    "description": "Name of the extension.",
+    "message": "QuickFolders"
   },
   "extensions.quickfolders@curious.be.description": {
     "message": "Marca tus carpetas favoritas en Thunderbird."
@@ -108,7 +163,7 @@
     "message": "Identidad por omisión al escribir correos electrónicos"
   },
   "getQuickFolders": {
-    "message": "Obtener QuickFolders Pro"
+    "message": "Licencias de QuickFolders"
   },
   "grpComposer": {
     "message": "Campos avanzados de correo electrónico"
@@ -119,6 +174,26 @@
   "grpTabBehavior": {
     "message": "Comportamiento avanzado de pestañas"
   },
+  "heading-installed": {
+    "description": "page heading. first placeholder will be replaced with Add-on name",
+    "message": "$addonName$ instalado correctamente",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "heading-updated": {
+    "description": "page heading. first placeholder will be replaced with Add-on name",
+    "message": "$addonName$ actualizado con éxito",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "intro": {
     "message": "Una licencia anual de QuickFolders Pro le proporciona todas las características Premium por un año. También permite apoyar, hacer crecer el producto y convertirlo en algo aún más impresionante."
   },
@@ -128,8 +203,67 @@
   "lblCustomPalette": {
     "message": "Paleta personalizada:"
   },
+  "license-is-extended": {
+    "description": "Shown if license expires more than a year from now",
+    "message": "Gracias por extender su licencia recientemente o si ha donado. Como ha ayudado a preparar este complemento para el futuro, simplemente puede cerrar esta ventana."
+  },
+  "licenseComparison" : {
+    "message": "Para comparar las características de las diferentes versiones, {linkStart}lea esta lista{linkEnd}."
+  },  
+  "licenseHead": {
+    "message": "Nuevo sistema de licencias"
+  },  
+  "licenseTypes": {
+    "message": "QuickFolders ofrece dos licencias, Standard y Pro; estos son necesarios para mantenerse al día con los cambios en la plataforma Thunderbird y para financiar innovaciones y reparaciones del complemento. Debido a que los cambios que potencialmente rompen la funcionalidad de la extensión se implementan anualmente, la licencia también será válida por 1 año."
+  },  
   "licenseWindow.title": {
     "message": "Licencia de QuickFolders Pro"
+  },
+  "license_restriced.unpaid": {
+    "message": "Versión sin licencia - función restringida. Saber más…"
+  },
+  "license_restriced.std": {
+    "message": "Licencia estándar: función Pro restringida. Saber más…"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFolders necesita una licencia Pro para admitir más de $maxTabs$ tabs.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFolders necesita una licencia para admitir más de $maxTabs$ pestañas.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "mozillas-basic-platform": {
+    "message": "Mozilla solo proporciona una plataforma básica para entregar nuestro software a ustedes, los usuarios finales. Si necesitamos pedir a nuestros usuarios un pago o asistencia, no podemos hacerlo desde addons.thunderbird.net; no es una 'tienda de aplicaciones' con muros de pago integrados o administración de licencias como iTunes o Google Play."
+  },
+  "notificationTitle": {
+    "description": "Title of the click notification.",
+    "message": "Click notification"
+  },
+  "ongoing-work": {
+    "message": "Las modificaciones para convertir $addonName$ al nuevo modelo de programación tomaron semanas y resultaron costosas. Hay muchos más cambios para la próxima versión 2022. Con un complemento complejo como este, el trabajo costoso se vuelve inevitable. Ayúdanos con esto.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "purchase-a-license": {
+    "message": "Compra una licencia."
+  },
+  "purchase-heading": {
+    "message": "Comprar una licencia"
   },
   "qf.accounts": {
     "message": "Cuentas"
@@ -206,11 +340,11 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "Enfoque en la lista de mensajes al cambiar de pestañas"
   },
-  "qf.checkbox.autoHideToolbar": {
-    "message": "Ocultar QuickFolders cuando no se necesiten"
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "Ocultar carpetas rápidas en pestañas de mensajes individuales"
   },
-  "qf.checkbox.autoHideToolbar.tooltip": {
-    "message": "Contrae la barra de herramientas en pestañas especiales, tales como calendario, contenido, administrador de complementos."
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "Elimina la barra de herramientas QuickFolders en pestañas que muestran un solo mensaje."
   },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "Botón de cerrar"
@@ -434,6 +568,9 @@
   "qf.copyfolders.tooltip": {
     "message": "Copia la configuración de carpetas al portapapeles"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Tema Thunderbird"
+  },
   "qf.currentFolderBackground.custom": {
     "message": "personalizado"
   },
@@ -441,7 +578,7 @@
     "message": "oscuro"
   },
   "qf.currentFolderBackground.default": {
-    "message": "por omisión"
+    "message": "plata"
   },
   "qf.currentFolderBackground.translucent": {
     "message": "transparente"
@@ -452,8 +589,8 @@
   "qf.currentfolder.rightSpacer": {
     "message": "Espaciador derecho:"
   },
-  "qf.description.bugzilla": {
-    "message": "Por favor utilice Bugzilla para todas las peticiones nuevas y reportes de fallas."
+  "qf.description.github": {
+    "message": "Por favor utilice github para todas las peticiones nuevas y reportes de fallas."
   },
   "qf.description.categoryusage": {
     "message": "Puedes poner este marcador en una categoría (i.e. 'Trabajo', 'Privado', ...)."
@@ -462,7 +599,12 @@
     "message": "Clic derecho de un marcador para organizarlo en una categoría. Aparecerán las categorías a la izquierda de la barra."
   },
   "qf.description.contactMe": {
-    "message": "Puedes contactarme directamente en axelg@gofree.indigo.ie:"
+    "message": "Puedes contactarme directamente en $supportMail$:",
+    "placeholders": {
+      "supportMail": {
+        "content": "$1"
+      }
+    }
   },
   "qf.description.donate": {
     "message": "Si te gusta QuickFolders tanto como a nosotros y quieres ayudar en su desarrollo, puedes donar algo de dinero destinado al continuo desarrollo de QuickFolders."
@@ -486,7 +628,7 @@
     "message": "Los siguientes elementos son experimentales. ¡Esperamos estén disponibles en la siguiente versión!"
   },
   "qf.description.languages": {
-    "message": "QuickFolders soporta localización - Puedes ayudar añadiendo una nueva traducción a tu idioma en Babelzilla:"
+    "message": "QuickFolders soporta localización - Puedes ayudar añadiendo una nueva traducción a tu idioma en github:"
   },
   "qf.description.linkNote": {
     "message": "Visita la página de QuickFolders para una Guía de usuario detallada, Consejos y preguntas frecuentes:"
@@ -620,8 +762,8 @@
   "qf.label.behavior": {
     "message": "Comportamiento"
   },
-  "qf.label.bugzilla": {
-    "message": "Reporte una falla /Solicite una opción nueva con Bugzilla"
+  "qf.label.github": {
+    "message": "Reporte una falla /Solicite una opción nueva con github"
   },
   "qf.label.buttonFontSizeNumeric": {
     "message": "Tamaño de letra para el botón (0 por omisión):"
@@ -788,6 +930,9 @@
   "qf.licenseValidation.passed": {
     "message": "¡Gracias por registrat QuickFolders Pro! Todas las características Premium están habilitadas ahora."
   },
+  "qf.licenseValidation.standard": {
+    "message": "Gracias por registrar una licencia de QuickFolders. ¡Está ayudando enormemente al complemento! Si necesita más funciones, siempre puede actualizar a la licencia Pro."
+  },  
   "qf.loadConfig": {
     "message": "Cargar la configuración…"
   },
@@ -851,6 +996,9 @@
   "qf.menuitem.quickfolders.repairTreeIcons": {
     "message": "Reparar los íconos (árbol)"
   },
+  "qf.menuitem.quickfolders.splash" : {
+    "message": "Mostrar pantalla de bienvenida"
+  },
   "qf.menuitem.quickfolders.support": {
     "message": "Soporte para QuickFolders…"
   },
@@ -869,6 +1017,15 @@
   "qf.notification.dontShowAgain": {
     "message": "No mostrar este mensaje de nuevo."
   },
+  "qf.notification.newsFlash": {
+    "message": "¡$addonName$ fue actualizado! Noticias importantes…",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "qf.notification.premium.btn.extendLicense": {
     "message": "Licencia extendida"
   },
@@ -884,17 +1041,46 @@
   "qf.notification.premium.btn.renewLicense": {
     "message": "Renovar licencia"
   },
+  "qf.notification.premium.btn.upgrade": {
+    "message": "Actualizar a Pro"
+  },
   "qf.notification.premium.readingList": {
     "message": "Tienes ahora {1} marcadores definidos. La versión gratuita de QuickFolders permite un máximo de {2}."
   },
+  "qf.notification.premium.shortcut": {
+    "message": "La licencia premium también le brinda un atajo de teclado configurable."
+  },
   "qf.notification.premium.tabIcons": {
-    "message": "Tienes ahora {1} íconos definidos. La versión gratuita de QuickFolders permite un máximo de {2}."
+    "message": "Ahora usa $cntIcons$ iconos personalizados para pestañas. La versión gratuita de QuickFolders admite un máximo de $maxFreeIcons$. La licencia estándar admite $maxStdIcons$. QuickFolders Pro no tiene límite.",
+    "placeholders": {
+      "cntIcons": {
+        "content": "$1",
+        "example": "10"
+      },
+      "maxFreeIcons": {
+        "content": "$2",
+        "example": "5"
+      },
+      "maxStdIcons": {
+        "content": "$3",
+        "example": "12"
+      }
+    }
   },
   "qf.notification.premium.text": {
-    "message": "{1} es una característica Premium, por favor registra QuickFolders para usarla permanentemente."
+    "message": "{1} es una función Premium, obtenga una licencia QuickFolders Pro para usarla."
   },
   "qf.notification.premium.title": {
     "message": "Característica Premium"
+  },
+  "qf.notification.standard.readingList": {
+    "message": "Ahora tiene {1} marcadores definidos. La licencia estándar de QuickFolders permite un máximo de {2}."
+  },
+  "qf.notification.standard.text": {
+    "message": "{1} es una función con licencia restringida, obtenga una licencia QuickFolders para usarla."
+  },
+  "qf.notification.standard.title": {
+    "message": "Característica estándar"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Apariencia individual del color de las pestañas"
@@ -924,7 +1110,7 @@
     "message": "Siempre muestra bordes"
   },
   "qf.options.versionnumber.tooltip": {
-    "message": "clic con el botón derecho para ver la historia de versiones."
+    "message": "Haga clic para mostrar el historial de versiones"
   },
   "qf.palette.inactive": {
     "message": "Como las pestañas inactivas"
@@ -996,7 +1182,7 @@
     "message": "Nueva carpeta"
   },
   "qf.prompt.pasteFolders": {
-    "message": "Esto eliminará todos los QuickFolders y los reemplazará con los \\n{0}elementos que se encuentren en su portapapeles.\\n¿Está seguro?"
+    "message": "Esto eliminará todos los QuickFolders y los reemplazará con los \n{0}elementos que se encuentren en su portapapeles.\n¿Está seguro?"
   },
   "qf.prompt.pasteFolders.confirm": {
     "message": "¿Mantener las pestañas desplegadas?"
@@ -1005,10 +1191,10 @@
     "message": "¿Eliminar este elemento?"
   },
   "qf.prompt.readingList.searchMissingItem": {
-    "message": "No puedo encontrar este correo, puede haber sido movido a otra parte.\\n{1}\\n\\n¿Quieres buscarlo?"
+    "message": "No puedo encontrar este correo, puede haber sido movido a otra parte.\n{1}\n\n¿Quieres buscarlo?"
   },
   "qf.prompt.restoreFolders": {
-    "message": "Esto eliminará todas las pestañas de QuickFolders y las reemplazará con las el contenido del archivo.\\n Se leyeron {0} elementos.\\n¿Reemplazar pestañas?"
+    "message": "Esto eliminará todas las pestañas de QuickFolders y las reemplazará con las el contenido del archivo.\n Se leyeron {0} elementos.\n¿Reemplazar pestañas?"
   },
   "qf.prompt.switchDomainLicense": {
     "message": "¿Cambiar a licencia de dominio?"
@@ -1047,7 +1233,7 @@
     "message": "General"
   },
   "qf.tab.gopro": {
-    "message": "QuickFolders Pro"
+    "message": "Licencias"
   },
   "qf.tab.layout": {
     "message": "¡Modifica mis Pestañas!"
@@ -1419,7 +1605,7 @@
     "message": ":Esta pestaña apunta a una carpeta inválida:"
   },
   "qfTidyDeadFolders": {
-    "message": "Esto borrará las pestañas que no tienen asignadas carpetas válidas.\\nEsto llega a pasar si una carpeta es borrada o movida de lugar sin que se notifique a a QuickFolders."
+    "message": "Esto borrará las pestañas que no tienen asignadas carpetas válidas.\nEsto llega a pasar si una carpeta es borrada o movida de lugar sin que se notifique a a QuickFolders."
   },
   "qfTreeIconsInvalidCount": {
     "message": "{0} íconos faltantes"
@@ -1439,6 +1625,33 @@
   "qfVersionDisableOnUpdate": {
     "message": "¿Dejar de mostrar el historial de versiones después de las actualizaciones?"
   },
+  "quickMove.help.head": {
+    "message" : "Ayuda para {1}"
+  },
+  "quickMove.help.head.advanced": {
+    "message" : "Características avanzadas"
+  },
+  "quickMove.help.l1a": {
+    "message" : "Escriba el inicio de un nombre de carpeta o palabras en él, delimitado por espacio."
+  }, 
+  "quickMove.help.l1b": {
+    "message" : "Los siguientes caracteres se consideran límites de palabras y no es necesario escribirlos:"
+  }, 
+  "quickMove.help.l2a": {
+    "message" : "Escriba {1} para ingresar a la carpeta abuelo / padre / búsqueda."
+  }, 
+  "quickMove.help.l2b": {
+    "message" : "Las primeras 2 letras de cualquier carpeta principal suelen ser suficientes. También puede crear nuevas subcarpetas con esta sintaxis."
+  }, 
+  "quickMove.help.l3a": {
+    "message" : "Kirjoita {1}, jos haluat ohittaa kaikki kansiot välissä."
+  }, 
+  "quickMove.help.l3b": {
+    "message" : "Esto es útil para jerarquías de carpetas más profundas, más complicadas o desconocidas."
+  },   
+  "quickMove.help.advanced": {
+    "message" : "Las funciones más avanzadas, como los atajos de teclado para ir a una carpeta / mover correo o excluir carpetas de los resultados de búsqueda, se pueden configurar en la pestaña QuickFolders Pro. Para acceder a estas y otras funciones premium, obtenga una licencia Pro y respalde el futuro de QuickFolders."
+  },  
   "quickMove.singleMessage.goNext": {
     "message": "Mostrar el siguiente correo después de mover el actual"
   },
@@ -1484,14 +1697,101 @@
   "quickfoldersQuickMovedMails": {
     "message": "Correo movido a la carpeta {2};{1} mensajes movidos a la carpeta {2}"
   },
+  "renew-your-license": {
+    "message": "Renueva tu licencia."
+  },
+  "special-offer-content": {
+    "message": "Actualice sus funciones y ahorre {boldStart} $reduction$ {boldEnd} comprando una licencia QuickFolders Pro. Esta oferta especial estará disponible hasta el {boldStart}$expirydate${boldEnd}. O elija las funciones estándar con la nueva {linkStart}Licencia estándar{linkEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "August 22"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-upgrade": {
+    "message": "¡Actualice ahora de QuickFolders Standard a Pro y ahorre {boldStart}$reduction${boldEnd}! Esta oferta especial estará disponible hasta el {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
+  "special-offer-expiry": {
+    "message": "11 de septiembre"
+  },
+  "special-offer-head": {
+    "message": "¡Haga QuickFolders a prueba de futuro!"
+  },
+  "special-offer-intro": {
+    "message": "{boldStart} Estimado {name} {boldEnd}, si aún no tiene una licencia, considere la posibilidad de admitir QuickFolders en el futuro. Se avecinan más cambios importantes en Thunderbird y necesito {boldStart} tu ayuda {boldEnd} para mantenerme al día."
+  },
+  "support-preference": {
+    "message": "Esta es la forma preferida de admitir $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "quickFilters"
+      }
+    }
+  },
+  "support-suggestion": {
+    "message": "Para que $addonName$ permanezca funcional y vivo, hágalo un favor vital:",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "testDrive": {
     "message": "Se pueden probar las características Premium en la versión gratuita, aunque algunas pueden estar ligeramente restringidas."
+  },
+  "thanks-for-installing-intro": {
+    "message": "Gracias por instalar $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "thanks-for-updating-intro": {
+    "message": "Gracias por actualizar $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "time-and-effort": {
+    "message": "$addonName$ requiere cambios continuos para seguir siendo compatible con la plataforma Mozilla. Trabajo constantemente para conservar la mayor funcionalidad posible para futuras versiones de Thunderbird.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "toAddress": {
     "message": "Para:"
   },
   "toAddress.tooltip": {
     "message": "Dirección de correo de envío por omisión al enviar nuevos correos electrónicos"
+  },
+  "translated-by-google": {
+    "description": "disclaimer.",
+    "message": "traducciones proporcionadas por google"
   },
   "updates.title": {
     "message": "Actualizaciones"
@@ -1501,6 +1801,28 @@
   },
   "vouchers.title": {
     "message": "Vales"
+  },
+  "whats-new-btn": {
+    "message": "¿Qué hay de nuevo?"
+  },
+  "whats-new-head": {
+    "message": "Cambios importantes"
+  },
+  "whats-new-intro": {
+    "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
+  },
+  "whats-new-list": {
+    "message": "{L1} Corregido en 5.7.2: Cuando quickFilters activa su asistente, todos los íconos a la izquierda de las pestañas serán blancos {L2} {L1} Corregido en 5.7.1: Al buscar carpetas con la sintaxis 'carpeta principal/carpeta principal/carpeta deseada', las carpetas principales con nombres con una longitud de un solo carácter no se tenían en cuenta. {L2} {L1} Se hizo compatible QuickFolders con Thunderbird 91. {L2} {L1} Se mejoró la compatibilidad con temas oscuros y de terceros, tanto en la pantalla de opciones como en la barra de herramientas de navegación. {L2} {L1} Visibilidad mejorada del botón [novedades] sin -Tema de QuickFolders estándar {L2} {L1} Solucionado: a veces, la sesión se restablecía al reiniciar o después de instalar otros complementos o actualizaciones, de modo que se mostraban todas las categorías. {L2}"
+  },
+  "window-title": {
+    "description": "page title. first placeholder will be replaced with Add-on name",
+    "message": "Bienvenido a $addonName$",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "windowTitle": {
     "message": "Propiedades avanzadas"

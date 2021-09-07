@@ -447,12 +447,12 @@ async CheckFolders(aForLogin)
   if (!publicFolders) {
     // We failed to retrieve the list of public folders.
     // Don't accidentally delete public folders that we retrieved previously.
-    folderTree[0].keepPublicFolders = true;
+    folderTree.keepPublicFolders = true;
   }
   if (!sharedFolders) {
     // We failed to retrieve the list of shared folders itself.
     // Don't accidentally delete shared folders that we retrieved previously.
-    folderTree[0].keepSharedFolders = true;
+    folderTree.keepSharedFolders = true;
   }
   await browser.incomingServer.sendFolderTree(this.serverID, folderTree);
 }
@@ -523,7 +523,11 @@ OWAAccount.DispatchOperation = async function(aServerId, aOperation, aParameters
     let existingAccount = await gOWAAccounts.get(aServerId);
     gOWAAccounts.delete(aServerId);
     if (existingAccount && existingAccount.autoCompleteListener) {
-      browser.autoComplete.onAutoComplete.removeListener(existingAccount.autoCompleteListener);
+      if (browser.addressBooks.provider) { // COMPAT for TB 78 (bug 1670752)
+        browser.addressBooks.provider.onSearchRequest.removeListener(existingAccount.autoCompleteListener);
+      } else { // COMPAT for TB 78 (bug 1670752)
+        browser.autoComplete.onAutoComplete.removeListener(existingAccount.autoCompleteListener); // COMPAT for TB 78 (bug 1670752)
+      } // COMPAT for TB 78 (bug 1670752)
     }
     return;
   case "VerifyLogin":

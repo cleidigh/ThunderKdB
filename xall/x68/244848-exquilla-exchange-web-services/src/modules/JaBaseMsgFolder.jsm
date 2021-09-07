@@ -33,7 +33,6 @@ JaBaseMsgFolder.Properties = {
   baseInterfaces:     [ Ci.nsIMsgFolder,
                         Ci.nsISupportsWeakReference,
                         Ci.msgIOverride,
-                        Ci.nsISupports,
                         Ci.nsIInterfaceRequestor,
                         Ci.nsIRDFResource, // COMPAT for TB 68
                         Ci.nsIDBChangeListener,

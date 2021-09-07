@@ -5,10 +5,15 @@ TBEXE=/set/this/path/to/thunderbird
 SOURCE=/set/this/path/to/owl/source/
 
 # The rest should be working as-is
+# Allow to pass a profile name as first commandline parameter
+if [ -n "$1" ]; then
+  TBPROFILENAME=$1
+else
+  # Profile name to be created. Random like test-jhFGUZL
+  TBPROFILENAME=test-owl-`pwgen -1`
+  $TBEXE -no-remote -CreateProfile $TBPROFILENAME
+fi
 PROFILEROOTDIR=~/.thunderbird/
-# Profile name to be created. Random like test-jhFGUZL
-TBPROFILENAME=test-owl-`pwgen -1`
-$TBEXE -no-remote -CreateProfile $TBPROFILENAME
 # Path to profile directory (excluding or including trailing /)
 TBPROFILEDIR=`ls -d1 $PROFILEROOTDIR/*.$TBPROFILENAME`
 
@@ -40,5 +45,6 @@ cat <<EOF >>$TBPROFILEDIR/xulstore.json
    }
 }
 EOF
+echo Profile $TBPROFILENAME
 
 $TBEXE -no-remote -P $TBPROFILENAME -jsconsole

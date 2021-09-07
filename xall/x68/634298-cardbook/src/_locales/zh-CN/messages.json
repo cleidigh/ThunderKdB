@@ -2909,6 +2909,9 @@
 	"wdw_cardEditionViewListTitle": {
 		"message": "查看列表"
 	},
+	"wdw_cardEditionEditTemplateTitle": {
+		"message": "编辑模板"
+	},
 	"wdw_cardbookPrintTitleLong": {
 		"message": "打印预览 $P1$ - CardBook - Thunderbird",
         "placeholders": {
@@ -3563,20 +3566,20 @@
 	"cardbookContactPaneItemAccesskey": {
 		"message": "O"
 	},
+	"wizard.next.label": {
+		"message": "下一页"
+	},	
+	"wizard.back.label": {
+		"message": "返回"
+	},	
+	"wizard.create.label": {
+		"message": "创建"
+	},
 	"wizard.title": {
 		"message": "添加通讯录"
 	},
-	"wizard.label": {
-		"message": "添加通讯录"
-	},
-	"welcomePage.wizard.description": {
-		"message": "欢迎"
-	},
 	"welcomePage.description": {
 		"message": "这貌似是你第一次使用 CardBook, 所以我们将试着收集联系人。首先我们将试着导入 Thunderbird 的标准通讯录到 CardBook，在寻找可能的远程通讯录。"
-	},
-	"initialPage.wizard.description": {
-		"message": "新通讯录的路径"
 	},
 	"initialPage.description": {
 		"message": "通讯录路径:"
@@ -3595,9 +3598,6 @@
 	},
 	"initialPage.find.label": {
 		"message": "查找远程通讯录"
-	},
-	"localPage.wizard.description": {
-		"message": "类型和新本地通讯录的路径"
 	},
 	"localPage.type.description": {
 		"message": "本地通讯录的类型"
@@ -3632,9 +3632,6 @@
 	"localPage.uributton.label": {
 		"message": "浏览"
 	},
-	"remotePage.wizard.description": {
-		"message": "类型和新远程通讯录的路径"
-	},
 	"remotePage.description": {
 		"message": "你的远程通讯录的类型是什么(注意:Google 不遵守 vCard 标准)？"
 	},
@@ -3646,6 +3643,9 @@
 	},
 	"remotePage.google.label": {
 		"message": "Google"
+	},
+	"remotePage.googleWorkspace.label": {
+		"message": "Google Workspace"
 	},
 	"remotePage.apple.label": {
 		"message": "Apple"
@@ -3671,14 +3671,14 @@
 	"remotePage.password.label": {
 		"message": "密码:"
 	},
+	"rememberPassword": {
+		"message": "使用密码管理器来记住这个密码"
+	},
 	"showHidePassword.tooltip": {
 		"message": "显示/隐藏密码"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "验证"
-	},
-	"locationSearchPage.wizard.description": {
-		"message": "保存的搜索结果的定义"
 	},
 	"locationSearchPage.label": {
 		"message": "保存的搜索结果"
@@ -3704,9 +3704,6 @@
 	"googleOauthPage.wizard.description": {
 		"message": "Google 身份验证"
 	},
-	"namePage.wizard.description": {
-		"message": "通讯录属性"
-	},
 	"namePage.selected.label": {
 		"message": "已选"
 	},
@@ -3725,17 +3722,11 @@
 	"namePage.vCardVersion.label": {
 		"message": "vCard"
 	},
-	"namesPage.wizard.description": {
-		"message": "通讯录属性"
-	},
 	"namesPage.name.label": {
 		"message": "姓名"
 	},
 	"namesPage.name.description": {
 		"message": "已发现多个通讯录选择要打开的通讯录的名称"
-	},
-	"findPage.wizard.description": {
-		"message": "查找远程通讯录"
 	},
 	"findPage.name1.description": {
 		"message": "不会添加通讯录"
@@ -3745,9 +3736,6 @@
 	},
 	"findPage.name3.description": {
 		"message": "将添加多个通讯录。选择你要添加的通讯录:"
-	},
-	"finishPage.wizard.description": {
-		"message": "通讯录配置"
 	},
 	"finishPage.description": {
 		"message": "已成功配置你的新通讯录"
@@ -5117,6 +5105,12 @@
 	"cardbookToolbarAddListButtonTooltip": {
 		"message": "新建邮件列表"
 	},
+	"cardbookToolbarAddTemplateButtonLabel": {
+		"message": "新模板"
+	},
+	"cardbookToolbarAddTemplateButtonTooltip": {
+		"message": "创建新模板"
+	},
 	"cardbookToolbarEditButtonLabel": {
 		"message": "编辑"
 	},
@@ -5315,6 +5309,15 @@
 	"searchForLocalKeyEditButton.tooltip": {
 		"message": "从文件导入"
 	},
+	"definitionLabel": {
+		"message": "定义"
+	},
+	"fieldsLabel": {
+		"message": "字段"
+	},
+	"formulasLabel": {
+		"message": "公式"
+	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "以电子邮件分享"
 	},
@@ -5462,6 +5465,9 @@
 	"fnFormulaExplanation": {
 		"message": "你可以自定义 CardBook 生成显示姓名的方式。公式包含在“()”中，其中不同部分以“|”隔开。"
 	},
+	"templateFormulaExplanation": {
+		"message": "可以使用预定义字段定义模板。例如可以定制一个邮箱模板为 ({{2}}).({{4}})@mycompany.org。当为一个联系人应用 John 为名，Doe 为姓，则邮箱 john.doe@mycompany.org 会被添加到该联系人"
+	},
 	"formulaExplanation1": {
 		"message": "({{1}}|{{2}}) : 若 {{1}} 为空，则块会被 {{2}} 替换。"
 	},
@@ -5500,12 +5506,6 @@
 	},
 	"displayFieldNamesAccesskey": {
 		"message": "F"
-	},
-	"displayTypesLabel": {
-		"message": "类型和偏好设置"
-	},
-	"displayTypesAccesskey": {
-		"message": "y"
 	},
 	"fieldsToPrintGroupboxLabel": {
 		"message": "要打印的字段"
@@ -5698,6 +5698,12 @@
 	},
 	"saveTemplateLabel": {
 		"message": "保存模板"
+	},
+	"applyTemplateLabel": {
+		"message": "应用模板"
+	},
+	"createTemplateLabel": {
+		"message": "创建模板"
 	},
 	"convertVCardsLabel": {
 		"message": "转换 vCard"

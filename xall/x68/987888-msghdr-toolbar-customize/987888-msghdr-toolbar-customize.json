@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 3395,
+    "average_daily_users": 3621,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,32 +18,32 @@
     "contributions_url": "",
     "created": "2020-09-07T16:13:00Z",
     "current_version": {
-        "id": 2475944,
+        "id": 2476337,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.6.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/msghdr-toolbar-customize/versions/2475944",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/msghdr-toolbar-customize/versions/2476337",
         "files": [
             {
-                "id": 1019104,
-                "created": "2021-05-30T15:30:16Z",
-                "hash": "sha256:8b639fd475ed94eb6ba8598e246a7bcd0432d718fbf8a77d5e2f5926bd174437",
+                "id": 1019497,
+                "created": "2021-08-26T14:41:47Z",
+                "hash": "sha256:9475a764331896b23b23dfdbc1ad896dc8c655656c860edbb16eac68b04a2507",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 18424,
+                "size": 19144,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019104/message_header_toolbar_customize-2.1.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019497/message_header_toolbar_customize-2.2.1-tb.xpi?src=",
                 "permissions": [
                     "storage"
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 3338,
             "name": {
@@ -52,12 +52,12 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Added: restore default toolbar configuration when the add-on is disabled or removed\nAdded: customize window follows dark/light themes\nChanged: suppress opening multiple customize windows\nChanged: minVersion is changed to TB78.6.0 because v2.1.1 requires the following fix:\n                  <a rel=\"nofollow\" href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1675940\">https://bugzilla.mozilla.org/show_bug.cgi?id=1675940</a>\nChanged: change UI for \"Individual\" icon configuration\nFixed: cannot open Quick filter bar if a button is set as hidden",
+            "en-US": "Fixed: Button size change did not work correctly for Quick filter toolbar",
             "ja": ""
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/msghdr-toolbar-customize/versions/2.1.1",
-        "version": "2.1.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/msghdr-toolbar-customize/versions/2.2.1",
+        "version": "2.2.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -84,7 +84,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2021-06-02T11:08:50Z",
+    "last_updated": "2021-08-26T15:26:29Z",
     "name": {
         "en-US": "Message Header Toolbar Customize",
         "ja": "Message Header Toolbar Customize"

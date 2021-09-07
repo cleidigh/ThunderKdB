@@ -218,9 +218,9 @@ var cardbookPreferences = {
 	delRestrictions: function (aRestrictionId) {
 		try {
 			if (aRestrictionId) {
-				Services.prefs.deleteBranch(this.prefCardBookAccountRestrictions + aRestrictionId);
+				cardbookPreferences.delBranch(this.prefCardBookAccountRestrictions + aRestrictionId);
 			} else {
-				Services.prefs.deleteBranch(this.prefCardBookAccountRestrictions);
+				cardbookPreferences.delBranch(this.prefCardBookAccountRestrictions);
 			}
 		}
 		catch(e) {
@@ -255,9 +255,9 @@ var cardbookPreferences = {
 	delVCards: function (aVCardId) {
 		try {
 			if (aVCardId) {
-				Services.prefs.deleteBranch(this.prefCardBookAccountVCards + aVCardId);
+				cardbookPreferences.delBranch(this.prefCardBookAccountVCards + aVCardId);
 			} else {
-				Services.prefs.deleteBranch(this.prefCardBookAccountVCards);
+				cardbookPreferences.delBranch(this.prefCardBookAccountVCards);
 			}
 		}
 		catch(e) {
@@ -292,9 +292,9 @@ var cardbookPreferences = {
 	delEmailsCollection: function (aRestrictionId) {
 		try {
 			if (aRestrictionId) {
-				Services.prefs.deleteBranch(this.prefCardBookEmailsCollection + aRestrictionId);
+				cardbookPreferences.delBranch(this.prefCardBookEmailsCollection + aRestrictionId);
 			} else {
-				Services.prefs.deleteBranch(this.prefCardBookEmailsCollection);
+				cardbookPreferences.delBranch(this.prefCardBookEmailsCollection);
 			}
 		}
 		catch(e) {
@@ -354,7 +354,7 @@ var cardbookPreferences = {
 
 	delIMPPs: function () {
 		try {
-			Services.prefs.deleteBranch(this.prefCardBookIMPPs);
+			cardbookPreferences.delBranch(this.prefCardBookIMPPs);
 		}
 		catch(e) {
 			dump("cardbookPreferences.delIMPPs : failed to delete" + this.prefCardBookIMPPs + "\n" + e + "\n");
@@ -383,9 +383,9 @@ var cardbookPreferences = {
 	delCustomFields: function (aType) {
 		try {
 			if (aType) {
-				Services.prefs.deleteBranch(this.prefCardBookCustomFields + aType);
+				cardbookPreferences.delBranch(this.prefCardBookCustomFields + aType);
 			} else {
-				Services.prefs.deleteBranch(this.prefCardBookCustomFields);
+				cardbookPreferences.delBranch(this.prefCardBookCustomFields);
 			}
 		}
 		catch(e) {
@@ -414,7 +414,7 @@ var cardbookPreferences = {
 
 	delTels: function () {
 		try {
-			Services.prefs.deleteBranch(this.prefCardBookTels);
+			cardbookPreferences.delBranch(this.prefCardBookTels);
 		}
 		catch(e) {
 			dump("cardbookPreferences.delTels : failed to delete" + this.prefCardBookTels + "\n" + e + "\n");
@@ -667,12 +667,24 @@ var cardbookPreferences = {
 		}
 	},
 
-	delBranch: function (aDirPrefId) {
+	delAccount: function (aDirPrefId) {
 		try {
-			Services.prefs.deleteBranch(this.prefCardBookData + aDirPrefId);
+			cardbookPreferences.delBranch(this.prefCardBookData + aDirPrefId);
 		}
 		catch(e) {
-			dump("cardbookPreferences.delBranch : failed to delete" + this.prefCardBookData + aDirPrefId + "\n" + e + "\n");
+			dump("cardbookPreferences.delAccount : failed to delete" + this.prefCardBookData + aDirPrefId + "\n" + e + "\n");
+		}
+	},
+
+	delBranch: function (aStartingPoint) {
+		try {
+			let childprefs = Services.prefs.getChildList(aStartingPoint);
+			for (let pref of childprefs){
+				Services.prefs.clearUserPref(pref);
+			}
+		}
+		catch(e) {
+			dump("cardbookPreferences.delBranch : failed to delete" + aStartingPoint + "\n" + e + "\n");
 		}
 	}
 };

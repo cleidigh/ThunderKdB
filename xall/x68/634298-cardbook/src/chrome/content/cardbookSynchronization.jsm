@@ -10,6 +10,7 @@ loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBCat.js", th
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBUndo.js", this);
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBImage.js", this);
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBMailPop.js", this);
+loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBPrefDispName.js", this);
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBSearch.js", this);
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookEncryptor.js", this);
 
@@ -426,7 +427,7 @@ var cardbookSynchronization = {
 				if (errorNum === 0) {
 					cardbookActions.finishSyncActivityOK(aPrefId, aPrefName);
 					cardbookRepository.cardbookUtils.formatStringForOutput("synchroFinishedResult", [aPrefName]);
-					if (aPrefType == "GOOGLE" || aPrefType == "GOOGLE2") {
+					if (aPrefType == "GOOGLE" || aPrefType == "GOOGLE2" || aPrefType == "GOOGLE3") {
 						cardbookRepository.cardbookUtils.formatStringForOutput("synchroCategoriesUpToDate", [aPrefName, cardbookRepository.cardbookServerSyncNotUpdatedCat[aPrefId]]);
 						cardbookRepository.cardbookUtils.formatStringForOutput("synchroCategoriesNewOnServer", [aPrefName, cardbookRepository.cardbookServerSyncNewCatOnServer[aPrefId]]);
 						cardbookRepository.cardbookUtils.formatStringForOutput("synchroCategoriesUpdatedOnServer", [aPrefName, cardbookRepository.cardbookServerSyncUpdatedCatOnServer[aPrefId]]);
@@ -527,7 +528,7 @@ var cardbookSynchronization = {
 	handleWrongPassword: function(aConnection, aStatus, aResponse) {
 		if (aStatus == 401) {
 			let type = cardbookRepository.cardbookPreferences.getType(aConnection.connPrefId);
-			if (type == "GOOGLE" || type == "GOOGLE2" || type == "YAHOO") {
+			if (type == "GOOGLE" || type == "GOOGLE2" || type == "GOOGLE3" ) {
 				return false;
 			}
 			cardbookRepository.cardbookUtils.formatStringForOutput("synchronizationUnauthorized", [aConnection.connDescription], "Warning");
@@ -1439,9 +1440,6 @@ var cardbookSynchronization = {
 													cardbookRepository.cardbookServerCardSyncTotal[aConnection.connPrefId]++;
 													cardbookRepository.cardbookServerSyncCompareCardWithCacheTotal[aConnection.connPrefId]++;
 													var aCardConnection = {connPrefId: aConnection.connPrefId, connUrl: myUrl, connDescription: aConnection.connDescription, connUser: aConnection.connUser};
-													if (aPrefIdType == "YAHOO") {
-														aCardConnection.accessToken = aConnection.accessToken;
-													}
 													await cardbookSynchronization.compareServerCardWithCache(aCardConnection, aConnection, aPrefIdType, myUrl, etag, myFileName);
 													if (cardbookRepository.cardbookCardsFromCache[aConnection.connPrefId][myFileName]) {
 														delete cardbookRepository.cardbookCardsFromCache[aConnection.connPrefId][myFileName];
@@ -1696,8 +1694,6 @@ var cardbookSynchronization = {
 													cardbookSynchronization.discoverPhase4(aABConnection, aRootUrl, aOperationType, aParams);
 												} else if (aOperationType == "GOOGLE") {
 													cardbookRepository.cardbookSynchronizationGoogle.googleSyncCards(aConnection, aParams.aPrefIdType, aParams.aValue);
-												} else if (aOperationType == "YAHOO") {
-													cardbookSynchronization.serverSyncCards(aConnection, aParams.aPrefIdType, aParams.aValue);
 												} else if (aOperationType == "SYNCSERVER") {
 													cardbookSynchronization.serverSyncCards(aConnection, aParams.aPrefIdType, aParams.aValue);
 												}
@@ -1983,21 +1979,14 @@ var cardbookSynchronization = {
 						var connection = {connUser: myPrefIdUser, connPrefId: aPrefId, connUrl: cardbookRepository.cardbookOAuthData.GOOGLE.REFRESH_REQUEST_URL, connDescription: myPrefIdName};
 						cardbookRepository.cardbookServerSyncParams[aPrefId] = [ connection, myPrefIdType ];
 						cardbookRepository.cardbookSynchronizationGoogle.getNewAccessTokenForGoogleClassic(connection, params, cardbookSynchronizationGoogle.googleSyncLabels);
-					} else if (myPrefIdType == "GOOGLE2") {
+					} else if (myPrefIdType == "GOOGLE2" || myPrefIdType == "GOOGLE3") {
 						cardbookActions.initSyncActivity(aPrefId, myPrefIdName);
 						cardbookSynchronization.initMultipleOperations(aPrefId);
 						cardbookRepository.cardbookServerSyncRequest[aPrefId]++;
-						var connection = {connUser: myPrefIdUser, connPrefId: aPrefId, connUrl: cardbookRepository.cardbookOAuthData.GOOGLE2.REFRESH_REQUEST_URL, connDescription: myPrefIdName};
+						var connection = {connUser: myPrefIdUser, connPrefId: aPrefId, connType: myPrefIdType, connUrl: cardbookRepository.cardbookOAuthData.GOOGLE2.REFRESH_REQUEST_URL, connDescription: myPrefIdName};
 						cardbookRepository.cardbookServerSyncParams[aPrefId] = [ connection, myPrefIdType ]; 
 						cardbookRepository.cardbookSynchronizationGoogle2.getNewAccessTokenForGooglePeople(connection, cardbookSynchronizationGoogle2.googleSyncLabelsInit);
-					} else if (myPrefIdType == "YAHOO") {
-						cardbookActions.initSyncActivity(aPrefId, myPrefIdName);
-						cardbookSynchronization.initMultipleOperations(aPrefId);
-						cardbookRepository.cardbookServerSyncRequest[aPrefId]++;
-						var connection = {connUser: myPrefIdUser, connPrefId: aPrefId, connUrl: cardbookRepository.cardbookOAuthData.YAHOO.REFRESH_REQUEST_URL, connDescription: myPrefIdName};
-						cardbookRepository.cardbookServerSyncParams[aPrefId] = [ connection, myPrefIdType ];
-						cardbookRepository.cardbookSynchronizationYahoo.getNewAccessTokenForYahoo(connection, "YAHOO", params);
-					} else if (myPrefIdType == "APPLE") {
+					} else if (myPrefIdType == "APPLE" || myPrefIdType == "YAHOO") {
 						cardbookActions.initSyncActivity(aPrefId, myPrefIdName);
 						cardbookSynchronization.initMultipleOperations(aPrefId);
 						cardbookRepository.cardbookServerSyncRequest[aPrefId]++;
@@ -2030,7 +2019,7 @@ var cardbookSynchronization = {
 					}
 					if (myPrefIdType == "GOOGLE") {
 						cardbookSynchronizationGoogle.waitForGoogleSyncFinished(aPrefId, myPrefIdName);
-					} else if (myPrefIdType == "GOOGLE2") {
+					} else if (myPrefIdType == "GOOGLE2" || myPrefIdType == "GOOGLE3") {
 						cardbookSynchronizationGoogle2.waitForGoogleSyncFinished(aPrefId, myPrefIdName);
 					} else {
 						cardbookSynchronization.waitForSyncFinished(aPrefId, myPrefIdName);

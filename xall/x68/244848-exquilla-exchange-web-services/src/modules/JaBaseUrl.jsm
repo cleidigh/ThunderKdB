@@ -37,7 +37,6 @@ JaBaseUrl.Properties = {
                         Ci.nsIMsgMailNewsUrl,
                         Ci.nsIMsgMessageUrl,
                         Ci.msgIOverride,
-                        Ci.nsISupports,
                         Ci.nsIInterfaceRequestor,
                         ],
 

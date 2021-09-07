@@ -1872,7 +1872,7 @@
         }
 	},
 	"addressbookDeleted": {
-		"message": "$P1$ : Libreta de direcciones cerrada",
+		"message": "$P1$ : Libreta de direcciones borrada",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2909,6 +2909,9 @@
 	"wdw_cardEditionViewListTitle": {
 		"message": "Ver la lista"
 	},
+	"wdw_cardEditionEditTemplateTitle": {
+		"message": "Editar plantilla"
+	},
 	"wdw_cardbookPrintTitleLong": {
 		"message": "Vista previa de impresión de $P1$ - CardBook - Thunderbird",
         "placeholders": {
@@ -3563,20 +3566,20 @@
 	"cardbookContactPaneItemAccesskey": {
 		"message": "O"
 	},
+	"wizard.next.label": {
+		"message": "Siguiente"
+	},	
+	"wizard.back.label": {
+		"message": "Atrás"
+	},	
+	"wizard.create.label": {
+		"message": "Crear"
+	},
 	"wizard.title": {
 		"message": "Añadir una nueva libreta de direcciones"
 	},
-	"wizard.label": {
-		"message": "Añadir una nueva libreta de direcciones"
-	},
-	"welcomePage.wizard.description": {
-		"message": "Bienvenida"
-	},
 	"welcomePage.description": {
 		"message": "Parece que esta es la primera vez que se ejecuta CardBook. CardBook intentará recopilar contactos de las libretas de direcciones estándar y de las libretas de direcciones remotas de Thunderbird."
-	},
-	"initialPage.wizard.description": {
-		"message": "Ubicación de la nueva libreta de direcciones."
 	},
 	"initialPage.description": {
 		"message": "Ubicación de la libreta de direcciones:"
@@ -3595,9 +3598,6 @@
 	},
 	"initialPage.find.label": {
 		"message": "Buscar libretas de direcciones remotas"
-	},
-	"localPage.wizard.description": {
-		"message": "Tipo y ubicación de la nueva libreta de direcciones local."
 	},
 	"localPage.type.description": {
 		"message": "Tipo de la nueva libreta de direcciones local:"
@@ -3632,9 +3632,6 @@
 	"localPage.uributton.label": {
 		"message": "Navegar"
 	},
-	"remotePage.wizard.description": {
-		"message": "Tipo y ubicación de la nueva libreta de direcciones remota."
-	},
 	"remotePage.description": {
 		"message": "¿Cuál es el tipo de su libreta de direcciones remota? (Precaución: Google NO cumple con los estándares vCard)"
 	},
@@ -3646,6 +3643,9 @@
 	},
 	"remotePage.google.label": {
 		"message": "Google"
+	},
+	"remotePage.googleWorkspace.label": {
+		"message": "Google Workspace"
 	},
 	"remotePage.apple.label": {
 		"message": "Apple"
@@ -3671,14 +3671,14 @@
 	"remotePage.password.label": {
 		"message": "Contraseña:"
 	},
+	"rememberPassword": {
+		"message": "Use el administrador de contraseñas para recordar esta contraseña"
+	},
 	"showHidePassword.tooltip": {
 		"message": "Mostrar/ocultar contraseña"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Validar"
-	},
-	"locationSearchPage.wizard.description": {
-		"message": "Definición de la búsqueda guardada."
 	},
 	"locationSearchPage.label": {
 		"message": "Búsqueda guardada"
@@ -3704,9 +3704,6 @@
 	"googleOauthPage.wizard.description": {
 		"message": "Autenticación Google"
 	},
-	"namePage.wizard.description": {
-		"message": "Propiedades de la libreta de direcciones"
-	},
 	"namePage.selected.label": {
 		"message": "Seleccionado"
 	},
@@ -3725,17 +3722,11 @@
 	"namePage.vCardVersion.label": {
 		"message": "vCard"
 	},
-	"namesPage.wizard.description": {
-		"message": "Propiedades de las libretas de direcciones"
-	},
 	"namesPage.name.label": {
 		"message": "Nombres"
 	},
 	"namesPage.name.description": {
 		"message": "Se han descubierto varias libretas de direcciones. Elija las que desea abrir y sus nombres:"
-	},
-	"findPage.wizard.description": {
-		"message": "Búsqueda de libreta de direcciones remota"
 	},
 	"findPage.name1.description": {
 		"message": "No se encontraron libretas de direcciones remotas."
@@ -3745,9 +3736,6 @@
 	},
 	"findPage.name3.description": {
 		"message": "Se encontraron varias libretas de direcciones remotas. Valide las que quiera añadir:"
-	},
-	"finishPage.wizard.description": {
-		"message": "Configuración de libretas de direcciones"
 	},
 	"finishPage.description": {
 		"message": "Su nueva libreta de direcciones se ha configurado correctamente."
@@ -5115,7 +5103,13 @@
 		"message": "Nueva lista"
 	},
 	"cardbookToolbarAddListButtonTooltip": {
-		"message": "Nueva lista de correo"
+		"message": "Crear una nueva lista"
+	},
+	"cardbookToolbarAddTemplateButtonLabel": {
+		"message": "Nueva plantilla"
+	},
+	"cardbookToolbarAddTemplateButtonTooltip": {
+		"message": "Crear una nueva plantilla"
 	},
 	"cardbookToolbarEditButtonLabel": {
 		"message": "Editar"
@@ -5163,7 +5157,7 @@
 		"message": "Búsqueda guardada"
 	},
 	"cardbookToolbarComplexSearchTooltip": {
-		"message": "Crea una nueva carpeta de búsqueda guardada"
+		"message": "Crear una nueva carpeta de búsqueda guardada"
 	},
 	"cardbookToolbarNewEventLabel": {
 		"message": "Evento"
@@ -5315,6 +5309,15 @@
 	"searchForLocalKeyEditButton.tooltip": {
 		"message": "Importar de archivo"
 	},
+	"definitionLabel": {
+		"message": "Definición"
+	},
+	"fieldsLabel": {
+		"message": "Campos"
+	},
+	"formulasLabel": {
+		"message": "Fórmulas"
+	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Compartir por correo electrónico"
 	},
@@ -5462,6 +5465,9 @@
 	"fnFormulaExplanation": {
 		"message": "Es posible configurar el formato del campo “Nombre mostrado” generado por Cardbook. La fórmula consiste en bloques delimitados por “()”. Estos bloques pueden contener varias partes delimitadas por “|”."
 	},
+	"templateFormulaExplanation": {
+		"message": "Es posible definir plantillas con campos predefinidos. Por ejemplo, se puede definir una plantilla con el correo electrónico ”({{2}}).({{4}})@mycompany.org”. Una vez aplicado a un contacto que tiene ”John” y ”Doe” como primer nombre y nombre de pila, se añadirá el correo electrónico ”john.doe@mycompany.org” al contacto."
+	},
 	"formulaExplanation1": {
 		"message": "({{1}}|{{2}}): Si {{1}} está vacío, entonces el bloque será reemplazado por {{2}}."
 	},
@@ -5500,12 +5506,6 @@
 	},
 	"displayFieldNamesAccesskey": {
 		"message": "m"
-	},
-	"displayTypesLabel": {
-		"message": "Tipos y preferencias"
-	},
-	"displayTypesAccesskey": {
-		"message": "y"
 	},
 	"fieldsToPrintGroupboxLabel": {
 		"message": "Campos a imprimir"
@@ -5698,6 +5698,12 @@
 	},
 	"saveTemplateLabel": {
 		"message": "Guardar el modelo"
+	},
+	"applyTemplateLabel": {
+		"message": "Aplicar plantilla"
+	},
+	"createTemplateLabel": {
+		"message": "Crear plantilla"
 	},
 	"convertVCardsLabel": {
 		"message": "Convertir las vCards"

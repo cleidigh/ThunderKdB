@@ -9,7 +9,7 @@ function ProtocolInfo() {
 }
 
 ProtocolInfo.prototype = {
-  QueryInterface: ChromeUtils.generateQI([Ci.nsIMsgProtocolInfo]),
+  QueryInterface: ChromeUtils.generateQI(["nsIMsgProtocolInfo"]),
   // nsIMsgProtocolInfo
   get defaultLocalPath() {
     try {
@@ -63,5 +63,5 @@ ProtocolInfo.prototype = {
   foldersCreatedAsync: true,
 };
 
-gProtocolInfoProperties.factory = XPCOMUtils._getFactory(ProtocolInfo);
+gProtocolInfoProperties.factory = ComponentUtils._getFactory(ProtocolInfo);
 gModules.push(gProtocolInfoProperties);

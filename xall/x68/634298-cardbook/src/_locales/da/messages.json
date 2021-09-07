@@ -1132,7 +1132,7 @@
         }
 	},
 	"serverGetLabelsFailed": {
-		"message": "$P1$ : mærkater kunne ikke erhverves på server (url : $P2$, status : $P3$)",
+		"message": "$P1$ : mærkater kunne ikke erhverves fra server (url : $P2$, status : $P3$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1168,7 +1168,7 @@
         }
 	},
 	"serverGetCardLabelsFailed": {
-		"message": "$P1$ : Kontakt $P2$ : mærkater kunne ikke erhverves på server (url : $P3$, status : $P4$)",
+		"message": "$P1$ : Kontakt $P2$ : mærkater kunne ikke erhverves fra server (url : $P3$, status : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1872,7 +1872,7 @@
         }
 	},
 	"addressbookDeleted": {
-		"message": "$P1$ : Adressebog lukket",
+		"message": "$P1$ : Adressebog slettet",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2909,6 +2909,9 @@
 	"wdw_cardEditionViewListTitle": {
 		"message": "Vis liste"
 	},
+	"wdw_cardEditionEditTemplateTitle": {
+		"message": "Rediger skabelon"
+	},
 	"wdw_cardbookPrintTitleLong": {
 		"message": "Udskriftsforhåndsvisning af $P1$ - CardBook - Thunderbird",
         "placeholders": {
@@ -3563,20 +3566,20 @@
 	"cardbookContactPaneItemAccesskey": {
 		"message": "O"
 	},
+	"wizard.next.label": {
+		"message": "Næste"
+	},
+	"wizard.back.label": {
+		"message": "Tilbage"
+	},
+	"wizard.create.label": {
+		"message": "Opret"
+	},
 	"wizard.title": {
 		"message": "Tilføj en ny adressebog"
 	},
-	"wizard.label": {
-		"message": "Tilføj en ny adressebog"
-	},
-	"welcomePage.wizard.description": {
-		"message": "Velkommen"
-	},
 	"welcomePage.description": {
 		"message": "Det ser ud til at det er første gang du bruger CardBook, så vi vil prøve at indsamle kontakter. Først vil vi prøve at importere kontakter til CardBook fra Thunderbirds standardadressebøger, dernæst vil vi prøve at se efter mulige fjerne adressebøger."
-	},
-	"initialPage.wizard.description": {
-		"message": "Den nye adressebogs sted."
 	},
 	"initialPage.description": {
 		"message": "Adressebogens lokation:"
@@ -3595,9 +3598,6 @@
 	},
 	"initialPage.find.label": {
 		"message": "Søg efter fjerne adressebøger"
-	},
-	"localPage.wizard.description": {
-		"message": "Type og sted for den nye lokale adressebog."
 	},
 	"localPage.type.description": {
 		"message": "Lokal adressebogs type:"
@@ -3632,9 +3632,6 @@
 	"localPage.uributton.label": {
 		"message": "Søg"
 	},
-	"remotePage.wizard.description": {
-		"message": "Type og sted for den nye fjerne adressebog."
-	},
 	"remotePage.description": {
 		"message": "Hvilken type er din fjerne adressebog : (Forsigtig: Google overholder IKKE vCard-standarderne) ?"
 	},
@@ -3646,6 +3643,9 @@
 	},
 	"remotePage.google.label": {
 		"message": "Google"
+	},
+	"remotePage.googleWorkspace.label": {
+		"message": "Google Workspace"
 	},
 	"remotePage.apple.label": {
 		"message": "Apple"
@@ -3671,14 +3671,14 @@
 	"remotePage.password.label": {
 		"message": "Adgangskode:"
 	},
+	"rememberPassword": {
+		"message": "Brug Adgangskode-håndteringen til at huske denne adgangskode"
+	},
 	"showHidePassword.tooltip": {
 		"message": "Vis/skjul adgangskode"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Valider"
-	},
-	"locationSearchPage.wizard.description": {
-		"message": "Definition af den gemte søgning."
 	},
 	"locationSearchPage.label": {
 		"message": "Gemt søgning"
@@ -3704,9 +3704,6 @@
 	"googleOauthPage.wizard.description": {
 		"message": "Google-godkendelse"
 	},
-	"namePage.wizard.description": {
-		"message": "Adressebogsegenskaber"
-	},
 	"namePage.selected.label": {
 		"message": "Valgt"
 	},
@@ -3725,17 +3722,11 @@
 	"namePage.vCardVersion.label": {
 		"message": "vCard"
 	},
-	"namesPage.wizard.description": {
-		"message": "Adressebogsegenskaber"
-	},
 	"namesPage.name.label": {
 		"message": "Navne"
 	},
 	"namesPage.name.description": {
 		"message": "Flere adressebøger er fundet. Vælg hvilke adressebøger du vil åbne, og deres navne :"
-	},
-	"findPage.wizard.description": {
-		"message": "Søgning efter fjerne adressebøger"
 	},
 	"findPage.name1.description": {
 		"message": "Ingen adressebøger kan tilføjes."
@@ -3745,9 +3736,6 @@
 	},
 	"findPage.name3.description": {
 		"message": "Flere adressebøger kan tilføjes. Vælg hvilke adressebøger du vil tilføje :"
-	},
-	"finishPage.wizard.description": {
-		"message": "Adressebogsindstillinger"
 	},
 	"finishPage.description": {
 		"message": "Din nye adressebog er indstillet med success."
@@ -5115,7 +5103,13 @@
 		"message": "Ny liste"
 	},
 	"cardbookToolbarAddListButtonTooltip": {
-		"message": "Ny mailingliste"
+		"message": "Opret en ny liste"
+	},
+	"cardbookToolbarAddTemplateButtonLabel": {
+		"message": "Ny skabelon"
+	},
+	"cardbookToolbarAddTemplateButtonTooltip": {
+		"message": "Opret en ny skabelon"
 	},
 	"cardbookToolbarEditButtonLabel": {
 		"message": "Rediger"
@@ -5315,6 +5309,15 @@
 	"searchForLocalKeyEditButton.tooltip": {
 		"message": "Importer fra fil"
 	},
+	"definitionLabel": {
+		"message": "Definition"
+	},
+	"fieldsLabel": {
+		"message": "Felter"
+	},
+	"formulasLabel": {
+		"message": "Formler"
+	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Del via e-mail"
 	},
@@ -5462,6 +5465,9 @@
 	"fnFormulaExplanation": {
 		"message": "Det er muligt at indstille den måde CardBook formaterer sine viste navne. Denne formel består af blokke omgivet af “()”. I disse blokke kan der være mange dele adskilt af “|”."
 	},
+	"templateFormulaExplanation": {
+		"message": "Det er muligt at definere skabeloner med foruddefinerede felter. For eksempel kan man definere en skabelon med e-mailen ”({{2}}).({{4}})@mycompany.org”. Når anvendt på en kontakt der har ”John” og ”Doe” som fornavn og efternavn, vil e-mailadressen ”john.doe@mycompany.org” blive tilføjet til kontakten."
+	},
 	"formulaExplanation1": {
 		"message": "({{1}}|{{2}}) : Hvis {{1}} er tom vil blokken blive erstattet med {{2}}."
 	},
@@ -5500,12 +5506,6 @@
 	},
 	"displayFieldNamesAccesskey": {
 		"message": "F"
-	},
-	"displayTypesLabel": {
-		"message": "Typer og foretrukne"
-	},
-	"displayTypesAccesskey": {
-		"message": "y"
 	},
 	"fieldsToPrintGroupboxLabel": {
 		"message": "Hvad der skal udskrives"
@@ -5698,6 +5698,12 @@
 	},
 	"saveTemplateLabel": {
 		"message": "Gem skabelon"
+	},
+	"applyTemplateLabel": {
+		"message": "Anvend skabelon"
+	},
+	"createTemplateLabel": {
+		"message": "Opret skabelon"
 	},
 	"convertVCardsLabel": {
 		"message": "Konverter vCards"

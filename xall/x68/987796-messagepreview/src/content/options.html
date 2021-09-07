@@ -5,13 +5,17 @@
     <meta charset="utf-8">
     <script src="options.js"></script>
     <link rel="stylesheet"
+          href="chrome://global/skin/in-content/common.css">
+    <link rel="stylesheet"
+          href="chrome://messenger/content/aboutAddonsExtra.css">
+    <link rel="stylesheet"
           href="../skin/options.css">
   </head>
 
   <body id="container"
         hidden="true">
 
-    <div class="browser-style">
+    <div class="inputlabel">
       <input id="previewTooltipEnabled"
              type="checkbox">
       <label for="previewTooltipEnabled"
@@ -19,16 +23,15 @@
     </div>
 
     <fieldset id="previewTooltipFieldset"
-              class="browser-style">
+              class="inputlabel">
       <label for="previewTooltipMaxSize"
              data-localekey="previewTooltipMaxSize"></label>
       <input id="previewTooltipMaxSize"
-             class="maxsize"
              type="number"
              min="0">
     </fieldset>
 
-    <div class="browser-style">
+    <div class="inputlabel">
       <input id="previewTextEnabled"
              type="checkbox">
       <label for="previewTextEnabled"
@@ -36,11 +39,10 @@
     </div>
 
     <fieldset id="previewTextFieldset"
-              class="browser-style">
+              class="inputlabel">
       <label for="previewTextMaxSize"
              data-localekey="previewTextMaxSize"></label>
       <input id="previewTextMaxSize"
-             class="maxsize"
              type="number"
              min="0">
     </fieldset>
@@ -49,8 +51,7 @@
          class="browser-style">
       <label for="previewGetRadioForm"
              data-localekey="previewGetOption"></label>
-      <fieldset id="previewRadioFieldset"
-                class="browser-style">
+      <fieldset id="previewRadioFieldset">
         <form id="previewGetRadioForm"
               class="browser-style">
           <input id="previewAuto"
@@ -71,7 +72,7 @@
       </fieldset>
     </div>
 
-    <div class="browser-style">
+    <div class="inputlabel">
       <input id="imapAllowDownload"
              type="checkbox">
       <label for="imapAllowDownload"
@@ -80,7 +81,6 @@
 
     <hr>
     <button id="restoreDefaults"
-            class="browser-style"
             data-localekey="previewRestoreDefaults"></button>
 
   </body>

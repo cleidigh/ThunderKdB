@@ -35,7 +35,6 @@ JaBaseIncomingServer.Properties = {
   baseInterfaces:     [ Ci.nsIMsgIncomingServer,
                         Ci.nsISupportsWeakReference,
                         Ci.msgIOverride,
-                        Ci.nsISupports,
                         Ci.nsIInterfaceRequestor,
                         ],
 

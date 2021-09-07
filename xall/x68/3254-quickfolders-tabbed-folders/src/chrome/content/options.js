@@ -11,14 +11,6 @@
 
 var {Services} = ChromeUtils.import('resource://gre/modules/Services.jsm');
 
-var QuickFolders_TabURIregexp = {
-  get _thunderbirdRegExp() {
-    delete this._thunderbirdRegExp;
-    return this._thunderbirdRegExp = new RegExp("^https://quickfolders.org/");
-  }
-};
-
-
 QuickFolders.Options = {
   optionsMode : "",  // filter out certain pages (for support / help only)
   message : "",      // alert to display on dialog opening (for certain update cases); make sure to clear out after use!
@@ -88,13 +80,14 @@ QuickFolders.Options = {
       prefs.setStringPref('currentFolderBar.background', 
                 getElement("currentFolderBackground").value);
       // QuickFolders.Interface.setPaintButtonColor(-1);
-      QuickFolders.initListeners();
+      QuickFolders.Util.notifyTools.notifyBackground({ func: "initKeyListeners" }); // QuickFolders.initKeyListeners();
+      
     }
     catch(e) {
       Services.prompt.alert(null,"QuickFolders","Error in QuickFolders:\n" + e);
     };
     this.rememberLastTab();
-    QuickFolders.Interface.updateObserver(); // update the main window layout
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateFoldersUI" }); // replaced QI.updateObserver
     return true;
   } ,
   
@@ -235,12 +228,15 @@ QuickFolders.Options = {
     util.logDebug("loadPreferences - finished.");
   } ,
   
-  load: function load() {
+  load: async function load() {
     const util = QuickFolders.Util,
           prefs = QuickFolders.Preferences,
           QI = QuickFolders.Interface,
-          options = QuickFolders.Options,
-          licenser = util.Licenser;
+          options = QuickFolders.Options;
+    
+    // get important state info from background
+    await QuickFolders.Util.init();
+    
     let isOptionsTab = window.arguments && window.arguments.length>1;
           
     util.logDebug("QuickFolders.Options.load()");
@@ -301,17 +297,13 @@ QuickFolders.Options = {
     getElement('chkShowRepairFolderButton').label = QI.getUIstring("qfFolderRepair","Repair Folder")
     
     /*****  License  *****/
-    // licensing tab - we also need a "renew license"  label!
-    util.logDebugOptional('options', 'QuickFolders.Options.load - check License…');
-    
     options.labelLicenseBtn(getElement("btnLicense"), "buy");
-    
-    // validate License key
-    licenser.LicenseKey = prefs.getStringPref('LicenseKey');
-    getElement('txtLicenseKey').value = licenser.LicenseKey;
-    if (licenser.LicenseKey) {
-      this.validateLicenseInOptions(false);
+    getElement('txtLicenseKey').value = QuickFolders.Util.licenseInfo.licenseKey;    
+    if (QuickFolders.Util.licenseInfo.licenseKey) {
+      this.validateLicenseInOptions(true);      
     }
+    // add an event listener for changes:
+    window.addEventListener("QuickFolders.BackgroundUpdate", this.validateLicenseInOptions.bind(this));
     
     /*****  Help / Support Mode  *****/
     // hide other tabs
@@ -365,15 +357,12 @@ QuickFolders.Options = {
       }, 150);
       
     }
-    
-
-    
+  
     if (earlyExit) return;
-    if (licenser.isValidated)
+    if (QuickFolders.Util.licenseInfo.status == "Valid")
       setTimeout(function() { 
           util.logDebug('Remove animations in options dialog…');
           QI.removeAnimations('quickfolders-options.css');
-          
         }
       );
     
@@ -403,15 +392,17 @@ QuickFolders.Options = {
     util.logDebugOptional('options', 'QuickFolders.Options.load - end with sizeToContent()');
     sizeToContent();
     
-    let newTabMenuItem = util.getMail3PaneWindow().document.getElementById('folderPaneContext-openNewTab');
-    if (newTabMenuItem && newTabMenuItem.label) getElement('qfOpenInNewTab').label = newTabMenuItem.label.toString();
-    
+    // using main window elements to read system colors - should we do this via notifyTools, too?
     let main = util.getMail3PaneWindow(),
         getMainElement = main.QuickFolders.Util.$,
         mainToolbox = getMainElement('mail-toolbox'),
         messengerWin = getMainElement('messengerWindow'),
         backColor = main.getComputedStyle(mainToolbox).getPropertyValue("background-color"),
-        backImage = main.getComputedStyle(messengerWin).getPropertyValue("background-image");
+        backImage = main.getComputedStyle(messengerWin).getPropertyValue("background-image"),
+        newTabMenuItem = getMainElement('folderPaneContext-openNewTab');
+    if (newTabMenuItem && newTabMenuItem.label) {
+      getElement('qfOpenInNewTab').label = newTabMenuItem.label.toString();
+    }
         
     // where theme styling fails.   
     if (backColor) {
@@ -434,7 +425,7 @@ QuickFolders.Options = {
     window.addEventListener('dialogextra2', function (event) { 
       setTimeout(
         function() { 
-          QuickFolders.Licenser.showDialog('options_' + QuickFolders.Options.currentOptionsTab); 
+          QuickFolders.Interface.showLicenseDialog('options_' + QuickFolders.Options.currentOptionsTab); 
           window.close(); 
         }
       );
@@ -451,12 +442,26 @@ QuickFolders.Options = {
     panels.addEventListener('select', function(evt) { QuickFolders.Options.onTabSelect(panels,evt); } );
     options.configExtra2Button();
     
+    // dialog buttons are in a shadow DOM which needs to load its own css.
+    // https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM
+    let linkEl = document.createElement("link");
+    linkEl.setAttribute("href", "chrome://quickfolders/content/contribute.css");
+    linkEl.setAttribute("type", "text/css");
+    linkEl.setAttribute("rel", "stylesheet");
+    document.documentElement.firstChild.shadowRoot.appendChild(linkEl);
+    
     util.logDebug("QuickFolders.Options.load() - COMPLETE");
   },
   
   l10n: function l10n() {
     // [mx-l10n]
     QuickFolders.Util.localize(window, {extra2: 'qf.label.donate'});
+    
+    let supportLabel = document.getElementById('contactLabel'),
+        supportString = QuickFolders.Util.getBundleString(
+          "qf.description.contactMe",
+          [QuickFolders.Util.ADDON_SUPPORT_MAIL]); // substitution parameter for 
+    supportLabel.textContent = supportString;
   },
   
   initBling: function initBling (tabbox) {
@@ -579,11 +584,7 @@ QuickFolders.Options = {
         quickMoveFormat = getElement('menuQuickMoveFormat'),
         quickMoveDepth  = getElement('quickmove-path-depth'),
         quickMoveAdvanced = getElement('quickMoveAdvanced'),
-        multiCategories = getElement('chkCategories'),
-        chkConfigIncludeTabs = getElement('chkConfigIncludeTabs'),
-        chkConfigGeneral= getElement('chkConfigIncludeGeneral'),
-        chkConfigLayout = getElement('chkConfigIncludeLayout'),
-        btnLoadConfig   = getElement('btnLoadConfig');
+        multiCategories = getElement('chkCategories');
     premiumConfig.disabled = !isEnabled;
     quickJump.disabled = !isEnabled;
     quickMove.disabled = !isEnabled;
@@ -598,143 +599,164 @@ QuickFolders.Options = {
     quickMoveAdvanced.disabled = !isEnabled;
     multiCategories.disabled = !isEnabled;
     quickMoveAutoFill.disabled = !isEnabled;
+    this.enableStandardConfig(isEnabled);
+  },
+  
+  enableStandardConfig: function(isEnabled) {
+    let getElement      = document.getElementById.bind(document),
+        chkConfigIncludeTabs = getElement('chkConfigIncludeTabs'),
+        chkConfigGeneral= getElement('chkConfigIncludeGeneral'),
+        chkConfigLayout = getElement('chkConfigIncludeLayout'),
+        btnLoadConfig   = getElement('btnLoadConfig');
+    btnLoadConfig.disabled = !isEnabled;
     chkConfigGeneral.disabled = !isEnabled;
     chkConfigIncludeTabs.disabled = !isEnabled;
     chkConfigLayout.disabled = !isEnabled;
-    btnLoadConfig.disabled = !isEnabled;
   },
   
-  decryptLicense: function decryptLicense(testMode) {
+  // make a validation message visible but also repeat a notification for screen readers.
+  showValidationMessage: function showValidationMessage(el, silent=true) {
+    const util = QuickFolders.Util;
+    if (el.collapsed != false) {
+      el.collapsed = false;
+      if (!silent)
+        util.slideAlert (util.ADDON_NAME, el.textContent);
+    }
+  } ,
+  
+  // this function is called on load and from validateLicenseInOptions
+  // was decryptLicense
+  updateLicenseOptionsUI: async function updateLicenseOptionsUI(silent = false) {
     const util = QuickFolders.Util,
-          licenser = util.Licenser,
-          prefs = QuickFolders.Preferences,
-          State = licenser.ELicenseState;
+          showValidationMessage = QuickFolders.Options.showValidationMessage;
     let getElement = document.getElementById.bind(document),
         validationPassed       = getElement('validationPassed'),
+        validationStandard     = getElement('validationStandard'),
         validationFailed       = getElement('validationFailed'),
         validationInvalidAddon = getElement('validationInvalidAddon'),
         validationExpired      = getElement('validationExpired'),
         validationInvalidEmail = getElement('validationInvalidEmail'),
         validationEmailNoMatch = getElement('validationEmailNoMatch'),
         validationDate         = getElement('validationDate'),
-        decryptedMail, decryptedDate,
-        result = State.NotValidated;
+        validationDateSpace    = getElement('validationDateSpace'),
+        licenseDate            = getElement('licenseDate'),
+        licenseDateLabel       = getElement('licenseDateLabel'),
+        decryptedMail = QuickFolders.Util.licenseInfo.email , 
+        decryptedDate = QuickFolders.Util.licenseInfo.expiryDate,
+        result = QuickFolders.Util.licenseInfo.status;
+
+		validationStandard.collapsed = true;
     validationPassed.collapsed = true;
     validationFailed.collapsed = true;
-    validationInvalidAddon.collapsed = true;
     validationExpired.collapsed = true;
+    validationInvalidAddon.collapsed = true;
     validationInvalidEmail.collapsed = true;
     validationEmailNoMatch.collapsed = true;
     validationDate.collapsed = false;
+    validationDateSpace.collapsed = false;
     this.enablePremiumConfig(false);
     try {
-      this.trimLicense();
-      let txtBox = getElement('txtLicenseKey'),
-          license = txtBox.value;
-      // store new license key
-      if (!testMode) // in test mode we do not store the license key!
-        prefs.setStringPref('LicenseKey', license);
-      
-      let maxDigits = QuickFolders.Crypto.maxDigits, // this will be hardcoded in production 
-          LicenseKey,
-          crypto = licenser.getCrypto(license),
-          mail = licenser.getMail(license),
-          date = licenser.getDate(license);
-      if (prefs.isDebug) {
-        let test = 
-            "┌───────────────────────────────────────────────────────────────┐\n"
-          + "│ QuickFolders.Licenser found the following License components:\n"
-          + "│ Email: " + mail + "\n"
-          + "│ Date: " + date + "\n"
-          + "│ Crypto: " + crypto + "\n"
-          + "└───────────────────────────────────────────────────────────────┘";
-        if (testMode)
-          util.alert(test);
-        util.logDebug(test);
+      let niceDate = decryptedDate;
+      if (decryptedDate) {
+        try { 
+          let d = new Date(decryptedDate);
+          niceDate =d.toLocaleDateString();
+        }
+        catch(ex) { niceDate = decryptedDate; }
       }
-      if (crypto)
-        [result, LicenseKey] = licenser.validateLicense(license, maxDigits);
-      else { // reset internal state of object if no crypto can be found!
-        result = State.Invalid;
-        licenser.DecryptedDate = "";
-        licenser.DecryptedMail = "";
-      }
-      decryptedDate = licenser.DecryptedDate;
-      getElement('licenseDate').value = decryptedDate; // invalid ??
-      decryptedMail = licenser.DecryptedMail;
+      licenseDate.value = niceDate; // invalid ??
       switch(result) {
-        case State.Valid:
-          this.enablePremiumConfig(true);
-          validationPassed.collapsed=false;
-          getElement('dialogProductTitle').value = "QuickFolders Pro";
+        case "Valid":
+					if (QuickFolders.Util.licenseInfo.keyType==2) { // standard license
+            showValidationMessage(validationStandard, silent);
+            this.enableStandardConfig(true);
+          }
+					else {
+            this.enablePremiumConfig(true);
+						showValidationMessage(validationPassed, silent);
+            getElement('dialogProductTitle').value = "QuickFolders Pro";
+          }          
+          licenseDate.value = niceDate;
+          licenseDateLabel.value = util.getBundleString("qf.label.licenseValid");
           break;
-        case State.Invalid:
+        case "Invalid":
           validationDate.collapsed=true;
-          let addonName = '';
-          switch (license.substr(0,2)) {
-            case 'QI':
-              addonName = 'quickFilters';
+          validationDateSpace.collapsed=true;
+          let addonName = "";
+          switch (QuickFolders.Util.licenseInfo.licenseKey.substr(0,2)) {
+            case "QI":
+              addonName = "quickFilters";
               break;
-            case 'ST':
-              addonName = 'SmartTemplate4';
+            case "S1":
+            case "ST":
+              addonName = "SmartTemplates";
               break;
-            case 'QF':
+            case "QF":
+            case "QS":
             default: 
-              validationFailed.collapsed=false;
+              showValidationMessage(validationFailed, silent);
           }
           if (addonName) {
-            validationInvalidAddon.collapsed = false;
             let txt = validationInvalidAddon.textContent;
             txt = txt.replace('{0}','QuickFolders').replace('{1}','QF'); // keys for {0} start with {1}
             if (txt.indexOf(addonName) < 0) {
-              txt += " " + util.getBundleString("qf.licenseValidation.guessAddon", "(The key above may be for {2})").replace('{2}',addonName);
+              txt += " " + util.getBundleString("qf.licenseValidation.guessAddon").replace('{2}',addonName);
             }
             validationInvalidAddon.textContent = txt;
+            showValidationMessage(validationInvalidAddon, silent);
           }
           break;
-        case State.Expired:
-          validationExpired.collapsed=false;
+        case "Expired":
+          licenseDateLabel.value = util.getBundleString("qf.licenseValidation.expired");
+          licenseDate.value = niceDate;
+          showValidationMessage(validationExpired, false); // always show
           break;
-        case State.MailNotConfigured:
+        case "MailNotConfigured":
           validationDate.collapsed=true;
+          validationDateSpace.collapsed=true;
           validationInvalidEmail.collapsed=false;
           // if mail was already replaced the string will contain [mail address] in square brackets
           validationInvalidEmail.textContent = validationInvalidEmail.textContent.replace(/\[.*\]/,"{1}").replace("{1}", '[' + decryptedMail + ']');
           break;
-        case State.MailDifferent:
-          validationFailed.collapsed=false;
-          validationEmailNoMatch.collapsed=false;
+        case "MailDifferent":
+          validationDate.collapsed=true;
+          validationDateSpace.collapsed=true;
+          showValidationMessage(validationFailed, true);
+          showValidationMessage(validationEmailNoMatch, silent);
+          break;
+        case "Empty":
+          validationDate.collapsed=true;
+          validationDateSpace.collapsed=true;
           break;
         default:
-          validationDate.collapsed=true;
           Services.prompt.alert(null,"QuickFolders",'Unknown license status: ' + result);
           break;
-      }
-      if (testMode) {  // removed in 4.9
-        // getElement('txtEncrypt').value = 'Date = ' + decryptedDate + '    Mail = ' +  decryptedMail +  '  Result = ' + result;
-      }
-      else {
-        // reset License status of main instance
-        if (window.arguments && window.arguments.length>1 && window.arguments[1].inn.instance) {
-          let mainLicenser = window.arguments[1].inn.instance.Licenser;
-          if (mainLicenser) {
-            mainLicenser.ValidationStatus =
-              result != State.Valid ? State.NotValidated : result;
-            mainLicenser.wasValidityTested = true; // no need to re-validate there
-          }
-        }
       }
       
     }    
     catch(ex) {
-      util.logException("Error in QuickFolders.Options.decryptLicense():\n", ex);
+      util.logException("Error in QuickFolders.Options.updateLicenseOptionsUI():\n", ex);
     }
     return result;
-  } ,
+  } ,  
+  
+  updateNavigationBar: function updateNavigationBar() {
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateNavigationBar" }); 
+  },
+  
+  updateMainWindow: function updateMainWindow() {
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" });
+  },
+  
+  // send new key to background page for validation
+  validateNewKey: async function validateNewKey() {
+    this.trimLicense();
+    let rv = await QuickFolders.Util.notifyTools.notifyBackground({ func: "updateLicense", key: document.getElementById('txtLicenseKey').value });
+    // The background script will validate the new key and send a broadcast to all consumers on sucess.
+    // In this script, the consumer is onBackgroundUpdate.
+  },
   
   pasteLicense: function pasteLicense() {
-    const Cc = Components.classes,
-          Ci = Components.interfaces;
     let trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable),
         str       = {},
         strLength = {},
@@ -754,14 +776,10 @@ QuickFolders.Options = {
       txtBox.value = strLicense;
       finalLicense = this.trimLicense();
     }
-    this.validateLicenseInOptions(false);
-    /* if (finalLicense) {
-      let testMode = !document.getElementById('boxKeyGenerator').collapsed;
-      this.validateLicenseInOptions(testMode);
-    } */
+    this.validateNewKey();
   } ,
   
-  validateLicenseInOptions: function validateLicenseInOptions(testMode) {
+  validateLicenseInOptions: function validateLicenseInOptions(evt = false) {
     function replaceCssClass(el,addedClass) {
       if (!el) return;
       el.classList.add(addedClass);
@@ -770,94 +788,72 @@ QuickFolders.Options = {
       if (addedClass!='free') el.classList.remove('free');
     }
     const util = QuickFolders.Util,
-          State = util.Licenser.ELicenseState,
           options = QuickFolders.Options,
-          prefs = QuickFolders.Preferences,
-          QI = util.getMail3PaneWindow().QuickFolders.Interface; // main window
+          prefs = QuickFolders.Preferences; 
+
     let wd = window.document,
         getElement = wd.getElementById.bind(wd),
         btnLicense = getElement("btnLicense"),
-        proTab = getElement("QuickFolders-Pro");
-    try {
-      const elem3pane = util.getMail3PaneWindow().QuickFolders.Util.$;
-      let result = this.decryptLicense(testMode),
-          menuProLicense = elem3pane('QuickFolders-ToolbarPopup-register'),
-          quickFoldersSkipFolder = elem3pane('quickFoldersSkipFolder');
-      // this the updating the first button on the toolbar via the main instance
-      QI.updateQuickFoldersLabel(); // we use the quickfolders label to show if License needs renewal!
-      switch(result) {
-        case State.Valid:
-          let today = new Date(),
-              later = new Date(today.setDate(today.getDate()+30)), // pretend it's a month later:
-              dateString = later.toISOString().substr(0, 10);
-          // if we were a month ahead would this be expired?
-          if (util.Licenser.DecryptedDate < dateString || prefs.getBoolPref("debug.premium.forceShowExtend")) {
-            options.labelLicenseBtn(btnLicense, "extend");
+        proTab = getElement("QuickFolders-Pro"),
+        silent = (typeof evt === "object") ? false : evt; // will be an event when called from background script!
+        
+    // old call to decryptLicense was here
+    // 1 - sanitize License
+    // 2 - validate license
+    // 3 - update options ui with reaction messages; make expiry date visible or hide!; 
+    this.updateLicenseOptionsUI(silent); // async!
+    // this the updating the first button on the toolbar via the main instance
+    // we use the quickfolders label to show if License needs renewal!
+    // use notify tools for updating the [QuickFolders] label 
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateQuickFoldersLabel" }); 
+    // 4 - update buy / extend button or hide it.
+    let result = QuickFolders.Util.licenseInfo.status;
+    switch(result) {
+      case "Valid":
+        let today = new Date(),
+            later = new Date(today.setDate(today.getDate()+30)), // pretend it's a month later:
+            dateString = later.toISOString().substr(0, 10);
+        // if we were a month ahead would this be expired?
+        if (QuickFolders.Util.licenseInfo.expiryDate < dateString || prefs.getBoolPref("debug.premium.forceShowExtend")) {
+          options.labelLicenseBtn(btnLicense, "extend");
+        }
+        else {
+          if (QuickFolders.Util.licenseInfo.keyType==2) { // standard license
+            btnLicense.classList.add('upgrade'); // removes "pulsing" animation
+            btnLicense.collapsed = false;
+            options.labelLicenseBtn(btnLicense, "upgrade");
           }
           else
             btnLicense.collapsed = true;
-          replaceCssClass(proTab, 'paid');
-          replaceCssClass(btnLicense, 'paid');
-          replaceCssClass(menuProLicense, 'paid');
-          break;
-        case State.Expired:
-          QI.TitleLabel.label = options.labelLicenseBtn(btnLicense, "renew");
-          replaceCssClass(proTab, 'expired');
-          replaceCssClass(btnLicense, 'expired');
-          replaceCssClass(menuProLicense, 'expired');
-          btnLicense.collapsed = false;
-          break;
-        default:
-          options.labelLicenseBtn(btnLicense, "buy");
-          btnLicense.collapsed = false;
-          replaceCssClass(btnLicense, 'register');
-          replaceCssClass(proTab, 'free');
-          replaceCssClass(menuProLicense, 'free');
-      }
-      
-      options.configExtra2Button();
-      util.logDebug('validateLicense - result = ' + result);
+        }
+        replaceCssClass(proTab, 'paid');
+        replaceCssClass(btnLicense, 'paid');
+        break;
+      case "Expired":
+        options.labelLicenseBtn(btnLicense, "renew");
+        replaceCssClass(proTab, 'expired');
+        replaceCssClass(btnLicense, 'expired');
+        btnLicense.collapsed = false;
+        break;
+      default:
+        options.labelLicenseBtn(btnLicense, "buy");
+        btnLicense.collapsed = false;
+        replaceCssClass(btnLicense, 'register');
+        replaceCssClass(proTab, 'free');
     }
-    catch(ex) {
-      util.logException("Error in QuickFolders.Options.validateLicense():\n", ex);
-    }
+    
+    options.configExtra2Button();
+    util.logDebug('validateLicense - result = ' + result);
   } ,
-  
-  restoreLicense: function restoreLicense() {
-    const licenser = QuickFolders.Util.Licenser;
-    licenser.LicenseKey = QuickFolders.Preferences.getStringPref('LicenseKey'); 
-    document.getElementById('txtLicenseKey').value = licenser.LicenseKey;
-  },
   
   // only for testing, hence no l10n !
   // if we add the secret encryption string(s) to our config db
   // we will be able to generate new license keys...
   encryptLicense: function encryptLicense() {
     throw('Encryption is not supported!');
-    /*
-    let encryptThis = document.getElementById('txtEncrypt').value;
-    if (encryptThis.indexOf('*')>0) {
-      if (QuickFolders.Crypto.key_type!=1) { // not currently a domain key?
-        // test only - not meant for public consumption
-        if (confirm('Switch to domain license?')) {
-          QuickFolders.Crypto.key_type=1; // switch to domain license
-        }
-      }
-    }
-    else {
-      if (QuickFolders.Crypto.key_type!=0) { // not currently a private key?
-        // test only - not meant for public consumption
-        if (confirm('Switch to private license?')) {
-          QuickFolders.Crypto.key_type=0; // switch to private license
-        }
-      }
-    }
-    let encrypted = QuickFolders.Util.Licenser.encryptLicense(encryptThis, QuickFolders.Crypto.maxDigits);
-    document.getElementById('txtLicenseKey').value = encryptThis + ';' + encrypted;
-    */
   },
   
-  selectTheme: function selectTheme(wd, themeId) {
+  selectTheme: function selectTheme(wd, themeId, isUpdateUI = false) {
     const util = QuickFolders.Util,
           QI = QuickFolders.Interface;
     let myTheme = QuickFolders.Themes.Theme(themeId),
@@ -916,9 +912,13 @@ QuickFolders.Options = {
       /******  FOR FUTURE USE ??  ******/
       // if (myTheme.supportsFeatures.supportsFontSelection)
       // if (myTheme.supportsFeatures.buttonInnerShadows)
-
       util.logDebug ('Theme [' + myTheme.Id + '] selected');
+      if (isUpdateUI) {
+        QuickFolders.Util.notifyTools.notifyBackground({ func: "updateFoldersUI" }); 
+      }
+      
     }
+    
     return myTheme;
   } ,
   
@@ -936,11 +936,7 @@ QuickFolders.Options = {
     document.getElementById('QuickFolders-Options-CustomBottomRadius').value = "0";
     prefs.setIntPref('style.corners.customizedTopRadiusN', 4);
     prefs.setIntPref('style.corners.customizedBottomRadiusN', 0);
-    let main = QuickFolders.Util.getMail3PaneWindow();
-    if (main) {
-      const QI = main.QuickFolders.Interface; 
-      QI.updateUserStyles();
-    }
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateUserStyles" });  // main.QI.updateUserStyles
   },
 
   colorPickerTranslucent: function colorPickerTranslucent(picker) {
@@ -967,13 +963,13 @@ QuickFolders.Options = {
     }
     else {
       let item = backgroundCombo.getItemAtIndex( backgroundCombo.selectedIndex );
-      options.setCurrentToolbarBackground(item.value, true);
+      this.setCurrentToolbarBackground(item.value, true);
     }
   } ,
   
   applyOrdinalPosition: function applyOrdinalPosition() {
     // refresh the toolbar button in main window(s)
-    QuickFolders.Interface.updateMainWindow(true);
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" }); 
   } ,
   
   // change background color for current folder bar
@@ -1018,21 +1014,15 @@ QuickFolders.Options = {
     if (Preferences) {
       Preferences.get('extensions.quickfolders.currentFolderBar.background')._value=styleValue;
     }
-    //if (withUpdate)
-    //  QuickFolders.Interface.updateMainWindow();
-    // need to update current folder bar
-    if (withUpdate)
-      this.updateCurrentFolderBar();
-  },
-  
-  updateCurrentFolderBar: function updateCurrentFolderBar() {
-    const util = QuickFolders.Util;
-    // call update in main window
-    util.getMail3PaneWindow().QuickFolders.Interface.updateCurrentFolderBar();
+    // need to update current folder bar only
+    if (withUpdate) {
+      QuickFolders.Util.notifyTools.notifyBackground({ func: "updateNavigationBar" });  // main.QI.updateNavigationBar
+    }
   },
   
   styleUpdate: function styleUpdate(elementName, elementStyle, styleValue, label ) {
     let util = QuickFolders.Util;
+    util.logDebug("styleUpdate(" + elementName + ")...");
     util.logDebugOptional('interface.buttonStyles', 'styleUpdate(' + elementName + ', ' + elementStyle + ', ' + styleValue + ')');
     QuickFolders.Preferences.setUserStyle(elementName, elementStyle, styleValue);
     if (label) {
@@ -1046,9 +1036,8 @@ QuickFolders.Options = {
           break;
       }
     }
-    let updateResult = QuickFolders.Interface.updateMainWindow(true);
-    util.logDebugOptional('interface.buttonStyles', 'styleUpdate() updateMainWindow returned ' + updateResult);
-    return updateResult;
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" });
+    return true;  // return updateResult;
   },
 
   setColoredTabStyleFromRadioGroup: function setColoredTabStyleFromRadioGroup(rgroup) {
@@ -1063,7 +1052,7 @@ QuickFolders.Options = {
     if (!force && prefs.getIntPref("colorTabStyle") == styleId)
       return; // no change!
     prefs.setIntPref("colorTabStyle", styleId); // 0 striped 1 filled
-    QI.updateMainWindow(false);
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); 
     
     let inactiveTab = document.getElementById('inactivetabs-label');
     QI.applyTabStyle(inactiveTab, styleId);
@@ -1228,13 +1217,14 @@ QuickFolders.Options = {
       QuickFolders.Preferences.setIntPreference(prefString, txtBox.value);
     else
       QuickFolders.Util.logToConsole('changeTextPreference could not find pref string: '  + prefString); 
-    return QuickFolders.Interface.updateMainWindow(false);
+    
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" });
+    return true;
   },
   
   // doing what instantApply really should provide...
   toggleBoolPreference: function toggleBoolPreference(cb, noUpdate) {
-    const util = QuickFolders.Util,
-          QI = util.getMail3PaneWindow().QuickFolders.Interface;
+    const util = QuickFolders.Util;
     let prefString = cb.getAttribute("preference");
     //  using the new preference system, this attribute should be the actual full string of the pref.
     //  pref = document.getElementById(prefString);
@@ -1244,11 +1234,20 @@ QuickFolders.Options = {
     if (noUpdate)
       return true;
     switch (prefString) {
-      case 'extensions.quickfolders.collapseCategories':
-        QI.updateCategoryLayout();
+      case "extensions.quickfolders.collapseCategories":
+        QuickFolders.Util.notifyTools.notifyBackground({ func: "updateCategoryBox" }); // QI.updateCategoryLayout();
+        return false;
+      case "extensions.quickfolders.toolbar.hideInSingleMessage":
+        QuickFolders.Util.notifyTools.notifyBackground({ func: "currentDeckUpdate" }); // QI.onDeckChange(current tab)
         return false;
     }
-    return QI.updateMainWindow(false); // force full updated
+    // broadcast change of current folder bar for all interested windows.
+    if (prefString.includes(".currentFolderBar.")) {
+      QuickFolders.Util.notifyTools.notifyBackground({ func: "updateNavigationBar" }); 
+      return true;
+    }
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); // force full update
+    return true;
   },
   
   toggleColorTranslucent: function toggleColorTranslucent(cb, pickerId, label, userStyle) {
@@ -1262,7 +1261,8 @@ QuickFolders.Options = {
     if (prefString)
       QuickFolders.Preferences.setBoolPrefVerbose(prefString, cb.checked);
     
-    return QuickFolders.Interface.updateMainWindow(true);
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" }); 
+    return true;
   },
   
   // switch pastel mode on preview tabs
@@ -1303,7 +1303,7 @@ QuickFolders.Options = {
     this.initPreviewTabStyles();
     
     if (withUpdate) {
-      QuickFolders.Interface.updateMainWindow();
+      QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow" }); 
     }
   },
 
@@ -1312,7 +1312,8 @@ QuickFolders.Options = {
         myStyle = !isChecked ? "1px -1px 3px -1px rgba(0,0,0,0.7)" : "none";
     el.style.MozBoxShadow = myStyle;
     QuickFolders.Preferences.setBoolPref('buttonShadows', !isChecked);
-    return QuickFolders.Interface.updateMainWindow(true);
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" }); 
+    return true;
   },
 
   // Set Default Colors (partly from system colors) 
@@ -1345,15 +1346,16 @@ QuickFolders.Options = {
     getElement("inactivetabs-label").style.backgroundColor = buttonfaceColor;
     getElement("inactive-fontcolorpicker").value = buttontextColor;
     getElement("inactivetabs-label").style.color = buttontextColor;
-    return QuickFolders.Interface.updateMainWindow();
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); 
+    return true;
   },
 
-  sendMail: function sendMail(mailto) {
+  sendMail: function sendMail(mailto = QuickFolders.Util.ADDON_SUPPORT_MAIL) {
     let prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]
                                   .getService(Components.interfaces.nsIPromptService),
         util = QuickFolders.Util,       
-        title = util.getBundleString('qf.prompt.contact.title', "Contact QuickFolders Support"),
-        text = util.getBundleString('qf.prompt.contact.subject', "Please enter a short subject line:"),
+        title = util.getBundleString("qf.prompt.contact.title"),
+        text = util.getBundleString("qf.prompt.contact.subject"),
         input = {value: ""},
         check = {value: false},
         result = prompts.prompt(window, title, text, input, null, check); 
@@ -1382,7 +1384,8 @@ QuickFolders.Options = {
         strLength = {},
         strFoldersPretty = '';
 
-    util.popupProFeature("pasteFolderEntries");
+    util.popupRestrictedFeature("pasteFolderEntries", "", 2); // standard feature
+    if (!util.hasValidLicense()) return;
         
     trans.addDataFlavor("text/unicode");
     var {Services} = ChromeUtils.import('resource://gre/modules/Services.jsm');
@@ -1399,10 +1402,7 @@ QuickFolders.Options = {
     try {
       let folders = strFoldersPretty.replace(/\r?\n|\r/, ''),
           entries = JSON.parse(folders),
-          question = util.getBundleString('qf.prompt.pasteFolders', 
-            "This will delete all QuickFolders tabs and replace with the items in your clipboard." +
-            "\n{0} entries were found in clipboard." +
-            "\nAre you sure?");
+          question = util.getBundleString("qf.prompt.pasteFolders");
       if (Services.prompt.confirm(window, "QuickFolders", question.replace("{0}", entries.length))) {
         for (let i = 0; i < entries.length; i++) {
           if (typeof entries[i].tabColor ==='undefined' || entries[i].tabColor ==='undefined')
@@ -1418,10 +1418,12 @@ QuickFolders.Options = {
         if (!entries.length)
           entries=[];
         util.getMail3PaneWindow().QuickFolders.initTabsFromEntries(entries);
-        question = util.getBundleString('qf.prompt.pasteFolders.confirm', "Keep resulting Tabs?");
+        question = util.getBundleString("qf.prompt.pasteFolders.confirm");
         if (Services.prompt.confirm(window, "QuickFolders", question)) {
           // store
           prefs.storeFolderEntries(entries);
+          // tell all windows!
+          QuickFolders.Util.notifyTools.notifyBackground({ func: "updateAllTabs" });
         }
         else {
           // roll back
@@ -1432,7 +1434,7 @@ QuickFolders.Options = {
     }
     catch (ex) {
       util.logException("Error in QuickFolders.Options.pasteFolderEntries():\n", ex);
-      Services.prompt.alert(null,"QuickFolders", util.getBundleString('qf.alert.pasteFolders.formatErr', "Could not create tabs. See error console for more detail."));
+      Services.prompt.alert(null, "QuickFolders", util.getBundleString("qf.alert.pasteFolders.formatErr"));
     }
     
   },
@@ -1458,7 +1460,7 @@ QuickFolders.Options = {
         util.logException("Error prettifying folder string:\n", e);
         clipboardhelper.copyString(sFolderString);
       }
-      let out = util.getBundleString("qfAlertCopyString", "Folder String copied to clipboard."),
+      let out = util.getBundleString("qfAlertCopyString"),
           mail3PaneWindow = util.getMail3PaneWindow();
       
       if (mail3PaneWindow && mail3PaneWindow.QuickFolders) {
@@ -1480,31 +1482,24 @@ QuickFolders.Options = {
       } );  
   },
   
-  showAboutConfig: function showAboutConfig(clickedElement, filter, readOnly, updateUI) {
-    const Cc = Components.classes,
+  showAboutConfig: function showAboutConfig(clickedElement, filter, readOnly, updateUI = false) {
+    const name = "Preferences:ConfigManager",
+          Cc = Components.classes,
           Ci = Components.interfaces,
           util = QuickFolders.Util;
-    updateUI = (typeof updateUI != 'undefined') ? updateUI : false;
+    let mediator = Services.wm,
+        isTbModern = util.versionGreaterOrEqual(util.Appversion, "85"),
+        uri = (isTbModern) ? "about:config": "chrome://global/content/config.xhtml?debug";
     
-    util.logDebug('showAboutConfig(clickedElement: ' 
-      + (clickedElement ? clickedElement.tagName : 'none') 
-      + ', filter: ' + filter 
-      + ', readOnly: ' + readOnly +')');
-      // "chrome://global/content/config.xul?debug"
-    const name = "Preferences:ConfigManager";
-    let uri = "chrome://global/content/config.xhtml";
-
-    let mediator = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator),
-        w = mediator.getMostRecentWindow(name),
-        // set parent window
+    let w = mediator.getMostRecentWindow(name),
         win = (clickedElement && clickedElement.ownerDocument && clickedElement.ownerDocument.defaultView)
             ? clickedElement.ownerDocument.defaultView 
-            : window;
+            : window; // parent window
     if (!w) {
       let watcher = Cc["@mozilla.org/embedcomp/window-watcher;1"].getService(Ci.nsIWindowWatcher),
-          width = (util.HostSystem == 'linux') ? "650px" : "500px",
-          height = (util.HostSystem == 'linux') ? "320px" : "300px",
-          features = "alwaysRaised,dependent,chrome,resizable,width="+ width + ",height=" + height;
+          width = "750px",
+          height = "350px",
+          features = "alwaysRaised,dependent,centerscreen,chrome,resizable,width="+ width + ",height=" + height;
       if (util.HostSystem == 'winnt')
         w = watcher.openWindow(win, uri, name, features, null);
       else
@@ -1512,13 +1507,15 @@ QuickFolders.Options = {
     }
     if (updateUI) {
       // make sure QuickFolders UI is updated when about:config is closed.
-      w.addEventListener('unload', function(event) { QuickFolders.Interface.updateMainWindow(); });
+      w.addEventListener('unload', function(event) { 
+        QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); 
+      });
     }
     w.focus();
     w.addEventListener('load', 
       function () {
-        util.logDebug('showAboutConfig() : setting config Filter.\nreadonly = ' + readOnly);
-        let flt = w.document.getElementById("textbox");
+        let id = (isTbModern) ? "about-config-search" : "textbox";
+        let flt = w.document.getElementById(id);
         if (flt) {
            flt.value=filter;
           // make filter box readonly to prevent damage!
@@ -1530,15 +1527,13 @@ QuickFolders.Options = {
             w.self.FilterPrefs();
           }
         }
-        else
-          util.logDebug('filter textbox not found');
       });
   },
 
   showVersionHistory: function showVersionHistory(ask) {
     let util = QuickFolders.Util,
         pureVersion=util.VersionSanitized,
-        sPrompt = util.getBundleString("qfConfirmVersionLink", "Display version history for QuickFolders");
+        sPrompt = util.getBundleString("qfConfirmVersionLink");
     if (!ask || confirm(sPrompt + " " + pureVersion + "?")) {
       util.openURL(null, 
         util.makeUriPremium("https://quickfolders.org/version.html")
@@ -1549,12 +1544,11 @@ QuickFolders.Options = {
   },
   
   // 3pane window only?
-  toggleCurrentFolderBar: function toggleCurrentFolderBar(chk, selector) {
-    let checked = chk.checked ? chk.checked : false,
-        util = QuickFolders.Util,
-        win = (selector=='messageWindow') ? util.getSingleMessageWindow() : util.getMail3PaneWindow();
-    if (win)
-      win.QuickFolders.Interface.displayNavigationToolbar(checked, selector);
+  toggleNavigationBar: function toggleNavigationBar(chk, selector) {
+    let checked = chk.checked ? chk.checked : false;
+    QuickFolders.Preferences.setShowCurrentFolderToolbar(checked, selector);
+    // we should not call displayNavigationToolbar directly but use the event broadcaster to notify all windows.
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "toggleNavigationBar" }); 
   },
   
   get currentOptionsTab() {
@@ -1607,39 +1601,43 @@ QuickFolders.Options = {
     const prefs = QuickFolders.Preferences,
           util = QuickFolders.Util,
           options = QuickFolders.Options,
-          licenser = util.Licenser,
-          State = licenser.ELicenseState;
+          State = QuickFolders.Util.licenseInfo.status;
     try {
-    let donateButton = document.documentElement.getButton('extra2');
+    let dialog = document.getElementsByTagName("dialog")[0],
+        donateButton = dialog.getButton('extra2');
+        
     if(!el) el = document.getElementById("QuickFolders-Panels");
       switch (el.selectedPanel.id) {
         case 'QuickFolders-Options-goPro':
           donateButton.collapsed = true;
+          donateButton.setAttribute("hidden",true);
           break;
         default:
           donateButton.collapsed = false;
+          donateButton.setAttribute("hidden",false);
+          let spacer = donateButton.nextSibling;
+          if (spacer.tagName === "spacer") spacer.setAttribute("hidden",false);
           if (!prefs.getStringPref('LicenseKey')) {
             options.labelLicenseBtn(donateButton, "buy");
             donateButton.addEventListener(
               "click", 
               function(event) { 
-                licenser.showDialog('licenseTab'); 
+                QuickFolders.Interface.showLicenseDialog('licenseTab'); 
               }, 
               false);
-            
           }
           else {
-            switch (licenser.ValidationStatus) {
-              case State.NotValidated:
+            switch (State) {
+              case "NotValidated":
                 // options.labelLicenseBtn(donateButton, "buy"); // hide?
                 break;
-              case State.Expired:
+              case "Expired":
                 options.labelLicenseBtn(donateButton, "renew");
                 break;
-              case State.Valid:
+              case "Valid":
                 donateButton.collapsed = true;
                 break;
-              case State.Invalid:
+              case "Invalid":
                 options.labelLicenseBtn(donateButton, "buy");
                 break;
               default:
@@ -1658,21 +1656,26 @@ QuickFolders.Options = {
           util = QuickFolders.Util;
     switch(validStatus) {
       case  "extend":
-        let txtExtend = util.getBundleString("qf.notification.premium.btn.extendLicense", "Extend License!");
+        let txtExtend = util.getBundleString("qf.notification.premium.btn.extendLicense");
         btnLicense.collapsed = false;
         btnLicense.label = txtExtend; // text should be extend not renew
         btnLicense.setAttribute('tooltiptext',
-          util.getBundleString("qf.notification.premium.btn.extendLicense.tooltip", 
-            "This will extend the current license date by 1 year. It's typically cheaper than a new license."));
+          util.getBundleString("qf.notification.premium.btn.extendLicense.tooltip"));
         return txtExtend;
       case "renew":
-        let txtRenew = util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!");
+        let txtRenew = util.getBundleString("qf.notification.premium.btn.renewLicense");
         btnLicense.label = txtRenew;
         return txtRenew;
       case "buy":
-        let buyLabel = util.getBundleString("qf.notification.premium.btn.getLicense", "Buy License!");
+        let buyLabel = util.getBundleString("qf.notification.premium.btn.getLicense");
         btnLicense.label = buyLabel;
         return buyLabel;
+			case "upgrade":
+				let upgradeLabel = util.getBundleString("qf.notification.premium.btn.upgrade");
+				btnLicense.label = upgradeLabel;
+				btnLicense.classList.add('upgrade'); // stop flashing
+			  return upgradeLabel;
+        
     }
     return "";
   },
@@ -1717,7 +1720,7 @@ QuickFolders.Options = {
 			storedObj.advanced = [];
 			storedObj.layout = [];
 			storedObj.userStyle = [];
-			let isLicense =  (util.Licenser.isExpired || util.Licenser.isValidated);
+			let isLicense =  (QuickFolders.Util.licenseInfo.isExpired || QuickFolders.Util.licenseInfo.isValidated);
 			if (isLicense)
 				storedObj.premium = [];
       util.logDebug("Storing configuration...")
@@ -1843,10 +1846,7 @@ QuickFolders.Options = {
 						data = JSON.parse(config),
 				    entries = data.folders,
             isLayoutModified = false,
-						question = util.getBundleString('qf.prompt.restoreFolders',
-							"This will delete all QuickFolders tabs and replace with the items from the file." +
-							"\n{0} entries were read." +
-							"\nReplace tabs?");
+						question = util.getBundleString("qf.prompt.restoreFolders");
 				if (prefs.getBoolPref('restoreConfig.tabs')
 				   && Services.prompt.confirm(window, "QuickFolders", question.replace("{0}", entries.length))) {
 					for (let ent of entries) {
@@ -1874,15 +1874,17 @@ QuickFolders.Options = {
 							invalidCount++;
 					}
 
-					question = util.getBundleString('qf.prompt.loadFolders.confirm', "Accept the loaded Tabs?");
+					question = util.getBundleString("qf.prompt.loadFolders.confirm");
 					if (invalidCount) {
 						let wrn =
-						  util.getBundleString('qfInvalidTabCount', "Found {0} Tabs that have an invalid folder destination. You can remove these using the 'Find orphaned Tabs' command.");
+						  util.getBundleString("qfInvalidTabCount");
 						question = wrn.replace("{0}", invalidCount) + "\n" + question;
 					}
 					if (Services.prompt.confirm(window, "QuickFolders", question)) {
 						// store
 						prefs.storeFolderEntries(entries);
+            // notify all windows
+            QuickFolders.Util.notifyTools.notifyBackground({ func: "updateAllTabs" });
 					}
 					else {
 						// roll back
@@ -1955,14 +1957,14 @@ QuickFolders.Options = {
 
         }
         if (isLayoutModified) { // instant visual feedback
-          // QI.updateMainWindow(true);
-          QI.updateObserver(); //  update the main window layout
+          //  update the main window layout
+          QuickFolders.Util.notifyTools.notifyBackground({ func: "updateFoldersUI" }); // replaced QI.updateObserver();
         }
         
 			}
 			catch (ex) {
 				util.logException("Error in QuickFolders.Options.pasteFolderEntries():\n", ex);
-				Services.prompt.alert(null,"QuickFolders", util.getBundleString('qf.alert.pasteFolders.formatErr', "Could not create tabs. See error console for more detail."));
+				Services.prompt.alert(null,"QuickFolders", util.getBundleString("qf.alert.pasteFolders.formatErr"));
 			}
 		}
     // find all controls with bound preferences
@@ -1981,7 +1983,8 @@ QuickFolders.Options = {
           util = QuickFolders.Util,
 					prefs = QuickFolders.Preferences,
 					NSIFILE = Ci.nsILocalFile || Ci.nsIFile;
-		util.popupProFeature(mode + "_config"); // save_config, load_config
+		util.popupRestrictedFeature(mode + "_config", "", 2); // save_config, load_config
+    
     let filterText,
 		    fp = Cc['@mozilla.org/filepicker;1'].createInstance(Ci.nsIFilePicker),
         fileOpenMode = (mode=='load') ? fp.modeOpen : fp.modeSave;
@@ -1999,7 +2002,7 @@ QuickFolders.Options = {
 			}
 		}
 		fp.init(window, "", fileOpenMode); // second parameter: prompt
-    filterText = util.getBundleString("qf.fpJsonFile","JSON File");
+    filterText = util.getBundleString("qf.fpJsonFile");
     fp.appendFilter(filterText, "*.json");
     fp.defaultExtension = 'json';
     if (mode == 'save') {
@@ -2073,12 +2076,7 @@ QuickFolders.Options = {
         }
       }
     }
-
-		if (fp.open)
-			fp.open(fpCallback);
-  	else { // Postbox
-		  fpCallback(fp.show());
-  	}
+    fp.open(fpCallback);
 
     return true;
  		

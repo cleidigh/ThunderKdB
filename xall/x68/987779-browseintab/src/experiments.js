@@ -26,22 +26,31 @@ var browseintab = class extends ExtensionCommon.ExtensionAPI {
         },
 
         /*
-         * Inject chrome script into a window context.
+         * Inject chrome script into a window context. Wait for notificaton
+         * before injecting, in startup case.
          * XXX: this could also be unparameterized, injecting the user_scripts
          * registered api_script in the main (mail:3pane) window.
          *
          * @param {String} scriptFile  - The script relative path name.
          * @param {String} windowType  - The windowType name for the window.
+         * @param {Boolean} loadSync   - If true, use loadSubScript(), else use
+         *                               async compileScript().
+         * @implements {nsIObserver}
          */
-        injectScriptIntoChromeDocument(scriptFile, windowType) {
+        injectScriptIntoChromeDocument(scriptFile, windowType, loadSync) {
           let injectScript = async () => {
             let context = window.document.defaultView;
             try {
+              // console.debug("injectScript: START");
               let scriptURL = extension.rootURI.resolve(scriptFile);
               // let scriptURL = extension.manifest.user_scripts.api_script;
-              let script = await ChromeUtils.compileScript(scriptURL);
-              script.executeInGlobal(context);
-              // console.dir(script);
+              if (loadSync) {
+                Services.scriptloader.loadSubScript(scriptURL, context);
+              } else {
+                let script = await ChromeUtils.compileScript(scriptURL);
+                script.executeInGlobal(context);
+              }
+              // console.debug("injectScript: DONE");
             } catch (ex) {
               console.error("injectScriptIntoChromeDocument: " + ex);
             }

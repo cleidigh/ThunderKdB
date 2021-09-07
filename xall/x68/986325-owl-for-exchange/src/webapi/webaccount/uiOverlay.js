@@ -55,7 +55,7 @@ async function overlayListener(aDocument)
       enableGAL.setAttribute("prefstring", "mail.server.%serverkey%.GAL_enabled");
       enableGAL.setAttribute("genericattr", "true");
       let insertPoint = aDocument.getElementById("imap.trashFolderName");
-      insertPoint.parentElement.insertBefore(enableGAL, insertPoint);
+      insertPoint.before(enableGAL);
 
       let window = aDocument.defaultView;
       let onInit = window.onInit;
@@ -90,7 +90,7 @@ async function overlayListener(aDocument)
               insertBefore = menuitem.nextElementSibling;
             } else {
               menuitem = authPopup.parentElement.appendItem(label, authMethod);
-              authPopup.insertBefore(menuitem, insertBefore);
+              insertBefore.before(menuitem);
             }
           }
         }
@@ -259,7 +259,7 @@ function PaneOverride(aProperties) {
 }
 
 PaneOverride.prototype = {
-  QueryInterface: ChromeUtils.generateQI([Ci.nsIFactory, Ci.nsIMsgAccountManagerExtension]),
+  QueryInterface: ChromeUtils.generateQI(["nsIFactory", "nsIMsgAccountManagerExtension"]),
   // nsIFactory
   createInstance: function(aOuter, aIID) {
     if (aOuter) {
@@ -297,3 +297,22 @@ if ("@mozilla.org/accountmanager/extension;1?name=smime" in Components.classes) 
 
 gSMimeProperties.factory = new PaneOverride(gSMimeProperties);
 RegisterFactory(gSMimeProperties, true);
+
+function openOwlURLsInMainProcessTab() {
+  try {
+    // getRemoteTypeForURIObject has imap et. al. hardcoded in.
+    var {E10SUtils} = ChromeUtils.import("resource://gre/modules/E10SUtils.jsm");
+    if (!E10SUtils._owlGetRemoteTypeForURIObject) {
+      E10SUtils._owlGetRemoteTypeForURIObject = E10SUtils.getRemoteTypeForURIObject;
+    }
+    E10SUtils.getRemoteTypeForURIObject = function(aURI, ...aArgs) {
+      // return remote types from ContentParent.h
+      return gSchemeOptions.has(aURI.scheme)
+        ? null // null = the page should not be remote, but stay in the main process
+        : E10SUtils._owlGetRemoteTypeForURIObject(aURI, ...aArgs);
+    }
+  } catch (ex) {
+    console.error(ex);
+  }
+}
+openOwlURLsInMainProcessTab();

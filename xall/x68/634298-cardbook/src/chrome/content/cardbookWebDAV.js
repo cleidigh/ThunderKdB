@@ -622,13 +622,6 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 			this.sendHTTPRequest(aType, encodedParams, aHeaders, cardbookRepository.cardbookUtils.cleanRefreshToken(encodedParams));
 		},
 		
-		yahooToken: function(aType, aParams, aHeaders, aClientId, aClientSecret) {
-			this.hideResponse = true;
-			let encodedParams = cardbookRepository.cardbookSynchronization.encodeParams(aParams);
-			aHeaders["Authorization"] = "Basic " + this.b64EncodeUnicode(aClientId + ':' + aClientSecret);
-			this.sendHTTPRequest(aType, encodedParams, aHeaders, cardbookRepository.cardbookUtils.cleanRefreshToken(encodedParams));
-		},
-		
 		delete: function() {
 			this.load("DELETE");
 		},

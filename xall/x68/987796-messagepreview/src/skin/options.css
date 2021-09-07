@@ -3,34 +3,38 @@
 /* Options/Preferences */
 
 #container {
-  margin: 8px;
+  padding: 8px;
   overflow: hidden;
+  background-color: var(--in-content-box-background);
+  color: var(--in-content-page-color);
+  /* Fix for odd bottom artifacts in dark theme */
+  min-height: 260px;
 }
 
 #container * {
   user-select: text;
 }
 
-hr,
 fieldset {
-  border: 0;
+  border-color: transparent;
+  margin-bottom: 0;
 }
 
-input[type="radio"] {
-  margin-bottom: 2px;
+.inputlabel {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
 }
 
+fieldset[disabled] label,
+fieldset[disabled] legend,
 input[type="radio"]:disabled,
-input[type="checkbox"]:disabled {
+input[type="checkbox"]:disabled,
+textarea:disabled {
   opacity: 0.5;
 }
 
-input[type="radio"] + label,
-input[type="checkbox"] + label {
-  vertical-align: bottom;
-}
-
-.maxsize {
+input[type="number"] {
   width: 5em;
   text-align: end;
 }

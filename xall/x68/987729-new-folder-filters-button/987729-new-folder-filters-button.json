@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 596,
+    "average_daily_users": 630,
     "categories": {
         "thunderbird": [
             "folders-and-filters"
@@ -21,7 +21,7 @@
         "id": 2474750,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "80.0",
                 "min": "78.0"
             }
         },
@@ -41,7 +41,7 @@
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 3338,
             "name": {
@@ -106,10 +106,12 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
-            "comp68": true,
-            "comp78plus": true
+            "comp69plus": true,
+            "comp78plus": true,
+            "comp61plus": true,
+            "comp68pv": true,
+            "comp68pv_date": "2019-11-19T22:42:20Z"
         }
     }
 }

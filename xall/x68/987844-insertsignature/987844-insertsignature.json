@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 792,
+    "average_daily_users": 886,
     "categories": {
         "thunderbird": [
             "composition"
@@ -21,7 +21,7 @@
         "id": 2473944,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "92.0",
                 "min": "68.6.0"
             }
         },
@@ -41,7 +41,7 @@
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 18,
             "name": {
@@ -187,9 +187,11 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
-            "comp68": true
+            "comp68": true,
+            "comp69plus": true,
+            "comp78plus": true,
+            "comp61plus": true
         }
     }
 }

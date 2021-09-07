@@ -174,16 +174,25 @@ messenger.runtime.onInstalled.addListener(async ({ reason, temporary }) => {
       {
         let url = browser.runtime.getURL("popup/installed.html");
         //await browser.tabs.create({ url });
-        await browser.windows.create({ url, type: "popup", width: 910, height: 750, });
-      }
+        let wID1 = await browser.windows.create({ url, type: "popup", width: 910, height: 750, });
+ //       console.log ("wid", wID1);   
+ }
       break;
     // see below
     case "update":
       {
         let url = browser.runtime.getURL("popup/update.html");
+//        let url2 = browser.runtime.getURL("popup/installed.html");
         //await browser.tabs.create({ url });
-        await browser.windows.create({ url, type: "popup", width: 910, height: 750, });
-      }
+        let wID = await browser.windows.create({ url, type: "popup", width: 910, height: 750, });
+//        console.log ("wid", wID);
+//       debugger;
+//        let tID = await messenger.tabs.create({active:true, index:1, url: "http://www.google.com", windowId: wID.id});
+   ////   let tID = await messenger.tabs.create({windowId: wID.id});
+   //    tID = await messenger.tabs.create({windowId: wID.id});
+  //     tID = await messenger.tabs.create({windowId: wID.id});
+  //      console.log ("tid", tID);   
+  }
       break;
     // see below
   }
@@ -206,7 +215,11 @@ async function wait(t) {
 
 }
 async function main() {
+  
+  
+
   await migratePrefs();
+//  await messenger.clipboard.writeText("info.text");
 
   _preferences = (await browser.storage.local.get("preferences")).preferences;
   if (debug) {
@@ -329,7 +342,13 @@ async function main() {
         let rv = "received from background";
         return rv;
         break;
-    }
+        case "copyToClipboard":
+  //        messenger.clipboard.writeText(info.text);
+          let rvc = "copied to clipboard";
+          return rvc;
+  
+        break;
+        }
   });
 
 

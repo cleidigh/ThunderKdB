@@ -766,10 +766,9 @@ var cardbookUtils = {
 	},
 
 	getDisplayedNameFromRest: function(aCard) {
-		for (var i in cardbookRepository.multilineFields) {
-			let myType = cardbookRepository.multilineFields[i];
-			if (aCard[myType][0]) {
-				aCard.fn = aCard[myType][0][0][0];
+		for (let field of cardbookRepository.multilineFields) {
+			if (aCard[field][0]) {
+				aCard.fn = aCard[field][0][0][0];
 				if (aCard.fn != "") {
 					return;
 				}
@@ -1625,14 +1624,6 @@ var cardbookUtils = {
 		}
 	},
 
-	getTempFile: function (aFileName) {
-		var myFile = Services.dirsvc.get("TmpD", Components.interfaces.nsIFile);
-		if (aFileName) {
-			myFile.append(aFileName);
-		}
-		return myFile;
-	},
-
 	getFileExtension: function (aFile) {
 		var myFileArray = aFile.split("/");
 		var myFileArray1 = myFileArray[myFileArray.length-1].split("\\");
@@ -1690,6 +1681,16 @@ var cardbookUtils = {
 		return cardbookUtils.getFreeFileName(aDirName, aName, aId.replace(/^urn:uuid:/i, ""), ".vcf");
 	},
 
+	getFileNameForCard2: function(aCard, aListOfName, aExtension) {
+		let i = 1;
+		let name = aCard.fn.replace(/([\\\/\:\*\?\"\<\>\|]+)/g, '-') + "." + aExtension;
+		while (aListOfName.includes(name) && i < 100) {
+			name = aCard.fn.replace(/([\\\/\:\*\?\"\<\>\|]+)/g, '-') + i + "." + aExtension;
+			i++;
+		}
+		return name;
+	},
+
 	getFileNameFromUrl: function(aUrl) {
 		let cleanUrl = cardbookRepository.cardbookSynchronization.getSlashedUrl(aUrl).slice(0, -1);
 		let keyArray = cleanUrl.split("/");
@@ -1707,7 +1708,7 @@ var cardbookUtils = {
 			if (aCard.cardurl) {
 				aCard.cacheuri = cardbookUtils.getFileNameFromUrl(aCard.cardurl);
 			} else {
-				if (aPrefIdType == "GOOGLE" || aPrefIdType == "GOOGLE2") {
+				if (aPrefIdType == "GOOGLE" || aPrefIdType == "GOOGLE2" || aPrefIdType == "GOOGLE3") {
 					aCard.cacheuri = cardbookUtils.getFileNameFromUrl(aCard.uid);
 				} else {
 					aCard.cacheuri = cardbookUtils.getFileNameFromUrl(aCard.uid) + ".vcf";
@@ -2237,7 +2238,7 @@ var cardbookUtils = {
 			if (cardbookRepository.cardbookServerValidation[aDirPrefId][url].forget) {
 				continue;
 			}
-			if (aType == 'APPLE') {
+			if (aType == 'APPLE' || aType == 'YAHOO') {
 				cardbookRepository.cardbookServerValidation[aDirPrefId][url].version = [ "3.0" ];
 			}
 			if (cardbookRepository.cardbookServerValidation[aDirPrefId][url].displayName) {

@@ -33,16 +33,27 @@
             </li>
         </ul> -->
         <main>
-            <ul id="mailmindr--list" class="mailmindr-list"></ul>
+            <div class="mailmindr-popup-header">
+                <a
+                    href="https://mailmindr.net/release-notes"
+                    target="_blank"
+                    data-i18n="view.popups.list-all.link.whats.new"
+                ></a>
+            </div>
+            <ul id="mailmindr--list" class="mailmindr-list" tabindex="0">
+                <div class="mailmindr-list-placeholder">
+                    <h2 data-i18n="view.popups.list-all.message.p0"></h2>
+                    <p data-i18n="view.popups.list-all.message.p1"></p>
+                </div>
+            </ul>
         </main>
         <footer>
             <div>
                 <button
                     class="mailmindr-button mailmindr-button--micro mailmindr-sponsorlink mailmindr-button-web"
                     data-web="https://mailmindr.net/sponsor"
-                >
-                    💜 Become a mailmindr sponsor
-                </button>
+                    data-i18n="view.popups.list-all.footer.sponsor"
+                ></button>
             </div>
         </footer>
         <script type="module" src="./index.js"></script>

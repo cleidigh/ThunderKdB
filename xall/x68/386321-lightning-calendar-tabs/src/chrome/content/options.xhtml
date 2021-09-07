@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/messenger.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/input-fields.css" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/themeableDialog.css"?>
 
-<dialog id="lightningcalendartabs_prefwindow"
-        onload="load()"
-		buttons="accept, cancel"
+<window xmlns:html="http://www.w3.org/1999/xhtml"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-        xmlns:html="http://www.w3.org/1999/xhtml"
-        title="Lightning calendar tabs settings">
+        title="Lightning calendar tabs settings"
+        onload="load()"
+        lightweightthemes="true">
+<dialog id="lightningcalendartabs_prefwindow"
+	buttons="accept, cancel">
 
 		<script type="application/javascript" src="chrome://lightningcalendartabs/content/options.js"/>
+		<script type="application/javascript" src="chrome://messenger/content/dialogShadowDom.js"/>
 
 		<description class="header">
-			Customize the functionality of Lightning calendar tabs.
+			Customize the functionality of Lightning calendar tabs
 		</description>
 
-		<separator class="groove-thin"/>
 		<separator class="thin"/>
 
 		<hbox>
@@ -132,7 +134,7 @@
 						<label value="Enabled:" />
 					</vbox>
 					<vbox width="50">
-						<checkbox checked="true" 
+						<checkbox checked="true"
                       id="extensions.lightningcalendartabs.tabs.days.enabled" />
 					</vbox>
 				</hbox>
@@ -218,3 +220,4 @@
 		</hbox>
 
 </dialog>
+</window>

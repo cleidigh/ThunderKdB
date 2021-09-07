@@ -1,25 +1,43 @@
 /*
-	CSS sheet for Lightning Calendar Tabs
-	(c) 2012, Jiri Lysek
-	jlx@seznam.cz
+  CSS sheet for Lightning Calendar Tabs
+  (c) 2012, Jiri Lysek
+  jlx@seznam.cz
 */
 
 .lightning-calendar-tabs-tabs-container {
-	border-left: 1px solid ThreeDShadow;
-	background: -moz-Field;
+  background-color: -moz-Field;
+  border-bottom: 1px solid var(--splitter-color);
 }
 
-.lightning-calendar-tabs-tabs-container arrowscrollbox {
-	background: Window;
+:root[lwt-tree] .lightning-calendar-tabs-tabs-container {
+  background-color: var(--lwt-accent-color);
+  background-image: var(--lwt-header-image);
 }
 
 .lightning-calendar-tabs-tabs-container tab {
-	background: Window;
-	color: ButtonText;
+  appearance: none;
+  background-color: transparent;
+  color: inherit;
+  margin-top: 0;
+  padding: 2px 6px;
+  border-top: 1px solid var(--splitter-color);
+  border-inline-end: 1px solid var(--splitter-color);
+}
+
+.lightning-calendar-tabs-tabs-container tab:not([selected=true]):hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+:root[lwt-tree-brighttext] .lightning-calendar-tabs-tabs-container tab:not([selected=true]):hover {
+  background-color: rgba(249, 249, 250, 0.3);
 }
 
 .lightning-calendar-tabs-tabs-container tab[selected=true] {
-	font-weight: bold;
+  font-weight: bold;
+  background-image: linear-gradient(to bottom, Highlight 2px, transparent 2px);
+  background-color: var(--toolbar-bgcolor);
+  color: var(--toolbar-color);
+  border-top-style: none;
 }
 
 .lightning-calendar-tabs-tabs-container tab.current {
@@ -29,4 +47,8 @@
 }
 
 .lightning-calendar-tabs-tabs-container tab.future {
+}
+
+.header {
+  margin-inline-start: 0;
 }

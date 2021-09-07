@@ -2,9 +2,16 @@
 
 /* Options/Preferences */
 
-#container,
+#container {
+  padding: 8px;
+  overflow: hidden;
+  background-color: var(--in-content-box-background);
+  color: var(--in-content-page-color);
+}
+
 .panel {
   margin: 8px;
+  padding: 2px;
   overflow: hidden;
 }
 
@@ -17,38 +24,58 @@ fieldset {
   margin-bottom: 0;
 }
 fieldset#contentZoomFieldset {
-  border: 2px solid threedface;
+  border-width: 1px;
+  border-style: solid;
 }
-
-.browser-style.disabled label,
-.browser-style.disabled legend {
-  color: #999;
+fieldset[disabled] #contentZoomFieldset {
+  border-color: threedshadow;
+}
+fieldset[disabled] label,
+fieldset[disabled] legend {
   opacity: .5;
 }
 
-.inputlabel {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0;
+#contentBaseHeader {
+  font-size: inherit;
+  font-family: mono;
 }
 
+.inputlabel > * {
+  vertical-align: middle;
+}
+
+.inputlabel,
 input[type="radio"] {
-  margin-bottom: 3px;
+  margin-inline-start: 4px;
 }
 
-input[type="radio"]:disabled,
-input[type="checkbox"]:disabled {
-  opacity: 0.5;
+input[type="number"] {
+  width: 4em;
+  text-align: end;
+}
+input[type="number"]:last-child {
+  padding-inline-start: 10px;
 }
 
-/* From aboutaddons.css */
-#tabs {
-  border-top: 1px solid ThreeDShadow; /* var(--in-content-box-border-color); */
-  border-bottom: 1px solid ThreeDShadow; /* var(--in-content-box-border-color); */
+hr {
+  border-color: transparent;
+}
+
+/* From mozapps aboutaddons.css
+ * 2021-05-10 https://hg.mozilla.org/mozilla-central/rev/2e8c89be4b84*/
+.tab-group {
+  display: block;
+  margin-top: 8px;
+  /* Pull the buttons flush with the side of the card
+  margin-inline: calc(var(--card-padding) * -1); */
+  border-bottom: 1px solid var(--in-content-border-color);
+  border-top: 1px solid var(--in-content-border-color);
+  font-size: 0;
+  line-height: 0;
 }
 
 button.tab-button {
-  -moz-appearance: none;
+  appearance: none;
   border-inline: none;
   border-block: 2px solid transparent;
   border-radius: 0;
@@ -57,35 +84,38 @@ button.tab-button {
   line-height: 20px;
   margin: 0;
   padding: 4px 16px;
-  outline-style: none;
-}
-
-button.tab-button[selected] {
-  border-top-color: #0a84ff !important; /* var(--in-content-border-highlight); */
-  color: #0a84ff !important; /* var(--in-content-category-text-selected) !important; */
 }
 
 button.tab-button:hover {
-  background-color: rgba(12, 12, 13, 0.1); /* var(--in-content-button-background; var(--grey-90-a10); */
-  border-top-color: rgba(12, 12, 13, 0.3); /* var(--in-content-box-border-color; var(--grey-90-a30); */
+  border-top-color: var(--in-content-box-border-color);
 }
 
-button.tab-button[keyfocus] {
-  outline: 2px solid #0a84ff; /* var(--in-content-border-active); */
-  outline-offset: -1px;
-  -moz-outline-radius: 3px;
-  box-shadow: 0 0 0 4px rgba(10, 132, 255, 0.3); /* var(--in-content-border-active-shadow); */
+button.tab-button[selected],
+button.tab-button[selected]:hover {
+  border-top-color: currentColor;
+  color: var(--in-content-accent-color);
 }
 
-#maxContentTabs,
-#zoomIncrement,
-#globalZoomFactor {
- width: 4em;
- text-align: end;
+@media (prefers-contrast) {
+  button.tab-button[selected],
+  button.tab-button[selected]:hover {
+    color: var(--in-content-primary-button-text-color);
+    background-color: var(--in-content-primary-button-background);
+  }
 }
 
-#linkClickOptionsFieldset {
-  margin-bottom: 0;
+button.tab-button:-moz-focusring {
+  outline-offset: -2px;
+}
+
+.tab-group[last-input-type="mouse"] > button.tab-button:-moz-focusring {
+  outline: none;
+  box-shadow: none;
+}
+/* End mozapps aboutaddons.css */
+
+button.tab-button {
+  min-width: max-content;
 }
 
 .small-detail {
@@ -94,7 +124,7 @@ button.tab-button[keyfocus] {
 }
 
 .small-detail-indent {
-  margin-inline-start: 2.3em;
+  margin-inline-start: 2.4em;
 }
 
 .small-note {

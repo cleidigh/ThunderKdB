@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 1027,
+    "average_daily_users": 1150,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2020-11-24T17:28:35Z",
     "current_version": {
-        "id": 2476278,
+        "id": 2476310,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/simple-startup-minimizer/versions/2476278",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/simple-startup-minimizer/versions/2476310",
         "files": [
             {
-                "id": 1019438,
-                "created": "2021-08-12T22:01:14Z",
-                "hash": "sha256:dc2e9de0ff67e3eece39337116ed93d0aa9617a0e5e2b5387852ea737d629b10",
+                "id": 1019470,
+                "created": "2021-08-19T22:45:34Z",
+                "hash": "sha256:a16bb3c85a11f1b8a466b3d25cc9d0d80398002e0c4275ad2882bbae7c9ff873",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 4645,
+                "size": 4655,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019438/simple_startup_minimizer-0.5-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019470/simple_startup_minimizer-0.6-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -73,11 +73,11 @@
             "url": "http://www.opensource.org/licenses/mit-license.php"
         },
         "release_notes": {
-            "en-US": "What's New?\n- Fixed issue where the addon doesn't work for some users.\n- Addon will minimize faster (there was 200 ms delay).\n- Ensure compatibility with Thunderbird v91.\n\nKnown Issues:\n- Thunderbird icon in tray may disappear if you have the \"move to tray when minimized\" option enabled in the preferences, this is an issue from TB itself and nothing I am aware of can be done about it."
+            "en-US": "(thanks to yuma140902) fixing issue with maximized windows."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/simple-startup-minimizer/versions/0.5",
-        "version": "0.5"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/simple-startup-minimizer/versions/0.6",
+        "version": "0.6"
     },
     "default_locale": "en-US",
     "description": null,
@@ -98,17 +98,17 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-08-12T22:05:03Z",
+    "last_updated": "2021-08-19T22:50:03Z",
     "name": {
         "en-US": "Simple Startup Minimizer"
     },
     "previews": [],
-    "public_stats": false,
+    "public_stats": true,
     "ratings": {
-        "bayesian_average": 3.07945,
-        "count": 14,
-        "average": 3.1429,
-        "text_count": 14
+        "bayesian_average": 3.20473,
+        "count": 15,
+        "average": 3.2667,
+        "text_count": 15
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/simple-startup-minimizer/reviews/",
     "requires_payment": false,

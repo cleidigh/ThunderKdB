@@ -16,7 +16,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 25163,
+    "average_daily_users": 27355,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -25,26 +25,26 @@
     "contributions_url": "https://paypal.me/standard8",
     "created": "2009-12-10T03:34:09Z",
     "current_version": {
-        "id": 2476202,
+        "id": 2476412,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "102.0",
                 "min": "78.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gmail-conversation-view/versions/2476202",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gmail-conversation-view/versions/2476412",
         "files": [
             {
-                "id": 1019362,
-                "created": "2021-08-10T08:31:53Z",
-                "hash": "sha256:d80668b194c387aebe83c93348e822ef3c3bad05d807f33a8eb1d4a30e4149d8",
+                "id": 1019572,
+                "created": "2021-09-04T13:01:52Z",
+                "hash": "sha256:65ab7ca02a7400b8edba4c00db98016164542d604a22095290a5a67f0e698d51",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 979112,
+                "size": 981012,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019362/thunderbird_conversations-3.2.33-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019572/thunderbird_conversations-3.2.34-tb.xpi?src=",
                 "permissions": [
                     "accountsRead",
                     "addressBooks",
@@ -56,7 +56,7 @@
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 3338,
             "name": {
@@ -65,11 +65,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "* The position and size of the standalone message window are now remembered when using Thunderbird 91 or later.\n* Detach and Delete for attachments are now in a drop-down menu next to the attachment item itself, rather than in the context menu.\n\nThunderbird 91 fixes:\n\n* Fixes being able to delete messages\n* Fixes clicking on links in message\n* S/MIME signed status is displayed again\n* Fix forwarding conversations\n* Moved and fixed attachment delete/detach items to be displayed in-message since context menu support has been reduced in Thunderbird. Also easier to support long term.\n* Fixed layout of the contact detail footer."
+            "en-US": "Thunderbird 91 fixes:\n\n* Fix printing of single messages.\n* Fix display of signed state of PGP based messages.\n\nGeneral fixes:\n\n* Fix being able to send an email from the contact-popup when the message is in a global search tab.\n* Fix scrolling to the right location when opening a large conversation in a tab or window."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gmail-conversation-view/versions/3.2.33",
-        "version": "3.2.33"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gmail-conversation-view/versions/3.2.34",
+        "version": "3.2.34"
     },
     "default_locale": "en-US",
     "description": {
@@ -112,7 +112,7 @@
     "is_experimental": false,
     "is_featured": true,
     "is_source_public": true,
-    "last_updated": "2021-08-11T09:34:22Z",
+    "last_updated": "2021-09-04T14:13:55Z",
     "name": {
         "fr": "Thunderbird Conversations",
         "en-US": "Thunderbird Conversations",
@@ -232,15 +232,17 @@
     "weekly_downloads": 833,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
-            "comp68": true,
+            "comp69plus": true,
             "comp78plus": true,
+            "comp61plus": true,
             "comp78pv": true,
             "comp78pv_date": "2020-10-21T20:23:04Z",
             "comp78pv_version": "3.2.2",
             "comp78pv_vmin": "78.0a1",
-            "comp78pv_vmax": "*"
+            "comp78pv_vmax": "*",
+            "comp68pv": true,
+            "comp68pv_date": "2019-07-28T21:15:16Z"
         }
     }
 }

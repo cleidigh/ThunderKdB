@@ -30,6 +30,11 @@
             "name": "windowType",
             "type": "string",
             "description": "The windowType."
+          },
+          {
+            "name": "loadSync",
+            "type": "boolean",
+            "description": "If true, use loadSubScript(), else use async compileScript()."
           }
         ]
       }

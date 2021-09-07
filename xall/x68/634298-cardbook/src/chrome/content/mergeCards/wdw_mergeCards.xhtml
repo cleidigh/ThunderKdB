@@ -19,6 +19,7 @@
 	lightweightthemes="true"
 	style="min-width:400px;min-height:100px;">
 	
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookElementTools.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookEncryptor.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIndexedDB.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBImage.js"/>
@@ -39,10 +40,7 @@
 			</hbox>
 			<separator class="thin"/>
 			<hbox align="center" flex="1">
-				<grid flex="1">
-					<columns flex="1"/>
-					<rows id="fieldsVbox" align="left" flex="1"/>
-				</grid>
+				<html:table id="fieldsTable"/>
 			</hbox>
 		</vbox>
    </hbox>

@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 505,
+    "average_daily_users": 585,
     "categories": {
         "thunderbird": [
             "composition"
@@ -18,30 +18,30 @@
     "contributions_url": null,
     "created": "2014-04-13T16:01:49Z",
     "current_version": {
-        "id": 2474877,
+        "id": 2476378,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "90.0",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/x-unsent-support/versions/2474877",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/x-unsent-support/versions/2476378",
         "files": [
             {
-                "id": 1018039,
-                "created": "2020-11-28T18:32:10Z",
-                "hash": "sha256:bab5b7225c6040849b178495625578de855692de9adb4fbf2685d56a787b965b",
+                "id": 1019538,
+                "created": "2021-09-02T20:15:09Z",
+                "hash": "sha256:909d628335c26c8ae287f0c16ea3768e9ccc77f8bfa8af2b3ad7b44027d01945",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 7492,
+                "size": 7569,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018039/x_unsent_support-4.0.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019538/x_unsent_support-4.0.2-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 22,
             "name": {
@@ -73,15 +73,15 @@
             "url": "http://www.opensource.org/licenses/mit-license.php"
         },
         "release_notes": {
-            "en-US": "4.0.0:\n - now requires at least Thunderbird 78\n - fixed incompatibility with Thunderbird 78\n\n4.0.1:\n - fixed Thunderbird stopping to respond if an eml file with an invalid format is opened\n - fixed add-on sometimes not working at start"
+            "en-US": "- Disable the addon for Thunderbird 91, as support for the header is now included in Thunderbird itself (#12)"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/x-unsent-support/versions/4.0.1",
-        "version": "4.0.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/x-unsent-support/versions/4.0.2",
+        "version": "4.0.2"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "Opens .eml message with the \"X-Unsent: 1\" header directly in edit mode.\n\nFixes bug <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/8a814901fede3ba8df9febb627882658ce2c5e0653f93b4ac4e69a88429ee495/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=166541\">https://bugzilla.mozilla.org/show_bug.cgi?id=166541</a>."
+        "en-US": "<b>Important:</b> X-Unsent support was added in Thunderbird 91, and the add-on should no longer be needed.\n\nOpens .eml message with the \"X-Unsent: 1\" header directly in edit mode.\n\nFixes bug <a rel=\"nofollow\" href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=166541\">https://bugzilla.mozilla.org/show_bug.cgi?id=166541</a>."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/x-unsent-support/edit",
@@ -100,7 +100,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-12-01T16:23:56Z",
+    "last_updated": "2021-09-02T20:26:06Z",
     "name": {
         "en-US": "X-Unsent support"
     },
@@ -134,10 +134,17 @@
     "weekly_downloads": 34,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
-            "comp68": true,
+            "comp69plus": true,
             "comp78plus": true,
+            "comp61plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-11-28T18:32:10Z",
+            "comp78pv_version": "4.0.1",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "90.0",
+            "comp68pv": true,
+            "comp68pv_date": "2019-09-06T18:13:32Z",
             "comp60pv": true,
             "comp60pv_date": "2018-05-04T19:01:25Z"
         }

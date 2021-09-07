@@ -1,10 +1,55 @@
 [
     {
+        "id": 2476388,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "78.*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/unread-badge/versions/2476388",
+        "files": [
+            {
+                "id": 1019548,
+                "created": "2021-09-02T22:49:41Z",
+                "hash": "sha256:16f795c796db182bf65c0f0bf67c88cc1024aab8106c5720eb172d448decaa8b",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 26315,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019548/windows_taskbar_unread_badge-3.0.1-tb.xpi?src=",
+                "permissions": [
+                    "storage"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "The functionality of this addon is now built-in to Thunderbird 91.\n\nThis version sets a strict_max_version of Thunderbird 78.*, so that this addon will be marked as incompatible with Thunderbird 91 at upgrade time. Thanks for sticking with this addon for so many years!"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/unread-badge/versions/3.0.1",
+        "version": "3.0.1"
+    },
+    {
         "id": 2474439,
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "78.*",
                 "min": "78.0"
             }
         },
@@ -26,7 +71,7 @@
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 3338,
             "name": {

@@ -19,6 +19,9 @@
       }
     }
   },
+  "addon-authors-struggle": {
+    "message": "Ahhoz, hogy továbbra is hasznosak legyenek, a bővítmények fejlesztőinek most finanszírozniuk kell a javításhoz és átíráshoz szükséges erőforrásokat, hogy felhasználóink továbbra is részesülhessenek az asztalra hozott funkcionalitásból."
+  },
   "btn-extend-license": {
     "message": "Szeretném meghosszabbítani az engedélyemet egy évvel"
   },
@@ -26,7 +29,7 @@
     "message": "Meg akarom újítani a licencemet"
   },
   "btn-want-a-license": {
-    "message": "Szeretnék licencet vásárolni"
+    "message": "Válasszon licencet"
   },
   "btn-want-to-donate": {
     "message": "Egyszeri adománnyal szeretnék segíteni."
@@ -52,9 +55,15 @@
   "buyLicense.instruct": {
     "message": "Szüksége van licencre magának? Szerezzen be egyetlen felhasználói licencet. Az Ön személyes e-mail címéhez van kötve, és több telepítésben is használható."
   },
-  "buyPersonalLicense.button": {
-    "message": "Vásároljon személyes licencet!"
+  "buyProLicense.button": {
+    "message": "Vásároljon Pro License-t!"
   },
+  "buyStandardLicense.button": {
+    "message": "Vásároljon Normál licencet!"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "Nem engedheti meg magának a prémium funkciókat? Szerezzen be egy igen megfizethető szabványos licencet, és próbálja ki a prémium funkciókat."
+  },    
   "chkComposerSubfolders": {
     "message": "Az almappákra is vonatkozik"
   },
@@ -82,11 +91,14 @@
   "chkSetMailsUnread.tooltip": {
     "message": "Ha e-mailt áthelyez ebbe a mappába, az olvasatlan állapotra lesz állítva."
   },
+  "cost-of-independence": {
+    "message": "A szoftverfejlesztés időbe és pénzbe kerül - sok platformalkalmazással ellentétben a bővítményeket nem nagyvállalatok írják, és semmilyen módon nem szponzorálják őket a Mozilla."
+  },
   "cssBackground": {
     "message": "Háttér"
   },
   "cssBackground.tooltip": {
-    "message": "Enter a CSS background, e.g. linear-gradient(to bottom, rgba(254,252,234,1) 0&#37;,rgba(241,218,54,1) 100&#37;)"
+    "message": "Enter a CSS background, e.g. linear-gradient(to bottom, rgba(254,252,234,1) 0%,rgba(241,218,54,1) 100%)"
   },
   "cssColor": {
     "message": "Szöveg szín"
@@ -124,6 +136,17 @@
   "enterLicenseKey.tooltip": {
     "message": "Írja be az e-mailben elküldött Licenckulcs kódot."
   },
+  "extend-your-license": {
+    "message": "Fontolja meg a jogosítvány egy évvel történő meghosszabbítását."
+  },
+  "extensionDescription": {
+    "description": "Description of the extension.",
+    "message": "Könyvjelzővel láthatja el kedvenc levelezési mappáit a Thunderbirdben."
+  },
+  "extensionName": {
+    "description": "Name of the extension.",
+    "message": "QuickFolders"
+  },
   "extensions.quickfolders@curious.be.description": {
     "message": "Könyvjelzőzze a kedvenc mappáit a Thunderbirdben!"
   },
@@ -140,7 +163,7 @@
     "message": "Alapértelmezett identitás az e-mailek írása során"
   },
   "getQuickFolders": {
-    "message": "Get QuickFolders Pro"
+    "message": "QuickFolders licencek"
   },
   "grpComposer": {
     "message": "Alapértelmezett e-mail mezők"
@@ -193,6 +216,42 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Köszönjük, hogy nemrég meghosszabbította licencét, vagy ha adományozott. Mivel segített a kiegészítő későbbi bizonyításában, egyszerűen bezárhatja ezt az ablakot."
   },
+  "licenseComparison" : {
+    "message": "A különböző verziók jellemzőinek összehasonlításához {linkStart} olvassa el ezt a listát {linkEnd}."
+  },
+  "licenseHead": {
+    "message": "Új engedélyezési rendszer"
+  },  
+  "licenseTypes": {
+    "message": "A QuickFolders két licencet kínál: Standard és Pro; ezek szükségesek ahhoz, hogy lépést tudjunk tartani a Thunderbird platform változásaival, és hogy finanszírozzuk a kiegészítő innovációit és javításait. Mivel a kiterjesztési funkciót esetlegesen megszakító változtatások évente bevezetésre kerülnek, a licenc 1 évig is érvényes lesz."
+  },  
+  "licenseWindow.title": {
+    "message": "QuickFolders Pro licenc"
+  },
+  "license_restriced.std": {
+    "message": "Standard License - korlátozott Pro funkció. Tudj meg többet…"
+  },
+  "license_restriced.unpaid": {
+    "message": "Engedély nélküli verzió - korlátozott funkció. Tudj meg többet…"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "A QuickFolders Pro licencre van szüksége, hogy több mint $maxTabs$ lapot támogathasson.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "A QuickFolders licencre van szüksége, hogy több mint $ maxTabs $ lapot támogathasson.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
   "mozillas-basic-platform": {
     "message": "Mozilla only provides a basic platform for delivering our software to you, the end users. If we need to ask our users for payment or support we cannot do this from addons.thunderbird.net - it is not an 'app store' with built in paywalls or license management like iTunes or google play."
   },
@@ -214,9 +273,6 @@
   },
   "purchase-heading": {
     "message": "Licenc vásárlása!"
-  },
-  "licenseWindow.title": {
-    "message": "QuickFolders Pro License"
   },
   "qf.accounts": {
     "message": "Fiókok"
@@ -293,11 +349,11 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "Üzenetlista kijelölése fülek váltásakor"
   },
-  "qf.checkbox.autoHideToolbar": {
-    "message": "QuickFolders mappák elrejtése amikor nem szükségesek"
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "A gyorsmappák elrejtése egyetlen üzenet fülén"
   },
-  "qf.checkbox.autoHideToolbar.tooltip": {
-    "message": "Speciális eszköztárak összecsukása, mint a naptár, a tartalom és a kiegészítőkezelő."
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "Eltávolítja a QuickFolders eszköztárat olyan füleken, amelyek egyetlen üzenetet jelenítenek meg."
   },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "Bezárás gomb"
@@ -521,6 +577,9 @@
   "qf.copyfolders.tooltip": {
     "message": "Mappák beállításainak másolása a vágólapra"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Thunderbird Téma"
+  },
   "qf.currentFolderBackground.custom": {
     "message": "custom"
   },
@@ -528,7 +587,7 @@
     "message": "dark"
   },
   "qf.currentFolderBackground.default": {
-    "message": "default"
+    "message": "ezüst"
   },
   "qf.currentFolderBackground.translucent": {
     "message": "translucent"
@@ -539,8 +598,8 @@
   "qf.currentfolder.rightSpacer": {
     "message": "Right Spacer:"
   },
-  "qf.description.bugzilla": {
-    "message": "Bugok jelentéséhez és új funkciók javaslásához kérem használja a Bugzillát"
+  "qf.description.github": {
+    "message": "Bugok jelentéséhez és új funkciók javaslásához kérem használja a github"
   },
   "qf.description.categoryusage": {
     "message": "A könyvjelzőjét hozzáadhatja egy kategóriához (pl. 'Munka', 'Személyes', stb.)."
@@ -549,7 +608,12 @@
     "message": "Kattintson jobb gombbal a könyvjelzőre kategóriákba rendezéshez. A kategóriák listáját a bal oldalon találja."
   },
   "qf.description.contactMe": {
-    "message": "Személyesen is elérhet a axelg@gofree.indigo.ie címen:"
+    "message": "Személyesen is elérhet a $supportMail$ címen:",
+    "placeholders": {
+      "supportMail": {
+        "content": "$1"
+      }
+    }
   },
   "qf.description.donate": {
     "message": "Ha annyira kedveli a QuickFolderst, mint mi, kérem támogassa a fejlesztését, adományozva egy kisebb összeget a QuickFolders további fejlesztéséért."
@@ -573,7 +637,7 @@
     "message": "A következő elemek fejlesztésben vannak, remélhetőleg a következő változatban működni fognak!"
   },
   "qf.description.languages": {
-    "message": "QuickFolders támogatja a lokalizációt - segíthet, ha lefordítja a saját nyelvére a Babelzillán:"
+    "message": "QuickFolders támogatja a lokalizációt - segíthet, ha lefordítja a saját nyelvére a github:"
   },
   "qf.description.linkNote": {
     "message": "QuickFolders  honlap meglátogatása: részletes ismertető, tippek, és GYÍK"
@@ -707,8 +771,8 @@
   "qf.label.behavior": {
     "message": "Viselkedés"
   },
-  "qf.label.bugzilla": {
-    "message": "Bug jelentése / Új funkció javaslása a Bugzillán"
+  "qf.label.github": {
+    "message": "Bug jelentése / Új funkció javaslása a github"
   },
   "qf.label.buttonFontSizeNumeric": {
     "message": "Gomb betűmérete (alapértelmezés szerint 0):"
@@ -875,6 +939,9 @@
   "qf.licenseValidation.passed": {
     "message": "Köszönjük a QuickFolders Pro regisztrálását! Az összes prémium funkció fel van oldva."
   },
+  "qf.licenseValidation.standard": {
+    "message": "Köszönjük, hogy regisztrálta a QuickFolders licencet - Rendkívül sokat segít a bővítményen! Ha további funkciókra van szüksége, mindig frissíthet Pro licencre."
+  },  
   "qf.loadConfig": {
     "message": "Konfiguráció betöltése…"
   },
@@ -938,6 +1005,9 @@
   "qf.menuitem.quickfolders.repairTreeIcons": {
     "message": "Repair Tree Icons"
   },
+  "qf.menuitem.quickfolders.splash" : {
+    "message": "Splash képernyő megjelenítése"
+  },
   "qf.menuitem.quickfolders.support": {
     "message": "QuickFolders támogatás…"
   },
@@ -956,6 +1026,15 @@
   "qf.notification.dontShowAgain": {
     "message": "Ne mutassa újra ezt az üzenetet."
   },
+  "qf.notification.newsFlash": {
+    "message": "$addonName$ frissítve! Fontos hírek…",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "qf.notification.premium.btn.extendLicense": {
     "message": "Bővítse a licencet"
   },
@@ -971,17 +1050,46 @@
   "qf.notification.premium.btn.renewLicense": {
     "message": "Renew License"
   },
+  "qf.notification.premium.btn.upgrade": {
+    "message": "Frissítés Pro verzióra"
+  },  
   "qf.notification.premium.readingList": {
     "message": "You have now {1} bookmarks defined. The free version of QuickFolders allows a maximum of {2}."
   },
+  "qf.notification.premium.shortcut": {
+    "message": "A prémium licenc ezenkívül konfigurálható billentyűparancsot is biztosít."
+  },
   "qf.notification.premium.tabIcons": {
-    "message": "You have now {1} icon(s) defined. The free version of QuickFolders allows a maximum of {2}."
+    "message": "Most a $cntIcons$ egyéni ikonokat használja a lapokhoz. A QuickFolders fizetetlen verziója legfeljebb $maxFreeIcons$ -t támogat. A szabványos licenc támogatja a $maxStdIcons$. A QuickFolders Pro -nak nincs határa.",
+    "placeholders": {
+      "cntIcons": {
+        "content": "$1",
+        "example": "10"
+      },
+      "maxFreeIcons": {
+        "content": "$2",
+        "example": "5"
+      },
+      "maxStdIcons": {
+        "content": "$3",
+        "example": "12"
+      }
+    }
   },
   "qf.notification.premium.text": {
-    "message": "A (z) {1} egy prémium szolgáltatás, kérjük, hogy kapja meg a QuickFolders Pro licencet annak állandó használatához."
+    "message": "A {1} prémium szolgáltatás, használatához szerezzen be QuickFolders Pro licencet."
   },
   "qf.notification.premium.title": {
     "message": "Prémium funkció"
+  },
+  "qf.notification.standard.readingList": {
+    "message": "Most {1} könyvjelző van definiálva. A QuickFolders szabványos licence legfeljebb {2} engedélyezhető."
+  },
+  "qf.notification.standard.text": {
+    "message": "A {1} licenckorlátozott szolgáltatás, kérjük, szerezzen be egy QuickFolders licencet a használatához."
+  },
+  "qf.notification.standard.title": {
+    "message": "Standard funkció"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Egyéni fül szín megjelenítés"
@@ -1011,7 +1119,7 @@
     "message": "Mindig jelenítse meg a szegélyeket"
   },
   "qf.options.versionnumber.tooltip": {
-    "message": "A programverziók közti változások megjelenítéséhez kattintson jobb gombbal."
+    "message": "Kattintson a verzióelőzmények megjelenítéséhez."
   },
   "qf.palette.inactive": {
     "message": "Like inactive Tabs"
@@ -1083,7 +1191,7 @@
     "message": "New Folder"
   },
   "qf.prompt.pasteFolders": {
-    "message": "This will delete all QuickFolders tabs and replace with the items in your clipboard.\\n{0} entries were found in clipboard.\\nReplace tabs?"
+    "message": "This will delete all QuickFolders tabs and replace with the items in your clipboard.\n{0} entries were found in clipboard.\nReplace tabs?"
   },
   "qf.prompt.pasteFolders.confirm": {
     "message": "Megtartja a megjelenített füleket?"
@@ -1092,10 +1200,10 @@
     "message": "Eltávolítja ezt az elemet?"
   },
   "qf.prompt.readingList.searchMissingItem": {
-    "message": "A levél nem található, lehet, hogy időközben máshova került.\\n{1}\\n\\nMeg akarja keresni?"
+    "message": "A levél nem található, lehet, hogy időközben máshova került.\n{1}\n\nMeg akarja keresni?"
   },
   "qf.prompt.restoreFolders": {
-    "message": "Taz ő törli az összes QuickFolders lapot, és lecseréli a fájl elemeire.\\n{0} entries were read.\\nReplace tabs?"
+    "message": "Taz ő törli az összes QuickFolders lapot, és lecseréli a fájl elemeire.\n{0} entries were read.\nReplace tabs?"
   },
   "qf.prompt.switchDomainLicense": {
     "message": "Switch to Domain License?"
@@ -1134,7 +1242,7 @@
     "message": "Általános"
   },
   "qf.tab.gopro": {
-    "message": "QuickFolders Pro"
+    "message": "Engedélyek"
   },
   "qf.tab.layout": {
     "message": "Spécizze fel a füleket!"
@@ -1506,7 +1614,7 @@
     "message": ": Ez a fül egy érvénytelen mappára mutat:"
   },
   "qfTidyDeadFolders": {
-    "message": "Ez eltávolítja a füleket, amelyek nincsenek érvényes mappához rendelve.\\nEz néha akkor történik, ha egy mappát törölnek vagy mozgatnak a QuickFolders értesítése nélkül."
+    "message": "Ez eltávolítja a füleket, amelyek nincsenek érvényes mappához rendelve.\nEz néha akkor történik, ha egy mappát törölnek vagy mozgatnak a QuickFolders értesítése nélkül."
   },
   "qfTreeIconsInvalidCount": {
     "message": "{0} icons missing"
@@ -1526,6 +1634,33 @@
   "qfVersionDisableOnUpdate": {
     "message": "Stop displaying version history after updates?"
   },
+  "quickMove.help.head": {
+    "message" : "Segítség a következőhöz: {1}"
+  },
+  "quickMove.help.head.advanced": {
+    "message" : "Speciális funkciók"
+  },
+  "quickMove.help.l1a": {
+    "message" : "Írja be a mappa nevének vagy szavainak elejét szóközzel elválasztva."
+  }, 
+  "quickMove.help.l1b": {
+    "message" : "A következő karaktereket szóhatárnak tekintik, és nem kell begépelni:"
+  }, 
+  "quickMove.help.l2a": {
+    "message" : "Írja be a {1} szót a nagyszülő / szülő / keresett mappa megadásához."
+  }, 
+  "quickMove.help.l2b": {
+    "message" : "Bármely szülő mappa első 2 betűje általában elegendő. Ezzel a szintaxissal új almappákat is létrehozhat."
+  }, 
+  "quickMove.help.l3a": {
+    "message" : "Írja be a (z) {1} parancsot a mappák átugrásához."
+  }, 
+  "quickMove.help.l3b": {
+    "message" : "Ez hasznos mélyebb, bonyolultabb vagy ismeretlen mappahierarchiák esetén."
+  },   
+  "quickMove.help.advanced": {
+    "message" : "A QuickFolders Pro fülön konfigurálhatók olyan fejlettebb funkciók, mint például egy mappa eléréséhez szükséges gyorsbillentyűk / levelek áthelyezése vagy a mappák kizárása a keresési eredményekből. Ezen és egyéb prémium funkciók eléréséhez szerezzen be egy Pro licencet, és támogassa a QuickFolders jövőjét."
+  },  
   "quickMove.singleMessage.goNext": {
     "message": "A következő levél megjelenítése az aktuális áthelyezése után"
   },
@@ -1575,7 +1710,33 @@
     "message": "Újítsa meg a licencét."
   },
   "special-offer-content": {
-    "message": "Jövőbeni bizonyítékú QuickFolders és szerezzen licencet, mivel a {boldStart} 40% -os kedvezmény {boldEnd} van a QuickFolders Pro árán! Ez a különleges ajánlat {boldStart} május 1-ig {boldEnd} lesz elérhető."
+    "message": "Frissítse a szolgáltatásait és spóroljon {boldStart} $reduction$ {boldEnd} a QuickFolders Pro licenc megvásárlásával! Ez a különleges ajánlat {boldStart} $expirydate$ {boldEnd} -ig érhető el. Vagy válassza ki a standard funkciókat az új {linkStart}szabványos licenc{linkEnd} segítségével.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "Augusztus 22"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-upgrade": {
+    "message": "Frissítsen most a QuickFolders Standard -ról a Pro -ra, és takarítson meg {boldStart}$reduction${boldEnd}! Ez a különleges ajánlat {boldStart}$expirydate${boldEnd} -ig érhető el.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
+  "special-offer-expiry": {
+    "message": "Szeptember 11-én"    
   },
   "special-offer-head": {
     "message": "Jövőbeli bizonyíték QuickFolders!"
@@ -1583,8 +1744,26 @@
   "special-offer-intro": {
     "message": "{boldStart} Kedves {name} {boldEnd}! Ha még nem rendelkezik licenccel, kérjük, fontolja meg a QuickFolderek támogatását a jövőben. További nagy változások jönnek a Thunderbird-en, és a lépést tartáshoz {boldStart} segítségedre van szükségem {boldEnd}!"
   },
+  "support-preference": {
+    "message": "A $addonName$ támogatásának ez a preferált módja.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "quickFilters"
+      }
+    }
+  },
+  "support-suggestion": {
+    "message": "Annak érdekében, hogy a $addonName$ működőképes és életben maradjon, kérjük, tegye meg ezt a szívességet:",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "testDrive": {
-    "message": "You can test drive the premium features with the free version, but they might be slightly restricted."
+    "message": "A Szabványos licenc néhány olyan szolgáltatást nyújt, amelyeket korábban prémiumként jelölt meg, és megszünteti a nem finanszírozott verzió korlátozásait. Finanszírozza a karbantartást a következő Thunderbird verzióval és az átalakítást egy modern API alapú levelezőbővítmény -architektúrává."
   },
   "thanks-for-installing-intro": {
     "message": "Köszönjük, hogy telepítette a $addonName$ alkalmazást.",
@@ -1619,6 +1798,10 @@
   "toAddress.tooltip": {
     "message": "Alapértelmezett 'Cím' cím új levelek összeállításakor"
   },
+  "translated-by-google": {
+    "description": "disclaimer.",
+    "message": "a google által biztosított fordítások"
+  },
   "updates.title": {
     "message": "Frissítések"
   },
@@ -1632,13 +1815,13 @@
     "message": "Mi újság?"
   },
   "whats-new-head": {
-    "message": "Fénypontok"
+    "message": "Fontos változások"
   },
   "whats-new-intro": {
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{L1} 5.5.2 - gyorsjavítás - a Thunderbird 89 alkalmazásban a Beállítások menüpont nem jelent meg a Bővítménykezelőben {L2}{L1} 5.5.2 - gyorsjavítás a quickMove-hoz - szülő mappa, amely aláhúzást tartalmaz, nem javasolt szülőnek{L2}{L1} 5.5.1 - gyorsjavítás a „Mappák + almappák megjelölése olvasottként” funkcióhoz [144. kiadás] {L2}{L1} Magyar, egyszerűsített kínai és katalán nyelveket is kitöltöttem. {L2} Ez a verzió tovább javítja a quickMove funkciót a következő funkciók révén: {L1} Egyetlen üzenet fül: opció a következő e-mail ugyanazon a lapon egy üzenet áthelyezése után {L2} {L1} Lehetőség a QuickMove teljes törlésére (és az üzenetek listájának kiürítésére) az ESCAPE egyetlen megnyomásával. {L2} {L1} A szülőmappák speciális egyeztetése a következőből: _ és szóközökkel, és úgy kezeljük őket, mint a keresett név kezdetét. {L2} {L1} Javítva: mappák keresése a keresési eredmények között megjelenő üzenetek vagy a többmappás beszélgetések során. {L2} {L1} Ezek és további funkciók A keresési eredmények bizonyos fiókokból történő korlátozása a QuickFolders Pro fül Speciális keresési beállításai között konfigurálható. {L2}"
+    "message": "{L1} Javítva: 5.7.2: Amikor a quickFilters aktiválja asszisztensét, a lapok bal oldalán lévő összes ikon fehér lesz {L2} {L1} Javítva: 5.7.1: A 'szülőmappa / szülőmappa / keresett mappa' szintaxissal rendelkező mappák keresésekor az egyetlen karakter hosszúságú nevekkel rendelkező szülőmappákat nem vették figyelembe. {L2}{L1} A gyorsmappákat kompatibilisvé tette a Thunderbird 91-gyel. {L2} {L1} Javított a sötét és harmadik felek témáinak támogatása, mind az opciók képernyőn, mind a Navigációs eszköztáron. {L2} {L1} Az [újdonságok] gomb jobb láthatósága nem szabványos QuickFolders téma {L2} {L1} Javítva: Néha a munkamenet alaphelyzetbe állt újraindításkor vagy más kiegészítők vagy frissítések telepítése után, így minden kategória megjelenik. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

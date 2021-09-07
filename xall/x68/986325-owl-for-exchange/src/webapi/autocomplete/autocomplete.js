@@ -132,8 +132,8 @@ AbJsAutoCompleteSearch.prototype = {
     } else {
       gListeners.forEach(async listener => {
         try {
-          let cards = await listener.async(aSearchString);
-          for (let card of cards) {
+          let { results } = await listener.async({}, aSearchString, "");
+          for (let card of results) {
             let value = MailServices.headerParser.makeMailboxObject(card.DisplayName, card.PrimaryEmail).toString();
             result._searchResults.push(value);
           }
@@ -171,14 +171,14 @@ try {
     throw ex;
   }
 }
-gAutoCompleteProperties.factory = XPCOMUtils._getFactory(AbJsAutoCompleteSearch);
+gAutoCompleteProperties.factory = ComponentUtils._getFactory(AbJsAutoCompleteSearch);
 gComponentRegistrar.registerFactory(gAutoCompleteProperties.classID, gAutoCompleteProperties.classDescription, gAutoCompleteProperties.contractID, gAutoCompleteProperties.factory);
 
 this.autoComplete = class extends ExtensionAPI {
   getAPI(context) {
     return {
       autoComplete: {
-        onAutoComplete: new ExtensionCommon.EventManager({ context, name: "autoComplete.onAutoComplete", register: (fire, args) => {
+        onAutoComplete: new ExtensionCommon.EventManager({ context, name: "autoComplete.onAutoComplete", register: fire => {
           gListeners.add(fire);
           return () => gListeners.delete(fire);
         }}).api(),

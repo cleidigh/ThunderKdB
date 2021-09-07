@@ -11,7 +11,7 @@ Availability
 ------------
 
 https://github.com/jikamens/remote-content-by-folder<br/>
-https://addons.mozilla.org/thunderbird/addon/remote-content-by-folder/
+https://addons.thunderbird.net/thunderbird/addon/remote-content-by-folder/
 
 Copyright
 ---------

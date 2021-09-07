@@ -1,10 +1,10 @@
 formOne.addEventListener('click', function () {
           browser.myapi.setFive('calendarContent', 'allowEvents', 'true');
-          browser.myapi.setFive('ltnSidebar', 'allowEvents', 'true');
+          browser.myapi.setFive('calSidebar', 'allowEvents', 'true');
           browser.myapi.setFive('minimonth-pane', 'allowEvents', 'true');
           browser.myapi.setTen('mini-day-box', 'width', '200');
           browser.myapi.setEleven('mini-day-box', 'height', '50');
-          browser.myapi.setOne('ltnSidebar', 'insertBefore', 'cloneThree', 'todayPane');
+          browser.myapi.setOne('calSidebar', 'insertBefore', 'cloneThree', 'todayPane');
           browser.myapi.setFive('messengerBox', 'allowEvents', 'true');
           browser.myapi.setFive('folderPaneBox', 'allowEvents', 'true');
           browser.myapi.setTen('mini-day-box', 'width', '200');
@@ -14,7 +14,7 @@ formOne.addEventListener('click', function () {
 
 formTwo.addEventListener('click', function () {
           browser.myapi.setFive('calendarContent', 'allowEvents', 'true');
-          browser.myapi.setFive('ltnSidebar', 'allowEvents', 'true');
+          browser.myapi.setFive('calSidebar', 'allowEvents', 'true');
           browser.myapi.setFive('minimonth-pane', 'allowEvents', 'true');
           browser.myapi.setSix();
           browser.myapi.setFive('messengerBox', 'allowEvents', 'true');
@@ -24,8 +24,8 @@ formTwo.addEventListener('click', function () {
 
 formThree.addEventListener('click', function () {
           browser.myapi.setFive('calendarContent', 'allowEvents', 'true');
-          browser.myapi.setFive('ltnSidebar', 'allowEvents', 'true');
-          browser.myapi.setThree('ltnSidebar', 'appendChild', 'cloneOne');
+          browser.myapi.setFive('calSidebar', 'allowEvents', 'true');
+          browser.myapi.setThree('calSidebar', 'appendChild', 'cloneOne');
           browser.myapi.setFive('messengerBox', 'allowEvents', 'true');
           browser.myapi.setFive('folderPaneBox', 'allowEvents', 'true');
           browser.myapi.setFour('folderPaneBox', 'appendChild', 'time');
@@ -56,7 +56,7 @@ formSix.addEventListener('click', function () {
 });
 
 formSeven.addEventListener('click', function () {
-          browser.myapi.setFourteen('ltnSidebar', 'appendChild', 'imageTb4');
+          browser.myapi.setFourteen('calSidebar', 'appendChild', 'imageTb4');
 });
 
 formEight.addEventListener('click', function () {

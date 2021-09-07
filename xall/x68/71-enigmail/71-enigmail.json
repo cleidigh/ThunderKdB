@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/0/53.png?modified=1431246631"
         }
     ],
-    "average_daily_users": 64207,
+    "average_daily_users": 66966,
     "categories": {
         "thunderbird": [
             "privacy-and-security"
@@ -18,30 +18,30 @@
     "contributions_url": "",
     "created": "2004-06-14T18:46:43Z",
     "current_version": {
-        "id": 2475091,
+        "id": 2476341,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "78.*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/enigmail/versions/2475091",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/enigmail/versions/2476341",
         "files": [
             {
-                "id": 1018253,
-                "created": "2021-01-01T16:46:19Z",
-                "hash": "sha256:4d1e6c7301c0534c05e18c177f20c5483d94e79c89006c73ff2ddea736e3e85b",
+                "id": 1019501,
+                "created": "2021-08-27T05:44:48Z",
+                "hash": "sha256:d102924d043305f6ac90a7417c31355336c66fc14dd37fa378c01f6af5d0fd16",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 442394,
+                "size": 442404,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018253/enigmail-2.2.4.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019501/enigmail-2.2.4.2-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 3338,
             "name": {
@@ -49,24 +49,26 @@
             },
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
-        "release_notes": null,
+        "release_notes": {
+            "en-US": "Non-functional change that sets the maximum version to Thunderbird 78.*"
+        },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/enigmail/versions/2.2.4.1",
-        "version": "2.2.4.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/enigmail/versions/2.2.4.2",
+        "version": "2.2.4.2"
     },
     "default_locale": "en-US",
     "description": {
-        "ru": "Enigmail вносит в ваш почтовый клиент функции OpenPGP-совместимого шифрования и электронной цифровой подписи сообщений. Это расширение позволяет автоматически зашифровывать и расшифровывать письма, а также осуществлять управление ключами. Для выполнения криптографических операций Enigmail требуется наличие <a href=\"https://www.gnupg.org\" rel=\"nofollow\">GnuPG</a>. Внимание: GnuPG не входит в пакет установки.",
-        "fr": "Enigmail ajoute à Thunderbird le chiffrement des courriels et l’authentification OpenPGP. Enigmail offre le chiffrement et le déchiffrement automatiques ainsi qu’une gestion intégrée des clés. Enigmail est fondé sur <a href=\"http://www.gnupg.org\" rel=\"nofollow\">GnuPG</a> pour les fonctions cryptographiques.\n\nNote : GnuPG ne fait pas partie de l’installation, mais sera téléchargé au cours du processus de configuration.",
-        "de": "Enigmail erweitert Thunderbird um die OpenPGP-Verschlüsselung und -Authentifizierung von Nachrichten. Es bietet automatische Verschlüsselung, Entschlüsselung und integrierte Funktionen zur Schlüsselverwaltung. Enigmail basiert auf <a href=\"http://www.gnupg.org\" rel=\"nofollow\">GnuPG</a> für die kryptografischen Funktionen.\n\nHinweis: GnuPG ist nicht Bestandteil der Installation, wird jedoch im Rahmen des Installationsvorgangs heruntergeladen.",
-        "sq": "Enigmail-i shton te Thunderbird-i fshehtëzim dhe mirëfilltësim mesazhesh me OpenPGP message. Përmban fshehtëzim të vetvetishëm, shfshehtëzim dhe administrim të integruar kyçesh. Për funksione kriptografike, Enigmail-i bazohet në <a href=\"http://www.gnupg.org\" rel=\"nofollow\">GnuPG</a>.\n\nShënim: GnuPG-ja s’është pjesë e instalimit, por mund të shkarkohet si pjesë e procesit të ujdisjes.",
-        "en-US": "Enigmail adds OpenPGP message encryption and authentication to Thunderbird. It features automatic encryption, decryption and integrated key management functionality. Enigmail is based on <a href=\"http://www.gnupg.org\" rel=\"nofollow\">GnuPG</a> for the cryptographic functions. \n\nNote: GnuPG is not part of the installation, but will be downloaded as part of the setup process.",
-        "tr": "Enigmail ile Thunderbird OpenPGP mesaj şifreleme ve yetkilendirme kullanabilir. Otomatik şifreleme, şifre çözme ve tümleşik anahtar yönetimi işlevleri sunar. Enigmail şifreleme işlevleri için <a href=\"http://www.gnupg.org\" rel=\"nofollow\">GnuPG</a> kullanır.\n\nNot: GnuPG kurulum dosyalarında yer almaz, kurulurken ayrıca indirilir.",
-        "it": "Enigmail aggiunge la cifratura dei messaggi OpenPGP e l'autenticazione a Thunderbird. Fornisce cifratura automatica, decifratura e una funzionalità integrata di gestione delle chiavi. Enigmail è basato su <a href=\"http://www.gnupg.org\" rel=\"nofollow\">GnuPG</a> per le funzioni di crittografia.\n\nNota: GnuPG non è parte dell'installazione, ma sarà scaricato come parte del processo di installazione.",
-        "fa": "Enigmail رمزگذاری پیام OpenPGP و احراز هویت را به Thunderbird اضافه خواهد کرد. این شامل رمزگذاری خودکار،  رمزگشایی و عملکرد مدیریت کلید می شود. Enigmail مبتنی بر <a href=\"http://www.gnupg.org\" rel=\"nofollow\">GnuPG</a> برای کارهای رمزگذاری می باشد.\n\nتوجه: GnuPG بخشی از نصب نمی باشد، اما به عنوان بخشی از روند نصب دانلود خواهد شد.",
-        "sv-SE": "Enigmail lägger till OpenPGP-meddelandekryptering och autentisering till Thunderbird. Den har automatisk kryptering, dekryptering och integrerad nyckelhanteringsfunktion. Enigmail är baserat på <a href=\"http://www.gnupg.org\" rel=\"nofollow\">GnuPG</a> för kryptografiska funktioner.\n\nObs: GnuPG är inte en del av installationen, men kommer att laddas ner som en del av installationsprocessen.",
-        "ja": "Enigmail によって、Thunderbird に OpenPGP メッセージ暗号化および認証機能を追加できます。自動化された暗号化および復号機能、統合化された鍵管理機能が特徴です。Enigmail を利用するには、暗号機能を提供する<a href=\"https://www.gnupg.org\" rel=\"nofollow\">GnuPG</a> が必要です。\n\n注意: Enigmail のダウンロードパッケージに GnuPG は含まれていません。セットアップのプロセス中にダウンロードされます。",
-        "es": "Enigmail añade a tu cliente de correo, cifrado y autenticación de mensajes mediante OpenPGP. Ofrece cifrado y descifrado automático y una funcionalidad integrada de administración de claves. Enigmail requiere  <a href=\"https://www.gnupg.org\" rel=\"nofollow\">GnuPG</a> para las funciones criptográficas. Nota: GnuPG no es parte de la instalación."
+        "ru": "Enigmail вносит в ваш почтовый клиент функции OpenPGP-совместимого шифрования и электронной цифровой подписи сообщений. Это расширение позволяет автоматически зашифровывать и расшифровывать письма, а также осуществлять управление ключами. Для выполнения криптографических операций Enigmail требуется наличие <a rel=\"nofollow\" href=\"https://www.gnupg.org\">GnuPG</a>. Внимание: GnuPG не входит в пакет установки.",
+        "fr": "Enigmail ajoute à Thunderbird le chiffrement des courriels et l’authentification OpenPGP. Enigmail offre le chiffrement et le déchiffrement automatiques ainsi qu’une gestion intégrée des clés. Enigmail est fondé sur <a rel=\"nofollow\" href=\"http://www.gnupg.org\">GnuPG</a> pour les fonctions cryptographiques.\n\nNote : GnuPG ne fait pas partie de l’installation, mais sera téléchargé au cours du processus de configuration.",
+        "de": "Enigmail erweitert Thunderbird um die OpenPGP-Verschlüsselung und -Authentifizierung von Nachrichten. Es bietet automatische Verschlüsselung, Entschlüsselung und integrierte Funktionen zur Schlüsselverwaltung. Enigmail basiert auf <a rel=\"nofollow\" href=\"http://www.gnupg.org\">GnuPG</a> für die kryptografischen Funktionen.\n\nHinweis: GnuPG ist nicht Bestandteil der Installation, wird jedoch im Rahmen des Installationsvorgangs heruntergeladen.",
+        "sq": "Enigmail-i shton te Thunderbird-i fshehtëzim dhe mirëfilltësim mesazhesh me OpenPGP message. Përmban fshehtëzim të vetvetishëm, shfshehtëzim dhe administrim të integruar kyçesh. Për funksione kriptografike, Enigmail-i bazohet në <a rel=\"nofollow\" href=\"http://www.gnupg.org\">GnuPG</a>.\n\nShënim: GnuPG-ja s’është pjesë e instalimit, por mund të shkarkohet si pjesë e procesit të ujdisjes.",
+        "en-US": "This addon helps previous users of Enigmail to migrate their keys and settings from GnuPG and Enigmail into the OpenPGP functionality built into Thunderbird.\n\nIn older versions up to Thunderbird 68.*, Enigmail added OpenPGP message encryption and authentication to Thunderbird.",
+        "tr": "Enigmail ile Thunderbird OpenPGP mesaj şifreleme ve yetkilendirme kullanabilir. Otomatik şifreleme, şifre çözme ve tümleşik anahtar yönetimi işlevleri sunar. Enigmail şifreleme işlevleri için <a rel=\"nofollow\" href=\"http://www.gnupg.org\">GnuPG</a> kullanır.\n\nNot: GnuPG kurulum dosyalarında yer almaz, kurulurken ayrıca indirilir.",
+        "it": "Enigmail aggiunge la cifratura dei messaggi OpenPGP e l'autenticazione a Thunderbird. Fornisce cifratura automatica, decifratura e una funzionalità integrata di gestione delle chiavi. Enigmail è basato su <a rel=\"nofollow\" href=\"http://www.gnupg.org\">GnuPG</a> per le funzioni di crittografia.\n\nNota: GnuPG non è parte dell'installazione, ma sarà scaricato come parte del processo di installazione.",
+        "fa": "Enigmail رمزگذاری پیام OpenPGP و احراز هویت را به Thunderbird اضافه خواهد کرد. این شامل رمزگذاری خودکار،  رمزگشایی و عملکرد مدیریت کلید می شود. Enigmail مبتنی بر <a rel=\"nofollow\" href=\"http://www.gnupg.org\">GnuPG</a> برای کارهای رمزگذاری می باشد.\n\nتوجه: GnuPG بخشی از نصب نمی باشد، اما به عنوان بخشی از روند نصب دانلود خواهد شد.",
+        "sv-SE": "Enigmail lägger till OpenPGP-meddelandekryptering och autentisering till Thunderbird. Den har automatisk kryptering, dekryptering och integrerad nyckelhanteringsfunktion. Enigmail är baserat på <a rel=\"nofollow\" href=\"http://www.gnupg.org\">GnuPG</a> för kryptografiska funktioner.\n\nObs: GnuPG är inte en del av installationen, men kommer att laddas ner som en del av installationsprocessen.",
+        "ja": "Enigmail によって、Thunderbird に OpenPGP メッセージ暗号化および認証機能を追加できます。自動化された暗号化および復号機能、統合化された鍵管理機能が特徴です。Enigmail を利用するには、暗号機能を提供する<a rel=\"nofollow\" href=\"https://www.gnupg.org\">GnuPG</a> が必要です。\n\n注意: Enigmail のダウンロードパッケージに GnuPG は含まれていません。セットアップのプロセス中にダウンロードされます。",
+        "es": "Enigmail añade a tu cliente de correo, cifrado y autenticación de mensajes mediante OpenPGP. Ofrece cifrado y descifrado automático y una funcionalidad integrada de administración de claves. Enigmail requiere  <a rel=\"nofollow\" href=\"https://www.gnupg.org\">GnuPG</a> para las funciones criptográficas. Nota: GnuPG no es parte de la instalación."
     },
     "developer_comments": {
         "en-US": "The source code is available at <a href=\"https://www.enigmail.net/index.php/en/download/source-code\" rel=\"nofollow\">https://www.enigmail.net/index.php/en/download/source-code</a>"
@@ -97,7 +99,7 @@
     "is_experimental": false,
     "is_featured": true,
     "is_source_public": false,
-    "last_updated": "2021-01-01T17:28:23Z",
+    "last_updated": "2021-08-27T06:03:32Z",
     "name": {
         "ru": "Enigmail",
         "fr": "Enigmail",
@@ -146,13 +148,13 @@
         "fr": "Chiffrement des courriels et authentification OpenPGP pour Thunderbird.",
         "de": "OpenPGP-Nachrichtenverschlüsselung und -Authentifizierung für Thunderbird.",
         "sq": "Fshehtëzim dhe mirëfilltësim mesazhesh me OpenPGP për Thunderbird.",
-        "en-US": "OpenPGP message encryption and authentication for Thunderbird.",
+        "en-US": "Helper tool to migrate your keys and important settings from Enigmail to Thunderbird 78.",
         "tr": "Thunderbird için OpenPGP mesaj şifreleme ve yetkilendirme.",
         "it": "Cifratura dei messaggi OpenPGP e autenticazione per Thunderbird.",
         "fa": "رمزگذاری پیام OpenPGP و احراز هویت برای Thunderbird.",
         "sv-SE": "OpenPGP-meddelandekryptering och autentisering för Thunderbird.",
         "ja": "OpenPGP メッセージの暗号化および認証機能を提供する Thunerbird 向けアドオンです。",
-        "es": "Cifrado y autenticación de mensajes mediante OpenPGP\npara Thunderbird y Seamonkey. Requiere GnuPG (<a href=\"http://www.gnupg.org\" rel=\"nofollow\">www.gnupg.org</a>)."
+        "es": "Cifrado y autenticación de mensajes mediante OpenPGP\npara Thunderbird y Seamonkey. Requiere GnuPG (<a rel=\"nofollow\" href=\"http://www.gnupg.org\">www.gnupg.org</a>)."
     },
     "support_email": null,
     "support_url": {
@@ -173,15 +175,17 @@
     "weekly_downloads": 6498,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
-            "comp68": true,
+            "comp69plus": true,
             "comp78plus": true,
+            "comp61plus": true,
             "comp78pv": true,
             "comp78pv_date": "2020-08-16T09:35:36Z",
             "comp78pv_version": "2.2.1",
             "comp78pv_vmin": "78.0",
-            "comp78pv_vmax": "*",
+            "comp78pv_vmax": "78.*",
+            "comp68pv": true,
+            "comp68pv_date": "2019-07-11T16:30:04Z",
             "comp60pv": true,
             "comp60pv_date": "2018-03-25T16:20:13Z"
         }

@@ -1,11 +1,14 @@
 // Establish messaging with background worker
-const port = browser.runtime.connect();
-port.onMessage.addListener(updateStatusDisplay);
+var port;
 
-addLocalizedLabels();
+window.addEventListener("load", () => {
+    port = browser.runtime.connect();
+    port.onMessage.addListener(updateStatusDisplay);
 
-// Unsuccessful uploads remain in the popup window until this button is pressed
-buttonClear.addEventListener('click', () => port.postMessage('clearcomplete'));
+    addLocalizedLabels();
+    // Unsuccessful uploads remain in the popup window until this button is pressed
+    buttonClear.addEventListener('click', () => port.postMessage('clearcomplete'));
+});
 
 /**
  * Fills the status popup with content

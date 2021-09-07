@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/6/6190/6190978.png?modified=1597937434"
         }
     ],
-    "average_daily_users": 5,
+    "average_daily_users": 32,
     "categories": {
         "thunderbird": [
             "contacts"
@@ -18,30 +18,30 @@
     "contributions_url": "https://www.paypal.me/jorgk",
     "created": "2021-03-23T20:04:24Z",
     "current_version": {
-        "id": 2475581,
+        "id": 2476367,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "102.0",
                 "min": "87.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/outlook-address-book-enabler/versions/2475581",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/outlook-address-book-enabler/versions/2476367",
         "files": [
             {
-                "id": 1018742,
-                "created": "2021-03-23T20:04:24Z",
-                "hash": "sha256:ad1d9688f013c8533e71839749ef3351ecf2957f97e9696967ebd647bc6f1325",
+                "id": 1019527,
+                "created": "2021-09-01T16:54:17Z",
+                "hash": "sha256:8e0f0c8cb5c371f3fa0c5c2fb2dd30a7019633ad012fbc67c8d2088cfc608b45",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 1831,
+                "size": 1840,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018742/outlook_address_book_enabler-1.0.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019527/outlook_address_book_enabler-1.0.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 7057,
             "name": {
@@ -49,10 +49,12 @@
             },
             "url": null
         },
-        "release_notes": null,
-        "reviewed": "2021-03-24T20:02:29Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/outlook-address-book-enabler/versions/1.0.0",
-        "version": "1.0.0"
+        "release_notes": {
+            "en-US": "No changes."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/outlook-address-book-enabler/versions/1.0.1",
+        "version": "1.0.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -73,7 +75,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-03-24T20:02:29Z",
+    "last_updated": "2021-09-01T19:46:52Z",
     "name": {
         "en-US": "Outlook Address Book Enabler"
     },
@@ -107,10 +109,15 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
-            "comp68": true,
-            "comp78plus": true
+            "comp69plus": true,
+            "comp78plus": true,
+            "comp61plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2021-03-23T20:04:24Z",
+            "comp78pv_version": "1.0.0",
+            "comp78pv_vmin": "87.0",
+            "comp78pv_vmax": "*"
         }
     }
 }

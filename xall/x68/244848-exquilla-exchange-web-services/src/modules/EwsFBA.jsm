@@ -214,8 +214,7 @@ function doFbaExpanded(aUsername, aPassword, aUrl)
     if (!windowProgressListener.notifyBox) {
       let window = Services.ww.activeWindow;
       windowProgressListener.notifyBox = new window.MozElements.NotificationBox(element => {
-        let document = window.document;
-        document.documentElement.insertBefore(element, document.documentElement.firstElementChild);
+        window.document.documentElement.firstElementChild.before(element);
       });
     }
     // show the current URL in the notification bar

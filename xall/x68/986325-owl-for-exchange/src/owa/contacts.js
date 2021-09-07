@@ -504,15 +504,18 @@ OWAAccount.prototype.ResyncAddressBooks = async function() {
     if (GAL) {
       noAwait(this.DownloadGAL(GAL), logError);
     }
-  } else if (browser.autoComplete && !this.autoCompleteListener) {
+  } else if (browser.addressBooks.provider && !this.autoCompleteListener) {
     let identity = await browser.incomingServer.getIdentity(this.serverID);
-    let dirName = identity.email.slice(identity.email.indexOf("@") + 1) + " GAL";
+    let addressBookName = identity.email.slice(identity.email.indexOf("@") + 1) + " GAL";
     this.autoCompleteListener = this.AutoComplete.bind(this);
-    browser.autoComplete.onAutoComplete.addListener(this.autoCompleteListener, {dirName, isSecure: true});
+    browser.addressBooks.provider.onSearchRequest.addListener(this.autoCompleteListener, {addressBookName, isSecure: true});
+  } else if (browser.autoComplete && !this.autoCompleteListener) { // COMPAT for TB 78 (bug 1670752)
+    this.autoCompleteListener = this.AutoComplete.bind(this); // COMPAT for TB 78 (bug 1670752)
+    browser.autoComplete.onAutoComplete.addListener(this.autoCompleteListener); // COMPAT for TB 78 (bug 1670752)
   }
 }
 
-OWAAccount.prototype.AutoComplete = async function(aSearchString) {
+OWAAccount.prototype.AutoComplete = async function(aAddressBook, aSearchString, aQuery) {
   let query = {
     __type: "FindPeopleJsonRequest:#Exchange",
     Header: {
@@ -544,7 +547,8 @@ OWAAccount.prototype.AutoComplete = async function(aSearchString) {
     },
   };
   response = await this.CallService("FindPeople", query); // owa.js
-  return response.ResultSet.map(OWAAccount.convertPersona);
+  let results = response.ResultSet.map(OWAAccount.convertPersona);
+  return { results, isCompleteResult: results.length < 100 };
 }
 
 /**

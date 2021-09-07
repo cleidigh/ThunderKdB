@@ -28,7 +28,7 @@ var cardbookDiscovery = {
 				cardbookRepository.removeAccountFromRepository(aDirPrefId);
 				// cannot be launched from cardbookRepository
 				cardbookIndexedDB.removeAccount(aDirPrefId, myDirPrefIdName);
-				cardbookRepository.cardbookPreferences.delBranch(aDirPrefId);
+				cardbookRepository.cardbookPreferences.delAccount(aDirPrefId);
 				cardbookRepository.cardbookUtils.formatStringForOutput("addressbookDeleted", [myDirPrefIdName]);
 				cardbookActions.addActivity("addressbookDeleted", [myDirPrefIdName], "deleteMail");
 				cardbookRepository.cardbookUtils.notifyObservers("addressbookDeleted");

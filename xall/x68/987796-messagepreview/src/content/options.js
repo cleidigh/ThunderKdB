@@ -102,11 +102,10 @@ var MessagePreviewOptions = {
         break;
       case "previewAuto":
       case "previewHover":
-        /* eslint-disable */
         storageLocalData = {
+          // eslint-disable-next-line prettier/prettier
           previewGetOption: Number(this.previewGetRadioForm.elements.preview.value),
         };
-        /* eslint-enable */
         break;
       case "imapAllowDownload":
         storageLocalData = {
@@ -139,10 +138,9 @@ var MessagePreviewOptions = {
         result?.previewTooltipEnabled || true;
       this.previewTooltipMaxSize.value =
         result?.previewTooltipMaxSize || this.kPreviewTooltipMaxSize;
-      /* eslint-disable */
+      // eslint-disable-next-line prettier/prettier
       this.previewTextEnabled.checked =
         result?.previewTextEnabled || false;
-      /* eslint-enable */
       this.previewTextMaxSize.value =
         result?.previewTextMaxSize || this.kPreviewTextMaxSize;
       this.previewGetRadioForm.elements.preview.value =

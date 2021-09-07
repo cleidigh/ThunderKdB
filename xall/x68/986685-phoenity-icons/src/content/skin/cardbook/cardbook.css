@@ -16,6 +16,20 @@
   padding: 0px 3px;
 }
 
+#cardbook-toolbox > #cardbook-toolbar .toolbarbutton-icon {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+#cardbook-toolbox > #cardbook-toolbar .button-appmenu .toolbarbutton-icon {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+#cardbook-toolbox > #cardbook-toolbar[iconsize="small"] .button-appmenu {
+  list-style-image: url("../icons/button-appmenu.png");
+}
+
 #cardbookToolbarSearchBox {
   display: flex;
   align-items: center;
@@ -31,12 +45,10 @@ toolbar[brighttext] #cardbookToolbarButton.toolbarbutton-1,
   list-style-image: url("../cardbook/cardbook_24.png");
 }
 toolbar[brighttext] #cardbookTabButton.toolbarbutton-1,
-toolbar[iconsize="small"] #cardbookTabButton.toolbarbutton-1,
 .tabmail-tab[type="cardbookTab"] .tab-icon-image,
 .alltabs-item[type="cardbookTab"] .menu-iconic-icon,
 #cardbookMenuItem,
 #quick-filter-bar-collapsible-buttons > #qfb-cardbook,
-toolbar[iconsize="small"] #cardbookToolbarButton.toolbarbutton-1,
 treechildren#cardsTreeChildren::-moz-tree-image(cardIcon) {
   list-style-image: url("../cardbook/cardbook_16.png");
 }
@@ -44,13 +56,6 @@ treechildren#cardsTreeChildren::-moz-tree-image(cardIcon) {
 treechildren#cardsTreeChildren::-moz-tree-image(cardIcon, MailList) {
   list-style-image: url("../addressbook/icons/ablist.png");
 }
-
-/*
-#abResultsTree treechildren::-moz-tree-image(GeneratedName) ,
-#abResultsTree treechildren::-moz-tree-image(GeneratedName, MailList) {
-  margin-inline-start: 0;
-}
-*/
 
 toolbar[brighttext] #cardbookToolbarAddContactButton.toolbarbutton-1,
 #cardbookToolbarAddContactButton.toolbarbutton-1 {
@@ -90,11 +95,11 @@ toolbar[brighttext] #cardbookToolbarChatButton.toolbarbutton-1,
 }
 toolbar[brighttext] #cardbookToolbarAddServerButton.toolbarbutton-1,
 #cardbookToolbarAddServerButton.toolbarbutton-1 {
-  list-style-image: url("../cardbook/abook_new_24.png");
+  list-style-image: url("../cardbook/abook_new.png");
 }
 toolbar[brighttext] #cardbookToolbarConfigurationButton.toolbarbutton-1,
 #cardbookToolbarConfigurationButton.toolbarbutton-1 {
-  list-style-image: url("../cardbook/abook_prefs_24.png");
+  list-style-image: url("../cardbook/abook_prefs.png");
 }
 toolbar[brighttext] #cardbookToolbarSyncButton.toolbarbutton-1,
 #cardbookToolbarSyncButton.toolbarbutton-1 {
@@ -108,46 +113,13 @@ toolbar[brighttext] #cardbookToolbarForwardButton.toolbarbutton-1,
 #cardbookToolbarForwardButton.toolbarbutton-1 {
   list-style-image: url("../cardbook/redo.png");
 }
-
-toolbar[iconsize="small"] #cardbookToolbarAddContactButton.toolbarbutton-1 {
-  list-style-image: url("../addressbook/icons/addressbook-toolbar-small.png");
-  -moz-image-region: rect(0px 16px 16px 0px);
+toolbar[brighttext] #cardbookToolbarNewEvent.toolbarbutton-1,
+#cardbookToolbarNewEvent.toolbarbutton-1 {
+  list-style-image: url("../calendar/newevent.png");
 }
-toolbar[iconsize="small"] #cardbookToolbarAddListButton.toolbarbutton-1 {
-  list-style-image: url("../addressbook/icons/addressbook-toolbar-small.png");
-  -moz-image-region: rect(0px 32px 16px 16px);
-}
-toolbar[iconsize="small"] #cardbookToolbarEditButton.toolbarbutton-1 {
-  list-style-image: url("../addressbook/icons/addressbook-toolbar-small.png");
-  -moz-image-region: rect(0px 48px 16px 32px);
-}
-toolbar[iconsize="small"] #cardbookToolbarRemoveButton.toolbarbutton-1 {
-   list-style-image: url("../addressbook/icons/addressbook-toolbar-small.png");
-  -moz-image-region: rect(0px 96px 16px 80px);
-}
-/*
-toolbar[iconsize="small"] #cardbookToolbarPrintButton.toolbarbutton-1 {
-  list-style-image: url("../icons/mail-toolbar-small.png");
-  -moz-image-region: rect(0px 144px 16px 128px);
-}
-toolbar[iconsize="small"] #cardbookToolbarComplexSearch.toolbarbutton-1 {
-  list-style-image: url("../icons/mail-toolbar-small.png");
-  -moz-image-region: rect(0px 368px 16px 352px);
-}
-toolbar[iconsize="small"] #cardbookToolbarWriteButton.toolbarbutton-1 {
-  list-style-image: url("../icons/mail-toolbar-small.png");
-  -moz-image-region: rect(0px 32px 16px 16px);
-}
-toolbar[iconsize="small"] #cardbookToolbarChatButton.toolbarbutton-1 {
-  list-style-image: url("../icons/mail-toolbar-small.png");
-  -moz-image-region: rect(0px, 320px, 16px, 304px);
-}
-*/
-toolbar[iconsize="small"] #cardbookToolbarAddServerButton.toolbarbutton-1 {
-  list-style-image: url("../cardbook/abook_new_16.png");
-}
-toolbar[iconsize="small"] #cardbookToolbarConfigurationButton.toolbarbutton-1 {
-  list-style-image: url("../cardbook/abook_prefs_16.png");
+toolbar[brighttext] #cardbookToolbarNewTodo.toolbarbutton-1,
+#cardbookToolbarNewTodo.toolbarbutton-1 {
+  list-style-image: url("../calendar/newtask.png");
 }
 
 #generalTabPanel.cardbookTab #defaultCardImage {

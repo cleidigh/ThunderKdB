@@ -9,7 +9,7 @@ function MessageService() {
 }
 
 MessageService.prototype = {
-  QueryInterface: ChromeUtils.generateQI([Ci.nsIMsgMessageFetchPartService, Ci.nsIMsgMessageService]),
+  QueryInterface: ChromeUtils.generateQI(["nsIMsgMessageFetchPartService", "nsIMsgMessageService"]),
   // nsIMsgMessageFetchPartService
   /**
    * Fetches a single attachment rather than the entire message.
@@ -27,7 +27,7 @@ MessageService.prototype = {
       if (aUrlListener && aURI instanceof Ci.nsIMsgMailNewsUrl) {
         aURI.RegisterListener(aUrlListener);
       }
-      let channel = Services.io.newChannelFromURI(aURI, null, Services.scriptSecurityManager.getSystemPrincipal(), null, Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_DATA_IS_NULL, Ci.nsIContentPolicy.TYPE_OTHER);
+      let channel = Services.io.newChannelFromURI(aURI, null, Services.scriptSecurityManager.getSystemPrincipal(), null, Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_SEC_CONTEXT_IS_NULL /* COMPAT for TB 78 (bug 1366973) */|| Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_DATA_IS_NULL, Ci.nsIContentPolicy.TYPE_OTHER);
       channel.asyncOpen(aDisplayConsumer, null);
       return aURI;
     } catch (ex) {
@@ -51,7 +51,7 @@ MessageService.prototype = {
       let uri = Services.io.newURI(aSrcURI);
       uri.QueryInterface(Ci.nsIMsgMailNewsUrl).msgWindow = aMsgWindow;
       uri.QueryInterface(Ci.msgIJaUrl).setUrlType(aMoveMessage);
-      let channel = Services.io.newChannelFromURI(uri, null, Services.scriptSecurityManager.getSystemPrincipal(), null, Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_DATA_IS_NULL, Ci.nsIContentPolicy.TYPE_OTHER);
+      let channel = Services.io.newChannelFromURI(uri, null, Services.scriptSecurityManager.getSystemPrincipal(), null, Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_SEC_CONTEXT_IS_NULL /* COMPAT for TB 78 (bug 1366973) */|| Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_DATA_IS_NULL, Ci.nsIContentPolicy.TYPE_OTHER);
       channel.asyncOpen(aCopyListener, null);
     } catch (ex) {
       logError(ex);
@@ -59,7 +59,7 @@ MessageService.prototype = {
     }
   },
   /// Not used.
-  CopyMessages: function(aNumKeys, aKeys, aSrcFolder, aCopyListener, aMoveMessage, aUrlListener, aMsgWindow) {
+  CopyMessages: function(aKeys, aSrcFolder, aCopyListener, aMoveMessage, aUrlListener, aMsgWindow) {
     throw Cr.NS_ERROR_NOT_IMPLEMENTED;
   },
   /**
@@ -91,7 +91,7 @@ MessageService.prototype = {
       try {
         let uri = Services.io.newURI(aMessageURI).QueryInterface(Ci.nsIMsgMailNewsUrl);
         uri.msgWindow = aMsgWindow;
-        let channel = Services.io.newChannelFromURI(uri, null, Services.scriptSecurityManager.getSystemPrincipal(), null, Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_DATA_IS_NULL, Ci.nsIContentPolicy.TYPE_OTHER);
+        let channel = Services.io.newChannelFromURI(uri, null, Services.scriptSecurityManager.getSystemPrincipal(), null, Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_SEC_CONTEXT_IS_NULL /* COMPAT for TB 78 (bug 1366973) */|| Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_DATA_IS_NULL, Ci.nsIContentPolicy.TYPE_OTHER);
         channel.asyncOpen(aDisplayConsumer, null);
       } catch (ex) {
         logError(ex);
@@ -115,8 +115,21 @@ MessageService.prototype = {
    */
   openAttachment: function(aContentType, aFileName, aUrl, aMessageUri, aDisplayConsumer, aMsgWindow, aUrlListener) {
     try {
+      if (aContentType && !aUrl.includes("&type=")) {
+        aUrl += "&type=" + aContentType;
+      }
       let uri = Services.io.newURI(aUrl).QueryInterface(Ci.nsIMsgMailNewsUrl);
       uri.msgWindow = aMsgWindow;
+      switch (aContentType) {
+      case "message/rfc822":
+      case "application/x-message-display":
+        // Don't actually open an email attachment as an attachment.
+        break;
+      default:
+        // This isn't a display type URL any more.
+        uri.QueryInterface(Ci.msgIJaUrl).setUrlType(Ci.nsIMsgMailNewsUrl.eCopy);
+        break;
+      }
       uri.loadURI(aDisplayConsumer, Ci.nsIWebNavigation.LOAD_FLAGS_IS_LINK);
     } catch (ex) {
       logError(ex);
@@ -144,7 +157,7 @@ MessageService.prototype = {
       uri.msgWindow = aMsgWindow;
       uri.QueryInterface(Ci.nsIMsgMessageUrl).canonicalLineEnding = aCanonical;
       let listener = uri.getSaveAsListener(aEnvelope, aFile);
-      let channel = Services.io.newChannelFromURI(uri, null, Services.scriptSecurityManager.getSystemPrincipal(), null, Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_DATA_IS_NULL, Ci.nsIContentPolicy.TYPE_OTHER);
+      let channel = Services.io.newChannelFromURI(uri, null, Services.scriptSecurityManager.getSystemPrincipal(), null, Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_SEC_CONTEXT_IS_NULL /* COMPAT for TB 78 (bug 1366973) */|| Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_DATA_IS_NULL, Ci.nsIContentPolicy.TYPE_OTHER);
       channel.asyncOpen(listener, null);
     } catch (ex) {
       logError(ex);
@@ -156,17 +169,20 @@ MessageService.prototype = {
    * dated back to the days when message URIs were registered with RDF) into
    * a real URL that can be loaded by Gecko's networking code.
    * @param aMessageURI {String}       a URI from getUriForMsg
-   * @param aURL        {nsIURI}       a Gecko-ready nsIURI
-   * @param aMsgWindow  {nsIMsgWindow} Unused
+   * @param aMsgWindow  {nsIMsgWindow} Optional, unused
+   * @returns           {nsIURI}       a Gecko-ready nsIURI
    */
-  GetUrlForUri: function(aMessageURI, aURL, aMsgWindow) {
+  getUrlForUri: function(aMessageURI, aMsgWindow) {
     try {
-      aURL.value = Services.io.newURI(aMessageURI);
+      return Services.io.newURI(aMessageURI);
     } catch (ex) {
       logError(ex);
       throw ex;
     }
   },
+  GetUrlForUri: function(aMessageURI, aURL, aMsgWindow) { // COMPAT for TB 78 (bug 1667338)
+    aURL.value = this.getUrlForUri(aMessageURI); // COMPAT for TB 78 (bug 1667338)
+  }, // COMPAT for TB 78 (bug 1667338)
   /**
    * Called by the print engine for print and print preview.
    * @param aMessageURI      {String}       Returned from generateMessageURI
@@ -226,5 +242,5 @@ MessageService.prototype = {
   },
 };
 
-gMessageServiceProperties.factory = XPCOMUtils._getFactory(MessageService);
+gMessageServiceProperties.factory = ComponentUtils._getFactory(MessageService);
 gModules.push(gMessageServiceProperties);

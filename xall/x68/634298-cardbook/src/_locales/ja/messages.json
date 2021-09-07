@@ -2909,6 +2909,9 @@
 	"wdw_cardEditionViewListTitle": {
 		"message": "表示リスト"
 	},
+	"wdw_cardEditionEditTemplateTitle": {
+		"message": "テンプレートを編集"
+	},
 	"wdw_cardbookPrintTitleLong": {
 		"message": "$P1$の印刷プレビュー - CardBook - Thunderbird",
         "placeholders": {
@@ -3563,20 +3566,20 @@
 	"cardbookContactPaneItemAccesskey": {
 		"message": "O"
 	},
+	"wizard.next.label": {
+		"message": "次へ"
+	},	
+	"wizard.back.label": {
+		"message": "戻る"
+	},	
+	"wizard.create.label": {
+		"message": "作成"
+	},
 	"wizard.title": {
 		"message": "新しいアドレス帳を追加する"
 	},
-	"wizard.label": {
-		"message": "新しいアドレス帳を追加する"
-	},
-	"welcomePage.wizard.description": {
-		"message": "ようこそ"
-	},
 	"welcomePage.description": {
 		"message": "CardBookを初めて起動した方へ：CardBookはThunderbirdの標準のアドレス帳とリモートアドレス帳から連絡先を収集することができます。"
-	},
-	"initialPage.wizard.description": {
-		"message": "新しいアドレス帳の場所"
 	},
 	"initialPage.description": {
 		"message": "アドレス帳の場所："
@@ -3595,9 +3598,6 @@
 	},
 	"initialPage.find.label": {
 		"message": "リモートのアドレス帳を検索する"
-	},
-	"localPage.wizard.description": {
-		"message": "新しいローカルアドレス帳の種類と場所"
 	},
 	"localPage.type.description": {
 		"message": "ローカルアドレス帳の種類："
@@ -3632,9 +3632,6 @@
 	"localPage.uributton.label": {
 		"message": "参照"
 	},
-	"remotePage.wizard.description": {
-		"message": "新しいリモートアドレス帳の種類と場所"
-	},
 	"remotePage.description": {
 		"message": "どの種類のリモートアドレス帳を使いますか？（注意：Googleアドレス帳はvCardの標準仕様に準拠していません）"
 	},
@@ -3646,6 +3643,9 @@
 	},
 	"remotePage.google.label": {
 		"message": "Google"
+	},
+	"remotePage.googleWorkspace.label": {
+		"message": "Google Workspace"
 	},
 	"remotePage.apple.label": {
 		"message": "Apple"
@@ -3671,14 +3671,14 @@
 	"remotePage.password.label": {
 		"message": "パスワード："
 	},
+	"rememberPassword": {
+		"message": "パスワードマネージャーにこのパスワードを保存する"
+	},
 	"showHidePassword.tooltip": {
 		"message": "パスワードを表示または隠す"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "検証"
-	},
-	"locationSearchPage.wizard.description": {
-		"message": "保存された検索の定義"
 	},
 	"locationSearchPage.label": {
 		"message": "検索フォルダー"
@@ -3704,9 +3704,6 @@
 	"googleOauthPage.wizard.description": {
 		"message": "Google認証"
 	},
-	"namePage.wizard.description": {
-		"message": "アドレス帳のプロパティ"
-	},
 	"namePage.selected.label": {
 		"message": "選択"
 	},
@@ -3725,17 +3722,11 @@
 	"namePage.vCardVersion.label": {
 		"message": "vCardのバージョン"
 	},
-	"namesPage.wizard.description": {
-		"message": "アドレス帳のプロパティ"
-	},
 	"namesPage.name.label": {
 		"message": "名前"
 	},
 	"namesPage.name.description": {
 		"message": "複数のアドレス帳が発見されました。開くアドレス帳とその名前を選択してください："
-	},
-	"findPage.wizard.description": {
-		"message": "リモートアドレス帳の検索"
 	},
 	"findPage.name1.description": {
 		"message": "リモートアドレス帳が見つかりませんでした。"
@@ -3745,9 +3736,6 @@
 	},
 	"findPage.name3.description": {
 		"message": "複数のリモートアドレス帳が見つかりました。追加するリモートアドレス帳を検証中:"
-	},
-	"finishPage.wizard.description": {
-		"message": "アドレス帳の設定"
 	},
 	"finishPage.description": {
 		"message": "新しいアドレス帳が正常に設定されました。"
@@ -4014,13 +4002,13 @@
 		"message": "S"
 	},
 	"autocompleteShowEmailTypeLabel": {
-		"message": "??Show email type??"
+		"message": "E-mailアドレスの種類を表示"
 	},
 	"autocompleteShowEmailTypeAccesskey": {
 		"message": "e"
 	},
 	"autocompleteShowPopularityLabel": {
-		"message": "??Show popularity??"
+		"message": "使用頻度を表示"
 	},
 	"autocompleteShowPopularityAccesskey": {
 		"message": "y"
@@ -5117,6 +5105,12 @@
 	"cardbookToolbarAddListButtonTooltip": {
 		"message": "新しいアドレスリスト（メーリングリスト）を作成します"
 	},
+	"cardbookToolbarAddTemplateButtonLabel": {
+		"message": "新しいテンプレート"
+	},
+	"cardbookToolbarAddTemplateButtonTooltip": {
+		"message": "新しいテンプレートを作成"
+	},
 	"cardbookToolbarEditButtonLabel": {
 		"message": "編集"
 	},
@@ -5315,6 +5309,15 @@
 	"searchForLocalKeyEditButton.tooltip": {
 		"message": "ファイルからインポート"
 	},
+	"definitionLabel": {
+		"message": "定義リスト - 説明"
+	},
+	"fieldsLabel": {
+		"message": "フィールド"
+	},
+	"formulasLabel": {
+		"message": "式"
+	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "メールで共有"
 	},
@@ -5462,6 +5465,9 @@
 	"fnFormulaExplanation": {
 		"message": "CardBookが表示名を生成する方法をカスタマイズすることができます。この式は 「()」で囲まれ、「 |」で区切られたブロックで構成されています。"
 	},
+	"templateFormulaExplanation": {
+		"message": "あらかじめ用意されたフィールドを使ってテンプレートを定義できます。例えば、E-mailのテンプレートであれば“({{2}}).({{4}})@mycompany.org”という要領です。このテンプレートが名前“John”、姓“Doe”である連絡先に適用されると、その連絡先に“john.doe@mycompany.org”というE-mailアドレスが追加されます。"
+	},
 	"formulaExplanation1": {
 		"message": "({{1}}|{{2}}) : もし {{1}} が空であれば、ブロックは {{2}} で置き換えられます。"
 	},
@@ -5500,12 +5506,6 @@
 	},
 	"displayFieldNamesAccesskey": {
 		"message": "F"
-	},
-	"displayTypesLabel": {
-		"message": "タイプと環境設定"
-	},
-	"displayTypesAccesskey": {
-		"message": "Y"
 	},
 	"fieldsToPrintGroupboxLabel": {
 		"message": "印刷するフィールド"
@@ -5698,6 +5698,12 @@
 	},
 	"saveTemplateLabel": {
 		"message": "テンプレートを保存"
+	},
+	"applyTemplateLabel": {
+		"message": "テンプレートを適用"
+	},
+	"createTemplateLabel": {
+		"message": "テンプレートを作成"
 	},
 	"convertVCardsLabel": {
 		"message": "vCardへ変換"

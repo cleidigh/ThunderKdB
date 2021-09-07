@@ -1,6 +1,6 @@
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var { EnigmailKeyRing } = ChromeUtils.import("chrome://openpgp/content/modules/keyRing.jsm");
-var { uidHelper } = ChromeUtils.import("chrome://openpgp/content/modules/uidHelper.jsm");
+var { EnigmailFuncs } = ChromeUtils.import("chrome://openpgp/content/modules/funcs.jsm");
 var EnigmailWkdLookup = ChromeUtils.import("chrome://openpgp/content/modules/wkdLookup.jsm").EnigmailWkdLookup;
 var { EnigmailKeyserverURIs } = ChromeUtils.import("chrome://openpgp/content/modules/keyserverUris.jsm");
 var { EnigmailKeyServer } = ChromeUtils.import( "chrome://openpgp/content/modules/keyserver.jsm");
@@ -147,11 +147,11 @@ var cardbookEnigmail = {
 
 		for (let email of listOfEmail) {
 			let result = { value: email.trim().toLowerCase() };
-			if (uidHelper.looksLikeEmail(result.value)) {
+			if (EnigmailFuncs.stringLooksLikeEmailAddress(result.value)) {
 				if (!EnigmailDialog.promptValue(window, l10n.formatValueSync("openpgp-key-man-discover-prompt"), result)) {
 					continue;
 				}
-				if (uidHelper.looksLikeEmail(result.value)) {
+				if (EnigmailFuncs.stringLooksLikeEmailAddress(result.value)) {
 					KeyLookupHelper.lookupAndImportByEmail(window, result.value, true, null);
 				}
 			}
@@ -161,7 +161,7 @@ var cardbookEnigmail = {
 	searchForOnlineKeyEdit: async function (aListOfSelectedEmails) {
 		for (let email of aListOfSelectedEmails) {
 			email = email.trim().toLowerCase();
-			if (uidHelper.looksLikeEmail(email)) {
+			if (EnigmailFuncs.stringLooksLikeEmailAddress(email)) {
 				// can't get only one key
 				// let wkdKeys = await EnigmailWkdLookup.downloadKey(email);
 				// if (wkdKeys && "keyData" in wkdKeys) {
@@ -190,7 +190,7 @@ var cardbookEnigmail = {
 	searchForThKeyEdit: function (aListOfSelectedEmails) {
 		for (let email of aListOfSelectedEmails) {
 			email = email.trim().toLowerCase();
-			if (uidHelper.looksLikeEmail(email)) {
+			if (EnigmailFuncs.stringLooksLikeEmailAddress(email)) {
 				let keyList = EnigmailKeyRing.getKeysByEmail(email);
 				for (let key of keyList) {
 					let keyIdArray = [ "0x" + key.keyId ];

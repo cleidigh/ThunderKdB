@@ -2909,6 +2909,9 @@
 	"wdw_cardEditionViewListTitle": {
 		"message": "Προβολή λίστα"
 	},
+	"wdw_cardEditionEditTemplateTitle": {
+		"message": "Επεξεργασία πρότυπου"
+	},
 	"wdw_cardbookPrintTitleLong": {
 		"message": "Προεπισκόπηση εκτύπωσης – $P1$ – Επαφές – Thunderbird",
         "placeholders": {
@@ -3563,20 +3566,20 @@
 	"cardbookContactPaneItemAccesskey": {
 		"message": "φ"
 	},
+	"wizard.next.label": {
+		"message": "Επόμενη"
+	},
+	"wizard.back.label": {
+		"message": "Πίσω"
+	},
+	"wizard.create.label": {
+		"message": "Δημιουργία"
+	},
 	"wizard.title": {
 		"message": "Προσθέστε ένα νέο βιβλίο διευθύνσεων"
 	},
-	"wizard.label": {
-		"message": "Προσθέστε ένα νέο βιβλίο διευθύνσεων"
-	},
-	"welcomePage.wizard.description": {
-		"message": "Καλώς ήρθατε"
-	},
 	"welcomePage.description": {
 		"message": "Φαίνεται ότι είναι η πρώτη φορά που εκτελείται το CardBook. Το CardBook θα προσπαθήσει να συλλέξει τις επαφές από το ενσωματωμένο βιβλίο διευθύνσεων του Thunderbird και τα απομακρυσμένα βιβλία διευθύνσεων."
-	},
-	"initialPage.wizard.description": {
-		"message": "Θέση για το νέο βιβλίο διευθύνσεων."
 	},
 	"initialPage.description": {
 		"message": "Τοποθεσία του βιβλίου διευθύνσεων:"
@@ -3595,9 +3598,6 @@
 	},
 	"initialPage.find.label": {
 		"message": "Αναζήτηση για απομακρυσμένα βιβλία διευθύνσεων"
-	},
-	"localPage.wizard.description": {
-		"message": "Τύπος και θέση του νέου τοπικού βιβλίου διευθύνσεων."
 	},
 	"localPage.type.description": {
 		"message": "Τύπος τοπικού βιβλίου διευθύνσεων:"
@@ -3632,9 +3632,6 @@
 	"localPage.uributton.label": {
 		"message": "Εξερεύνηση"
 	},
-	"remotePage.wizard.description": {
-		"message": "Τύπος και θέση του νέου απομακρυσμένου βιβλίου διευθύνσεων."
-	},
 	"remotePage.description": {
 		"message": "Ποιος είναι ο τύπος του απομακρυσμένου βιβλίου διευθύνσεών σας; (Προσοχή: η Google δεν συμμορφώνεται με τα πρότυπα εικονική κάρτα (vCard))"
 	},
@@ -3646,6 +3643,9 @@
 	},
 	"remotePage.google.label": {
 		"message": "Γκούγκλαρε"
+	},
+	"remotePage.googleWorkspace.label": {
+		"message": "Google Workspace"
 	},
 	"remotePage.apple.label": {
 		"message": "Apple"
@@ -3671,14 +3671,14 @@
 	"remotePage.password.label": {
 		"message": "Κωδικός πρόσβασης:"
 	},
+	"rememberPassword": {
+		"message": "Χρήση της διαχείρισης κωδικών πρόσβασης για απομνημόνευση αυτού του κωδικού πρόσβασης"
+	},
 	"showHidePassword.tooltip": {
 		"message": "Εμφάνιση/Απόκρυψη κωδικού πρόσβασης"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Επικυρώνω"
-	},
-	"locationSearchPage.wizard.description": {
-		"message": "Ορισμός της αποθηκευμένης αναζήτησης."
 	},
 	"locationSearchPage.label": {
 		"message": "Αποθηκευμένη αναζήτηση"
@@ -3704,9 +3704,6 @@
 	"googleOauthPage.wizard.description": {
 		"message": "Έλεγχος ταυτότητας Google"
 	},
-	"namePage.wizard.description": {
-		"message": "Ιδιότητες βιβλίο διευθύνσεων"
-	},
 	"namePage.selected.label": {
 		"message": "Επιλεγμένο"
 	},
@@ -3725,17 +3722,11 @@
 	"namePage.vCardVersion.label": {
 		"message": "εικονική κάρτα (vCard)"
 	},
-	"namesPage.wizard.description": {
-		"message": "Ιδιότητες βιβλίων διευθύνσεων"
-	},
 	"namesPage.name.label": {
 		"message": "Ονόματα"
 	},
 	"namesPage.name.description": {
 		"message": "Πολλαπλά βιβλία διευθύνσεων έχουν ανακαλυφθεί. Επιλέξτε ποια βιβλία διευθύνσεων θέλετε να ανοίξετε και τα ονόματά τους:"
-	},
-	"findPage.wizard.description": {
-		"message": "Αναζήτηση απομακρυσμένου βιβλίου διευθύνσεων"
 	},
 	"findPage.name1.description": {
 		"message": "Δε βρέθηκαν απομακρυσμένα βιβλία διευθύνσεων"
@@ -3745,9 +3736,6 @@
 	},
 	"findPage.name3.description": {
 		"message": "Βρέθηκαν πολλά βιβλία απομακρυσμένων διευθύνσεων. Επιβεβαίωση απομακρυσμένων βιβλίων διευθύνσεων για προσθήκη:"
-	},
-	"finishPage.wizard.description": {
-		"message": "Ρύθμιση βιβλίων διευθύνσεων"
 	},
 	"finishPage.description": {
 		"message": "Το νέο βιβλίο διευθύνσεων έχει ρυθμιστεί με επιτυχία."
@@ -5117,6 +5105,12 @@
 	"cardbookToolbarAddListButtonTooltip": {
 		"message": "Νέα λίστα αλληλογραφίας"
 	},
+	"cardbookToolbarAddTemplateButtonLabel": {
+		"message": "??New Template??"
+	},
+	"cardbookToolbarAddTemplateButtonTooltip": {
+		"message": "??Create a new template??"
+	},
 	"cardbookToolbarEditButtonLabel": {
 		"message": "Επεξεργασία"
 	},
@@ -5315,6 +5309,15 @@
 	"searchForLocalKeyEditButton.tooltip": {
 		"message": "Εισαγωγή από αρχείο"
 	},
+	"definitionLabel": {
+		"message": "Ορισμός"
+	},
+	"fieldsLabel": {
+		"message": "Πεδία"
+	},
+	"formulasLabel": {
+		"message": "??Formulas??"
+	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Κοινή χρήση μέσω ηλεκτρονικού ταχυδρομείου"
 	},
@@ -5462,6 +5465,9 @@
 	"fnFormulaExplanation": {
 		"message": "Είναι δυνατό να προσαρμόσετε τον τρόπο με τον οποίο οι επαφές δημιουργούν το εμφανιζόμενο όνομα. Αυτός ο τύπος συνίσταται σε μπλοκ που περικλείονται από το «()». ??In these blocks there might be many parts delimited by «|».??"
 	},
+	"templateFormulaExplanation": {
+		"message": "??It is possible to define templates with pre-defined fields. For example one may define a template with the email ”({{2}}).({{4}})@mycompany.org”. Once applied to a contact that has ”John” and ”Doe” as given name and family name, an email ”john.doe@mycompany.org” will be added to the contact.??"
+	},
 	"formulaExplanation1": {
 		"message": "??({{1}}|{{2}}) : If {{1}} is empty, then the block will be replaced by {{2}}.??"
 	},
@@ -5500,12 +5506,6 @@
 	},
 	"displayFieldNamesAccesskey": {
 		"message": "Ο"
-	},
-	"displayTypesLabel": {
-		"message": "Τύποι και προτιμήσεις"
-	},
-	"displayTypesAccesskey": {
-		"message": "Τ"
 	},
 	"fieldsToPrintGroupboxLabel": {
 		"message": "Πεδία προς εκτύπωση"
@@ -5698,6 +5698,12 @@
 	},
 	"saveTemplateLabel": {
 		"message": "Αποθήκευση πρότυπο"
+	},
+	"applyTemplateLabel": {
+		"message": "??Apply template??"
+	},
+	"createTemplateLabel": {
+		"message": "??Create template??"
 	},
 	"convertVCardsLabel": {
 		"message": "??Convert vCards??"

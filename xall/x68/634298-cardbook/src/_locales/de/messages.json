@@ -2909,6 +2909,9 @@
 	"wdw_cardEditionViewListTitle": {
 		"message": "Liste anzeigen"
 	},
+	"wdw_cardEditionEditTemplateTitle": {
+		"message": "Vorlage bearbeiten"
+	},
 	"wdw_cardbookPrintTitleLong": {
 		"message": "Druckvorschau von $P1$ - CardBook - Thunderbird",
         "placeholders": {
@@ -3563,20 +3566,20 @@
 	"cardbookContactPaneItemAccesskey": {
 		"message": "K"
 	},
+	"wizard.next.label": {
+		"message": "Vor"
+	},
+	"wizard.back.label": {
+		"message": "Zurück"
+	},
+	"wizard.create.label": {
+		"message": "Erstelle"
+	},
 	"wizard.title": {
 		"message": "Neues Adressbuch hinzufügen"
 	},
-	"wizard.label": {
-		"message": "Neues Adressbuch hinzufügen"
-	},
-	"welcomePage.wizard.description": {
-		"message": "Willkommen"
-	},
 	"welcomePage.description": {
 		"message": "Anscheinend verwenden Sie CardBook zum ersten Mal, also werden wir versuchen Kontakte zu sammeln. Zuerst versuchen wir die Standard-Adressbücher von Thunderbird zu importieren, anschließend suchen wir nach möglichen Netzwerk-Adressbüchern."
-	},
-	"initialPage.wizard.description": {
-		"message": "Ort des neuen Adressbuchs"
 	},
 	"initialPage.description": {
 		"message": "Ist das Adressbuch lokal oder im Netzwerk gespeichert?"
@@ -3595,9 +3598,6 @@
 	},
 	"initialPage.find.label": {
 		"message": "Suche nach Netzwerk-Adressbüchern"
-	},
-	"localPage.wizard.description": {
-		"message": "Art und Ort des neuen lokalen Adressbuchs."
 	},
 	"localPage.type.description": {
 		"message": "Welcher Art ist das lokale Adressbuch?"
@@ -3632,9 +3632,6 @@
 	"localPage.uributton.label": {
 		"message": "Durchsuchen"
 	},
-	"remotePage.wizard.description": {
-		"message": "Art und Ort des neuen Netzwerk-Adressbuchs"
-	},
 	"remotePage.description": {
 		"message": "Welcher Art ist das Netzwerk-Adressbuch? (Achtung: Google hält sich nicht an vCard-Standards.)"
 	},
@@ -3646,6 +3643,9 @@
 	},
 	"remotePage.google.label": {
 		"message": "Google"
+	},
+	"remotePage.googleWorkspace.label": {
+		"message": "Google Workspace"
 	},
 	"remotePage.apple.label": {
 		"message": "Apple"
@@ -3671,14 +3671,14 @@
 	"remotePage.password.label": {
 		"message": "Passwort:"
 	},
+	"rememberPassword": {
+		"message": "Die Passwortverwaltung benutzen, um dieses Passwort zu speichern"
+	},
 	"showHidePassword.tooltip": {
 		"message": "Passwortanzeige umschalten"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Überprüfen"
-	},
-	"locationSearchPage.wizard.description": {
-		"message": "Die gespeichterte Suche definieren."
 	},
 	"locationSearchPage.label": {
 		"message": "Gespeichterte Suche"
@@ -3704,9 +3704,6 @@
 	"googleOauthPage.wizard.description": {
 		"message": "Google-Authentifizierung"
 	},
-	"namePage.wizard.description": {
-		"message": "Eigenschaften des Adressbuchs"
-	},
 	"namePage.selected.label": {
 		"message": "Ausgewählt"
 	},
@@ -3725,17 +3722,11 @@
 	"namePage.vCardVersion.label": {
 		"message": "vCard"
 	},
-	"namesPage.wizard.description": {
-		"message": "Eigenschaften der Adressbücher"
-	},
 	"namesPage.name.label": {
 		"message": "Namen"
 	},
 	"namesPage.name.description": {
 		"message": "Es wurden mehrere Adressbücher gefunden. Wählen Sie, welche Adressbücher geöffnet werden sollen und vergeben Sie Namen für diese."
-	},
-	"findPage.wizard.description": {
-		"message": "Suche nach Netzwerk-Adressbüchern"
 	},
 	"findPage.name1.description": {
 		"message": "Kein Netzwerk-Adressbuch gefunden."
@@ -3745,9 +3736,6 @@
 	},
 	"findPage.name3.description": {
 		"message": "Mehrere Adressbücher können hinzugefügt werden. Wählen Sie die Adressbücher aus, die Sie hinzufügen möchten:"
-	},
-	"finishPage.wizard.description": {
-		"message": "Einstellungen der Adressbücher"
 	},
 	"finishPage.description": {
 		"message": "Ihr neues Adressbuch wurde erfolgreich konfiguriert."
@@ -5117,6 +5105,12 @@
 	"cardbookToolbarAddListButtonTooltip": {
 		"message": "Neue Verteilerliste erstellen"
 	},
+	"cardbookToolbarAddTemplateButtonLabel": {
+		"message": "Neue Vorlage"
+	},
+	"cardbookToolbarAddTemplateButtonTooltip": {
+		"message": "Neue Vorlage erstellen"
+	},
 	"cardbookToolbarEditButtonLabel": {
 		"message": "Bearbeiten"
 	},
@@ -5315,6 +5309,15 @@
 	"searchForLocalKeyEditButton.tooltip": {
 		"message": "Import aus Datei"
 	},
+	"definitionLabel": {
+		"message": "Definition"
+	},
+	"fieldsLabel": {
+		"message": "Felder"
+	},
+	"formulasLabel": {
+		"message": "Formulare"
+	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Per E-Mail senden"
 	},
@@ -5462,6 +5465,9 @@
 	"fnFormulaExplanation": {
 		"message": "Man kann in CardBook einstellen, wie der Anzeigename dargestellt wird. Die Formel besteht aus Blöcken, die in Klammern „()” eingeschlossen werden. Innerhalb dieser Blöcke können mehrere Elemente durch “|” voneinander abgegrenzt werden."
 	},
+	"templateFormulaExplanation": {
+		"message": "Es ist möglich Vorlagen mit vordefinierten Feldern zu erstellen. Zum Beispiel eine Vorlage mit der E-Mail “({{2}}).({{4}})@mycompany.org“. Wird diese auf einem Kontakt mit dem Vornamen “John“  und Nachnamen “Doe“ angewendet, wird die E-Mail “john.doe@mycompany.org“ hinzugefügt."
+	},
 	"formulaExplanation1": {
 		"message": "({{1}}|{{2}}) : Wenn {{1}} leer ist, wird es durch {{2}} ersetzt."
 	},
@@ -5500,12 +5506,6 @@
 	},
 	"displayFieldNamesAccesskey": {
 		"message": "F"
-	},
-	"displayTypesLabel": {
-		"message": "Typen und Präferenzen anzeigen"
-	},
-	"displayTypesAccesskey": {
-		"message": "y"
 	},
 	"fieldsToPrintGroupboxLabel": {
 		"message": "Druckauswahl"
@@ -5698,6 +5698,12 @@
 	},
 	"saveTemplateLabel": {
 		"message": "Als Vorlage speichern"
+	},
+	"applyTemplateLabel": {
+		"message": "Vorlage anwenden"
+	},
+	"createTemplateLabel": {
+		"message": "Vorlage erstellen"
 	},
 	"convertVCardsLabel": {
 		"message": "Konvertiere vCards"

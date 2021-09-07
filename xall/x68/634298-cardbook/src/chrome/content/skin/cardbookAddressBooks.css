@@ -10,19 +10,9 @@ menuitem[ABtype="directory"] {
 menuitem[ABtype="remote"] {
 	list-style-image: url("chrome://cardbook/content/skin/icons/addressbooks/remote.svg");
 }
-/* as the file Search-glass.png disappeared in Th 55 */
-/* and as before Th 55 it is not possible to display svg file */
-/* need to package one png file */
 menuitem[ABtype="search"] {
-	list-style-image: url("chrome://messenger/skin/icons/search-glass.svg");
+	list-style-image: url("chrome://cardbook/content/skin/icons/addressbooks/search.svg");
 }
 menuitem[ABtype="standard-abook"] {
-	list-style-image: url("chrome://messenger/skin/icons/address.svg");
-}
-
-#VCardRow > #VCardTextbox {
-	width: 100%;
-	box-sizing: border-box;
-	min-height: 15em;
-	margin: 2px 4px;
+	list-style-image: url("chrome://cardbook/content/skin/icons/addressbooks/standardAB.svg");
 }

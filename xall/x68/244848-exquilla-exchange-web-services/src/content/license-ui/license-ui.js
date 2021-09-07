@@ -115,8 +115,7 @@
     gNotificationBox = boxEl ? boxEl._notificationBox : new MozElements.NotificationBox(element => {
       element.id = "exquilla-notification-box";
       element.setAttribute("notificationside", "top");
-      document.documentElement.insertBefore(element,
-        document.getElementById("navigation-toolbox").nextSibling);
+      document.getElementById("navigation-toolbox").after(element);
     });
   }
 

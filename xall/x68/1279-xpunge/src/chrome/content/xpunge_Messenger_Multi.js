@@ -7,7 +7,6 @@ var xpunge_mu_prefBranch = Components.classes["@mozilla.org/preferences-service;
 		.getService(Components.interfaces.nsIPrefBranch);
 
 var xpunge_mu_window = Services.wm.getMostRecentWindow("mail:3pane");
-var xpunge_mu_fixIterator = xpunge_mu_window.fixIterator;
 var xpunge_mu_gFolderTreeController = xpunge_mu_window.gFolderTreeController;
 
 var xpunge_mu_TRASH_SEPARATOR_REGEXP = /   /;
@@ -20,13 +19,6 @@ function xpunge_doMultiple() {
 	if (!xpunge_mu_window) {
 		xpunge_mu_consoleService.logStringMessage("xpunge - xpunge_doMultiple:" + "\n\n"
 				+ "ERROR - No window Object!" + "\n");
-
-		return;
-	}
-
-	if (!xpunge_mu_fixIterator) {
-		xpunge_mu_consoleService.logStringMessage("xpunge - xpunge_doMultiple:" + "\n\n"
-				+ "ERROR - No fixIterator Object!" + "\n");
 
 		return;
 	}
@@ -173,7 +165,7 @@ function xpunge_emptyJunkMulti(folder) {
 	// chooses to send emails marked as spam there.
 	var junkFolders = folder.rootFolder.getFoldersWithFlags(Components.interfaces.nsMsgFolderFlags.Junk);
 
-	for (var junkFolder of xpunge_mu_fixIterator(junkFolders, Components.interfaces.nsIMsgFolder)) {
+	for (var junkFolder of junkFolders) {
 		try {
 			if (junkFolder.getTotalMessages(true) > 0) {
 				returnedMsg = returnedMsg + "Emptying Junk Folder (" + junkFolder.prettyName + ") For Account: "

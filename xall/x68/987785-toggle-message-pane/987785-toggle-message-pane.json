@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 266,
+    "average_daily_users": 277,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -19,30 +19,30 @@
     "contributions_url": "",
     "created": "2020-02-15T04:53:21Z",
     "current_version": {
-        "id": 2476159,
+        "id": 2476408,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "93.0",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/toggle-message-pane/versions/2476159",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/toggle-message-pane/versions/2476408",
         "files": [
             {
-                "id": 1019319,
-                "created": "2021-07-31T20:42:29Z",
-                "hash": "sha256:760d3f719b9cc335daaec9db909d1ea8a75f7f3b9c0d3f85c4b5d98279273e78",
+                "id": 1019568,
+                "created": "2021-09-04T03:09:54Z",
+                "hash": "sha256:e9ab217bbb5f58bf3fa35337474210cb31776a0530efc6c09d29e1a34f3c172a",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 4917,
+                "size": 4939,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019319/toggle_message_pane-1.3-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019568/toggle_message_pane-1.4-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 6,
             "name": {
@@ -72,11 +72,11 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "Fixed manifest.json."
+            "en-US": "Set max version."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/toggle-message-pane/versions/1.3",
-        "version": "1.3"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/toggle-message-pane/versions/1.4",
+        "version": "1.4"
     },
     "default_locale": "en-US",
     "description": null,
@@ -97,7 +97,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-08-02T16:56:14Z",
+    "last_updated": "2021-09-04T09:01:23Z",
     "name": {
         "en-US": "Toggle Message Pane"
     },
@@ -146,9 +146,11 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
-            "comp68": true
+            "comp68": true,
+            "comp69plus": true,
+            "comp78plus": true,
+            "comp61plus": true
         }
     }
 }

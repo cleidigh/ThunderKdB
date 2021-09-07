@@ -11,6 +11,11 @@
 
 const { classes: Cc, Constructor: CC, interfaces: Ci, utils: Cu, Exception: CE, results: Cr, } = Components;
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
+try { // COMPAT for TB 78 (bug 1649554)
+  var { ComponentUtils } = ChromeUtils.import("resource://gre/modules/ComponentUtils.jsm");
+} catch (ex) { // COMPAT for TB 78 (bug 1649554)
+  var ComponentUtils = XPCOMUtils; // COMPAT for TB 78 (bug 1649554)
+} // COMPAT for TB 78 (bug 1649554)
 ChromeUtils.defineModuleGetter(this, "JSAccountUtils", "resource://exquilla/JSAccountUtils.jsm");
 ChromeUtils.defineModuleGetter(this, "MailServices",
   "resource:///modules/MailServices.jsm");
@@ -232,28 +237,51 @@ EwsCompose.prototype = {
       if (progressListener)
         cppBase.progress.registerListener(progressListener);
     }
+/*
+new parameter list in comm-central for 91, nsIMsgSend.idl:
+ createAndSendMessage(in nsIEditor aEditor,
+                               in nsIMsgIdentity aUserIdentity,
+                               in string aAccountKey,
+                               in nsIMsgCompFields aFields,
+                               in boolean aIsDigest,
+                               in boolean aDontDeliver,
+                               in nsMsgDeliverMode aMode,
+                               in nsIMsgDBHdr aMsgToReplace,
+                               in string aBodyType,
+                               in ACString aBody,
+                               in mozIDOMWindowProxy aParentWindow,
+                               in nsIMsgProgress aProgress,
+                               in nsIMsgSendListener aListener,
+                               in AString aPassword,
+                               in AUTF8String aOriginalMsgURI,
+                               in MSG_ComposeType aType);
+
+                               */
+
+
 
     // Prevent a crash from empty body, see bug 1377228. Can't be simply a blank because of a trim!
     let sendBody = cppBase.bodyRaw || "\n";
+
     ewsSend.createAndSendMessage(cppBase.composeHTML ? cppBase.editor : null, // nsIEditor
-                                 identity,                // nsIMsgIdentity
-                                 accountKey,
-                                 compFields,              // nsIMsgCompFields
-                                 false,                   // isDigest
-                                 false,                   // dontDeliver
-                                 deliverMode,             // nsMsgDeliverMode
-                                 null,                    // msgToReplace
-                                 cppBase.composeHTML ? "text/html" : "text/plain",
-                                 sendBody,                // body ACString
-                                 null,                    // nsIArray aAttachments
-                                 null,                    // nsIArray aPreloadedAttachments
-                                 cppBase.domWindow,       // nsIDOMWindow
-                                 cppBase.progress,        // nsIMsgProgress
-                                 sendListener,            // nsIMsgSendListener
-                                 "",                      // password
-                                 cppBase.originalMsgURI,
-                                 cppBase.type             // MSG_ComposeType
-                                 );
+      identity,                // nsIMsgIdentity
+      accountKey,
+      compFields,              // nsIMsgCompFields
+      false,                   // isDigest
+      false,                   // dontDeliver
+      deliverMode,             // nsMsgDeliverMode
+      null,                    // msgToReplace
+      cppBase.composeHTML ? "text/html" : "text/plain",
+      sendBody,                // body ACString
+      cppBase.domWindow,       // nsIDOMWindow
+
+      cppBase.progress,        // nsIMsgProgress
+      sendListener,            // nsIMsgSendListener
+      "",                      // password
+      cppBase.originalMsgURI,
+      cppBase.type             // MSG_ComposeType
+      );
+
   } catch (e) {re(e);}},
 
   // former msqSgCompose::GetSendListener
@@ -279,5 +307,5 @@ EwsComposeConstructor.prototype = {
   _xpcom_factory: JSAccountUtils.jaFactory(EwsCompose.Properties, EwsCompose),
 }
 
-var NSGetFactory = XPCOMUtils.generateNSGetFactory([EwsComposeConstructor]);
+var NSGetFactory = ComponentUtils.generateNSGetFactory([EwsComposeConstructor]);
 var EXPORTED_SYMBOLS = ["NSGetFactory"];

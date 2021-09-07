@@ -71,6 +71,21 @@ var exquilla = Object.create(
     log.config('exquilla onLoad() AppVersion: ' + appVersion + " OS: " + OS);
     (async () => log.config("ExQuilla version is " + await getExtensionVersion()))();
 
+    // open ExQuilla URLs in main process tab
+    try {
+      // getRemoteTypeForURIObject has imap et. al. hardcoded in.
+      const {E10SUtils} = ChromeUtils.import("resource://gre/modules/E10SUtils.jsm");
+      if (!E10SUtils._exquillaGetRemoteTypeForURIObject) {
+        E10SUtils._exquillaGetRemoteTypeForURIObject = E10SUtils.getRemoteTypeForURIObject;
+      }
+      E10SUtils.getRemoteTypeForURIObject = function(aURI, ...aArgs) {
+        // returns remote types from ContentParent.h
+        return aURI.scheme && aURI.scheme.includes("exquilla")
+          ? null // null = the page should not be remote, but stay in the main process
+          : E10SUtils._exquillaGetRemoteTypeForURIObject(aURI, ...aArgs);
+      }
+    } catch (ex) { log.error(ex); }
+
     // With the removal of Thunderbird from the rapid release cycle, multirelease binaries
     //  need to support the old ESR version, was well as current versions. I'm not yet sure
     //  how to pull this off exactly, but the min/max versions for addons do not properly
@@ -518,7 +533,7 @@ var exquilla = Object.create(
         let machineResult = {result: Cr.NS_ERROR_FAILURE};
         let dbEnum = aFolder.msgDatabase.EnumerateMessages();
         let messageArray = [];
-        while (dbEnum.hasMoreElements())
+        while (dbEnum.hasMoreElements()) // COMPAT for TB 78 (#979)
           messageArray.push(dbEnum.getNext().QueryInterface(Ci.nsIMsgDBHdr));
         for (let message of messageArray)
         {
@@ -756,19 +771,41 @@ var exquilla = Object.create(
     }
   }
 
+  /**
+   * If already an array, just returns it.
+   * If nsISimpleIterator, converts it to an array, including casting
+   * TODO Test
+   */
+  function iteratorToArray(iterator, iface) {
+    if (typeof(iterator.hasMoreElements) == "function") {
+      let array = [];
+      while (iterator.hasMoreElements()) {
+        let item = iterator.getNext();
+        if (item instanceof iface) {
+          array.push(item);
+        } else {
+          log.warn("Item should be an " + iface + ", but it's not");
+        }
+      }
+      return array;
+    } else if (typeof(iterator.length) == "number") {
+      return iterator;
+    } else {
+      throw CE("Unknown type of iterator or array: " + iterator);
+    }
+  }
+
+  // Called when the user clicks on an email address in the msg header viewer
   function onEmailAddressPopup(event)
   {
+    // TODO Broken in TB 91. And TB code doesn't use findEmailNodeFromPopupNode() since TB 68 anymore. Still needed? Just find the email address that the context menu is for.
     let emailAddress = findEmailNodeFromPopupNode(document.popupNode, 'emailAddressPopup')
                          .getAttribute("emailAddress");
     let emailContextMenu = document.getElementById("emailAddressPopup");
 
     // add a context menu for each ews root contact folder
-    let directories = MailServices.ab.directories;
-    while (directories.hasMoreElements())
+    for (let directory of iteratorToArray(MailServices.ab.directories, Ci.nsIAbDirectory))
     {
-      let directory = directories.getNext();
-      if (directory instanceof Ci.msgIOverride)
-      {
         let jsDirectory;
         try {
           jsDirectory = safeGetJS(directory);
@@ -782,7 +819,6 @@ var exquilla = Object.create(
             let id = 'exquilla.addToAb.' + directory.URI;
             let abItem = document.getElementById(id);
               // only show an add if the address does not exist
-            directory instanceof Ci.nsIAbCollection;
             let existingCard = directory.cardForEmailAddress(emailAddress);
 
             if (!abItem && !existingCard)
@@ -800,7 +836,6 @@ var exquilla = Object.create(
               abItem.parentNode.removeChild(abItem);
           }
         }
-      }
     }
   }
 

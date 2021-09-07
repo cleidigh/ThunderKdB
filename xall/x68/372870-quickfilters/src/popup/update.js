@@ -10,20 +10,19 @@ END LICENSE BLOCK */
 
   addEventListener("click", async (event) => {
     if (event.target.id.startsWith("register") || event.target.id == 'bargainIcon') {
-      messenger.Utilities.openLinkExternally("https://sites.fastspring.com/quickfolders/product/quickfilters?referrer=landing-update");
+      messenger.windows.openDefaultBrowser("https://sites.fastspring.com/quickfolders/product/quickfilters?referrer=landing-update");
     }
     if (event.target.id=='whatsNew') {
-      messenger.Utilities.showVersionHistory(false);    
+      messenger.Utilities.showVersionHistory();    
     }
     if (event.target.id.startsWith("extend") || event.target.id.startsWith("renew")) {
       messenger.Utilities.showXhtmlPage("chrome://quickfilters/content/register.xhtml");
       window.close(); // not allowed by content script!
     }
     if (event.target.id.startsWith("donate")) {
-      messenger.Utilities.openLinkExternally("https://quickfilters.quickfolders.org/donate.html");
+      messenger.windows.openDefaultBrowser("https://quickfilters.quickfolders.org/donate.html");
     }
   });  
-
 
 
   addEventListener("load", async (event) => {
@@ -32,7 +31,6 @@ END LICENSE BLOCK */
           addonName = manifest.name,
           addonVer = manifest.version,
           appVer = browserInfo.version,
-          hoursWorked = 300,
           remindInDays = 10;
 
     // force replacement for __MSG_xx__ entities
@@ -85,10 +83,14 @@ END LICENSE BLOCK */
     }
     
     let specialOffer = document.getElementById('specialOfferTxt');
-    if (specialOffer)
-      specialOffer.innerHTML = messenger.i18n.getMessage("special-offer-content")
+    if (specialOffer) {
+      let expiry = messenger.i18n.getMessage("special-offer-expiry"),
+          reduction = "30%"
+      // note: expiry day is set in popup.js "endSale" variable
+      specialOffer.innerHTML = messenger.i18n.getMessage("special-offer-content", [expiry, reduction])
           .replace(/\{boldStart\}/g,"<b>")
           .replace(/\{boldEnd\}/g,"</b>");
+    }
           
     let specialIntro = document.getElementById('specialOfferIntro');
     if (specialIntro) {
@@ -103,7 +105,9 @@ END LICENSE BLOCK */
     if (whatsNewLst) {
       whatsNewLst.innerHTML =  messenger.i18n.getMessage('whats-new-list')
         .replace(/\{L1\}/g,"<li>")
-        .replace(/\{L2\}/g,"</li>");
+        .replace(/\{L2\}/g,"</li>")
+        .replace(/\{boldStart\}/g,"<b>")
+        .replace(/\{boldEnd\}/g,"</b>");
     }
     
     
@@ -118,7 +122,7 @@ END LICENSE BLOCK */
            
     updateActions(addonName);
 
-    addAnimation('body');
+    // addAnimation('body');
 
   });  
 

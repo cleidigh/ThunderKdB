@@ -226,11 +226,14 @@ var cardbookDates = {
 			// partial dates
 			} else if (aDateString.length >= 3 && aDateString.length <= 6) {
 				aDateString = cardbookDates.getCorrectPartialDate(aDateString);
-				let myDate = new Date(Date.parse(aDateString));
+				let myYear = aDateString.slice(0, 4);
+				let myMonth = aDateString.slice(5, 7);
+				let myDay = aDateString.slice(8, 10);
+				let myDate = new Date(Date.UTC(myYear, myMonth-1, myDay));
 				if (isNaN(myDate)) {
 					return "WRONGDATE";
 				} else {
-					return new Date(Date.UTC(myDate.getFullYear(), myDate.getMonth()-1, myDate.getDate()));
+					return myDate;
 				}
 			} else {
 				if (aDateFormat == "YYYY-MM-DD") {

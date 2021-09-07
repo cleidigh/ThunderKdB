@@ -106,12 +106,9 @@ var mailmerge = {
 			document.getElementById("mailmerge-message-sendlater").textContent = "";
 			
 			let attachments = compose.compFields.attachments;
-			while(attachments.hasMoreElements()) {
+			for(let attachment of attachments) {
 				
 				try {
-					
-					let attachment = attachments.getNext();
-					attachment.QueryInterface(Ci.nsIMsgAttachment);
 					
 					document.getElementById("mailmerge-message-attachments").textContent += attachment.name + " : " + attachment.size + " : " + decodeURI(attachment.url) + "\n";
 					

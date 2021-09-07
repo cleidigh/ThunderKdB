@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Enigmail",
   "description": "OpenPGP message encryption and authentication",
-  "version": "2.2.4.1",
+  "version": "2.2.4.2",
   "author": "Enigmail Team",
   "homepage_url": "https://enigmail.net/",
   "experiment_apis": {
@@ -19,7 +19,8 @@
   "applications": {
     "gecko": {
       "id": "{847b3a00-7ab1-11d4-8f02-006008948af5}", // Enigmail GUID
-      "strict_min_version": "78.0"
+      "strict_min_version": "78.0",
+      "strict_max_version": "78.*"
     }
   }
 }

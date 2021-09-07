@@ -13,6 +13,11 @@
 
 const { classes: Cc, Constructor: CC, interfaces: Ci, utils: Cu, Exception: CE, results: Cr, } = Components;
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
+try { // COMPAT for TB 78 (bug 1649554)
+  var { ComponentUtils } = ChromeUtils.import("resource://gre/modules/ComponentUtils.jsm");
+} catch (ex) { // COMPAT for TB 78 (bug 1649554)
+  var ComponentUtils = XPCOMUtils; // COMPAT for TB 78 (bug 1649554)
+} // COMPAT for TB 78 (bug 1649554)
 ChromeUtils.defineModuleGetter(this, "JSAccountUtils", "resource://exquilla/JSAccountUtils.jsm");
 ChromeUtils.defineModuleGetter(this, "MailServices",
   "resource:///modules/MailServices.jsm");
@@ -694,5 +699,5 @@ EwsSendConstructor.prototype = {
   _xpcom_factory: JSAccountUtils.jaFactory(EwsSend.Properties, EwsSend),
 }
 
-var NSGetFactory = XPCOMUtils.generateNSGetFactory([EwsSendConstructor]);
+var NSGetFactory = ComponentUtils.generateNSGetFactory([EwsSendConstructor]);
 var EXPORTED_SYMBOLS = ["NSGetFactory"];

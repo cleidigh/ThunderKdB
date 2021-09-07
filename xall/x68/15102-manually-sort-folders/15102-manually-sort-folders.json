@@ -7,9 +7,16 @@
             "url": "https://addons.thunderbird.net/en-US/thunderbird/user/mozjonathan/",
             "username": "mozjonathan",
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/0/343.png?modified=1505246946"
+        },
+        {
+            "id": 14197064,
+            "name": "Itagaki Fumihiko",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/itagagaki/",
+            "username": "itagagaki",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14197/14197064.png?modified=1630484324"
         }
     ],
-    "average_daily_users": 187041,
+    "average_daily_users": 205265,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -18,30 +25,30 @@
     "contributions_url": "https://paypal.me/protzenko",
     "created": "2009-10-20T07:31:08Z",
     "current_version": {
-        "id": 2475431,
+        "id": 2476360,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/manually-sort-folders/versions/2475431",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/manually-sort-folders/versions/2476360",
         "files": [
             {
-                "id": 1018592,
-                "created": "2021-02-27T15:24:56Z",
-                "hash": "sha256:0c4c9e651c7981f65e0cb51e35fb5a4858ede5d27f32061f7a427db5ca9a9cc8",
+                "id": 1019520,
+                "created": "2021-08-31T02:04:41Z",
+                "hash": "sha256:9af8d44ed14235b5ac346a46b7e151c8450a8c45355f9216fc4766c4e31bae3f",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 85760,
+                "size": 93419,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018592/manually_sort_folders-2.0.6-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019520/manually_sort_folders-2.1.0-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 13,
             "name": {
@@ -71,17 +78,17 @@
             "url": "http://www.gnu.org/licenses/gpl-2.0.html"
         },
         "release_notes": {
-            "en-US": "This release fixes a bug related to the account list not sorting at startup, and improves compatibility with more recent versions of Thunderbird up to 86.\n\nThis release would not have happened without Itagaki Fumihiko, who reviewed PRs and handled all of the release work. Thanks!\n\nBlono on GitHub also contributed a pull request."
+            "en-US": "- Thunderbird 91 Compatible\n- All types of accounts are now treated equally in TB91 and later\n- Sort folders by name in descending order added\n- Sort folders tab initially selects the first account in the list instead of the last\n- GroupBox and Caption in UI are now displayed properly\n- Improved German locale (thanks to Hartmut Goebel)\n- Improved Japanese locale\n- Removed description about \"GMail\" and \"Unicode\" from UI\n- Prevented MSF from opening multiple windows\n- Changed the refresh method of Thunderbird window\n- Updated WindowListener to the latest version\n- Added Itagaki Fumihiko as an author\n- Updated version number to 2.1.0"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/manually-sort-folders/versions/2.0.6",
-        "version": "2.0.6"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/manually-sort-folders/versions/2.1.0",
+        "version": "2.1.0"
     },
     "default_locale": "en-US",
     "description": {
         "ru": "Это расширение добавляет пункт «Сортировка папок вручную» в меню «Инструменты» Thunderbird.\n\nПо умолчанию Thunderbird сортирует папки учётной записи в алфавитном порядке. Это расширение позволяет вам выбрать собственный порядок сортировки папок, например, поместив в начале списка самые важные или переупорядочить их вручную.\n\nЭто расширение также изменяет способ автоматической сортировки папок. При этом, в отличие от стандартного способа, учитываются специальные символы Юникода. Если вы не хотите сортировать все папки вручную, добавьте юникод-символ (например, звёздочка «✸») в начале имени тех папок, которые должны находиться на вершине списка.\n\nЭто также работает для групп новостей в учётных записях блогов и лент новостей и папок любого уровня вложенности.\n\nК тому же, вы можете аналогичным способом переупорядочить и учётные записи, теперь для этого есть специальная вкладка.",
         "fr": "<b>Cette extension permet de trier manuellement les dossiers dans la liste des dossiers de Thunderbird. Voir \"Manually sort folders\" dans le menu \"Outils\".</b>\n\nUne autre possibilité offerte par cette extension est de trier automatiquement les dossiers mais en prenant en compte (contrairement à Thunderbird par défaut) les caractères Unicode. Ceci permet, par exemple, de mettre une étoile unicode ✸ au début d'un nom de dossier de manière à le faire apparaître en haut de la liste. Avec des caractères unicode différents, on peut ainsi faire de petites catégories de dossiers sans s'encombrer d'un tri manuel ou de sous-dossiers.\n\nIl est à noter que depuis la version 0.3 cette extension permet aussi de réordonner les comptes et plus seulement les dossiers d'un compte donné.",
-        "en-US": "<b>This extension adds a \"Manually Sort Folders\" entry in the \"Tools\" menu of Thunderbird, underneath the hamburger (☰) menu.</b>\n\nBy default Thunderbird sorts the folders of an account alphabetically. This extension allows you to choose a specific sort order for your folders, allowing you to put the most important ones on top, and manually order them.\n\nThis extension also offers another method for automatically sorting folders. Unlike Thunderbird's default, the extension's sort method takes into account Unicode special characters. If you do not wish to sort everything manually, you can use Unicode symbols at the beginning of your folder names to put them on top. For instance, you can put a Unicode star ✸ at the beginning of your folder name to put it on top of the list without having to sort everything manually.\n\nThis also works for newsgroups inside a news accounts, and also works for sub-folders, and sub-subfolders, etc.\n\nAs a bonus feature, <b>you can also re-order accounts as well</b>, there's an extra tab for that now. The latest version now also allows you to <b>choose the default startup folder</b>.\n\n(Note: there have been reports that running the addon through <a rel=\"nofollow\" href=\"http://addonconverter.fotokraina.com/\">http://addonconverter.fotokraina.com/</a> makes it compatible with SeaMonkey.)",
+        "en-US": "<b>This extension adds a \"Manually Sort Folders\" entry in the \"Tools\" menu of Thunderbird, underneath the hamburger (☰) menu.</b>\n\nBy default Thunderbird sorts the folders of an account alphabetically. This extension allows you to choose a specific sort order for your folders, allowing you to put the most important ones on top, and manually order them.\n\nThis also works for newsgroups inside a news accounts, and also works for sub-folders, and sub-subfolders, etc.\n\nAs a bonus feature, <b>you can also re-order accounts as well</b>, there's an extra tab for that now. The latest version now also allows you to <b>choose the default startup folder</b>.",
         "pl": "Rozszerzenie dodaje do w menu „Narzędzia” element „Sortuj foldery ręcznie”.\n\nThunderbird domyślnie sortuje foldery alfabetycznie. Dzięki temu rozszerzeniu można ręcznie określić kolejność folderów umieszczając na górze najważniejsze.\n\nManually Sort Folders oferuje również inną metodę automatycznego sortowania folderów niż domyślna. Rozszerzenie stosuje metodę sortowania uwzględniającą znaki specjalne Unicode. Jeśli nie chce się porządkować wszystko ręcznie, można użyć symboli Unicodee na początku nazw folderu, aby umieścić je na górze. Na przykład można umieścić na początku nazwy folderu symbol Unicode w postaci gwiazdki, by umieścić folder na szczycie listy.\n\nTa funkcja działa również na grupach dyskusyjnych w obrębie kont, a także w folderach podrzędnych itp.\n\nRozszerzenie umożliwia również <b>zmianę kolejności wyświetlania kont</b>.",
         "sv-SE": "<b>Detta tillägg lägger till posten \"Sortera mappar manuellt\" i Thunderbirds Verktyg-meny.</b>\n\nSom standard sorterar Thunderbird mappar under ett konto i alfabetisk ordning. Detta tillägg låter dig välja en specifik sorteringsordning för dina mappar, vilket ger dig möjligheten att placera de viktigaste mapparna överst och sortera dem manuellt.\n\nDetta tillägg erbjuder även en metod för automatisk sortering av mappar. Till skillnad från Thunderbirds standardmetod, tar tilläggets sorteringsmetod hänsyn till Unicode-specialtecken. Om du inte vill sortera allting manuellt, kan du använda Unicode-symboler i början av dina mappnamn för att placera dem överst. Du kan, exempelvis, ange en Unicode-stjärna (✸) i början av ett mappnamn för att placera mappen överst i listan utan att behöva sortera allting manuellt.\n\nDet här fungerar även för diskussionsgrupper under diskussionsgruppskonton och för undermappar, underundermappar, o.s.v.\n\nSom en bonusfunktion kan du även sortera om konton, det finns en extra flik för det nu. Den senaste versionen låter dig dessutom välja vilken standardstartmapp som skall visas vid programstart."
     },
@@ -94,16 +101,16 @@
         "sv-SE": "http://wiki.github.com/protz/Manually-Sort-Folders/",
         "en-US": "https://github.com/protz/Manually-Sort-Folders/"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/15/15102-64.png?modified=1606588138",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/15/15102-64.png?modified=1630434087",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/15/15102-32.png?modified=1606588138",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/15/15102-64.png?modified=1606588138"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/15/15102-32.png?modified=1630434087",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/15/15102-64.png?modified=1630434087"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-02-27T20:32:38Z",
+    "last_updated": "2021-08-31T07:02:16Z",
     "name": {
         "sv-SE": "Manually sort folders",
         "fr": "Trier manuellement les dossiers",
@@ -182,7 +189,7 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 3.74601,
+        "bayesian_average": 3.746,
         "count": 528,
         "average": 3.7481,
         "text_count": 528

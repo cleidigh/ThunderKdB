@@ -166,7 +166,7 @@ var mailmerge = {
 			progress.registerListener(gProgressListener);
 			/* progress end */
 			
-			compose.SendMsg(delivermode, window.opener.getCurrentIdentity(), window.opener.getCurrentAccountKey(), null, progress);
+			compose.sendMsg(delivermode, window.opener.gCurrentIdentity, window.opener.getCurrentAccountKey(), null, progress);
 			
 		} catch(e) {
 			

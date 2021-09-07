@@ -29,8 +29,8 @@
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 	      buttons="accept,extra2"
 	      buttonlabelextra2="Nostalgy++ usage directions..."
-        width="900"
-        height="500"
+        width="1100"
+        height="700"
         title="Nostalgy Preferences">
 
  <script src="chrome://nostalgy/content/manage_emails.js"/>
@@ -39,6 +39,61 @@
  <script src="chrome://nostalgy/content/nostalgy_keys.js"/>
  <script src="chrome://nostalgy/content/edit_prefs.js"/>
  <script src="chrome://nostalgy/content/nostalgy.js"/>
+
+ <html:style>
+  tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+
+/* spacing */
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  height: 80%;
+  border-collapse: collapse;
+  border: 3px solid purple;
+  font-size: 12px;
+}
+
+tbody td {
+  text-align: center;
+}
+
+div {
+ 
+  border-bottom: 3px solid purple;
+
+  font-size: 12px;
+}
+
+td {
+  padding: 2px;
+  border-left: 1px solid #000;
+    border-right: 1px solid #000;
+}
+th {
+  padding: 15px;
+  border-left: 0px solid #000;
+    border-right: 0px solid #000;
+    margin-left: -5px;
+}
+
+tr { 
+
+    height: 20px   !important;
+      vertical-align: text-top;
+
+
+}
+
+.selected {
+    color: red;
+}
+</html:style>
+
+
  <tabbox flex="0" style="width:600px">
  <tabs>
  <tab label="Rules"/>
@@ -57,10 +112,28 @@ restricted to match messages under a given server/folder. When a folder
 is selected for a given message, Nostalgy informs you in the status line.
 You can then use the Shift-S/Shift-C
 shortcuts to move/copy the message to this folder.</label>   
- <vbox >
- <hbox >
+ 
+<html:table  id = "display-table1">
+      <html:thead>
+          <html:tr>
+              <html:th   style="width:25%">From/Recipient/Subject</html:th>
+              <html:th   style="width:25%">Contains</html:th>
+              <html:th   style="width:25%">Source Folder</html:th>
+              <html:th   style="width:25%">Destination Folder</html:th>
 
+          </html:tr>
+      </html:thead>
+      </html:table>
+<html:div style="height: 500px; overflow: auto; "> 
+  <html:table  id = "display-table" style="border-top: 0px !important; border-bottom: 0px !important;">
+       <html:tbody  style="height: 500px; "  id="nrules">
 
+        </html:tbody>
+  </html:table>
+</html:div>
+<br/>
+
+<!--
 <richlistbox class="theme-listbox"  id="nrules" >
 
  <treecols>
@@ -73,7 +146,9 @@ shortcuts to move/copy the message to this folder.</label>
 
 
   </richlistbox>
-
+-->
+<vbox >
+ <hbox >
 
 
  </hbox >
@@ -134,10 +209,23 @@ shortcuts to move/copy the message to this folder.</label>
 
  <tabpanel>
  <groupbox flex="1">
-   <grid style="overflow:auto; height:300px">
+  
+  <html:table>
+      <html:thead>
+          <html:tr>
+              <html:th colspan="2">Keys</html:th>
+          </html:tr>
+      </html:thead>
+      <html:tbody id="nostalgy_key_rows">
+        </html:tbody>
+  </html:table>
+<!--
+  <grid style="overflow:auto; height:300px">
    <columns> <column  width="300"/> <column width="150"/> <column/> </columns>
    <rows id="nostalgy_key_rows"/>
    </grid>
+
+  -->
   <separator orient="horizontal"/>
   <hbox>
   <radiogroup id="cmdkind" orient="horizontal">

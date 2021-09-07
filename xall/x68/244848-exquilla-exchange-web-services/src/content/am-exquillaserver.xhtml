@@ -21,6 +21,7 @@
 
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
         xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:html="http://www.w3.org/1999/xhtml"
         title="&serverSettings.label;"
         onload="parent.onPanelLoaded('am-exquillaserver.xhtml');">
 
@@ -39,38 +40,53 @@
         <label class="dialogheader-title" value="&serverSettings.label;"/>
       </hbox>
 
-      <grid>
-        <columns>
-          <column/>
-          <column flex="4"/>
-        </columns>
-        <rows>
-          <row align="center">
+      <html:table>
+        <html:tr>
+          <html:th>
                 <label id="ewsUrl" value="&ews.ewsURL.label;"
                        control="server.ewsURL" accesskey="&ews.ewsURL.accesskey;"/>
-                <input xmlns="http://www.w3.org/1999/xhtml" id="server.ewsURL" class="uri-element"/>
-          </row>
-          <row align="center">
+          </html:th>
+          <html:td>
+                <input xmlns="http://www.w3.org/1999/xhtml"
+                       type="text" style="width: 100%;"
+                       id="server.ewsURL" class="uri-element"/>
+          </html:td>
+        </html:tr>
+        <html:tr>
+          <html:th>
                 <label value="&userName.label;"
                        accesskey="&userName.accesskey;"
                        control="server.realUsername"/>
+          </html:th>
+          <html:td>
                 <input xmlns="http://www.w3.org/1999/xhtml"
+                       type="text" style="width: 100%;"
                        wsm_persist="true" id="server.realUsername"
                        prefstring="mail.server.%serverkey%.realusername"/>
-          </row>
-          <row align="center">
+          </html:td>
+        </html:tr>
+        <html:tr>
+          <html:th>
                 <label value="&ews.domain;"
                        accesskey="&ews.domain.accesskey;"
                        control="server.domain"/>
+          </html:th>
+          <html:td>
                 <input xmlns="http://www.w3.org/1999/xhtml"
+                       type="text" style="width: 100%;"
                        wsm_persist="true" id="server.domain"
                        prefstring="mail.server.%serverkey%.domain"/>
-          </row>
-          <row align="center">
+          </html:td>
+        </html:tr>
+        <html:tr>
+          <html:th>
                 <label value="&authMethod.label;"
                        accesskey="&authMethod.accesskey;"
                        control="server.authMethod"/>
+          </html:th>
+          <html:td>
                 <menulist id="server.authMethod"
+                          style="width: 100%;"
                           wsm_persist="true"
                           preftype="int"
                           prefstring="mail.server.%serverkey%.authMethod">
@@ -80,9 +96,9 @@
                     <menuitem value="10" label="&ews.authMethod10;"/>
                   </menupopup>
                 </menulist>
-          </row>
-        </rows>
-      </grid>
+          </html:td>
+        </html:tr>
+      </html:table>
 
       <separator class="thin"/>
 
@@ -161,7 +177,7 @@
       <hbox align="center">
         <label value="&localPath1.label;" control="server.localPath"/>
         <hbox class="input-container" flex="1">
-          <input xmlns="http://www.w3.org/1999/xhtml"
+          <input xmlns="http://www.w3.org/1999/xhtml" type="text"
                  readonly="true" wsm_persist="true" flex="1" id="server.localPath" datatype="nsIFile"
                  prefstring="mail.server.%serverkey%.directory" class="uri-element input-inline"/>
         </hbox>

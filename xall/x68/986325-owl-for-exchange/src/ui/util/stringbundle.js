@@ -36,9 +36,9 @@
  */
 function StringBundle(path) {
   if (path.indexOf(".properties") == -1) {
-    this._url = chrome.extension.getURL("locale/" + getExtLocale() + "/" + path + ".properties");
+    this._url = browser.runtime.getURL("locale/" + getExtLocale() + "/" + path + ".properties");
   } else {
-    this._url = chrome.extension.getURL("locale/" + getExtLocale() + "/" + path);
+    this._url = browser.runtime.getURL("locale/" + getExtLocale() + "/" + path);
   }
 }
 

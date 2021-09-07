@@ -1,5 +1,48 @@
 [
     {
+        "id": 2476383,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "91.*",
+                "min": "69.0a1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/remote-content-by-folder/versions/2476383",
+        "files": [
+            {
+                "id": 1019543,
+                "created": "2021-09-02T21:17:36Z",
+                "hash": "sha256:b446e12d1d65efd9c6b7b633ab43929e4e33a50f80199abddb6d57379d3aaa2c",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 18859,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019543/remote_content_by_folder-2.0.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Fix incorrect debug log message in error console. It was claiming that regexp preferences were empty when they weren't. The functionality was correct, just the log message was wrong.\n\nChange <a rel=\"nofollow\" href=\"http://addons.mozilla.org\">addons.mozilla.org</a> link to <a rel=\"nofollow\" href=\"http://addons.thunderbird.net\">addons.thunderbird.net</a> in the manifest and README."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/remote-content-by-folder/versions/2.0.1",
+        "version": "2.0.1"
+    },
+    {
         "id": 2474589,
         "channel": "listed",
         "compatibility": {
@@ -24,7 +67,7 @@
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 3338,
             "name": {

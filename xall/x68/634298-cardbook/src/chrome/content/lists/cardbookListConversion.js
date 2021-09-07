@@ -1,7 +1,6 @@
 if ("undefined" == typeof(cardbookListConversion)) {
 	var { jsmime } = ChromeUtils.import("resource:///modules/jsmime.jsm");
 	var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
-	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 	var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
 
 	function cardbookListConversion(aEmails, aIdentity, aOnlyEmail) {
@@ -41,13 +40,6 @@ if ("undefined" == typeof(cardbookListConversion)) {
 				let fullAddress = MailServices.headerParser.makeMimeAddress(address.name, address.email);
 				if (address.email.includes("@")) {
 					if (useOnlyEmail) {
-						// we are forced to collect here because after the display name is removed
-						let resultEmailsCollections = [];
-						resultEmailsCollections = cardbookRepository.cardbookPreferences.getAllEmailsCollections();
-						if (resultEmailsCollections && resultEmailsCollections.length != 0) {
-							ovl_collected.addCollectedContact(aIdentity, resultEmailsCollections, address.name, address.email);
-						}
-						
 						this.emailResult.push(address.email);
 					} else {
 						this.emailResult.push(MailServices.headerParser.makeMimeAddress(address.name, address.email));

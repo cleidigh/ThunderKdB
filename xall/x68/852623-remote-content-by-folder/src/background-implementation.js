@@ -78,6 +78,7 @@ function checkRegexp(msgHdr, prefName, setValue) {
         console.debug(prefName + " regexp \"" + regexp +
                      "\" didn't match folder name \"" + msgHdr.folder.name +
                      "\"");
+        return false;
     }
     console.debug(prefName + " is empty, not testing");
     return false;
@@ -126,79 +127,6 @@ function removeNewMessageListener() {
                     .nsIMsgFolderNotificationService);
     notificationService.removeListener(newMessageListener);
 };
-
-function startup(data, reason) {
-    /// Bootstrap data structure @see https://developer.mozilla.org/en-US/docs/Extensions/Bootstrapped_extensions#Bootstrap_data
-    ///   string id
-    ///   string version
-    ///   nsIFile installPath
-    ///   nsIURI resourceURI
-    /// 
-    /// Reason types:
-    ///   APP_STARTUP
-    ///   ADDON_ENABLE
-    ///   ADDON_INSTALL
-    ///   ADDON_UPGRADE
-    ///   ADDON_DOWNGRADE
-    var {DefaultPreferencesLoader} = ChromeUtils.import(
-        "chrome://remote-content-by-folder/content/defaultPreferencesLoader.jsm");
-    var loader = new DefaultPreferencesLoader();
-    loader.parseUri("chrome://remote-content-by-folder/content/prefs.js");
-    initLogging();
-    addNewMessageListener();
-    Services.obs.addObserver(WindowObserver, "mail-startup-done", false);
-    forEachOpenWindow(loadIntoWindow);
-}
-
-function shutdown(data, reason) {
-    /// Bootstrap data structure @see https://developer.mozilla.org/en-US/docs/Extensions/Bootstrapped_extensions#Bootstrap_data
-    ///   string id
-    ///   string version
-    ///   nsIFile installPath
-    ///   nsIURI resourceURI
-    /// 
-    /// Reason types:
-    ///   APP_SHUTDOWN
-    ///   ADDON_DISABLE
-    ///   ADDON_UNINSTALL
-    ///   ADDON_UPGRADE
-    ///   ADDON_DOWNGRADE
-    if (reason == APP_SHUTDOWN)
-        return;
-
-    removeNewMessageListener();
-
-    // HACK WARNING: The Addon Manager does not properly clear all addon
-    //               related caches on update; in order to fully update images
-    //               and locales, their caches need clearing here
-    Services.obs.notifyObservers(null, "chrome-flush-caches", null);
-}
-
-function install(data, reason) {
-    /// Bootstrap data structure @see https://developer.mozilla.org/en-US/docs/Extensions/Bootstrapped_extensions#Bootstrap_data
-    ///   string id
-    ///   string version
-    ///   nsIFile installPath
-    ///   nsIURI resourceURI
-    /// 
-    /// Reason types:
-    ///   ADDON_INSTALL
-    ///   ADDON_UPGRADE
-    ///   ADDON_DOWNGRADE
-}
-
-function uninstall(data, reason) {
-    /// Bootstrap data structure @see https://developer.mozilla.org/en-US/docs/Extensions/Bootstrapped_extensions#Bootstrap_data
-    ///   string id
-    ///   string version
-    ///   nsIFile installPath
-    ///   nsIURI resourceURI
-    /// 
-    /// Reason types:
-    ///   ADDON_UNINSTALL
-    ///   ADDON_UPGRADE
-    ///   ADDON_DOWNGRADE
-}
 
 function initLogging() {
     try {

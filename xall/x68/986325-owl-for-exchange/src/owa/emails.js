@@ -198,14 +198,12 @@ OWAAccount.prototype.FindSharedFolders = async function(aMailbox) {
     folders.unshift(result.RootFolder.ParentFolder);
     rootFolderId = result.RootFolder.ParentFolder.ParentFolderId.Id;
   }
-  return {
-    id: rootFolderId,
-    name: aMailbox.DisplayName,
-    type: "ImapOtherUser",
-    total: 0,
-    unread: 0,
-    children: ConvertFolderList(folders.filter(folder => folder.__type == "Folder:#Exchange"), rootFolderId),
-  };
+  let tree = ConvertFolderList(folders.filter(folder => folder.__type == "Folder:#Exchange"), rootFolderId);
+  tree.name = aMailbox.DisplayName;
+  tree.type = "ImapOtherUser";
+  tree.total = 0;
+  tree.unread = 0;
+  return tree;
 }
 
 /**
@@ -287,9 +285,8 @@ OWAAccount.prototype.CreateFolder = async function(aParent, aName) {
  * Delete a folder
  *
  * @param aParent    {String} The folder's id
- * @param aPermanent {String} False if this is just a move to Deleted Items
  */
-OWAAccount.prototype.DeleteFolder = async function(aFolder, aPermanent) {
+OWAAccount.prototype.DeleteFolder = async function(aFolder) {
   let request = {
     __type: "DeleteFolderJsonRequest:#Exchange",
     Header: {
@@ -302,7 +299,7 @@ OWAAccount.prototype.DeleteFolder = async function(aFolder, aPermanent) {
         __type: "FolderId:#Exchange",
         Id: aFolder,
       }],
-      DeleteType: aPermanent ? "SoftDelete" : "MoveToDeletedItems",
+      DeleteType: "SoftDelete",
     },
   };
   await this.CallService("DeleteFolder", request); // owa.js
@@ -1100,9 +1097,11 @@ OWAAccount.prototype.GetAttachment = async function(aFolder, aItem, aAttachment)
 }
 
 /**
- * Delete all items and folders in the Deleted Items folder
+ * Delete all items and subfolders in a folder
+ *
+ * @param aFolder {String} The folder to empty
  */
-OWAAccount.prototype.EmptyTrash = async function() {
+OWAAccount.prototype.EmptyTrash = async function(aFolder) {
   let request = {
     __type: "EmptyFolderJsonRequest:#Exchange",
     Header: {
@@ -1112,8 +1111,8 @@ OWAAccount.prototype.EmptyTrash = async function() {
     Body: {
       __type: "EmptyFolderRequest:#Exchange",
       FolderIds: [{
-        __type: "DistinguishedFolderId:#Exchange",
-        Id: "deleteditems",
+        __type: "FolderId:#Exchange",
+        Id: aFolder,
       }],
       DeleteType: "SoftDelete",
       DeleteSubFolders: true,
@@ -1143,7 +1142,7 @@ OWAAccount.prototype.ProcessOperation = function(aOperation, aParameters, aMsgWi
   case "CreateFolder":
     return this.CreateFolder(aParameters.parent, aParameters.name);
   case "DeleteFolder":
-    return this.DeleteFolder(aParameters.folder, aParameters.permanent);
+    return this.DeleteFolder(aParameters.folder);
   case "MoveFolder":
     return this.MoveFolder(aParameters.folder, aParameters.target);
   case "RenameFolder":
@@ -1185,7 +1184,7 @@ OWAAccount.prototype.ProcessOperation = function(aOperation, aParameters, aMsgWi
   case "GetAttachment":
     return this.GetAttachment(aParameters.folder, aParameters.message, aParameters.attachment);
   case "EmptyTrash":
-    return this.EmptyTrash();
+    return this.EmptyTrash(aParameters.folder);
   }
   throw new Error("Not Implemented");
 }

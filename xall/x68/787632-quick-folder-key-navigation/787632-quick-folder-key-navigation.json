@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 964,
+    "average_daily_users": 1049,
     "categories": {
         "thunderbird": [
             "folders-and-filters"
@@ -18,33 +18,33 @@
     "contributions_url": null,
     "created": "2017-02-21T19:20:05Z",
     "current_version": {
-        "id": 2475087,
+        "id": 2476387,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "102.0",
                 "min": "68.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quick-folder-key-navigation/versions/2475087",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quick-folder-key-navigation/versions/2476387",
         "files": [
             {
-                "id": 1018249,
-                "created": "2020-12-30T18:51:03Z",
-                "hash": "sha256:6f4e0f0844321dc53d9c2d1d9ab3a51a0dd22a675697787cacb3c2ab28e3978e",
+                "id": 1019547,
+                "created": "2021-09-02T22:07:30Z",
+                "hash": "sha256:e37cdb4dbc1e555be5c81cc6a4a841abe347b66a7aef2f940b486383fe3684b6",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 9931,
+                "size": 8435,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018249/quick_folder_key_navigation-3.3-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019547/quick_folder_key_navigation-3.3.1-tb.xpi?src=",
                 "permissions": [
                     "storage",
                     "menus"
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 3338,
             "name": {
@@ -53,11 +53,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "This release has a minor internal change to make uninstalling/reinstalling/updating the add-on follow good programming practice."
+            "en-US": "This update includes a minor change to ensure that Quick Folder Key Navigation can only be updated if it is compatible with the version of Thunderbird being run."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quick-folder-key-navigation/versions/3.3",
-        "version": "3.3"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quick-folder-key-navigation/versions/3.3.1",
+        "version": "3.3.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -78,7 +78,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-12-30T21:47:20Z",
+    "last_updated": "2021-09-03T07:24:29Z",
     "name": {
         "en-US": "Quick Folder Key Navigation"
     },
@@ -110,9 +110,11 @@
     "weekly_downloads": 63,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
             "comp68": true,
+            "comp69plus": true,
+            "comp78plus": true,
+            "comp61plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-04-28T20:41:07Z"
         }

@@ -79,7 +79,7 @@ statusbarIconSRC: 'resource://nostalgy/skin/iconmonstr-copy-14-16.png',
 
       mainWindow.openDialog("chrome://nostalgy/content/edit_prefs.xhtml",
       "_blank",
-"dialog,chrome,modal,titlebar,resizable=yes",
+"dialog,chrome,modal,titlebar,resizable=yes, scrollbars=yes",
 mode, this,null);
   },
 

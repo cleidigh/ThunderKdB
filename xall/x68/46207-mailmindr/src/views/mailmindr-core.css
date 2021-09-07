@@ -88,3 +88,87 @@ button.mailmindr-button--remove:hover {
 select {
     height: 21px;
 }
+
+@media (prefers-color-scheme: dark) {
+    * {
+        color: #f9f9fa;
+    }
+
+    body {
+        color: #f9f9fa;
+        background-color: #2a2a2e;
+    }
+
+    button {
+        color: inherit !important;
+    }
+
+    button:hover {
+        border-color: rgba(128, 128, 128, 0.4);
+        background-color: rgba(12, 12, 13, 0.2);
+    }
+
+    button[type='submit']:hover {
+        /* background-color: rgb(0, 62, 170); */
+        background-color: var(--blue-70);
+    }
+
+    button.mailmindr-button {
+        background-color: var(--grey-90-a10);
+    }
+
+    button.mailmindr-button:hover {
+        background-color: var(--grey-90-a20);
+    }
+
+    button.mailmindr-button:disabled {
+        opacity: 0.4;
+    }
+
+    button.mailmindr-button--micro {
+        height: 24px;
+        font-size: 11px;
+        min-width: unset;
+    }
+
+    button[type='submit'],
+    button[type='submit'].mailmindr-button {
+        background-color: var(--blue-60);
+        color: var(--white-100) !important;
+    }
+
+    button[type='submit']:hover,
+    button[type='submit'].mailmindr-button:hover {
+        background-color: var(--blue-70);
+    }
+
+    button.mailmindr-button--remove {
+        color: var(--white-100) !important;
+        background-color: var(--red-60);
+    }
+
+    button.mailmindr-button--remove:hover {
+        background-color: var(--red-70);
+    }
+
+    input[type='text'],
+    input[type='number'],
+    select {
+        border-color: rgba(249, 249, 250, 0.2);
+        background-color: #2a2a2e;
+        border-radius: 2px;
+    }
+
+    .mailmindr-options--oneline button,
+    button {
+        background-color: rgba(249, 249, 250, 0.1);
+        border-color: rgba(0, 0, 0, 0);
+    }
+
+    .mailmindr-options--oneline button:enabled:hover,
+    button:enabled:hover {
+        background-color: -moz-buttonhoverface;
+        background-color: rgba(249, 249, 250, 0.1);
+        border-color: rgba(128, 128, 128, 0.4);
+    }
+}

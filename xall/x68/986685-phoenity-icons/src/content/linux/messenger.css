@@ -17,114 +17,11 @@ label.statusbarpanel {
   margin-top: 4px;
 }
 
-/* ..... Draw in titlebar ..... */
+/* other actions button */
 
-@media (-moz-gtk-csd-available: 0) {
-  #titlebar {
-    display: none;
-  }
+#otherActionsButton > .toolbarbutton-menu-dropmarker {
+  margin-inline-start: 0px;
 }
-
-@media (-moz-gtk-csd-available) {
-  :root[tabsintitlebar] #titlebar-buttonbox {
-    position: absolute;
-    padding-top: 2px;
-    -moz-box-align: start;
-  }
-  :root[tabsintitlebar] .titlebar-placeholder[type="caption-buttons"] {
-    width: 66px !important;
-  }
-  :root:not([tabsintitlebar]) .titlebar-placeholder[type="caption-buttons"] {
-    width: 0px !important;
-  }
-  :root[tabsintitlebar] #mail-toolbar-menubar2:not([autohide]) ~ #tabs-toolbar .titlebar-placeholder[type="caption-buttons"] {
-    display: none;
-  }
-  :root[tabsintitlebar]:-moz-lwtheme #titlebar-buttonbox {
-    --toolbarbutton-hover-background: var(--lwt-toolbarbutton-hover-background, rgba(0, 0, 0, .1));
-    --toolbarbutton-hover-bordercolor: var(--lwt-toolbarbutton-hover-background, rgba(0, 0, 0, .1));
-    --toolbarbutton-hover-boxshadow: none;
-    --toolbarbutton-active-background: var(--lwt-toolbarbutton-active-background, rgba(0, 0, 0, .15));
-    --toolbarbutton-active-bordercolor: var(--lwt-toolbarbutton-active-background, rgba(0, 0, 0, .15));
-    --toolbarbutton-active-boxshadow: 0 0 0 1px var(--lwt-toolbarbutton-active-background, rgba(0, 0, 0, .15)) inset;
-  }
-  :root[tabsintitlebar]:-moz-lwtheme-brighttext #titlebar-buttonbox {
-    --toolbarbutton-hover-background: var(--lwt-toolbarbutton-hover-background, rgba(255, 255, 255, .25));
-    --toolbarbutton-hover-bordercolor: var(--lwt-toolbarbutton-hover-background, rgba(255, 255, 255, .5));
-    --toolbarbutton-hover-boxshadow: none;
-    --toolbarbutton-active-background: var(--lwt-toolbarbutton-active-background, rgba(255, 255, 255, .4));
-    --toolbarbutton-active-bordercolor: var(--lwt-toolbarbutton-active-background, rgba(255, 255, 255, .7));
-    --toolbarbutton-active-boxshadow: 0 0 0 1px var(--lwt-toolbarbutton-active-background, rgba(255, 255, 255, .4)) inset;
-  }
-
-  :root[tabsintitlebar] #titlebar-buttonbox .titlebar-button {
-    -moz-appearance: none;
-    -moz-context-properties: fill;
-    fill: menutext;
-    border: 1px solid transparent;
-    border-radius: 3px;
-    margin-inline-end: 2px;
-  }
-  :root[tabsintitlebar] #titlebar-buttonbox .titlebar-button:hover {
-    background: var(--toolbarbutton-hover-background);
-    border-color: var(--toolbarbutton-hover-bordercolor);
-    box-shadow: var(--toolbarbutton-hover-boxshadow);
-    fill: var(--toolbar-non-lwt-textcolor);
-  }
-  :root[tabsintitlebar] #titlebar-buttonbox .titlebar-button:hover:active {
-    background: var(--toolbarbutton-active-background);
-    border-color: var(--toolbarbutton-active-bordercolor);
-    box-shadow: var(--toolbarbutton-active-boxshadow);
-  }
-  :root[tabsintitlebar]:-moz-lwtheme #titlebar-buttonbox .titlebar-button:hover {
-    border-color: var(--toolbarbutton-hover-bordercolor);
-  }
-  :root[tabsintitlebar] #titlebar-buttonbox .titlebar-button:-moz-lwtheme {
-    fill: var(--lwt-text-color);
-  }
-
-  @media (-moz-gtk-csd-minimize-button) {
-    #titlebar-min {
-      list-style-image: url("./icons/minimize.svg");
-    }
-    #titlebar-min .toolbarbutton-icon {
-      height: 10px;
-    }
-  }
-  @media (-moz-gtk-csd-minimize-button: 0) {
-    #titlebar-min {
-      display: none;
-    }
-  }
-
-  @media (-moz-gtk-csd-maximize-button) {
-    #titlebar-max {
-      list-style-image: url("./icons/maximize.svg");
-    }
-    :root[sizemode="maximized"] #titlebar-max {
-      list-style-image: url("./icons/restore.svg");
-    }
-    #titlebar-max .toolbarbutton-icon {
-      height: 10px;
-    }
-  }
-  @media (-moz-gtk-csd-maximize-button: 0) {
-    #titlebar-max {
-      display: none;
-    }
-  }
-
-  @media (-moz-gtk-csd-close-button) {
-    #titlebar-close {
-      list-style-image: url("./icons/close.svg");
-    }
-    #titlebar-close .toolbarbutton-icon {
-      height: 10px;
-    }
-  }
-  @media (-moz-gtk-csd-close-button: 0) {
-    #titlebar-close {
-      display: none;
-    }
-  }
+#otherActionsButton > .toolbarbutton-text {
+  margin-inline-end: 3px;
 }

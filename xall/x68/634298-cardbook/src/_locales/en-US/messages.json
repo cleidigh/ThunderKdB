@@ -2909,6 +2909,9 @@
 	"wdw_cardEditionViewListTitle": {
 		"message": "View List"
 	},
+	"wdw_cardEditionEditTemplateTitle": {
+		"message": "Edit Template"
+	},
 	"wdw_cardbookPrintTitleLong": {
 		"message": "Print Preview of $P1$ - CardBook - Thunderbird",
         "placeholders": {
@@ -3563,20 +3566,20 @@
 	"cardbookContactPaneItemAccesskey": {
 		"message": "O"
 	},
+	"wizard.next.label": {
+		"message": "Next"
+	},	
+	"wizard.back.label": {
+		"message": "Back"
+	},	
+	"wizard.create.label": {
+		"message": "Create"
+	},
 	"wizard.title": {
 		"message": "Add a new address book"
 	},
-	"wizard.label": {
-		"message": "Add a new address book"
-	},
-	"welcomePage.wizard.description": {
-		"message": "Welcome"
-	},
 	"welcomePage.description": {
 		"message": "It seems that this is the first time CardBook has been run. CardBook will attempt to collect contacts from Thunderbird’s standard address books and remote address books."
-	},
-	"initialPage.wizard.description": {
-		"message": "Location for the new address book."
 	},
 	"initialPage.description": {
 		"message": "Address book location:"
@@ -3595,9 +3598,6 @@
 	},
 	"initialPage.find.label": {
 		"message": "Search for remote address books"
-	},
-	"localPage.wizard.description": {
-		"message": "Type and location of the new local address book."
 	},
 	"localPage.type.description": {
 		"message": "Type of local address book:"
@@ -3632,9 +3632,6 @@
 	"localPage.uributton.label": {
 		"message": "Browse"
 	},
-	"remotePage.wizard.description": {
-		"message": "Type and location of the new remote address book."
-	},
 	"remotePage.description": {
 		"message": "What is the type of your remote address book (Caution: Google does NOT conform to vCard standards)?"
 	},
@@ -3646,6 +3643,9 @@
 	},
 	"remotePage.google.label": {
 		"message": "Google"
+	},
+	"remotePage.googleWorkspace.label": {
+		"message": "Google Workspace"
 	},
 	"remotePage.apple.label": {
 		"message": "Apple"
@@ -3671,14 +3671,14 @@
 	"remotePage.password.label": {
 		"message": "Password:"
 	},
+	"rememberPassword": {
+		"message": "Use Password Manager to remember this password"
+	},
 	"showHidePassword.tooltip": {
 		"message": "Show/Hide password"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Validate"
-	},
-	"locationSearchPage.wizard.description": {
-		"message": "Definition of the saved search."
 	},
 	"locationSearchPage.label": {
 		"message": "Saved Search"
@@ -3704,9 +3704,6 @@
 	"googleOauthPage.wizard.description": {
 		"message": "Google Authentication"
 	},
-	"namePage.wizard.description": {
-		"message": "Address Book Properties"
-	},
 	"namePage.selected.label": {
 		"message": "Selected"
 	},
@@ -3725,17 +3722,11 @@
 	"namePage.vCardVersion.label": {
 		"message": "vCard"
 	},
-	"namesPage.wizard.description": {
-		"message": "Address Books Properties"
-	},
 	"namesPage.name.label": {
 		"message": "Names"
 	},
 	"namesPage.name.description": {
 		"message": "Multiple address books have been discovered. Choose which address books you want to open and their names :"
-	},
-	"findPage.wizard.description": {
-		"message": "Remote address book search"
 	},
 	"findPage.name1.description": {
 		"message": "No remote address books found."
@@ -3745,9 +3736,6 @@
 	},
 	"findPage.name3.description": {
 		"message": "Multiple remote address books found. Validate remote address books to add:"
-	},
-	"finishPage.wizard.description": {
-		"message": "Address books configuration"
 	},
 	"finishPage.description": {
 		"message": "Your new address book has been successfully configured."
@@ -5115,7 +5103,13 @@
 		"message": "New List"
 	},
 	"cardbookToolbarAddListButtonTooltip": {
-		"message": "New Mailing List"
+		"message": "Create a new List"
+	},
+	"cardbookToolbarAddTemplateButtonLabel": {
+		"message": "New Template"
+	},
+	"cardbookToolbarAddTemplateButtonTooltip": {
+		"message": "Create a new template"
 	},
 	"cardbookToolbarEditButtonLabel": {
 		"message": "Edit"
@@ -5315,6 +5309,15 @@
 	"searchForLocalKeyEditButton.tooltip": {
 		"message": "Import from file"
 	},
+	"definitionLabel": {
+		"message": "Definition"
+	},
+	"fieldsLabel": {
+		"message": "Fields"
+	},
+	"formulasLabel": {
+		"message": "Formulas"
+	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Share by Email"
 	},
@@ -5462,6 +5465,9 @@
 	"fnFormulaExplanation": {
 		"message": "It is possible to customize the way CardBook generates its Display Name. This formula consists in blocks enclosed by “()”. In these blocks there might be many parts delimited by “|”."
 	},
+	"templateFormulaExplanation": {
+		"message": "It is possible to define templates with pre-defined fields. For example one may define a template with the email ”({{2}}).({{4}})@mycompany.org”. Once applied to a contact that has ”John” and ”Doe” as given name and family name, an email ”john.doe@mycompany.org” will be added to the contact."
+	},
 	"formulaExplanation1": {
 		"message": "({{1}}|{{2}}) : If {{1}} is empty, then the block will be replaced by {{2}}."
 	},
@@ -5500,12 +5506,6 @@
 	},
 	"displayFieldNamesAccesskey": {
 		"message": "F"
-	},
-	"displayTypesLabel": {
-		"message": "Types and Preferences"
-	},
-	"displayTypesAccesskey": {
-		"message": "y"
 	},
 	"fieldsToPrintGroupboxLabel": {
 		"message": "Fields to Print"
@@ -5698,6 +5698,12 @@
 	},
 	"saveTemplateLabel": {
 		"message": "Save template"
+	},
+	"applyTemplateLabel": {
+		"message": "Apply template"
+	},
+	"createTemplateLabel": {
+		"message": "Create template"
 	},
 	"convertVCardsLabel": {
 		"message": "Convert vCards"

@@ -19,7 +19,7 @@ var nostalgy_keys = [
    "JS:NostalgySuggested(NostalgyCopyToFolder);"],
   ["go","Go to folder","G",
    "JS:NostalgyGoCommand();"],
-   ["_back","Go back from folder","alt G",
+   ["go_back","Go back from folder","alt G",
    "JS:NostalgyGoBackCommand();"],
   ["go_suggest","Go as suggested","shift G",
    "JS:NostalgyGoSuggestedCommand();"],

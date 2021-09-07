@@ -3,6 +3,8 @@ var {Services} = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var {ExtensionError} = ExtensionUtils;
 /// A map of urls to the browser request windows.
 var gBrowserRequests = new Map();
+/// An array of browser request location listeners.
+var gLocationListeners = [];
 /// An array of browser request load listeners.
 var gLoadListeners = [];
 /// An array of browser request close listeners.
@@ -15,20 +17,16 @@ class BrowserRequest {
   constructor(aUrl) {
     // {string} url
     this.originalURL = aUrl;
-    // {string} url
-    this.currentURL = null,
-    // {Array of {string} url}
-    this.browsingHistory = [];
 
     this.browserListener = new BrowserListener(newURI => { // location changed
-      this.browsingHistory.push(newURI);
-      this.currentURL = newURI;
+      for (let listener of gLocationListeners) {
+        listener.async(this.originalURL, newURI);
+      }
     }, () => { // page load completed
       for (let listener of gLoadListeners) {
         listener.async(this.originalURL);
       }
     });
-    //console.log(this.browserListener.QueryInterface(Ci.nsIWebProgressListener));
   }
   /// This allows browserRequest.js to access us after passing through XPCOM.
   get wrappedJSObject() {
@@ -62,7 +60,7 @@ class BrowserRequest {
     gBrowserRequests.delete(this.originalURL);
     this.webProgress.removeProgressListener(this.browserListener);
     for (let listener of gCloseListeners) {
-      listener.async(this.originalURL, this.currentURL, this.browsingHistory);
+      listener.async(this.originalURL);
     }
   }
 }
@@ -145,6 +143,12 @@ this.request = class extends ExtensionAPI {
             gBrowserRequests.delete(aUrl);
           }
         },
+        onCommitted: new ExtensionCommon.EventManager({ context, name: "request.onCommitted", register: (listener, scheme) => {
+          gLocationListeners.push(listener);
+          return () => {
+            gLocationListeners.splice(gLocationListeners.indexOf(listener), 1);
+          };
+        }}).api(),
         onCompleted: new ExtensionCommon.EventManager({ context, name: "request.onCompleted", register: (listener, scheme) => {
           gLoadListeners.push(listener);
           return () => {

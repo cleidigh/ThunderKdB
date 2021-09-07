@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 828,
+    "average_daily_users": 915,
     "categories": {
         "thunderbird": [
             "composition",
@@ -22,7 +22,7 @@
         "id": 2474175,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "78.*",
                 "min": "78.0"
             }
         },
@@ -49,7 +49,7 @@
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 3338,
             "name": {
@@ -189,15 +189,17 @@
     "weekly_downloads": 63,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
-            "comp68": true,
+            "comp69plus": true,
             "comp78plus": true,
+            "comp61plus": true,
             "comp78pv": true,
             "comp78pv_date": "2020-08-11T21:56:21Z",
             "comp78pv_version": "2.0.1",
             "comp78pv_vmin": "78.0",
-            "comp78pv_vmax": "*",
+            "comp78pv_vmax": "78.*",
+            "comp68pv": true,
+            "comp68pv_date": "2019-11-23T16:07:33Z",
             "comp60pv": true,
             "comp60pv_date": "2018-08-25T17:32:15Z"
         }

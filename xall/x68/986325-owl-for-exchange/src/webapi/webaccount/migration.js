@@ -63,6 +63,7 @@ function getHotmailAccounts() {
   let hotmail = [];
   for (let account of /* COMPAT for TB 68 (bug 1614846) */toArray(MailServices.accounts.accounts, Ci.nsIMsgAccount)) {
     switch (account.incomingServer.type) {
+    case "owl-eas":
     case "owl-ews":
       return []; // TODO but probably not Hotmail
     case "owl":

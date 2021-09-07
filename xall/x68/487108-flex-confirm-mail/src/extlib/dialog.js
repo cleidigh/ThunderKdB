@@ -281,9 +281,10 @@ export async function open({ url, left, top, width, height, modal, opener } = {}
         browser.windows.update(win.id, { left, top });
     });
     // see also https://github.com/piroor/treestyletab/issues/2897
-    browser.tabs.query({ active: true, windowId: win.id }).then(tabs => {
-      browser.tabs.setZoom(tabs[0].id, 1);
-    });
+    if (typeof browser.tabs.setZoom == 'function')
+      browser.tabs.query({ active: true, windowId: win.id }).then(tabs => {
+        browser.tabs.setZoom(tabs[0].id, 1);
+      });
 
     if (!('windowId' in dialogContentsParams))
       dialogContentsParams.windowId = win.id;

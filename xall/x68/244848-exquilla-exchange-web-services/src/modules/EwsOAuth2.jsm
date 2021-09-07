@@ -17,6 +17,8 @@ Utils.importLocally(this);
 Cu.importGlobalProperties(["fetch", "URL", "URLSearchParams"]);
 ChromeUtils.defineModuleGetter(this, "Services",
                                "resource://gre/modules/Services.jsm");
+ChromeUtils.defineModuleGetter(this, "MailE10SUtils",
+                               "resource:///modules/MailE10SUtils.jsm");
 
 // OAuth2 for Office365
 const kExQuillaOAuthClientId = "7778c31f-71db-4645-9752-f536a326262f";
@@ -147,6 +149,33 @@ class OAuth2Login {
     await fetch(kLogoutURL, {
       credentials: "include",
     });
+  }
+
+  // See whether this is in fact an Office 365 account.
+  async isOffice365() {
+    if (!this.account.ewsURL.startsWith("https://outlook.office365.com/")) {
+      return false;
+    }
+    let params = {
+      client_id: kExQuillaOAuthClientId,
+      response_type: "code",
+      redirect_uri: kAuthDone,
+      response_mode: "query",
+      scope: kExQuillaOAuthScope,
+      login_hint: this.account.username,
+    };
+    // Slightly different from kAuthPage, as we want the specific error
+    // relevant to OAuth2 not supported for personal EWS accounts,
+    // as the generic AADSTS50034 error can occur for other reasons.
+    let response = await fetch("https://login.microsoftonline.com/common/oauth2/v2.0/authorize?" + new URLSearchParams(params));
+    let url = new URL(response.url);
+    let error = url.searchParams.get("error");
+    url.search = "";
+    if (url.href == kAuthDone && error == "invalid_scope") {
+      // We can't perform OAuth on this account.
+      return false;
+    }
+    return true;
   }
 
   /**
@@ -422,7 +451,6 @@ class OAuth2Login {
     let hostname = newParsingURI(this.account.serverURI).host;
     let username = this.account.username;
     let password = null;
-    let triedPassword = false;
     try {
       password = this.account.password;
     } catch (e) {
@@ -441,8 +469,18 @@ class OAuth2Login {
     };
     let startURL = kAuthPage + "?" + new URLSearchParams(params);
 
+    let account = this.account;
     let authCode = await openBrowserWindow({
       startURL,
+      onMessageManager : function(messageManager) {
+        messageManager.addMessageListener("ExQuillaPasswordChange", function({ data }) {
+          newPassword = data.newPassword;
+        });
+        messageManager.addMessageListener("ExQuillaAuthenticate", function() {
+          return { username, password };
+        });
+        messageManager.loadFrameScript("chrome://exquilla/content/ewsOAuth2.js", true);
+      },
       onPageChange : function(url, close) {
         let parameters = Object.fromEntries(url.searchParams);
         url.hash = url.search = "";
@@ -453,69 +491,13 @@ class OAuth2Login {
         if (url.href == kAuthDone && parameters.state == state) {
           if (parameters.code) {
             if (newPassword && newPassword != password) {
-              promptPasswordChanged(hostname, username, password, newPassword);
+              promptPasswordChanged(hostname, username, password, newPassword, account);
             }
             close(parameters.code);
           } else {
             throw new OAuth2Error(parameters);
           }
         }
-      },
-      onPageLoaded : function(window, close) {
-        // Fill in password
-        var document = window.document;
-        function usernamePrefill() {
-          let inputs = [...document.querySelectorAll("input")];
-          let usernameFields = inputs.filter(input => input.type == "email" ||
-              input.type == "text" &&
-              (input.id.toLowerCase().includes("user") || input.name.toLowerCase().includes("user") ||
-               input.id.toLowerCase().includes("mail") || input.name.toLowerCase().includes("mail")));
-          let submit = inputs.filter(input => input.type == "submit");
-          if (usernameFields.length == 1 && submit.length == 1) {
-            let usernameField = usernameFields[0];
-            if (usernameField && !usernameField.value) {
-              usernameField.value = username;
-              usernameField.dispatchEvent(new window.Event("change"));
-            }
-          }
-        }
-        function passwordPrefill() {
-          let inputs = [...document.querySelectorAll("input")];
-          let passwordFields = inputs.filter(input => input.type == "password");
-          let submitButtons = inputs.filter(input => input.type == "submit");
-          if (passwordFields.length == 1 && submitButtons.length == 1) {
-            let passwordField = passwordFields[0];
-            if (password && !triedPassword) {
-              // We recognised the fields. Fill in and submit the form.
-              passwordField.value = password;
-              passwordField.dispatchEvent(new window.Event("change"));
-              submitButtons[0].focus();
-              submitButtons[0].click();
-              triedPassword = true;
-            } else {
-              passwordField.addEventListener("change", () => {
-                newPassword = passwordField.value;
-              });
-            }
-          }
-        }
-        usernamePrefill();
-        passwordPrefill();
-        // The Microsoft OAuth login page creates the login form dynamically.
-        // We have to give this a chance to happen before trying to submit it.
-        let observer = new window.MutationObserver(function(mutations) {
-          for (let record of mutations) {
-            for (let node of record.addedNodes) {
-              if (node instanceof window.HTMLInputElement) {
-                // Some form fields were added. See if we recognise them.
-                observer.disconnect();
-                callLater(passwordPrefill, 100);
-                return;
-              }
-            }
-          }
-        });
-        observer.observe(document.body, { subtree: true, childList: true });
       },
     });
     return authCode;
@@ -528,17 +510,13 @@ class OAuth2Login {
   * This is a generic browser window and not limited to login.
   *
   * @param startURL {string} Which page to load into the window.
+  * @param onMessageManager {function(messageManager {nsIMessageSender} )}
+  *      Called when the message manager is ready.
   * @param onPageChange {function(url {URL}, close {function(result)} )}
   *      Called when a new URL starts to load.
   *      You may throw from the listener, which will close the dialog and
   *      throw the same exception to the caller of `openBrowserWindow()`.
   *      You may call `close(result)` to finish normally, see below.
-  * @param onPageLoaded {function(window {DOMWindow}, close {function(result)} )}
-  *      Called when a new URL finished to load.
-  *      Ditto as above.
-  *
-  * `close {function(result)}` Call this when you want to close the browser window.
-  *      @param result {any} This will be returned as result to the caller of `openBrowserWindow()`.
   *
   * @returns {any} what you passed to `close(result)`.
   *     Wrapped in a `Promise`, i.e. this is an `async function`.
@@ -548,7 +526,7 @@ class OAuth2Login {
   *     Will not be thrown, if `close()` was called by your code.
   */
 function openBrowserWindow(options) {
-  let { startURL, onPageChange, onPageLoaded, onClosedByUser } = options;
+  let { startURL, onMessageManager, onPageChange } = options;
   return new Promise((resolve, reject) => {
     function closeCallback(result) {
       browserWindow.close();
@@ -557,14 +535,19 @@ function openBrowserWindow(options) {
     let browserWindow = Services.ww.openWindow(Services.ww.activeWindow, "chrome://exquilla/content/moreinfo.xhtml", "", "centerscreen,chrome,location,width=980,height=750", null);
     browserWindow.addEventListener("load", e => {
       let notificationbox = new browserWindow.MozElements.NotificationBox(element => {
-        browserWindow.document.documentElement.insertBefore(element, browserWindow.document.getElementById("maincontent"));
+        browserWindow.document.getElementById("maincontent").before(element);
       });
       let browser = browserWindow.document.getElementById("maincontent");
       let label = new URL(startURL);
       label.hash = label.search = "";
       let notification = notificationbox.appendNotification(label, "", "chrome://exquilla/skin/letter-x-icon-16.png", notificationbox.PRIORITY_INFO_LOW);
-      // Not sure why triggeringPrincipal isn't being picked up automatically
-      browser.loadURI(startURL, { triggeringPrincipal: browser.nodePrincipal });
+      MailE10SUtils.loadURI(browser, startURL);
+      try {
+        onMessageManager(browser.messageManager);
+      } catch (ex) {
+        browserWindow.close();
+        reject(ex);
+      }
       // This is a property of the window because we don't want it to be
       // garbage collected until the window closes.
       browserWindow.progressListener = {
@@ -582,20 +565,9 @@ function openBrowserWindow(options) {
             reject(ex);
           }
         },
-        onStateChange(aWebProgress, aRequest, aFlag, aStatus) {
-          if (aWebProgress && aWebProgress.isTopLevel && aFlag & Ci.nsIWebProgressListener.STATE_STOP) {
-            let window = browserWindow.content;
-            try {
-              onPageLoaded(window, closeCallback);
-            } catch (ex) {
-              browserWindow.close();
-              reject(ex);
-            }
-          }
-        },
-        QueryInterface: ChromeUtils.generateQI([Ci.nsIWebProgressListener, Ci.nsISupportsWeakReference]),
+        QueryInterface: ChromeUtils.generateQI(["nsIWebProgressListener", "nsISupportsWeakReference"]),
       };
-      browser.addProgressListener(browserWindow.progressListener, Ci.nsIWebProgress.NOTIFY_LOCATION | Ci.nsIWebProgress.NOTIFY_STATE_NETWORK);
+      browser.addProgressListener(browserWindow.progressListener, Ci.nsIWebProgress.NOTIFY_LOCATION);
     });
     browserWindow.addEventListener("close", e => {
       // HACK message should be specific, but not be here
@@ -611,14 +583,17 @@ function openBrowserWindow(options) {
  * @param aUsername    {String} The account's username
  * @param aHadOldPassword {Boolean} We already had a password for this account
  * @param aNewPassword {String} The password to be saved
+ * @param aAccount     {EwsNativeMailbox}
  */
-function promptPasswordChanged(aHostname, aUsername, aHadOldPassword, aNewPassword) {
+function promptPasswordChanged(aHostname, aUsername, aHadOldPassword, aNewPassword, aAccount) {
   let bundle = Services.strings.createBundle("chrome://passwordmgr/locale/passwordmgr.properties");
   let message = bundle.formatStringFromName(aHadOldPassword ? "updatePasswordMsg" : "rememberPasswordMsg", [aUsername, aHostname], 2);
   let title = bundle.GetStringFromName(aHadOldPassword ? "passwordChangeTitle" : "savePasswordTitle");
   if (Services.prompt.confirmEx(Services.ww.activeWindow, title, message, Ci.nsIPrompt.STD_YES_NO_BUTTONS, null, null, null, null, {}) != 0) {
     return;
   }
+
+  aAccount.password = aNewPassword;
 
   // search for existing logins, and remove them if found
   let loginURI = "https://" + aHostname;

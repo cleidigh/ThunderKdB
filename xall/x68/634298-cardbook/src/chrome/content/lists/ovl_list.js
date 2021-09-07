@@ -51,6 +51,31 @@ var ovl_list = {
 				}
 			}
 		}
+	},
+
+	isInAddressBook: async function () {
+		const addressRows = [ "toAddrContainer", "ccAddrContainer", "bccAddrContainer", "newsgroupsAddrContainer" ];
+		for (let parentID of addressRows) {
+			let parent = document.getElementById(parentID);
+			if (!parent) {
+				continue;
+			}
+			for (let address of parent.querySelectorAll(".address-pill")) {
+				let isEmailRegistered = cardbookRepository.isEmailRegistered(address.emailAddress);
+				if (isEmailRegistered) {
+					address.removeAttribute("tooltiptext");
+					address.pillIndicator.hidden = true;
+				} else if (cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.exclusive")) {
+					address.setAttribute(
+						"tooltiptext",
+						await document.l10n.formatValue("pill-tooltip-not-in-address-book", {
+							email: address.fullAddress,
+						})
+						);
+					address.pillIndicator.hidden = false;
+				}
+			}
+		}
 	}
 };
 
@@ -85,6 +110,32 @@ var ovl_list = {
 		
 		// Execute some action afterwards.
 		ovl_list.mailListNameExists();
+
+	};
+
+})();
+
+// calculateHeaderHeight
+(function() {
+	// Keep a reference to the original function.
+	var _original = calculateHeaderHeight;
+	
+	// Override a function.
+	calculateHeaderHeight = function() {
+		// Execute original function.
+		var rv = _original.apply(null, arguments);
+		
+		// Execute some action afterwards.
+		// the function customElements.get("mail-address-pill").prototype.updatePillStatus is async
+		// with no way to update it
+		if ("undefined" == typeof(setTimeout)) {
+			var { setTimeout } = ChromeUtils.import("resource://gre/modules/Timer.jsm");
+		}
+		setTimeout(function() {
+			ovl_list.isInAddressBook();
+			}, 500);
+	
+
 	};
 
 })();

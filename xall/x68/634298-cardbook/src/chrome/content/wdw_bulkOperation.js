@@ -19,9 +19,11 @@ if ("undefined" == typeof(wdw_logEdition)) {
 							let response = cardbookRepository.cardbookSynchronization.getResponse(dirPrefId) + cardbookRepository.cardbookSynchronization.getDone(dirPrefId);
 							if (request != response) {
 								if (!(document.getElementById("bulkProgressmeter_" + dirPrefId))) {
-									let currentRow = cardbookElementTools.addGridRow(document.getElementById("bulkOperationRows"), 'bulkOperationRow_' + dirPrefId, {align: 'center'});
-									cardbookElementTools.addLabel(currentRow, 'bulkOperationRowLabel_' + dirPrefId, cardbookRepository.cardbookPreferences.getName(dirPrefId), 'bulkOperationProgressmeter_' + dirPrefId);
-									cardbookElementTools.addProgressmeter(currentRow, "bulkProgressmeter_" + dirPrefId);
+									let currentRow = cardbookElementTools.addTableRow(document.getElementById("bulkOperationTable"), 'bulkOperationRow_' + dirPrefId);
+									let labelData = cardbookElementTools.addTableData(currentRow, 'bulkOperationRowLabel_' + dirPrefId + '.1');
+									cardbookElementTools.addLabel(labelData, 'bulkOperationRowLabel_' + dirPrefId, cardbookRepository.cardbookPreferences.getName(dirPrefId), 'bulkOperationProgressmeter_' + dirPrefId);
+									let progressmeterData = cardbookElementTools.addTableData(currentRow, 'bulkOperationRowLabel_' + dirPrefId + '.2');
+									cardbookElementTools.addProgressmeter(progressmeterData, "bulkProgressmeter_" + dirPrefId);
 								}
 								let value = Math.round(done / total * 100);
 								document.getElementById("bulkProgressmeter_" + dirPrefId).value = value;

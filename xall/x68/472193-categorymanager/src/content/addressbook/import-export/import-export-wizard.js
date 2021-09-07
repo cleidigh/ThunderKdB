@@ -6,7 +6,7 @@ var jbCatMan = window.opener.jbCatMan;
 var jbCatManWizard = {};
 
 Services.scriptloader.loadSubScript("chrome://sendtocategory/content/parser/csv/csv.js");
-Services.scriptloader.loadSubScript("chrome://sendtocategory/content/scripts/i18n.js");
+Services.scriptloader.loadSubScript("chrome://sendtocategory/content/scripts/i18n/i18n.js");
 //Services.scriptloader.loadSubScript("chrome://sendtocategory/content/parser/vcf/vcard.js");
 //Services.scriptloader.loadSubScript("chrome://sendtocategory/content/parser/vcf/vcf.js");
 
@@ -784,8 +784,7 @@ jbCatManWizard.resetThunderbirdProperties = function (listname, defaults) {
 }
 
 jbCatManWizard.searchThunderbirdProperties = function (props) {
-  while (props.hasMoreElements()) {
-    prop = props.getNext().QueryInterface(Components.interfaces.nsIProperty); 
+  for (let prop of props) {
     if (jbCatManWizard.foundThunderbirdProperties.indexOf(prop.name) == -1 && jbCatManWizard.forbiddenFields.indexOf(prop.name) == -1) { 
       jbCatManWizard.foundThunderbirdProperties.push(prop.name);
     }

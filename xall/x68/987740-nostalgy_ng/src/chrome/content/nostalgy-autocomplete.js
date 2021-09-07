@@ -72,7 +72,11 @@ NostalgyAutoCompleteSearch.prototype = {
   _f: {},
   _id: 0,
 
-  attachGetValuesFunction: function(f) { this._id++; this._f[this._id] = f; return this._id; },
+  attachGetValuesFunction: function(f) { 
+    this._id++; 
+    this._f[this._id] = f; 
+    return this._id; 
+  },
 
   startSearch: function(searchString, searchParam, previousResult, listener) {
     var searchResults = this._f[searchParam](searchString);

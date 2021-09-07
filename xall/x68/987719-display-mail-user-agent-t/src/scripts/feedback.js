@@ -73,7 +73,8 @@ function doSend() {
     browser.i18n.getMessage("feedback.body.icon") + "\n" +
     browser.i18n.getMessage("feedback.iconinfo") + "\n\n\n\n\n" +
     "------------------------------\n" + info.headers;
-  browser.compose.beginNew( { to: email, subject: subject, body: body, identityId: info.iid } );
+  //browser.compose.beginNew( { to: email, subject: subject, body: body, identityId: info.iid } );
+  browser.compose.beginNew( { to: email, subject: subject, plainTextBody: body, identityId: info.iid, isPlainText: true } );
 }
 
 function doClose(time) {

@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 751,
+    "average_daily_users": 814,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -19,32 +19,34 @@
     "contributions_url": "",
     "created": "2020-02-10T20:15:47Z",
     "current_version": {
-        "id": 2475309,
+        "id": 2476340,
         "compatibility": {
             "thunderbird": {
-                "max": "78.*",
-                "min": "78.0a1"
+                "max": "*",
+                "min": "91.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/browseintab/versions/2475309",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/browseintab/versions/2476340",
         "files": [
             {
-                "id": 1018470,
-                "created": "2021-02-06T22:45:22Z",
-                "hash": "sha256:695884723045edb62bf9a8244935b4bea2421ae626c8751f19c2f300a4b71991",
+                "id": 1019500,
+                "created": "2021-08-26T19:45:40Z",
+                "hash": "sha256:37af1e35fb069d351f31e70f6be652792706f36574725dab28975fcadd94892c",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 50817,
+                "size": 73109,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018470/browseintab-2.8-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019500/browseintab-3.0.1-tb.xpi?src=",
                 "permissions": [
-                    "storage"
+                    "storage",
+                    "tabs",
+                    "<all_urls>"
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 6,
             "name": {
@@ -74,11 +76,11 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "<b>Version 2.8 changes</b>\n<ul>  <li>Fix: Issue #7: Ensure window size doesn't change when changing chrome zoom level (thanks Dreamer).</li>  <li>Fix: use a better method to ensure no content selection on mousewheel zoom, even in frames.</li>  <li>Fix: better handle the poor tab browser implementation in the chat tab.</li>  <li>New: reorganize zoom options page to be more clear.</li></ul>"
+            "en-US": "<b>Version 3.0.1 changes</b>\n<ul>  <li>Update: compatibility with Tb 91.</li>  <li>New: Enable arrow key button tab scrolling and tab focus highlight (Bug 1718559, Bug 1718777).</li>  <li>Note: some content tab features (link handling, mousewheel zoom, image zoom) are not available yet due to multiprocess tabs. See the homepage.</li></ul>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/browseintab/versions/2.8",
-        "version": "2.8"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/browseintab/versions/3.0.1",
+        "version": "3.0.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -101,7 +103,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2021-02-08T15:09:41Z",
+    "last_updated": "2021-08-26T20:07:19Z",
     "name": {
         "en-US": "BrowseInTab"
     },
@@ -207,10 +209,10 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
-            "comp69plus": true,
+            "comp68": true,
             "comp78plus": true,
-            "comp61plus": true,
             "comp78pv": true,
             "comp78pv_date": "2021-01-15T17:31:29Z",
             "comp78pv_version": "2.7",

@@ -14,6 +14,11 @@
  
 const { classes: Cc, Constructor: CC, interfaces: Ci, utils: Cu, Exception: CE, results: Cr, } = Components;
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
+try { // COMPAT for TB 78 (bug 1649554)
+  var { ComponentUtils } = ChromeUtils.import("resource://gre/modules/ComponentUtils.jsm");
+} catch (ex) { // COMPAT for TB 78 (bug 1649554)
+  var ComponentUtils = XPCOMUtils; // COMPAT for TB 78 (bug 1649554)
+} // COMPAT for TB 78 (bug 1649554)
 ChromeUtils.defineModuleGetter(this, "Utils",
   "resource://exquilla/ewsUtils.jsm");
 ChromeUtils.defineModuleGetter(this, "Services",
@@ -42,5 +47,5 @@ Calendar.prototype = {
 }
 
 var components = [Calendar];
-var NSGetFactory = XPCOMUtils.generateNSGetFactory(components);
+var NSGetFactory = ComponentUtils.generateNSGetFactory(components);
 var EXPORTED_SYMBOLS = ["NSGetFactory"];

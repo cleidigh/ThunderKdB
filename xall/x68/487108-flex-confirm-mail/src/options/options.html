@@ -89,6 +89,34 @@
         <li><label><input name="attentionDomainsConfirmationMode" type="radio" value="0">__MSG_config_attentionDomainsConfirmationMode_never_label__</label></li>
       </ul>
     </fieldset>
+    </section>
+
+
+    <section>
+    <h1>__MSG_config_blockedDomains_caption__</h1>
+
+    <fieldset>
+      <legend><label><input id="blockedDomainsEnabled" type="checkbox">__MSG_config_blockedDomainsEnabled__</label></legend>
+      <ul>
+        <li><label><input name="blockedDomainsSource" type="radio" value="0">__MSG_config_blockedDomains_label__</label>
+            <textarea id="blockedDomainsField"
+                      class="array-type-config"
+                      data-array-config-key="blockedDomains"
+                      placeholder="__MSG_config_blockedDomains_input_placeholder__"></textarea>
+            </li>
+        <li><label class="require-native-messaging-host"
+                  ><input name="blockedDomainsSource" type="radio" value="1">__MSG_config_blockedDomainsFile_label__</label>
+            <br><label class="require-native-messaging-host flex-box row"
+                      ><input id="blockedDomainsFile"
+                              class="filepath flex-box column"
+                              type="text"
+                              placeholder="__MSG_config_blockedDomainsFile_input_placeholder__">
+                       <button id="blockedDomainsFileChoose"
+                               class="flex-box column"
+                              >__MSG_config_blockedDomainsFile_button_label__</button></label></li>
+      </ul>
+    </fieldset>
+    </section>
 
 
     <section>

@@ -86,7 +86,7 @@ async function UpdateLicenseStatus() {
       licenseType = "paid"; // treat "lifetime" or other unknown types same as paid
     }
 
-    let servers = await browser.incomingServer.getServersOfTypes(["owl", "owl-ews"]);
+    let servers = await browser.incomingServer.getServersOfTypes(["owl", "owl-ews", "owl-eas"]);
     if (servers.length) {
       let identities = await browser.incomingServer.getIdentities(servers[0]);
       if (identities.length) {

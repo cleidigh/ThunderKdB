@@ -5,9 +5,8 @@
 @namespace xhtml "http://www.w3.org/1999/xhtml";
 
 
-#folderTree > treechildren::-moz-tree-row,
-#threadTree > treechildren::-moz-tree-row {
-  min-height: 20px;
+treechildren::-moz-tree-row {
+  min-height: 20px !important;
 }
 
 /* ..... Folders ..... */

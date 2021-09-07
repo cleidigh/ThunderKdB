@@ -151,7 +151,7 @@ function patchCardBookABSelector(es) {
 	try {
 		let wrapper = es.closest("search-value");
 		let menulistFragment = window.MozXULElement.parseXULToFragment(`
-			<menulist flex="1" class="search-value-menulist flexinput cardbookABSelector" inherits="disabled" oncommand="this.parentNode.updateSearchValue(this);">
+			<menulist flex="1" class="search-value-menulist flexinput cardbookABSelector" inherits="disabled" sizetopopup="none" oncommand="this.parentNode.updateSearchValue(this);">
 				<menupopup class="search-value-popup"/>
 			</menulist>
 		`);

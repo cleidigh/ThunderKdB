@@ -1,16 +1,17 @@
 {
     "manifest_version": 2,
     "name": "__MSG_extensionName__",
-    "version": "3.5.1",
+    "version": "3.5.2",
     "description": "__MSG_extensionDescription__",
     "author": "Neil Bird",
-    "homepage_url": "https://addons.mozilla.org/en-GB/firefox/addon/url-link/",
+    "homepage_url": "https://github.com/fnxweb/urllink",
     "default_locale": "en_US",
 
     "applications": {
         "gecko": {
             "id": "{139a120b-c2ea-41d2-bf70-542d9f063dfd}",
-            "strict_min_version": "68.9.0"
+            "strict_min_version": "68.9.0",
+            "strict_max_version": "91.*"
         }
     },
 

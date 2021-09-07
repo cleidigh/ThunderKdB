@@ -12,6 +12,11 @@
 'use strict';
 const { classes: Cc, Constructor: CC, interfaces: Ci, utils: Cu, Exception: CE, results: Cr, } = Components;
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
+try { // COMPAT for TB 78 (bug 1649554)
+  var { ComponentUtils } = ChromeUtils.import("resource://gre/modules/ComponentUtils.jsm");
+} catch (ex) { // COMPAT for TB 78 (bug 1649554)
+  var ComponentUtils = XPCOMUtils; // COMPAT for TB 78 (bug 1649554)
+} // COMPAT for TB 78 (bug 1649554)
 ChromeUtils.defineModuleGetter(this, "Utils",
   "resource://exquilla/ewsUtils.jsm");
 ChromeUtils.defineModuleGetter(this, "EnsureLicensed",
@@ -134,8 +139,8 @@ function stringLineStreamFactory(aString) {
   let stringStream = inputStreamFromString(aString);
   let lineStream = Object.create(stringStream);
   Object.defineProperty(lineStream, 'QueryInterface', {
-    value: ChromeUtils.generateQI([Ci.nsIInputStream,
-                                   Ci.nsILineInputStream]),
+    value: ChromeUtils.generateQI(["nsIInputStream",
+                                   "nsILineInputStream"]),
     writable: false,
     configurable: true,
     enumerable: true
@@ -203,10 +208,8 @@ function addDirectorySeparator(file) {
 // Note Skink version did an alert.
 function checkIfFolderExists(newFolderName, parentFolder)
 {
-  let subFolders = parentFolder.subFolders;
-  while (subFolders.hasMoreElements())
+  for (let msgFolder of parentFolder.subFolders)
   {
-    let msgFolder = subFolders.getNext().QueryInterface(Ci.nsIMsgFolder);
     if (newFolderName == msgFolder.name) {
       return true;
     }
@@ -228,7 +231,7 @@ function DualListener(copyServiceListener) {
   this._copyServiceListener = copyServiceListener;
 }
 DualListener.prototype = {
-  QueryInterface: ChromeUtils.generateQI([Ci.nsICopyServiceListener]),
+  QueryInterface: ChromeUtils.generateQI(["nsICopyServiceListener"]),
   onEvent(item, eventName, data, result) {
     if (eventName == "StopCopy" && !this._resolved) {
       this._resolved = true;
@@ -799,10 +802,7 @@ EwsMsgFolder.prototype = {
     let folderIds = this._nativeFolder.subfolderIds;
     log.config("folder " + this._nativeFolder.displayName + " has " + folderIds.length + " native subfolders" +
               " and " + this._nativeFolder.totalCount + " total messages");
-    let subfoldersEnum = this.subFolders;
-    while (subfoldersEnum.hasMoreElements()) {
-      let childSkinkFolder = subfoldersEnum.getNext()
-                                           .QueryInterface(Ci.nsIMsgFolder);
+    for (let childSkinkFolder of this.subFolders) {
       let childEwsMailFolder = safeGetJS(childSkinkFolder, "EwsMsgFolder");
       // ToDo: I need to store the needed folder info in the cache, so
       // that I do not have to open each folder db
@@ -1002,7 +1002,7 @@ EwsMsgFolder.prototype = {
               // GetSubFolders does some critical initialization. We will do a dummy call,
               // otherwise AddSubfolders ends up calling itself during that initialization.
               // This should really be cleaned up instead of doing this fragile kludge.
-              let folderEnum = childMailFolder.subFolders;
+              childMailFolder.subFolders;
 
               let childEwsMailFolder = safeGetJS(childMailFolder, "EwsMsgFolder");
               childEwsMailFolder.updateFromNative(childNativeFolder);
@@ -1177,8 +1177,8 @@ EwsMsgFolder.prototype = {
         let skinkEnum = database.EnumerateMessages();
 
         // Get all skink messages, and look for missing ews messages. Do in batches of 200
-        while (skinkEnum.hasMoreElements()) {
-          for (let count = 0; skinkEnum.hasMoreElements() && count < 200; count++) {
+        while (skinkEnum.hasMoreElements()) { // COMPAT for TB 78 (#979)
+          for (let count = 0; skinkEnum.hasMoreElements() && count < 200; count++) { // COMPAT for TB 78 (#979)
             let hdr = skinkEnum.getNext().QueryInterface(Ci.nsIMsgDBHdr);
             skinkDbCount++;
             if (!hdr.isRead)
@@ -1237,7 +1237,7 @@ EwsMsgFolder.prototype = {
         if (extraHdrs.length)
         {
           log.info("Message DB had messages with no corresponding server entry, deleting. Count: " + extraHdrs.length);
-          notifier.notifyMsgsDeleted(/* COMPAT for TB 68 */database.deleteMessages.length == 3 ? extraHdrs : toArray(extraHdrs, Ci.nsIMsgDBHdr));
+          notifier.notifyMsgsDeleted(/* COMPAT for TB 68 */database.deleteMessages.length == 3 ? extraHdrs : /* COMPAT */toArray(extraHdrs, Ci.nsIMsgDBHdr));
           for (let index = 0; index < extraHdrs.length; index++)
           {
             let hdr = extraHdrs.queryElementAt(index, Ci.nsIMsgDBHdr);
@@ -1491,7 +1491,7 @@ EwsMsgFolder.prototype = {
       try {
         result = await (async () => {
           // missing password message
-          if (!mailbox.password)
+          if (!mailbox.password && mailbox.authMethod == Ci.nsMsgAuthMethod.passwordCleartext)
           {
             showStatusFeedback("PasswordMissing");
             ewsServer.promptPassword();
@@ -1676,7 +1676,7 @@ EwsMsgFolder.prototype = {
           //  about the heap. So I will get the keys another way, through enumeration.
           let hdrs = database.EnumerateMessages();
           let hdrCount = 0;
-          while (hdrs.hasMoreElements())
+          while (hdrs.hasMoreElements()) // COMPAT for TB 78 (#979)
           {
             hdrCount++;
             let hdr = hdrs.getNext().QueryInterface(Ci.nsIMsgDBHdr);
@@ -1717,7 +1717,7 @@ EwsMsgFolder.prototype = {
                 notifier.notifyMsgsDeleted(hdrsToDelete);
                 database.deleteMessages(keysToDelete.length, keysToDelete, null);
               } else { /* COMPAT for TB 68 */
-                notifier.notifyMsgsDeleted(toArray(hdrsToDelete, Ci.nsIMsgDBHdr));
+                notifier.notifyMsgsDeleted(/* COMPAT */toArray(hdrsToDelete, Ci.nsIMsgDBHdr));
                 database.deleteMessages(keysToDelete, null);
               } // COMPAT for TB 68
             }
@@ -1769,9 +1769,8 @@ EwsMsgFolder.prototype = {
     if (!mailbox)
       throw CE("Missing mailbox");
 
-    for (let i = 0; i < messages.length; ++i)
+    for (let message of /* COMPAT for TB 78 */toArray(messages, Ci.nsIMsgDBHdr))
     {
-      let message = messages.queryElementAt(i, Ci.nsIMsgDBHdr);
       let itemId = message.getProperty("ewsItemId");
       if (itemId)
       {
@@ -1817,7 +1816,7 @@ EwsMsgFolder.prototype = {
     this.enableNotifications(Ci.nsIMsgFolder.allMessageCountNotifications, false, true);
     for (let i = 0; i < messageCount; ++i)
     {
-      let message = aSrcMessages.queryElementAt(i, Ci.nsIMsgDBHdr);
+      let message = aSrcMessages[i];
 
       let nativeItem = aNewItems.queryElementAt(i, Ci.nsISupports).wrappedJSObject;
       if (!nativeItem)
@@ -1918,12 +1917,10 @@ EwsMsgFolder.prototype = {
       srcFolder.alertFilterChanged(msgWindow);
 
     // Copy subfolders to the new location
-    let enumerator = srcFolder.subFolders;
     let ewsNewFolder = safeGetJS(newMsgFolder, "EwsMsgFolder");
     {
-      while (enumerator.hasMoreElements())
+      for (let item of srcFolder.subFolders)
       {
-        let item = enumerator.getNext().QueryInterface(Ci.nsIMsgFolder);
         // false needed to avoid un-necessary deletions
         ewsNewFolder.copyFolderLocal(folder, false, msgWindow, listener);
       }
@@ -1975,7 +1972,11 @@ EwsMsgFolder.prototype = {
       //let dstFolder = this.QueryInterface(Ci.nsIMsgFolder);
       // the copy service does a direct compare of msgFolder, so we have
       // to pass the C++ delegator here
-      MailServices.copy.NotifyCompletion(srcSupports, this.delegator, aResult);
+      if (MailServices.copy.NotifyCompletion) { // COMPAT for TB 78 (bug 1715433)
+        MailServices.copy.NotifyCompletion(srcSupports, this.delegator, aResult); // COMPAT for TB 78 (bug 1715433)
+      } else { // COMPAT for TB 78 (bug 1715433)
+        MailServices.copy.notifyCompletion(srcSupports, this.delegator, aResult);
+      } // COMPAT for TB 78 (bug 1715433)
     });
   },
 
@@ -2025,6 +2026,23 @@ EwsMsgFolder.prototype = {
     exqServer.createSubfolder(this, folderName);
   },
 
+  deleteSelf(msgWindow) {
+    if (!this._useMail)
+      throw CE("Mail is disabled", Cr.NS_ERROR_NOT_AVAILABLE);
+
+    if (this.getFlag(Ci.nsMsgFolderFlags.Virtual))
+    {
+      log.config("deleting virtual folder");
+      this.cppBase.deleteSelf(msgWindow);
+      return;
+    }
+
+    let exqServer = safeGetJS(this.server, "EwsIncomingServer");
+    let folderIds = new StringArray();
+    folderIds.append(this.folderId);
+    exqServer.deleteSubfolders(folderIds);
+  },
+  /* COMPAT for TB 78 (bug 1612239) */
   deleteSubFolders(folders, msgWindow) {
     if (!this._useMail)
       throw CE("Mail is disabled", Cr.NS_ERROR_NOT_AVAILABLE);
@@ -2053,7 +2071,7 @@ EwsMsgFolder.prototype = {
     let exqServer = safeGetJS(this.server, "EwsIncomingServer");
     exqServer.deleteSubfolders(folderIds);
   },
-
+  /* COMPAT for TB 78 (bug 1612239) */
   get subFolders() {
     if (!this._useMail)
       throw CE("Mail is disabled", Cr.NS_ERROR_NOT_AVAILABLE);
@@ -2084,11 +2102,8 @@ EwsMsgFolder.prototype = {
 
         // we need to create all the folders at start-up because if a folder having
         //   subfolders is closed then the datasource will not ask for subfolders.
-        let subFoldersEnum = this.cppBase.subFolders;
-        while (subFoldersEnum.hasMoreElements()) {
-          let childSubs = subFoldersEnum.getNext()
-                                        .QueryInterface(Ci.nsIMsgFolder)
-                                        .subfolders;
+        for (let child of this.cppBase.subFolders) {
+          child.subFolders;
         }
       }
       this.updateSummaryTotals(false);
@@ -2176,7 +2191,7 @@ EwsMsgFolder.prototype = {
             throw CE(bundle.GetStringFromName("noLicenseFound"));
           }
 
-          for (let folder of toArray(folders, Ci.nsIMsgFolder))
+          for (let folder of /* COMPAT for TB 78 */toArray(folders, Ci.nsIMsgFolder))
           {
             let ewsFolder = safeGetJS(folder, "EwsMsgFolder");
 
@@ -2232,7 +2247,7 @@ EwsMsgFolder.prototype = {
         if (mailbox.activityListener)
           mailbox.activityListener.onDownloadStarted(this._nativeFolder);
 
-        while(messagesEnum.hasMoreElements()) {
+        while(messagesEnum.hasMoreElements()) { // COMPAT for TB 78 (#979)
           let currentMessage = messagesEnum.getNext().QueryInterface(Ci.nsIMsgDBHdr);
           log.debug("Checking need to download message " + currentMessage.mime2DecodedSubject);
 
@@ -2486,8 +2501,13 @@ EwsMsgFolder.prototype = {
 
         if (messages.length)
         {
-          MailServices.copy.CopyMessages(this.delegator, messages, folder, true,
-            /*nsIMsgCopyServiceListener* listener*/ null, null, false /*allowUndo*/);
+          if (MailServices.copy.CopyMessages) { /* COMPAT for TB 78 (bug 1612239, bug 1715433) */
+            MailServices.copy.CopyMessages(this.delegator, messages, folder, true,
+              /*nsIMsgCopyServiceListener* listener*/ null, null, false /*allowUndo*/);
+          } else { /* COMPAT for TB 78 (bug 1612239, bug 1715433) */
+            MailServices.copy.copyMessages(this.delegator, /* COMPAT */toArray(messages, Ci.nsIMsgDBHdr), folder, true,
+              /*nsIMsgCopyServiceListener* listener*/ null, null, false /*allowUndo*/);
+          } // COMPAT for TB 78 (bug 1612239, bug 1715433)
         }
       }
     }
@@ -2547,7 +2567,7 @@ EwsMsgFolder.prototype = {
 
     // tell the base folder to do it, which will mark them read in the db.
     this.cppBase.markMessagesRead(messages, markRead);
-    this._markServerMessagesRead(toArray(messages, Ci.nsIMsgDBHdr), markRead);
+    this._markServerMessagesRead(/* COMPAT for TB 78 */toArray(messages, Ci.nsIMsgDBHdr), markRead);
     this.msgDatabase.Commit(Ci.nsMsgDBCommitType.kLargeCommit);
   },
 
@@ -2597,7 +2617,7 @@ EwsMsgFolder.prototype = {
 
     // tell the base folder to do it, which will mark them flagged in the db.
     this.cppBase.markMessagesFlagged(messages, markRead);
-    this._markServerMessagesFlagged(toArray(messages, Ci.nsIMsgDBHdr), markRead);
+    this._markServerMessagesFlagged(/* COMPAT for TB 78 */toArray(messages, Ci.nsIMsgDBHdr), markRead);
     database.Commit(Ci.nsMsgDBCommitType.kLargeCommit);
   },
 
@@ -2770,17 +2790,15 @@ EwsMsgFolder.prototype = {
 
         let messages = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
         let hdrs = database.EnumerateMessages();
-        while (hdrs.hasMoreElements())
+        while (hdrs.hasMoreElements()) // COMPAT for TB 78 (#979)
         {
           let hdr = hdrs.getNext().QueryInterface(Ci.nsIMsgDBHdr);
           messages.appendElement(hdr, false);
         }
 
         let folders = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
-        let foldersEnum = trashFolder.subFolders;
-        while (foldersEnum.hasMoreElements())
+        for (let folder of trashFolder.subFolders)
         {
-          let folder = foldersEnum.getNext().QueryInterface(Ci.nsIMsgFolder);
           folders.appendElement(folder, false);
         }
 
@@ -2795,14 +2813,24 @@ EwsMsgFolder.prototype = {
         {
           log.config("Deleting messages from trash, count is", messages.length);
           let deleteMessagesListener = new PromiseUtils.CopyListener();
-          trashFolder.deleteMessages(messages,  msgWindow, true, false, deleteMessagesListener, false);
+          if (trashFolder.deleteSubFolders) { // COMPAT for TB 78 (bug 1612239)
+            trashFolder.deleteMessages(messages, msgWindow, true, false, deleteMessagesListener, false); // COMPAT for TB 78 (bug 1612239)
+          } else { // COMPAT for TB 78 (bug 1612239)
+            trashFolder.deleteMessages(/* COMPAT */toArray(messages, Ci.nsIMsgDBHdr), msgWindow, true, false, deleteMessagesListener, false);
+          } // COMPAT for TB 78 (bug 1612239)
           havePromise = deleteMessagesListener.promise;
         }
 
         if (folders.length)
         {
           log.config("Deleting folders from trash, count is " + folders.length);
-          trashFolder.deleteSubFolders(folders, msgWindow);
+          if (trashFolder.deleteSubFolders) { // COMPAT for TB 78 (bug 1612239)
+            trashFolder.deleteSubFolders(folders, msgWindow); // COMPAT for TB 78 (bug 1612239)
+          } else { // COMPAT for TB 78 (bug 1612239)
+            for (let folder of folders) {
+              folder.deleteSelf();
+            }
+          } // COMPAT for TB 78 (bug 1612239)
         }
 
         if (havePromise)
@@ -3077,21 +3105,24 @@ EwsMsgFolder.prototype = {
           // Notify on delete from trash and shift-delete.
           let trashFolder = this.trashFolder
           if (!isMove && (deleteStorage || isTrashFolder)) {
-            MailServices.mfn.notifyMsgsDeleted(/* COMPAT for TB 68 */this.msgDatabase.deleteMessages.length == 3 ? messages : toArray(messages, Ci.nsIMsgDBHdr));
+            MailServices.mfn.notifyMsgsDeleted(/* COMPAT for TB 68 */this.msgDatabase.deleteMessages.length == 3 ? messages : /* COMPAT for TB 78 */toArray(messages, Ci.nsIMsgDBHdr));
           }
 
           if (trashFolder && !deleteStorage && !isTrashFolder) {
             // Set the deleted flag on messages so that any updates get skipped
             log.config("deleteMessages moving to trash folder");
-            for (let i = 0; i < messages.length; i++) {
-              let message = messages.queryElementAt(i, Ci.nsIMsgDBHdr);
+            for (let message of /* COMPAT for TB 78 */toArray(messages, Ci.nsIMsgDBHdr)) {
               let itemId = message.getProperty("ewsItemId");
               if (itemId) {
                 let item = mailbox.getItem(itemId);
                 item.raiseFlags(item.DeletedBit);
               }
             }
-            MailServices.copy.CopyMessages(this.delegator, messages, trashFolder, true, localListener, msgWindow, allowUndo);
+            if (MailServices.copy.CopyMessages) { // COMPAT for TB 78 (bug 1612239, bug 1715433)
+              MailServices.copy.CopyMessages(this.delegator, messages, trashFolder, true, localListener, msgWindow, allowUndo); // COMPAT for TB 78 (bug 1612239, bug 1715433)
+            } else { // COMPAT for TB 78 (bug 1612239, bug 1715433)
+              MailServices.copy.copyMessages(this.delegator, messages, trashFolder, true, localListener, msgWindow, allowUndo);
+            } // COMPAT for TB 78 (bug 1612239, bug 1715433)
             let result = await localListener.promise;
             return result;
           }
@@ -3100,8 +3131,7 @@ EwsMsgFolder.prototype = {
           let itemIds = new StringArray();
           let deleteCount = 0;
           let unreadCount = 0;
-          for (let i = 0; i < messages.length; i++) {
-            let message = messages.queryElementAt(i, Ci.nsIMsgDBHdr);
+          for (let message of /* COMPAT for TB 78 */toArray(messages, Ci.nsIMsgDBHdr)) {
             let itemId = message.getProperty("ewsItemId");
             if (!itemId) {
               log.warn("Could not delete messages because itemId is missing");
@@ -3244,7 +3274,7 @@ EwsMsgFolder.prototype = {
         this._message = "";
       }
       PromiseStreamListener.prototype = {
-        QueryInterface: ChromeUtils.generateQI([Ci.nsIStreamListener, Ci.nsIRequestObserver]),
+        QueryInterface: ChromeUtils.generateQI(["nsIStreamListener", "nsIRequestObserver"]),
         onStartRequest(aRequest) {},
         onStopRequest(aRequest, aStatusCode) {
           if (CS(aStatusCode)) {
@@ -3341,10 +3371,7 @@ EwsMsgFolder.prototype = {
         get promise() { return this._promise;},
       };
 
-      let keys = [];
-      for (let i = 0; i < messages.length; i++) {
-        keys.push(messages.queryElementAt(i, Ci.nsIMsgDBHdr).messageKey);
-      }
+      let keys = /* COMPAT for TB 78 */toArray(messages, Ci.nsIMsgDBHdr).map(hdr => hdr.messageKey);
 
       // sort in descending order of keys, we'll access by pop()
       keys.sort((a, b) => b - a);
@@ -3423,9 +3450,7 @@ EwsMsgFolder.prototype = {
       let srcEwsFolder = safeGetJS(srcFolder, "EwsMsgFolder");
       let mailbox = srcEwsFolder.nativeMailbox;
 
-      for (let i = 0; i < messages.length; i++) {
-        let message = messages.queryElementAt(i, Ci.nsIMsgDBHdr);
-
+      for (let message of /* COMPAT for TB 78 */toArray(messages, Ci.nsIMsgDBHdr)) {
         let itemId = message.getProperty("ewsItemId");
         if (!itemId) {
           log.warn("Empty itemId for message " + message.mime2DecodedSubject +
@@ -3450,7 +3475,7 @@ EwsMsgFolder.prototype = {
               return;
             log.debug("NewCopiedItems event in copyEwsMessages");
             let newItems = aData.QueryInterface(Ci.nsIArray);
-            self.copyLocalMessages(messages, destMessages, newItems);
+            self.copyLocalMessages(/* COMPAT for TB 78 */toArray(messages, Ci.nsIMsgDBHdr), destMessages, newItems);
             self.hasNewMessages = true;
             if (isMove)
               srcEwsFolder.deleteLocalMessages(messages);
@@ -3477,7 +3502,7 @@ EwsMsgFolder.prototype = {
       // xxx todo - why are we doing a folder loaded here?
       this._notifyFolderLoaded();
       let isTB68 = this.msgDatabase.deleteMessages.length == 3; // COMPAT for TB 68
-      MailServices.mfn.notifyMsgsMoveCopyCompleted(isMove, isTB68 ? srcMessages : toArray(srcMessages, Ci.nsIMsgDBHdr), this.delegator, isTB68 ? destMessages : toArray(destMessages, Ci.nsIMsgDBHdr));
+      MailServices.mfn.notifyMsgsMoveCopyCompleted(isMove, isTB68 ? srcMessages : /* COMPAT for TB 78 */toArray(srcMessages, Ci.nsIMsgDBHdr), this.delegator, isTB68 ? destMessages : /* COMPAT for TB 78 */toArray(destMessages, Ci.nsIMsgDBHdr));
       if (isMove)
         srcFolder.NotifyFolderEvent("DeleteOrMoveMsgCompleted");
     }
@@ -3489,9 +3514,12 @@ EwsMsgFolder.prototype = {
       if (isMove)
         srcFolder.NotifyFolderEvent("DeleteOrMoveMsgFailed");
     }
-    // xxx todo - does this need to point to the delegator?
     executeSoon(() => {
-      MailServices.copy.NotifyCompletion(srcFolder, this.delegator, result);
+      if (MailServices.copy.NotifyCompletion) { // COMPAT for TB 78 (bug 1715433)
+        MailServices.copy.NotifyCompletion(srcFolder, this.delegator, result); // COMPAT for TB 78 (bug 1715433)
+      } else { // COMPAT for TB 78 (bug 1715433)
+        MailServices.copy.notifyCompletion(srcFolder, this.delegator, result);
+      } // COMPAT for TB 78 (bug 1715433)
     });
   } catch (e) { e.code = "error-finish-copy"; log.error("_finishCopy error", e);}},
 
@@ -3751,12 +3779,9 @@ EwsMsgFolder.prototype = {
       // truncate the .msf (delete last 4 character)
       leafName = currentFile.leafName.slice(0, -4);
 
-      let subfolderEnum = this.cppBase.subFolders;
       let child = null;
-      while (subfolderEnum.hasMoreElements())
+      for (let folder of this.cppBase.subFolders)
       {
-        let folder = subfolderEnum.getNext()
-                                  .QueryInterface(Ci.nsIMsgFolder);
         if (folder.name.toLowerCase() == leafName.toLowerCase()) {
           child = folder;
           break;
@@ -4133,7 +4158,7 @@ EwsMsgFolder.prototype = {
     let unreadCount = 0;
     let messages = database.EnumerateMessages();
 
-    while (messages.hasMoreElements()) {
+    while (messages.hasMoreElements()) { // COMPAT for TB 78 (#979)
       let hdr = messages.getNext()
                         .QueryInterface(Ci.nsIMsgDBHdr);
       messageCount++;
@@ -4227,5 +4252,5 @@ EwsMsgFolderConstructor.prototype = {
   _xpcom_factory: JSAccountUtils.jaFactory(EwsMsgFolder.Properties, EwsMsgFolder),
 }
 
-var NSGetFactory = XPCOMUtils.generateNSGetFactory([EwsMsgFolderConstructor]);
+var NSGetFactory = ComponentUtils.generateNSGetFactory([EwsMsgFolderConstructor]);
 var EXPORTED_SYMBOLS = ["NSGetFactory"];

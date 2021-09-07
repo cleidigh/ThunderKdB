@@ -2909,6 +2909,9 @@
 	"wdw_cardEditionViewListTitle": {
 		"message": "Tampilan Daftar"
 	},
+	"wdw_cardEditionEditTemplateTitle": {
+		"message": "Sunting Templat"
+	},
 	"wdw_cardbookPrintTitleLong": {
 		"message": "$P1$ - Pratinjau Cetak - Kontak - Thunderbird",
         "placeholders": {
@@ -3563,20 +3566,20 @@
 	"cardbookContactPaneItemAccesskey": {
 		"message": "o"
 	},
+	"wizard.next.label": {
+		"message": "Selanjutnya"
+	},	
+	"wizard.back.label": {
+		"message": "Kembali"
+	},	
+	"wizard.create.label": {
+		"message": "Buat"
+	},
 	"wizard.title": {
 		"message": "Tambahkan buku alamat baru"
 	},
-	"wizard.label": {
-		"message": "Tambahkan buku alamat baru"
-	},
-	"welcomePage.wizard.description": {
-		"message": "SELAMAT DATANG!"
-	},
 	"welcomePage.description": {
 		"message": "??It seems that this is the first time CardBook has been run. CardBook will attempt to collect contacts from Thunderbird’s standard address books and remote address books.??"
-	},
-	"initialPage.wizard.description": {
-		"message": "Lokasi untuk buku alamat baru."
 	},
 	"initialPage.description": {
 		"message": "Alamat buku lokasi:"
@@ -3595,9 +3598,6 @@
 	},
 	"initialPage.find.label": {
 		"message": "??Search for remote address books??"
-	},
-	"localPage.wizard.description": {
-		"message": "Jenis dan lokasi dari buku alamat lokal yang baru."
 	},
 	"localPage.type.description": {
 		"message": "Jenis buku alamat lokal:"
@@ -3632,9 +3632,6 @@
 	"localPage.uributton.label": {
 		"message": "Jelajahi"
 	},
-	"remotePage.wizard.description": {
-		"message": "Ketik dan lokasi buku alamat jauh yang baru."
-	},
 	"remotePage.description": {
 		"message": "Apa jenis buku alamat jauh Anda (Perhatian: Google TIDAK sesuai dengan standar vKartu)?"
 	},
@@ -3646,6 +3643,9 @@
 	},
 	"remotePage.google.label": {
 		"message": "Google"
+	},
+	"remotePage.googleWorkspace.label": {
+		"message": "Google Workspace"
 	},
 	"remotePage.apple.label": {
 		"message": "Apple"
@@ -3671,14 +3671,14 @@
 	"remotePage.password.label": {
 		"message": "Sandi:"
 	},
+	"rememberPassword": {
+		"message": "Gunakan Pengelola Sandi untuk mengingat sandi ini"
+	},
 	"showHidePassword.tooltip": {
 		"message": "Tampilkan/Sembunyikan sandi"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Mengesahkan"
-	},
-	"locationSearchPage.wizard.description": {
-		"message": "Definisi pencarian tersimpan."
 	},
 	"locationSearchPage.label": {
 		"message": "Pencarian Tersimpan"
@@ -3704,9 +3704,6 @@
 	"googleOauthPage.wizard.description": {
 		"message": "Otentikasi Google"
 	},
-	"namePage.wizard.description": {
-		"message": "Alamat buku properti"
-	},
 	"namePage.selected.label": {
 		"message": "Terpilih"
 	},
@@ -3725,17 +3722,11 @@
 	"namePage.vCardVersion.label": {
 		"message": "vKartu"
 	},
-	"namesPage.wizard.description": {
-		"message": "Alamat buku properti"
-	},
 	"namesPage.name.label": {
 		"message": "Nama"
 	},
 	"namesPage.name.description": {
 		"message": "Beberapa buku alamat telah ditemukan. Pilih buku alamat mana yang ingin Anda buka dan namanya:"
-	},
-	"findPage.wizard.description": {
-		"message": "??Remote address book search??"
 	},
 	"findPage.name1.description": {
 		"message": "??No remote address books found.??"
@@ -3745,9 +3736,6 @@
 	},
 	"findPage.name3.description": {
 		"message": "??Multiple remote address books found. Validate remote address books to add:??"
-	},
-	"finishPage.wizard.description": {
-		"message": "??Address books configuration??"
 	},
 	"finishPage.description": {
 		"message": "Buku alamat baru Anda telah berhasil dikonfigurasi."
@@ -5117,6 +5105,12 @@
 	"cardbookToolbarAddListButtonTooltip": {
 		"message": "Daftar Baru"
 	},
+	"cardbookToolbarAddTemplateButtonLabel": {
+		"message": "??New Template??"
+	},
+	"cardbookToolbarAddTemplateButtonTooltip": {
+		"message": "??Create a new template??"
+	},
 	"cardbookToolbarEditButtonLabel": {
 		"message": "Ubah"
 	},
@@ -5315,6 +5309,15 @@
 	"searchForLocalKeyEditButton.tooltip": {
 		"message": "Impor dari berkas"
 	},
+	"definitionLabel": {
+		"message": "Definisi"
+	},
+	"fieldsLabel": {
+		"message": "??Fields??"
+	},
+	"formulasLabel": {
+		"message": "??Formulas??"
+	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Bagikan melalui email"
 	},
@@ -5462,6 +5465,9 @@
 	"fnFormulaExplanation": {
 		"message": "Hal ini dimungkinkan untuk menyesuaikan cara Kontak menghasilkan Nama Tampilannya. Formula ini terdiri dari blok yang dilingkupi “()”. ??In these blocks there might be many parts delimited by “|”.??"
 	},
+	"templateFormulaExplanation": {
+		"message": "??It is possible to define templates with pre-defined fields. For example one may define a template with the email ”({{2}}).({{4}})@mycompany.org”. Once applied to a contact that has ”John” and ”Doe” as given name and family name, an email ”john.doe@mycompany.org” will be added to the contact.??"
+	},
 	"formulaExplanation1": {
 		"message": "??({{1}}|{{2}}) : If {{1}} is empty, then the block will be replaced by {{2}}.??"
 	},
@@ -5500,12 +5506,6 @@
 	},
 	"displayFieldNamesAccesskey": {
 		"message": "l"
-	},
-	"displayTypesLabel": {
-		"message": "Jenis dan Preferensi"
-	},
-	"displayTypesAccesskey": {
-		"message": "J"
 	},
 	"fieldsToPrintGroupboxLabel": {
 		"message": "Bidang untuk dicetak"
@@ -5698,6 +5698,12 @@
 	},
 	"saveTemplateLabel": {
 		"message": "Simpan template"
+	},
+	"applyTemplateLabel": {
+		"message": "??Apply template??"
+	},
+	"createTemplateLabel": {
+		"message": "??Create template??"
 	},
 	"convertVCardsLabel": {
 		"message": "??Convert vCards??"

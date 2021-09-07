@@ -2,7 +2,19 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 5216:
+/***/ 7294:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+
+
+if (true) {
+  module.exports = __webpack_require__(2408);
+} else {}
+
+
+/***/ }),
+
+/***/ 6155:
 /***/ ((__unused_webpack___webpack_module__, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 
@@ -31,6 +43,11 @@ const kPrefDefaults = {
   unwanted_recipients: "{}",
   hide_sigs: false
 };
+/**
+ * Handles loading of the preferences, and any migration routines that are
+ * necessary.
+ */
+
 class Prefs {
   async init() {
     try {
@@ -51,12 +68,9 @@ class Prefs {
           updatePrefs = true;
           results.preferences[prefName] = kPrefDefaults[prefName];
         }
+      }
 
-        await browser.conversations.setPref(prefName, results.preferences[prefName]);
-      } // Set a special pref so bootstrap knows it can continue.
-
-
-      await browser.conversations.setPref("finishedStartup", true);
+      await browser.conversations.startup(results.preferences.logging_enabled);
 
       if (updatePrefs) {
         try {
@@ -70,8 +84,6 @@ class Prefs {
     } else {
       console.error("Could not find the preferences to send to the API.");
     }
-
-    this._addListener();
   }
 
   async _migrate() {
@@ -119,24 +131,6 @@ class Prefs {
     });
   }
 
-  _addListener() {
-    browser.storage.onChanged.addListener((changed, areaName) => {
-      if (areaName != "local" || !("preferences" in changed) || !("newValue" in changed.preferences)) {
-        return;
-      }
-
-      for (const prefName of Object.getOwnPropertyNames(changed.preferences.newValue)) {
-        if (prefName == "migratedLegacy") {
-          continue;
-        }
-
-        if (!changed.preferences.oldValue || changed.preferences.oldValue[prefName] != changed.preferences.newValue[prefName]) {
-          browser.conversations.setPref(prefName, changed.preferences.newValue[prefName]);
-        }
-      }
-    });
-  }
-
 }
 ;// CONCATENATED MODULE: ./addon/content/es-modules/thunderbird-compat.js
 /* This Source Code Form is subject to the terms of the Mozilla Public
@@ -171,7 +165,6 @@ const ALL_LOCALES = ["bg", "ca", "cs", "da", "de", "el", "en", "es", "eu", "fi",
  * This function should only be used in the dev frame. It is exported
  * to give the dev frame a way to mock a change to the UI language.
  *
- * @export
  * @param {*} resolve
  * @param {string} [locale="en"]
  */
@@ -237,7 +230,9 @@ if (!thunderbird_compat_browser.storage) {
   const DEFAULT_PREFS = { ...kPrefDefaults,
     // DEFAULT_PREFS is only used when browser.storage does not exist. I.e.,
     // when running in the browser in dev mode. Turn on logging in this case.
-    logging_enabled: true
+    logging_enabled: true,
+    expand_who: 4,
+    uninstall_infos: "{}"
   }; // Fake what we need from the browser storage library
 
   const _stored = {
@@ -357,6 +352,45 @@ if (!thunderbird_compat_browser.conversations) {
       }
 
       return "ltr";
+    },
+
+    async getCorePref(name) {
+      switch (name) {
+        case "mail.showCondensedAddresses":
+          return false;
+
+        case "mailnews.mark_message_read.auto":
+          return true;
+
+        case "mailnews.mark_message_read.delay":
+          return false;
+      }
+
+      throw new Error("Unexpected pref");
+    },
+
+    async getFolderName(name) {
+      return "Fake/Folder";
+    },
+
+    async makeFriendlyDateAgo() {
+      return "yesterday";
+    },
+
+    async formatFileSize(size) {
+      return `${size} bars`;
+    },
+
+    async makePlural(form, string, count) {
+      return `${string} ${count}`;
+    },
+
+    async isInView() {
+      return true;
+    },
+
+    async quoteMsgHdr() {
+      return "MsgBody";
     }
 
   };
@@ -367,6 +401,13 @@ if (!thunderbird_compat_browser.convCompose) {
     send(details) {
       console.log("Sending:", details);
     }
+
+  };
+}
+
+if (!thunderbird_compat_browser.compose) {
+  thunderbird_compat_browser.compose = {
+    async beginNew() {}
 
   };
 }
@@ -421,6 +462,36 @@ if (!thunderbird_compat_browser.messageDisplay) {
   };
 }
 
+if (!thunderbird_compat_browser.messages) {
+  thunderbird_compat_browser.messages = {
+    async listTags() {
+      return [{
+        key: "$label1",
+        tag: "Important",
+        color: "#ff2600",
+        ordinal: ""
+      }, {
+        key: "$label2",
+        tag: "Work",
+        color: "#FF9900",
+        ordinal: ""
+      }, {
+        color: "#009900",
+        key: "$label3",
+        ordinal: "",
+        tag: "Personal"
+      }];
+    },
+
+    async get(id) {
+      return {};
+    },
+
+    async update(id) {}
+
+  };
+}
+
 if (!thunderbird_compat_browser.windows) {
   thunderbird_compat_browser.windows = {
     async create() {},
@@ -456,8 +527,8 @@ if (!thunderbird_compat_browser.runtime) {
 
 if (!thunderbird_compat_browser.contacts) {
   thunderbird_compat_browser.contacts = {
-    async quickSearch(email) {
-      if (["foo@example.com", "bar@example.com"].includes(email)) {
+    async quickSearch(queryInfo) {
+      if (["foo@example.com", "bar@example.com"].includes(queryInfo.searchString)) {
         return [{
           id: "135246",
           type: "contact",
@@ -469,7 +540,7 @@ if (!thunderbird_compat_browser.contacts) {
             PhotoURI: undefined
           }
         }];
-      } else if (email == "id4@example.com") {
+      } else if (queryInfo.searchString == "id4@example.com") {
         return [{
           id: "15263748",
           type: "contact",
@@ -480,7 +551,7 @@ if (!thunderbird_compat_browser.contacts) {
             PhotoURI: undefined
           }
         }];
-      } else if (email == "extra@example.com") {
+      } else if (queryInfo.searchString == "extra@example.com") {
         return [{
           id: "75312468",
           type: "contact",
@@ -489,6 +560,39 @@ if (!thunderbird_compat_browser.contacts) {
             DisplayName: "extra card",
             PreferDisplayName: "0",
             PhotoURI: "https://example.com/fake"
+          },
+          readOnly: true
+        }];
+      } else if (["arch@example.com", "cond@example.com"].includes(queryInfo.searchString)) {
+        return [{
+          id: "1357924680",
+          type: "contact",
+          properties: {
+            PrimaryEmail: "search@example.com",
+            SecondEmail: "second@example.com",
+            DisplayName: "search name",
+            PreferDisplayName: "1",
+            PhotoURI: undefined
+          }
+        }, {
+          id: "3216549870",
+          type: "contact",
+          properties: {
+            PrimaryEmail: "arch@example.com",
+            SecondEmail: "other@example.com",
+            DisplayName: "arch test",
+            PreferDisplayName: "1",
+            PhotoURI: undefined
+          }
+        }, {
+          id: "9753124680",
+          type: "contact",
+          properties: {
+            PrimaryEmail: "another@example.com",
+            SecondEmail: "cond@example.com",
+            DisplayName: "cond test",
+            PreferDisplayName: "1",
+            PhotoURI: undefined
           }
         }];
       }
@@ -521,9 +625,9 @@ var connectAdvanced = __webpack_require__(6685);
 // EXTERNAL MODULE: ./node_modules/react-redux/es/components/Context.js
 var Context = __webpack_require__(6526);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/extends.js
-var esm_extends = __webpack_require__(2122);
+var esm_extends = __webpack_require__(7462);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
-var objectWithoutPropertiesLoose = __webpack_require__(9756);
+var objectWithoutPropertiesLoose = __webpack_require__(3366);
 // EXTERNAL MODULE: ./node_modules/react-redux/es/utils/shallowEqual.js
 var shallowEqual = __webpack_require__(5067);
 // EXTERNAL MODULE: ./node_modules/react-redux/es/utils/bindActionCreators.js
@@ -1127,6 +1231,7 @@ const PREFS_INFO = [{
  * `i18n.getMessage(...)`
  *
  * @param {(string | object[])} prefsInfo
+ * @param {object} [i18n]
  * @returns {(string | object[])}
  */
 
@@ -1182,16 +1287,14 @@ function openSetupAssistant() {
   });
 }
 
-function runUndoConversations() {
-  (async () => {
-    await thunderbird_compat_browser.conversations.undoCustomizations();
-    const result = await thunderbird_compat_browser.storage.local.get("preferences");
-    result.preferences.uninstall_infos = "{}";
-    await thunderbird_compat_browser.storage.local.set({
-      preferences: result.preferences
-    });
-    window.alert(localize("options.undoCustomizations.finished", i18n));
-  })().catch(console.error);
+async function runUndoConversations() {
+  const result = await thunderbird_compat_browser.storage.local.get("preferences");
+  await thunderbird_compat_browser.conversations.undoCustomizations(result.preferences.uninstall_infos);
+  result.preferences.uninstall_infos = "{}";
+  await thunderbird_compat_browser.storage.local.set({
+    preferences: result.preferences
+  });
+  window.alert(localize("options.undoCustomizations.finished", i18n));
 } //
 // React components to render the options types
 //
@@ -1319,13 +1422,17 @@ BinaryOption.propTypes = {
  * `localizedPrefsInfo`. And, `setPref` should be a function that accepts
  * `(name, value)` pairs and saves them as preferences.
  *
- * @param {*} {
- *   localizedPrefsInfo,
- *   localizedName,
- *   prefs,
- *   setPref,
- * }
- * @returnType {React.Node}
+ * @param {object} root0
+ * @param {object[]} root0.localizedPrefsInfo
+ * @param {string} root0.localizedName
+ * @param  {string}root0.localizedStartAssistant
+ * @param {string} root0.localizedUndoCustomizations
+ * @param {string} root0.localizedUndoCustomizationsTooltip
+ * @param {object} root0.prefs
+ * @param {Function} root0.setPref
+ * @param {Function} root0.startSetupAssistant
+ * @param {Function} root0.startUndoConversations
+ * @returns {React.Node}
  */
 
 function _ConversationOptions({
@@ -1422,18 +1529,6 @@ function Main() {
 
 react_dom.render( /*#__PURE__*/react.createElement(Main, null), document.querySelector("#root"));
 
-/***/ }),
-
-/***/ 7294:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-
-
-if (true) {
-  module.exports = __webpack_require__(2408);
-} else {}
-
-
 /***/ })
 
 /******/ 	});
@@ -1490,7 +1585,8 @@ if (true) {
 /******/ 				}
 /******/ 				if(fulfilled) {
 /******/ 					deferred.splice(i--, 1)
-/******/ 					result = fn();
+/******/ 					var r = fn();
+/******/ 					if (r !== undefined) result = r;
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
@@ -1582,7 +1678,7 @@ if (true) {
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [415,800,829,50], () => (__webpack_require__(5216)))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [415,928,829,50], () => (__webpack_require__(6155)))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

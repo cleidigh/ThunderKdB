@@ -43,6 +43,9 @@ Photo.propTypes = {
   size: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string.isRequired),
   src: (prop_types__WEBPACK_IMPORTED_MODULE_2___default().string.isRequired)
 };
+/**
+ * Handles display of the gallery views.
+ */
 
 class MyComponent extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
   constructor(props) {
@@ -71,6 +74,9 @@ class MyComponent extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
   /**
    * This function takes care of obtaining a full representation of the message,
    *  and then taking all its attachments, to just keep track of the image ones.
+   *
+   * @param {string} uri
+   * @param {string} scrollToPartName
    */
 
 
@@ -95,6 +101,10 @@ class MyComponent extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
    *  data has been extracted from it.
    * It runs the handlebars template and then appends the result to the root
    *  DOM node.
+   *
+   * @param {object[]} attachments
+   * @param {string} id
+   * @param {string} scrollToPartName
    */
 
 
@@ -272,7 +282,8 @@ if (true) {
 /******/ 				}
 /******/ 				if(fulfilled) {
 /******/ 					deferred.splice(i--, 1)
-/******/ 					result = fn();
+/******/ 					var r = fn();
+/******/ 					if (r !== undefined) result = r;
 /******/ 				}
 /******/ 			}
 /******/ 			return result;

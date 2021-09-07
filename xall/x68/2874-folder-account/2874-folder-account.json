@@ -16,7 +16,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 2336,
+    "average_daily_users": 2455,
     "categories": {
         "thunderbird": [
             "composition",
@@ -26,33 +26,33 @@
     "contributions_url": "",
     "created": "2006-06-29T15:39:10Z",
     "current_version": {
-        "id": 2476144,
+        "id": 2476330,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
-                "min": "88.0"
+                "min": "91.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/folder-account/versions/2476144",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/folder-account/versions/2476330",
         "files": [
             {
-                "id": 1019304,
-                "created": "2021-07-28T16:38:22Z",
-                "hash": "sha256:ed0104259f38b27246ada0371ee8393891c6b345c8e3ceb5c29cb49dd2f6c7d4",
+                "id": 1019490,
+                "created": "2021-08-24T15:39:27Z",
+                "hash": "sha256:bef66326d5556812834de4e3adf546f986513b68b9473d4d035017cd56019ea9",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 37537,
+                "size": 36108,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019304/folder_account-11.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019490/folder_account-11.1-tb.xpi?src=",
                 "permissions": [
                     "accountsRead",
                     "compose"
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 22,
             "name": {
@@ -84,18 +84,18 @@
             "url": "http://www.opensource.org/licenses/mit-license.php"
         },
         "release_notes": {
-            "en-US": "Besides compatibility to Thunderbird 91 this release contains following changes:\n\n– restructured folder properties tab, arranging the different settings in a hopefully more meaningful way\n\n– option to sort the accounts/identities in the drop-down list in folder properties\n\n– \"Reply All\" with altered \"From\" account doesn't include the original receiving address in the list of recipients any more",
+            "en-US": "Besides compatibility to Thunderbird 91 this release contains the following changes since version 10:\n\n– Restructured folder properties tab, arranging the different settings in a hopefully more meaningful way\n\n– Changed appearance of identities in the drop-down menu, now containing full name and label as well, if available. Different accounts with their identities are now separated by a line.\n\n– Option to sort the identities of each account\n\n– \"Reply All\" with altered \"From\" account doesn't include the original receiving address in the list of recipients any more\n\n– Various fixes and internal changes",
             "de": ""
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/folder-account/versions/11.0",
-        "version": "11.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/folder-account/versions/11.1",
+        "version": "11.1"
     },
     "default_locale": "en-US",
     "description": {
         "sk": "This extension adds two very simple options.\n\nFirst, you can select which of your accounts will be used when composing, replying, or forwarding mail based on which folder is currently selected.  An example where this could be useful is when two people share a set of folders.  You could configure TB to set a different return address for you when you are working with your folders, and for the other user when they are using theirs.  Alternatively, if you use a different mailing address for a mailing list, you can use this extension to set your return address appropriately when you working with the list’s folder.\n\nThe second thing this extension does is allow you to set a default To address for newly composed messages based on which folder you are working in.  This could be very useful for mailing lists – when you create a new message in the mailing list folder, your message would automatically be correctly addressed.\n\nIn both cases, if the current folder has no From address or To address specified, the extension will check the parent folder, so you can control the settings for an enti name=\"data[Addon][summary][]\"",
         "ro": "This extension adds two very simple options.\n\nFirst, you can select which of your accounts will be used when composing, replying, or forwarding mail based on which folder is currently selected.  An example where this could be useful is when two people share a set of folders.  You could configure TB to set a different return address for you when you are working with your folders, and for the other user when they are using theirs.  Alternatively, if you use a different mailing address for a mailing list, you can use this extension to set your return address appropriately when you working with the list’s folder.\n\nThe second thing this extension does is allow you to set a default To address for newly composed messages based on which folder you are working in.  This could be very useful for mailing lists – when you create a new message in the mailing list folder, your message would automatically be correctly addressed.\n\nIn both cases, if the current folder has no From address or To address specified, the extension will check the parent folder, so you can control the settings for an enti name=\"data[Addon][summary][]\"",
-        "en-US": "Originally developed by <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/de/thunderbird/user/christopher-eykamp\">Chris Eykamp</a>, this extension adds two very simple options:\n\nFirst, you can select which of your accounts or identities will be used when composing, replying, or forwarding mail based on which folder is currently selected. An example where this could be useful is when two people share a set of folders. You could configure TB to set a different return address for you when you are working with your folders, and for the other user when they are using theirs. Alternatively, if you use a different mailing address for a mailing list, you can use this extension to set your return address appropriately when you working with the list’s folder.\n\nThe second thing this extension does is allow you to set a default To address for newly composed messages based on which folder you are working in. This could be very useful for mailing lists – when you create a new message in the mailing list folder, your message would automatically be correctly addressed.\n\nIn both cases, if the current folder has no From address or To address specified, the extension will check the parent folder, so you can control the settings for an entire branch of your folder tree at one time.\n\nSubmit issues at the project's current maintainer's <a rel=\"nofollow\" href=\"https://github.com/Welpy-cw/Folder-Account\">GitHub page</a>",
+        "en-US": "Originally developed by <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/de/thunderbird/user/christopher-eykamp\">Chris Eykamp</a>, this extension adds the following options:\n\nYou can select which of your accounts or identities will be used when composing, replying or forwarding mail based on which folder is currently selected. An example where this could be useful is when two people share a set of folders. You could configure TB to set a different return address for you when you are working with your folders, and for the other user when they are using theirs. Alternatively, if you use a different mailing address for a mailing list, you can use this extension to set your return address appropriately when you working with the list’s folder.\n\nFurthermore you are able to set a default To (as well as an additional Reply-To) address for newly composed messages based on which folder you are working in. This could be very useful for mailing lists – when you create a new message in the mailing list folder, your message would automatically be correctly addressed.\n\nDifferent settings for replying/forwarding are available. Moreover, if the current folder has no particular addresses specified, the extension will check the parent folder, so you can control the settings for an entire branch of your folder tree at one time.\n\nSubmit issues at the project's current maintainer's <a rel=\"nofollow\" href=\"https://github.com/Welpy-cw/Folder-Account\">GitHub page</a>",
         "de": "Originally developed by <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/de/thunderbird/user/christopher-eykamp\">Chris Eykamp</a>, this extension adds two very simple options:\n\nFirst, you can select which of your accounts or identities will be used when composing, replying, or forwarding mail based on which folder is currently selected. An example where this could be useful is when two people share a set of folders. You could configure TB to set a different return address for you when you are working with your folders, and for the other user when they are using theirs. Alternatively, if you use a different mailing address for a mailing list, you can use this extension to set your return address appropriately when you working with the list’s folder.\n\nThe second thing this extension does is allow you to set a default To address for newly composed messages based on which folder you are working in. This could be very useful for mailing lists – when you create a new message in the mailing list folder, your message would automatically be correctly addressed.\n\nIn both cases, if the current folder has no From address or To address specified, the extension will check the parent folder, so you can control the settings for an entire branch of your folder tree at one time.\n\nSubmit issues at the project's current maintainer's <a rel=\"nofollow\" href=\"https://github.com/Welpy-cw/Folder-Account\">GitHub page</a>",
         "ja": "This extension adds two very simple options.\n\nFirst, you can select which of your accounts will be used when composing, replying, or forwarding mail based on which folder is currently selected.  An example where this could be useful is when two people share a set of folders.  You could configure TB to set a different return address for you when you are working with your folders, and for the other user when they are using theirs.  Alternatively, if you use a different mailing address for a mailing list, you can use this extension to set your return address appropriately when you working with the list’s folder.\n\nThe second thing this extension does is allow you to set a default To address for newly composed messages based on which folder you are working in.  This could be very useful for mailing lists – when you create a new message in the mailing list folder, your message would automatically be correctly addressed.\n\nIn both cases, if the current folder has no From address or To address specified, the extension will check the parent folder, so you can control the settings for an enti name=\"data[Addon][summary][]\""
     },
@@ -117,27 +117,27 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-07-28T19:09:24Z",
+    "last_updated": "2021-08-24T18:34:55Z",
     "name": {
         "en-US": "Folder Account"
     },
     "previews": [
         {
-            "id": 206192,
+            "id": 206614,
             "caption": {
-                "en-US": "New tab under Folder Properties",
+                "en-US": "New tab under Folder Properties (version 11 for TB 91)",
                 "de": ""
             },
             "image_size": [
-                720,
-                458
+                719,
+                370
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206192.png?modified=1602620466",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206614.png?modified=1630434990",
             "thumbnail_size": [
-                314,
-                200
+                320,
+                165
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206192.png?modified=1602620466"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206614.png?modified=1630434990"
         }
     ],
     "public_stats": false,

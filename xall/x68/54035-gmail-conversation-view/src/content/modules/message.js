@@ -12,17 +12,16 @@ const { XPCOMUtils } = ChromeUtils.import(
 
 XPCOMUtils.defineLazyModuleGetters(this, {
   BrowserSim: "chrome://conversations/content/modules/browserSim.js",
-  escapeHtml: "chrome://conversations/content/modules/misc.js",
   htmlToPlainText: "chrome://conversations/content/modules/misc.js",
-  MimeMessage: "resource:///modules/gloda/MimeMessage.jsm",
   mimeMsgToContentSnippetAndMeta: "resource:///modules/gloda/GlodaContent.jsm",
   msgHdrGetUri: "chrome://conversations/content/modules/misc.js",
   MsgHdrToMimeMessage: "resource:///modules/gloda/MimeMessage.jsm",
-  NetUtil: "resource://gre/modules/NetUtil.jsm",
   parseMimeLine: "chrome://conversations/content/modules/misc.js",
   setupLogging: "chrome://conversations/content/modules/misc.js",
   Services: "resource://gre/modules/Services.jsm",
   messageActions: "chrome://conversations/content/modules/misc.js",
+  GlodaAttrProviders:
+    "chrome://conversations/content/modules/plugins/glodaAttrProviders.js",
 });
 
 XPCOMUtils.defineLazyGetter(this, "browser", function () {
@@ -33,14 +32,15 @@ XPCOMUtils.defineLazyGetter(this, "gMessenger", function () {
   return Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger);
 });
 
-const { PluginHelpers } = ChromeUtils.import(
-  "chrome://conversations/content/modules/plugins/helpers.js",
-  {}
-);
-const { Prefs } = ChromeUtils.import(
-  "chrome://conversations/content/modules/prefs.js",
-  {}
-);
+/**
+ * @typedef nsIMsgDBHdr
+ * @see https://searchfox.org/comm-central/rev/9d9fac50cddfd9606a51c4ec3059728c33d58028/mailnews/base/public/nsIMsgHdr.idl#14
+ */
+/**
+ * @typedef nsIURI
+ * @see https://searchfox.org/mozilla-central/rev/ac36d76c7aea37a18afc9dd094d121f40f7c5441/netwerk/base/nsIURI.idl
+ */
+
 const { topMail3Pane } = ChromeUtils.import(
   "chrome://conversations/content/modules/misc.js",
   {}
@@ -58,7 +58,6 @@ XPCOMUtils.defineLazyGetter(this, "Log", () => {
 // bugzilla snippets.
 const kSnippetLength = 700;
 
-const RE_BZ_COMMENT = /^--- Comment #\d+ from .* \d{4}.*? ---([\s\S]*)/m;
 const RE_LIST_POST = /<mailto:([^>]+)>/;
 
 // Add in the global message listener table a weak reference to the given
@@ -76,19 +75,14 @@ function addMsgListener(aMessage) {
   msgListeners.get(messageId).push(weakPtr);
 }
 
-async function dateAccordingToPref(date) {
-  try {
-    return Prefs.no_friendly_date
-      ? dateAsInMessageList(date)
-      : await browser.conversations.makeFriendlyDateAgo(date.getTime());
-  } catch (e) {
-    return dateAsInMessageList(date);
-  }
-}
-
+/**
+ * Handles the gathering of data for an individual message.
+ */
 class Message {
   constructor(aConversation, msgHdr) {
     this._msgHdr = msgHdr;
+    // Type of message, e.g. normal or bugzilla.
+    this._type = "normal";
     this._id = null;
     this._domNode = null;
     this._snippet = "";
@@ -97,7 +91,7 @@ class Message {
     this._date = new Date(this._msgHdr.date / 1000);
     // This one is for display purposes. We should always parse the non-decoded
     // author because there's more information in the encoded form (see #602)
-    this._from = this.parse(this._msgHdr.author)[0];
+    this._from = parseMimeLine(this._msgHdr.author)[0];
     // Might be filled to something more meaningful later, in case we replace the
     //  sender with something more relevant, like X-Bugzilla-Who.
     this._realFrom = "";
@@ -105,18 +99,19 @@ class Message {
     // header, and we don't want to display the information twice, then.
     this._to =
       this._msgHdr.recipients != this._msgHdr.ccList
-        ? this.parse(this._msgHdr.recipients)
+        ? parseMimeLine(this._msgHdr.recipients)
         : [];
     this._cc = this._msgHdr.ccList.length
-      ? this.parse(this._msgHdr.ccList)
+      ? parseMimeLine(this._msgHdr.ccList)
       : [];
     this._bcc = this._msgHdr.bccList.length
-      ? this.parse(this._msgHdr.bccList)
+      ? parseMimeLine(this._msgHdr.bccList)
       : [];
-    this.subject = this._msgHdr.mime2DecodedSubject;
 
     this._uri = msgHdrGetUri(this._msgHdr);
     this._attachments = [];
+    this._messageHeaderId = null;
+    this._glodaMessageId = null;
     this.needsLateAttachments = false;
     this.contentType = "";
     this.hasRemoteContent = false;
@@ -126,9 +121,7 @@ class Message {
     // A list of email addresses
     this.mailingLists = [];
     this.isReplyListEnabled = false;
-    this.isReplyAllEnabled = false;
     this.isEncrypted = false;
-    this.bugzillaInfos = {};
     this.notifiedRemoteContentAlready = false;
 
     // Filled by the conversation, useful to know whether we were initially the
@@ -139,96 +132,27 @@ class Message {
     this._selected = false;
   }
 
-  // Wraps the low-level header parser stuff.
-  //  @param aMimeLine a line that looks like "John <john@cheese.com>, Jane <jane@wine.com>"
-  //  @return a list of { email, name } objects
-  parse(aMimeLine) {
-    return parseMimeLine(aMimeLine);
-  }
-
-  // This function is called before toReactData, and allows us to adjust our
-  // template data according to the message that came before us.
-  updateTmplData(aPrevMsg) {
-    let oldInfos = aPrevMsg?.bugzillaInfos;
-    if (!oldInfos) {
-      oldInfos = {};
-    }
-    let infos = this.bugzillaInfos;
-    let makeArrow = function (oldValue, newValue) {
-      if (oldValue) {
-        return oldValue + " \u21d2 " + newValue;
-      }
-
-      return newValue;
-    };
-    if (Object.keys(infos).length) {
-      let items = [];
-      for (let k of [
-        "product",
-        "component",
-        "keywords",
-        "severity",
-        "status",
-        "priority",
-        "assigned-to",
-        "target-milestone",
-      ]) {
-        if ((!aPrevMsg || k in oldInfos) && oldInfos[k] != infos[k]) {
-          let key = k
-            .split("-")
-            .map((x) => x.charAt(0).toUpperCase() + x.slice(1))
-            .join(" ");
-          items.push(key + ": " + makeArrow(oldInfos[k], infos[k]));
-        }
-      }
-      if (infos["changed-fields"]?.trim().length) {
-        items.push("Changed: " + infos["changed-fields"]);
-      }
-      let m = this._snippet.match(RE_BZ_COMMENT);
-      if (m?.length && m[1].trim().length) {
-        items.push(m[1]);
-      }
-      if (!items.length) {
-        items.push(this._snippet);
-      }
-
-      this._snippet = items.join("; ");
-    }
-  }
-
-  async toReactData() {
+  toReactData() {
     // Ok, brace ourselves for notifications happening during the message load
     //  process.
     addMsgListener(this);
 
-    const messageHeader = await browser.messages.get(this._id);
-    if (!messageHeader) {
-      throw new Error("Message no longer exists");
-    }
-
-    const messageFolderType = messageHeader.folder.type;
-    let data = {
+    return {
       id: this._id,
-      date: await dateAccordingToPref(this._date),
-      folderName: await browser.conversations.getFolderName(this._id),
+      attachments: this._attachments,
+      messageHeaderId: this._messageHeaderId,
+      glodaMessageId: this._glodaMessageId,
       hasRemoteContent: this.hasRemoteContent,
-      isDraft: messageFolderType == "drafts",
-      isJunk: messageHeader.junk,
-      isOutbox: messageFolderType == "outbox",
       isPhishing: this.isPhishing,
       messageKey: this._msgHdr.messageKey,
       msgUri: this._uri,
-      multipleRecipients: this.isReplyAllEnabled,
       neckoUrl: msgHdrToNeckoURL(this._msgHdr).spec,
       needsLateAttachments: this.needsLateAttachments,
-      read: this.read,
       realFrom: this._realFrom.email || this._from.email,
       recipientsIncludeLists: this.isReplyListEnabled,
       smimeReload: this.smimeReload,
-      shortFolderName: messageHeader.folder.name,
-      subject: messageHeader.subject,
       snippet: this._snippet,
-      starred: messageHeader.flagged,
+      type: this._type,
       // We look up info on each contact in the Redux reducer;
       // pass this information along so we know what to look up.
       _contactsData: {
@@ -238,78 +162,6 @@ class Message {
         bcc: this._bcc,
       },
     };
-
-    // Don't show "to me" if this is a bugzilla email
-    // TODO: Make this work again?
-    // if (Object.keys(this.bugzillaInfos).length) {
-    //   extraClasses.push("bugzilla");
-    //   try {
-    //     let url = this.bugzillaInfos.url;
-    //     data.bugzillaUrl = url;
-    //   } catch (e) {
-    //     if (e.result != Cr.NS_ERROR_MALFORMED_URI) {
-    //       throw e;
-    //     }
-    //     // why not?
-    //   }
-    // }
-
-    data = { ...data, ...(await this.toTmplDataForAttachments(data)) };
-
-    data.fullDate = Prefs.no_friendly_date
-      ? ""
-      : dateAsInMessageList(this._date);
-
-    const userTags = await browser.messages.listTags();
-    data.tags = messageHeader.tags.map((tagKey) => {
-      // The fallback here shouldn't ever happen, but just in case...
-      const tagDetails = userTags.find((t) => t.key == tagKey) || {
-        color: "#FFFFFF",
-        name: "unknown",
-      };
-      return {
-        color: tagDetails.color,
-        key: tagDetails.key,
-        name: tagDetails.tag,
-      };
-    });
-
-    return data;
-  }
-
-  // Generate Attachment objects
-  async toTmplDataForAttachments() {
-    let l = this._attachments.length;
-    const result = {
-      attachments: [],
-      attachmentsPlural: await browser.conversations.makePlural(
-        browser.i18n.getMessage("pluralForm"),
-        browser.i18n.getMessage("attachments.numAttachments"),
-        l
-      ),
-    };
-    for (let i = 0; i < l; i++) {
-      const att = this._attachments[i];
-      // This is bug 630011, remove when fixed
-      let formattedSize = browser.i18n.getMessage("attachments.sizeUnknown");
-      // -1 means size unknown
-      if (att.size != -1) {
-        formattedSize = await browser.conversations.formatFileSize(att.size);
-      }
-
-      // We've got the right data, push it!
-      result.attachments.push({
-        size: att.size,
-        contentType: att.contentType,
-        formattedSize,
-        isExternal: att.isExternal,
-        name: att.name,
-        partName: att._part,
-        url: att.url,
-        anchor: "msg" + this.initialPosition + "att" + i,
-      });
-    }
-    return result;
   }
 
   // The global monkey-patch finds us through the weak pointer table and
@@ -322,22 +174,20 @@ class Message {
     this.hasRemoteContent = true;
     Log.debug("This message's remote content was blocked");
 
-    const msgData = await this.toReactData();
-    // TODO: make getting the window less ugly.
     this._conversation._htmlPane.conversationDispatch(
-      messageActions.msgUpdateData({
-        msgData,
+      messageActions.setHasRemoteContent({
+        id: this._id,
+        hasRemoteContent: true,
       })
     );
   }
 
   async setSmimeReload() {
     this.smimeReload = true;
-    const msgData = await this.toReactData();
-    // TODO: make getting the window less ugly.
     this._conversation._htmlPane.conversationDispatch(
-      messageActions.msgUpdateData({
-        msgData,
+      messageActions.setSmimeReload({
+        id: this._id,
+        smimeReload: true,
       })
     );
   }
@@ -524,11 +374,10 @@ class Message {
       formNodes.length
     ) {
       this.isPhishing = true;
-      const msgData = await this.toReactData();
-      // TODO: make getting the window less ugly.
       this._conversation._htmlPane.conversationDispatch(
-        messageActions.msgUpdateData({
-          msgData,
+        messageActions.setPhishing({
+          id: this._id,
+          isPhishing: true,
         })
       );
     }
@@ -582,86 +431,30 @@ class Message {
       bodyContainer.textContent = this.bodyAsText;
     }
   }
-
-  /**
-   * This function is called for the "Forward conversation" action. The idea is
-   * that we want to forward a plaintext version of the message, so we try and
-   * do our best to give this. We're trying not to stream it once more!
-   */
-  async exportAsHtml() {
-    const authorContact = await browser._background.request({
-      type: "contactDetails",
-      payload: this._from,
-    });
-    let author = escapeHtml(authorContact._name);
-    let authorEmail = this._from.email;
-    let authorAvatar = authorContact.avatar;
-    let authorColor = authorContact.color;
-    let date = await dateAccordingToPref(this._date);
-    // We try to convert the bodies to plain text, to enhance the readability in
-    // the forwarded conversation. Note: <pre> tags are not converted properly
-    // it seems, need to investigate...
-    let body = await quoteMsgHdr(this._msgHdr);
-
-    // UGLY HACK. I don't even wanna dig into the internals of the composition
-    // window to figure out why this results in an extra <br> being added, so
-    // let's just stay sane and use a hack.
-    body = body.replace(/\r?\n<br>/g, "<br>");
-    body = body.replace(/<br>\r?\n/g, "<br>");
-    if (!(body.indexOf("<pre wrap>") === 0)) {
-      body = "<br>" + body;
-    }
-    let html = [
-      '<div style="overflow: auto">',
-      '<img src="',
-      authorAvatar,
-      '" style="float: left; height: 48px; margin-right: 5px" />',
-      '<b><span><a style="color: ',
-      authorColor,
-      ' !important; text-decoration: none !important; font-weight: bold" href="mailto:',
-      authorEmail,
-      '">',
-      author,
-      "</a></span></b><br />",
-      '<span style="color: #666">',
-      date,
-      "</span>",
-      "</div>",
-      '<div style="color: #666">',
-      body,
-      "</div>",
-    ].join("");
-
-    return html;
-  }
 }
 
-function hasIdentity(identityEmails, emailAddress) {
-  const email = emailAddress.toLowerCase();
-  return identityEmails.some((e) => e == email);
+/**
+ * Simple function to extra just the parts of the attachment information
+ * that we need into their own object. This simplifies managing the data.
+ *
+ * @param {object} attachment
+ */
+function simplifyAttachment(attachment) {
+  return {
+    contentType: attachment.contentType,
+    isExternal: attachment.isExternal,
+    name: attachment.name,
+    // Fall back to _part for gloda attachments.
+    partName: attachment.partName ?? attachment._part,
+    size: attachment.size,
+    url: attachment.url,
+  };
 }
 
-async function shouldEnableReplyAll(emails, propName) {
-  let seen = new Set();
-  let identityEmails = [];
-  for (let account of await browser.accounts.list()) {
-    if (!["imap", "pop3", "nntp"].includes(account.type)) {
-      continue;
-    }
-    for (let identity of account.identities) {
-      identityEmails.push(identity.email.toLowerCase());
-    }
-  }
-  return (
-    emails.filter((x) => {
-      let r =
-        !seen.has(x[propName]) && !hasIdentity(identityEmails, x[propName]);
-      seen.add(x[propName]);
-      return r;
-    }).length > 1
-  );
-}
-
+/**
+ * Handles the gathering of data for a message whose details have been received
+ * from queries on the global database.
+ */
 class MessageFromGloda extends Message {
   constructor(conversation, msgHdr, lateAttachments) {
     super(conversation, msgHdr);
@@ -670,15 +463,13 @@ class MessageFromGloda extends Message {
 
   async init(glodaMsg) {
     this._id = await browser.conversations.getMessageIdForUri(this._uri);
+    this._glodaMessageId = glodaMsg.headerMessageID;
 
     // Our gloda plugin found something for us, thanks dude!
     if (glodaMsg.alternativeSender) {
       this._realFrom = this._from;
-      this._from = this.parse(glodaMsg.alternativeSender)[0];
-    }
-
-    if (glodaMsg.bugzillaInfos) {
-      this.bugzillaInfos = JSON.parse(glodaMsg.bugzillaInfos);
+      this._from = parseMimeLine(glodaMsg.alternativeSender)[0];
+      this._type = "bugzilla";
     }
 
     // FIXME messages that have no body end up with "..." as a snippet
@@ -687,7 +478,7 @@ class MessageFromGloda extends Message {
       : "..."; // it's probably an Enigmail message
 
     if ("attachmentInfos" in glodaMsg) {
-      this._attachments = glodaMsg.attachmentInfos;
+      this._attachments = glodaMsg.attachmentInfos.map(simplifyAttachment);
     }
 
     if ("contentType" in glodaMsg) {
@@ -712,13 +503,13 @@ class MessageFromGloda extends Message {
 
     this.isReplyListEnabled =
       "mailingLists" in glodaMsg && !!glodaMsg.mailingLists.length;
-    this.isReplyAllEnabled = await shouldEnableReplyAll(
-      [glodaMsg.from, ...glodaMsg.to, ...glodaMsg.cc, ...glodaMsg.bcc],
-      "value"
-    );
   }
 }
 
+/**
+ * Handles the gathering of data for a message whose details have been received
+ * via message headers.
+ */
 class MessageFromDbHdr extends Message {
   constructor(conversation, msgHdr) {
     super(conversation, msgHdr);
@@ -742,21 +533,19 @@ class MessageFromDbHdr extends Message {
               kSnippetLength
             );
             this._snippet = text;
-            let alternativeSender = PluginHelpers.alternativeSender({
+            let alternativeSender = GlodaAttrProviders.alternativeSender({
               mime: aMimeMsg,
               header: aMsgHdr,
             });
             if (alternativeSender) {
+              this._type = "bugzilla";
               this._realFrom = this._from;
-              this._from = this.parse(alternativeSender)[0];
+              this._from = parseMimeLine(alternativeSender)[0];
             }
 
-            this.bugzillaInfos =
-              PluginHelpers.bugzilla({ mime: aMimeMsg, header: aMsgHdr }) || {};
-
-            this._attachments = aMimeMsg.allUserAttachments.filter(
-              (x) => x.isRealAttachment
-            );
+            this._attachments = aMimeMsg.allUserAttachments
+              .filter((x) => x.isRealAttachment)
+              .map(simplifyAttachment);
             this.contentType =
               aMimeMsg.headers["content-type"] || "message/rfc822";
             let listPost = aMimeMsg.get("list-post");
@@ -772,15 +561,6 @@ class MessageFromDbHdr extends Message {
               aMimeMsg &&
               aMimeMsg.has("list-post") &&
               RE_LIST_POST.exec(aMimeMsg.get("list-post"));
-            this.isReplyAllEnabled = await shouldEnableReplyAll(
-              [
-                ...parseMimeLine(aMimeMsg.get("from"), true),
-                ...parseMimeLine(aMimeMsg.get("to"), true),
-                ...parseMimeLine(aMimeMsg.get("cc"), true),
-                ...parseMimeLine(aMimeMsg.get("bcc"), true),
-              ],
-              "email"
-            );
 
             let findIsEncrypted = (x) =>
               x.isEncrypted ||
@@ -802,6 +582,7 @@ class MessageFromDbHdr extends Message {
 
   async init() {
     this._id = await browser.conversations.getMessageIdForUri(this._uri);
+    this._messageHeaderId = this._msgHdr.messageId;
     // Gloda is not with us, so stream the message... the MimeMsg API says that
     //  the streaming will fail and the underlying exception will be re-thrown in
     //  case the message is not on disk. In that case, the fallback is to just get
@@ -831,115 +612,11 @@ class MessageFromDbHdr extends Message {
   }
 }
 
-XPCOMUtils.defineLazyGetter(this, "timeFormatter", () => {
-  return new Services.intl.DateTimeFormat(undefined, { timeStyle: "short" });
-});
-
-XPCOMUtils.defineLazyGetter(this, "dateAndTimeFormatter", () => {
-  return new Services.intl.DateTimeFormat(undefined, {
-    dateStyle: "short",
-    timeStyle: "short",
-  });
-});
-
-/**
- * A stupid formatting function that uses Services.intl
- * to format a date just like in the message list
- * @param {Date} date a javascript Date object
- * @return {String} a string containing the formatted date
- */
-function dateAsInMessageList(date) {
-  const now = new Date();
-  // Is it today?
-  const isToday =
-    now.getFullYear() == date.getFullYear() &&
-    now.getMonth() == date.getMonth() &&
-    now.getDate() == date.getDate();
-
-  const formatter = isToday ? timeFormatter : dateAndTimeFormatter;
-  return formatter.format(date);
-}
-
-/**
- * Use the mailnews component to stream a message, and process it in a way
- *  that's suitable for quoting (strip signature, remove images, stuff like
- *  that).
- * @param {nsIMsgDBHdr} aMsgHdr The message header that you want to quote
- * @return {Promise}
- *   Returns a quoted string suitable for insertion in an HTML editor.
- *   You can pass this to htmlToPlainText if you're running a plaintext editor
- */
-function quoteMsgHdr(aMsgHdr) {
-  return new Promise((resolve) => {
-    let chunks = [];
-    const decoder = new TextDecoder();
-    let listener = {
-      /** @ignore*/
-      setMimeHeaders() {},
-
-      /** @ignore*/
-      onStartRequest(aRequest) {},
-
-      /** @ignore*/
-      onStopRequest(aRequest, aStatusCode) {
-        let data = chunks.join("");
-        resolve(data);
-      },
-
-      /** @ignore*/
-      onDataAvailable(aRequest, aStream, aOffset, aCount) {
-        // Fortunately, we have in Gecko 2.0 a nice wrapper
-        let data = NetUtil.readInputStreamToString(aStream, aCount);
-        // Now each character of the string is actually to be understood as a byte
-        //  of a UTF-8 string.
-        // So charCodeAt is what we want here...
-        let array = [];
-        for (let i = 0; i < data.length; ++i) {
-          array[i] = data.charCodeAt(i);
-        }
-        // Yay, good to go!
-        chunks.push(decoder.decode(Uint8Array.from(array)));
-      },
-
-      QueryInterface: ChromeUtils.generateQI([
-        Ci.nsIStreamListener,
-        Ci.nsIMsgQuotingOutputStreamListener,
-        Ci.nsIRequestObserver,
-      ]),
-    };
-    // Here's what we want to stream...
-    let msgUri = msgHdrGetUri(aMsgHdr);
-    /**
-     * Quote a particular message specified by its URI.
-     *
-     * @param charset optional parameter - if set, force the message to be
-     *                quoted using this particular charset
-     */
-    //   void quoteMessage(in string msgURI, in boolean quoteHeaders,
-    //                     in nsIMsgQuotingOutputStreamListener streamListener,
-    //                     in string charset, in boolean headersOnly);
-    let quoter = Cc["@mozilla.org/messengercompose/quoting;1"].createInstance(
-      Ci.nsIMsgQuote
-    );
-    quoter.quoteMessage(msgUri, false, listener, "", false, aMsgHdr);
-  });
-}
-
-/**
- * Recycling the HeaderHandlerBase from mimemsg.js
- */
-function HeaderHandler(aHeaders) {
-  this.headers = aHeaders;
-}
-
-HeaderHandler.prototype = {
-  __proto__: MimeMessage.prototype.__proto__, // == HeaderHandlerBase
-};
-
 /**
  * Get a nsIURI from a nsIMsgDBHdr
- * @param {nsIMsgDbHdr} aMsgHdr The message header
- * @return {nsIURI}
+ *
+ * @param {nsIMsgDBHdr} aMsgHdr The message header
+ * @returns {nsIURI}
  */
 function msgHdrToNeckoURL(aMsgHdr) {
   let uri = aMsgHdr.folder.getUriForMsg(aMsgHdr);
@@ -956,9 +633,11 @@ function msgHdrToNeckoURL(aMsgHdr) {
 
 /**
  * Get a string containing the body of a messsage.
- * @param {nsIMsgDbHdr} aMessageHeader The message header
- * @param {bool} aStripHtml Keep html?
- * @return {string}
+ *
+ * @param {nsIMsgDBHdr} aMessageHeader The message header
+ * @param {boolean} aStripHtml Keep html?
+ * @param {number} aLength
+ * @returns {string}
  */
 function msgHdrToMessageBody(aMessageHeader, aStripHtml, aLength) {
   let messenger = Cc["@mozilla.org/messenger;1"].createInstance(

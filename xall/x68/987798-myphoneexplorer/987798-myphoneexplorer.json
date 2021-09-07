@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 8002,
+    "average_daily_users": 8382,
     "categories": {
         "thunderbird": [
             "importexport"
@@ -18,33 +18,37 @@
     "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HY9EFDS4MPVQ2",
     "created": "2020-03-16T20:53:40Z",
     "current_version": {
-        "id": 2474925,
+        "id": 2476297,
         "compatibility": {
+            "seamonkey": {
+                "max": "*",
+                "min": "1.0"
+            },
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/myphoneexplorer/versions/2474925",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/myphoneexplorer/versions/2476297",
         "files": [
             {
-                "id": 1018087,
-                "created": "2020-12-04T12:11:01Z",
-                "hash": "sha256:1caaf02ab87bfce9fb3d09cc2a2aa75b4b5ade7609ffe05b4f85aa720907f972",
+                "id": 1019457,
+                "created": "2021-08-17T20:21:26Z",
+                "hash": "sha256:05ea6c3cd09711d1a58ccdd5c6adfc2141cc37f8916a50ae5ab0a0e3ef10d21f",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 20666,
+                "size": 21960,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018087/myphoneexplorer-3.0.12-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019457/myphoneexplorer-3.0.17-tb.xpi?src=",
                 "permissions": [
                     "addressBooks",
                     "nativeMessaging"
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 7057,
             "name": {
@@ -52,10 +56,13 @@
             },
             "url": null
         },
-        "release_notes": null,
+        "release_notes": {
+            "en-US": "- fixed compatibility for Thunderbird 91",
+            "de": ""
+        },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/myphoneexplorer/versions/3.0.12",
-        "version": "3.0.12"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/myphoneexplorer/versions/3.0.17",
+        "version": "3.0.17"
     },
     "default_locale": "en-US",
     "description": {
@@ -79,7 +86,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-12-04T15:22:54Z",
+    "last_updated": "2021-08-19T08:53:49Z",
     "name": {
         "en-US": "MyPhoneExplorer",
         "de": "MyPhoneExplorer"

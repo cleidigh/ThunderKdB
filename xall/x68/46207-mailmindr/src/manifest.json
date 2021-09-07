@@ -11,9 +11,10 @@
     },
     "author": "Arnd Issler",
     "homepage_url": "https://mailmindr.net/",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "icons": {
-        "32": "images/mailmindr.png"
+        "16": "images/mailmindr-flag--rainbow.svg",
+        "32": "images/mailmindr-flag--rainbow.svg"
     },
     "permissions": [
         "accountsRead",
@@ -25,13 +26,35 @@
     ],
     "browser_action": {
         "browser_style": true,
-        "default_title": "Follow-Ups",
+        "default_title": "__MSG_mailmindrMainToolbarButton__",
         "default_popup": "views/popups/list-all/index.html",
-        "default_icon": "images/mailmindr-envelope-plus-icon.svg"
+        "theme_icons": [
+            {
+                "dark": "images/mailmindr-flag-list.svg",
+                "light": "images/mailmindr-flag-list--white.svg",
+                "size": 16
+            },
+            {
+                "dark": "images/mailmindr-flag-list.svg",
+                "light": "images/mailmindr-flag-list--white.svg",
+                "size": 32
+            }
+        ]
     },
     "message_display_action": {
-        "default_title": "Follow-Up",
-        "default_icon": "images/mailmindr-envelope-plus-icon.svg"
+        "default_title": "__MSG_mailmindrMessageDisplayButton__",
+        "theme_icons": [
+            {
+                "dark": "images/mailmindr-flag.svg",
+                "light": "images/mailmindr-flag--white.svg",
+                "size": 16
+            },
+            {
+                "dark": "images/mailmindr-flag.svg",
+                "light": "images/mailmindr-flag--white.svg",
+                "size": 32
+            }
+        ]
     },
     "background": {
         "page": "scripts/mailmindr-background.html",

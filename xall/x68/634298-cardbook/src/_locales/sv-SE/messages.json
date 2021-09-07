@@ -2909,6 +2909,9 @@
 	"wdw_cardEditionViewListTitle": {
 		"message": "Visa lista"
 	},
+	"wdw_cardEditionEditTemplateTitle": {
+		"message": "Redigera mall"
+	},
 	"wdw_cardbookPrintTitleLong": {
 		"message": "Förhandsgranska $P1$ - Kontakter - Thunderbird",
         "placeholders": {
@@ -3563,20 +3566,20 @@
 	"cardbookContactPaneItemAccesskey": {
 		"message": "O"
 	},
+	"wizard.next.label": {
+		"message": "Nästa"
+	},	
+	"wizard.back.label": {
+		"message": "Tillbaka"
+	},	
+	"wizard.create.label": {
+		"message": "Skapa"
+	},
 	"wizard.title": {
 		"message": "Lägg till ny adressbok"
 	},
-	"wizard.label": {
-		"message": "Lägg till ny adressbok"
-	},
-	"welcomePage.wizard.description": {
-		"message": "Välkommen"
-	},
 	"welcomePage.description": {
 		"message": "??It seems that this is the first time CardBook has been run. CardBook will attempt to collect contacts from Thunderbird’s standard address books and remote address books.??"
-	},
-	"initialPage.wizard.description": {
-		"message": "Plats för ny adressbok."
 	},
 	"initialPage.description": {
 		"message": "Är adressboken lokal eller online ? :"
@@ -3595,9 +3598,6 @@
 	},
 	"initialPage.find.label": {
 		"message": "??Search for remote address books??"
-	},
-	"localPage.wizard.description": {
-		"message": "Typ och plats för din nya lokala adressbok."
 	},
 	"localPage.type.description": {
 		"message": "Vad är det för typ av lokal adressbok ? :"
@@ -3632,9 +3632,6 @@
 	"localPage.uributton.label": {
 		"message": "Bläddra"
 	},
-	"remotePage.wizard.description": {
-		"message": "Typ och plats för din nya online adressbok."
-	},
 	"remotePage.description": {
 		"message": "Vad är det för typ av online adressbok ? : (Varning: Google följer inte standarden för vCard)"
 	},
@@ -3646,6 +3643,9 @@
 	},
 	"remotePage.google.label": {
 		"message": "Google"
+	},
+	"remotePage.googleWorkspace.label": {
+		"message": "Google Workspace"
 	},
 	"remotePage.apple.label": {
 		"message": "Apple"
@@ -3671,14 +3671,14 @@
 	"remotePage.password.label": {
 		"message": "Lösenord:"
 	},
+	"rememberPassword": {
+		"message": "Använd lösenordshanteraren för att komma ihåg lösenordet"
+	},
 	"showHidePassword.tooltip": {
 		"message": "Visa/dölj lösenord"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Validera/Testa"
-	},
-	"locationSearchPage.wizard.description": {
-		"message": "Definition av den sparade sökningen."
 	},
 	"locationSearchPage.label": {
 		"message": "Sparad sökning"
@@ -3704,9 +3704,6 @@
 	"googleOauthPage.wizard.description": {
 		"message": "Google Autentisering"
 	},
-	"namePage.wizard.description": {
-		"message": "Adressboks inställningar"
-	},
 	"namePage.selected.label": {
 		"message": "Välj"
 	},
@@ -3725,17 +3722,11 @@
 	"namePage.vCardVersion.label": {
 		"message": "vCard"
 	},
-	"namesPage.wizard.description": {
-		"message": "Adressboks inställningar"
-	},
 	"namesPage.name.label": {
 		"message": "Namn"
 	},
 	"namesPage.name.description": {
 		"message": "Flera adressböker hittades. Välj vilka du vill använda och namnge dem :"
-	},
-	"findPage.wizard.description": {
-		"message": "??Remote address book search??"
 	},
 	"findPage.name1.description": {
 		"message": "??No remote address books found.??"
@@ -3745,9 +3736,6 @@
 	},
 	"findPage.name3.description": {
 		"message": "??Multiple remote address books found. Validate remote address books to add:??"
-	},
-	"finishPage.wizard.description": {
-		"message": "??Address books configuration??"
 	},
 	"finishPage.description": {
 		"message": "Din nya adressbok är nu klar för användning."
@@ -5117,6 +5105,12 @@
 	"cardbookToolbarAddListButtonTooltip": {
 		"message": "Ny Mejlinglista"
 	},
+	"cardbookToolbarAddTemplateButtonLabel": {
+		"message": "??New Template??"
+	},
+	"cardbookToolbarAddTemplateButtonTooltip": {
+		"message": "??Create a new template??"
+	},
 	"cardbookToolbarEditButtonLabel": {
 		"message": "Redigera"
 	},
@@ -5315,6 +5309,15 @@
 	"searchForLocalKeyEditButton.tooltip": {
 		"message": "Importera från en fil"
 	},
+	"definitionLabel": {
+		"message": "Definition"
+	},
+	"fieldsLabel": {
+		"message": "Fält"
+	},
+	"formulasLabel": {
+		"message": "??Formulas??"
+	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Dela med mejl"
 	},
@@ -5462,6 +5465,9 @@
 	"fnFormulaExplanation": {
 		"message": "Man kan få CardBook till att generera Visningsnamn. Detta görs med block som innesluts innom “()”. ??In these blocks there might be many parts delimited by “|”.??"
 	},
+	"templateFormulaExplanation": {
+		"message": "??It is possible to define templates with pre-defined fields. For example one may define a template with the email ”({{2}}).({{4}})@mycompany.org”. Once applied to a contact that has ”John” and ”Doe” as given name and family name, an email ”john.doe@mycompany.org” will be added to the contact.??"
+	},
 	"formulaExplanation1": {
 		"message": "??({{1}}|{{2}}) : If {{1}} is empty, then the block will be replaced by {{2}}.??"
 	},
@@ -5500,12 +5506,6 @@
 	},
 	"displayFieldNamesAccesskey": {
 		"message": "F"
-	},
-	"displayTypesLabel": {
-		"message": "Typer och förval"
-	},
-	"displayTypesAccesskey": {
-		"message": "y"
 	},
 	"fieldsToPrintGroupboxLabel": {
 		"message": "Vad som skrivs ut"
@@ -5698,6 +5698,12 @@
 	},
 	"saveTemplateLabel": {
 		"message": "Spara mall"
+	},
+	"applyTemplateLabel": {
+		"message": "??Apply template??"
+	},
+	"createTemplateLabel": {
+		"message": "??Create template??"
 	},
 	"convertVCardsLabel": {
 		"message": "??Convert vCards??"

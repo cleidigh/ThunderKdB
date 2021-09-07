@@ -28,8 +28,7 @@ var cardbookPasswordManager = {
 			var commonStrBundle = Services.strings.createBundle("chrome://global/locale/commonDialogs.properties");
 			var myText = commonStrBundle.formatStringFromName("EnterPasswordFor", [aUsername, myUrl], 2);
 			var myPassword = {value: ""};
-			var pwdMgrBundle = Services.strings.createBundle("chrome://passwordmgr/locale/passwordmgr.properties");
-			var myRememberText = pwdMgrBundle.GetStringFromName("rememberPassword");
+			var myRememberText = cardbookRepository.extension.localeData.localizeMessage("rememberPassword");
 			var check = {value: false};
 			var prompter = Services.ww.getNewPrompter(null);
 			if (prompter.promptPassword(myTitle, myText, myPassword, myRememberText, check)) {
@@ -46,8 +45,7 @@ var cardbookPasswordManager = {
 		var commonStrBundle = Services.strings.createBundle("chrome://global/locale/commonDialogs.properties");
 		var myText = commonStrBundle.formatStringFromName("EnterPasswordFor", [aUsername, myUrl], 2);
 		var myPassword = {value: ""};
-		var pwdMgrBundle = Services.strings.createBundle("chrome://passwordmgr/locale/passwordmgr.properties");
-		var myRememberText = pwdMgrBundle.GetStringFromName("rememberPassword");
+		var myRememberText = cardbookRepository.extension.localeData.localizeMessage("rememberPassword");
 		var check = {value: false};
 		var prompter = Services.ww.getNewPrompter(null);
 		if (prompter.promptPassword(myTitle, myText, myPassword, myRememberText, check)) {
@@ -65,7 +63,7 @@ var cardbookPasswordManager = {
 			if (aUrl == cardbookRepository.cardbookOAuthData.GOOGLE.AUTH_PREFIX_CONTACTS ||
 				aUrl == cardbookRepository.cardbookOAuthData.GOOGLE.AUTH_PREFIX_LABELS ||
 				aUrl == cardbookRepository.cardbookOAuthData.GOOGLE2.AUTH_PREFIX_CONTACTS ||
-				aUrl == cardbookRepository.cardbookOAuthData.YAHOO.AUTH_PREFIX_CONTACTS) {
+				aUrl == cardbookRepository.cardbookOAuthData.GOOGLE3.AUTH_PREFIX_CONTACTS) {
 				var logins = Services.logins.findLogins(aUrl, "User Refresh Token", null);
 			} else {
 				var logins = Services.logins.findLogins(cardbookPasswordManager.getRootUrl(aUrl), "User login", null);
@@ -82,7 +80,7 @@ var cardbookPasswordManager = {
 	addPassword: function (aUsername, aUrl, aPassword) {
 		var nsLoginInfo = new Components.Constructor("@mozilla.org/login-manager/loginInfo;1", Components.interfaces.nsILoginInfo, "init");
 		if (aUrl.startsWith(cardbookRepository.oauthPrefix)) {
-			// google and yahoo cases
+			// google case
 			var login_info = new nsLoginInfo(aUrl, "User Refresh Token", null, aUsername, aPassword, "", "");
 		} else {
 			var login_info = new nsLoginInfo(cardbookPasswordManager.getRootUrl(aUrl), "User login", null, aUsername, aPassword, "", "");
@@ -93,7 +91,7 @@ var cardbookPasswordManager = {
 
 	removePassword: function (aUsername, aUrl) {
 		if (aUrl.startsWith(cardbookRepository.oauthPrefix)) {
-			// google and yahoo cases
+			// google case
 			var logins = Services.logins.findLogins(aUrl, "User Refresh Token", null);
 		} else {
 			var logins = Services.logins.findLogins(cardbookPasswordManager.getRootUrl(aUrl), "User login", null);

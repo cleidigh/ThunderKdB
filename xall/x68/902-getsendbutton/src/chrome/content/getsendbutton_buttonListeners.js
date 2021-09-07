@@ -39,10 +39,10 @@ var GetSendButton_status = {
           if (item == "TotalMessages") {
             if (parentItem.flags & 0x0800) {
               GetSendButton_status.setElementStatus();
-              // console.log("GetSendButton: parentItem: " + parentItem);
-              // console.log("GetSendButton: parentItem.flags: " + parentItem.flags);
-              // console.log("GetSendButton: item: " + item);
-              // console.log("GetSendButton: viewString: " + viewString);
+              // console.debug("GetSendButton: parentItem: " + parentItem);
+              // console.debug("GetSendButton: parentItem.flags: " + parentItem.flags);
+              // console.debug("GetSendButton: item: " + item);
+              // console.debug("GetSendButton: viewString: " + viewString);
             }
           }
         }

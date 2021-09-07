@@ -39,7 +39,7 @@ function convertVCards () {
 		deleteOldDateFormat();
 		document.getElementById("convertVCardsLabel").setAttribute('hidden', 'true');
 		cardbookRepository.cardbookUtils.formatStringForOutput(myTopic, [myTargetName, myTargetVersion, counter]);
-		cardbookActions.endAction(myActionId);
+		await cardbookActions.endAction(myActionId);
 	}}, Components.interfaces.nsIEventTarget.DISPATCH_SYNC);
 };
 
@@ -65,32 +65,39 @@ function loadFnFormula () {
 	document.getElementById('formulaSampleTextBox6').value = cardbookRepository.extension.localeData.localizeMessage("nicknameLabel");
 
 	let count = 6;
-	let rows = document.getElementById('formulaSampleRows');
+	let table = document.getElementById('formulaSampleTable');
 	if (allOrg.length == 0) {
 		count++;
-		let row = cardbookElementTools.addGridRow(rows, 'formulaSampleTextRow' + count, {align: 'center'});
-		let label = cardbookElementTools.addLabel(row, 'formulaMemberLabel' + count, "{{" + count + "}} : " + cardbookRepository.extension.localeData.localizeMessage("orgLabel"), null, {});
-		let textbox = cardbookElementTools.addTextbox(row, 'formulaSampleTextBox' + count, cardbookRepository.extension.localeData.localizeMessage("orgLabel"), {});
+		let row = cardbookElementTools.addTableRow(table, 'formulaSampleTableRow.' + count);
+		let labelData = cardbookElementTools.addTableData(row, 'formulaSampleTableData.' + count + '.1');
+		let label = cardbookElementTools.addLabel(labelData, 'formulaMemberLabel' + count, "{{" + count + "}} : " + cardbookRepository.extension.localeData.localizeMessage("orgLabel"), null, {});
+		let textboxData = cardbookElementTools.addTableData(row, 'formulaSampleTableData.' + count + '.2', {class: "cardbook-td-input"});
+		let textbox = cardbookElementTools.addTextbox(textboxData, 'formulaSampleTextBox' + count, cardbookRepository.extension.localeData.localizeMessage("orgLabel"), {});
 		textbox.addEventListener("input", changeFnPreview);
-
 	} else {
 		for (let org of allOrg) {
 			count++;
-			let row = cardbookElementTools.addGridRow(rows, 'formulaSampleTextRow' + count, {align: 'center'});
-			let label = cardbookElementTools.addLabel(row, 'formulaMemberLabel' + count, "{{" + count + "}} : " + org, null, {});
-			let textbox = cardbookElementTools.addTextbox(row, 'formulaSampleTextBox' + count, org, {});
+			let row = cardbookElementTools.addTableRow(table, 'formulaSampleTextRow' + count);
+			let labelData = cardbookElementTools.addTableData(row, 'formulaSampleTableData.' + count + '.1');
+			let label = cardbookElementTools.addLabel(labelData, 'formulaMemberLabel' + count, "{{" + count + "}} : " + org, null, {});
+			let textboxData = cardbookElementTools.addTableData(row, 'formulaSampleTableData.' + count + '.2', {class: "cardbook-td-input"});
+			let textbox = cardbookElementTools.addTextbox(textboxData, 'formulaSampleTextBox' + count, org, {});
 			textbox.addEventListener("input", changeFnPreview);
 		}
 	}
 	count++;
-	let rowTitle = cardbookElementTools.addGridRow(rows, 'formulaSampleTextRow' + count, {align: 'center'});
-	let labelTitle = cardbookElementTools.addLabel(rowTitle, 'formulaMemberLabel' + count, "{{" + count + "}} : " + cardbookRepository.extension.localeData.localizeMessage("titleLabel"), null, {});
-	let textboxTitle = cardbookElementTools.addTextbox(rowTitle, 'formulaSampleTextBox' + count, cardbookRepository.extension.localeData.localizeMessage("titleLabel"), {});
+	let rowTitle = cardbookElementTools.addTableRow(table, 'formulaSampleTextRow' + count);
+	let labelTitleData = cardbookElementTools.addTableData(rowTitle, 'formulaSampleTableData.' + count + '.1');
+	let labelTitle = cardbookElementTools.addLabel(labelTitleData, 'formulaMemberLabel' + count, "{{" + count + "}} : " + cardbookRepository.extension.localeData.localizeMessage("titleLabel"), null, {});
+	let textboxTitleData = cardbookElementTools.addTableData(rowTitle, 'formulaSampleTableData.' + count + '.2', {class: "cardbook-td-input"});
+	let textboxTitle = cardbookElementTools.addTextbox(textboxTitleData, 'formulaSampleTextBox' + count, cardbookRepository.extension.localeData.localizeMessage("titleLabel"), {});
 	textboxTitle.addEventListener("input", changeFnPreview);
 	count++;
-	let rowRole = cardbookElementTools.addGridRow(rows, 'formulaSampleTextRow' + count, {align: 'center'});
-	let labelRole = cardbookElementTools.addLabel(rowRole, 'formulaMemberLabel' + count, "{{" + count + "}} : " + cardbookRepository.extension.localeData.localizeMessage("roleLabel"), null, {});
-	let textboxRole = cardbookElementTools.addTextbox(rowRole, 'formulaSampleTextBox' + count, cardbookRepository.extension.localeData.localizeMessage("roleLabel"), {});
+	let rowRole = cardbookElementTools.addTableRow(table, 'formulaSampleTextRow' + count);
+	let labelRoleData = cardbookElementTools.addTableData(rowRole, 'formulaSampleTableData.' + count + '.1');
+	let labelRole = cardbookElementTools.addLabel(labelRoleData, 'formulaMemberLabel' + count, "{{" + count + "}} : " + cardbookRepository.extension.localeData.localizeMessage("roleLabel"), null, {});
+	let textboxRoleData = cardbookElementTools.addTableData(rowRole, 'formulaSampleTableData.' + count + '.2', {class: "cardbook-td-input"});
+	let textboxRole = cardbookElementTools.addTextbox(textboxRoleData, 'formulaSampleTextBox' + count, cardbookRepository.extension.localeData.localizeMessage("roleLabel"), {});
 	textboxRole.addEventListener("input", changeFnPreview);
 	changeFnPreview();
 };
@@ -183,6 +190,7 @@ function onLoadDialog () {
 	setupEnabledCheckbox();
 	showAutoSyncInterval();
 	
+	showPane('generalTabPanel');
 	loadFnFormula();
 	searchForWrongCards();
 	populateApplyToAB();
@@ -190,7 +198,7 @@ function onLoadDialog () {
 
 function deleteOldDateFormat () {
 	try {
-		Services.prefs.deleteBranch(cardbookRepository.cardbookPreferences.prefCardBookData + window.arguments[0].dirPrefId + "." + "dateFormat");
+		cardbookRepository.cardbookPreferences.delBranch(cardbookRepository.cardbookPreferences.prefCardBookData + window.arguments[0].dirPrefId + "." + "dateFormat");
 	}
 	catch(e) {}
 };
@@ -237,5 +245,28 @@ function onCancelDialog () {
 	close();
 };
 
+function showPane (paneID) {
+	if (!paneID) {
+		return;
+	}
+	
+	let pane = document.getElementById(paneID);
+	if (!pane) {
+		return;
+	}
+	
+	let tabnodes = document.getElementById("rightPaneDownHbox1").querySelectorAll(".cardbookTab");
+	for (let node of tabnodes) {
+		if (node.id != paneID) {
+			node.setAttribute("hidden", "true");
+			document.getElementById(node.id.replace("Panel", "")).removeAttribute("visuallyselected");
+		} else {
+			document.getElementById(node.id.replace("Panel", "")).setAttribute("visuallyselected", "true");
+			node.removeAttribute("hidden");
+		}
+	}
+};
+
+document.addEventListener("DOMContentLoaded", onLoadDialog);
 document.addEventListener("dialogaccept", onAcceptDialog);
 document.addEventListener("dialogcancel", onCancelDialog);

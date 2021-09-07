@@ -2909,6 +2909,9 @@
 	"wdw_cardEditionViewListTitle": {
 		"message": "Listeyi Gör"
 	},
+	"wdw_cardEditionEditTemplateTitle": {
+		"message": "Şablonu Düzenle"
+	},
 	"wdw_cardbookPrintTitleLong": {
 		"message": "Baskı Önizleme $P1$ - CardBook - Thunderbird",
 		"placeholders": {
@@ -3563,20 +3566,20 @@
 	"cardbookContactPaneItemAccesskey": {
 		"message": "O"
 	},
+	"wizard.next.label": {
+		"message": "Sonraki"
+	},	
+	"wizard.back.label": {
+		"message": "Geri"
+	},	
+	"wizard.create.label": {
+		"message": "Oluştur"
+	},
 	"wizard.title": {
 		"message": "Yeni adres defteri ekle"
 	},
-	"wizard.label": {
-		"message": "Yeni adres defteri ekle"
-	},
-	"welcomePage.wizard.description": {
-		"message": "Hoş Geldiniz"
-	},
 	"welcomePage.description": {
 		"message": "Cardbook ilk defa çalışıyormuş gibi görünüyor. Cardbook Thunderbird'ün standart adres defterlerinden ve uzak adres defterlerinden kişileri toplamaya çalışacak. "
-	},
-	"initialPage.wizard.description": {
-		"message": "Yeni adres defterinin yeri"
 	},
 	"initialPage.description": {
 		"message": "Adres defteri yeri"
@@ -3595,9 +3598,6 @@
 	},
 	"initialPage.find.label": {
 		"message": "Uzak adres defteri ara"
-	},
-	"localPage.wizard.description": {
-		"message": "Yeni yerel adres defteri için tür ve yer"
 	},
 	"localPage.type.description": {
 		"message": "Yerel adres defterinin türü:"
@@ -3632,9 +3632,6 @@
 	"localPage.uributton.label": {
 		"message": "Göz at"
 	},
-	"remotePage.wizard.description": {
-		"message": "Yeni uzak adres defteri için tür ve yer."
-	},
 	"remotePage.description": {
 		"message": "Uzak adres defterinin türü nedir? (Dikkat: Google vCard standartlarını uymuyor)"
 	},
@@ -3646,6 +3643,9 @@
 	},
 	"remotePage.google.label": {
 		"message": "Google"
+	},
+	"remotePage.googleWorkspace.label": {
+		"message": "Google Workspace"
 	},
 	"remotePage.apple.label": {
 		"message": "Apple"
@@ -3671,14 +3671,14 @@
 	"remotePage.password.label": {
 		"message": "Şifre:"
 	},
+	"rememberPassword": {
+		"message": "Bu parolayı hatırlamak için parola yöneticisini kullan"
+	},
 	"showHidePassword.tooltip": {
 		"message": "Parolayı göster/gizle"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Doğrula"
-	},
-	"locationSearchPage.wizard.description": {
-		"message": "Kayıtlı arama tanımı"
 	},
 	"locationSearchPage.label": {
 		"message": "Kaydedilmiş Arama"
@@ -3704,9 +3704,6 @@
 	"googleOauthPage.wizard.description": {
 		"message": "Google Kimlik Doğrulama"
 	},
-	"namePage.wizard.description": {
-		"message": "Adres Defteri Seçenekleri"
-	},
 	"namePage.selected.label": {
 		"message": "Seçili"
 	},
@@ -3725,17 +3722,11 @@
 	"namePage.vCardVersion.label": {
 		"message": "vCard"
 	},
-	"namesPage.wizard.description": {
-		"message": "Adres Defterleri Seçenekleri"
-	},
 	"namesPage.name.label": {
 		"message": "İsimler"
 	},
 	"namesPage.name.description": {
 		"message": "Birden fazla adress defteri bulundu. Açılmasını istediğiniz adres defterlerini seçin ve isimleri :"
-	},
-	"findPage.wizard.description": {
-		"message": "Uzak adres defteri araması"
 	},
 	"findPage.name1.description": {
 		"message": "Uzak adref defteri bulunamadı"
@@ -3745,9 +3736,6 @@
 	},
 	"findPage.name3.description": {
 		"message": "Birden fazla uzak adres defteri bulundu. Uzak adres defterlerini şuna eklemek için doğrula:"
-	},
-	"finishPage.wizard.description": {
-		"message": "Adres defterleri yapılandırması"
 	},
 	"finishPage.description": {
 		"message": "Yeni adres defteriniz başarıyla yapılandırıldı"
@@ -5117,6 +5105,12 @@
 	"cardbookToolbarAddListButtonTooltip": {
 		"message": "Yeni Posta Listesi"
 	},
+	"cardbookToolbarAddTemplateButtonLabel": {
+		"message": "Yeni Şablon"
+	},
+	"cardbookToolbarAddTemplateButtonTooltip": {
+		"message": "Yeni bir şablon oluştur"
+	},
 	"cardbookToolbarEditButtonLabel": {
 		"message": "Düzenle"
 	},
@@ -5315,6 +5309,15 @@
 	"searchForLocalKeyEditButton.tooltip": {
 		"message": "Dosyadan içe aktar"
 	},
+	"definitionLabel": {
+		"message": "Tanım"
+	},
+	"fieldsLabel": {
+		"message": "Alanlar"
+	},
+	"formulasLabel": {
+		"message": "Formüller"
+	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "E-posta ile paylaş"
 	},
@@ -5462,23 +5465,26 @@
 	"fnFormulaExplanation": {
 		"message": "CardBook'un Görünen İsim'i oluşturmasının özelleştirmesi mümkündür. Bu ilinti \"()\" ile kapatılmış bloklardan oluşur. Bu bloklarda “|” ile ayrılmış çok sayıda parça olabilir. "
 	},
+	"templateFormulaExplanation": {
+		"message": "Şablonları, önceden tanımlanmış alanlarla tanımlamak mümkündür. Örneğin biri, bir şablonu şu e-posta ile tanımlayabilir ”({{2}}).({{4}})@sirketim.org”. ”Falan” ve ”Falankes” şeklinde isim ve soyisme sahip bir kişiye bu şablon uygulanırsa, ”falan.falankes@sirketim.org” şeklinde bir e-posta rehbere eklenmiş olur."
+	},
 	"formulaExplanation1": {
-		"message": "({{1}}|{{2}}) : Eğer {{1}} boşsa, blok şununla değiştirilecek {{2}}."
+		"message": "({{1}}|{{2}}) : Eğer {{1}} boşsa, blok {{2}} ile değiştirilecek."
 	},
 	"formulaExplanation2": {
-		"message": "({{1}}|{{2}}|{{3}}) : Eğer {{1}} eşitse {{2}}, blok şununla değiştirilecek {{3}}."
+		"message": "({{1}}|{{2}}|{{3}}) : Eğer {{1}} {{2}}'ye eşitse, blok {{3}} ile değiştirilecek."
 	},
 	"formulaExplanation3": {
-		"message": "({{1}}|{{2}}|{{3}}|{{4}}) : Eğer {{1}} eşitse {{2}}, blok şununla değiştirilecek {{3}}, başka şununla {{4}}."
+		"message": "({{1}}|{{2}}|{{3}}|{{4}}) : Eğer {{1}} {{2}}'ye eşitse, blok {{3}} veya {{4}} ile değiştirilecek."
 	},
 	"formulaExplanation4": {
-		"message": "({{1}}|*|{{2}}|{{3}}|{{4}}) : Eğer {{1}} içerirse {{2}}, blok şununla değiştirilecek {{3}}, başka bununla {{4}}."
+		"message": "({{1}}|*|{{2}}|{{3}}|{{4}}) : Eğer {{1}} {{2}}'yi içerirse, blok {{3}} ya da {{4}} ile değiştirilecek."
 	},
 	"formulaExplanation5": {
-		"message": "({{1}}|^|{{2}}|{{3}}|{{4}}) : Eğer {{1}} ile başlarsa {{2}}, blok şununla değiştirilecek {{3}}, başka şununla {{4}}."
+		"message": "({{1}}|^|{{2}}|{{3}}|{{4}}) : Eğer {{1}} {{2}} ile başlarsa, blok {{3}} ya da {{4}} ile değiştirilecek."
 	},
 	"formulaExplanation6": {
-		"message": "({{1}}|$|{{2}}|{{3}}|{{4}}) : Eğer {{1}} ile biterse {{2}}, blok şununla değiştirilecek {{3}}, başka şununla {{4}}."
+		"message": "({{1}}|$|{{2}}|{{3}}|{{4}}) : Eğer {{1}} , {{2}} ile biterse blok {{3}} ya da {{4}} ile değiştirilecek."
 	},
 	"settingsTitlelabel": {
 		"message": "Yazdırma Seçenekleri"
@@ -5500,12 +5506,6 @@
 	},
 	"displayFieldNamesAccesskey": {
 		"message": "F"
-	},
-	"displayTypesLabel": {
-		"message": "Türler ve Seçenekler"
-	},
-	"displayTypesAccesskey": {
-		"message": "y"
 	},
 	"fieldsToPrintGroupboxLabel": {
 		"message": "Yazdırılacak Alanlar"
@@ -5698,6 +5698,12 @@
 	},
 	"saveTemplateLabel": {
 		"message": "Şablonu kaydet"
+	},
+	"applyTemplateLabel": {
+		"message": "Şablon uygula"
+	},
+	"createTemplateLabel": {
+		"message": "Şablon oluştur"
 	},
 	"convertVCardsLabel": {
 		"message": "vCards'ı Dönüştür"

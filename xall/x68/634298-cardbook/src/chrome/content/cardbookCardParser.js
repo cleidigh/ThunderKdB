@@ -461,14 +461,13 @@ if ("undefined" == typeof(cardbookCardParser)) {
 					for (var i in myPGToBeParsed) {
 						let myPGLocalName = i;
 						let found = false;
-						for (var j in cardbookRepository.multilineFields) {
+						for (let field of cardbookRepository.multilineFields) {
 							if (found) {
 								break;
 							}
-							let myLocalField = cardbookRepository.multilineFields[j];
-							for (var k = 0; k < this[myLocalField].length; k++) {
-								if (this[myLocalField][k][2] == myPGLocalName) {
-									this[myLocalField][k][3] = JSON.parse(JSON.stringify(myPGToBeParsed[myPGLocalName]));
+							for (var k = 0; k < this[field].length; k++) {
+								if (this[field][k][2] == myPGLocalName) {
+									this[field][k][3] = JSON.parse(JSON.stringify(myPGToBeParsed[myPGLocalName]));
 									found = true;
 									break;
 								}

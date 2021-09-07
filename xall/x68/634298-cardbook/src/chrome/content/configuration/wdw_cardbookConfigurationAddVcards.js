@@ -58,6 +58,7 @@ function onCancelDialog () {
 	close();
 };
 
+document.addEventListener("DOMContentLoaded", onLoadDialog);
 document.addEventListener("dialogaccept", onAcceptDialog);
 document.addEventListener("dialogcancel", onCancelDialog);
 document.addEventListener("input", checkRequired, true);

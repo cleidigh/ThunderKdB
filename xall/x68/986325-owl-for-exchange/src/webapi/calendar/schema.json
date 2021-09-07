@@ -8,8 +8,36 @@
     "parameters": [],
     "returns": {
       "name": "id",
-      "type": "string"
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string",
+          "description": "The message's Item Id."
+        },
+        "folderId": {
+          "type": "string",
+          "description": "The message's Folder Id."
+        }
+      }
     }
+  }, {
+    "name": "notifyFolderResync",
+    "type": "function",
+    "description": "Notifies the back end to resynchronise a calendar",
+    "async": true,
+    "parameters": [{
+      "name": "key",
+      "type": "string",
+      "description": "The key for the JsAccount server."
+    }, {
+      "name": "type",
+      "type": "string",
+      "description": "The type of folder, either Calendar or Tasks."
+    }, {
+      "name": "id",
+      "type": "string",
+      "description": "The id of the folder."
+    }]
   }, {
     "name": "registerCalendar",
     "type": "function",

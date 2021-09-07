@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 5347,
+    "average_daily_users": 5909,
     "categories": {
         "thunderbird": [
             "chat",
@@ -19,37 +19,38 @@
     "contributions_url": "",
     "created": "2020-11-03T20:06:31Z",
     "current_version": {
-        "id": 2475845,
+        "id": 2476347,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.7.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/simple-mail-redirection/versions/2475845",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/simple-mail-redirection/versions/2476347",
         "files": [
             {
-                "id": 1019005,
-                "created": "2021-05-04T07:20:02Z",
-                "hash": "sha256:237faa0018876a6b284ab9ea5390d3a5d9884e7589ac03608bada383724c21a2",
+                "id": 1019507,
+                "created": "2021-08-27T20:10:48Z",
+                "hash": "sha256:35f2c37b521341da1fad22428510e832d7197f605a9bb3c602eb8621cd0ae14d",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 51887,
+                "size": 53912,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019005/simple_mail_redirection-1.14-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019507/simple_mail_redirection-1.17-tb.xpi?src=",
                 "permissions": [
                     "storage",
                     "addressBooks",
                     "messagesRead",
                     "menus",
                     "accountsRead",
-                    "activeTab"
+                    "activeTab",
+                    "management"
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 13,
             "name": {
@@ -79,17 +80,17 @@
             "url": "http://www.gnu.org/licenses/gpl-2.0.html"
         },
         "release_notes": {
-            "en-US": "Colorize addressbook entries from cardbook",
-            "de": ""
+            "en-US": "Fixed problem with cardbook",
+            "de": "Problem mit cardbook beseitigt"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/simple-mail-redirection/versions/1.14",
-        "version": "1.14"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/simple-mail-redirection/versions/1.17",
+        "version": "1.17"
     },
     "default_locale": "en-US",
     "description": {
         "en-US": "<strong>Please download from Thunderbird's add-on tab, from Firefox you get an old version!</strong>\n\nThis AddOn implements redirect as defined in <a rel=\"nofollow\" href=\"https://datatracker.ietf.org/doc/html/rfc5322#section-3.6.6\">RFC5322, Section 3.6.6</a>.\nThunderbird 91 introduces it's own 'Redirect' which works quite differently. It's more a\n'Forward' but without quoting the original mail.",
-        "de": "Bitte aus Thunderbird's Add-ons Einstellungen herunterladen, aus Firefox heraus bekommt man u. U. eine veraltete Version!\n\nDieses AddOn implementiert das Umleiten gemäß <a rel=\"nofollow\" href=\"https://datatracker.ietf.org/doc/html/rfc5322#section-3.6.6\">RFC5322, Abschnitt 3.6.6</a>.\nDie in Thunderbird 91 neu eingeführte Funktion 'Umleiten' funktioniert völlig anders\nund ist eher ein Weiterleiten ohne die Originalmail als Zitat zu markieren."
+        "de": "Bitte aus Thunderbird's Add-ons Einstellungen herunterladen, aus Firefox heraus bekommt man u. U. eine veraltete Version!\n\nDieses AddOn implementiert das Umleiten gemäß <a rel=\"nofollow\" href=\"https://datatracker.ietf.org/doc/html/rfc5322#section-3.6.6\">RFC5322, Abschnitt 3.6.6</a>.\nDie in Thunderbird 91 neu eingeführte Funktion 'Umleiten' funktioniert völlig anders\nund ist eher ein Weiterleiten ohne die Originalmail als Zitat zu markieren.\ndas die Kategorie auch eine Farbe hat."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/simple-mail-redirection/edit",
@@ -106,7 +107,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-05-04T09:52:04Z",
+    "last_updated": "2021-08-27T20:52:42Z",
     "name": {
         "el": "Simple Mail Redirection",
         "ca": "Simple Mail Redirection",
@@ -176,10 +177,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.60093,
-        "count": 16,
-        "average": 4.6875,
-        "text_count": 16
+        "bayesian_average": 4.62393,
+        "count": 17,
+        "average": 4.7059,
+        "text_count": 17
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/simple-mail-redirection/reviews/",
     "requires_payment": false,

@@ -1872,7 +1872,7 @@
         }
 	},
 	"addressbookDeleted": {
-		"message": "$P1$ : Адресная книга закрыта",
+		"message": "$P1$ : Адресная книга удалена",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2909,6 +2909,9 @@
 	"wdw_cardEditionViewListTitle": {
 		"message": "Просмотр списка"
 	},
+	"wdw_cardEditionEditTemplateTitle": {
+		"message": "Редактировать шаблон"
+	},
 	"wdw_cardbookPrintTitleLong": {
 		"message": "Предварительный просмотр печати - $P1$ - CardBook - Thunderbird",
         "placeholders": {
@@ -3563,20 +3566,20 @@
 	"cardbookContactPaneItemAccesskey": {
 		"message": "к"
 	},
+	"wizard.next.label": {
+		"message": "Следующая"
+	},	
+	"wizard.back.label": {
+		"message": "Назад"
+	},	
+	"wizard.create.label": {
+		"message": "Создать"
+	},
 	"wizard.title": {
 		"message": "Добавьте новую адресную книгу"
 	},
-	"wizard.label": {
-		"message": "Добавьте новую адресную книгу"
-	},
-	"welcomePage.wizard.description": {
-		"message": "Добро пожаловать"
-	},
 	"welcomePage.description": {
 		"message": "Это первый запуск CardBook. Будет выполнена попытка получить данные о контактах из стандарных адресных книг Thunderbird, а также адресных книг, расположенных на серверах в Интернете."
-	},
-	"initialPage.wizard.description": {
-		"message": "Расположение новой адресной книги."
 	},
 	"initialPage.description": {
 		"message": "Адресная книга расположена локально или на сервере в сети?"
@@ -3595,9 +3598,6 @@
 	},
 	"initialPage.find.label": {
 		"message": "Поиск сетевых адресных книг"
-	},
-	"localPage.wizard.description": {
-		"message": "Тип и расположение новой адресной книги."
 	},
 	"localPage.type.description": {
 		"message": "Какой тип новой локальной адресной книги? :"
@@ -3632,9 +3632,6 @@
 	"localPage.uributton.label": {
 		"message": "Просмотреть"
 	},
-	"remotePage.wizard.description": {
-		"message": "Тип и расположение новой адресной книги в Интрернете."
-	},
 	"remotePage.description": {
 		"message": "Какой тип вашей удалённой адресной книги? : (Внимание: Google НЕ соблюдает стандарт vCard)"
 	},
@@ -3646,6 +3643,9 @@
 	},
 	"remotePage.google.label": {
 		"message": "Google"
+	},
+	"remotePage.googleWorkspace.label": {
+		"message": "Google Workspace"
 	},
 	"remotePage.apple.label": {
 		"message": "Apple"
@@ -3671,14 +3671,14 @@
 	"remotePage.password.label": {
 		"message": "Пароль:"
 	},
+	"rememberPassword": {
+		"message": "Сохранить этот пароль в хранилище паролей"
+	},
 	"showHidePassword.tooltip": {
 		"message": "Показать/Скрыть пароль"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Проверить"
-	},
-	"locationSearchPage.wizard.description": {
-		"message": "Параметры расширенного поиска"
 	},
 	"locationSearchPage.label": {
 		"message": "Расширенный поиск"
@@ -3704,9 +3704,6 @@
 	"googleOauthPage.wizard.description": {
 		"message": "Аутентификация Google"
 	},
-	"namePage.wizard.description": {
-		"message": "Свойства адресной книги"
-	},
 	"namePage.selected.label": {
 		"message": "Отмеченное"
 	},
@@ -3725,17 +3722,11 @@
 	"namePage.vCardVersion.label": {
 		"message": "vCard"
 	},
-	"namesPage.wizard.description": {
-		"message": "Свойства адресных книг"
-	},
 	"namesPage.name.label": {
 		"message": "Имена"
 	},
 	"namesPage.name.description": {
 		"message": "Было обнаружено множество адресных книг. Выберете нужные для открытия и их имена :"
-	},
-	"findPage.wizard.description": {
-		"message": "Поиск сетевых адресных книг"
 	},
 	"findPage.name1.description": {
 		"message": "Не удалось найти сетевые адресные книги."
@@ -3745,9 +3736,6 @@
 	},
 	"findPage.name3.description": {
 		"message": "Найдены несколько сетевых адресных книг. Проверьте добавляемые адреса:"
-	},
-	"finishPage.wizard.description": {
-		"message": "Параметры адресной книги"
 	},
 	"finishPage.description": {
 		"message": "Новая адресная книга была успешно настроена."
@@ -5117,6 +5105,12 @@
 	"cardbookToolbarAddListButtonTooltip": {
 		"message": "Создание нового списка рассылки"
 	},
+	"cardbookToolbarAddTemplateButtonLabel": {
+		"message": "Создать шаблон"
+	},
+	"cardbookToolbarAddTemplateButtonTooltip": {
+		"message": "Создать новый шаблон"
+	},
 	"cardbookToolbarEditButtonLabel": {
 		"message": "Редактировать"
 	},
@@ -5315,6 +5309,15 @@
 	"searchForLocalKeyEditButton.tooltip": {
 		"message": "Импорт из файла"
 	},
+	"definitionLabel": {
+		"message": "Определение"
+	},
+	"fieldsLabel": {
+		"message": "Поля"
+	},
+	"formulasLabel": {
+		"message": "Формулы"
+	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Поделиться по email"
 	},
@@ -5462,6 +5465,9 @@
 	"fnFormulaExplanation": {
 		"message": "Для формирования поля «Отображаемое имя» возможно задать правило выполнения операций над полями. Правило состоит из блоков, ограниченных «()». В каждом из блоков может присутствовать множество частей, разделяемых «|»."
 	},
+	"templateFormulaExplanation": {
+		"message": "??It is possible to define templates with pre-defined fields. For example one may define a template with the email ”({{2}}).({{4}})@mycompany.org”. Once applied to a contact that has ”John” and ”Doe” as given name and family name, an email ”john.doe@mycompany.org” will be added to the contact.??"
+	},
 	"formulaExplanation1": {
 		"message": "({{1}}|{{2}}): Если значение поля {{1}} является пустым, то будет использоваться значение поля {{2}}."
 	},
@@ -5500,12 +5506,6 @@
 	},
 	"displayFieldNamesAccesskey": {
 		"message": "И"
-	},
-	"displayTypesLabel": {
-		"message": "Типы и настройки"
-	},
-	"displayTypesAccesskey": {
-		"message": "н"
 	},
 	"fieldsToPrintGroupboxLabel": {
 		"message": "Что печатать"
@@ -5698,6 +5698,12 @@
 	},
 	"saveTemplateLabel": {
 		"message": "Сохранить шаблон"
+	},
+	"applyTemplateLabel": {
+		"message": "Применить шаблон"
+	},
+	"createTemplateLabel": {
+		"message": "Создать шаблон"
 	},
 	"convertVCardsLabel": {
 		"message": "Преобразовать формат vCard"

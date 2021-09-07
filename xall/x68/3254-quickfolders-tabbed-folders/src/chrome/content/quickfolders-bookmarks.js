@@ -19,9 +19,6 @@ QuickFolders.bookmarks = {
   get isDebug() {
     return (QuickFolders.Preferences.isDebugOption('bookmarks'));
   },
-  get document() {
-    return QuickFolders.doc;
-  },
   get hasEntries() {
     return (this.Entries.length > 0); 
   },
@@ -172,7 +169,7 @@ QuickFolders.bookmarks = {
           entry.invalid = true; // make sure this propagates to this.Entries!
 					menuItem.classList.add('invalid');
           util.logDebug("Invalid Uri - couldn't open message tab from: " + entry.Uri);
-          let text = util.getBundleString('qf.prompt.readingList.searchMissingItem', 'Cannot find the mail, it might have been moved elsewhere in the meantime.\n{1}\n\nDo you want to search for it?'),
+          let text = util.getBundleString("qf.prompt.readingList.searchMissingItem"),
               search = Services.prompt.confirm(window, "QuickFolders", text.replace("{1}", entry.label));
           if (search) {
             this.findBookmark(entry);
@@ -181,7 +178,7 @@ QuickFolders.bookmarks = {
         break;
       case 2: // right-click
         // remove item!
-        let question = util.getBundleString('qf.prompt.readingList.removeItem', "Remove this item?");
+        let question = util.getBundleString("qf.prompt.readingList.removeItem");
         if (Services.prompt.confirm(window, "QuickFolders", question)) {
           let bm = QuickFolders.bookmarks;
           bm.removeUri(entry.Uri);
@@ -253,14 +250,19 @@ QuickFolders.bookmarks = {
   } ,
 
   addMail: function addMail(newUri, sourceFolder)  {
-    let util = QuickFolders.Util,
-        prefs = QuickFolders.Preferences,
-        countEntries = this.Entries.length;
-    const MAX_BOOKMARKS = 5;
-    if (!util.hasPremiumLicense(false) && countEntries>2) {
-      let text = util.getBundleString("qf.notification.premium.readingList",
-                  "You have now {1} bookmarks defined. The free version of QuickFolders allows a maximum of {2}.");
-      util.popupProFeature("bookmarks", text.replace("{1}", countEntries).replace("{2}", MAX_BOOKMARKS.toString()));
+    const util = QuickFolders.Util,
+          prefs = QuickFolders.Preferences,
+          countEntries = this.Entries.length,
+          isStandardLicense = util.hasStandardLicense();
+    
+    let MAX_BOOKMARKS = isStandardLicense ? 10 : 5;
+          
+    if (util.hasValidLicense() && !isStandardLicense) MAX_BOOKMARKS = 100000;
+    
+    if (countEntries>=MAX_BOOKMARKS-2) {
+      let licenseType = isStandardLicense ? "standard" : "premium";
+      let text = util.getBundleString(`qf.notification.${licenseType}.readingList`);
+      util.popupRestrictedFeature("bookmarks", text.replace("{1}", countEntries).replace("{2}", MAX_BOOKMARKS.toString()));
       // early exit if no license key and maximum icon number is reached
       if (countEntries >= MAX_BOOKMARKS)
         return false;
@@ -471,16 +473,6 @@ QuickFolders.bookmarks = {
       return null; // in Linux we cannot get the browser while options dialog is displayed :(
     try {
       let isOriginBrowser = false;
-      // for SeaMonkey we need to determine whether we opened from the messenger or from the navigator window
-      if (util.Application=='SeaMonkey' && !tabmail) {
-        tabmail = browser.document ? browser.document.getElementById("tabmail") : document.getElementById("tabmail");
-        // double check whether we come from browser
-        if (util.Application=='SeaMonkey') {
-          if (!tabmail) {
-            isOriginBrowser = true;
-          }
-        }
-      }
       /*     GET CONTEXT FROM CURRENT MAIL TAB  */
       if (!isOriginBrowser) {
         if (tabmail) {
@@ -613,7 +605,7 @@ QuickFolders.bookmarks = {
   },
   
   // Update the User Interface (Reading List Menu: context items only)
-  // the list itself is only rebuilt when calling load() or setting ditry=true and calling persist()
+  // the list itself is only rebuilt when calling load() or setting dirty=true and calling persist()
   update: function update() {
     let isActive = this.hasEntries,
         util = QuickFolders.Util,

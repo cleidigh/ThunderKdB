@@ -1,16 +1,18 @@
 const kHardMargin = 800;
 
-function Channel(aURI, aLoadInfo) {
+function Channel(aURI, aLoadInfo, aOriginalURI) {
+  this.properties = {};
   // We're not interested in watching the values of these attributes,
   // so we can just expose these as properties through XPConnect.
   // nsIChannel attributes
-  this.URI = this.originalURI = aURI.QueryInterface(Ci.nsIMsgMailNewsUrl);
+  this.URI = aURI;
+  this.originalURI = aOriginalURI || aURI;
   this.owner = this.securityInfo = this.notificationCallbacks = null;
   this.contentType = "message/rfc822";
   this.contentCharset = "";
   this.contentLength = -1;
   this.canceled = false;
-  this.contentDisposition = Ci.nsIChannel.DISPOSITION_INLINE;
+  this.contentDisposition = aURI.IsUrlType(Ci.nsIMsgMailNewsUrl.eDisplay) ? Ci.nsIChannel.DISPOSITION_INLINE : Ci.nsIChannel.DISPOSITION_ATTACHMENT;
   this.contentDispositionFilename = null;
   this.contentDispositionHeader = null;
   this.loadInfo = aLoadInfo;
@@ -35,7 +37,7 @@ function Channel(aURI, aLoadInfo) {
 }
 
 Channel.prototype = {
-  QueryInterface: ChromeUtils.generateQI([Ci.nsIChannel, Ci.nsIRequest]),
+  QueryInterface: ChromeUtils.generateQI(["nsIChannel", "nsIRequest", "nsIPropertyBag", "nsIWritablePropertyBag"]),
   // nsIChannel
   /**
    * Called to synchronousely retrieve the source of a message.
@@ -345,16 +347,38 @@ Channel.prototype = {
   },
   // XXX TODO
   suspend: function() {
-    throw Cr.NS_ERROR_NOT_AVAILABLE;
+    console.log("suspend not available");
   },
   resume: function() {
-    throw Cr.NS_ERROR_NOT_AVAILABLE;
+    console.log("resume not available");
   },
   getTRRMode: function() {
     return Ci.nsIRequest.TRR_DEFAULT_MODE;
   },
   setTRRMode: function(aMode) {
+    console.log("setTRRMode not available");
     throw Cr.NS_ERROR_NOT_AVAILABLE;
+  },
+  // nsIPropertyBag
+  get enumerator() {
+    console.log("enumerator not available");
+    throw Cr.NS_ERROR_NOT_IMPLEMENTED;
+  },
+  getProperty(aName) {
+    // This API is supposed to throw on failure, but our sole caller
+    // `nsOuterWindowProxy::GetNoPDFJSPrincipal` ignores exceptions anyway.
+    return this.properties[aName];
+  },
+  // nsIWritablePropertyBag
+  setProperty(aName, aValue) {
+    // PDF.js wants to set two properties:
+    // `contentType` (saving the old content type for some reason)
+    // `noPDFJSPrincipal` (so that PDFs can be printed)
+    this.properties[aName] = aValue;
+  },
+  deleteProperty(aName) {
+    console.log("deleteProperty not available");
+    throw Cr.NS_ERROR_NOT_IMPLEMENTED;
   },
 };
 
@@ -384,14 +408,14 @@ ProtocolHandler.prototype = {
     if (aUrlListener && aURI instanceof Ci.nsIMsgMailNewsUrl) {
       aURI.RegisterListener(aUrlListener);
     }
-    let channel = new Channel(aURI, null);
+    let channel = this.newChannel(aURI, null);
     channel.asyncOpen(aDisplayConsumer, null);
     return aURI;
   },
   // nsIProtocolHandler
   scheme: null, // fortunately this is unused
   defaultPort: 443,
-  protocolFlags: Ci.nsIProtocolHandler.URI_NORELATIVE | Ci.nsIProtocolHandler.URI_FORBIDS_AUTOMATIC_DOCUMENT_REPLACEMENT | Ci.nsIProtocolHandler.URI_DANGEROUS_TO_LOAD | Ci.nsIProtocolHandler.ALLOWS_PROXY | Ci.nsIProtocolHandler.ORIGIN_IS_FULL_SPEC,
+  protocolFlags: Ci.nsIProtocolHandler.URI_NORELATIVE | Ci.nsIProtocolHandler.URI_FORBIDS_AUTOMATIC_DOCUMENT_REPLACEMENT | Ci.nsIProtocolHandler.URI_IS_UI_RESOURCE | Ci.nsIProtocolHandler.ALLOWS_PROXY | Ci.nsIProtocolHandler.ORIGIN_IS_FULL_SPEC,
   /**
    * Create a new nsIURI. The new nsIURI will also be an nsIMsgMailNewsUrl
    * and will already have its folder property populated.
@@ -431,7 +455,12 @@ ProtocolHandler.prototype = {
    * @returns         {nsIChannel}
    */
   newChannel: function(aURI, aLoadInfo) {
-    return new Channel(aURI, aLoadInfo);
+    if (aURI instanceof Ci.nsIMsgMailNewsUrl) {
+      return new Channel(aURI, aLoadInfo);
+    }
+    // Sending an Owl URL through IPDL turns it into an nsStandardURL.
+    // Create a new Owl URL that we can use here.
+    return new Channel(this.newURI(aURI.spec), aLoadInfo, aURI);
   },
   /**
    * Are non-standard ports allowed?
@@ -441,7 +470,7 @@ ProtocolHandler.prototype = {
   },
 };
 
-gProtocolHandlerProperties.factory = XPCOMUtils._getFactory(ProtocolHandler);
+gProtocolHandlerProperties.factory = ComponentUtils._getFactory(ProtocolHandler);
 gModules.push(gProtocolHandlerProperties);
 
 

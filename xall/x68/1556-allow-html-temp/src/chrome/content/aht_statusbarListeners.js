@@ -130,9 +130,11 @@ var ahtHideAndShowStatusbarElements = {
   observe: function(subject, topic, data) {
     switch (topic) {
       case "MsgMsgDisplayed":
+        // console.debug("AHT: MsgMsgDisplayed");
         this.showCurrentStatusbarElement();
         break;
       case "mail:updateToolbarItems":
+        // console.debug("AHT: mail:updateToolbarItems");
         this.showCurrentStatusbarElement();
         break;
     }
@@ -147,14 +149,16 @@ var ahtHideAndShowStatusbarElements = {
     try {
       // call InitViewBodyMenu() to set the checked attribute in the popupmenu
       InitViewBodyMenu();
-      if (gFolderDisplay && (FeedMessageHandler.isFeedFolder(gFolderDisplay.displayedFolder) ||
+      if (gFolderDisplay && (FeedUtils.isFeedFolder(gFolderDisplay.displayedFolder) ||
         gFolderDisplay.selectedMessageIsFeed)) {
         // if feed mode = website, then disable the AHT html mode statusbar element to prevent user confusion
         let feed_summary = 0;
         feed_summary = Services.prefs.getIntPref("rss.show.summary");
         if (feed_summary == 0) {
+          // console.debug("AHT: [showCurrentStatusbarElement]: feed_summary == 0");
           ahtStatusbarMessage.setAttribute("hidden", true);
         } else {
+          // console.debug("AHT: [showCurrentStatusbarElement]: feed_summary == 1");
           ahtStatusbarMessage.removeAttribute("hidden");
         }
         ahtStatusbarFeed.removeAttribute("hidden");
@@ -163,7 +167,10 @@ var ahtHideAndShowStatusbarElements = {
         ahtStatusbarFeed.setAttribute("hidden", true);
       }
     } catch (e) {
-      ahtStatusbarMessage.setAttribute("hidden", true);
+      // console.debug("AHT: [catch(e)]: " + e);
+      // instead of hiding both elements, it seems to be better to show the none feed element as fallback
+      //  ahtStatusbarMessage.setAttribute("hidden", true);
+      ahtStatusbarMessage.removeAttribute("hidden");
       ahtStatusbarFeed.setAttribute("hidden", true);
     }
   }

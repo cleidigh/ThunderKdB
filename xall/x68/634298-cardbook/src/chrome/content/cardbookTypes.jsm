@@ -8,12 +8,11 @@ var cardbookTypes = {
 	
 	rebuildAllPGs: function (aCard) {
 		let myPgNumber = 1;
-		for (var i in cardbookRepository.multilineFields) {
-			let myType = cardbookRepository.multilineFields[i];
-			for (var j = 0; j < aCard[myType].length; j++) {
-				let myTempString = aCard[myType][j][2];
+		for (let field of cardbookRepository.multilineFields) {
+			for (var j = 0; j < aCard[field].length; j++) {
+				let myTempString = aCard[field][j][2];
 				if (myTempString.startsWith("ITEM")) {
-					aCard[myType][j][2] = "ITEM" + myPgNumber;
+					aCard[field][j][2] = "ITEM" + myPgNumber;
 					myPgNumber++;
 				}
 			}

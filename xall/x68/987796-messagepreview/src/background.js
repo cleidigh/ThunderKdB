@@ -3,30 +3,31 @@
 /* globals browser */
 
 var init = async () => {
-  // Notify chrome observer with storage.local data.
-  const notifyStorageLocal = async startup => {
-    await browser.storage.local.get().then(storageLocalData => {
-      browser.messagepreview.notifyStorageLocal(storageLocalData, startup);
-    });
-  };
-
-  // Listener for storage.local changes to notify chrome observer, post startup.
+  // Listener for storage.local changes to notify chrome observer.
   const storageChanged = async (changes, area) => {
-    // console.debug(changes);
-    // console.debug(area);
-    if (area == "local") {
-      await notifyStorageLocal(false);
+    if (area != "local") {
+      return;
+    }
+    for (let [key, value] of Object.entries(changes)) {
+      // console.debug(key);
+      // console.debug(value);
+      if (
+        "oldValue" in value &&
+        !("newValue" in value && value.newValue === value.oldValue)
+      ) {
+        // console.debug("background.js: got a change, key - " + key);
+        let storageLocalData = {};
+        storageLocalData[key] = value;
+        browser.messagepreview.notifyStorageLocalChanged(storageLocalData);
+      }
     }
   };
 
-  // First, notifyLocaleMessages and notifyStorageLocal, serially.
-  browser.messagepreview.notifyLocaleMessages();
-  await notifyStorageLocal(true);
-
-  // Then, inject the main script.
+  // Inject the main script.
   browser.messagepreview.injectScriptIntoChromeDocument(
     "content/messagePreview.js",
-    "mail:3pane"
+    "mail:3pane",
+    false
   );
 
   // Add storage change listener.

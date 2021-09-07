@@ -1,57 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/css" href="chrome://messenger/skin/addressbook/abContactsPanel.css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+<?xml-stylesheet type="text/css" href="chrome://cardbook/content/skin/cardbookConfiguration.css"?>
 <!-- for the textbox -->
 <?xml-stylesheet type="text/css" href="chrome://messenger/skin/input-fields.css"?>
 <!-- for the display -->
 <?xml-stylesheet type="text/css" href="chrome://messenger/skin/themeableDialog.css"?>
 
-<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-	xmlns:xhtml="http://www.w3.org/1999/xhtml"
+<html id="wdw_cardbookConfigurationAddIMPP" xmlns="http://www.w3.org/1999/xhtml"
+	role="document"
+	xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 	xmlns:html="http://www.w3.org/1999/xhtml"
-	onload="onLoadDialog();" resizable="true"
-	onclose="onCancelDialog();"
-	id="wdw_cardbookConfigurationAddIMPP" title="__MSG_wdw_cardbookConfigurationAddIMPPTitle__"
 	persist="screenX screenY width height"
 	lightweightthemes="true"
 	style="min-width:200px;min-height:50px;">
-	
-	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookRichContext.js"/>
-	<script type="application/x-javascript" src="chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddIMPP.js"/>
-	<script type="application/x-javascript" src="chrome://cardbook/content/scripts/i18n.js"/>
-	<!-- for the textbox -->
-	<script type="application/x-javascript" src="chrome://global/content/globalOverlay.js"/>
-	<script type="application/x-javascript" src="chrome://global/content/editMenuOverlay.js"/>
+	<head>
+		<title>__MSG_wdw_cardbookConfigurationAddIMPPTitle__</title>
+		<script type="application/x-javascript" src="chrome://cardbook/content/cardbookRichContext.js"/>
+		<script type="application/x-javascript" src="chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddIMPP.js"/>
+		<script type="application/x-javascript" src="chrome://cardbook/content/scripts/i18n.js"/>
+		<!-- for the textbox -->
+		<script type="application/x-javascript" src="chrome://global/content/globalOverlay.js"/>
+		<script type="application/x-javascript" src="chrome://global/content/editMenuOverlay.js"/>
+	</head>
 
-	<dialog id="wdw_cardbookConfigurationAddVcardsDialog"
-		buttons="accept,cancel">
+	<html:body xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+		<dialog id="wdw_cardbookConfigurationAddVcardsDialog"
+			buttons="accept,cancel">
 
-		<keyset id="wdw_cardbookConfigurationAddIMPP-keys">
-			<key keycode="VK_ESCAPE" oncommand="onCancelDialog();"/>
-		</keyset>
-	
-		<hbox flex="1">
-			<vbox flex="1">
-				<grid align="center" flex="1">
-					<columns>
-						<column/>
-						<column flex="1"/>
-					</columns>
-					<rows>
-						<row align="center">
+			<html:div class="hbox">
+				<html:table class="flex">
+					<html:tr>
+						<html:td>
 							<label id="IMPPCodeLabel" value="__MSG_IMPPCodeLabel__" control="IMPPCodeTextBox"/>
+						</html:td>
+						<html:td class="cardbook-td-input">
 							<html:input id="IMPPCodeTextBox"/>
-						</row>
-						<row align="center">
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:td>
 							<label id="IMPPLabelLabel" value="__MSG_IMPPLabelLabel__" control="IMPPLabelTextBox"/>
+						</html:td>
+						<html:td class="cardbook-td-input">
 							<html:input id="IMPPLabelTextBox"/>
-						</row>
-						<row align="center">
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:td>
 							<label id="IMPPProtocolLabel" value="__MSG_IMPPProtocolLabel__" control="IMPPProtocolTextBox"/>
+						</html:td>
+						<html:td class="cardbook-td-input">
 							<html:input id="IMPPProtocolTextBox"/>
-						</row>
-					</rows>
-				</grid>
-			</vbox>
-		</hbox>
-	</dialog>
-</window>
+						</html:td>
+					</html:tr>
+				</html:table>
+			</html:div>
+		</dialog>
+	</html:body>
+</html>

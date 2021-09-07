@@ -49,6 +49,7 @@
 	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBUndo.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBImage.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBMailPop.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBPrefDispName.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBSearch.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookActions.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookCardParser.js"/>
@@ -94,436 +95,577 @@
 		<menuitem id="deletelistaddedCardsTreeMenu" label="__MSG_deletelistTreeLabel__" oncommand="wdw_cardEdition.modifyLists(this);"/>
 	</menupopup>
 
-	<tabbox id="wdw_cardEditionTabbox" flex="1">
-		
-		<tabs>
-			<tab id="generalTab" label="__MSG_generalTabLabel__"/>
-			<tab id="noteTab" label="__MSG_noteTabLabel__"/>
-			<tab id="listTab" label="__MSG_listsTabLabel__"/>
-			<tab id="keyTab" label="__MSG_keyTabLabel__"/>
-		</tabs>
+	<vbox id="rightPaneDownHbox1" flex="1">
+		<vbox>
+			<hbox id="cardbookContactButtonsBox">
+				<button id="generalTab" label="__MSG_generalTabLabel__" class="cardbookContactButtons" oncommand="wdw_cardEdition.showPane('generalTabPanel');"/>
+				<button id="noteTab" label="__MSG_noteTabLabel__" class="cardbookContactButtons" oncommand="wdw_cardEdition.showPane('noteTabPanel');"/>
+				<button id="listTab" label="__MSG_listsTabLabel__" class="cardbookContactButtons" oncommand="wdw_cardEdition.showPane('listTabPanel');"/>
+				<button id="keyTab" label="__MSG_keyTabLabel__" class="cardbookContactButtons" oncommand="wdw_cardEdition.showPane('keyTabPanel');"/>
+				<button id="helpTab" label="__MSG_helpTabLabel__" class="cardbookContactButtons" oncommand="wdw_cardEdition.showPane('helpTabPanel');"/>
+			</hbox>
+		</vbox>
 
-		<tabpanels id="mainEditionBox" flex="1">
-			<tabpanel orient="vertical" style="overflow:auto">
-				<hbox>
+		<vbox id="generalTabPanel" class="cardbookTab" style="overflow:auto;" flex="1">	
+			<hbox>
+				<vbox flex="1">
+					<hbox flex="1">
+						<vbox flex="1">
+							<groupbox id="addressbookMenulistReadOnlyGroupbox">
+								<vbox>
+									<label id="addressbookHeader" class="header"/>
+									<hbox flex="1" class="input-container">
+										<html:input id="addressbookTextBox" style="min-height:36px;" readonly="true" class="indent"/>
+									</hbox>
+								</vbox>
+							</groupbox>
+							<groupbox id="addressbookMenulistReadWriteGroupbox" flex="1">
+								<label id="addressbookMenulistLabel" class="header"/>
+								<hbox align="center" flex="1" style="min-height:36px;">
+									<menulist id="addressbookMenulist" flex="1" oncommand="wdw_cardEdition.changeAddressbook();">
+										<menupopup id="addressbookMenupopup" flex="1"/>
+									</menulist>
+								</hbox>
+							</groupbox>
+							<groupbox id="categoriesReadOnlyGroupbox">
+								<vbox>
+									<label id="categoriesLabel" class="header">__MSG_categoriesHeader__</label>
+									<hbox flex="1" class="input-container">
+										<html:input id="categoriesTextBox" style="min-height:36px;" readonly="true" class="indent"/>
+									</hbox>
+								</vbox>
+							</groupbox>
+							<groupbox id="categoriesReadWriteGroupbox" flex="1">
+								<label class="header">__MSG_categoriesHeader__</label>
+								<hbox align="center" flex="1" style="min-height:36px;">
+									<menulist id="categoriesMenulist" flex="1" onkeydown="cardbookWindowUtils.panelMenulistKeydown(event, 'category', 'categoriesMenupopup');"
+										onkeyup="cardbookWindowUtils.panelMenulistKeyup(event, 'category', 'categoriesMenupopup');">
+										<menupopup id="categoriesMenupopup"
+											onpopuphiding="return cardbookWindowUtils.panelMenupopupHiding(event, 'category', this.id);" ignorekeys="true">
+											<html:input id="categoriesTextbox"
+												placeholder="__MSG_categoriesTextboxLabel__"
+												onkeydown="cardbookWindowUtils.panelTextboxKeydown(event, 'category', 'categoriesMenupopup');"/>
+											<menuseparator/>
+										</menupopup>
+									</menulist>
+								</hbox>
+							</groupbox>
+							<groupbox id="existingDataGroupbox" flex="1">
+								<label class="header">__MSG_existingDataGroupboxLabel__</label>
+								<hbox align="center" flex="1">
+									<menulist id="contactMenulist" flex="1" oncommand="wdw_cardEdition.changeContact();">
+										<menupopup id="contactMenupopup" flex="1" onpopupshowing="wdw_cardEdition.loadContacts();"/>
+									</menulist>
+								</hbox>
+							</groupbox>
+						</vbox>
+					</hbox>
+				</vbox>
+				<vbox align="center" width="150px">
+					<hbox id="imageBox" align="center" height="150px">
+						<html:img id="imageForSizing" hidden="true"/>
+						<image id="defaultCardImage" context="imageCardContextMenu" style="max-height: 150px; max-width: 150px;"
+							ondblclick="wdw_imageEdition.addImageCardFromFile();" 
+							ondrop="wdw_imageEdition.dragImageCard(event);"
+							ondragenter="wdw_imageEdition.checkDragImageCard(event);"
+							ondragover="wdw_imageEdition.checkDragImageCard(event);"/>
+					</hbox>
+				</vbox>
+			</hbox>
+			<groupbox id="fnGroupbox">
+				<label id="fnLabel" class="header">__MSG_fnLabel__</label>
+				<hbox flex="1" class="input-container">
+					<button type="checkbox" id="autoComputeFnButton" class="cardbookAutoComputeFnClass" onclick="wdw_cardEdition.autoComputeFn(this);"/>
+					<html:input id="fnTextBox" flex="1"/>
+					<checkbox id="preferDisplayNameCheckBox" label="__MSG_preferDisplayNameCheckBoxLabel__" checked="true"/>
+				</hbox>
+			</groupbox>
+			<hbox>
+				<groupbox id="personalGroupbox" flex="1">
+					<hbox align="center">
+						<button type="checkbox" id="expandPersonalImage" class="cardbookExpandedClass" expanded="true" onclick="wdw_cardEdition.expandButton(this);"/>
+						<label class="header">__MSG_persTitleLabel__</label>
+					</hbox>
+					<html:table id="personalTable">
+						<html:tr id="lastnameRow">
+							<html:td>
+								<hbox flex="1" align="center">
+									<label id="lastnameLabel" value="__MSG_lastnameLabel__" control="lastnameTextBox" class="header"/>
+									<spacer flex="1"/>
+									<button id="cardbookSwitchButtonDown" class="small-button" label="↓" tooltiptext="__MSG_cardbookSwitchButtonTooltip__" oncommand="wdw_cardEdition.switchLastnameAndFirstname();"/>
+								</hbox>
+							</html:td>
+							<html:td>
+								<html:input id="lastnameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
+							</html:td>
+						</html:tr>
+						<html:tr id="firstnameRow">
+							<html:td>
+								<hbox flex="1" align="center">
+									<label id="firstnameLabel" value="__MSG_firstnameLabel__" control="firstnameTextBox" class="header"/>
+									<spacer flex="1"/>
+									<button id="cardbookSwitchButtonUp" class="small-button" label="↑" tooltiptext="__MSG_cardbookSwitchButtonTooltip__" oncommand="wdw_cardEdition.switchLastnameAndFirstname();"/>
+								</hbox>
+							</html:td>
+							<html:td>
+								<html:input id="firstnameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
+							</html:td>
+						</html:tr>
+						<html:tr id="othernameRow">
+							<html:td>
+								<label id="othernameLabel" value="__MSG_othernameLabel__" control="othernameTextBox" class="header"/>
+							</html:td>
+							<html:td>
+								<html:input id="othernameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
+							</html:td>
+						</html:tr>
+						<html:tr id="prefixnameRow">
+							<html:td>
+								<label id="prefixnameLabel" value="__MSG_prefixnameLabel__" control="prefixnameTextBox" class="header"/>
+							</html:td>
+							<html:td>
+								<html:input id="prefixnameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
+							</html:td>
+						</html:tr>
+						<html:tr id="suffixnameRow">
+							<html:td>
+								<label id="suffixnameLabel" value="__MSG_suffixnameLabel__" control="suffixnameTextBox" class="header"/>
+							</html:td>
+							<html:td>
+								<html:input id="suffixnameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
+							</html:td>
+						</html:tr>
+						<html:tr id="nicknameRow">
+							<html:td>
+								<label id="nicknameLabel" value="__MSG_nicknameLabel__" control="nicknameTextBox" class="header"/>
+							</html:td>
+							<html:td>
+								<html:input id="nicknameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
+							</html:td>
+						</html:tr>
+						<html:tr id="genderRow1">
+							<html:td>
+								<label id="genderLabel1" value="__MSG_genderLabel__" control="genderMenulist" class="header"/>
+							</html:td>
+							<html:td>
+								<hbox align="center" style="min-height:36px;">
+									<menulist id="genderMenulist">
+										<menupopup id="genderMenupopup"/>
+									</menulist>
+								</hbox>
+							</html:td>
+						</html:tr>
+						<html:tr id="genderRow2">
+							<html:td>
+								<label id="genderLabel2" value="__MSG_genderLabel__" control="genderTextBox" class="header"/>
+							</html:td>
+							<html:td>
+								<html:input id="genderTextBox"/>
+							</html:td>
+						</html:tr>
+						<html:tr id="bdayRow1">
+							<html:td>
+								<label id="bdayDatepickerLabel" value="__MSG_bdayLabel__" control="bdayDatepicker" class="header"/>
+							</html:td>
+							<html:td>
+								<cardbookdatepicker id="bdayDatepicker" oninput="wdw_cardEdition.unsetWrongValidation();"/>
+							</html:td>
+						</html:tr>
+						<html:tr id="bdayRow2">
+							<html:td>
+								<label id="bdayLabel" value="__MSG_bdayLabel__" control="bdayTextBox" class="header"/>
+							</html:td>
+							<html:td>
+								<html:input id="bdayTextBox"/>
+							</html:td>
+						</html:tr>
+						<html:tr id="birthplaceRow">
+							<html:td>
+								<label id="birthplaceLabel" value="__MSG_birthplaceLabel__" control="birthplaceTextBox" class="header"/>
+							</html:td>
+							<html:td>
+								<html:input id="birthplaceTextBox"/>
+							</html:td>
+						</html:tr>
+						<html:tr id="deathdateRow1">
+							<html:td>
+								<label id="deathdateDatepickerLabel" value="__MSG_deathdateLabel__" control="deathdateDatepicker" class="header"/>
+							</html:td>
+							<html:td>
+								<cardbookdatepicker id="deathdateDatepicker" oninput="wdw_cardEdition.unsetWrongValidation();"/>
+							</html:td>
+						</html:tr>
+						<html:tr id="deathdateRow2">
+							<html:td>
+								<label id="deathdateLabel" value="__MSG_deathdateLabel__" control="deathdateTextBox" class="header"/>
+							</html:td>
+							<html:td>
+								<html:input id="deathdateTextBox"/>
+							</html:td>
+						</html:tr>
+						<html:tr id="deathplaceRow">
+							<html:td>
+								<label id="deathplaceLabel" value="__MSG_deathplaceLabel__" control="deathplaceTextBox" class="header"/>
+							</html:td>
+							<html:td>
+								<html:input id="deathplaceTextBox"/>
+							</html:td>
+						</html:tr>
+						<html:tr id="anniversaryRow1">
+							<html:td>
+								<label id="anniversaryDatepickerLabel" value="__MSG_anniversaryLabel__" control="anniversaryDatepicker" class="header"/>
+							</html:td>
+							<html:td>
+								<cardbookdatepicker id="anniversaryDatepicker" oninput="wdw_cardEdition.unsetWrongValidation();"/>
+							</html:td>
+						</html:tr>
+						<html:tr id="anniversaryRow2">
+							<html:td>
+								<label id="anniversaryLabel" value="__MSG_anniversaryLabel__" control="anniversaryTextBox" class="header"/>
+							</html:td>
+							<html:td>
+								<html:input id="anniversaryTextBox"/>
+							</html:td>
+						</html:tr>
+						<html:tr hidden="true">
+							<html:td>
+								<html:textarea id="othersTextBox"/>
+							</html:td>
+						</html:tr>
+						<html:tr hidden="true">
+							<html:td>
+								<html:input id="photoExtensionTextBox"/>
+								<html:input id="photoURITextBox"/>
+							</html:td>
+						</html:tr>
+						<html:tr hidden="true">
+							<html:td>
+								<html:input id="logoExtensionTextBox"/>
+								<html:input id="logoURITextBox"/>
+							</html:td>
+						</html:tr>
+						<html:tr hidden="true">
+							<html:td>
+								<html:input id="soundExtensionTextBox"/>
+								<html:input id="soundURITextBox"/>
+							</html:td>
+						</html:tr>
+						<html:tr hidden="true">
+							<html:td>
+								<html:input id="dirPrefIdTextBox"/>
+							</html:td>
+						</html:tr>
+						<html:tr hidden="true">
+							<html:td>
+								<html:input id="uidTextBox"/>
+							</html:td>
+						</html:tr>
+						<html:tr hidden="true">
+							<html:td>
+								<html:input id="versionTextBox"/>
+							</html:td>
+						</html:tr>
+					</html:table>
+				</groupbox>
+				<groupbox id="orgGroupbox" flex="1">
+					<hbox align="center">
+						<button type="checkbox" id="expandOrgImage" class="cardbookExpandedClass" expanded="true" onclick="wdw_cardEdition.expandButton(this);"/>
+						<label class="header">__MSG_orgTitleLabel__</label>
+					</hbox>
+					<html:table id="orgTable"/>
+				</groupbox>
+			</hbox>
+			<vbox id="contactGroupbox" flex="1">
+				<vbox id="classicalRows" flex="1"/>
+				<vbox id="modernRows" flex="1"/>
+				<vbox id="readWriteTypesVbox" flex="1">
+					<groupbox id="emailGroupbox" flex="1"/>
+					<groupbox id="telGroupbox" flex="1"/>
+					<groupbox id="adrGroupbox" flex="1"/>
+					<groupbox id="imppGroupbox" flex="1"/>
+					<groupbox id="urlGroupbox" flex="1"/>
+					<groupbox id="eventGroupbox" flex="1"/>
+				</vbox>
+				<panel id="adrPanel">
 					<vbox flex="1">
 						<hbox flex="1">
 							<vbox flex="1">
-								<groupbox id="addressbookMenulistReadOnlyGroupbox">
-									<vbox>
-										<label id="addressbookHeader" class="header"/>
-										<hbox flex="1" class="input-container">
-											<html:input id="addressbookTextBox" style="min-height:36px;" readonly="true" class="indent"/>
-										</hbox>
-									</vbox>
-								</groupbox>
-								<groupbox id="addressbookMenulistReadWriteGroupbox" flex="1">
-									<label id="addressbookMenulistLabel" class="header"/>
-									<hbox align="center" flex="1" style="min-height:36px;">
-										<menulist id="addressbookMenulist" flex="1" oncommand="wdw_cardEdition.changeAddressbook();">
-											<menupopup id="addressbookMenupopup" flex="1"/>
-										</menulist>
-									</hbox>
-								</groupbox>
-								<groupbox id="categoriesReadOnlyGroupbox">
-									<vbox>
-										<label id="categoriesLabel" class="header">__MSG_categoriesHeader__</label>
-										<hbox flex="1" class="input-container">
-											<html:input id="categoriesTextBox" style="min-height:36px;" readonly="true" class="indent"/>
-										</hbox>
-									</vbox>
-								</groupbox>
-								<groupbox id="categoriesReadWriteGroupbox" flex="1">
-									<label class="header">__MSG_categoriesHeader__</label>
-									<hbox align="center" flex="1" style="min-height:36px;">
-										<menulist id="categoriesMenulist" flex="1" onkeydown="cardbookWindowUtils.panelMenulistKeydown(event, 'category', 'categoriesMenupopup');"
-											onkeyup="cardbookWindowUtils.panelMenulistKeyup(event, 'category', 'categoriesMenupopup');">
-											<menupopup id="categoriesMenupopup"
-												onpopuphiding="return cardbookWindowUtils.panelMenupopupHiding(event, 'category', this.id);" ignorekeys="true">
-												<html:input id="categoriesTextbox"
-													placeholder="__MSG_categoriesTextboxLabel__"
-													onkeydown="cardbookWindowUtils.panelTextboxKeydown(event, 'category', 'categoriesMenupopup');"/>
-												<menuseparator/>
-											</menupopup>
-										</menulist>
-									</hbox>
-								</groupbox>
-								<groupbox id="existingDataGroupbox" flex="1">
-									<label class="header">__MSG_existingDataGroupboxLabel__</label>
-									<hbox align="center" flex="1">
-										<menulist id="contactMenulist" flex="1" oncommand="wdw_cardEdition.changeContact();">
-											<menupopup id="contactMenupopup" flex="1" onpopupshowing="wdw_cardEdition.loadContacts();"/>
-										</menulist>
-									</hbox>
-								</groupbox>
-							</vbox>
-						</hbox>
-					</vbox>
-					<vbox align="center" width="150px">
-						<hbox id="imageBox" align="center" height="150px">
-							<html:img id="imageForSizing" hidden="true"/>
-							<image id="defaultCardImage" context="imageCardContextMenu" style="max-height: 150px; max-width: 150px;"
-								ondblclick="wdw_imageEdition.addImageCardFromFile();" 
-								ondrop="wdw_imageEdition.dragImageCard(event);"
-								ondragenter="wdw_imageEdition.checkDragImageCard(event);"
-								ondragover="wdw_imageEdition.checkDragImageCard(event);"/>
-						</hbox>
-					</vbox>
-				</hbox>
-				<groupbox id="fnGroupbox">
-					<label id="fnLabel" class="header">__MSG_fnLabel__</label>
-					<hbox flex="1" class="input-container">
-						<button type="checkbox" id="autoComputeFnButton" class="cardbookAutoComputeFnClass" onclick="wdw_cardEdition.autoComputeFn(this);"/>
-						<html:input id="fnTextBox" flex="1"/>
-						<checkbox id="preferDisplayNameCheckBox" label="__MSG_preferDisplayNameCheckBoxLabel__" checked="true"/>
-					</hbox>
-				</groupbox>
-				<hbox>
-					<groupbox id="persGroupbox" flex="1">
-						<hbox align="center">
-							<button type="checkbox" id="expandPersImage" class="cardbookExpandedClass" expanded="true" onclick="wdw_cardEdition.expandButton(this);"/>
-							<label class="header">__MSG_persTitleLabel__</label>
-						</hbox>
-						<grid id="persGrid" align="center" flex="1">
-							<columns>
-								<column/>
-								<column flex="1"/>
-							</columns>
-							<rows id="personalRows">
-								<row id="lastnameRow" align="center">
-									<hbox flex="1" align="center">
-										<label id="lastnameLabel" value="__MSG_lastnameLabel__" control="lastnameTextBox" class="header"/>
-										<spacer flex="1"/>
-										<button id="cardbookSwitchButtonDown" class="small-button" label="↓" tooltiptext="__MSG_cardbookSwitchButtonTooltip__" oncommand="wdw_cardEdition.switchLastnameAndFirstname();"/>
-									</hbox>
-									<html:input id="lastnameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
-								</row>
-								<row id="firstnameRow" align="center">
-									<hbox flex="1" align="center">
-										<label id="firstnameLabel" value="__MSG_firstnameLabel__" control="firstnameTextBox" class="header"/>
-										<spacer flex="1"/>
-										<button id="cardbookSwitchButtonUp" class="small-button" label="↑" tooltiptext="__MSG_cardbookSwitchButtonTooltip__" oncommand="wdw_cardEdition.switchLastnameAndFirstname();"/>
-									</hbox>
-									<html:input id="firstnameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
-								</row>
-								<row id="othernameRow" align="center">
-									<label id="othernameLabel" value="__MSG_othernameLabel__" control="othernameTextBox" class="header"/>
-									<html:input id="othernameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
-								</row>
-								<row id="prefixnameRow" align="center">
-									<label id="prefixnameLabel" value="__MSG_prefixnameLabel__" control="prefixnameTextBox" class="header"/>
-									<html:input id="prefixnameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
-								</row>
-								<row id="suffixnameRow" align="center">
-									<label id="suffixnameLabel" value="__MSG_suffixnameLabel__" control="suffixnameTextBox" class="header"/>
-									<html:input id="suffixnameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
-								</row>
-								<row id="nicknameRow" align="center">
-									<label id="nicknameLabel" value="__MSG_nicknameLabel__" control="nicknameTextBox" class="header"/>
-									<html:input id="nicknameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
-								</row>
-								<row id="genderRow1" align="center">
-									<label id="genderLabel1" value="__MSG_genderLabel__" control="genderMenulist" class="header"/>
-									<hbox align="center" style="min-height:36px;">
-										<menulist id="genderMenulist">
-											<menupopup id="genderMenupopup"/>
-										</menulist>
-									</hbox>
-								</row>
-								<row id="genderRow2" align="center">
-									<label id="genderLabel2" value="__MSG_genderLabel__" control="genderTextBox" class="header"/>
-									<html:input id="genderTextBox"/>
-								</row>
-								<row id="bdayRow1" align="center">
-									<label id="bdayDatepickerLabel" value="__MSG_bdayLabel__" control="bdayDatepicker" class="header"/>
-									<cardbookdatepicker id="bdayDatepicker" oninput="wdw_cardEdition.unsetWrongValidation();"/>
-								</row>
-								<row id="bdayRow2" align="center">
-									<label id="bdayLabel" value="__MSG_bdayLabel__" control="bdayTextBox" class="header"/>
-									<html:input id="bdayTextBox"/>
-								</row>
-								<row id="birthplaceRow" align="center">
-									<label id="birthplaceLabel" value="__MSG_birthplaceLabel__" control="birthplaceTextBox" class="header"/>
-									<html:input id="birthplaceTextBox"/>
-								</row>
-								<row id="deathdateRow1" align="center">
-									<label id="deathdateDatepickerLabel" value="__MSG_deathdateLabel__" control="deathdateDatepicker" class="header"/>
-									<cardbookdatepicker id="deathdateDatepicker" oninput="wdw_cardEdition.unsetWrongValidation();"/>
-								</row>
-								<row id="deathdateRow2" align="center">
-									<label id="deathdateLabel" value="__MSG_deathdateLabel__" control="deathdateTextBox" class="header"/>
-									<html:input id="deathdateTextBox"/>
-								</row>
-								<row id="deathplaceRow" align="center">
-									<label id="deathplaceLabel" value="__MSG_deathplaceLabel__" control="deathplaceTextBox" class="header"/>
-									<html:input id="deathplaceTextBox"/>
-								</row>
-								<row id="anniversaryRow1" align="center">
-									<label id="anniversaryDatepickerLabel" value="__MSG_anniversaryLabel__" control="anniversaryDatepicker" class="header"/>
-									<cardbookdatepicker id="anniversaryDatepicker" oninput="wdw_cardEdition.unsetWrongValidation();"/>
-								</row>
-								<row id="anniversaryRow2" align="center">
-									<label id="anniversaryLabel" value="__MSG_anniversaryLabel__" control="anniversaryTextBox" class="header"/>
-									<html:input id="anniversaryTextBox"/>
-								</row>
-								<row align="center">
-									<html:textarea id="othersTextBox" hidden="true"/>
-								</row>
-								<row align="center">
-									<html:input id="photoExtensionTextBox" hidden="true"/>
-									<html:input id="photoURITextBox" hidden="true"/>
-								</row>
-								<row align="center">
-									<html:input id="logoExtensionTextBox" hidden="true"/>
-									<html:input id="logoURITextBox" hidden="true"/>
-								</row>
-								<row align="center">
-									<html:input id="soundExtensionTextBox" hidden="true"/>
-									<html:input id="soundURITextBox" hidden="true"/>
-								</row>
-								<row align="center">
-									<html:input id="dirPrefIdTextBox" hidden="true"/>
-								</row>
-								<row align="center">
-									<html:input id="uidTextBox" hidden="true"/>
-								</row>
-								<row align="center">
-									<html:input id="versionTextBox" hidden="true"/>
-								</row>
-							</rows>
-						</grid>
-					</groupbox>
-					<groupbox id="orgGroupbox" flex="1">
-						<hbox align="center">
-							<button type="checkbox" id="expandOrgImage" class="cardbookExpandedClass" expanded="true" onclick="wdw_cardEdition.expandButton(this);"/>
-							<label class="header">__MSG_orgTitleLabel__</label>
-						</hbox>
-						<grid id="orgGrid" align="center" flex="1">
-							<columns>
-								<column/>
-								<column flex="1"/>
-							</columns>
-							<rows id="orgRows"/>
-						</grid>
-					</groupbox>
-				</hbox>
-				<vbox id="contactGroupbox" flex="1">
-					<vbox id="classicalRows" flex="1"/>
-					<vbox id="modernRows" flex="1"/>
-					<vbox id="readWriteTypesVbox" flex="1">
-						<groupbox id="emailGroupbox" flex="1"/>
-						<groupbox id="telGroupbox" flex="1"/>
-						<groupbox id="adrGroupbox" flex="1"/>
-						<groupbox id="imppGroupbox" flex="1"/>
-						<groupbox id="urlGroupbox" flex="1"/>
-						<groupbox id="eventGroupbox" flex="1"/>
-					</vbox>
-					<panel id="adrPanel">
-						<hbox flex="1">
-							<vbox flex="1">
-								<grid align="center" flex="1">
-									<columns>
-										<column/>
-										<column flex="1"/>
-									</columns>
-						
-									<rows>
-										<row align="center">
+								<html:table>
+									<html:tr>
+										<html:td>
 											<label value="__MSG_adrPostOfficeLabel__" control="adrPostOfficeTextBox" class="header"/>
+										</html:td>
+										<html:td>
 											<html:input id="adrPostOfficeTextBox" placeholder="__MSG_deprecatedLabel__"/>
-										</row>
-										<row align="center">
+										</html:td>
+									</html:tr>
+									<html:tr>
+										<html:td>
 											<label value="__MSG_adrExtendedAddrLabel__" control="adrExtendedAddrTextBox" class="header"/>
+										</html:td>
+										<html:td>
 											<html:input id="adrExtendedAddrTextBox" placeholder="__MSG_deprecatedLabel__"/>
-										</row>
-										<row align="center">
+										</html:td>
+									</html:tr>
+									<html:tr>
+										<html:td>
 											<label value="__MSG_adrStreetLabel__" control="adrStreetTextBox" class="header"/>
+										</html:td>
+										<html:td>
 											<html:textarea id="adrStreetTextBox"/>
-										</row>
-										<row align="center">
+										</html:td>
+									</html:tr>
+									<html:tr>
+										<html:td>
 											<label value="__MSG_adrLocalityLabel__" control="adrLocalityTextBox" class="header"/>
+										</html:td>
+										<html:td>
 											<html:input id="adrLocalityTextBox" type="autocomplete" autocompletesearch="form-history" autocompletesearchparam="adrLocalityTextBox" class="padded"/>
-										</row>
-										<row align="center">
+										</html:td>
+									</html:tr>
+									<html:tr>
+										<html:td>
 											<label value="__MSG_adrRegionLabel__" control="adrRegionTextBox" class="header"/>
+										</html:td>
+										<html:td>
 											<html:input id="adrRegionTextBox" type="autocomplete" autocompletesearch="form-history" autocompletesearchparam="adrRegionTextBox" class="padded"/>
-										</row>
-										<row align="center">
+										</html:td>
+									</html:tr>
+									<html:tr>
+										<html:td>
 											<label value="__MSG_adrPostalCodeLabel__" control="adrPostalCodeTextBox" class="header"/>
+										</html:td>
+										<html:td>
 											<html:input id="adrPostalCodeTextBox" type="autocomplete" autocompletesearch="form-history" autocompletesearchparam="adrPostalCodeTextBox" class="padded"/>
-										</row>
-										<row align="center">
+										</html:td>
+									</html:tr>
+									<html:tr>
+										<html:td>
 											<label value="__MSG_adrCountryLabel__" control="adrCountryMenulist" class="header"/>
+										</html:td>
+										<html:td>
 											<menulist id="adrCountryMenulist" is="menulist-editable" editable="true" onpopupshowing="wdw_cardEdition.loadCountries();">
 												<menupopup id="adrCountryMenupopup"/>
 											</menulist>
-										</row>
-									</rows>
-								</grid>
+										</html:td>
+									</html:tr>
+								</html:table>
 							</vbox>
 						</hbox>
 						<hbox>
 							<spacer flex="1"/>
 							<button id="validateEditionLabel" label="__MSG_validateEditionLabel__" accesskey="__MSG_validateEditionAccesskey__" oncommand="cardbookWindowUtils.closeAdrPanel();"/>
 						</hbox>
-					</panel>
-				</vbox>
-				<vbox id="listGroupbox" flex="1">
-					<vbox id="listReadOnlyGroupbox" flex="1">
-						<grid align="center" flex="1">
-							<columns>
-								<column/>
-								<column flex="1"/>
-							</columns>
-							<rows>
-								<groupbox id="addedCardsGroupbox" flex="1"/>
-							</rows>
-						</grid>
-						<spacer flex="100"/>
 					</vbox>
-					<vbox id="listReadWriteGroupbox" flex="1">
-						<hbox align="center" hidden="true">
-							<label value="__MSG_kind.edit.label__" accesskey="__MSG_kind.edit.accesskey__" control="kindTextBox" class="header"/>
-							<html:input id="kindTextBox"/>
-						</hbox>
-						<hbox flex="1">
-							<vbox flex="1">
-								<groupbox id="addEmailGroupbox">
-									<label class="header">__MSG_addEmailGroupboxLabel__</label>
-									<html:input id="addEmailGroupboxInput"/>
-								</groupbox>
-								<groupbox id="availableCardsGroupbox" flex="1">
-									<label class="header">__MSG_availableCardsGroupboxLabel__</label>
-									<vbox>
-										<search-textbox id="searchAvailableCardsInput"
-											class="searchBox"
-											flex="1"
-											oncommand="wdw_cardEdition.searchAvailableCards(null);"/>
-									</vbox>
-									<hbox flex="1" ondragover="event.preventDefault();" ondrop="wdw_cardEdition.dragCards(event, 'availableCardsTree');">
-										<tree id="availableCardsTree" context="availableCardsTreeContextMenu" class="cardbookTreeClass cardbookAccountTreeClass" flex="1" enableColumnDrag="true"
-											hidecolumnpicker="false" persist="height sortDirection sortResource" sortDirection="ascending" sortResource="availableCardsName"
-											onclick="wdw_cardEdition.sortTrees(event, 'availableCards');">
-											<treecols id="availableCardsTreeCols">
-												<treecol id="availableCardsName" label="__MSG_nameLabel__" flex="1" persist="width ordinal hidden" style="text-align:left" sortDirection="ascending" closemenu="none"/>
-												<splitter class="tree-splitter"/>
-												<treecol id="availableCardsUid" label="__MSG_uidLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" sortDirection="ascending" closemenu="none"/>
-												<splitter class="tree-splitter"/>
-												<treecol id="availableCardsFn" label="__MSG_fnLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" sortDirection="ascending" closemenu="none"/>
-												<splitter class="tree-splitter"/>
-												<treecol id="availableCardsLastname" label="__MSG_lastnameLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" sortDirection="ascending" closemenu="none"/>
-												<splitter class="tree-splitter"/>
-												<treecol id="availableCardsFirstname" label="__MSG_firstnameLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" sortDirection="ascending" closemenu="none"/>
-											</treecols>
-											<treechildren id="availableCardsTreeChildren" ondblclick="wdw_cardEdition.modifyLists(this);" ondragstart="wdw_cardEdition.startDrag(event, this);"/>
-										</tree>
-									</hbox>
-								</groupbox>
-							</vbox>
-							<vbox flex="1" align="center">
-								<hbox flex="1" align="center">
-									<vbox flex="1" align="center">
-										<button id="appendlistavailableCardsTreeButton" label="__MSG_buttonAppendToListLabel__"
-												accesskey="__MSG_buttonAppendToListAccesskey__" oncommand="wdw_cardEdition.modifyLists(this);"/>
-										<button id="deletelistaddedCardsTreeButton" label="__MSG_buttonRemoveFromListLabel__"
-												accesskey="__MSG_buttonRemoveFromListAccesskey__" oncommand="wdw_cardEdition.modifyLists(this);"/>
-									</vbox>
+				</panel>
+			</vbox>
+			<vbox id="listGroupbox" flex="1">
+				<vbox id="listReadOnlyGroupbox" flex="1">
+					<groupbox id="addedCardsGroupbox" flex="1"/>
+				</vbox>
+				<vbox id="listReadWriteGroupbox" flex="1">
+					<hbox align="center" hidden="true">
+						<label value="__MSG_kind.edit.label__" accesskey="__MSG_kind.edit.accesskey__" control="kindTextBox" class="header"/>
+						<html:input id="kindTextBox"/>
+					</hbox>
+					<hbox flex="1">
+						<vbox flex="1">
+							<groupbox id="addEmailGroupbox">
+								<label class="header">__MSG_addEmailGroupboxLabel__</label>
+								<html:input id="addEmailGroupboxInput"/>
+							</groupbox>
+							<groupbox id="availableCardsGroupbox" flex="1">
+								<label class="header">__MSG_availableCardsGroupboxLabel__</label>
+								<vbox>
+									<search-textbox id="searchAvailableCardsInput"
+										class="searchBox"
+										flex="1"
+										oncommand="wdw_cardEdition.searchAvailableCards(null);"/>
+								</vbox>
+								<hbox flex="1" ondragover="event.preventDefault();" ondrop="wdw_cardEdition.dragCards(event, 'availableCardsTree');">
+									<tree id="availableCardsTree" context="availableCardsTreeContextMenu" class="cardbookTreeClass cardbookAccountTreeClass" flex="1" enableColumnDrag="true"
+										hidecolumnpicker="false" persist="height sortDirection sortResource" sortDirection="ascending" sortResource="availableCardsName"
+										onclick="wdw_cardEdition.sortTrees(event, 'availableCards');">
+										<treecols id="availableCardsTreeCols">
+											<treecol id="availableCardsName" label="__MSG_nameLabel__" flex="1" persist="width ordinal hidden" style="text-align:left" sortDirection="ascending" closemenu="none"/>
+											<splitter class="tree-splitter"/>
+											<treecol id="availableCardsUid" label="__MSG_uidLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" sortDirection="ascending" closemenu="none"/>
+											<splitter class="tree-splitter"/>
+											<treecol id="availableCardsFn" label="__MSG_fnLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" sortDirection="ascending" closemenu="none"/>
+											<splitter class="tree-splitter"/>
+											<treecol id="availableCardsLastname" label="__MSG_lastnameLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" sortDirection="ascending" closemenu="none"/>
+											<splitter class="tree-splitter"/>
+											<treecol id="availableCardsFirstname" label="__MSG_firstnameLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" sortDirection="ascending" closemenu="none"/>
+										</treecols>
+										<treechildren id="availableCardsTreeChildren" ondblclick="wdw_cardEdition.modifyLists(this);" ondragstart="wdw_cardEdition.startDrag(event, this);"/>
+									</tree>
 								</hbox>
-							</vbox>
-							<vbox flex="1">
-								<groupbox id="addedCardsGroupbox2" flex="1">
-									<label class="header">__MSG_addedCardsGroupboxLabel__</label>
-									<hbox flex="1" ondragover="event.preventDefault();" ondrop="wdw_cardEdition.dragCards(event, 'addedCardsTree');">
-										<tree id="addedCardsTree" context="addedCardsTreeContextMenu" class="cardbookTreeClass cardbookAccountTreeClass" flex="1" enableColumnDrag="true"
-											hidecolumnpicker="false" persist="height sortDirection sortResource" sortDirection="ascending" sortResource="addedCardsName"
-											onclick="wdw_cardEdition.sortTrees(event, 'addedCards');">
-											<treecols id="addedCardsTreeCols">
-												<treecol id="addedCardsName" label="__MSG_nameOrEmailLabel__" flex="1" persist="width ordinal hidden" style="text-align:left" sortDirection="ascending" closemenu="none"/>
-												<splitter class="tree-splitter"/>
-												<treecol id="addedCardsUid" label="__MSG_uidLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" sortDirection="ascending" closemenu="none"/>
-												<splitter class="tree-splitter"/>
-												<treecol id="addedCardsFn" label="__MSG_fnLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" sortDirection="ascending" closemenu="none"/>
-												<splitter class="tree-splitter"/>
-												<treecol id="addedCardsLastname" label="__MSG_lastnameLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" sortDirection="ascending" closemenu="none"/>
-												<splitter class="tree-splitter"/>
-												<treecol id="addedCardsFirstname" label="__MSG_firstnameLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" sortDirection="ascending" closemenu="none"/>
-											</treecols>
-											<treechildren id="addedCardsTreeChildren" ondblclick="wdw_cardEdition.modifyLists(this);" ondragstart="wdw_cardEdition.startDrag(event, this);"/>
-										</tree>
-									</hbox>
-								</groupbox>
-							</vbox>
-						</hbox>
-					</vbox>
+							</groupbox>
+						</vbox>
+						<vbox flex="1" align="center">
+							<hbox flex="1" align="center">
+								<vbox flex="1" align="center">
+									<button id="appendlistavailableCardsTreeButton" label="__MSG_buttonAppendToListLabel__"
+											accesskey="__MSG_buttonAppendToListAccesskey__" oncommand="wdw_cardEdition.modifyLists(this);"/>
+									<button id="deletelistaddedCardsTreeButton" label="__MSG_buttonRemoveFromListLabel__"
+											accesskey="__MSG_buttonRemoveFromListAccesskey__" oncommand="wdw_cardEdition.modifyLists(this);"/>
+								</vbox>
+							</hbox>
+						</vbox>
+						<vbox flex="1">
+							<groupbox id="addedCardsGroupbox2" flex="1">
+								<label class="header">__MSG_addedCardsGroupboxLabel__</label>
+								<hbox flex="1" ondragover="event.preventDefault();" ondrop="wdw_cardEdition.dragCards(event, 'addedCardsTree');">
+									<tree id="addedCardsTree" context="addedCardsTreeContextMenu" class="cardbookTreeClass cardbookAccountTreeClass" flex="1" enableColumnDrag="true"
+										hidecolumnpicker="false" persist="height sortDirection sortResource" sortDirection="ascending" sortResource="addedCardsName"
+										onclick="wdw_cardEdition.sortTrees(event, 'addedCards');">
+										<treecols id="addedCardsTreeCols">
+											<treecol id="addedCardsName" label="__MSG_nameOrEmailLabel__" flex="1" persist="width ordinal hidden" style="text-align:left" sortDirection="ascending" closemenu="none"/>
+											<splitter class="tree-splitter"/>
+											<treecol id="addedCardsUid" label="__MSG_uidLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" sortDirection="ascending" closemenu="none"/>
+											<splitter class="tree-splitter"/>
+											<treecol id="addedCardsFn" label="__MSG_fnLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" sortDirection="ascending" closemenu="none"/>
+											<splitter class="tree-splitter"/>
+											<treecol id="addedCardsLastname" label="__MSG_lastnameLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" sortDirection="ascending" closemenu="none"/>
+											<splitter class="tree-splitter"/>
+											<treecol id="addedCardsFirstname" label="__MSG_firstnameLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" sortDirection="ascending" closemenu="none"/>
+										</treecols>
+										<treechildren id="addedCardsTreeChildren" ondblclick="wdw_cardEdition.modifyLists(this);" ondragstart="wdw_cardEdition.startDrag(event, this);"/>
+									</tree>
+								</hbox>
+							</groupbox>
+						</vbox>
+					</hbox>
 				</vbox>
-				<spacer id="firstTabSpacer" flex="100"/>
-			</tabpanel>
+			</vbox>
+			<spacer id="firstTabSpacer" flex="100"/>
+		</vbox>
 
-			<tabpanel id="noteTabpanel" orient="vertical" style="overflow:auto">
+		<vbox id="noteTabPanel" class="cardbookTab" style="overflow:auto;" flex="1">	
+			<groupbox id="noteGroupbox" flex="1">
 				<html:textarea id="noteTextBox"/>
-			</tabpanel>
+			</groupbox>
+		</vbox>
 
-			<tabpanel orient="vertical" style="overflow:auto">
-				<groupbox id="PreferMailFormatReadWriteGroupbox">
-					<label class="header">__MSG_PreferMailFormatGroupbox.label__</label>
-					<hbox align="center" class="indent">
-						<label control="PreferMailFormatPopup" value="__MSG_PreferMailFormat.label__" accesskey="__MSG_PreferMailFormat.accesskey__"/>
-						<menulist id="PreferMailFormatPopup" sizetopopup="always">
-							<menupopup>
-								<menuitem value="0" label="__MSG_Unknown.label__"/>
-								<menuitem value="1" label="__MSG_PlainText.label__"/>
-								<menuitem value="2" label="__MSG_HTML.label__"/>
-							</menupopup>
-						</menulist>
-					</hbox>
-				</groupbox>
-				<groupbox id="PreferMailFormatReadOnlyGroupbox">
-					<label class="header">__MSG_PreferMailFormatGroupbox.label__</label>
-					<hbox align="center" class="indent input-container">
-						<label control="PreferMailFormatTextbox" value="__MSG_PreferMailFormat.label__"/>
-						<html:input id="PreferMailFormatTextbox" style="min-height:36px;" readonly="true"/>
-					</hbox>
-				</groupbox>
-        		<groupbox id="emailpropertyGroupbox">
-					<grid>
-						<columns flex="1">
-							<column/>
-							<column flex="1"/>
-						</columns>
-						<rows flex="1"/>
-					</grid>
-				</groupbox>
-				<spacer flex="100"/>
-			</tabpanel>
+		<vbox id="listTabPanel" class="cardbookTab" style="overflow:auto;" flex="1">	
+			<groupbox id="PreferMailFormatReadWriteGroupbox">
+				<label class="header">__MSG_PreferMailFormatGroupbox.label__</label>
+				<hbox align="center" class="indent">
+					<label control="PreferMailFormatPopup" value="__MSG_PreferMailFormat.label__" accesskey="__MSG_PreferMailFormat.accesskey__"/>
+					<menulist id="PreferMailFormatPopup" sizetopopup="always">
+						<menupopup>
+							<menuitem value="0" label="__MSG_Unknown.label__"/>
+							<menuitem value="1" label="__MSG_PlainText.label__"/>
+							<menuitem value="2" label="__MSG_HTML.label__"/>
+						</menupopup>
+					</menulist>
+				</hbox>
+			</groupbox>
+			<groupbox id="PreferMailFormatReadOnlyGroupbox">
+				<label class="header">__MSG_PreferMailFormatGroupbox.label__</label>
+				<hbox align="center" class="indent input-container">
+					<label control="PreferMailFormatTextbox" value="__MSG_PreferMailFormat.label__"/>
+					<html:input id="PreferMailFormatTextbox" style="min-height:36px;" readonly="true"/>
+				</hbox>
+			</groupbox>
+			<groupbox id="emailpropertyGroupbox"/>
+			<spacer flex="100"/>
+		</vbox>
 
-			<tabpanel id="keyTabpanel" orient="vertical" style="overflow:auto">
-				<vbox id="keyReadWriteToolsVbox" align="center" flex="1">
-					<hbox align="center" flex="1">
-						<button id="searchForOnlineKeyEditButton" tooltiptext="__MSG_searchForOnlineKeyEditButton.tooltip__" onclick="wdw_cardEdition.searchForOnlineKeyEdit();"/>
-						<button id="searchForThKeyEditButton" tooltiptext="__MSG_searchForThKeyEditButton.tooltip__" onclick="wdw_cardEdition.searchForThKeyEdit();"/>
-						<button id="searchForLocalKeyEditButton" tooltiptext="__MSG_searchForLocalKeyEditButton.tooltip__" onclick="wdw_cardEdition.searchForLocalKeyEdit();"/>
+		<vbox id="keyTabPanel" class="cardbookTab" style="overflow:auto;" flex="1">	
+			<vbox id="keyReadWriteToolsVbox" align="center" flex="1">
+				<hbox align="center" flex="1">
+					<button id="searchForOnlineKeyEditButton" tooltiptext="__MSG_searchForOnlineKeyEditButton.tooltip__" onclick="wdw_cardEdition.searchForOnlineKeyEdit();"/>
+					<button id="searchForThKeyEditButton" tooltiptext="__MSG_searchForThKeyEditButton.tooltip__" onclick="wdw_cardEdition.searchForThKeyEdit();"/>
+					<button id="searchForLocalKeyEditButton" tooltiptext="__MSG_searchForLocalKeyEditButton.tooltip__" onclick="wdw_cardEdition.searchForLocalKeyEdit();"/>
+				</hbox>
+			</vbox>
+			<hbox id="keyReadWriteHbox" flex="1">
+				<vbox flex="1">
+					<groupbox id="keyReadWriteGroupbox" flex="1"/>
+				</vbox>
+			</hbox>
+			<hbox id="keyReadOnlyHbox">
+				<box id="keyReadOnlyGroupbox"/>
+			</hbox>
+			<spacer id="keyTabSpacer" flex="100"/>
+		</vbox>
+
+		<vbox id="helpTabPanel" class="cardbookTab" style="overflow:auto;" flex="1">	
+			<groupbox flex="1">
+				<vbox flex="1">
+					<hbox flex="1">
+						<label><html:h2>__MSG_definitionLabel__</html:h2></label>
+					</hbox>
+					<description class="indent">__MSG_templateFormulaExplanation__</description>
+				</vbox>
+				<separator class="thin"/>
+				<vbox flex="1">
+					<hbox flex="1">
+						<label><html:h2>__MSG_fieldsLabel__</html:h2></label>
+					</hbox>
+					<hbox flex="1">
+						<vbox class="indent" flex="1">
+							<html:table id="formulaSampleTable">
+								<html:tr>
+									<html:td>
+										<label id="formulaMemberLabel1"/>
+									</html:td>
+								</html:tr>
+								<html:tr>
+									<html:td>
+										<label id="formulaMemberLabel2"/>
+									</html:td>
+								</html:tr>
+								<html:tr>
+									<html:td>
+										<label id="formulaMemberLabel3"/>
+									</html:td>
+								</html:tr>
+								<html:tr>
+									<html:td>
+										<label id="formulaMemberLabel4"/>
+									</html:td>
+								</html:tr>
+								<html:tr>
+									<html:td>
+										<label id="formulaMemberLabel5"/>
+									</html:td>
+								</html:tr>
+								<html:tr>
+									<html:td>
+										<label id="formulaMemberLabel6"/>
+									</html:td>
+								</html:tr>
+							</html:table>
+						</vbox>
 					</hbox>
 				</vbox>
-				<hbox id="keyReadWriteHbox" flex="1">
-					<vbox flex="1">
-						<groupbox id="keyReadWriteGroupbox" flex="1"/>
-					</vbox>
-				</hbox>
-				<hbox id="keyReadOnlyHbox">
-					<box id="keyReadOnlyGroupbox"/>
-				</hbox>
-				<spacer id="keyTabSpacer" flex="100"/>
-			</tabpanel>
-		</tabpanels>
-	</tabbox>
+				<separator class="thin"/>
+				<vbox flex="1">
+					<hbox flex="1">
+						<label><html:h2>__MSG_formulasLabel__</html:h2></label>
+					</hbox>
+					<description class="indent">__MSG_formulaExplanation1__</description>
+					<description class="indent">__MSG_formulaExplanation2__</description>
+					<description class="indent">__MSG_formulaExplanation3__</description>
+					<description class="indent">__MSG_formulaExplanation4__</description>
+					<description class="indent">__MSG_formulaExplanation5__</description>
+					<description class="indent">__MSG_formulaExplanation6__</description>
+				</vbox>
+			</groupbox>
+			<spacer id="helpTabSpacer" flex="100"/>
+		</vbox>
+	</vbox>
 
 	<hbox>
 		<vbox id="errorNotificationsHbox" class="notification-inline">
 			<!-- notificationbox will be added here lazily. -->
 		</vbox>
+		<button id="createTemplateButton" tooltiptext="__MSG_createTemplateLabel__" oncommand="wdw_templateEdition.createTemplate();"/>
+		<button id="openTemplateButton" tooltiptext="__MSG_loadTemplateLabel__" oncommand="wdw_templateEdition.loadTemplate();"/>
+		<button id="applyTemplateButton" tooltiptext="__MSG_applyTemplateLabel__" oncommand="wdw_templateEdition.applyTemplate();"/>
 		<spacer flex="1"/>
-		<!-- <button id="openTemplateButton" tooltiptext="__MSG_loadTemplateLabel__" oncommand="wdw_templateEdition.loadTemplate();"/> -->
-		<!-- <button id="saveTemplateButton" tooltiptext="__MSG_saveTemplateLabel__" oncommand="wdw_templateEdition.saveTemplate();"/> -->
 		<button id="previousEditButton" tooltiptext="__MSG_previousEditButton.tooltip__" oncommand="wdw_cardEdition.changeContact('previous');"/>
 		<button id="nextEditButton" tooltiptext="__MSG_nextEditButton.tooltip__" oncommand="wdw_cardEdition.changeContact('next');"/>
 		<menulist id="fieldsMenulist" flex="1">

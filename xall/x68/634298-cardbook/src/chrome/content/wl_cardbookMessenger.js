@@ -8,6 +8,7 @@ Services.scriptloader.loadSubScript("chrome://cardbook/content/indexedDB/cardboo
 Services.scriptloader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBUndo.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBImage.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBMailPop.js", window, "UTF-8");
+Services.scriptloader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBPrefDispName.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBSearch.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/cardbookActions.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/cardbookCardParser.js", window, "UTF-8");
@@ -32,6 +33,7 @@ Services.scriptloader.loadSubScript("chrome://cardbook/content/cardbookClipboard
 Services.scriptloader.loadSubScript("chrome://cardbook/content/cardbookTreeCols.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/observers/cardBookWindowObserver.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/cardbookDirTree.js", window, "UTF-8");
+Services.scriptloader.loadSubScript("chrome://cardbook/content/cardEdition/wdw_templateEdition.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/cardEdition/wdw_imageEdition.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/cardEdition/wdw_cardEdition.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/mailContact/ovl_cardbookFindEmails.js", window, "UTF-8");
@@ -160,21 +162,21 @@ function onLoad(wasAlreadyOpen) {
 		<menu id="addToCardBookMenu" label="__MSG_addToCardBookMenuLabel__" accesskey="__MSG_addToCardBookMenuAccesskey__" insertafter="editCardBookSeparator">
 			<menupopup id="addToCardBookMenuPopup" onpopupshowing="ovl_cardbookMailContacts.addToCardBookMenuSubMenu(this.id, ovl_cardbookMailContacts.addToCardBook)"/>
 		</menu>
-		<menuitem id="editInCardBookMenu" label="__MSG_editInCardBookMenuLabel__" accesskey="__MSG_editInCardBookMenuAccesskey__" insertafter="addToCardBookMenu" onclick="ovl_cardbookMailContacts.editOrViewContact();"/>
-		<menuitem id="deleteInCardBookMenu" label="__MSG_deleteInCardBookMenuLabel__" accesskey="__MSG_deleteInCardBookMenuAccesskey__" insertafter="editInCardBookMenu" onclick="ovl_cardbookMailContacts.deleteContact();"/>
+		<menuitem id="editInCardBookMenu" label="__MSG_editInCardBookMenuLabel__" accesskey="__MSG_editInCardBookMenuAccesskey__" insertafter="addToCardBookMenu" onclick="ovl_cardbookMailContacts.editOrViewContact(this.parentNode.triggerNode);"/>
+		<menuitem id="deleteInCardBookMenu" label="__MSG_deleteInCardBookMenuLabel__" accesskey="__MSG_deleteInCardBookMenuAccesskey__" insertafter="editInCardBookMenu" onclick="ovl_cardbookMailContacts.deleteContact(this.parentNode.triggerNode);"/>
 		<menuseparator id="IMPPCardBookSeparator" insertafter="deleteInCardBookMenu"/>
 		<menu id="IMPPCards" label="__MSG_IMPPMenuLabel__" accesskey="__MSG_IMPPMenuAccesskey__" insertafter="IMPPCardBookSeparator">
 			<menupopup id="IMPPCardsMenuPopup"/>
 		</menu>
 		<menuseparator id="findCardBookSeparator1" insertafter="IMPPCards"/>
 		<menuitem id="findEmailsFromEmailMessenger" label="__MSG_findEmailsFromEmailMessengerLabel__" accesskey="__MSG_findEmailsFromEmailMessengerAccesskey__"
-			oncommand="ovl_cardbookFindEmails.findEmailsFromEmail();" insertafter="findCardBookSeparator1"/>
+			oncommand="ovl_cardbookFindEmails.findEmailsFromEmail(this.parentNode.triggerNode);" insertafter="findCardBookSeparator1"/>
 		<menuitem id="findAllEmailsFromContactMessenger" label="__MSG_findAllEmailsFromContactMessengerLabel__" accesskey="__MSG_findAllEmailsFromContactMessengerAccesskey__"
-			oncommand="ovl_cardbookFindEmails.findAllEmailsFromContact();" insertafter="findEmailsFromEmailMessenger"/>
+			oncommand="ovl_cardbookFindEmails.findAllEmailsFromContact(this.parentNode.triggerNode);" insertafter="findEmailsFromEmailMessenger"/>
 		<menuitem id="findEventsFromEmailMessenger" label="__MSG_findEventsFromEmailMessengerLabel__" accesskey="__MSG_findEventsFromEmailMessengerAccesskey__"
-			oncommand="ovl_cardbookFindEvents.findEventsFromEmail();" insertafter="findAllEmailsFromContactMessenger"/>
+			oncommand="ovl_cardbookFindEvents.findEventsFromEmail(this.parentNode.triggerNode);" insertafter="findAllEmailsFromContactMessenger"/>
 		<menuitem id="findAllEventsFromContactMessenger" label="__MSG_findAllEventsFromContactMessengerLabel__" accesskey="__MSG_findAllEventsFromContactMessengerAccesskey__"
-			oncommand="ovl_cardbookFindEvents.findAllEventsFromContact();" insertafter="findEventsFromEmailMessenger"/>
+			oncommand="ovl_cardbookFindEvents.findAllEventsFromContact(this.parentNode.triggerNode);" insertafter="findEventsFromEmailMessenger"/>
 		<menuseparator id="findCardBookSeparator2" insertafter="findAllEventsFromContactMessenger"/>
 	</menupopup>
 
@@ -317,6 +319,12 @@ function onLoad(wasAlreadyOpen) {
 						oncommand="wdw_cardbook.createList();"
 						mode="dialog"
 						class="toolbarbutton-1"/>
+					<toolbarbutton id="cardbookToolbarAddTemplateButton"
+						label="__MSG_cardbookToolbarAddTemplateButtonLabel__"
+						tooltiptext="__MSG_cardbookToolbarAddTemplateButtonTooltip__"
+						oncommand="wdw_cardbook.createTemplate();"
+						mode="dialog"
+						class="toolbarbutton-1"/>
 					<toolbarbutton id="cardbookToolbarEditButton"
 						label="__MSG_cardbookToolbarEditButtonLabel__"
 						tooltiptext="__MSG_cardbookToolbarEditButtonTooltip__"
@@ -331,7 +339,7 @@ function onLoad(wasAlreadyOpen) {
 					<toolbarbutton id="cardbookToolbarPrintButton"
 						label="__MSG_cardbookToolbarPrintButtonLabel__"
 						tooltiptext="__MSG_cardbookToolbarPrintButtonTooltip__"
-						oncommand="wdw_cardbook.print()"
+						oncommand="wdw_cardbook.printCards()"
 						mode="dialog"
 						class="toolbarbutton-1"/>
 					<toolbarbutton id="cardbookToolbarBackButton"
@@ -409,7 +417,7 @@ function onLoad(wasAlreadyOpen) {
 									<menuitem id="cardbookContactsMenuPasteCards" label="__MSG_pasteCardFromCardsLabel__" oncommand="wdw_cardbook.pasteCards();"/>
 									<menuitem id="cardbookContactsMenuPasteEntry" label="__MSG_pasteEntryLabel__" oncommand="wdw_cardbook.pasteFieldValue();"/>
 									<menuseparator/>
-									<menuitem id="cardbookContactsMenuPrint" label="__MSG_cardbookToolbarPrintButtonLabel__" oncommand="wdw_cardbook.printFromCards();"/>
+									<menuitem id="cardbookContactsMenuPrint" label="__MSG_cardbookToolbarPrintButtonLabel__" oncommand="wdw_cardbook.printCards();"/>
 									<menuseparator/>
 									<menuitem id="cardbookContactsMenuDuplicateCards" label="__MSG_duplicateCardFromCardsLabel__" oncommand="wdw_cardbook.duplicateCards();"/>
 									<menuitem id="cardbookContactsMenuMergeCards" label="__MSG_mergeCardsFromCardsLabel__" oncommand="wdw_cardbook.mergeCards();"/>
@@ -622,7 +630,7 @@ function onLoad(wasAlreadyOpen) {
 				<menuseparator/>
 				<menuitem id="convertListToCategoryFromCards" label="__MSG_convertListToCategoryFromCardsLabel__" oncommand="wdw_cardbook.convertListToCategory();"/>
 				<menuseparator/>
-				<menuitem id="printFromCards" label="__MSG_cardbookToolbarPrintButtonLabel__" oncommand="wdw_cardbook.printFromCards();"/>
+				<menuitem id="printFromCards" label="__MSG_cardbookToolbarPrintButtonLabel__" oncommand="wdw_cardbook.printCards();"/>
 				<menuseparator/>
 				<menuitem id="exportCardsToFileFromCards" label="__MSG_exportCardToFileLabel__" oncommand="wdw_cardbook.exportCardsFromCards(this);"/>
 				<menuitem id="exportCardsToDirFromCards" label="__MSG_exportCardToDirLabel__" oncommand="wdw_cardbook.exportCardsFromCards(this);"/>
@@ -632,7 +640,90 @@ function onLoad(wasAlreadyOpen) {
 				<menuitem id="saveImageCard" label="__MSG_saveImageCardLabel__" oncommand="wdw_imageEdition.saveImageCard();"/>
 				<menuitem id="copyImageCard" label="__MSG_copyImageCardLabel__" oncommand="wdw_imageEdition.copyImageCard();"/>
 			</menupopup>
-	
+
+			<!-- Hidden browser so that we have something to print from. When printing, printing-template.html is loaded here. -->
+			<browser id="cardbookPrintContent" type="content" remote="true" hidden="true"/>	
+
+			<template xmlns="http://www.w3.org/1999/xhtml" id="cardbookPrintForm">
+				<form id="cardbook-print">
+					<section class="body-container">
+						<section class="section-block">
+							<label class="block-label">__MSG_settingsTitlelabel__</label>
+							<label class="row cols-2">
+								<input type="checkbox" id="displayHeadersCheckBox" checked="checked" autocomplete="off" />
+								<span>__MSG_displayHeadersLabel__</span>
+							</label>
+							<label class="row cols-2">
+								<input type="checkbox" id="displayFieldNamesCheckBox" checked="checked" autocomplete="off" />
+								<span>__MSG_displayFieldNamesLabel__</span>
+							</label>
+						</section>
+
+						<section class="section-block">
+							<label class="block-label">__MSG_fieldsToPrintGroupboxLabel__</label>
+							<label class="row cols-2">
+								<input type="checkbox" id="displayCheckBox" checked="checked" autocomplete="off"/>
+								<span>__MSG_displayLabel__</span>
+							</label>
+							<label class="row cols-2">
+								<input type="checkbox" id="personalCheckBox" checked="checked" autocomplete="off"/>
+								<span>__MSG_personalLabel__</span>
+							</label>
+							<label class="row cols-2">
+								<input type="checkbox" id="orgCheckBox" checked="checked" autocomplete="off"/>
+								<span>__MSG_org.print.label__</span>
+							</label>
+							<label class="row cols-2">
+								<input type="checkbox" id="customCheckBox" checked="checked" autocomplete="off"/>
+								<span>__MSG_custom.print.label__</span>
+							</label>
+							<label class="row cols-2">
+								<input type="checkbox" id="categoriesCheckBox" checked="checked" autocomplete="off"/>
+								<span>__MSG_categories.print.label__</span>
+							</label>
+							<label class="row cols-2">
+								<input type="checkbox" id="adrCheckBox" checked="checked" autocomplete="off"/>
+								<span>__MSG_adr.print.label__</span>
+							</label>
+							<label class="row cols-2">
+								<input type="checkbox" id="telCheckBox" checked="checked" autocomplete="off"/>
+								<span>__MSG_tel.print.label__</span>
+							</label>
+							<label class="row cols-2">
+								<input type="checkbox" id="emailCheckBox" checked="checked" autocomplete="off"/>
+								<span>__MSG_email.print.label__</span>
+							</label>
+							<label class="row cols-2">
+								<input type="checkbox" id="imppCheckBox" checked="checked" autocomplete="off"/>
+								<span>__MSG_impp.print.label__</span>
+							</label>
+							<label class="row cols-2">
+								<input type="checkbox" id="urlCheckBox" checked="checked" autocomplete="off"/>
+								<span>__MSG_url.print.label__</span>
+							</label>
+							<label class="row cols-2">
+								<input type="checkbox" id="eventCheckBox" checked="checked" autocomplete="off"/>
+								<span>__MSG_event.print.label__</span>
+							</label>
+							<label class="row cols-2">
+								<input type="checkbox" id="noteCheckBox" checked="checked" autocomplete="off"/>
+								<span>__MSG_note.print.label__</span>
+							</label>
+						</section>
+					</section>
+					<hr/>
+					<footer class="footer-container" id="print-footer" role="none">
+						<section id="button-container" class="section-block">
+							<button is="cancel-button"
+								type="button">__MSG_closeEditionLabel__</button>
+							<button class="primary"
+								type="submit"
+								showfocus="">__MSG_wizard.next.label__</button>
+						</section>
+					</footer>
+				</form>
+			</template>
+
 			<hbox id="mainHbox" flex="1">
 				<vbox id="leftPaneVbox1" persist="width collapsed">
 					<vbox id="cardbookFolderPaneToolbox">
@@ -671,9 +762,9 @@ function onLoad(wasAlreadyOpen) {
 									 ondblclick="wdw_cardbook.doubleClickAccountOrCat(event);"/>
 					</tree>
 				</vbox>
-	
+
 				<splitter id="dirTreeSplitter" collapse="before" persist="state orient" class="cardbookVerticalSplitterClass"/>
-	
+
 				<box id="cardsBox" flex="1">
 					<vbox id="rightPaneUpHbox1" flex="1" persist="width height collapsed" ondragover="wdw_cardbook.canDropOnContactBox(event);" ondrop="wdw_cardbook.dragCards(event);">
 						<vbox id="searchRemoteHbox">
@@ -688,9 +779,9 @@ function onLoad(wasAlreadyOpen) {
 						   <treechildren id="cardsTreeChildren" ondragstart="wdw_cardbook.startDrag(event);" ondblclick="wdw_cardbook.doubleClickCardsTree(event);"/>
 						</tree>
 					</vbox>
-					
+
 					<splitter id="resultsSplitter" collapse="after" orient="vertical" persist="state orient" class="cardbookHorizontalSplitterClass"/>
-	
+
 					<hbox id="rightPaneDownHbox1" context="" persist="width height collapsed" class="cardbookBackgroundColorClass">
 						<vbox flex="1">
 							<vbox>
@@ -706,84 +797,115 @@ function onLoad(wasAlreadyOpen) {
 								<hbox>
 									<vbox flex="1">
 										<hbox align="center" flex="1">
-											<groupbox id="fnGroupbox" flex="1" style="border:1px blue solid">
+											<groupbox id="fnGroupbox" flex="1">
 												<label class="header">__MSG_fnLabel__</label>
-												<vbox flex="1" class="indent" style="border:1px green solid">
-													<grid align="center" flex="1" style="border:1px red solid">
-														<columns>
-															<column flex="1" style="border:1px blue yellow"/>
-														</columns>
-											
-														<rows id="fnRows">
-															<row id="fnRow" align="center">
-																<html:input id="fnTextBox" fieldName="fn" style="border:1px orange solid"/>
-															</row>
-														</rows>
-													</grid>
+												<vbox id="fnRow" flex="1" class="indent">
+													<html:input id="fnTextBox" fieldName="fn"/>
 												</vbox>
 											</groupbox>
 										</hbox>
 										<hbox id="persBox" flex="1">
-											<groupbox id="persGroupbox" flex="1">
+											<groupbox id="personalGroupbox" flex="1">
 												<label class="header">__MSG_persTitleLabel__</label>
 												<hbox flex="1" class="indent">
-													<grid align="center" flex="1">
-														<columns>
-															<column/>
-															<column flex="1"/>
-														</columns>
-											
-														<rows id="personalRows">
-															<row id="lastnameRow" align="center">
+													<html:table id="personalTable">
+														<html:tr id="lastnameRow">
+															<html:td>
 																<label id="lastnameLabel" value="__MSG_lastnameLabel__" control="lastnameTextBox" class="header"/>
+															</html:td>
+															<html:td>
 																<html:input id="lastnameTextBox" fieldName="lastname"/>
-															</row>
-															<row id="firstnameRow" align="center">
+															</html:td>
+														</html:tr>
+														<html:tr id="firstnameRow">
+															<html:td>
 																<label id="firstnameLabel" value="__MSG_firstnameLabel__" control="firstnameTextBox" class="header"/>
+															</html:td>
+															<html:td>
 																<html:input id="firstnameTextBox" fieldName="firstname"/>
-															</row>
-															<row id="othernameRow" align="center">
+															</html:td>
+														</html:tr>
+														<html:tr id="othernameRow">
+															<html:td>
 																<label id="othernameLabel" value="__MSG_othernameLabel__" control="othernameTextBox" class="header"/>
+															</html:td>
+															<html:td>
 																<html:input id="othernameTextBox" fieldName="othername"/>
-															</row>
-															<row id="prefixnameRow" align="center">
+															</html:td>
+														</html:tr>
+														<html:tr id="prefixnameRow">
+															<html:td>
 																<label id="prefixnameLabel" value="__MSG_prefixnameLabel__" control="prefixnameTextBox" class="header"/>
+															</html:td>
+															<html:td>
 																<html:input id="prefixnameTextBox" fieldName="prefixname"/>
-															</row>
-															<row id="suffixnameRow" align="center">
+															</html:td>
+														</html:tr>
+														<html:tr id="suffixnameRow">
+															<html:td>
 																<label id="suffixnameLabel" value="__MSG_suffixnameLabel__" control="suffixnameTextBox" class="header"/>
+															</html:td>
+															<html:td>
 																<html:input id="suffixnameTextBox" fieldName="suffixname"/>
-															</row>
-															<row id="nicknameRow" align="center">
+															</html:td>
+														</html:tr>
+														<html:tr id="nicknameRow">
+															<html:td>
 																<label id="nicknameLabel" value="__MSG_nicknameLabel__" control="nicknameTextBox" class="header"/>
+															</html:td>
+															<html:td>
 																<html:input id="nicknameTextBox" fieldName="nickname"/>
-															</row>
-															<row id="genderRow" align="center">
+															</html:td>
+														</html:tr>
+														<html:tr id="genderRow">
+															<html:td>
 																<label id="genderLabel" value="__MSG_genderLabel__" control="genderTextBox" class="header"/>
+															</html:td>
+															<html:td>
 																<html:input id="genderTextBox" fieldName="gender"/>
-															</row>
-															<row id="bdayRow" align="center">
+															</html:td>
+														</html:tr>
+														<html:tr id="bdayRow">
+															<html:td>
 																<label id="bdayLabel" value="__MSG_bdayLabel__" control="bdayTextBox" class="header"/>
+															</html:td>
+															<html:td>
 																<html:input id="bdayTextBox" fieldName="bday"/>
-															</row>
-															<row id="birthplaceRow" align="center">
+															</html:td>
+														</html:tr>
+														<html:tr id="birthplaceRow">
+															<html:td>
 																<label id="birthplaceLabel" value="__MSG_birthplaceLabel__" control="birthplaceTextBox" class="header"/>
+															</html:td>
+															<html:td>
 																<html:input id="birthplaceTextBox" fieldName="birthplace"/>
-															</row>
-															<row id="deathdateRow" align="center">
+															</html:td>
+														</html:tr>
+														<html:tr id="deathdateRow">
+															<html:td>
 																<label id="deathdateLabel" value="__MSG_deathdateLabel__" control="deathdateTextBox" class="header"/>
+															</html:td>
+															<html:td>
 																<html:input id="deathdateTextBox" fieldName="deathdate"/>
-															</row>
-															<row id="deathplaceRow" align="center">
+															</html:td>
+														</html:tr>
+														<html:tr id="deathplaceRow">
+															<html:td>
 																<label id="deathplaceLabel" value="__MSG_deathplaceLabel__" control="deathplaceTextBox" class="header"/>
+															</html:td>
+															<html:td>
 																<html:input id="deathplaceTextBox" fieldName="deathplace"/>
-															</row>
-															<row id="anniversaryRow" align="center">
+															</html:td>
+														</html:tr>
+														<html:tr id="anniversaryRow">
+															<html:td>
 																<label id="anniversaryLabel" value="__MSG_anniversaryLabel__" control="anniversaryTextBox" class="header"/>
+															</html:td>
+															<html:td>
 																<html:input id="anniversaryTextBox" fieldName="anniversary"/>
-															</row>
-														</rows>
-													</grid>
+															</html:td>
+														</html:tr>
+													</html:table>
 												</hbox>
 											</groupbox>
 										</hbox>
@@ -791,14 +913,7 @@ function onLoad(wasAlreadyOpen) {
 											<groupbox id="orgGroupbox" flex="1">
 												<label class="header">__MSG_orgTitleLabel__</label>
 												<hbox flex="1" class="indent">
-													<grid align="center" flex="1">
-														<columns>
-															<column/>
-															<column flex="1"/>
-														</columns>
-											
-														<rows id="orgRows"/>
-													</grid>
+													<html:table id="orgTable"/>
 												</hbox>
 											</groupbox>
 										</hbox>
@@ -824,12 +939,7 @@ function onLoad(wasAlreadyOpen) {
 										</hbox>
 									</vbox>
 									<vbox flex="1">
-										<grid align="center" flex="1">
-											<columns>
-												<column flex="1"/>
-											</columns>
-											<rows id="classicalRows"/>
-										</grid>
+										<html:table id="classicalRows"/>
 									</vbox>
 								</hbox>
 								<hbox align="center">
@@ -843,25 +953,10 @@ function onLoad(wasAlreadyOpen) {
 									</vbox>
 								</hbox>
 								<hbox>
-									<grid align="center">
-										<columns>
-											<column flex="1"/>
-										</columns>
-										<rows id="modernRows"/>
-									</grid>
+									<html:table id="modernRows"/>
 								</hbox>
 								<hbox id="listGroupbox">
-									<vbox flex="1">
-										<grid align="center" flex="1">
-											<columns>
-												<column/>
-												<column flex="1"/>
-											</columns>
-											<rows flex="1">
-												<groupbox id="addedCardsGroupbox" flex="1"/>
-											</rows>
-										</grid>
-									</vbox>
+									<groupbox id="addedCardsGroupbox" flex="1"/>
 								</hbox>
 								<hbox flex="1">
 									<vbox flex="1">
@@ -881,15 +976,7 @@ function onLoad(wasAlreadyOpen) {
 										<html:input id="PreferMailFormatTextbox" style="min-height:36px;" readonly="true"/>
 									</hbox>
 								</groupbox>
-								<groupbox id="emailpropertyGroupbox">
-									<grid>
-										<columns flex="1">
-											<column/>
-											<column flex="1"/>
-										</columns>
-										<rows flex="1"/>
-									</grid>
-								</groupbox>
+								<groupbox id="emailpropertyGroupbox"/>
 							</vbox>
 		
 							<vbox id="technicalTabPanel" class="cardbookTab" style="overflow:auto;" flex="1">
@@ -897,58 +984,97 @@ function onLoad(wasAlreadyOpen) {
 									<groupbox id="miscGroupbox" flex="1">
 										<label class="header">__MSG_miscGroupboxLabel__</label>
 										<hbox flex="1" align="center" class="indent">
-											<grid align="center" flex="1">
-												<columns>
-													<column/>
-													<column flex="1"/>
-												</columns>
-									
-												<rows>
-													<row id="mailerRow" align="center">
+											<html:table>
+												<html:tr id="mailerRow">
+													<html:td>
 														<label id="mailerLabel" value="__MSG_mailerLabel__" control="mailerTextBox" class="header"/>
+													</html:td>
+													<html:td>
 														<html:input id="mailerTextBox"/>
-													</row>
-													<row id="geoRow" align="center">
+													</html:td>
+												</html:tr>
+												<html:tr id="geoRow">
+													<html:td>
 														<label id="geoLabel" value="__MSG_geoLabel__" control="geoTextBox" class="header"/>
+													</html:td>
+													<html:td>
 														<html:input id="geoTextBox"/>
-													</row>
-													<row id="sortstringRow" align="center">
+													</html:td>
+												</html:tr>
+												<html:tr id="sortstringRow">
+													<html:td>
 														<label id="sortstringLabel" value="__MSG_sortstringLabel__" control="sortstringTextBox" class="header"/>
+													</html:td>
+													<html:td>
 														<html:input id="sortstringTextBox"/>
-													</row>
-													<row id="class1Row" align="center">
+													</html:td>
+												</html:tr>
+												<html:tr id="class1Row">
+													<html:td>
 														<label id="class1Label" value="__MSG_class1Label__" control="class1TextBox" class="header"/>
+													</html:td>
+													<html:td>
 														<html:input id="class1TextBox"/>
-													</row>
-													<row id="tzRow" align="center">
+													</html:td>
+												</html:tr>
+												<html:tr id="tzRow">
+													<html:td>
 														<label id="tzLabel" value="__MSG_tzLabel__" control="tzTextBox" class="header"/>
+													</html:td>
+													<html:td>
 														<html:input id="tzTextBox"/>
-													</row>
-													<row id="agentRow" align="center">
+													</html:td>
+												</html:tr>
+												<html:tr id="agentRow">
+													<html:td>
 														<label id="agentLabel" value="__MSG_agentLabel__" control="agentTextBox" class="header"/>
+													</html:td>
+													<html:td>
 														<html:input id="agentTextBox"/>
-													</row>
-													<row id="keyRow" align="center">
+													</html:td>
+												</html:tr>
+												<html:tr id="keyRow">
+													<html:td>
 														<label id="keyLabel" value="__MSG_keyLabel__" control="keyTextBox" class="header"/>
+													</html:td>
+													<html:td>
 														<html:input id="keyTextBox"/>
-													</row>
-													<row id="photoURIRow" align="center">
+													</html:td>
+												</html:tr>
+												<html:tr id="photoURIRow">
+													<html:td>
 														<label id="photoURILabel" value="__MSG_photoURILabel__" control="photoURITextBox" class="header"/>
+													</html:td>
+													<html:td>
 														<html:input id="photoExtensionTextBox" hidden="true"/>
+													</html:td>
+													<html:td>
 														<html:input id="photoURITextBox"/>
-													</row>
-													<row id="logoURIRow" align="center">
+													</html:td>
+												</html:tr>
+												<html:tr id="logoURIRow">
+													<html:td>
 														<label id="logoURILabel" value="__MSG_logoURILabel__" control="logoURITextBox" class="header"/>
+													</html:td>
+													<html:td>
 														<html:input id="logoExtensionTextBox" hidden="true"/>
+													</html:td>
+													<html:td>
 														<html:input id="logoURITextBox"/>
-													</row>
-													<row id="soundURIRow" align="center">
+													</html:td>
+												</html:tr>
+												<html:tr id="soundURIRow">
+													<html:td>
 														<label id="soundURILabel" value="__MSG_soundURILabel__" control="soundURITextBox" class="header"/>
+													</html:td>
+													<html:td>
 														<html:input id="soundExtensionTextBox" hidden="true"/>
+													</html:td>
+													<html:td>
 														<html:input id="soundURITextBox"/>
-													</row>
-												</rows>
-											</grid>
+													</html:td>
+												</html:tr>
+											</html:table>
 										</hbox>
 									</groupbox>
 								</vbox>
@@ -957,47 +1083,64 @@ function onLoad(wasAlreadyOpen) {
 									<groupbox id="techGroupbox" flex="1">
 										<label class="header">__MSG_techGroupboxLabel__</label>
 										<hbox flex="1" align="center" class="indent">
-											<grid align="center" flex="1">
-												<columns>
-													<column/>
-													<column flex="1"/>
-												</columns>
-									
-												<rows>
-													<row id="dirPrefIdRow" align="center">
+											<html:table>
+												<html:tr id="dirPrefIdRow">
+													<html:td>
 														<label id="dirPrefIdLabel" value="__MSG_dirPrefIdLabel__" control="dirPrefIdTextBox" class="header"/>
+													</html:td>
+													<html:td>
 														<html:input id="dirPrefIdTextBox"/>
-													</row>
-													<row id="versionRow" align="center">
+													</html:td>
+												</html:tr>
+												<html:tr id="versionRow">
+													<html:td>
 														<label id="versionLabel" value="__MSG_versionLabel__" control="versionTextBox" class="header"/>
+													</html:td>
+													<html:td>
 														<html:input id="versionTextBox"/>
-													</row>
-													<row id="prodidRow" align="center">
+													</html:td>
+												</html:tr>
+												<html:tr id="prodidRow">
+													<html:td>
 														<label id="prodidLabel" value="__MSG_prodidLabel__" control="prodidTextBox" class="header"/>
+													</html:td>
+													<html:td>
 														<html:input id="prodidTextBox"/>
-													</row>
-													<row id="uidRow" align="center">
+													</html:td>
+												</html:tr>
+												<html:tr id="uidRow">
+													<html:td>
 														<label id="uidLabel" value="__MSG_uidLabel__" control="uidTextBox" class="header"/>
+													</html:td>
+													<html:td>
 														<html:input id="uidTextBox"/>
-													</row>
-													<row id="cardurlRow" align="center">
+													</html:td>
+												</html:tr>
+												<html:tr id="cardurlRow">
+													<html:td>
 														<label id="cardurlLabel" value="__MSG_cardurlLabel__" control="cardurlTextBox" class="header"/>
+													</html:td>
+													<html:td>
 														<html:input id="cardurlTextBox"/>
-													</row>
-													<!-- <row id="cacheuriRow" align="center"> -->
-														<!-- <label id="cacheuriLabel" value="__MSG_cacheuriLabel__" control="cacheuriTextBox" class="header"/> -->
-														<!-- <html:input id="cacheuriTextBox"/> -->
-													<!-- </row> -->
-													<row id="revRow" align="center">
+													</html:td>
+												</html:tr>
+												<html:tr id="revRow">
+													<html:td>
 														<label id="revLabel" value="__MSG_revLabel__" control="revTextBox" class="header"/>
+													</html:td>
+													<html:td>
 														<html:input id="revTextBox"/>
-													</row>
-													<row id="etagRow" align="center">
+													</html:td>
+												</html:tr>
+												<html:tr id="etagRow">
+													<html:td>
 														<label id="etagLabel" value="__MSG_etagLabel__" control="etagTextBox" class="header"/>
+													</html:td>
+													<html:td>
 														<html:input id="etagTextBox"/>
-													</row>
-												</rows>
-											</grid>
+													</html:td>
+												</html:tr>
+											</html:table>
 										</hbox>
 									</groupbox>
 								</vbox>

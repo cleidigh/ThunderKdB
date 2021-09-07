@@ -1,7 +1,8 @@
 //Element IDs to be collapsed
 var idList = [
   "messengerBox",
-  "displayDeck",
+  "displayDeck", //TB78
+  "displayBox", //TB91
   "threadContentArea",
   //"messagepanebox",
   "folderPaneBox",
@@ -95,8 +96,7 @@ async function init() {
     if (isMaxMsgPane) {
       delaySettings = true;
     } else {
-      let changedItems = Object.keys(changes);
-      for (let item of changedItems) {
+      for (let item in changes) {
         prefs[item] = changes[item].newValue;
       }
       rebuildCollapseList();
@@ -316,8 +316,7 @@ async function restorePanes() {
 
 async function collapse(maximize) {
   let index = maximize ? 1 : 0;
-  let id;
-  for (id in collapseList) {
+  for (let id in collapseList) {
     if (!collapseList[id][1]) continue;
     try {
       await browser.maxMsgPaneApi.collapse(id, (collapseList[id][index] == true));
@@ -327,8 +326,7 @@ async function collapse(maximize) {
 
 async function updateCollapseList(paneConfig) {
   //save current status
-  var id;
-  for (id in collapseList) {
+  for (let id in collapseList) {
     var elem = collapseList[id];
     if (!elem[1]) continue;
     elem[0] = await browser.maxMsgPaneApi.isCollapsed(id);

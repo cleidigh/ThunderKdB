@@ -8,17 +8,13 @@ END LICENSE BLOCK */
 
 /* shared module for installation popups */
 
-async function updateActions(addonName) {
-  const mxUtilties = messenger.Utilities;
+async function updateActions(addonName) { 
+  // Currently we do not notify this page if the license information is updated in the background.
+  let licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
   // LICENSING FLOW
-  
-  let isLicensed = await mxUtilties.isLicensed(true),
-    isExpired = await mxUtilties.LicenseIsExpired();
-        
-  //console.log("Addon " + addonName + "\n" +
-  //  "isLicensed = " + isLicensed + "\n" +
-  //  "isExpired = " + isExpired + "\n"
-  //);
+  let isExpired = licenseInfo.isExpired,
+      isValid = licenseInfo.isValid,
+      isStandard = (licenseInfo.keyType==2);
   
   function hide(id) {
     let el = document.getElementById(id);
@@ -42,6 +38,12 @@ async function updateActions(addonName) {
     }
     return null;
   }
+  function showSelectorItems(cId) {
+    let elements = document.querySelectorAll(cId);
+		for (let el of elements) {
+      el.setAttribute('collapsed',false);
+    }
+  }
   // renew-your-license - already collapsed
   // renewLicenseListItem - already collapsed
   // purchaseLicenseListItem - not collapsed
@@ -49,9 +51,18 @@ async function updateActions(addonName) {
   
   let isActionList = true;
   
-  if (isLicensed) {
+  let currentTime = new Date(),
+      endSale = new Date("2021-09-11"); // Next Sale End Date
+      
+  let overrideSale = await messenger.LegacyPrefs.getPref("extensions.quickfolders.debug.saleDate");
+  if (overrideSale) endSale = overrideSale;
+  
+  let isSale = (currentTime < endSale);
+
+  hideSelectorItems('.donations');
+  
+  if (isValid || isExpired) {
     hide('purchaseLicenseListItem');
-    hideSelectorItems('.donations');
     hide('register');
     if (isExpired) { // License Renewal
       hide('extendLicenseListItem');
@@ -62,35 +73,47 @@ async function updateActions(addonName) {
     else { // License Extension
       hide('renewLicenseListItem');
       hide('renew');
-      let gpdays = await mxUtilties.LicensedDaysLeft();
-      if (gpdays<50) { // they may have seen this popup. Only show extend License section if it is < 50 days away
+			let gpdays = licenseInfo.licensedDaysLeft;
+      if (gpdays < 20) { // they may have seen this popup. Only show extend License section if it is < 20 days away
         show('extendLicenseListItem');
         show('extend');
       }
       else {
         show('licenseExtended');
-        hide('time-and-effort')
+        hide('time-and-effort');
         hide('purchaseHeader');
         hide('whyPurchase');
         hide('extendLicenseListItem');
         hide('extend');
         let animation = document.getElementById('gimmick');
-        animation.parentNode.removeChild(animation);
+        if (animation)
+          animation.parentNode.removeChild(animation);
 
         isActionList = false;
       }
+      if(isStandard) {
+        hide('licenseExtended');
+        let regBtn = show('register');
+        regBtn.innerText = messenger.i18n.getMessage("qf.notification.premium.btn.upgrade");
+      }
     }
-  }  
-  else {
-    let currentTime=new Date(),
-        endSale = new Date("2021-05-01");
-    if (currentTime < endSale) {
+  }
+  
+  if (isSale) {
+    if (!isValid) { // not shown with Standard license either.
       show('specialOffer');
       hideSelectorItems('.donations');
       hide('whyPurchase');
       isActionList = false;
     }
-  }  
+    else if (isStandard) {
+      show('specialOfferUpgrade');
+      hideSelectorItems('.donations');
+      hide('whyPurchase');
+      isActionList = false;
+    }
+  }
+
   if (!isActionList) {
     hide('actionBox');
   }
@@ -101,13 +124,12 @@ async function updateActions(addonName) {
       r = wrapper.getBoundingClientRect(),
       newHeight = Math.round(r.height) + 80,
       maxHeight = window.screen.height;
-      
+
+  let { os } = await messenger.runtime.getPlatformInfo(); // mac / win / linux
+  wrapper.setAttribute("os", os);
+     
   if (newHeight>maxHeight) newHeight = maxHeight-15;
   browser.windows.update(win.id, 
     {height: newHeight}
   );
-      
-  // window.sizeToContent();
-  
-  
 }

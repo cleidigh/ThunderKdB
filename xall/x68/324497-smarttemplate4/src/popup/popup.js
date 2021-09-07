@@ -54,8 +54,14 @@ async function updateActions(addonName) {
   
   let isActionList = true;
   let currentTime = new Date(),
-      endSale = new Date("2021-07-01"); // Next Sale End Date
+      endSale = new Date("2021-08-31"); // Next Sale End Date 
   let isSale = (currentTime < endSale);
+  
+  if (!isSale) { 
+    debugger;
+    hide('specialOffer');
+    hideSelectorItems('.standardUpgradeSale');
+  }
 
   if (isValid || isExpired) {
     hide('purchaseLicenseListItem');
@@ -95,16 +101,13 @@ async function updateActions(addonName) {
 	        hide('whyPurchase');
           hide('extendLicenseListItem');
           hide('extend');
-	        let animation = document.getElementById('gimmick');
-	        if (animation)
-	          animation.parentNode.removeChild(animation);
           isActionList = false;
         }
       }
     }
   }
   else {
-    if (isSale) {
+    if (isSale && !isValid) { // not shown with Standard license either.
       show('specialOffer');
       hideSelectorItems('.donations');
       hide('whyPurchase');
@@ -114,6 +117,11 @@ async function updateActions(addonName) {
   if (!isActionList) {
     hide('actionBox');
   }  
+
+  let animation = document.getElementById('gimmick');
+  if (animation)
+    animation.parentNode.removeChild(animation);
+  
   // resize to contents if necessary...
   let win = await browser.windows.getCurrent(),
       wrapper = document.getElementById('innerwrapper'),

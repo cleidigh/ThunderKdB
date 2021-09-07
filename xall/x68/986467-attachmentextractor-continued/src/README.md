@@ -28,7 +28,7 @@
 ### Contribution
 
 You are welcomed to contribute to this project by:
-* adding or improving the localizations (i.e. translations) of AttachmentExtractor Continued via [Crowdin](https://crowdin.com/project/attachmentextractor-continued) (if your language is not listed, please create an [issue](https://gitlab.com/ThunderbirdMailDE/attachment-extractor-continued/issues/))
+* adding or improving the localizations of AttachmentExtractor Continued via email to me or a post in german Thunderbird forums [Thunderbird Mail DE](https://www.thunderbird-mail.de/forum/board/81-hilfe-und-fehlermeldungen-zu-thunders-add-ons/) or just create an [issue](https://gitlab.com/ThunderbirdMailDE/attachment-extractor-continued/issues/) here on GitLab
 * creating [issues](https://gitlab.com/ThunderbirdMailDE/attachment-extractor-continued/issues/) about problems
 * creating [issues](https://gitlab.com/ThunderbirdMailDE/attachment-extractor-continued/issues/) about possible improvements
 

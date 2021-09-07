@@ -185,9 +185,8 @@ EWSAccount.prototype.CreateFolder = async function(aMsgWindow, aParent, aName) {
  *
  * @param aMsgWindow {Integer}
  * @param aFolder    {String}  The folder's id
- * @param aPermanent {String}  False if this is just a move to Deleted Items
  */
-EWSAccount.prototype.DeleteFolder = async function(aMsgWindow, aFolder, aPermanent) {
+EWSAccount.prototype.DeleteFolder = async function(aMsgWindow, aFolder) {
   let request = {
     m$DeleteFolder: {
       m$FolderIds: {
@@ -195,7 +194,7 @@ EWSAccount.prototype.DeleteFolder = async function(aMsgWindow, aFolder, aPermane
           Id: aFolder,
         }],
       },
-      DeleteType: aPermanent ? "SoftDelete" : "MoveToDeletedItems",
+      DeleteType: "SoftDelete",
     },
   };
   await this.CallService(aMsgWindow, request); // ews.js
@@ -1154,16 +1153,17 @@ EWSAccount.prototype.GetAttachment = async function(aMsgWindow, aFolder, aItem, 
 }
 
 /**
- * Delete all items and folders in the Deleted Items folder
+ * Delete all items and subfolders in a folder
  *
  * @param aMsgWindow {Integer}
+ * @param aFolder    {String}  The folder to empty
  */
-EWSAccount.prototype.EmptyTrash = async function(aMsgWindow) {
+EWSAccount.prototype.EmptyTrash = async function(aMsgWindow, aFolder) {
   let request = {
     m$EmptyFolder: {
       m$FolderIds: {
-        t$DistinguishedFolderId: [{
-          Id: "deleteditems",
+        t$FolderId: [{
+          Id: aFolder,
         }],
       },
       DeleteType: "SoftDelete",
@@ -1194,7 +1194,7 @@ EWSAccount.prototype.ProcessOperation = function(aOperation, aParameters, aMsgWi
   case "CreateFolder":
     return this.CreateFolder(aMsgWindow, aParameters.parent, aParameters.name);
   case "DeleteFolder":
-    return this.DeleteFolder(aMsgWindow, aParameters.folder, aParameters.permanent);
+    return this.DeleteFolder(aMsgWindow, aParameters.folder);
   case "MoveFolder":
     return this.MoveFolder(aMsgWindow, aParameters.folder, aParameters.target);
   case "RenameFolder":
@@ -1236,7 +1236,7 @@ EWSAccount.prototype.ProcessOperation = function(aOperation, aParameters, aMsgWi
   case "GetAttachment":
     return this.GetAttachment(aMsgWindow, aParameters.folder, aParameters.message, aParameters.attachment);
   case "EmptyTrash":
-    return this.EmptyTrash(aMsgWindow);
+    return this.EmptyTrash(aMsgWindow, aParameters.folder);
   }
   throw new Error("Not Implemented");
 }

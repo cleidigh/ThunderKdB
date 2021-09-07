@@ -19,20 +19,8 @@ var EXPORTED_SYMBOLS = ["GlodaAttrProviders"];
  *  lookup in the MimeMessage's headers.
  * We guarantee alternativeSender to be parsable as:
  *  Sender Name <xx@xx.xx>
- *
- * The second one is a plugin that exposes a new subject noun on Gloda
- *  Conversations. This is slightly more advanced, in the sense that it exposes
- *  a column (subject) that's present in the conversation table as a new
- *  attribute that can be queried.
- * We need that for GitHub and GetSatisfaction, who seem to never have heard
- *  about any kind of References: header. As it is very, very irritating, we
- *  launch a different query that tries to find other messages through the
- *  subject, hence this Gloda plugin
  */
 
-const { PluginHelpers } = ChromeUtils.import(
-  "chrome://conversations/content/modules/plugins/helpers.js"
-);
 const { XPCOMUtils } = ChromeUtils.import(
   "resource://gre/modules/XPCOMUtils.jsm"
 );
@@ -42,11 +30,11 @@ XPCOMUtils.defineLazyModuleGetters(this, {
 });
 
 let AlternativeSender = {
-  init: function _AlternativeSender_init() {
+  init() {
     this.defineAttributes();
   },
 
-  defineAttributes: function _AlternativeSender_defineAttributes() {
+  defineAttributes() {
     this._alternativeSenderAttribute = Gloda.defineAttribute({
       provider: this,
       extensionName: "bugzilla-alternative-sender",
@@ -66,7 +54,7 @@ let AlternativeSender = {
     aCallbackHandle
   ) {
     try {
-      let alternativeSender = PluginHelpers.alternativeSender(aRawReps);
+      let alternativeSender = GlodaAttrProviders.alternativeSender(aRawReps);
       if (alternativeSender) {
         aGlodaMessage.alternativeSender = alternativeSender;
       }
@@ -78,14 +66,12 @@ let AlternativeSender = {
   },
 };
 
-AlternativeSender.init();
-
 let ContentType = {
-  init: function _ContentType_init() {
+  init() {
     this.defineAttributes();
   },
 
-  defineAttributes: function _ContentType_defineAttributes() {
+  defineAttributes() {
     this._bugzillaAttribute = Gloda.defineAttribute({
       provider: this,
       extensionName: "content-type",
@@ -116,80 +102,22 @@ let ContentType = {
   },
 };
 
-ContentType.init();
-
-let Bugzilla = {
-  init: function _Bugzilla_init() {
-    this.defineAttributes();
-  },
-
-  defineAttributes: function _Bugzilla_defineAttributes() {
-    this._bugzillaAttribute = Gloda.defineAttribute({
-      provider: this,
-      extensionName: "bugzilla-infos",
-      attributeType: Gloda.kAttrDerived,
-      attributeName: "bugzillaInfos",
-      bind: true,
-      singular: true,
-      subjectNouns: [Gloda.NOUN_MESSAGE],
-      objectNoun: Gloda.NOUN_STRING,
-    });
-  },
-
-  process: function* _Bugzilla_process(
-    aGlodaMessage,
-    aRawReps,
-    aIsNew,
-    aCallbackHandle
-  ) {
-    try {
-      let bugzilla = PluginHelpers.bugzilla(aRawReps);
-      if (bugzilla) {
-        aGlodaMessage.bugzillaInfos = JSON.stringify(bugzilla);
-      }
-    } catch (e) {
-      dump(e + "\n" + e.stack + "\n");
-    }
-
-    yield Gloda.kWorkDone;
-  },
-};
-
-Bugzilla.init();
-
-let ConversationSubject = {
-  init: function _ConversationSubject_init() {
-    this.defineAttributes();
-  },
-
-  defineAttributes: function _ConversationSubject_defineAttributes() {
-    this._alternativeSenderAttribute = Gloda.defineAttribute({
-      provider: this,
-      extensionName: "conversation-subject",
-      attributeType: Gloda.kAttrDerived,
-      attributeName: "subject",
-      bind: true,
-      singular: true,
-      special: Gloda.kSpecialString,
-      specialColumnName: "subject",
-      subjectNouns: [Gloda.NOUN_CONVERSATION],
-      objectNoun: Gloda.NOUN_STRING,
-      canQuery: true,
-    });
-  },
-
-  process: function* _ConversationSubject_process(
-    aGlodaMessage,
-    aRawReps,
-    aIsNew,
-    aCallbackHandle
-  ) {
-    yield Gloda.kWorkDone;
-  },
-};
-
 var GlodaAttrProviders = {
   init() {
-    ConversationSubject.init();
+    ContentType.init();
+    AlternativeSender.init();
+  },
+
+  // About to do more special-casing here? Please check out the corresponding
+  //  code in contact.js and make sure you modify it too.
+  alternativeSender(aRawReps) {
+    const aMimeMsg = aRawReps.mime;
+
+    // This header is a bare email address
+    if (aMimeMsg && "x-bugzilla-who" in aMimeMsg.headers) {
+      return aMimeMsg.headers["x-bugzilla-who"];
+    }
+
+    return null;
   },
 };

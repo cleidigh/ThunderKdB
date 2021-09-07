@@ -25,9 +25,12 @@
         <span translate="username.description"></span>
         <label for="password" translate="password.label"></label>
         <input id="password" type="password" required translate-attr="placeholder=password.placeholder">
-        <label translate="protocol.label"></label>
-        <span id="span_owa"><input id="protocol_owa" type="radio" name="protocol" value="owl" checked><label for="protocol_owa" translate="protocol.owa"></label></span>
-        <span id="span_ews"><input id="protocol_ews" type="radio" name="protocol" value="owl-ews"><label for="protocol_ews" translate="protocol.ews"></label></span>
+        <label for="protocol" translate="protocol.label"></label>
+        <select id="protocol">
+          <option value="owl" translate="protocol.owa"></option>
+          <option value="owl-ews" translate="protocol.ews"></option>
+          <option value="owl-eas" translate="protocol.eas"></option>
+        </select>
         <label id="authentication_label" for="authentication" translate="authentication.label"></label>
         <select id="authentication">
           <option value="3,20,10" translate="authentication.autodetect"></option>

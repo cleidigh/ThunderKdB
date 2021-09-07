@@ -46,7 +46,7 @@
 %ewsAccountWizardDTD;
 <!ENTITY % AccountWizardDTD SYSTEM "chrome://messenger/locale/AccountWizard.dtd" >
 %AccountWizardDTD;
-<!ENTITY % acDTD SYSTEM "chrome://messenger/locale/accountCreation.dtd">
+<!ENTITY % acDTD SYSTEM "chrome://exquilla/locale/accountCreation.dtd">
 %acDTD;
 ]>
 
@@ -84,39 +84,40 @@
     <wizardpage id="identitypage" pageid="identitypage"
                 label="&identityTitle.label;">
       <vbox flex="1">
-        <grid>
-          <columns>
-            <column />
-            <column flex="1"/>
-          </columns>
-          <rows>
-            <row>
+        <html:table>
+          <html:tr>
+            <html:th>
               <label class="label serverLabel"  id="emailFieldLabel" value="&email.label;"
                      accesskey="&email.accesskey;" control="email"/>
-              <hbox class="input-container">
-                <html:input mailtype="identity" name="email"
-                            placeholder="you@example.com"
-                            oninput="exquilla.AW.identityPageValidate();"
-                            id="email" flex="6" class="uri-element input-inline"/>
-              </hbox>
-            </row>
-            <row>
+            </html:th>
+            <html:td>
+              <html:input mailtype="identity" name="email"
+                          placeholder="you@example.com"
+                          oninput="exquilla.AW.identityPageValidate();"
+                          id="email" class="uri-element input-inline"/>
+            </html:td>
+          </html:tr>
+          <html:tr>
+            <html:th>
               <label class="label serverLabel" value="&password.label;"
                      control="exquillaPassword" accesskey="&password.accesskey;" />
-              <hbox class="input-container">
-                <html:input id="exquillaPassword" flex="6" type="password"
-                            class="input-inline" placeholder='&password.placeholder;'/>
-              </hbox>
-            </row>
-            <row>
-              <label />
+            </html:th>
+            <html:td>
+              <html:input id="exquillaPassword" type="password"
+                          class="input-inline"
+                          placeholder='&password.placeholder;'/>
+            </html:td>
+          </html:tr>
+          <html:tr>
+            <html:th width="1"/>
+            <html:td>
               <checkbox id="exquillaSavePassword"
                         label="&rememberPassword.label;"
                         accesskey="&rememberPassword.accesskey;"
                         checked="true"/>
-            </row>
-          </rows>
-        </grid>
+            </html:td>
+          </html:tr>
+        </html:table>
         <separator/>
         <description>&ews.authenticationIntro;</description>
         <radiogroup onselect="exquilla.AW.onSetCredentialsType();">
@@ -220,34 +221,48 @@
       <vbox flex="1">
         <description>&completionText.label;</description>
         <separator class="thin"/>
-        <grid>
-          <columns>
-            <column/>
-            <column flex="1"/>
-          </columns>
-          <rows>
-            <row align="center" id="identity.email">
+        <html:table>
+          <html:tr id="identity.email">
+            <html:th>
               <label class="label" flex="1" id="identity.email.label" value="&emailLabel.label;"/>
+            </html:th>
+            <html:td>
               <label class="label" id="identity.email.text"/>
-            </row>
-            <row align="center" id="login.username">
+            </html:td>
+          </html:tr>
+          <html:tr id="login.username">
+            <html:th>
               <label class="label" flex="1" id="login.username.label" value="&ews.loginUserName.label;"/>
+            </html:th>
+            <html:td>
               <label class="label" id="login.username.text"/>
-            </row>
-            <row align="center" id="login.domain">
+            </html:td>
+          </html:tr>
+          <html:tr id="login.domain">
+            <html:th>
               <label class="label" flex="1" id="login.domain.label" value="&ews.domainResult.label;"/>
+            </html:th>
+            <html:td>
               <label class="label" id="login.domain.text"/>
-            </row>
-            <row align="center" id="identity.fullName">
+            </html:td>
+          </html:tr>
+          <html:tr id="identity.fullName">
+            <html:th>
               <label class="label" flex="1" id="identity.fullName.label" value="&fullnameLabel.label;"/>
+            </html:th>
+            <html:td>
               <label class="label" id="identity.fullName.text"/>
-            </row>
-            <row align="center" id="server.ewsURL">
+            </html:td>
+          </html:tr>
+          <html:tr id="server.ewsURL">
+            <html:th>
               <label class="label" flex="1" id="server.ewsURL.label" value="&ews.ewsURLResult.label;"/>
+            </html:th>
+            <html:td>
               <label class="label" id="server.ewsURL.text"/>
-            </row>
-          </rows>
-        </grid>
+            </html:td>
+          </html:tr>
+        </html:table>
         <checkbox id="downloadMsgs" hidden="true"/>
         <spacer flex="1"/>
         <description>&clickFinish.label;</description>

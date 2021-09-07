@@ -1,5 +1,55 @@
 [
     {
+        "id": 2476348,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.5.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/open-with/versions/2476348",
+        "files": [
+            {
+                "id": 1019508,
+                "created": "2021-08-28T09:45:13Z",
+                "hash": "sha256:09a30f3b6f61274a91e54bfce30b4dad503ba051b8e0b29c8aeca605cf8eda67",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 384756,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019508/open_with-7.2.6-tb.xpi?src=",
+                "permissions": [
+                    "downloads",
+                    "menus",
+                    "messagesRead",
+                    "nativeMessaging",
+                    "storage",
+                    "tabs"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Removed support for Python 2.7 and fixed some minor bugs.\n\n<a rel=\"nofollow\" href=\"https://github.com/darktrojan/openwith/compare/VERSION_7.2.5...VERSION_7.2.6\">https://github.com/darktrojan/openwith/compare/VERSION_7.2.5...VERSION_7.2.6</a>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/open-with/versions/7.2.6",
+        "version": "7.2.6"
+    },
+    {
         "id": 2475289,
         "channel": "listed",
         "compatibility": {
@@ -239,7 +289,7 @@
         "id": 2469047,
         "channel": "listed",
         "compatibility": {
-            "thunderbird": {
+            "firefox": {
                 "max": "*",
                 "min": "65.0a1"
             },
@@ -247,7 +297,7 @@
                 "max": "*",
                 "min": "65.0a1"
             },
-            "firefox": {
+            "thunderbird": {
                 "max": "*",
                 "min": "65.0a1"
             }

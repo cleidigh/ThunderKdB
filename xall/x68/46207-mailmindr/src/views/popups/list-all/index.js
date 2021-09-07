@@ -4,6 +4,9 @@ import {
 } from '../../../modules/string-utils.mjs.js';
 import { createLogger } from '../../../modules/logger.mjs.js';
 import { webHandler } from '../../../modules/ui-utils.mjs.js';
+import { translateDocument } from '../../../modules/ui-utils.mjs.js';
+
+let currentMindrGuid = null;
 
 const logger = createLogger('views/popups/list-all');
 
@@ -24,6 +27,17 @@ const actionButtonHandler = async (event, action, guid) => {
     window.close();
 };
 
+const openMessageByGuid = async guid => {
+    await messenger.runtime.sendMessage({
+        action: 'navigate:open-message-by-mindr-guid',
+        payload: {
+            guid
+        }
+    });
+
+    window.close();
+};
+
 const createMindrItem = mindr => {
     const {
         guid,
@@ -35,7 +49,8 @@ const createMindrItem = mindr => {
     item.className = `mailmindr-list-item ${
         relative < 0 ? 'mailmindr-list-item--is-in-past' : ''
     }`;
-    item.setAttribute('guid', guid);
+    item.dataset.guid = guid;
+    // 
 
     const contentWrapper = document.createElement('div');
     contentWrapper.className = 'mailmindr-list-item-content';
@@ -97,15 +112,13 @@ const createMindrItem = mindr => {
     contentWrapper.appendChild(dueWrapper);
 
     item.appendChild(contentWrapper);
-    item.addEventListener('click', async () => {
-        await messenger.runtime.sendMessage({
-            action: 'navigate:open-message-by-mindr-guid',
-            payload: {
-                guid
-            }
-        });
-
-        window.close();
+    item.addEventListener('click', async () => openMessageByGuid(guid));
+    item.addEventListener('mouseover', async () => {
+        if (!currentMindrGuid || currentMindrGuid !== guid) {
+            toggleItemSelection(currentMindrGuid, false);
+        }
+        const list = document.getElementById('mailmindr--list');
+        selectNextElement(list, guid, 0);
     });
 
     return item;
@@ -125,6 +138,53 @@ const clearList = listElement => {
 
 const sortMindrsByDueDateAsc = mindrs => mindrs.sort((a, b) => a.due - b.due);
 
+const toggleItemSelection = (guid, doSelect) => {
+    const element = document.querySelector(`li[data-guid='${guid}'`);
+    if (!element || !guid) {
+        return;
+    }
+
+    if (doSelect) {
+        element.dataset.selected = true;
+    } else {
+        delete element.dataset.selected;
+    }
+};
+
+const selectNextElement = (listElement, guid, direction) => {
+    const children = Array.from(listElement.children);
+    if (guid) {
+        const selectedElement = document.querySelector(
+            `li[data-guid='${guid}'`
+        );
+        toggleItemSelection(guid, false);
+
+        let nextElement = selectedElement;
+        const index = children.findIndex(
+            element => element.dataset.guid === guid
+        );
+
+        if (direction !== 0) {
+            if (index === children.length - 1) {
+                nextElement = children[0];
+            } else if (index === 0 && direction < 0) {
+                nextElement = children[children.length - 1];
+            } else {
+                nextElement = children[index + direction];
+            }
+        }
+        currentMindrGuid = nextElement.dataset.guid;
+        toggleItemSelection(currentMindrGuid, true);
+    } else {
+        if (children.length) {
+            const firstChild =
+                direction > 0 ? children[0] : children[children.length - 1];
+            currentMindrGuid = firstChild.dataset.guid;
+            toggleItemSelection(currentMindrGuid, true);
+        }
+    }
+};
+
 const loadMindrs = async () => {
     const data = await messenger.runtime.sendMessage({
         action: 'mindrs:list'
@@ -142,17 +202,41 @@ const loadMindrs = async () => {
 };
 
 const onLoad = async () => {
-    const listElement = document.getElementById('mailmindr--list');
-    clearList(listElement);
-
     const mindrs = await loadMindrs();
-    displayList(listElement, mindrs);
+    const listElement = document.getElementById('mailmindr--list');
+
+    if (mindrs.length) {
+        clearList(listElement);
+        displayList(listElement, mindrs);
+
+        // 
+        const list = document.getElementById('mailmindr--list');
+        list.focus();
+        list.addEventListener('keydown', async event => {
+            switch (event.key) {
+                case 'ArrowUp':
+                    selectNextElement(list, currentMindrGuid, -1);
+                    break;
+                case 'ArrowDown':
+                    selectNextElement(list, currentMindrGuid, 1);
+                    break;
+                case 'Enter':
+                    await openMessageByGuid(currentMindrGuid);
+                    break;
+            }
+        });
+
+        // 
+        // 
+    }
 
     Array.from(
         document.querySelectorAll('button.mailmindr-button-web')
     ).forEach(btn => {
         btn.addEventListener('click', webHandler);
     });
+
+    translateDocument(document);
 };
 
 document.addEventListener('DOMContentLoaded', onLoad, { once: true });

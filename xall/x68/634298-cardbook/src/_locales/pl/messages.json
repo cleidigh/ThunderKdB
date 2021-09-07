@@ -2909,6 +2909,9 @@
 	"wdw_cardEditionViewListTitle": {
 		"message": "Podgląd listy"
 	},
+	"wdw_cardEditionEditTemplateTitle": {
+		"message": "Edytuj szablon"
+	},
 	"wdw_cardbookPrintTitleLong": {
 		"message": "Podgląd wydruku $P1$ - CardBook - Thunderbird",
         "placeholders": {
@@ -3563,20 +3566,20 @@
 	"cardbookContactPaneItemAccesskey": {
 		"message": "w"
 	},
+	"wizard.next.label": {
+		"message": "Następna"
+	},	
+	"wizard.back.label": {
+		"message": "Wstecz"
+	},	
+	"wizard.create.label": {
+		"message": "Utwórz"
+	},
 	"wizard.title": {
 		"message": "Dodaj nową książkę adresową"
 	},
-	"wizard.label": {
-		"message": "Dodaj nową książkę adresową"
-	},
-	"welcomePage.wizard.description": {
-		"message": "Witaj"
-	},
 	"welcomePage.description": {
 		"message": "Wygląda to na pierwsze uruchomienie CardBook. CardBook będzie próbował dodać kontakty ze standardowych książek Thunderbird oraz książek zdalnych."
-	},
-	"initialPage.wizard.description": {
-		"message": "Położenie nowej książki adresowej."
 	},
 	"initialPage.description": {
 		"message": "Czy książka adresowa jest lokalna czy zdalna?"
@@ -3595,9 +3598,6 @@
 	},
 	"initialPage.find.label": {
 		"message": "Wyszukaj zdalne książki adresowe"
-	},
-	"localPage.wizard.description": {
-		"message": "Rodzaj i położenie nowej lokalnej książki adresowej."
 	},
 	"localPage.type.description": {
 		"message": "Jakiego rodzaju jest lokalna książka adresowa?"
@@ -3632,9 +3632,6 @@
 	"localPage.uributton.label": {
 		"message": "Przeglądaj"
 	},
-	"remotePage.wizard.description": {
-		"message": "Rodzaj i położenie nowej zdalnej książki adresowej."
-	},
 	"remotePage.description": {
 		"message": "Jakiego rodzaju jest książka adresowa? (Uwaga: Google NIE przestrzega standardów vCard)"
 	},
@@ -3646,6 +3643,9 @@
 	},
 	"remotePage.google.label": {
 		"message": "Google"
+	},
+	"remotePage.googleWorkspace.label": {
+		"message": "Google Workspace"
 	},
 	"remotePage.apple.label": {
 		"message": "Apple"
@@ -3671,14 +3671,14 @@
 	"remotePage.password.label": {
 		"message": "Hasło:"
 	},
+	"rememberPassword": {
+		"message": "Użyj Menedżera haseł, aby zachować to hasło"
+	},
 	"showHidePassword.tooltip": {
 		"message": "Widoczne hasło"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Sprawdź"
-	},
-	"locationSearchPage.wizard.description": {
-		"message": "Definicja wyszukiwania zaawansowanego."
 	},
 	"locationSearchPage.label": {
 		"message": "Wyszukiwanie zaawansowane"
@@ -3704,9 +3704,6 @@
 	"googleOauthPage.wizard.description": {
 		"message": "Uwierzytelnie Google"
 	},
-	"namePage.wizard.description": {
-		"message": "Właściwości książki adresowej"
-	},
 	"namePage.selected.label": {
 		"message": "Wybrana"
 	},
@@ -3725,17 +3722,11 @@
 	"namePage.vCardVersion.label": {
 		"message": "vCard"
 	},
-	"namesPage.wizard.description": {
-		"message": "Właściwości książek adresowych"
-	},
 	"namesPage.name.label": {
 		"message": "Nazwy"
 	},
 	"namesPage.name.description": {
 		"message": "Wykryto wiele książek adresowych. Wybierz, które z nich chcesz otworzyć i ich nazwy:"
-	},
-	"findPage.wizard.description": {
-		"message": "Wyszukiwanie w zdalnej książce adresowej"
 	},
 	"findPage.name1.description": {
 		"message": "Nie znaleziono zdalnych książek adresowych."
@@ -3745,9 +3736,6 @@
 	},
 	"findPage.name3.description": {
 		"message": "Znaleziono wiele zdalnych książek adresowych. Sprawdź ich poprawność przed dodaniem:"
-	},
-	"finishPage.wizard.description": {
-		"message": "Konfiguracja książek adresowych"
 	},
 	"finishPage.description": {
 		"message": "Nowa książka adresowa została skonfigurowana."
@@ -5117,6 +5105,12 @@
 	"cardbookToolbarAddListButtonTooltip": {
 		"message": "Dodaj nową listę dystrybucyjną"
 	},
+	"cardbookToolbarAddTemplateButtonLabel": {
+		"message": "??New Template??"
+	},
+	"cardbookToolbarAddTemplateButtonTooltip": {
+		"message": "??Create a new template??"
+	},
 	"cardbookToolbarEditButtonLabel": {
 		"message": "Edytuj"
 	},
@@ -5315,6 +5309,15 @@
 	"searchForLocalKeyEditButton.tooltip": {
 		"message": "Importuj z pliku"
 	},
+	"definitionLabel": {
+		"message": "Definicji"
+	},
+	"fieldsLabel": {
+		"message": "Pola"
+	},
+	"formulasLabel": {
+		"message": "??Formulas??"
+	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Wyślij e-mailem"
 	},
@@ -5462,6 +5465,9 @@
 	"fnFormulaExplanation": {
 		"message": "Można zmienić sposób w jaki CardBook generuje Wyświetlaną Nazwę. Ta formuła składa się z bloków otoczonych “()”. W tych blokach może znajdować się wiele części oddzielonych “|”."
 	},
+	"templateFormulaExplanation": {
+		"message": "??It is possible to define templates with pre-defined fields. For example one may define a template with the email ”({{2}}).({{4}})@mycompany.org”. Once applied to a contact that has ”John” and ”Doe” as given name and family name, an email ”john.doe@mycompany.org” will be added to the contact.??"
+	},
 	"formulaExplanation1": {
 		"message": "({{1}}|{{2}}) : Jeśli {{1}} jest pusty to blok będzie zamieniony przez {{2}}."
 	},
@@ -5500,12 +5506,6 @@
 	},
 	"displayFieldNamesAccesskey": {
 		"message": "N"
-	},
-	"displayTypesLabel": {
-		"message": "Typy i ustawienia"
-	},
-	"displayTypesAccesskey": {
-		"message": "y"
 	},
 	"fieldsToPrintGroupboxLabel": {
 		"message": "Co drukować"
@@ -5698,6 +5698,12 @@
 	},
 	"saveTemplateLabel": {
 		"message": "Zapisz szablon"
+	},
+	"applyTemplateLabel": {
+		"message": "??Apply template??"
+	},
+	"createTemplateLabel": {
+		"message": "??Create template??"
 	},
 	"convertVCardsLabel": {
 		"message": "Konwertuj vCards"

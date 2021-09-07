@@ -2909,6 +2909,9 @@
 	"wdw_cardEditionViewListTitle": {
 		"message": "عرض القائمة"
 	},
+	"wdw_cardEditionEditTemplateTitle": {
+		"message": "حرر القالب"
+	},
 	"wdw_cardbookPrintTitleLong": {
 		"message": "معاينة الطباعة لـ$P1$ - CardBook - Thunderbird",
         "placeholders": {
@@ -3563,20 +3566,20 @@
 	"cardbookContactPaneItemAccesskey": {
 		"message": "O"
 	},
+	"wizard.next.label": {
+		"message": "التالية"
+	},
+	"wizard.back.label": {
+		"message": "إلى الخلف"
+	},
+	"wizard.create.label": {
+		"message": "أنشئ من المواعيد"
+	},
 	"wizard.title": {
 		"message": "أضف دفتر عناوين جديد"
 	},
-	"wizard.label": {
-		"message": "أضف دفتر عناوين جديد"
-	},
-	"welcomePage.wizard.description": {
-		"message": "أهلا بك"
-	},
 	"welcomePage.description": {
 		"message": "يبدو أن هذه هي المرة الأولى التي يتم فيها تشغيل CardBook. سيحاول CardBook جمع جهات الاتصال من دفاتر العناوين القياسية ودفاتر العناوين البعيدة في Thunderbird."
-	},
-	"initialPage.wizard.description": {
-		"message": "موقع دفتر العناوين الجديد."
 	},
 	"initialPage.description": {
 		"message": "موقع دفتر العناوين:"
@@ -3595,9 +3598,6 @@
 	},
 	"initialPage.find.label": {
 		"message": "ابحث عن دفاتر العناوين البعيدة"
-	},
-	"localPage.wizard.description": {
-		"message": "نوع ومكان دفتر العناوين الجديد المحلي."
 	},
 	"localPage.type.description": {
 		"message": "نوع دفتر العناوين المحلي:"
@@ -3632,9 +3632,6 @@
 	"localPage.uributton.label": {
 		"message": "تصفح"
 	},
-	"remotePage.wizard.description": {
-		"message": "نوع ومكان دفتر العناوين الجديد البعيد."
-	},
 	"remotePage.description": {
 		"message": "ما هو نوع دفتر العناوين البعيد (تنبيه: لا تتوافق Google مع معايير vCard)؟"
 	},
@@ -3646,6 +3643,9 @@
 	},
 	"remotePage.google.label": {
 		"message": "Google"
+	},
+	"remotePage.googleWorkspace.label": {
+		"message": "Google Workspace"
 	},
 	"remotePage.apple.label": {
 		"message": "Apple"
@@ -3671,14 +3671,14 @@
 	"remotePage.password.label": {
 		"message": "كلمه المرور:"
 	},
+	"rememberPassword": {
+		"message": "استخدم مدير كلمات السر لتذكّر كلمة السر هذه."
+	},
 	"showHidePassword.tooltip": {
 		"message": "اعرض/أخفِ كلمة السر"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "تحقق"
-	},
-	"locationSearchPage.wizard.description": {
-		"message": "تعريف البحث المحفوظ."
 	},
 	"locationSearchPage.label": {
 		"message": "البحث المحفوظ"
@@ -3704,9 +3704,6 @@
 	"googleOauthPage.wizard.description": {
 		"message": "مصادقة Google"
 	},
-	"namePage.wizard.description": {
-		"message": "خصائص دفتر العناوين"
-	},
 	"namePage.selected.label": {
 		"message": "المختار"
 	},
@@ -3725,17 +3722,11 @@
 	"namePage.vCardVersion.label": {
 		"message": "vCard"
 	},
-	"namesPage.wizard.description": {
-		"message": "خصائص دفاتر العناوين"
-	},
 	"namesPage.name.label": {
 		"message": "أسماء"
 	},
 	"namesPage.name.description": {
 		"message": "تم اكتشاف دفاتر عناوين متعددة. اختر دفاتر العناوين التي تريد فتحها وأسمائها :"
-	},
-	"findPage.wizard.description": {
-		"message": "البحث في دفتر العناوين البعيد"
 	},
 	"findPage.name1.description": {
 		"message": "لم يتم العثور على دفاتر عناوين بعيدة."
@@ -3745,9 +3736,6 @@
 	},
 	"findPage.name3.description": {
 		"message": "تم العثور على العديد من دفاتر العناوين البعيدة. تحقق من صحة دفاتر العناوين البعيدة لإضافتها:"
-	},
-	"finishPage.wizard.description": {
-		"message": "إعدادات دفاتر العناوين"
 	},
 	"finishPage.description": {
 		"message": "تم إعداد دفتر العناوين الجديد الخاص بك بنجاح."
@@ -5117,6 +5105,12 @@
 	"cardbookToolbarAddListButtonTooltip": {
 		"message": "قائمة بريدية جديدة"
 	},
+	"cardbookToolbarAddTemplateButtonLabel": {
+		"message": "??New Template??"
+	},
+	"cardbookToolbarAddTemplateButtonTooltip": {
+		"message": "??Create a new template??"
+	},
 	"cardbookToolbarEditButtonLabel": {
 		"message": "تعديل"
 	},
@@ -5315,6 +5309,15 @@
 	"searchForLocalKeyEditButton.tooltip": {
 		"message": "استورِد من ملف"
 	},
+	"definitionLabel": {
+		"message": "تعريف"
+	},
+	"fieldsLabel": {
+		"message": "??Fields??"
+	},
+	"formulasLabel": {
+		"message": "??Formulas??"
+	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "شارك بالبريد الإلكتروني"
 	},
@@ -5462,6 +5465,9 @@
 	"fnFormulaExplanation": {
 		"message": "من الممكن تخصيص طريقة إنشاء CardBook لاسم العرض الخاص به. تتكون هذه الصيغة من كتل محاطة بعلامة '()'. في هذه الكتل قد يكون هناك العديد من الأجزاء المحددة بعلامة '|'."
 	},
+	"templateFormulaExplanation": {
+		"message": "??It is possible to define templates with pre-defined fields. For example one may define a template with the email ”({{2}}).({{4}})@mycompany.org”. Once applied to a contact that has ”John” and ”Doe” as given name and family name, an email ”john.doe@mycompany.org” will be added to the contact.??"
+	},
 	"formulaExplanation1": {
 		"message": "({{1}}|{{2}}) : إذا {{1}} فارغ، فسيتم إستبدال الكتلة بــ {{2}}."
 	},
@@ -5500,12 +5506,6 @@
 	},
 	"displayFieldNamesAccesskey": {
 		"message": "F"
-	},
-	"displayTypesLabel": {
-		"message": "أنواع وتفضيلات"
-	},
-	"displayTypesAccesskey": {
-		"message": "y"
 	},
 	"fieldsToPrintGroupboxLabel": {
 		"message": "حقول المراد طباعتها"
@@ -5698,6 +5698,12 @@
 	},
 	"saveTemplateLabel": {
 		"message": "إحفظ قالب"
+	},
+	"applyTemplateLabel": {
+		"message": "??Apply template??"
+	},
+	"createTemplateLabel": {
+		"message": "??Create template??"
 	},
 	"convertVCardsLabel": {
 		"message": "حوّل vCards"

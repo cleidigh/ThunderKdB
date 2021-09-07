@@ -1,4 +1,8 @@
-var {XPCOMUtils} = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
+try { // COMPAT for TB 78 (bug 1649554)
+var {ComponentUtils} = ChromeUtils.import("resource://gre/modules/ComponentUtils.jsm");
+} catch (ex) { // COMPAT for TB 78 (bug 1649554)
+var ComponentUtils = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm").XPCOMUtils; // COMPAT for TB 78 (bug 1649554)
+} // COMPAT for TB 78 (bug 1649554)
 var {Services} = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var {MailServices} = ChromeUtils.import("resource:///modules/MailServices.jsm");
 var {jsmime} = ChromeUtils.import("resource:///modules/jsmime.jsm");
@@ -165,6 +169,9 @@ function getIncomingServer(key)
 }
 
 function getFolderById(aServer, aFolderId) {
+  if (aServer.rootFolder.getStringProperty("FolderId") == aFolderId) {
+    return aServer.rootFolder;
+  }
   let descendants = aServer.rootFolder.descendants;
   for (let msgFolder of toArray(aServer.rootFolder.descendants, Ci.nsIMsgFolder)) {
     if (msgFolder.getStringProperty("FolderId") == aFolderId) {
@@ -286,10 +293,10 @@ function UpdateFolderTree(aServer, aFolderTree)
 {
   // Get the current list of folders so we can delete non-existent ones.
   let foldersToSkip = Ci.nsMsgFolderFlags.Virtual;
-  if (aFolderTree[0].keepPublicFolders) {
+  if (aFolderTree.keepPublicFolders) {
     foldersToSkip |= Ci.nsMsgFolderFlags.ImapPublic;
   }
-  if (aFolderTree[0].keepSharedFolders) {
+  if (aFolderTree.keepSharedFolders) {
     foldersToSkip |= Ci.nsMsgFolderFlags.ImapOtherUser;
   }
   let oldFolders = [];
@@ -361,9 +368,11 @@ function UpdateFolderTree(aServer, aFolderTree)
       // to the extension whenever we want to refer to a specific folder.
       // Save it as a string property so that we can easily retrieve it.
       msgFolder.setStringProperty("FolderId", child.id);
-      // Update the counts on the folder.
-      msgFolder.changeNumPendingTotalMessages(child.total - msgFolder.getTotalMessages(false));
-      msgFolder.changeNumPendingUnread(child.unread - msgFolder.getNumUnread(false));
+      // Update the counts on the folder, if we have them.
+      if (child.unread != null) {
+        msgFolder.changeNumPendingTotalMessages(child.total - msgFolder.getTotalMessages(false));
+        msgFolder.changeNumPendingUnread(child.unread - msgFolder.getNumUnread(false));
+      }
       // Update the flags on the folder.
       if (child.type in Ci.nsMsgFolderFlags) {
         msgFolder.setFlag(Ci.nsMsgFolderFlags[child.type]);
@@ -373,7 +382,8 @@ function UpdateFolderTree(aServer, aFolderTree)
       processFolderTree(msgFolder, child.children);
     }
   }
-  processFolderTree(aServer.rootFolder, aFolderTree);
+  aServer.rootFolder.setStringProperty("FolderId", aFolderTree.id);
+  processFolderTree(aServer.rootFolder, aFolderTree.children);
   // Delete any remaining folders.
   for (let folder of oldFolders) {
     if (folder.parent) { // parent may have already been deleted
@@ -422,6 +432,7 @@ function checkForUnwantedOffice365SMTP() {
       switch (account.incomingServer.type) {
       case "owl":
       case "owl-ews":
+      case "owl-eas":
       case "none":
         break; // OK, continue
       default:
@@ -431,7 +442,7 @@ function checkForUnwantedOffice365SMTP() {
 
     let smtpCount = 0;
     let smtpServer = null;
-    for (smtpServer of MailServices.smtp.servers) {
+    for (smtpServer of MailServices.smtp.servers) { // COMPAT for TB 78
       smtpCount++;
     }
     if (smtpCount != 1) {
@@ -705,86 +716,23 @@ this.webAccount = class extends ExtensionAPI {
             throw SanitiseException(ex);
           }
         },
-        notifyFolderCopied: function(key, oldFolder, oldParent, newFolder, newParent) {
-          // We don't have a good way to clone the hierarchy.
-          // I'm not sure that we can actually get this notification anyway.
-          this.notifyFolderCreated(key, newFolder, newParent);
-        },
-        notifyFolderCreated: async function(key, parent, folder, name, total, unread) {
-          try {
-            let server = getIncomingServer(key);
-            let parentFolder = getFolderById(server, parent);
-            if (!parentFolder) {
-              return;
-            }
-            if (parentFolder.containsChildNamed(name)) {
-              return;
-            }
-            let newFolder = CreateSubfolder(server, parentFolder, name);
-            newFolder.setStringProperty("FolderId", folder);
-            newFolder.changeNumPendingTotalMessages(total);
-            newFolder.changeNumPendingUnread(unread);
-          } catch (ex) {
-            logError(ex);
-            throw SanitiseException(ex);
+        getSyncState: function(key, folder) {
+          let server = getIncomingServer(key);
+          let msgFolder = getFolderById(server, folder);
+          if (!msgFolder) {
+            throw new ExtensionError("Invalid folder id");
           }
+          return msgFolder.msgDatabase.dBFolderInfo.getCharProperty("SyncState");
         },
-        notifyFolderDeleted: function(key, folder, parent) {
-          try {
-            let server = getIncomingServer(key);
-            let msgFolder = getFolderById(server, folder);
-            if (!msgFolder || !msgFolder.parent) {
-              return;
-            }
-            msgFolder.parent.propagateDelete(msgFolder, true, null);
-          } catch (ex) {
-            logError(ex);
-            throw SanitiseException(ex);
+        setSyncState: function(key, folder, syncState) {
+          let server = getIncomingServer(key);
+          let msgFolder = getFolderById(server, folder);
+          if (!msgFolder) {
+            throw new ExtensionError("Invalid folder id");
           }
+          msgFolder.msgDatabase.dBFolderInfo.setCharProperty("SyncState", syncState);
         },
-        notifyFolderModified: async function(key, folder, name, total, unread) {
-          try {
-            let server = getIncomingServer(key);
-            let msgFolder = getFolderById(server, folder);
-            if (!msgFolder) {
-              return;
-            }
-            // Don't try to change the counts if we happen to be doing a sync
-            // (e.g., if a notification triggered us to sync)
-            if (!msgFolder.locked) {
-              msgFolder.changeNumPendingTotalMessages(total - msgFolder.getTotalMessages(false));
-              msgFolder.changeNumPendingUnread(unread - msgFolder.getNumUnread(false));
-            }
-            if (msgFolder.name != name) {
-              RenameFolder(msgFolder, name, null);
-            }
-          } catch (ex) {
-            logError(ex);
-            throw SanitiseException(ex);
-          }
-        },
-        notifyFolderMoved: function(key, oldFolder, oldParent, newFolder, newParent) {
-          try {
-            let server = getIncomingServer(key);
-            let srcFolder = getFolderById(server, oldFolder);
-            if (!srcFolder) {
-              return;
-            }
-            let destParent = getFolderById(server, newParent);
-            if (!destParent) {
-              return;
-            }
-            MoveFolder(srcFolder, destParent, null);
-          } catch (ex) {
-            logError(ex);
-            throw SanitiseException(ex);
-          }
-        },
-        notifyMessageCopied: function(key, oldMessage, oldFolder, newMessage, newFolder) {
-          // TODO copy header from old folder if possible (?)
-          this.notifyMessageCreated(key, newMessage, newFolder);
-        },
-        notifyMessageCreated: function(key, newMessage, folder) {
+        notifyFolderResync: function(key, folder) {
           try {
             let server = getIncomingServer(key);
             let msgFolder = getFolderById(server, folder);
@@ -799,7 +747,118 @@ this.webAccount = class extends ExtensionAPI {
             throw SanitiseException(ex);
           }
         },
-        notifyMessageDeleted: function(key, oldMessage, folder, isMove) {
+        notifyFolderCopied: function(key, oldFolder, newParent, newFolder) {
+          // We don't have a good way to clone the hierarchy.
+          // I'm not sure that we can actually get this notification anyway.
+          try {
+            let server = getIncomingServer(key);
+            let msgFolder = getFolderById(server, oldFolder);
+            if (!msgFolder) {
+              return;
+            }
+            this.notifyFolderCreated(key, newParent, newFolder, msgFolder.name);
+          } catch (ex) {
+            logError(ex);
+            throw SanitiseException(ex);
+          }
+        },
+        notifyFolderCreated: function(key, parent, folder, name, total, unread, type) {
+          try {
+            let server = getIncomingServer(key);
+            let parentFolder = getFolderById(server, parent);
+            if (!parentFolder) {
+              return;
+            }
+            if (parentFolder.containsChildNamed(name)) {
+              return;
+            }
+            let newFolder = CreateSubfolder(server, parentFolder, name);
+            newFolder.setStringProperty("FolderId", folder);
+            newFolder.setStringProperty("FolderType", type);
+            if (unread != null) {
+              newFolder.changeNumPendingTotalMessages(total);
+              newFolder.changeNumPendingUnread(unread);
+            }
+            if (type in Ci.nsMsgFolderFlags) {
+              newFolder.setFlag(Ci.nsMsgFolderFlags[type]);
+              CheckSpecialFolder(server, type, newFolder.URI);
+            }
+          } catch (ex) {
+            logError(ex);
+            throw SanitiseException(ex);
+          }
+        },
+        notifyFolderDeleted: function(key, folder) {
+          try {
+            let server = getIncomingServer(key);
+            let msgFolder = getFolderById(server, folder);
+            if (!msgFolder || !msgFolder.parent) {
+              return;
+            }
+            msgFolder.parent.propagateDelete(msgFolder, true, null);
+          } catch (ex) {
+            logError(ex);
+            throw SanitiseException(ex);
+          }
+        },
+        notifyFolderModified: function(key, folder, name, total, unread) {
+          try {
+            let server = getIncomingServer(key);
+            let msgFolder = getFolderById(server, folder);
+            if (!msgFolder || msgFolder.isServer) {
+              return;
+            }
+            // Don't try to change the counts if we happen to be doing a sync
+            // (e.g., if a notification triggered us to sync)
+            if (unread != null && !msgFolder.locked) {
+              msgFolder.changeNumPendingTotalMessages(total - msgFolder.getTotalMessages(false));
+              msgFolder.changeNumPendingUnread(unread - msgFolder.getNumUnread(false));
+            }
+            if (msgFolder.name != name) {
+              RenameFolder(msgFolder, name, null);
+            }
+          } catch (ex) {
+            logError(ex);
+            throw SanitiseException(ex);
+          }
+        },
+        notifyFolderMoved: function(key, oldFolder, newParent, newFolder) {
+          try {
+            let server = getIncomingServer(key);
+            let srcFolder = getFolderById(server, oldFolder);
+            if (!srcFolder || srcFolder.isServer) {
+              return;
+            }
+            let destParent = getFolderById(server, newParent);
+            if (!destParent || destParent == srcFolder.parent) {
+              return;
+            }
+            MoveFolder(srcFolder, destParent, null).setStringProperty("FolderId", newFolder);
+          } catch (ex) {
+            logError(ex);
+            throw SanitiseException(ex);
+          }
+        },
+        notifyMessageCopied: function(key, oldFolder, oldMessage, newFolder, newMessage) {
+          // TODO copy header from old folder if possible (?)
+          this.notifyMessageCreated(key, newFolder, newMessage);
+        },
+        notifyMessageCreated: function(key, folder, newMessage) {
+          try {
+            let server = getIncomingServer(key);
+            let msgFolder = getFolderById(server, folder);
+            if (!msgFolder) {
+              return;
+            }
+            // Check whether we need to pretend that we're biffing this folder.
+            let performingBiff = msgFolder.flags & (Ci.nsMsgFolderFlags.Inbox | Ci.nsMsgFolderFlags.CheckNew);
+            ResyncFolder(msgFolder, null, null, false, performingBiff);
+          } catch (ex) {
+            logError(ex);
+            throw SanitiseException(ex);
+          }
+        },
+        notifyMessageDeleted: function(key, folder, oldMessage, isMove) {
           try {
             let server = getIncomingServer(key);
             let msgFolder = getFolderById(server, folder);
@@ -824,7 +883,7 @@ this.webAccount = class extends ExtensionAPI {
             throw SanitiseException(ex);
           }
         },
-        notifyMessageModified: async function(key, message, folder) {
+        notifyMessageModified: async function(key, folder, message) {
           try {
             let server = getIncomingServer(key);
             let msgFolder = getFolderById(server, folder);
@@ -842,9 +901,9 @@ this.webAccount = class extends ExtensionAPI {
             throw SanitiseException(ex);
           }
         },
-        notifyMessageMoved: function(key, oldMessage, oldFolder, newMessage, newFolder) {
-          this.notifyMessageCopied(key, oldMessage, oldFolder, newMessage, newFolder);
-          this.notifyMessageDeleted(key, oldMessage, oldFolder, true);
+        notifyMessageMoved: function(key, oldMessage, oldFolder, newFolder, newMessage) {
+          this.notifyMessageCopied(key, oldFolder, oldMessage, newFolder, newMessage);
+          this.notifyMessageDeleted(key, oldFolder, oldMessage, true);
         },
         getServersOfTypes: function(types) {
           try {
@@ -968,6 +1027,32 @@ this.webAccount = class extends ExtensionAPI {
         },
         setSchemeOptions: function(aScheme, aOptions) {
           gSchemeOptions.set(aScheme, aOptions);
+        },
+        extractMailboxes: function(aEmailAddresses) {
+          try {
+            return MailServices.headerParser.parseDecodedHeader(aEmailAddresses).map(({name, email}) => ({Name: name, EmailAddress: email}));
+          } catch (ex) {
+            logError(ex);
+            throw SanitiseException(ex);
+          }
+        },
+        formatDisplayName: function(aFirstName, aLastName) {
+          if (!aFirstName || !aLastName) {
+            return aFirstName || aLastName;
+          }
+          try {
+            let bundle = Services.strings.createBundle("chrome://messenger/locale/addressbook/addressBook.properties");
+            try {
+              if (Services.prefs.getComplexValue("mail.addr_book.displayName.lastnamefirst", Ci.nsIPrefLocalizedString).data == "true") {
+                return bundle.formatStringFromName("lastFirstFormat", [aLastName, aFirstName], 2);
+              }
+            } catch (ex) {
+            }
+            return bundle.formatStringFromName("firstLastFormat", [aFirstName, aLastName], 2);
+          } catch (ex) {
+            logError(ex);
+            throw SanitiseException(ex);
+          }
         },
         dispatcher: new ExtensionCommon.EventManager({ context, name: "webAccount.dispatcher", register: (listener, scheme) => {
           try {

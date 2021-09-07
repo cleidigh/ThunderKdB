@@ -66,7 +66,7 @@ function SoapTransport()
   this.authCount = 0; // number of times we are asked for authorization
 } catch(e) {dump('error creating httpSoapTransport: ' + e +'\n'); throw e;}}
 
-const SoapTransportInterfaces = [Ci.nsISupports, Ci.nsIClassInfo, Ci.nsIAuthPrompt2,
+const SoapTransportInterfaces = [Ci.nsIClassInfo, Ci.nsIAuthPrompt2,
                                      Ci.nsIBadCertListener2, Ci.nsIInterfaceRequestor];
 SoapTransport.prototype =
 {

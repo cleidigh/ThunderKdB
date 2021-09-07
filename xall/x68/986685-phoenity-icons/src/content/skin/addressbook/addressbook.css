@@ -42,8 +42,8 @@
 /* ::::: small primary toolbar buttons ::::: */
 
 #ab-toolbox[iconsize="small"] .toolbarbutton-1 .toolbarbutton-icon {
-  min-width: 18px;
-  min-height: 18px;
+  min-width: 20px;
+  min-height: 20px;
 }
 
 toolbar[iconsize="small"] #button-newcard {
@@ -94,6 +94,8 @@ treechildren::-moz-tree-image(DirCol, IsRemote-true) {
 treechildren::-moz-tree-image(DirCol, IsRemote-true, IsSecure-true) {
   list-style-image: url("./icons/secure-remote-addrbook.png");
 }
+
+/* ::::: results pane ::::: */
 
 treechildren::-moz-tree-image(GeneratedName) {
   margin-inline-start: -16px;

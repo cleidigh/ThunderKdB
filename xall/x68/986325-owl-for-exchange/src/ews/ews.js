@@ -39,6 +39,13 @@ constructor(aServerID) {
   this.requestVersion = kExchangeUnknown;
 
   /**
+   * This value is a Promise that will be settled when the OAuth2 access
+   * token is granted or refreshed.
+   * {Promise?}
+   */
+  this.accessToken = null;
+
+  /**
    * Cache of local storage containing data used to
    * reconcile changes with the server.
    */
@@ -61,6 +68,10 @@ constructor(aServerID) {
 async load() {
   this.serverURL = await this.getURL();
   this.username = await browser.incomingServer.getUsername(this.serverID);
+  this.authMethod = await browser.incomingServer.getNumberValue(this.serverID, "authMethod");
+  if (this.authMethod == kOAuth2) {
+    this.oAuth2Login = new OAuth2Login(this);
+  }
   return this;
 }
 
@@ -229,11 +240,16 @@ request2XML(aRequest) {
  */
 async CallService(aMsgWindow, aRequest) {
   let xhr;
-  do {
-    let password = await browser.incomingServer.getPassword(this.serverID, aMsgWindow);
-    // XXX TODO work out how to do this using Fetch
+  while (true) {
     xhr = new XMLHttpRequest();
-    xhr.open("POST", this.serverURL, true, this.username, password);
+    if (this.authMethod == kOAuth2) {
+      let accessToken = await this.oAuth2Login.getAccessToken(aMsgWindow);
+      xhr.open("POST", this.serverURL);
+      xhr.setRequestHeader("Authorization", "Bearer " + accessToken);
+    } else {
+      let password = await browser.incomingServer.getPassword(this.serverID, aMsgWindow);
+      xhr.open("POST", this.serverURL, true, this.username, password);
+    }
     xhr.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
     let onloadend = new Promise((resolve, reject) => {
       xhr.onloadend = resolve;
@@ -250,8 +266,16 @@ async CallService(aMsgWindow, aRequest) {
       }
       throw error;
     }
-  } while (await browser.incomingServer.promptLoginFailed(this.serverID, aMsgWindow));
-  throw new OwlError("password-wrong", xhr.statusText);
+    if (this.authMethod == kOAuth2) {
+      // The access token expired. Loop around so that we get a new one.
+      // If we can't get a new one, e.g. user cancelled,
+      // `getAccessToken()` will reject (throws from await).
+      this.oAuth2Login.clearAccessToken();
+    } else if (!await browser.incomingServer.promptLoginFailed(this.serverID, aMsgWindow)) {
+      // The password failed. Prompt the user in case it was changed.
+      throw new OwlError("password-wrong", xhr.statusText);
+    }
+  }
 }
 
 /**
@@ -398,26 +422,25 @@ async SubscribeToNotifications(aMsgWindow) {
 async ProcessStreamEvents(aNotification) {
   for (let copiedEvent of ensureArray(aNotification.CopiedEvent)) {
     if (copiedEvent.ItemId) {
-      let oldItem = copiedEvent.OldItemId.Id;
-      let newItem = copiedEvent.ItemId.Id;
       let oldFolder = copiedEvent.OldParentFolderId.Id;
+      let oldItem = copiedEvent.OldItemId.Id;
       let newFolder = copiedEvent.ParentFolderId.Id;
-      browser.incomingServer.notifyMessageCopied(this.serverID, oldItem, oldFolder, newItem, newFolder);
+      let newItem = copiedEvent.ItemId.Id;
+      browser.incomingServer.notifyMessageCopied(this.serverID, oldFolder, oldItem, newFolder, newItem);
     } else if (copiedEvent.FolderId) {
       let oldFolder = copiedEvent.OldFolderId.Id;
-      let newFolder = copiedEvent.FolderId.Id;
-      let oldParent = copiedEvent.OldParentFolderId.Id;
       let newParent = copiedEvent.ParentFolderId.Id;
-      browser.incomingServer.notifyFolderCopied(this.serverID, oldFolder, oldParent, newFolder, newParent);
+      let newFolder = copiedEvent.FolderId.Id;
+      browser.incomingServer.notifyFolderCopied(this.serverID, oldFolder, newParent, newFolder);
     } else {
       throw new Error("CopiedEvent did not conform to schema");
     }
   }
   for (let createdEvent of ensureArray(aNotification.CreatedEvent)) {
     if (createdEvent.ItemId) {
-      let newItem = createdEvent.ItemId.Id;
       let folder = createdEvent.ParentFolderId.Id;
-      browser.incomingServer.notifyMessageCreated(this.serverID, newItem, folder);
+      let newItem = createdEvent.ItemId.Id;
+      browser.incomingServer.notifyMessageCreated(this.serverID, folder, newItem);
     } else if (createdEvent.FolderId) {
       let parent = createdEvent.ParentFolderId.Id;
       let {id, name, total, unread} = await this.GetFolder(null, createdEvent.FolderId.Id);
@@ -428,22 +451,21 @@ async ProcessStreamEvents(aNotification) {
   }
   for (let deletedEvent of ensureArray(aNotification.DeletedEvent)) {
     if (deletedEvent.ItemId) {
-      let oldItem = deletedEvent.ItemId.Id;
       let folder = deletedEvent.ParentFolderId.Id;
-      browser.incomingServer.notifyMessageDeleted(this.serverID, oldItem, folder);
+      let oldItem = deletedEvent.ItemId.Id;
+      browser.incomingServer.notifyMessageDeleted(this.serverID, folder, oldItem);
     } else if (deletedEvent.FolderId) {
       let folder = deletedEvent.FolderId.Id;
-      let parent = deletedEvent.ParentFolderId.Id;
-      browser.incomingServer.notifyFolderDeleted(this.serverID, folder, parent);
+      browser.incomingServer.notifyFolderDeleted(this.serverID, folder);
     } else {
       throw new Error("DeletedEvent did not conform to schema");
     }
   }
   for (let modifiedEvent of ensureArray(aNotification.ModifiedEvent)) {
     if (modifiedEvent.ItemId) {
-      let item = modifiedEvent.ItemId.Id;
       let folder = modifiedEvent.ParentFolderId.Id;
-      browser.incomingServer.notifyMessageModified(this.serverID, item, folder);
+      let item = modifiedEvent.ItemId.Id;
+      browser.incomingServer.notifyMessageModified(this.serverID, folder, item);
     } else if (modifiedEvent.FolderId) {
       let {id, name, total, unread} = await this.GetFolder(null, modifiedEvent.FolderId.Id);
       browser.incomingServer.notifyFolderModified(this.serverID, id, name, total, unread);
@@ -453,25 +475,24 @@ async ProcessStreamEvents(aNotification) {
   }
   for (let movedEvent of ensureArray(aNotification.MovedEvent)) {
     if (movedEvent.ItemId) {
-      let oldItem = movedEvent.OldItemId.Id;
-      let newItem = movedEvent.ItemId.Id;
       let oldFolder = movedEvent.OldParentFolderId.Id;
+      let oldItem = movedEvent.OldItemId.Id;
       let newFolder = movedEvent.ParentFolderId.Id;
-      browser.incomingServer.notifyMessageMoved(this.serverID, oldItem, oldFolder, newItem, newFolder);
+      let newItem = movedEvent.ItemId.Id;
+      browser.incomingServer.notifyMessageMoved(this.serverID, oldFolder, oldItem, newFolder, newItem);
     } else if (movedEvent.FolderId) {
       let oldFolder = movedEvent.OldFolderId.Id;
-      let newFolder = movedEvent.FolderId.Id;
-      let oldParent = movedEvent.OldParentFolderId.Id;
       let newParent = movedEvent.ParentFolderId.Id;
-      browser.incomingServer.notifyFolderMoved(this.serverID, oldFolder, oldParent, newFolder, newParent);
+      let newFolder = movedEvent.FolderId.Id;
+      browser.incomingServer.notifyFolderMoved(this.serverID, oldFolder, newParent, newFolder);
     } else {
       throw new Error("MovedEvent did not conform to schema");
     }
   }
   for (let newMailEvent of ensureArray(aNotification.NewMailEvent)) {
-    let newItem = newMailEvent.ItemId.Id;
     let folder = newMailEvent.ParentFolderId.Id;
-    browser.incomingServer.notifyMessageCreated(this.serverID, newItem, folder);
+    let newItem = newMailEvent.ItemId.Id;
+    browser.incomingServer.notifyMessageCreated(this.serverID, folder, newItem);
   }
 }
 
@@ -513,7 +534,7 @@ async CheckFolders(aMsgWindow, aForLogin) {
   if (!publicFolders) {
     // We failed to retrieve the list of public folders.
     // Don't accidentally delete public folders that we retrieved previously.
-    folderTree[0].keepPublicFolders = true;
+    folderTree.keepPublicFolders = true;
   }
   await browser.incomingServer.sendFolderTree(this.serverID, folderTree);
 }
@@ -541,12 +562,38 @@ async CheckFolders(aMsgWindow, aForLogin) {
  *   This means that the authentication method was not recognised.
  */
 async VerifyLogin() {
-  let authMethod = await browser.incomingServer.getNumberValue(this.serverID, "authMethod");
-  if (authMethod != kPassword) {
-    let error = new OwlError("auth-method-unknown");
+  try {
+    switch (this.authMethod) {
+    case kPassword:
+      await this.LoginWithPassword();
+      break;
+    case kLaxPassword:
+      throw new OwlError("auth-method-failed");
+    case kOAuth2:
+      await this.oAuth2Login.logout();
+      await this.oAuth2Login.loginWithOAuthInPopup();
+      break;
+    default:
+      throw new OwlError("auth-method-unknown");
+    }
+    let error = new Error("VerifyLogin succeded for logging purposes");
+    error.code = "auth-method-succeeded";
     await logErrorToServer(error);
-    return { message: error.message, code: "auth-method-unknown" };
+    return {};
+  } catch (ex) {
+    // await, so that errorLog has the username before the temp accounts gets deleted.
+    await logErrorToServer(ex);
+    return { message: ex.message, code: ex.code || "auth-method-failed" };
   }
+}
+
+/**
+ * Performs a basic request to see whether it authenticates
+ *
+ * @throws {OwlError} If authentication failed
+ */
+async LoginWithPassword()
+{
   let request = {
     m$GetFolder: {
       m$FolderShape: {
@@ -559,17 +606,7 @@ async VerifyLogin() {
       },
     },
   };
-  try {
-    await this.CallService(null, request);
-    let error = new Error("VerifyLogin succeded for logging purposes");
-    error.code = "auth-method-succeeded";
-    await logErrorToServer(error);
-    return {};
-  } catch (ex) {
-    // await, so that errorLog has the username before the temp accounts gets deleted.
-    await logErrorToServer(ex);
-    return { message: ex.message, code: ex.code || "auth-method-failed" };
-  }
+  return this.CallService(null, request);
 }
 
 } // class EWS
@@ -624,7 +661,11 @@ EWSAccount.DispatchOperation = async function(aServerId, aOperation, aParameters
     let existingAccount = await gEWSAccounts.get(aServerId);
     gEWSAccounts.delete(aServerId);
     if (existingAccount && existingAccount.autoCompleteListener) {
-      browser.autoComplete.onAutoComplete.removeListener(existingAccount.autoCompleteListener);
+      if (browser.addressBooks.provider) { // COMPAT for TB 78 (bug 1670752)
+        browser.addressBooks.provider.onSearchRequest.removeListener(existingAccount.autoCompleteListener);
+      } else { // COMPAT for TB 78 (bug 1670752)
+        browser.autoComplete.onAutoComplete.removeListener(existingAccount.autoCompleteListener); // COMPAT for TB 78 (bug 1670752)
+      } // COMPAT for TB 78 (bug 1670752)
     }
     return;
   case "VerifyLogin":
@@ -668,6 +709,6 @@ browser.webAccount.dispatcher.addListener(async function(aServerId, aOperation, 
 }, "owl-ews");
 
 browser.webAccount.setSchemeOptions("owl-ews", {
-  authMethods: [3],
+  authMethods: [3, 10],
   sentFolderSelection: "SameServer",
 });

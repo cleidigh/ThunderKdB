@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/5/5389/5389259.png?modified=1579925536"
         }
     ],
-    "average_daily_users": 4992,
+    "average_daily_users": 5341,
     "categories": {
         "thunderbird": [
             "folders-and-filters",
@@ -19,32 +19,32 @@
     "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=jik%40kamens%2eus&lc=US&item_name=Folder%20Pane%20View%20Switcher%20add%2don&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted",
     "created": "2011-07-27T21:53:27Z",
     "current_version": {
-        "id": 2474584,
+        "id": 2476373,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
-                "min": "69.0a1"
+                "max": "90.0",
+                "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/folder-pane-view-switcher/versions/2474584",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/folder-pane-view-switcher/versions/2476373",
         "files": [
             {
-                "id": 1017746,
-                "created": "2020-10-28T14:41:23Z",
-                "hash": "sha256:0d2b5c1c8bc9bf879cb98914bd8f6bc0883dfac00e7b755b87e052b5f3d757bd",
+                "id": 1019533,
+                "created": "2021-09-02T12:32:34Z",
+                "hash": "sha256:9dab2a8ee9be0d9398490faccb13867a30550d598422eef7b1496ee247203dfe",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 25764,
+                "size": 25772,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017746/folder_pane_view_switcher-4.0.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019533/folder_pane_view_switcher-4.0.2-tb.xpi?src=",
                 "permissions": [
                     "management"
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 5,
             "name": {
@@ -78,11 +78,11 @@
             "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
         },
         "release_notes": {
-            "en-US": "Remove obsolete files and code.\nRemove unneeded permissions."
+            "en-US": "Set strict_max_version."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/folder-pane-view-switcher/versions/4.0.1",
-        "version": "4.0.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/folder-pane-view-switcher/versions/4.0.2",
+        "version": "4.0.2"
     },
     "default_locale": "en-US",
     "description": {
@@ -104,7 +104,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-10-29T15:20:18Z",
+    "last_updated": "2021-09-02T13:40:58Z",
     "name": {
         "en-US": "Folder Pane View Switcher"
     },
@@ -144,10 +144,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.66535,
-        "count": 55,
-        "average": 4.6909,
-        "text_count": 55
+        "bayesian_average": 4.67124,
+        "count": 56,
+        "average": 4.6964,
+        "text_count": 56
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/folder-pane-view-switcher/reviews/",
     "requires_payment": false,
@@ -169,9 +169,11 @@
     "weekly_downloads": 139,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
             "comp68": true,
+            "comp69plus": true,
+            "comp78plus": true,
+            "comp61plus": true,
             "comp60pv": true,
             "comp60pv_date": "2017-05-16T22:46:41Z"
         }

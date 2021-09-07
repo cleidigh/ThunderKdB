@@ -1,6 +1,7 @@
 if ("undefined" == typeof(cardbookElementTools)) {
 	var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+	var { FormHistory } = ChromeUtils.import("resource://gre/modules/FormHistory.jsm");
 	var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
 
 	var cardbookElementTools = {
@@ -35,6 +36,23 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			} catch (e) {}
 		},
 
+		deleteTableRows: function (aTableName, aTableHeaderRowName) {
+			let table = document.getElementById(aTableName);
+			let toDelete = [];
+			for (let row of table.rows) {
+				if (aTableHeaderRowName) {
+					if (row.id != aTableHeaderRowName) {
+						toDelete.push(row);
+					}
+				} else {
+					toDelete.push(row);
+				}
+			}
+			for (let row of toDelete) {
+				let oldChild = table.removeChild(row);
+			}
+		},
+
 		addCategoriesRow: function (aCategories) {
 			var panesView = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.panesView");
 			var aParent = document.getElementById('categories' + panesView + 'Row');
@@ -53,14 +71,14 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			}
 		},
 
-		addGroupbox: function (aType) {
-			var panesView = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.panesView");
-			var aParent = document.getElementById(panesView + 'Rows');
-
-			var aGroupbox = document.createXULElement('groupbox');
+		addGroupbox: function (aParent, aId, aParameters) {
+			let aGroupbox = document.createXULElement('groupbox');
 			aParent.appendChild(aGroupbox);
-			aGroupbox.setAttribute('id', aType + panesView + 'Groupbox');
-			aGroupbox.setAttribute('flex', '1');
+			aGroupbox.setAttribute('id', aId);
+
+			for (var prop in aParameters) {
+				aGroupbox.setAttribute(prop, aParameters[prop]);
+			}
 			return aGroupbox;
 		},
 		
@@ -127,15 +145,39 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			return aHBox;
 		},
 		
-		addGridRow: function (aParent, aId, aParameters) {
-			var aGridRow = document.createXULElement('row');
-			aParent.appendChild(aGridRow);
-			aGridRow.setAttribute('id', aId);
+		addTable: function (aParent, aId, aParameters) {
+			var aTable = document.createElementNS("http://www.w3.org/1999/xhtml","html:table");
+			aParent.appendChild(aTable);
+			aTable.setAttribute('id', aId);
 
 			for (var prop in aParameters) {
-				aGridRow.setAttribute(prop, aParameters[prop]);
+				aTable.setAttribute(prop, aParameters[prop]);
 			}
-			return aGridRow;
+			return aTable;
+		},
+
+		addTableRow: function (aParent, aId, aParameters) {
+			var aTableRow = document.createElementNS("http://www.w3.org/1999/xhtml","html:tr");
+			aParent.appendChild(aTableRow);
+			if (aId) {
+				aTableRow.setAttribute('id', aId);
+			}
+
+			for (var prop in aParameters) {
+				aTableRow.setAttribute(prop, aParameters[prop]);
+			}
+			return aTableRow;
+		},
+
+		addTableData: function (aParent, aId, aParameters) {
+			var aTableData = document.createElementNS("http://www.w3.org/1999/xhtml","html:td");
+			aParent.appendChild(aTableData);
+			aTableData.setAttribute('id', aId);
+
+			for (var prop in aParameters) {
+				aTableData.setAttribute(prop, aParameters[prop]);
+			}
+			return aTableData;
 		},
 
 		addLabel: function (aOrigBox, aId, aValue, aControl, aParameters) {
@@ -430,20 +472,17 @@ if ("undefined" == typeof(cardbookElementTools)) {
 				}
 			}
 			if (!aExclusive) {
-				var contactManager = MailServices.ab;
-				var contacts = contactManager.directories;
-				while ( contacts.hasMoreElements() ) {
-					var contact = contacts.getNext().QueryInterface(Components.interfaces.nsIAbDirectory);
+				for (let addrbook of MailServices.ab.directories) {
 					// remote LDAP directory
-					if (contact.isRemote && contact.dirType === 0) {
+					if (addrbook.isRemote && addrbook.dirType === 0) {
 						continue;
 					}
 					if (aInclRestrictionList && aInclRestrictionList.length > 0) {
-						if (aInclRestrictionList[contact.dirPrefId]) {
-							sortedAddressBooks.push([contact.dirName, contact.dirPrefId, "standard-abook"]);
+						if (aInclRestrictionList[addrbook.dirPrefId]) {
+							sortedAddressBooks.push([addrbook.dirName, addrbook.dirPrefId, "standard-abook"]);
 						}
 					} else {
-						sortedAddressBooks.push([contact.dirName, contact.dirPrefId, "standard-abook"]);
+						sortedAddressBooks.push([addrbook.dirName, addrbook.dirPrefId, "standard-abook"]);
 					}
 				}
 			}
@@ -782,6 +821,9 @@ if ("undefined" == typeof(cardbookElementTools)) {
 				}
 				aMenupopup.appendChild(item);
 			}
+			if ("undefined" == typeof(setTimeout)) {
+				var { setTimeout } = ChromeUtils.import("resource://gre/modules/Timer.jsm");
+			}
 			setTimeout(function() {
 					cardbookWindowUtils.updateComplexMenulist('type', aMenupopup.id);
 				}, 0);
@@ -854,6 +896,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			var aMenulist = document.createXULElement('menulist');
 			aParent.appendChild(aMenulist);
 			aMenulist.setAttribute('id', aType + '_' + aIndex + '_menulistTerm');
+			aMenulist.setAttribute('sizetopopup', 'none');
 			for (var prop in aParameters) {
 				aMenulist.setAttribute(prop, aParameters[prop]);
 			}

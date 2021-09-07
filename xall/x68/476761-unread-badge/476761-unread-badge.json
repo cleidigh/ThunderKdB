@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 5610,
+    "average_daily_users": 6283,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -19,32 +19,32 @@
     "contributions_url": "",
     "created": "2013-12-16T13:51:24Z",
     "current_version": {
-        "id": 2474439,
+        "id": 2476388,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "78.*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/unread-badge/versions/2474439",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/unread-badge/versions/2476388",
         "files": [
             {
-                "id": 1017601,
-                "created": "2020-10-10T20:47:18Z",
-                "hash": "sha256:2ec5606309633ea365c877042eb5b3923b9a0f206c2c7459966351c4a003b96f",
+                "id": 1019548,
+                "created": "2021-09-02T22:49:41Z",
+                "hash": "sha256:16f795c796db182bf65c0f0bf67c88cc1024aab8106c5720eb172d448decaa8b",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 19689,
+                "size": 26315,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017601/windows_taskbar_unread_badge-3.0.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019548/windows_taskbar_unread_badge-3.0.1-tb.xpi?src=",
                 "permissions": [
                     "storage"
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 3338,
             "name": {
@@ -53,15 +53,15 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "- Converted to a WebExtension for Thunderbird 78 compatibility, as Thunderbird has dropped support for legacy bootstrap extensions. Thanks @homo-programmatis for navigating some of the underlying API changes.\n- Change to use WebExtension local storage APIs instead of the legacy preferences system.\n- New \"modern\" icon style to match with current Windows design conventions."
+            "en-US": "The functionality of this addon is now built-in to Thunderbird 91.\n\nThis version sets a strict_max_version of Thunderbird 78.*, so that this addon will be marked as incompatible with Thunderbird 91 at upgrade time. Thanks for sticking with this addon for so many years!"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/unread-badge/versions/3.0.0",
-        "version": "3.0.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/unread-badge/versions/3.0.1",
+        "version": "3.0.1"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "Adds an unread mail message count to the Thunderbird icon in the Windows taskbar, akin to Thunderbird on OS X.\n\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f01162aa8293bd661fc790317ef0a96f33eb71ebaeacfff4752701e97bf28c21/https%3A//github.com/bstreiff/unread-badge\">Source code available on github.</a>"
+        "en-US": "Adds an unread mail message count to the Thunderbird icon in the Windows taskbar, akin to Thunderbird on OS X.\n\nNote: This addon has been superseded by the built-in functionality in Thunderbird 91.\n\n<a rel=\"nofollow\" href=\"https://github.com/bstreiff/unread-badge\">Source code available on github.</a>"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/unread-badge/edit",
@@ -80,7 +80,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-10-11T12:19:29Z",
+    "last_updated": "2021-09-03T07:18:43Z",
     "name": {
         "en-US": "Windows Taskbar Unread Badge"
     },
@@ -134,10 +134,17 @@
     "weekly_downloads": 102,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
-            "comp68": true,
+            "comp69plus": true,
             "comp78plus": true,
+            "comp61plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-10-10T20:47:18Z",
+            "comp78pv_version": "3.0.0",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "78.*",
+            "comp68pv": true,
+            "comp68pv_date": "2019-09-14T22:08:46Z",
             "comp60pv": true,
             "comp60pv_date": "2018-04-08T15:54:13Z"
         }

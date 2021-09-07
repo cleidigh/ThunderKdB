@@ -9,6 +9,7 @@ var state='';
 var prefs;
 var num=0;
 var filtersDone=false;
+var chromeHandle=null;
 
 let strings={
   "inoutColumn_label": '',
@@ -49,6 +50,8 @@ debug('onStartup state='+state);
 
   onShutdown(isAppShutdown) {
 debug('onShutdown isAppShutdown='+isAppShutdown+' state='+state);
+			if (chromeHandle) chromeHandle.destruct();
+			chromeHandle = null;
       if (isAppShutdown) return;
       // Looks like we got uninstalled. Maybe a new version will be installed
       // now. Due to new versions not taking effect
@@ -79,6 +82,7 @@ debug('remove our own columns');
       let msg=context.extension.localeData.localizeMessage(key);
       strings[key]=msg;
     });
+		if (!chromeHandle) registerChromeUrl(context, [ ["resource", "showinout", "skin/"] ]);
 
     return {
       sio: {
@@ -1058,6 +1062,11 @@ debug('observer: list view of a global search?');
           if (!gW) return;  //with .eml
         }
       }
+      if (!gW) {  //since TB9x (onFocus and onLoadWindows not called)
+        gW=Services.wm.getMostRecentWindow("mail:3pane");
+        gD=gW.document;
+debug('No gW/gD yet, found '+gW.location);
+      }
       if (typeof gW.gDBView!='undefined' && gW.gDBView) { //check mit typeof, da gelegentlich undefined!
 //state				if (state!='cols') {  // fill gColumns and add our own columns, only on first call!
 //state          state='cols';
@@ -1256,6 +1265,8 @@ debug('add our own columns');
   c.setAttribute('id','sio_inoutCol');
   c.setAttribute('class','treecol-image inoutColumnHeader');  //needs css for inoutColumnHeader
   c.setAttribute('label',strings.inoutColumn_label);
+  c.setAttribute('src',"resource://showinout/correspondents-col.svg");  //needed since, with registerChrome
+  c.setAttribute('width',"20"); //TB9x, else: too small
   c.setAttribute('tooltiptext',strings.inoutColumn_tooltip);
   c.setAttribute('ordinal',"45");
   c.setAttribute('style', '-moz-box-ordinal-group:43;');
@@ -1379,17 +1390,23 @@ else debug('Seems that "totalquickfilter" is installed');
   let styleSheetService = Components.classes["@mozilla.org/content/style-sheet-service;1"]
                                     .getService(Components.interfaces.nsIStyleSheetService);
   let uri = Services.io.newURI(extension.getURL("skin/showInOut.css"), null, null);
+debug('standard css: '+uri.spec);
   styleSheetService.loadAndRegisterSheet(uri, styleSheetService.USER_SHEET);
 
   let file = Services.dirsvc.get("UChrm", Components.interfaces.nsIFile);
+debug('UserChrome for css: '+file.path);
   file.append("showInOut.css");
+debug('user css: '+file.path);
   if (file.exists()) {
     let url = Services.io.getProtocolHandler("file").
       QueryInterface(Components.interfaces.nsIFileProtocolHandler).
-      getURLSpecFromFile(file);
+//      getURLSpecFromFile(file); //up to TB89(90?)
+      getURLSpecFromActualFile(file); // since TB91
     let uri = Services.io.newURI(url, null, null);
+debug('user css: '+uri.spec);
     styleSheetService.loadAndRegisterSheet(uri, styleSheetService.USER_SHEET);
   }
+else debug('No user css found');
 }
 
 function changedCols() {
@@ -1431,11 +1448,12 @@ debug('changedCols done, changed='+JSON.stringify(Array.from(changed)));
 }
 
 function onFocus(e) {
+debug('onFocus: location='+e.view.document.location.href);
 	if (e.view.document.location.href!="chrome://messenger/content/messenger.xhtml")
 		return;
 	gW=e.view;
 	gD=gW.document;
-debug('onFocus');
+debug('onFocus sets gW/gD');
 }
 function registerListener() {
 debug('registering window listener');
@@ -1446,10 +1464,11 @@ debug('registering window listener');
     ],
   /**/
     onLoadWindow: function(w) {
-debug('mail:3pane loaded');
+debug('mail:3pane loaded for w.location');
 			gCurrentFolder=null;
 			gW=w;
 			gD=gW.document;
+debug('SIO: onLoadWindow: gW='+gW+' gD='+gD);
 			observer.observe(null, "MsgCreateDBView", 'force');	// after enabling the addon there is no other notification
 			if (filtersDone) {
 				let qfb=gD.getElementById("quick-filter-bar-filter-text-bar");
@@ -1482,6 +1501,43 @@ debug('unload window');
 	});
 }
 
+function registerChromeUrl(context, data) {
+debug('registerChromeUrl');
+	const aomStartup = Cc["@mozilla.org/addons/addon-manager-startup;1"].
+                                  getService(Ci.amIAddonManagerStartup);
+  const resProto = Cc["@mozilla.org/network/protocol;1?name=resource"].
+                                  getService(Ci.nsISubstitutingProtocolHandler);
+  let chromeData = [];
+  let resourceData = [];
+  for (let entry of data) {
+    if (entry[0] == "resource") resourceData.push(entry);
+    else chromeData.push(entry);
+  }
+
+  if (chromeData.length > 0) {
+    const manifestURI = Services.io.newURI(
+      "manifest.json",
+      null,
+      context.extension.rootURI
+    );
+    chromeHandle = aomStartup.registerChrome(manifestURI, chromeData);
+  }
+
+  for (let res of resourceData) {
+    // [ "resource", "shortname" , "path" ]
+    let uri = Services.io.newURI(
+      res[2],
+      null,
+      context.extension.rootURI
+    );
+debug('resource: '+uri.spec);
+    resProto.setSubstitutionWithFlags(
+      res[1],
+      uri,
+      resProto.ALLOW_CONTENT_ACCESS
+    );
+  }
+}
 
 var debugcache=new Map();
 function debug(txt, ln) {

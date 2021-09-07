@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14156/14156264.png?modified=1620685810"
         }
     ],
-    "average_daily_users": 9140,
+    "average_daily_users": 9667,
     "categories": {
         "thunderbird": [
             "contacts",
@@ -19,30 +19,30 @@
     "contributions_url": "",
     "created": "2010-10-22T13:33:05Z",
     "current_version": {
-        "id": 2476027,
+        "id": 2476413,
         "compatibility": {
             "thunderbird": {
-                "max": "78.*",
-                "min": "68.0"
+                "max": "91.*",
+                "min": "91.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/exquilla-exchange-web-services/versions/2476027",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/exquilla-exchange-web-services/versions/2476413",
         "files": [
             {
-                "id": 1019187,
-                "created": "2021-06-23T21:16:21Z",
-                "hash": "sha256:9b8470c84d8c13273f3579b722641fffedd1b61f305a8c06b75d0aefaa73a53e",
+                "id": 1019573,
+                "created": "2021-09-04T13:41:42Z",
+                "hash": "sha256:356f9bc1cd3cec2d9cc4ce172b17ab1653e3d3f0d9fc50eb53ebb917d999f690",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 417815,
+                "size": 423911,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019187/exquilla_for_exchange-78.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019573/exquilla_for_exchange-91.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 7057,
             "name": {
@@ -51,12 +51,12 @@
             "url": null
         },
         "release_notes": {
-            "en-US": "- Migrate Office365 accounts to OAuth2 with password, due to Office365 disabling HTTP Basic Auth",
+            "en-US": "* Fix PDF display in a TB tab\n* Fix OAuth2 interactive login",
             "de": ""
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/exquilla-exchange-web-services/versions/78.1",
-        "version": "78.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/exquilla-exchange-web-services/versions/91.1",
+        "version": "91.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -79,17 +79,17 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2021-06-24T12:36:14Z",
+    "last_updated": "2021-09-04T14:07:16Z",
     "name": {
         "en-US": "ExQuilla for Exchange"
     },
     "previews": [],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.22372,
-        "count": 124,
-        "average": 4.2339,
-        "text_count": 124
+        "bayesian_average": 4.24987,
+        "count": 123,
+        "average": 4.2602,
+        "text_count": 123
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/exquilla-exchange-web-services/reviews/",
     "requires_payment": true,
@@ -115,7 +115,6 @@
     "xpilib": {
         "ext_comp": {
             "mext": true,
-            "comp68": true,
             "comp69plus": true,
             "comp78plus": true,
             "comp61plus": true,
@@ -124,6 +123,8 @@
             "comp78pv_version": "78.0",
             "comp78pv_vmin": "78.0",
             "comp78pv_vmax": "78.*",
+            "comp68pv": true,
+            "comp68pv_date": "2020-09-09T21:36:43Z",
             "comp60pv": true,
             "comp60pv_date": "2019-06-28T21:58:02Z"
         }

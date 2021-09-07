@@ -124,7 +124,7 @@ function FetchTicket()
 async function FetchTicketUnqueued()
 {
   try {
-    let servers = await browser.incomingServer.getServersOfTypes(["owl", "owl-ews"]);
+    let servers = await browser.incomingServer.getServersOfTypes(["owl", "owl-ews", "owl-eas"]);
     if (!servers.length) {
       return;
     }
@@ -313,7 +313,7 @@ const kPurchasePollFor = 30 * 60 * 1000; // 30 minutes
 // Called from [Purchase] button in license bar and in settings page
 async function OpenPurchasePage(mode) {
   let identity = await browser.incomingServer.getGlobalPrimaryIdentity();
-  let servers = await browser.incomingServer.getServersOfTypes(["owl", "owl-ews"]);
+  let servers = await browser.incomingServer.getServersOfTypes(["owl", "owl-ews", "owl-eas"]);
   if (servers.length) {
     let identities = await browser.incomingServer.getIdentities(servers[0]);
     if (identities.length) {

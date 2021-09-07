@@ -2909,6 +2909,9 @@
 	"wdw_cardEditionViewListTitle": {
 		"message": "Zobrazit seznam"
 	},
+	"wdw_cardEditionEditTemplateTitle": {
+		"message": "Upravit šablonu"
+	},
 	"wdw_cardbookPrintTitleLong": {
 		"message": "Náhled tisku - $P1$ - CardBook - Thunderbird",
         "placeholders": {
@@ -3563,20 +3566,20 @@
 	"cardbookContactPaneItemAccesskey": {
 		"message": "K"
 	},
+	"wizard.next.label": {
+		"message": "Další"
+	},
+	"wizard.back.label": {
+		"message": "Zpět"
+	},
+	"wizard.create.label": {
+		"message": "Vytvořit"
+	},
 	"wizard.title": {
 		"message": "Přidání nového adresáře"
 	},
-	"wizard.label": {
-		"message": "Přidání nového adresáře"
-	},
-	"welcomePage.wizard.description": {
-		"message": "Vítejte"
-	},
 	"welcomePage.description": {
 		"message": "Zdá se, že jste spustili CardBook poprvé. CardBook se pokusí načíst kontakty ze standardních adresářů Thunderbirdu a vzdálených adresářů."
-	},
-	"initialPage.wizard.description": {
-		"message": "Umístění nového adresáře."
 	},
 	"initialPage.description": {
 		"message": "Umístění adresáře:"
@@ -3595,9 +3598,6 @@
 	},
 	"initialPage.find.label": {
 		"message": "Hledat vzdálené adresáře"
-	},
-	"localPage.wizard.description": {
-		"message": "Typ a umístění nového místního adresáře."
 	},
 	"localPage.type.description": {
 		"message": "Typ místního adresáře:"
@@ -3632,9 +3632,6 @@
 	"localPage.uributton.label": {
 		"message": "Procházet"
 	},
-	"remotePage.wizard.description": {
-		"message": "Typ a umístění nového vzdáleného adresáře."
-	},
 	"remotePage.description": {
 		"message": "Jaký je typ vašeho vzdáleného adresáře ? : (Upozornění: Google nerespektuje vCard standardy)"
 	},
@@ -3646,6 +3643,9 @@
 	},
 	"remotePage.google.label": {
 		"message": "Google"
+	},
+	"remotePage.googleWorkspace.label": {
+		"message": "Google Workspace"
 	},
 	"remotePage.apple.label": {
 		"message": "Apple"
@@ -3671,14 +3671,14 @@
 	"remotePage.password.label": {
 		"message": "Heslo:"
 	},
+	"rememberPassword": {
+		"message": "Použít Správce hesel pro uložení tohoto hesla"
+	},
 	"showHidePassword.tooltip": {
 		"message": "Zobrazit/Skrýt heslo"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Ověřit"
-	},
-	"locationSearchPage.wizard.description": {
-		"message": "Definice pokročilého vyhledávání."
 	},
 	"locationSearchPage.label": {
 		"message": "Uložené vyhledávání"
@@ -3704,9 +3704,6 @@
 	"googleOauthPage.wizard.description": {
 		"message": "Autentizace Google"
 	},
-	"namePage.wizard.description": {
-		"message": "Vlastnosti adresáře"
-	},
 	"namePage.selected.label": {
 		"message": "Vybraný"
 	},
@@ -3725,17 +3722,11 @@
 	"namePage.vCardVersion.label": {
 		"message": "vCard"
 	},
-	"namesPage.wizard.description": {
-		"message": "Vlastnosti adresářů"
-	},
 	"namesPage.name.label": {
 		"message": "Jména"
 	},
 	"namesPage.name.description": {
 		"message": "Bylo zjištěno více adresářů. Zvolte, které adresáře se mají otevřít a jejich jména :"
-	},
-	"findPage.wizard.description": {
-		"message": "Hledání vzdálených adresářů"
 	},
 	"findPage.name1.description": {
 		"message": "Nelze přidat žádný adresář."
@@ -3745,9 +3736,6 @@
 	},
 	"findPage.name3.description": {
 		"message": "Je možné přidat víc adresářů najednou. Vyberte, které chcete přidat :"
-	},
-	"finishPage.wizard.description": {
-		"message": "Nastavení adresářů"
 	},
 	"finishPage.description": {
 		"message": "Váš nový adresář byl úspěšně nastaven."
@@ -5117,6 +5105,12 @@
 	"cardbookToolbarAddListButtonTooltip": {
 		"message": "Vytvoří novou skupinu"
 	},
+	"cardbookToolbarAddTemplateButtonLabel": {
+		"message": "Nová šablona"
+	},
+	"cardbookToolbarAddTemplateButtonTooltip": {
+		"message": "Vytvořit novou šablonu"
+	},
 	"cardbookToolbarEditButtonLabel": {
 		"message": "Upravit"
 	},
@@ -5315,6 +5309,15 @@
 	"searchForLocalKeyEditButton.tooltip": {
 		"message": "Importovat ze souboru"
 	},
+	"definitionLabel": {
+		"message": "Definice"
+	},
+	"fieldsLabel": {
+		"message": "Prvky"
+	},
+	"formulasLabel": {
+		"message": "Vzorce"
+	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Sdílet e-mailem"
 	},
@@ -5462,6 +5465,9 @@
 	"fnFormulaExplanation": {
 		"message": "Generování zobrazovaného jména v CardBooku je možné přizpůsobit. Tento vzorec se skládá z bloků ohraničených “()”. V těchto blocích může být více částí oddělených “|”."
 	},
+	"templateFormulaExplanation": {
+		"message": "Je možné vytvořit šablony s předdefinovanými poli. Je například možné definovat šablonu s e-mailem ”({{2}}).({{4}})@mojefirma.cz”. Pokud je tato šablona použita na kontakt se jménem ”Jan” a příjmením ”Novák”, bude mu nastavena e-mailová adresa ”jan.novak@mojefirma.cz”."
+	},
 	"formulaExplanation1": {
 		"message": "({{1}}|{{2}}) : Pokud je {{1}} prázdný, potom je blok nahrazen obsahem {{2}}."
 	},
@@ -5500,12 +5506,6 @@
 	},
 	"displayFieldNamesAccesskey": {
 		"message": "j"
-	},
-	"displayTypesLabel": {
-		"message": "Zobrazit typy a předvolby"
-	},
-	"displayTypesAccesskey": {
-		"message": "y"
 	},
 	"fieldsToPrintGroupboxLabel": {
 		"message": "Co tisknout"
@@ -5698,6 +5698,12 @@
 	},
 	"saveTemplateLabel": {
 		"message": "Uložit šablonu"
+	},
+	"applyTemplateLabel": {
+		"message": "Použít šablonu"
+	},
+	"createTemplateLabel": {
+		"message": "Vytvořit šablonu"
 	},
 	"convertVCardsLabel": {
 		"message": "Převést vizitky"

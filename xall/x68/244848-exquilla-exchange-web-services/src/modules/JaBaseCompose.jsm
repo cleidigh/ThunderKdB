@@ -36,7 +36,6 @@ JaBaseCompose.Properties = {
                         Ci.nsIMsgSendListener,
                         Ci.nsISupportsWeakReference,
                         Ci.msgIOverride,
-                        Ci.nsISupports,
                         Ci.nsIInterfaceRequestor,
                         ],
 

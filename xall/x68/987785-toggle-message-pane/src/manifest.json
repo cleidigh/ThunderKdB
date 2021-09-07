@@ -3,7 +3,7 @@
   "name": "Toggle Message Pane",
   "description": "Adds a Preview button, toggles the message preview",
   "homepage_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/toggle-message-pane/",
-  "version": "1.2",
+  "version": "1.4",
   "experiment_apis": {
     "toggleMessagePaneApi": {
       "schema": "schema.json",
@@ -27,13 +27,13 @@
   },
   "browser_action": {
     "default_title": "Preview",
-    "default_area": "tabstrip",
     "default_icon": "toggleMessagePane.png"
   },
   "applications": {
     "gecko": {
       "id": "toggleMessagePane@dillinger",
-      "strict_min_version": "68.0"
+      "strict_min_version": "68.0",
+      "strict_max_version": "93.0"
     }
   },
   "icons": {

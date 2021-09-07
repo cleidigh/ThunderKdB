@@ -294,8 +294,7 @@ var Base = class {
         // searchQuery has all the (or(...)) searches, link them up with (and(...)).
         searchQuery = "(and" + searchQuery + ")";
         
-        while (allAddressBooks.hasMoreElements()) {
-            let abook = allAddressBooks.getNext().QueryInterface(Components.interfaces.nsIAbDirectory);
+        for (let abook of allAddressBooks) {
             if (abook instanceof Components.interfaces.nsIAbDirectory) { // or nsIAbItem or nsIAbCollection
                 if (TbSync.addressbook.getStringValue(abook, "tbSyncAccountID","") == accountData.accountID) {
                     let cards = await TbSync.addressbook.searchDirectory(abook.URI, searchQuery)
@@ -308,6 +307,7 @@ var Base = class {
                                 icon: dav.Base.getProviderIcon(16, accountData),
                                 // https://bugzilla.mozilla.org/show_bug.cgi?id=1653213
                                 style: "dav4tbsync-abook",
+                                popularityIndex: parseInt(card.getProperty("PopularityIndex", "0")),
                             });
                         
                         } else {                        
@@ -329,6 +329,7 @@ var Base = class {
                                     icon: dav.Base.getProviderIcon(16, accountData),
                                     // https://bugzilla.mozilla.org/show_bug.cgi?id=1653213
                                     style: "dav4tbsync-abook",				    
+                                    popularityIndex: parseInt(card.getProperty("PopularityIndex", "0")),
                                 });
                             }
                             
@@ -338,6 +339,16 @@ var Base = class {
             }
         }
         
+        // Sort the results.
+        entries.sort(function(a, b) {
+          // Order by 1) descending popularity,
+          // then 2) by value (DisplayName) sorted alphabetically.
+          return (
+            b.popularityIndex - a.popularityIndex ||
+            a.value.localeCompare(b.value)
+          );
+        });
+
         return entries;
     }
 
@@ -494,8 +505,8 @@ var TargetData_addressbook = class extends TbSync.addressbook.AdvancedTargetData
 
     directoryObserver(aTopic) {
         switch (aTopic) {
-            case "addrbook-removed":
-            case "addrbook-updated":
+            case "addrbook-directory-deleted":
+            case "addrbook-directory-updated":
                 //Services.console.logStringMessage("["+ aTopic + "] " + this.folderData.getFolderProperty("foldername"));
                 break;
         }
@@ -504,7 +515,7 @@ var TargetData_addressbook = class extends TbSync.addressbook.AdvancedTargetData
     cardObserver(aTopic, abCardItem) {
         switch (aTopic) {
             case "addrbook-contact-updated":
-            case "addrbook-contact-removed":
+            case "addrbook-contact-deleted":
                 //Services.console.logStringMessage("["+ aTopic + "] " + abCardItem.getProperty("DisplayName"));
                 break;
 
@@ -527,7 +538,7 @@ var TargetData_addressbook = class extends TbSync.addressbook.AdvancedTargetData
                 //Services.console.logStringMessage("["+ aTopic + "] MemberName: " + abListMember.getProperty("DisplayName"));
                 break;
             
-            case "addrbook-list-removed":
+            case "addrbook-list-deleted":
             case "addrbook-list-updated":
                 //Services.console.logStringMessage("["+ aTopic + "] ListName: " + abListItem.getProperty("ListName"));
                 break;

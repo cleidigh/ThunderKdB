@@ -11,6 +11,11 @@
 
 const { classes: Cc, Constructor: CC, interfaces: Ci, utils: Cu, Exception: CE, results: Cr, } = Components;
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
+try { // COMPAT for TB 78 (bug 1649554)
+  var { ComponentUtils } = ChromeUtils.import("resource://gre/modules/ComponentUtils.jsm");
+} catch (ex) { // COMPAT for TB 78 (bug 1649554)
+  var ComponentUtils = XPCOMUtils; // COMPAT for TB 78 (bug 1649554)
+} // COMPAT for TB 78 (bug 1649554)
 ChromeUtils.defineModuleGetter(this, "Utils",
   "resource://exquilla/ewsUtils.jsm");
 ChromeUtils.defineModuleGetter(this, "Services",
@@ -734,10 +739,8 @@ EwsIncomingServer.prototype = {
       throw CE("We do not support external attachments", Cr.NS_ERROR_NOT_IMPLEMENTED);
 
     let skinkService = Cc["@mozilla.org/messenger/messageservice;1?type=exquilla"]
-                         .getService(Ci.nsIMsgMessageService);
-    let uriOut = {};
-    skinkService.GetUrlForUri(aURL, uriOut, null);
-    let uri = uriOut.value;
+                         .getService(Ci.nsIMsgMessageService)/* COMPAT for TB 78 (bug 1667338) */.wrappedJSObject;
+    let uri = skinkService.getUrlForUri(aURL, null);
     let ewsUrl = safeGetJS(uri, "EwsUrl");
 
     if (!ewsUrl.isAttachment)
@@ -857,6 +860,18 @@ EwsIncomingServer.prototype = {
      if (this._mailbox.username != this.realUsername)
        this.realUsername = this._mailbox.username; // Will call OnUserOrHostNameChanged
     }
+    if (aEvent == "OAuthMigration" && aData) {
+      if (aData.authMethod) {
+        this.cppBase.authMethod = aData.authMethod;
+      }
+      this.cppBase.setIntValue("OAuthMigrationState", aData.migrationState);
+      this.cppBase.setIntValue("OAuthMigrationTries", aData.migrationTries);
+    }
+    if (aEvent == "OAuthMigrationPrompt" && aData && !this._migrationPrompted) {
+      aData.migrationState = this.cppBase.getIntValue("OAuthMigrationState");
+      aData.migrationTries = this.cppBase.getIntValue("OAuthMigrationTries");
+      this._migrationPrompted = true;
+    }
   },
 
   // from skinkglue
@@ -914,10 +929,7 @@ async function ewsDiscoverFoldersListener(aServer, aUrlListener) {
 
     // We will loop though all ab directories, and look for ones that has a server URI matching this
     let ewsDirectories = [];
-    let directoriesEnum = MailServices.ab.directories;
-    while (directoriesEnum.hasMoreElements()) {
-      let directory = directoriesEnum.getNext()
-                                     .QueryInterface(Ci.nsIAbDirectory);
+    for (let directory of MailServices.ab.directories) {
       let ewsDirectory = safeGetJS(directory, "EwsAbDirectory");
       if (!ewsDirectory)
         continue;
@@ -1042,5 +1054,5 @@ EwsIncomingServerConstructor.prototype = {
   _xpcom_factory: JSAccountUtils.jaFactory(EwsIncomingServer.Properties, EwsIncomingServer),
 }
 
-var NSGetFactory = XPCOMUtils.generateNSGetFactory([EwsIncomingServerConstructor]);
+var NSGetFactory = ComponentUtils.generateNSGetFactory([EwsIncomingServerConstructor]);
 var EXPORTED_SYMBOLS = ["NSGetFactory"];

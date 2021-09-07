@@ -331,6 +331,8 @@ RemoveDupes.Removal = {
     var dupesByFolderHashMap = new Object;
     var messageHeader;
     var previousFolderUri = null;
+    let usePlainArrayForremovalHeaders = RemoveDupes.App.versionIsAtLeast("79.0");
+    let arrayAppendFunctionName = usePlainArrayForremovalHeaders ? 'push' : 'appendElement';
 
     for (let hashValue in dupeSetsHashMap) {
       var dupeSet = dupeSetsHashMap[hashValue];
@@ -344,15 +346,15 @@ RemoveDupes.Removal = {
               folderDupesInfo.folder = messageHeader.folder;
               folderDupesInfo.previousFolderUri = previousFolderUri;
               previousFolderUri = messageRecord.folderUri;
-              folderDupesInfo.removalHeaders =
+              folderDupesInfo.removalHeaders = usePlainArrayForremovalHeaders ?
+                new Array :
                 Components.classes["@mozilla.org/array;1"]
                           .createInstance(Components.interfaces.nsIMutableArray);
 
               dupesByFolderHashMap[messageRecord.folderUri] = folderDupesInfo;
             }
             // TODO: make sure using a weak reference is the right thing here
-            dupesByFolderHashMap[messageRecord.folderUri].removalHeaders
-              .appendElement(messageHeader,false);
+            dupesByFolderHashMap[messageRecord.folderUri].removalHeaders[arrayAppendFunctionName](messageHeader);
           }
         }
       }
@@ -365,13 +367,12 @@ RemoveDupes.Removal = {
             folderDupesInfo.folder = messageHeader.folder;
             folderDupesInfo.previousFolderUri = previousFolderUri;
             previousFolderUri = folderUri;
-            folderDupesInfo.removalHeaders =
-                Components.classes["@mozilla.org/array;1"]
-                          .createInstance(Components.interfaces.nsIMutableArray);
+            folderDupesInfo.removalHeaders = usePlainArrayForremovalHeaders ?
+                new Array :
+                Components.classes["@mozilla.org/array;1"];
             dupesByFolderHashMap[folderUri] = folderDupesInfo;
           }
-          dupesByFolderHashMap[folderUri].removalHeaders.
-            appendElement(messageHeader,false);
+          dupesByFolderHashMap[folderUri].removalHeaders[arrayAppendFunctionName](messageHeader);
         }
       }
     }
@@ -483,18 +484,20 @@ RemoveDupes.Removal = {
     }
     else {
       try {
-       var copyService =
-         Components.classes["@mozilla.org/messenger/messagecopyservice;1"]
-           .getService(Components.interfaces.nsIMsgCopyService);
-       copyService.CopyMessages(
-          sourceFolder,
-          removalMessageHdrs,
-          targetFolder,
-          true, // moving, not copying
-          null, // no listener
-          msgWindow,
-          true // allow undo... what does this mean exactly?
-        );
+        let copyService =
+          Components.classes["@mozilla.org/messenger/messagecopyservice;1"]
+            .getService(Components.interfaces.nsIMsgCopyService);
+		// The copy function name dropped the inital capital sometime between TB 78 and TB 91
+		let copyFunctionName =  ('copyMessages' in copyService) ? 'copyMessages' : 'CopyMessages';
+        copyService[copyFunctionName](
+            sourceFolder,
+            removalMessageHdrs,
+            targetFolder,
+            true, // moving, not copying
+            null, // no listener
+            msgWindow,
+            true // allow undo
+          )
       } catch(ex) {
         appWindow.alert(RemoveDupes.Strings.format('failed_to_move_to_folder', [targetFolder.URI]));
         throw(ex);

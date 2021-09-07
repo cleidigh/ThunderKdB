@@ -27,8 +27,15 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
     return {
       Utilities: {
 
-        isMailTab (isMailTab) {
-  //        console.log("isMailTab"+isMailTab);
+        isMailTab:   async function (isMailTab) {
+      //    console.log("isMailTab",isMailTab, win);
+          let i = 0;
+/*
+          while (! win.manage_emails)  {
+            i++; console.log("i",i);
+              let w = await new Promise(resolve => win.setTimeout(resolve, 300));
+          };
+*/
           win.manage_emails.isMailTab = isMailTab;
         },
         

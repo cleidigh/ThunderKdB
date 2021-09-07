@@ -194,6 +194,39 @@ window.addEventListener('DOMContentLoaded', async () => {
   if (attentionTermsFile.classList.contains('locked'))
     attentionTermsFile.disabled = true;
 
+
+  const blockedDomainsField = document.querySelector('#blockedDomainsField');
+  blockedDomainsField.classList.toggle(
+    'locked',
+    configs.$isLocked('blockedDomains') ||
+    (configs.$isLocked('blockedDomainsSoruce') &&
+     configs.blockedDomainsSoruce == Constants.SOURCE_FILE)
+  );
+  if (blockedDomainsField.classList.contains('locked'))
+    blockedDomainsField.disabled = true;
+
+  const blockedDomainsFile = document.querySelector('#blockedDomainsFile');
+  blockedDomainsFile.classList.toggle(
+    'locked',
+    configs.$isLocked('blockedDomainsFile') ||
+    (configs.$isLocked('blockedDomainsSoruce') &&
+     configs.blockedDomainsSoruce == Constants.SOURCE_CONFIG)
+  );
+  Dialog.initButton(document.querySelector('#blockedDomainsFileChoose'), async _event => {
+    const path = await chooseFile({
+      title:       browser.i18n.getMessage('config_blockedDomainsFile_button_dialogTitle'),
+      role:        'blockedDomainsFileChoose',
+      displayName: `${browser.i18n.getMessage('config_blockedDomainsFile_button_dialogDisplayName')} (*.*)`,
+      pattern:     '*.*',
+      fileName:    blockedDomainsFile.value || ''
+    });
+    if (path)
+      configs.blockedDomainsFile = blockedDomainsFile.value = path;
+  });
+  if (blockedDomainsFile.classList.contains('locked'))
+    blockedDomainsFile.disabled = true;
+
+
   options.buildUIForAllConfigs(document.querySelector('#debug-configs'));
   onConfigChanged('debug');
 

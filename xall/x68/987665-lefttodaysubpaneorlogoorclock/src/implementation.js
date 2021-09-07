@@ -22,7 +22,7 @@ var myapi = class extends ExtensionCommon.ExtensionAPI {
   extension.callOnClose(this)
     return {
       myapi: {
-          setOne: function(id, property, value, argument) {
+          setOne: async function(id, property, value, argument) {
           let windows = Services.wm.getEnumerator("mail:3pane");
           while (windows.hasMoreElements()) {
             let window = windows.getNext();
@@ -45,7 +45,7 @@ var myapi = class extends ExtensionCommon.ExtensionAPI {
             element.insertBefore(cloneThree, todayPane);
               }
           },
-          setTwo: function(id, property, value, argument) {
+          setTwo: async function(id, property, value, argument) {
           let windows = Services.wm.getEnumerator("mail:3pane");
           while (windows.hasMoreElements()) {
             let window = windows.getNext();
@@ -68,7 +68,7 @@ var myapi = class extends ExtensionCommon.ExtensionAPI {
             element.insertBefore(cloneFour, todayTree);
               }
           },
-          setThree: function(id, property, argument) {
+          setThree: async function(id, property, argument) {
           let windows = Services.wm.getEnumerator("mail:3pane");
           while (windows.hasMoreElements()) {
             let window = windows.getNext();
@@ -114,7 +114,7 @@ var myapi = class extends ExtensionCommon.ExtensionAPI {
             rainbow();
              }
          },
-          setFour: function(id, property, argument) {
+          setFour: async function(id, property, argument) {
           let windows = Services.wm.getEnumerator("mail:3pane");
           while (windows.hasMoreElements()) {
             let window = windows.getNext();
@@ -160,7 +160,7 @@ var myapi = class extends ExtensionCommon.ExtensionAPI {
             rainbow();
               }
           },
-          setFive: function(id, property, value) {
+          setFive: async function(id, property, value) {
           let windows = Services.wm.getEnumerator("mail:3pane");
           while (windows.hasMoreElements()) {
             let window = windows.getNext();
@@ -168,16 +168,16 @@ var myapi = class extends ExtensionCommon.ExtensionAPI {
             element.allowEvent = value;
               }
           },
-          setSix: function() {
+          setSix: async function() {
           let windows = Services.wm.getEnumerator("mail:3pane");
           while (windows.hasMoreElements()) {
             let window = windows.getNext();
-            var sidebar = window.document.getElementById("ltnSidebar");
-            var sidebarMini = window.document.querySelector("#ltnSidebar>#mini-day-box");
+            var sidebar = window.document.getElementById("calSidebar");
+            var sidebarMini = window.document.querySelector("#calSidebar>#mini-day-box");
             sidebar.removeChild(sidebarMini);
               }
           },
-          setSeven: function() {
+          setSeven: async function() {
           let windows = Services.wm.getEnumerator("mail:3pane");
           while (windows.hasMoreElements()) {
             let window = windows.getNext();
@@ -186,17 +186,17 @@ var myapi = class extends ExtensionCommon.ExtensionAPI {
             folderpaneBox.removeChild(folderMini);
               }
           },
-          setEight: function() {
+          setEight: async function() {
           let windows = Services.wm.getEnumerator("mail:3pane");
           while (windows.hasMoreElements()) {
             let window = windows.getNext();
-            var sidebar = window.document.getElementById("ltnSidebar");
+            var sidebar = window.document.getElementById("calSidebar");
             var timeTwo = window.document.getElementById("timeTwo"); 
             var timeOne = window.document.getElementById("timeOne"); 
             sidebar.removeChild(timeOne);
               }
           },
-          setNine: function() {
+          setNine: async function() {
           let windows = Services.wm.getEnumerator("mail:3pane");
           while (windows.hasMoreElements()) {
             let window = windows.getNext();
@@ -206,7 +206,7 @@ var myapi = class extends ExtensionCommon.ExtensionAPI {
             folderpaneBox.removeChild(timeTwo);
               }
           },
-          setTen: function(id, property, value) {
+          setTen: async function(id, property, value) {
           let windows = Services.wm.getEnumerator("mail:3pane");
           while (windows.hasMoreElements()) {
             let window = windows.getNext();
@@ -214,7 +214,7 @@ var myapi = class extends ExtensionCommon.ExtensionAPI {
             element.width = value;
               }
           },
-          setEleven: function(id, property, value) {
+          setEleven: async function(id, property, value) {
           let windows = Services.wm.getEnumerator("mail:3pane");
           while (windows.hasMoreElements()) {
             let window = windows.getNext();
@@ -222,7 +222,7 @@ var myapi = class extends ExtensionCommon.ExtensionAPI {
             element.height = value;
               }
           },
-          setTwelve: function(id, property, value) {
+          setTwelve: async function(id, property, value) {
             let windows = Services.wm.getEnumerator("mail:3pane");
             while (windows.hasMoreElements()) {
             let window = windows.getNext();
@@ -234,7 +234,7 @@ var myapi = class extends ExtensionCommon.ExtensionAPI {
                 element.appendChild(imageTb4);
               }
           },
-          setThirteen: function() {
+          setThirteen: async function() {
             let windows = Services.wm.getEnumerator("mail:3pane");
             while (windows.hasMoreElements()) {
             let window = windows.getNext();
@@ -247,7 +247,7 @@ var myapi = class extends ExtensionCommon.ExtensionAPI {
            if (queryThirteen.length = 1) {folderpaneBox.removeChild(queryThirteen); };
               }
           },
-          setFourteen: function(id, property, value) {
+          setFourteen: async function(id, property, value) {
             let windows = Services.wm.getEnumerator("mail:3pane");
             while (windows.hasMoreElements()) {
             let window = windows.getNext();
@@ -259,7 +259,7 @@ var myapi = class extends ExtensionCommon.ExtensionAPI {
            element.appendChild(imageTb4);
               }
           },
-          setFifteen: function() {
+          setFifteen: async function() {
             let windows = Services.wm.getEnumerator("mail:3pane");
             while (windows.hasMoreElements()) {
             let window = windows.getNext();
@@ -267,12 +267,12 @@ var myapi = class extends ExtensionCommon.ExtensionAPI {
                 var Tb4 = extension.getURL("Tb4.png");
                 imageTb4.src = Tb4;
                 imageTb4.height = "200px";
-                var sidebar = window.document.getElementById("ltnSidebar");
-                var queryFifteen = window.document.querySelector("#ltnSidebar>image");
+                var sidebar = window.document.getElementById("calSidebar");
+                var queryFifteen = window.document.querySelector("#calSidebar>image");
            if (queryFifteen.length = 1) {sidebar.removeChild(queryFifteen); };
                     }
                 },
-          setSixteen: function(id, property, getCurrentBackgroundColorSixteen) {
+          setSixteen: async function(id, property, getCurrentBackgroundColorSixteen) {
             let windows = Services.wm.getEnumerator("mail:3pane");
             while (windows.hasMoreElements()) {
             let window = windows.getNext();
@@ -292,11 +292,11 @@ var myapi = class extends ExtensionCommon.ExtensionAPI {
                     while (windows.hasMoreElements()) {
                         let window = windows.getNext();
                         var folderpaneBox = window.document.getElementById("folderPaneBox");
-                        var sidebar = window.document.getElementById("ltnSidebar");
-                        var sidebarMini = window.document.querySelector("#ltnSidebar>#mini-day-box");
+                        var sidebar = window.document.getElementById("calSidebar");
+                        var sidebarMini = window.document.querySelector("#calSidebar>#mini-day-box");
                         var folderMini = window.document.querySelector("#folderPaneBox>#mini-day-box");
                         var folderImage = window.document.querySelector("#folderPaneBox>image");
-                        var sidebarImage = window.document.querySelector("#ltnSidebar>image");
+                        var sidebarImage = window.document.querySelector("#calSidebar>image");
                         var timeOne = window.document.getElementById("timeOne");
                         var timeTwo = window.document.getElementById("timeTwo");
                         if (folderMini !==null) { folderpaneBox.removeChild(folderMini); };

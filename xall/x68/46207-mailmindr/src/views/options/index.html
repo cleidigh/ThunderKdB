@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8" />
         <link rel="stylesheet" href="./index.css" />
-        <title>mailmindr Preferences</title>
+        <title data-i18n="view.options.title"></title>
     </head>
     <body>
         <aside>
@@ -12,25 +13,22 @@
                         <button
                             class="mailmindr-jump-button"
                             data-jump-to="#mailmindr-common_settings"
-                        >
-                            Common settings
-                        </button>
+                            data-i18n="view.options.jump-button.common-settings"
+                        ></button>
                     </li>
                     <li>
                         <button
                             class="mailmindr-jump-button"
                             data-jump-to="#mailmindr-presets"
-                        >
-                            Presets
-                        </button>
+                            data-i18n="view.options.jump-button.presets"
+                        ></button>
                     </li>
                     <li>
                         <button
                             class="mailmindr-jump-button"
                             data-jump-to="#mailmindr-get_help"
-                        >
-                            Get help
-                        </button>
+                            data-i18n="view.options.jump-button.get-help"
+                        ></button>
                     </li>
                 </ul>
             </div>
@@ -38,9 +36,8 @@
                 <button
                     class="mailmindr-button mailmindr-button--micro mailmindr-sponsorlink mailmindr-button-web"
                     data-web="https://mailmindr.net/sponsor"
-                >
-                    💜 Become a mailmindr sponsor
-                </button>
+                    data-i18n="view.options.sidebar-footer.sponsor"
+                ></button>
             </div>
 
             <div id="mailmindr-ui-lock">
@@ -81,7 +78,10 @@
             <section>
                 <fieldset>
                     <legend>
-                        <h2 id="mailmindr-common_settings">Common Settings</h2>
+                        <h2
+                            id="mailmindr-common_settings"
+                            data-i18n="view.options.heading.common-settings"
+                        ></h2>
                     </legend>
                     <div class="mailmindr-options mailmindr-options--oneline">
                         <div>
@@ -92,9 +92,8 @@
                             <span
                                 class="mailmindr-option-description"
                                 id="mailmindr-options_snooze-time--description"
+                                data-i18n="view.options.snooze-time.description"
                             >
-                                Snooze the reminder for a given number of
-                                minutes
                             </span>
                         </div>
                         <div>
@@ -114,9 +113,8 @@
                             <span
                                 class="mailmindr-option-description"
                                 id="mailmindr-options_default-time-preset--description"
+                                data-i18n="view.options.default-time-preset.description"
                             >
-                                Pre-selected time setting when creating a new
-                                reminder
                             </span>
                         </div>
                         <div>
@@ -132,9 +130,8 @@
                             <span
                                 class="mailmindr-option-description"
                                 id="mailmindr-options_default-action-preset--description"
+                                data-i18n="view.options.default-action-preset.description"
                             >
-                                Pre-selected action setting when creating a new
-                                reminder
                             </span>
                         </div>
                         <div>
@@ -152,10 +149,8 @@
                             <span
                                 class="mailmindr-option-description"
                                 id="mailmindr-options_default-icebox-folder--description"
+                                data-i18n="view.options.default-icebox-folder.description"
                             >
-                                Messages will be moved to this folder once a
-                                reminder is set. On due time the message is
-                                moved back to its origin folder.
                             </span>
                         </div>
                         <div>
@@ -171,21 +166,20 @@
             <section>
                 <fieldset>
                     <legend>
-                        <h2 id="mailmindr-presets">Presets</h2>
+                        <h2
+                            id="mailmindr-presets"
+                            data-i18n="view.options.heading.presets"
+                        ></h2>
                     </legend>
                     <div class="mailmindr-options">
-                        <div>
-                            Time presets
-                        </div>
+                        <div
+                            data-i18n="view.options.time-presets.subtitle"
+                        ></div>
                         <span
                             class="mailmindr-option-description"
                             id="mailmindr-options_time-preset-list--description"
+                            data-i18n="view.options.time-presets.description"
                         >
-                            Time presets can be a relative time (e.g. in 6
-                            hours) or an absolute time (e.g. in 2 days at 10:00
-                            a.m.). Define as many time presets as you like.
-                            mailmindr's internal presets cannot be removed and
-                            appear here in a disabled state.
                         </span>
                         <div class="mailmindr-options_time-preset-list-wrapper">
                             <select
@@ -200,21 +194,18 @@
                                 <button
                                     id="mailmindr-timespan-preset-add"
                                     class="mailmindr-button"
-                                >
-                                    Add Preset
-                                </button>
+                                    data-i18n="view.options.time-presets.button.add-preset"
+                                ></button>
                                 <button
                                     id="mailmindr-timespan-preset-edit"
                                     class="mailmindr-button"
-                                >
-                                    Edit Preset
-                                </button>
+                                    data-i18n="view.options.time-presets.button.edit-preset"
+                                ></button>
                                 <button
                                     id="mailmindr-timespan-preset-remove"
                                     class="mailmindr-button"
-                                >
-                                    Remove preset
-                                </button>
+                                    data-i18n="view.options.time-presets.button.remove-preset"
+                                ></button>
                             </div>
                         </div>
                     </div>
@@ -224,7 +215,10 @@
             <section>
                 <fieldset>
                     <legend>
-                        <h2 id="mailmindr-get_help">Get help</h2>
+                        <h2
+                            id="mailmindr-get_help"
+                            data-i18n="view.options.heading.get-help"
+                        ></h2>
                     </legend>
                     <div class="mailmindr-options mailmindr-options--oneline">
                         <div>
@@ -244,9 +238,8 @@
                                 class="mailmindr-button-web mailmindr-button"
                                 id="mailmindr-get_help-website"
                                 data-web="https://mailmindr.net/"
-                            >
-                                Open https://mailmindr.net/ in the browser
-                            </button>
+                                data-i18n="view.options.get-help.website.button-label"
+                            ></button>
                         </div>
                     </div>
                     <div class="mailmindr-options mailmindr-options--oneline">
@@ -267,10 +260,8 @@
                                 class="mailmindr-button-web mailmindr-button"
                                 id="mailmindr-get_help-twitter"
                                 data-web="https://twitter.com/mailmindr/"
-                            >
-                                Open https://twitter.com/mailmindr/ in the
-                                browser
-                            </button>
+                                data-i18n="view.options.get-help.twitter.button-label"
+                            ></button>
                         </div>
                     </div>
 
@@ -292,10 +283,8 @@
                                 class="mailmindr-button-web mailmindr-button"
                                 id="mailmindr-get_help-patreon"
                                 data-web="https://patreon.com/arndissler/"
-                            >
-                                Open https://patreon.com/arndissler/ in the
-                                browser
-                            </button>
+                                data-i18n="view.options.get-help.patreon.button-label"
+                            ></button>
                         </div>
                     </div>
 
@@ -317,9 +306,8 @@
                                 class="mailmindr-button-web mailmindr-button"
                                 id="mailmindr-get_help-paypal"
                                 data-web="https://paypal.me/mailmindr"
-                            >
-                                Open https://paypal.me/mailmindr in the browser
-                            </button>
+                                data-i18n="view.options.get-help.paypal.button-label"
+                            ></button>
                         </div>
                     </div>
 
@@ -341,10 +329,8 @@
                                 class="mailmindr-button-web mailmindr-button"
                                 id="mailmindr-get_help-facebook"
                                 data-web="https://facebook.com/mailmindr/"
-                            >
-                                Open https://facebook.com/mailmindr/ in the
-                                browser
-                            </button>
+                                data-i18n="view.options.get-help.facebook.button-label"
+                            ></button>
                         </div>
                     </div>
                 </fieldset>

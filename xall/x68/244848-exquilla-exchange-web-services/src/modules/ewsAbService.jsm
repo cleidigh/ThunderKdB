@@ -137,10 +137,8 @@ var EwsAbService =
 
     // now go through all existing EWS ab directories, and remove any that do not have a valid
     //  serverURI, or whose native folder is flagged as hidden.
-    let directories = MailServices.ab.directories;
-    while (directories.hasMoreElements())
+    for (let directory of MailServices.ab.directories)
     {
-      let directory = directories.getNext();
       let jsDirectory = safeGetJS(directory);
       if (jsDirectory)
       {

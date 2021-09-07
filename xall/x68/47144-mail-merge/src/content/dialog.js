@@ -179,7 +179,7 @@ var mailmerge = {
 		}
 		/* delivermodewarning end */
 		
-		if(mailmergeutils.init(mailmerge.prefs())) {
+		if(mailmerge.check() && mailmergeutils.init(mailmerge.prefs())) {
 			
 			let prefs = Services.prefs.getBranch("extensions.mailmerge.");
 			
@@ -256,16 +256,13 @@ var mailmerge = {
 	addressbook: function() {
 		
 		let addressbooks = Cc["@mozilla.org/abmanager;1"].getService(Ci.nsIAbManager).directories;
-		while(addressbooks.hasMoreElements()) {
+		for(let addressbook of addressbooks) {
 			
 			try {
 				
-				let addressbook = addressbooks.getNext();
-				addressbook.QueryInterface(Ci.nsIAbDirectory);
-				
 				addressbook.getCardFromProperty("PrimaryEmail", "", false);
 				
-				document.getElementById("mailmerge-addressbook-addressbook").add(mailmerge.option(addressbook.dirName, addressbook.uuid));
+				document.getElementById("mailmerge-addressbook-addressbook").add(mailmerge.option(addressbook.dirName, addressbook.UID));
 				
 			} catch(e) { console.warn(e); }
 			
@@ -393,7 +390,7 @@ var mailmerge = {
 		
 		if(target == "MESSAGE") {
 			
-			if(mailmergeutils.init(mailmerge.prefs())) {
+			if(mailmerge.check() && mailmergeutils.init(mailmerge.prefs())) {
 				
 				let params = { type: "MESSAGE" }
 				window.openDialog("chrome://mailmerge/content/preview.xhtml", "_blank", "chrome,dialog,modal,centerscreen", params);
@@ -506,6 +503,39 @@ var mailmerge = {
 		prefs.only = only.join(" ");
 		
 		return prefs;
+		
+	},
+	
+	check: function() {
+		
+		/* source start */
+		if(document.getElementById("mailmerge-general-source").selectedIndex == -1) {
+			
+			Services.prompt.alert(window, "Mail Merge: Error", "Check the Source!");
+			return false;
+			
+		}
+		/* source end */
+		
+		/* cardbook start */
+		if(document.getElementById("mailmerge-general-source").value == "Cardbook" && document.getElementById("mailmerge-cardbook-addressbook").selectedIndex == -1) {
+			
+			Services.prompt.alert(window, "Mail Merge: Error", "Check the Address Book!");
+			return false;
+			
+		}
+		/* cardbook end */
+		
+		/* addressbook start */
+		if(document.getElementById("mailmerge-general-source").value == "AddressBook" && document.getElementById("mailmerge-addressbook-addressbook").selectedIndex == -1) {
+			
+			Services.prompt.alert(window, "Mail Merge: Error", "Check the Address Book!");
+			return false;
+			
+		}
+		/* addressbook end */
+		
+		return true;
 		
 	}
 	

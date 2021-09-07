@@ -1872,7 +1872,7 @@
         }
 	},
 	"addressbookDeleted": {
-		"message": "$P1$ : Agendă închisă",
+		"message": "$P1$ : Agendă ștearsă",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2909,6 +2909,9 @@
 	"wdw_cardEditionViewListTitle": {
 		"message": "Vizualizează lista"
 	},
+	"wdw_cardEditionEditTemplateTitle": {
+		"message": "Editează șablonul"
+	},
 	"wdw_cardbookPrintTitleLong": {
 		"message": "$P1$ - Previzualizare tipărire - Contacte - Thunderbird",
         "placeholders": {
@@ -3563,20 +3566,20 @@
 	"cardbookContactPaneItemAccesskey": {
 		"message": "c"
 	},
+	"wizard.next.label": {
+		"message": "Înainte"
+	},	
+	"wizard.back.label": {
+		"message": "Înapoi"
+	},	
+	"wizard.create.label": {
+		"message": "Creează"
+	},
 	"wizard.title": {
 		"message": "Adăugă o agendă nouă"
 	},
-	"wizard.label": {
-		"message": "Adăugă o agendă nouă"
-	},
-	"welcomePage.wizard.description": {
-		"message": "Bine ai venit!"
-	},
 	"welcomePage.description": {
 		"message": "Se pare că este prima dată când a fost rulat CardBook. CardBook va încerca să colecteze contactele din agendele standard Thunderbird și din agendele la distanță."
-	},
-	"initialPage.wizard.description": {
-		"message": "Locația pentru agenda nouă."
 	},
 	"initialPage.description": {
 		"message": "Locație agendă nouă"
@@ -3595,9 +3598,6 @@
 	},
 	"initialPage.find.label": {
 		"message": "Caută agende la distanță"
-	},
-	"localPage.wizard.description": {
-		"message": "Tipul și locația agendei locale nouă."
 	},
 	"localPage.type.description": {
 		"message": "Tipul agendei locale:"
@@ -3632,9 +3632,6 @@
 	"localPage.uributton.label": {
 		"message": "Răsfoiește"
 	},
-	"remotePage.wizard.description": {
-		"message": "Tipul și locația agendei la distanță nouă."
-	},
 	"remotePage.description": {
 		"message": "Care este tipul agendei la distanță? (Atenție: Google nu se conformează standardului vCard)"
 	},
@@ -3646,6 +3643,9 @@
 	},
 	"remotePage.google.label": {
 		"message": "Google"
+	},
+	"remotePage.googleWorkspace.label": {
+		"message": "Google Workspace"
 	},
 	"remotePage.apple.label": {
 		"message": "Apple"
@@ -3671,14 +3671,14 @@
 	"remotePage.password.label": {
 		"message": "Parolă:"
 	},
+	"rememberPassword": {
+		"message": "Folosește managerul de parole pentru a reține această parolă"
+	},
 	"showHidePassword.tooltip": {
 		"message": "Afișează/Ascunde parola"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Validează"
-	},
-	"locationSearchPage.wizard.description": {
-		"message": "Definirea căutării salvate"
 	},
 	"locationSearchPage.label": {
 		"message": "Căutare salvată"
@@ -3704,9 +3704,6 @@
 	"googleOauthPage.wizard.description": {
 		"message": "Autentificare Google"
 	},
-	"namePage.wizard.description": {
-		"message": "Proprietăți agendă"
-	},
 	"namePage.selected.label": {
 		"message": "Selectat"
 	},
@@ -3725,17 +3722,11 @@
 	"namePage.vCardVersion.label": {
 		"message": "vCard"
 	},
-	"namesPage.wizard.description": {
-		"message": "Proprietăți agendă"
-	},
 	"namesPage.name.label": {
 		"message": "Nume"
 	},
 	"namesPage.name.description": {
 		"message": "Au fost descoperite mai multe agende. Alege agendele pe care dorești să le deschizi și numele lor :"
-	},
-	"findPage.wizard.description": {
-		"message": "Căutare agendă la distanță"
 	},
 	"findPage.name1.description": {
 		"message": "Nu au fost găsite agende la distanță."
@@ -3745,9 +3736,6 @@
 	},
 	"findPage.name3.description": {
 		"message": "Au fost găsite multiple agende la distanță. Validează agendele pentru a le adăuga:"
-	},
-	"finishPage.wizard.description": {
-		"message": "Configurație agende"
 	},
 	"finishPage.description": {
 		"message": "Noua ta agendă a fost configurată cu succes."
@@ -5115,7 +5103,13 @@
 		"message": "Listă nouă"
 	},
 	"cardbookToolbarAddListButtonTooltip": {
-		"message": "Creează o listă nouă cu adrese de email"
+		"message": "Creează o listă nouă"
+	},
+	"cardbookToolbarAddTemplateButtonLabel": {
+		"message": "Șablon nou"
+	},
+	"cardbookToolbarAddTemplateButtonTooltip": {
+		"message": "Creează un șablon nou"
 	},
 	"cardbookToolbarEditButtonLabel": {
 		"message": "Modifică"
@@ -5315,6 +5309,15 @@
 	"searchForLocalKeyEditButton.tooltip": {
 		"message": "Importă dintr-un fișier"
 	},
+	"definitionLabel": {
+		"message": "Definiție"
+	},
+	"fieldsLabel": {
+		"message": "Câmpuri"
+	},
+	"formulasLabel": {
+		"message": "Formule"
+	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Distribuie prin email"
 	},
@@ -5462,6 +5465,9 @@
 	"fnFormulaExplanation": {
 		"message": "Este posibil să personalizezi modul în care CardBook generează numele afișat. Această formulă constă în blocuri închise de „()”. În aceste blocuri pot exista mai multe părți delimitate de „|”."
 	},
+	"templateFormulaExplanation": {
+		"message": "Este posibil să definiți șabloane cu câmpuri predefinite. De exemplu, se poate defini un șablon cu e-mailul „({{2}}).({{4}})@mycompany.org”. Odată aplicat unui contact care are „John” și „Doe” ca prenume și nume, va fi adăugată adresa de e-mail „john.doe@mycompany.org” la contact."
+	},
 	"formulaExplanation1": {
 		"message": "({{1}}|{{2}}) : Dacă {{1}} este gol, atunci blocul va fi înlocuit de {{2}}."
 	},
@@ -5500,12 +5506,6 @@
 	},
 	"displayFieldNamesAccesskey": {
 		"message": "c"
-	},
-	"displayTypesLabel": {
-		"message": "Afișează tipuri și preferințe"
-	},
-	"displayTypesAccesskey": {
-		"message": "u"
 	},
 	"fieldsToPrintGroupboxLabel": {
 		"message": "Câmpuri de tipărit"
@@ -5698,6 +5698,12 @@
 	},
 	"saveTemplateLabel": {
 		"message": "Salvează șablonul"
+	},
+	"applyTemplateLabel": {
+		"message": "Aplică șablonul"
+	},
+	"createTemplateLabel": {
+		"message": "Creează șablon"
 	},
 	"convertVCardsLabel": {
 		"message": "Convertește vCard-urile"

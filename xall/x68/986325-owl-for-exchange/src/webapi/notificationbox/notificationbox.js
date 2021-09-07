@@ -19,7 +19,7 @@ var gStyleSheets = [];
  */
 function injectStyleSheet(aDoc, aURI) {
   let PI = aDoc.createProcessingInstruction("xml-stylesheet", "type=\"text/css\" href=\"" + aURI + "\"");
-  aDoc.insertBefore(PI, aDoc.documentElement);
+  aDoc.documentElement.before(PI);
 }
 
 /**
@@ -36,7 +36,7 @@ function createNotificationBox(aWin) {
   return new aWin.MozElements.NotificationBox(element => {
     element.id = kBoxID;
     element.setAttribute("notificationside", "top");
-    doc.documentElement.insertBefore(element, doc.getElementById("navigation-toolbox").nextElementSibling);
+    doc.getElementById("navigation-toolbox").after(element);
   });
 }
 

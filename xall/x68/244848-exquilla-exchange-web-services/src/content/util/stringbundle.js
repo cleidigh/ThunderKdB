@@ -38,7 +38,7 @@ function StringBundle(path) {
   if (window.location.protocol == "chrome:") {
     this._url = "chrome://exquilla/locale/" + path;
   } else {
-    this._url = chrome.extension.getURL("locale/" + getExtLocale() + "/" + path);
+    this._url = chrome.runtime.getURL("locale/" + getExtLocale() + "/" + path);
   }
   if (path.indexOf(".properties") == -1) {
     this._url += ".properties";

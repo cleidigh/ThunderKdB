@@ -35,16 +35,20 @@ var ovl_cardbookComposeMsg = {
 		}
 	},
 
-	LoadIdentity: function() {
-		var mailWindow = Services.wm.getMostRecentWindow("msgcompose");
-		var outerID = mailWindow.windowUtils.outerWindowID;
-		cardbookRepository.composeMsgIdentity[outerID] = document.getElementById("msgIdentity").selectedItem.getAttribute("identitykey");
-	},
-
 	newInCardBook: function() {
 		try {
-			var myNewCard = new cardbookCardParser();
-			cardbookWindowUtils.openEditionWindow(myNewCard, "CreateContact");
+			let myNewCard = new cardbookCardParser();
+			let dirPrefId = "";
+			for (let account of cardbookRepository.cardbookAccounts) {
+				if (account[1] && account[5] && (account[6] != "SEARCH")) {
+					dirPrefId = account[4];
+					break;
+				}
+			}
+			if (dirPrefId) {
+				myNewCard.dirPrefId = dirPrefId;
+				cardbookWindowUtils.openEditionWindow(myNewCard, "CreateContact");
+			}
 		}
 		catch (e) {
 			var errorTitle = "newInCardBook";
@@ -54,7 +58,9 @@ var ovl_cardbookComposeMsg = {
 
 	setAB: function() {
 		document.getElementById("tasksMenuAddressBook").removeAttribute("key");
-		document.getElementById("key_addressbook").setAttribute("key", "");
+		if (document.getElementById("key_addressbook")) {
+			document.getElementById("key_addressbook").setAttribute("key", "");
+		}
 		var exclusive = cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.exclusive");
 		var myPopup = document.getElementById("menu_NewPopup");
 		if (exclusive) {
@@ -93,24 +99,6 @@ var ovl_cardbookComposeMsg = {
 
 };
 
-// LoadIdentity
-(function() {
-	// Keep a reference to the original function.
-	var _original = LoadIdentity;
-
-	// Override a function.
-	LoadIdentity = function() {
-		// Execute original function.
-		var rv = _original.apply(null, arguments);
-
-		// Execute some action afterwards.
-		ovl_cardbookComposeMsg.LoadIdentity();
-
-		// return the original result
-		return rv;
-	};
-})();
-
 // GenericSendMessage
 (function() {
 	// Keep a reference to the original function.
@@ -130,4 +118,3 @@ var ovl_cardbookComposeMsg = {
 		return rv;
 	};
 })();
-

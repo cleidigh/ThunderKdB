@@ -93,7 +93,6 @@ var mailmerge = class extends ExtensionCommon.ExtensionAPI {
 					prefs.setStringPref("between", '');
 					prefs.setStringPref("only", '');
 					prefs.setIntPref("recipients", 1);
-					prefs.setBoolPref("debug", false);
 					prefs.setBoolPref("recipientsreminder", true);
 					prefs.setBoolPref("variablesreminder", true);
 					

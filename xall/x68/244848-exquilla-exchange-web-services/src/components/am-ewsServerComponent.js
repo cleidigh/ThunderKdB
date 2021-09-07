@@ -11,6 +11,11 @@
 
 const { classes: Cc, Constructor: CC, interfaces: Ci, utils: Cu, Exception: CE, results: Cr, } = Components;
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
+try { // COMPAT for TB 78 (bug 1649554)
+  var { ComponentUtils } = ChromeUtils.import("resource://gre/modules/ComponentUtils.jsm");
+} catch (ex) { // COMPAT for TB 78 (bug 1649554)
+  var ComponentUtils = XPCOMUtils; // COMPAT for TB 78 (bug 1649554)
+} // COMPAT for TB 78 (bug 1649554)
 
 const catMan = Cc["@mozilla.org/categorymanager;1"]
                  .getService(Ci.nsICategoryManager);
@@ -29,7 +34,7 @@ ewsserver.prototype = {
     return false;
   },
 
-  QueryInterface: ChromeUtils.generateQI([Ci.nsIMsgAccountManagerExtension]),
+  QueryInterface: ChromeUtils.generateQI(["nsIMsgAccountManagerExtension"]),
   classDescription: "Exchange Web Services server pane",
   classID: Components.ID("{4D08B157-4381-48a8-8E9C-8833315F2B29}"),
   contractID: "@mozilla.org/accountmanager/extension;1?name=exquillaserver",
@@ -38,5 +43,5 @@ ewsserver.prototype = {
                        entry: "mesquilla exquilla server pane"}]
 };
 
-var NSGetFactory = XPCOMUtils.generateNSGetFactory([ewsserver]);
+var NSGetFactory = ComponentUtils.generateNSGetFactory([ewsserver]);
 var EXPORTED_SYMBOLS = ["NSGetFactory"];

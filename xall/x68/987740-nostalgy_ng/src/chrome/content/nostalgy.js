@@ -105,15 +105,18 @@ var NostalgyRules =
   },
 
   register_keys: function() {
+  //  debugger;
     nostalgy_active_keys = { };
     let sCopy="C";
     let sSave="S";
     let sGo="G";
+  //  console.log("no keys", nostalgy_keys.length);
     for (var i in nostalgy_keys) {
       var k = "";
       let sKey= nostalgy_keys[i][0];
+   //   console.log("key", sKey);
       try {
-    	k = this._branch.getCharPref("keys." + sKey);
+    	k = this._branch.getStringPref("keys." + sKey);
       } catch (ex) { k = nostalgy_keys[i][2]; }
       if (sKey=="save") sSave=k;
       if (sKey=="go") sGo=k;
@@ -125,14 +128,17 @@ var NostalgyRules =
     }
 
     var a = this._branch.getChildList("actions.", { });
+ //   console.log("actions", a);
     var s = "";
     for (var i in a) {
       var id = a[i].substr(8);
       try {
-        var key = this._branch.getCharPref("keys." + id);
-        var cmd = this._branch.getCharPref("actions." + id);
+        var key = this._branch.getStringPref("keys." + id);
+        var cmd = this._branch.getStringPref("actions." + id);
        nostalgy_active_keys[key] = cmd;
-      } catch (ex) { }
+      } catch (ex) {   
+        //  console.log("catch", ex);
+    }
     }
   },
 
@@ -145,7 +151,7 @@ var NostalgyRules =
   get_rules: function()
   {
     try {
-     var r = NostalgyJSONEval(this._branch.getCharPref("rules"));
+     var r = NostalgyJSONEval(this._branch.getStringPref("rules"));
      var i;
      for (i = 0; i < r.length; i++) {
        var rule = r[i];
@@ -277,17 +283,21 @@ function NostalgyMailSession() {
 function onNostalgyLoad() {
  // factory.register();
  //register listeners
+
+// console.log("onNostalgyLoad");
  window.addEventListener("resize", onNostalgyResize, false);
+ //console.log("resize");
  window.addEventListener("keypress", onNostalgyKeyPress, false);
+ //console.log("keypress");
  window.addEventListener("keypress", onNostalgyKeyPressCapture, true);
- 
+ //console.log("keypress2");
  window.addEventListener("mousedown", NostalgyHideIfBlurred, false);
  //window.addEventListener("blur", NostalgyHideIfBlurred, false);
  // Don't know why, but the blur event does not seem to be fired properly...
 
- 
+ //console.log("mousedown");
  NostalgyRules.register_keys();
-
+ //console.log("after register_keys");
  nostalgy_help_button = NostalgyEBI("me-help");//c needs to be after register_keys
  nostalgy_help_button.setAttribute("tooltiptext", nostalgy_default_label + " rule: (n)ew / conv(e)rt");
  //nostalgy_help_button.setAttribute("src", manage_emails.statusbarIconSRC);
@@ -315,6 +325,7 @@ function onNostalgyLoad() {
      old();
      NostalgyDefLabel();
    };
+ //  nostalgy_statusBar.hidden = "true";
  }
 
  
@@ -420,7 +431,7 @@ function NostalgyCmd(lab,cmd,require_file) {
 
    // Force search on the empty string (-> recent folders)
    NostalgyShowRecentFoldersList();
- }, 0);
+ }, 50);
  return true;
 }
 
@@ -722,13 +733,15 @@ function NostalgyMoveToFolder(folder) {
  return true;
 }
 
-function NostalgyMoveToFolderAndGo(folder) {
- NostalgyRegisterFolder(folder);
+async function NostalgyMoveToFolderAndGo(folder) {
+  manage_emails.lastFolder = folder;
+  NostalgyRegisterFolder(folder);
  if (folder.tag) NostalgyToggleMessageTag(folder);
  else {
      NostalgyPredict.update_folder(folder);
      gDBView.doCommandWithFolder(Components.interfaces.nsMsgViewCommandType.moveMessages,folder);
  }
+ await new Promise(resolve => setTimeout(resolve, 500));
  NostalgyShowFolder(folder);
  return true;
 }
@@ -993,6 +1006,8 @@ var kn = NostalgyRecognizeKey(ev);
          return; //c in folderbox, send char there
        }
   var k = nostalgy_active_keys[kn];
+  if (k) NostalgyStopEvent(ev);
+
   if (k && NostalgyParseCommand(k)) NostalgyStopEvent(ev);
       } ;//else NostalgyStopEvent(ev);
 }

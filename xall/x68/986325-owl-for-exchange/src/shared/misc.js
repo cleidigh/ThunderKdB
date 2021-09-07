@@ -179,6 +179,30 @@ function MailboxObject2OWA(aAddress) {
 }
 
 /**
+ * Convert an iCal date into an ISO date.
+ *
+ * @param aDate {String?} The date in iCal format.
+ * @returns     {String?} The date in ISO format.
+ *
+ * Annoyingly, the experiment then has to convert this back to iCal format...
+ */
+function iCalDate2ISO(aDate) {
+  return aDate && aDate.replace(/(..)(..T..)(..)/, "-$1-$2:$3:");
+}
+
+/**
+ * Convert a date into iCal format.
+ *
+ * @param aDate {String?} The date to convert.
+ * @returns     {String?} The date in iCal format.
+ *
+ * If the date is already in iCal format then it is returned unchanged.
+ */
+function date2iCal(aDate) {
+  return aDate && aDate.replace(/-|:|\..../g, "");
+}
+
+/**
  * Takes a list of folders from Exchange and converts it into a tree.
  *
  * @param aFolders      {Array[Object]} A list of Exchange folder objects
@@ -205,12 +229,14 @@ function MailboxObject2OWA(aAddress) {
  */
 function ConvertFolderList(aFolders, aRootFolderId, aExtraFolders = [])
 {
-  let allFolders = [];
-  allFolders.id = aRootFolderId;
+  let rootFolder = {
+    id: aRootFolderId,
+    children: [],
+  };
   /// A map of folder IDs to the array that will hold child folders.
   let folderMap = {};
   // Initialise the map with the root of the folder hierarchy.
-  folderMap[aRootFolderId] = allFolders;
+  folderMap[aRootFolderId] = rootFolder.children;
   for (let folder of aFolders) {
     if (!folder.FolderClass || folder.FolderClass == "IPF.Note" ||
         folder.FolderClass.startsWith("IPF.Note.")) {
@@ -234,12 +260,12 @@ function ConvertFolderList(aFolders, aRootFolderId, aExtraFolders = [])
     let name = extra.name;
     let count = 0;
     // If the name duplicates an existing folder, add suffix -1 (or -2 etc.)
-    while (allFolders.find(folder => folder.name == extra.name)) {
+    while (rootFolder.children.find(folder => folder.name == extra.name)) {
       extra.name = name + --count;
     }
-    allFolders.push(extra);
+    rootFolder.children.push(extra);
   }
-  return allFolders;
+  return rootFolder;
 }
 
 /**
@@ -326,7 +352,7 @@ function GetString(aBundleName, aID)
 function GetExtensionURL(aBundleName, aID)
 {
   return {
-    extBaseURL: chrome.extension.getURL(""),
-    localeURL: chrome.extension.getURL("locale/" + getExtLocale() + "/"),
+    extBaseURL: browser.runtime.getURL(""),
+    localeURL: browser.runtime.getURL("locale/" + getExtLocale() + "/"),
   };
 }

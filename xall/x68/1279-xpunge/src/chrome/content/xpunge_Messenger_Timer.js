@@ -640,7 +640,7 @@ function xpunge_emptyJunkTimer(folder) {
 	// chooses to send emails marked as spam there.
 	var junkFolders = folder.rootFolder.getFoldersWithFlags(Components.interfaces.nsMsgFolderFlags.Junk);
 
-	for (var junkFolder of fixIterator(junkFolders, Components.interfaces.nsIMsgFolder)) {
+	for (var junkFolder of junkFolders) {
 		try {
 			if (junkFolder.getTotalMessages(true) > 0) {
 				returnedMsg = returnedMsg + "Emptying Junk Folder (" + junkFolder.prettyName + ") For Account: "

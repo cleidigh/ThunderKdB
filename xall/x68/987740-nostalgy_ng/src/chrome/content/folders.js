@@ -34,7 +34,7 @@ var nostalgy_recent_folders_max_size = 5;
 
 function NostalgySaveRecentFolder(recent) {
   PrefBranch().
-    setCharPref("extensions.nostalgy.recent_folders",
+    setStringPref("extensions.nostalgy.recent_folders",
       recent.toSource());
 }
 
@@ -42,7 +42,7 @@ function NostalgyInstallRecentFolders() {
   var s = "";
   try {
     s = PrefBranch().
-      getCharPref("extensions.nostalgy.recent_folders");
+      getStringPref("extensions.nostalgy.recent_folders");
   }
   catch (ex) { return; }
   var a = NostalgyJSONEval(s);
@@ -87,24 +87,25 @@ function NostalgyMayLowerCase(s) {
 }
 
 function NostalgyMayMatchOnlyPrefix(s, reg) {
-  //    console.log("reg", reg);
+//  console.log("reg", reg, s);
   let ret = true;
   // return false;
   if (nostalgy_completion_options.match_only_prefix)
     return NostalgyMayLowerCase(s).search(reg) == 0;
   else {
-    let itemsArr = reg.source.split(" ");//reg.substring(1, reg.length-2);
-    //       console.log("substr", itemsArr);
-    //itemsArr = items.split(" ");
-    //        console.log("substr", itemsArr);
-    for (let item of itemsArr) {
-      //          console.log("substr", item);
-      ret = ret && NostalgyMayLowerCase(s).match(item);
-
-    };
-    return ret;
-
-    //        return NostalgyMayLowerCase(s).match(reg);
+    /**/
+        let itemsArr = reg.source.split(" ");//reg.substring(1, reg.length-2);
+        //       console.log("substr", itemsArr);
+        //itemsArr = items.split(" ");
+        //        console.log("substr", itemsArr);
+        for (let item of itemsArr) {
+          //          console.log("substr", item);
+          ret = ret && NostalgyMayLowerCase(s).match(item);
+    
+        };
+        return ret;
+    
+ //   return NostalgyMayLowerCase(s).match(reg);
   };
 }
 
@@ -198,8 +199,10 @@ function NostalgyGetAutoCompleteValuesFunction(box) {
         if (found == 0 && added_count < nostalgy_recent_folders_max_size) {
           add_folder(nostalgy_recent_folders[j]);
           added_count++;
-        }
-      }
+        };
+
+      };
+      //values = [];
     } else {
       nostalgy_search_folder_options.do_tags =
         nostalgy_completion_options.always_include_tags ||
@@ -216,15 +219,27 @@ function NostalgyGetAutoCompleteValuesFunction(box) {
      * cancelled with Escape.  We thus force the popup to be opened some time after
      * the completion is done.
      */
-    if (box.popup.state == "closed" && nb != 0)
+  //  console.log("popup before closedtest", box.popup);
+ /**/
+    if (box.popup.state == "closed" && nb != 0) {
       setTimeout(function () {
         if (box.popup.state == "closed") {
+      //    box.popup.state == "open";
+          
           NostalgyDebug("Forcing popup to be opened");
           var width = box.getBoundingClientRect().width;
           box.popup.setAttribute("width", width > 100 ? width : 100);
-          box.popup.openPopup(box, "before_start", 0, 0, false, false);
+    //      box.popup.showPopup(box, -1,-1,"popup", 0,0);//
+        //  box.popup.openPopup(box, "before_start", 0, 0, false, false);
+         // box.popup.focus();
+        //  box.popup.selectedIndex = 0;
+         // box.popup.noautofocus = false;
+         //box.popup.ignorekeys = false;
+         /* */
+    //      console.log("popup", box.popup);
         }
       }, 50);
+    };
 
     return values;
   };
@@ -440,26 +455,13 @@ function NostalgyIterateSubfolders(folder, f) {
     // TB >= 3.0
     var subfolders = folder.subFolders;
     arr = new Array();
-    while (subfolders.hasMoreElements()) {
-      var subfolder = subfolders.getNext().
-        QueryInterface(Components.interfaces.nsIMsgFolder);
+     for (subfolder of subfolders) {
       if (nostalgy_completion_options.sort_folders) { arr.push(subfolder); }
       else { NostalgyIterateSubfolders(subfolder, f); }
     }
   } else {
     // TB < 3.0
-    var subfolders = folder.GetSubFolders();
-    arr = new Array();
-    var done = false;
-    while (!done) {
-      var subfolder = subfolders.currentItem().
-        QueryInterface(Components.interfaces.nsIMsgFolder);
-      if (nostalgy_completion_options.sort_folders) { arr.push(subfolder); }
-      else { NostalgyIterateSubfolders(subfolder, f); }
-      try { subfolders.next(); }
-      catch (e) { done = true; }
     }
-  }
   if (nostalgy_completion_options.sort_folders) {
     arr.sort(NostalgyCompareFolderNames);
     nostalgy_sorted_subfolders[NostalgyFullFolderName(folder)] = arr;
@@ -470,6 +472,7 @@ function NostalgyIterateSubfolders(folder, f) {
 function NostalgyIterateFoldersCurrentServer(f) {
   NostalgyIterateTags(f);
   var server = gDBView.msgFolder.server;
+//  console.log("server", server);
   NostalgyIterateSubfolders(server.rootMsgFolder, f);
 }
 

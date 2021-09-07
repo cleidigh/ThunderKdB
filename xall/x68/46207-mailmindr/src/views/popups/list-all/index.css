@@ -21,6 +21,22 @@ button:hover {
     border-color: transparent;
 }
 
+.mailmindr-popup-header {
+    border-bottom: 0.5px solid silver;
+    padding: 0.75em 1em;
+    text-align: center;
+    background: linear-gradient(45deg, var(--purple-40), var(--purple-50));
+}
+
+.mailmindr-popup-header a {
+    font-size: small;
+    color: white;
+}
+
+.mailmindr-popup-header a:hover {
+    color: silver;
+}
+
 .mailmindr-list {
     padding: 4px 0;
 }
@@ -142,7 +158,40 @@ button:hover {
     padding: 0.25em 0.75em;
 }
 
-.mailmindr-list-item:hover {
+.mailmindr-list-item[data-selected] {
     border: 1px solid transparent;
     background-color: rgba(12, 12, 13, 0.1);
+}
+
+.mailmindr-list:focus .mailmindr-list-item[data-selected] {
+    outline: 2px solid var(--blue-50);
+}
+
+.mailmindr-list-placeholder {
+    border: 0.5px solid silver;
+    /* linear-gradient(45deg, var(--purple-40), var(--purple-50)); */
+    border-radius: 0.5em;
+    margin: 1em;
+}
+
+.mailmindr-list-placeholder h2 {
+    text-align: center;
+}
+
+.mailmindr-list-placeholder p {
+    width: 275px;
+    text-align: center;
+    padding: 0.25em 1em;
+    font-size: medium;
+    color: var(--grey-90);
+}
+
+@media (prefers-color-scheme: dark) {
+    footer {
+        background-color: var(--grey-90-a80);
+    }
+
+    .mailmindr-list-placeholder p {
+        color: --grey-10;
+    }
 }

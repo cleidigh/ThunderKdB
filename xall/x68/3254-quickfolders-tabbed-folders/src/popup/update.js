@@ -8,14 +8,31 @@ END LICENSE BLOCK */
 // Script for splash screen displayed when updating this Extension
 
 addEventListener("click", async (event) => {
-	if (event.target.id.startsWith("register") || event.target.id == 'bargainIcon') {
-    messenger.Utilities.openLinkExternally("https://sites.fastspring.com/quickfolders/product/quickfolders?referrer=landing-update");    
+	if (event.target.id.startsWith("register")) {
+    messenger.Utilities.showLicenseDialog("splashScreen");
 	}
-  if (event.target.id=='whatsNew') {
-    const manifest = await messenger.runtime.getManifest(),
-          version = manifest.version;
+	if (event.target.id == "bargainIcon") {
+    // to get the bargain, go straight to offer!
+    messenger.windows.openDefaultBrowser("https://sites.fastspring.com/quickfolders/product/quickfolders?referrer=splashScreen-bargainIcon");
+    // messenger.Utilities.showLicenseDialog("splashScreen-bargainIcon");
+	}
+  
+	if (event.target.id == "bargainUpgradeIcon") {
+    messenger.Utilities.showXhtmlPage("chrome://quickfolders/content/register.xhtml");
+    window.close(); // not allowed by content script!
+	}
+  
+  
+  if (event.target.id == "stdLink") {
+    messenger.windows.openDefaultBrowser("http://sites.fastspring.com/quickfolders/product/quickfoldersstandard?referrer=splashScreen-standard");
+  }
+  
+  if (event.target.id == "compLink") {
+    messenger.windows.openDefaultBrowser("https://quickfolders.org/premium.html#featureComparison");
+  }
+  
+  if (event.target.id=="whatsNew") {
     messenger.Utilities.showVersionHistory();
-    
   }
   if (event.target.id.startsWith("extend") || event.target.id.startsWith("renew")) {
     messenger.Utilities.showXhtmlPage("chrome://quickfolders/content/register.xhtml");
@@ -23,7 +40,7 @@ addEventListener("click", async (event) => {
   }
 
 	if (event.target.id.startsWith("donate")) {
-	  messenger.Utilities.openLinkExternally("https://quickfolders.org/donate.html#donate");
+    messenger.windows.openDefaultBrowser("https://quickfolders.org/donate.html#donate");
 	}
 });
 
@@ -37,21 +54,53 @@ addEventListener("load", async (event) => {
           appVer = browserInfo.version,
           remindInDays = 10;
 
+    // internal functions
+    function hideSelectorItems(cId) {
+      let elements = document.querySelectorAll(cId);
+      for (let el of elements) {
+        el.setAttribute('collapsed',true);
+      }	    
+    }
     // force replacement for __MSG_xx__ entities
     // using John's helper method (which calls i18n API)
     i18n.updateDocument();
     
-        
+    let loc = window.location,
+        hasMsg = loc.search && loc.search.length>1,
+        msg;
+    
+    if (hasMsg) {
+      // retrieve text  from queryString
+      let qs = new URLSearchParams(window.location.search);
+      msg = qs.get("msg");
+      if (!msg) {
+        hasMsg = false;
+      }
+      else console.log ("Splash screen - got a message\n" + msg);
+    }
       
-    let h1 = document.getElementById('heading-updated');
+    let h1 = document.getElementById("heading-updated");
     if (h1) {
       // this api function can do replacements for us
-      h1.innerText = messenger.i18n.getMessage('heading-updated', addonName);
+      if (!hasMsg)
+        h1.innerText = messenger.i18n.getMessage("heading-updated", addonName);
+      else
+        h1.innerText = "License Supported Feature";
     }
     
-    let thanksInfo = document.getElementById('thanks-for-updating-intro');
-    if (thanksInfo) {
-      thanksInfo.innerText = messenger.i18n.getMessage("thanks-for-updating-intro", addonName);
+    if (hasMsg) {
+      document.getElementById("licenseExtended").setAttribute("collapsed",true);
+      document.getElementById("changesList").setAttribute("collapsed",true);
+      document.getElementById("purchaseHeader").setAttribute("collapsed",true);
+      hideSelectorItems('.donations');
+    }
+    
+    let introMsg = document.getElementById('intro-msg');
+    if (introMsg) {
+      if (!hasMsg)
+        introMsg.innerText = messenger.i18n.getMessage("thanks-for-updating-intro", addonName);
+      else
+        introMsg.innerText = msg;
     }
     
     let verInfo = document.getElementById('active-version-info');
@@ -59,16 +108,20 @@ addEventListener("load", async (event) => {
       // use the i18n API      
       // You are now running <b class="versionnumber">version {version}</b> on Thunderbird {appver}.
       // for multiple replacements, pass an array
-      verInfo.innerHTML = messenger.i18n.getMessage("active-version-info", [addonVer, appVer])
-        .replace("{boldStart}","<b class='versionnumber'>")
-        .replace("{boldEnd}","</b>");
+      if (hasMsg)
+        verInfo.setAttribute("collapsed",true);
+      else {
+        verInfo.innerHTML = messenger.i18n.getMessage("active-version-info", [addonVer, appVer])
+          .replace("{boldStart}","<b class='versionnumber'>")
+          .replace("{boldEnd}","</b>");
+      }
     }
     
     let timeAndEffort =  document.getElementById('time-and-effort');
     if (timeAndEffort) {
-      timeAndEffort.innerText = messenger.i18n.getMessage("time-and-effort", addonName);
-    }
-    
+      if (hasMsg) timeAndEffort.setAttribute('collapsed',true);
+      else timeAndEffort.innerText = messenger.i18n.getMessage("time-and-effort", addonName);
+    }    
     
     let suggestion = document.getElementById('support-suggestion');
     if (suggestion) {
@@ -85,11 +138,39 @@ addEventListener("load", async (event) => {
       remind.innerText = messenger.i18n.getMessage("label-remind-me", remindInDays);
     }
     
-    let specialOffer = document.getElementById('specialOfferTxt');
-    if (specialOffer)
-      specialOffer.innerHTML = messenger.i18n.getMessage("special-offer-content")
+    let specialOffer = document.getElementById("specialOfferTxt");
+    if (specialOffer) {
+      let expiry = messenger.i18n.getMessage("special-offer-expiry"),
+          reduction = "33%";
+      // note: expiry day is set in popup.js "endSale" variable
+      specialOffer.innerHTML = messenger.i18n.getMessage("special-offer-content", [expiry, reduction])
           .replace(/\{boldStart\}/g,"<b>")
-          .replace(/\{boldEnd\}/g,"</b>");
+          .replace(/\{boldEnd\}/g,"</b>")
+          .replace(/\{linkStart\}/, "<a id='stdLink'>")
+          .replace(/\{linkEnd\}/, "</a>");
+    }
+    
+    
+    let specialOfferUpgrade = document.getElementById("specialOfferUpgradeTxt");
+    if (specialOfferUpgrade) {
+      let expiry = messenger.i18n.getMessage("special-offer-expiry"),
+          reduction = "50%";
+      // note: expiry day is set in popup.js "endSale" variable
+      specialOfferUpgrade.innerHTML = messenger.i18n.getMessage("special-offer-upgrade", [expiry, reduction])
+          .replace(/\{boldStart\}/g,"<b>")
+          .replace(/\{boldEnd\}/g,"</b>")
+          .replace(/\{linkStart\}/, "<a id='stdLink'>")
+          .replace(/\{linkEnd\}/, "</a>");
+    }
+    
+    
+    let featureComparison = document.getElementById("featureComparison");
+    if (featureComparison) {
+      featureComparison.innerHTML = messenger.i18n.getMessage("licenseComparison")
+          .replace(/\{linkStart\}/, "<a id='compLink'>")
+          .replace(/\{linkEnd\}/, "</a>");
+        
+    } 
           
     let specialIntro = document.getElementById('specialOfferIntro');
     if (specialIntro) {
@@ -117,8 +198,7 @@ addEventListener("load", async (event) => {
            
     updateActions(addonName);
 
-    addAnimation('body');
-
+    // addAnimation('body');
   });  
 
   addEventListener("unload", async (event) => {

@@ -3,12 +3,11 @@
   "applications": {
     "gecko": {
       "id": "{8845E3B3-E8FB-40E2-95E9-EC40294818C4}",
-      "strict_min_version": "78.7.0",
-      "strict_max_version": "78.*"
+      "strict_min_version": "91.0a1"
     }
   },
   "name": "Quicktext",
-  "version": "3.6",
+  "version": "4.1",
   "author": "John Bieling",
   "homepage_url": "https://github.com/jobisoft/quicktext",
   "default_locale": "en-US",
@@ -50,6 +49,14 @@
         "scopes": ["addon_parent"],
         "paths": [["WindowListener"]],
         "script": "api/WindowListener/implementation.js"
+      }
+    },
+    "NotifyTools": {
+      "schema": "api/NotifyTools/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["NotifyTools"]],
+        "script": "api/NotifyTools/implementation.js"
       }
     },
     "LegacyPrefs": {

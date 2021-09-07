@@ -2,7 +2,7 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 6720:
+/***/ 4750:
 /***/ ((__unused_webpack___webpack_module__, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 
@@ -15,7 +15,7 @@ var es = __webpack_require__(533);
 // EXTERNAL MODULE: ./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js
 var redux_toolkit_esm = __webpack_require__(9829);
 // EXTERNAL MODULE: ./node_modules/redux/es/redux.js + 2 modules
-var redux = __webpack_require__(8676);
+var redux = __webpack_require__(8531);
 ;// CONCATENATED MODULE: ./addon/prefs.js
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -37,6 +37,11 @@ const kPrefDefaults = {
   unwanted_recipients: "{}",
   hide_sigs: false
 };
+/**
+ * Handles loading of the preferences, and any migration routines that are
+ * necessary.
+ */
+
 class Prefs {
   async init() {
     try {
@@ -57,12 +62,9 @@ class Prefs {
           updatePrefs = true;
           results.preferences[prefName] = kPrefDefaults[prefName];
         }
+      }
 
-        await browser.conversations.setPref(prefName, results.preferences[prefName]);
-      } // Set a special pref so bootstrap knows it can continue.
-
-
-      await browser.conversations.setPref("finishedStartup", true);
+      await browser.conversations.startup(results.preferences.logging_enabled);
 
       if (updatePrefs) {
         try {
@@ -76,8 +78,6 @@ class Prefs {
     } else {
       console.error("Could not find the preferences to send to the API.");
     }
-
-    this._addListener();
   }
 
   async _migrate() {
@@ -125,24 +125,6 @@ class Prefs {
     });
   }
 
-  _addListener() {
-    browser.storage.onChanged.addListener((changed, areaName) => {
-      if (areaName != "local" || !("preferences" in changed) || !("newValue" in changed.preferences)) {
-        return;
-      }
-
-      for (const prefName of Object.getOwnPropertyNames(changed.preferences.newValue)) {
-        if (prefName == "migratedLegacy") {
-          continue;
-        }
-
-        if (!changed.preferences.oldValue || changed.preferences.oldValue[prefName] != changed.preferences.newValue[prefName]) {
-          browser.conversations.setPref(prefName, changed.preferences.newValue[prefName]);
-        }
-      }
-    });
-  }
-
 }
 ;// CONCATENATED MODULE: ./addon/content/es-modules/thunderbird-compat.js
 /* This Source Code Form is subject to the terms of the Mozilla Public
@@ -177,7 +159,6 @@ const ALL_LOCALES = ["bg", "ca", "cs", "da", "de", "el", "en", "es", "eu", "fi",
  * This function should only be used in the dev frame. It is exported
  * to give the dev frame a way to mock a change to the UI language.
  *
- * @export
  * @param {*} resolve
  * @param {string} [locale="en"]
  */
@@ -243,7 +224,9 @@ if (!thunderbird_compat_browser.storage) {
   const DEFAULT_PREFS = { ...kPrefDefaults,
     // DEFAULT_PREFS is only used when browser.storage does not exist. I.e.,
     // when running in the browser in dev mode. Turn on logging in this case.
-    logging_enabled: true
+    logging_enabled: true,
+    expand_who: 4,
+    uninstall_infos: "{}"
   }; // Fake what we need from the browser storage library
 
   const _stored = {
@@ -363,6 +346,45 @@ if (!thunderbird_compat_browser.conversations) {
       }
 
       return "ltr";
+    },
+
+    async getCorePref(name) {
+      switch (name) {
+        case "mail.showCondensedAddresses":
+          return false;
+
+        case "mailnews.mark_message_read.auto":
+          return true;
+
+        case "mailnews.mark_message_read.delay":
+          return false;
+      }
+
+      throw new Error("Unexpected pref");
+    },
+
+    async getFolderName(name) {
+      return "Fake/Folder";
+    },
+
+    async makeFriendlyDateAgo() {
+      return "yesterday";
+    },
+
+    async formatFileSize(size) {
+      return `${size} bars`;
+    },
+
+    async makePlural(form, string, count) {
+      return `${string} ${count}`;
+    },
+
+    async isInView() {
+      return true;
+    },
+
+    async quoteMsgHdr() {
+      return "MsgBody";
     }
 
   };
@@ -373,6 +395,13 @@ if (!thunderbird_compat_browser.convCompose) {
     send(details) {
       console.log("Sending:", details);
     }
+
+  };
+}
+
+if (!thunderbird_compat_browser.compose) {
+  thunderbird_compat_browser.compose = {
+    async beginNew() {}
 
   };
 }
@@ -427,6 +456,36 @@ if (!thunderbird_compat_browser.messageDisplay) {
   };
 }
 
+if (!thunderbird_compat_browser.messages) {
+  thunderbird_compat_browser.messages = {
+    async listTags() {
+      return [{
+        key: "$label1",
+        tag: "Important",
+        color: "#ff2600",
+        ordinal: ""
+      }, {
+        key: "$label2",
+        tag: "Work",
+        color: "#FF9900",
+        ordinal: ""
+      }, {
+        color: "#009900",
+        key: "$label3",
+        ordinal: "",
+        tag: "Personal"
+      }];
+    },
+
+    async get(id) {
+      return {};
+    },
+
+    async update(id) {}
+
+  };
+}
+
 if (!thunderbird_compat_browser.windows) {
   thunderbird_compat_browser.windows = {
     async create() {},
@@ -462,8 +521,8 @@ if (!thunderbird_compat_browser.runtime) {
 
 if (!thunderbird_compat_browser.contacts) {
   thunderbird_compat_browser.contacts = {
-    async quickSearch(email) {
-      if (["foo@example.com", "bar@example.com"].includes(email)) {
+    async quickSearch(queryInfo) {
+      if (["foo@example.com", "bar@example.com"].includes(queryInfo.searchString)) {
         return [{
           id: "135246",
           type: "contact",
@@ -475,7 +534,7 @@ if (!thunderbird_compat_browser.contacts) {
             PhotoURI: undefined
           }
         }];
-      } else if (email == "id4@example.com") {
+      } else if (queryInfo.searchString == "id4@example.com") {
         return [{
           id: "15263748",
           type: "contact",
@@ -486,7 +545,7 @@ if (!thunderbird_compat_browser.contacts) {
             PhotoURI: undefined
           }
         }];
-      } else if (email == "extra@example.com") {
+      } else if (queryInfo.searchString == "extra@example.com") {
         return [{
           id: "75312468",
           type: "contact",
@@ -495,6 +554,39 @@ if (!thunderbird_compat_browser.contacts) {
             DisplayName: "extra card",
             PreferDisplayName: "0",
             PhotoURI: "https://example.com/fake"
+          },
+          readOnly: true
+        }];
+      } else if (["arch@example.com", "cond@example.com"].includes(queryInfo.searchString)) {
+        return [{
+          id: "1357924680",
+          type: "contact",
+          properties: {
+            PrimaryEmail: "search@example.com",
+            SecondEmail: "second@example.com",
+            DisplayName: "search name",
+            PreferDisplayName: "1",
+            PhotoURI: undefined
+          }
+        }, {
+          id: "3216549870",
+          type: "contact",
+          properties: {
+            PrimaryEmail: "arch@example.com",
+            SecondEmail: "other@example.com",
+            DisplayName: "arch test",
+            PreferDisplayName: "1",
+            PhotoURI: undefined
+          }
+        }, {
+          id: "9753124680",
+          type: "contact",
+          properties: {
+            PrimaryEmail: "another@example.com",
+            SecondEmail: "cond@example.com",
+            DisplayName: "cond test",
+            PreferDisplayName: "1",
+            PhotoURI: undefined
           }
         }];
       }
@@ -686,162 +778,106 @@ const composeActions = {
 
 };
 Object.assign(composeActions, composeSlice.actions);
-;// CONCATENATED MODULE: ./addon/content/es-modules/utils.js
+;// CONCATENATED MODULE: ./addon/content/reducer/conversationUtils.js
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-/**
- * Take a name and extract initials from it.
- * If `name` is an email address, get the part before the @.
- * Then, capitalize the first letter of the first and last word (or the first
- * two letters of the first word if only one exists).
- *
- * @param {string} name
- * @returns {string}
- */
-function getInitials(name) {
-  name = name.trim().split("@")[0];
-  let words = name.split(/[ .\-_]/).filter(function (word) {
-    return word;
-  });
-  let initials = "??";
-  let n = words.length;
+let conversationUtils = new class {
+  async forward(tabId, msgs) {
+    let body = await this._exportConversationAsHtml(msgs);
+    let displayedMsgs = await thunderbird_compat_browser.messageDisplay.getDisplayedMessages(tabId);
+    let identityId = undefined;
 
-  if (n == 1) {
-    initials = words[0].substr(0, 2);
-  } else if (n > 1) {
-    initials = fixedCharAt(words[0], 0) + fixedCharAt(words[n - 1], 0);
-  }
-
-  return initials.toUpperCase();
-} // Taken from
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt#Fixing_charAt()_to_support_non-Basic-Multilingual-Plane_(BMP)_characters
-
-function fixedCharAt(str, idx) {
-  var ret = "";
-  str += "";
-  var end = str.length;
-  var surrogatePairs = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
-
-  while (surrogatePairs.exec(str) != null) {
-    var li = surrogatePairs.lastIndex;
-
-    if (li - 2 < idx) {
-      idx++;
-    } else {
-      break;
+    if (displayedMsgs.length) {
+      let accountId = displayedMsgs[0].folder.accountId;
+      let account = await thunderbird_compat_browser.accounts.get(accountId);
+      identityId = account.identities[0]?.id;
     }
+
+    await thunderbird_compat_browser.compose.beginNew({
+      identityId,
+      isPlainText: false,
+      body
+    });
   }
 
-  if (idx >= end || idx < 0) {
-    return "";
-  }
+  async _exportConversationAsHtml(msgs) {
+    let hr = '<div style="border-top: 1px solid #888; height: 15px; width: 70%; margin: 0 auto; margin-top: 15px">&nbsp;</div>';
+    let html = "<html><body>" + "<p>" + thunderbird_compat_browser.i18n.getMessage("conversation.forwardFillInText") + "</p>" + hr;
+    let promises = [];
 
-  ret += str.charAt(idx);
-
-  if (/[\uD800-\uDBFF]/.test(ret) && /[\uDC00-\uDFFF]/.test(str.charAt(idx + 1))) {
-    // Go one further, since one of the "characters" is part of a surrogate pair
-    ret += str.charAt(idx + 1);
-  }
-
-  return ret;
-}
-;// CONCATENATED MODULE: ./addon/content/reducer/contacts.js
-/* This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
-
-
-/**
- * Adds necessary information for display contacts.
- *
- * @param {object} contact
- *   The contact details from the ContactManager.
- * @param {string} email
- *   The associated email for the contact.
- * @param {string} field
- *   The field of the email the contact is in, e.g. from, to, cc etc.
- * @param {string} nameFromEmail
- *   The name from the email address.
- * @param {boolean} showCondensed
- *   Whether or not to show condensed names.
- */
-
-async function enrichWithDisplayData({
-  contact,
-  email,
-  field,
-  nameFromEmail,
-  showCondensed
-}) {
-  // `name` is the only attribute that depend on `position`
-  let name = contact.name || nameFromEmail || email;
-
-  if (contact.identityId !== undefined) {
-    name = field === "from" ? thunderbird_compat_browser.i18n.getMessage("message.meFromMeToSomeone") : thunderbird_compat_browser.i18n.getMessage("message.meFromSomeoneToMe");
-  }
-
-  const displayEmail = name != email ? email : "";
-  const skipEmail = contact.contactId !== undefined && showCondensed;
-  let data = {
-    name,
-    initials: getInitials(name),
-    displayEmail: skipEmail ? "" : displayEmail,
-    email,
-    avatar: contact.photoURI,
-    contactId: contact.contactId,
-    colorStyle: {
-      backgroundColor: contact.color
+    for (const msg of msgs) {
+      promises.push(this._exportMsgAsHtml(msg));
     }
-  };
-  return data;
-}
-/**
- * Walk through each message in `msgData` and fetch details about
- * each contact. When the details are fetched, merge them into the
- * message object itself.
- *
- * @export
- * @param {[object]} msgData
- */
+
+    let messagesHtml = await Promise.all(promises);
+    html += '<div style="font-family: sans-serif !important;">' + messagesHtml.join(hr) + "</div>";
+    return html;
+  }
+  /**
+   * This function is called for forwarding messages as part of conversations.
+   * The idea is that we want to forward a plaintext version of the message, so
+   * we try and do our best to give this. We're trying not to stream it once more!
+   *
+   * @param {object} msg
+   *   The message data to export.
+   */
 
 
-async function mergeContactDetails(msgData) {
-  let showCondensed = await thunderbird_compat_browser.conversations.getCorePref("mail.showCondensedAddresses");
+  async _exportMsgAsHtml(msg) {
+    // We try to convert the bodies to plain text, to enhance the readability in
+    // the forwarded conversation. Note: <pre> tags are not converted properly
+    // it seems, need to investigate...
+    let body = await thunderbird_compat_browser.conversations.quoteMsgHdr(msg.id); // UGLY HACK. I don't even wanna dig into the internals of the composition
+    // window to figure out why this results in an extra <br> being added, so
+    // let's just stay sane and use a hack.
 
-  for (const message of msgData) {
-    // We want to fetch the detailed data about every contact in the `_contactsData` object.
-    // So fetch all the data upfront.
-    for (const [field, contacts] of Object.entries(message._contactsData)) {
-      const contactData = await Promise.all(contacts.map(async contact => [await thunderbird_compat_browser._background.request({
-        type: "contactDetails",
-        payload: contact
-      }), // We need to keep the raw email around to format the data correctly
-      contact.email, contact.name]));
-      const formattedData = await Promise.all(contactData.map(([contact, email, name]) => enrichWithDisplayData({
-        contact,
-        email,
-        field,
-        nameFromEmail: name,
-        showCondensed
-      }))); // There is only ever one email in the `from` field. All the others are arrays.
+    body = body.replace(/\r?\n<br>/g, "<br>");
+    body = body.replace(/<br>\r?\n/g, "<br>");
 
-      if (field === "from") {
-        message[field] = formattedData[0];
-      } else {
-        message[field] = formattedData;
+    if (!(body.indexOf("<pre wrap>") === 0)) {
+      body = "<br>" + body;
+    }
+
+    return ['<div style="overflow: auto">', '<img src="', msg.from.avatar, '" style="float: left; height: 48px; margin-right: 5px" />', '<b><span><a style="color: ', msg.from.colorStyle.backgroundColor, ' !important; text-decoration: none !important; font-weight: bold" href="mailto:', msg.from.email, '">', this._escapeHtml(msg.from.name), "</a></span></b><br />", '<span style="color: #666">', msg.fullDate, "</span>", "</div>", '<div style="color: #666">', body, "</div>"].join("");
+  }
+  /**
+   * Helper function to escape some XML chars, so they display properly in
+   *  innerHTML.
+   *
+   * @param {string} s input text
+   * @returns {string} The string with &lt;, &gt;, and &amp; replaced by the corresponding entities.
+   */
+
+
+  _escapeHtml(s) {
+    s += ""; // stolen from selectionsummaries.js (thanks davida!)
+
+    return s.replace(/[<>&]/g, function (s) {
+      switch (s) {
+        case "<":
+          return "&lt;";
+
+        case ">":
+          return "&gt;";
+
+        case "&":
+          return "&amp;";
+
+        default:
+          throw Error("Unexpected match");
       }
-    }
+    });
   }
-}
+
+}();
 ;// CONCATENATED MODULE: ./addon/content/reducer/reducer-messages.js
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-/* global Conversation, BrowserSim, topMail3Pane */
-
+/* global BrowserSim, topMail3Pane */
 
  // Prefer the global browser object to the imported one.
 
@@ -862,159 +898,12 @@ function modifyOnlyMsgId(state, id, modifier) {
   };
 }
 
-async function getPreference(name, defaultValue) {
-  const prefs = await browser.storage.local.get("preferences");
-  return prefs?.preferences?.[name] ?? defaultValue;
-} // TODO: Once the WebExtension parts work themselves out a bit more,
-// determine if this is worth sharing via a shared module with the background
-// scripts, or if it doesn't need it.
-
-
-async function setupConversationInTab(params, isInTab) {
-  let isThreaded = params.get("isThreaded");
-  isThreaded = !!parseInt(isThreaded); // If we start up Thunderbird with a saved conversation tab, then we
-  // have no selected message. Fallback to the usual mode.
-
-  if (!isThreaded && !topMail3Pane(window).gFolderDisplay.selectedMessage) {
-    isThreaded = true;
-  }
-
-  if (window.frameElement) {
-    window.frameElement.setAttribute("tooltip", "aHTMLTooltip");
-  }
-
-  const msgUrls = params.get("urls").split(",");
-  const msgIds = [];
-
-  for (const url of msgUrls) {
-    const id = await browser.conversations.getMessageIdForUri(url);
-
-    if (id) {
-      msgIds.push(id);
-    }
-  } // It might happen that there are no messages left...
-
-
-  if (!msgIds.length) {
-    document.getElementById("messageList").textContent = browser.i18n.getMessage("message.movedOrDeletedConversation");
-  } else {
-    window.Conversations = {
-      currentConversation: null,
-      counter: 0
-    };
-    let freshConversation = new Conversation(window, // TODO: This should really become ids at some stage, but we need to
-    // teach Conversation how to handle those.
-    msgUrls, isThreaded, ++window.Conversations.counter, isInTab);
-    let browserFrame = window.frameElement; // Because Thunderbird still hasn't fixed that...
-
-    if (browserFrame) {
-      browserFrame.setAttribute("context", "mailContext");
-    }
-
-    freshConversation.outputInto(window, async function (aConversation) {
-      // This is a stripped-down version of what's in msgWindowApi.js,
-      //  make sure the two are in sync!
-      window.Conversations.currentConversation = aConversation;
-      aConversation.completed = true; // TODO: Re-enable this.
-      // registerQuickReply();
-      // That's why we saved it before...
-      // newComposeSessionByDraftIf();
-      // TODO: expandQuickReply isn't defined anywhere. Should it be?
-      // let willExpand = parseInt(params.get("willExpand"));
-      // if (willExpand)
-      //   expandQuickReply();
-      // Create a new rule that will override the default rule, so that
-      // the expanded quick reply is twice higher.
-
-      document.body.classList.add("inTab"); // Do this now so as to not defeat the whole expand/collapse
-      // logic.
-
-      if (await browser.conversations.getCorePref("mailnews.mark_message_read.auto")) {
-        const markAsReadAfterDelay = await browser.conversations.getCorePref("mailnews.mark_message_read.delay");
-        let markAsReadDelay = 0;
-
-        if (markAsReadAfterDelay) {
-          markAsReadDelay = await browser.conversations.getCorePref("mailnews.mark_message_read.delay.interval");
-        }
-
-        setTimeout(function () {
-          for (const id of msgIds) {
-            browser.messages.update(id, {
-              read: true
-            }).catch(console.error);
-          }
-        }, markAsReadDelay * 1000);
-      }
-    });
-  }
-}
-
 const messageActions = {
-  waitForStartup() {
-    return async dispatch => {
-      const params = new URL(document.location).searchParams;
-      const isInTab = params.has("urls");
-      const topWin = topMail3Pane(window);
-      await dispatch(summaryActions.setConversationState({
-        isInTab,
-        tabId: BrowserSim.getTabId(topWin, window),
-        windowId: BrowserSim.getWindowId(topWin)
-      }));
-      const platformInfo = await browser.runtime.getPlatformInfo();
-      const browserInfo = await browser.runtime.getBrowserInfo();
-      const defaultFontSize = await browser.conversations.getCorePref("font.size.variable.x-western");
-      const browserForegroundColor = await browser.conversations.getCorePref("browser.display.foreground_color");
-      const browserBackgroundColor = await browser.conversations.getCorePref("browser.display.background_color");
-      const defaultDetailsShowing = (await browser.conversations.getCorePref("mail.show_headers")) == 2;
-      await dispatch(summaryActions.setSystemOptions({
-        browserForegroundColor,
-        browserBackgroundColor,
-        defaultDetailsShowing,
-        defaultFontSize,
-        hideQuickReply: await getPreference("hide_quick_reply", false),
-        OS: platformInfo.os,
-        browserVersion: browserInfo.version
-      }));
-
-      if (!isInTab) {
-        return;
-      }
-
-      await new Promise((resolve, reject) => {
-        let tries = 0;
-
-        function checkStarted() {
-          let mainWindow = topMail3Pane(window);
-
-          if (mainWindow.Conversations && mainWindow.Conversations.finishedStartup) {
-            resolve();
-          } else {
-            // Wait up to 10 seconds, if it is that slow we're in trouble.
-            if (tries >= 100) {
-              console.error("Failed waiting for monkeypatch to finish startup");
-              reject();
-              return;
-            }
-
-            tries++;
-            setTimeout(checkStarted, 100);
-          }
-        }
-
-        checkStarted();
-      });
-      await dispatch(messageActions.initializeMessageThread({
-        isInTab: true,
-        params
-      }));
-    };
-  },
-
   getLateAttachments({
     id
   }) {
-    return async dispatch => {
-      const attachments = await browser.conversations.getLateAttachments(id);
+    return async (dispatch, getState) => {
+      const attachments = await browser.conversations.getLateAttachments(id, getState().summary.prefs.extraAttachments);
       const numAttachments = attachments.length; // This is bug 630011, remove when fixed
 
       const unknown = browser.i18n.getMessage("attachments.sizeUnknown");
@@ -1030,25 +919,12 @@ const messageActions = {
         attachments[i].formattedSize = formattedSize;
       }
 
-      await dispatch(messagesSlice.actions.msgUpdateDataId({
-        msgData: {
-          attachments,
-          attachmentsPlural: await browser.conversations.makePlural(browser.i18n.getMessage("pluralForm"), browser.i18n.getMessage("attachments.numAttachments"), numAttachments),
-          id,
-          needsLateAttachments: false
-        }
+      await dispatch(messagesSlice.actions.updateAttachmentData({
+        id,
+        attachments,
+        attachmentsPlural: await browser.conversations.makePlural(browser.i18n.getMessage("pluralForm"), browser.i18n.getMessage("attachments.numAttachments"), numAttachments),
+        needsLateAttachments: false
       }));
-    };
-  },
-
-  initializeMessageThread({
-    isInTab,
-    params
-  }) {
-    return async (dispatch, getState) => {
-      if (getState().summary.isInTab) {
-        setupConversationInTab(params, isInTab).catch(console.error);
-      }
     };
   },
 
@@ -1234,7 +1110,7 @@ const messageActions = {
       const state = getState();
       let msgs;
 
-      if (state.summary.isInTab || (await getPreference("operate_on_conversations", false))) {
+      if (state.summary.isInTab || state.summary.prefs.operateOnConversations) {
         msgs = state.messages.msgData.map(msg => msg.id);
       } else {
         if ("getDisplayedMessages" in browser.messageDisplay) {
@@ -1255,7 +1131,7 @@ const messageActions = {
       const state = getState();
       let msgs;
 
-      if (state.summary.isInTab || (await getPreference("operate_on_conversations", false))) {
+      if (state.summary.isInTab || state.summary.prefs.operateOnConversations) {
         msgs = state.messages.msgData.map(msg => msg.id);
       } else {
         if ("getDisplayedMessages" in browser.messageDisplay) {
@@ -1308,9 +1184,9 @@ const messageActions = {
       const msg = window.Conversations.currentConversation.getMessageByApiId(id); // Turn remote content message "off", as although it has it, it can be loaded.
 
       msg.hasRemoteContent = false;
-      const msgData = await msg.toReactData();
-      dispatch(messagesSlice.actions.msgUpdateData({
-        msgData
+      dispatch(messagesSlice.actions.setHasRemoteContent({
+        id,
+        hasRemoteContent: false
       }));
     };
   },
@@ -1324,9 +1200,9 @@ const messageActions = {
       const msg = window.Conversations.currentConversation.getMessageByApiId(id); // Turn remote content message "off", as although it has it, it can be loaded.
 
       msg.hasRemoteContent = false;
-      const msgData = await msg.toReactData();
-      dispatch(messagesSlice.actions.msgUpdateData({
-        msgData
+      dispatch(messagesSlice.actions.setHasRemoteContent({
+        id,
+        hasRemoteContent: false
       }));
     };
   },
@@ -1386,10 +1262,9 @@ const messageActions = {
   }) {
     return async dispatch => {
       await browser.conversations.ignorePhishing(id);
-      await dispatch(messagesSlice.actions.msgUpdateDataId({
-        msgData: {
-          isPhishing: false
-        }
+      await dispatch(messagesSlice.actions.setPhishing({
+        id,
+        isPhishing: false
       }));
     };
   },
@@ -1474,23 +1349,31 @@ const messagesSlice = redux_toolkit_esm/* createSlice */.oM({
     /**
      * Update the message list either replacing or appending the messages.
      *
-     * @param {object} messages
+     * @param {object} state
+     * @param {object} payload
+     * @param {object} payload.payload
+     * @param {object} payload.payload.messages
      *   The messages to insert or append.
-     * @param {boolean} append
-     *   Set to true to append messages, false to replace the current conversation.
+     * @param {string} payload.payload.mode
+     *   Can be "append", "replaceAll" or "replaceMsg". replaceMsg will replace
+     *   only a single message.
      */
     updateConversation(state, {
-      payload
-    }) {
-      const {
+      payload: {
         messages,
-        append
-      } = payload;
-
-      if (append) {
+        mode
+      }
+    }) {
+      if (mode == "append") {
         return { ...state,
           msgData: state.msgData.concat(messages.msgData)
         };
+      }
+
+      if (mode == "replaceMsg") {
+        return modifyOnlyMsgId(state, messages.msgData[0].id, msg => ({ ...msg,
+          ...messages.msgData[0]
+        }));
       }
 
       return { ...state,
@@ -1516,19 +1399,37 @@ const messagesSlice = redux_toolkit_esm/* createSlice */.oM({
       };
     },
 
-    msgUpdateData(state, {
+    setHasRemoteContent(state, {
       payload
     }) {
-      return modifyOnlyMsg(state, payload.msgData.msgUri, msg => ({ ...msg,
-        ...payload.msgData
+      return modifyOnlyMsgId(state, payload.id, msg => ({ ...msg,
+        hasRemoteContent: payload.hasRemoteContent
       }));
     },
 
-    msgUpdateDataId(state, {
+    setPhishing(state, {
       payload
     }) {
-      return modifyOnlyMsgId(state, payload.msgData.id, msg => ({ ...msg,
-        ...payload.msgData
+      return modifyOnlyMsgId(state, payload.id, msg => ({ ...msg,
+        isPhishing: payload.isPhishing
+      }));
+    },
+
+    setSmimeReload(state, {
+      payload
+    }) {
+      return modifyOnlyMsgId(state, payload.id, msg => ({ ...msg,
+        smimeReload: payload.smimeReload
+      }));
+    },
+
+    updateAttachmentData(state, {
+      payload
+    }) {
+      return modifyOnlyMsgId(state, payload.id, msg => ({ ...msg,
+        attachments: payload.attachments,
+        attachmentsPlural: payload.attachmentsPlural,
+        needsLateAttachments: payload.needsLateAttachments
       }));
     },
 
@@ -1627,96 +1528,12 @@ const messagesSlice = redux_toolkit_esm/* createSlice */.oM({
   }
 });
 Object.assign(messageActions, messagesSlice.actions);
-;// CONCATENATED MODULE: ./addon/content/reducer/reducer-quickReply.js
-/* This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
-
-
- // Prefer the global browser object to the imported one.
-
-window.browser = window.browser || thunderbird_compat_browser;
-const initialQuickReply = {
-  expanded: false
-};
-const quickReplySlice = redux_toolkit_esm/* createSlice */.oM({
-  name: "quickReply",
-  initialState: initialQuickReply,
-  reducers: {
-    setExpandedState(state, {
-      payload
-    }) {
-      return { ...state,
-        expanded: payload.expanded
-      };
-    }
-
-  }
-});
-const quickReplyActions = {
-  expand({
-    id
-  }) {
-    return async function (dispatch, getState) {
-      let msg = await browser.messages.get(id);
-      let accountDetail = await browser.accounts.get(msg.folder.accountId);
-      let accountId;
-      let identityId;
-
-      if (accountDetail && accountDetail.identities.length) {
-        accountId = accountDetail.id;
-        identityId = accountDetail.identities[0].id;
-      }
-
-      let to = msg.author;
-      let subject = msg.subject;
-
-      if (!subject.toLowerCase().includes("re:")) {
-        subject = "Re: " + subject;
-      } // Initialise the compose section first, to avoid flicker, and ensure
-      // the compose widget has the correct information to set focus correctly
-      // on first render.
-
-
-      await dispatch(composeActions.initCompose({
-        accountId,
-        identityId,
-        to,
-        subject
-      }));
-      await dispatch(quickReplySlice.actions.setExpandedState({
-        expanded: true
-      }));
-    };
-  },
-
-  discard() {
-    return async function (dispatch) {
-      await dispatch(quickReplySlice.actions.setExpandedState({
-        expanded: false
-      }));
-    };
-  }
-
-};
-
-composeActions.close = () => {
-  return async function (dispatch) {
-    await dispatch(quickReplySlice.actions.setExpandedState({
-      expanded: false
-    }));
-  };
-};
-
-Object.assign(quickReplyActions, quickReplySlice.actions);
 ;// CONCATENATED MODULE: ./addon/content/reducer/reducer-summary.js
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 /* global Conversations, getMail3Pane, topMail3Pane, printConversation */
-
-
 
 
 
@@ -1727,9 +1544,9 @@ const initialSummary = {
   defaultFontSize: 15,
   hasBuiltInPdf: false,
   hasIdentityParamsForCompose: false,
-  hideQuickReply: false,
   iframesLoading: 0,
   isInTab: false,
+  isStandalone: false,
   // TODO: What is loading used for?
   loading: true,
   OS: "win",
@@ -1737,63 +1554,102 @@ const initialSummary = {
   tenPxFactor: 0.7,
   subject: "",
   windowId: null,
-  defaultDetailsShowing: false
+  defaultDetailsShowing: false,
+  initialSet: [],
+  prefs: {
+    expandWho: 4,
+    extraAttachments: false,
+    hideQuickReply: false,
+    hideQuoteLength: 5,
+    hideSigs: false,
+    loggingEnabled: false,
+    noFriendlyDate: false,
+    operateOnConversations: false,
+    tweakBodies: true,
+    tweakChrome: true
+  }
 };
-
-async function handleShowDetails(messages, state, dispatch, updateFn) {
-  let defaultShowing = state.summary.defaultDetailsShowing;
-
-  for (let msg of messages.msgData) {
-    msg.detailsShowing = defaultShowing;
-  }
-
-  await updateFn();
-
-  if (defaultShowing) {
-    for (let msg of state.messages.msgData) {
-      await dispatch(messageActions.showMsgDetails({
-        id: msg.id,
-        detailsShowing: true
-      }));
-    }
-  }
-}
-
+let markAsReadTimer;
 const summaryActions = {
   /**
-   * Update a conversation either replacing or appending the messages.
-   *
-   * @param {object} [summary]
-   *   Only applies to replacing a conversation, the summary details to update.
-   * @param {object} messages
-   *   The messages to insert or append.
-   * @param {boolean} append
-   *   Set to true to append messages, false to replace the current conversation.
+   * Sets up any listeners required.
    */
-  updateConversation({
-    summary,
-    messages,
-    append
-  }) {
+  setupListeners() {
     return async (dispatch, getState) => {
-      await handleShowDetails(messages, getState(), dispatch, async () => {
-        // The messages inside `msgData` don't come with filled in `to`/`from`/ect. fields.
-        // We need to fill them in ourselves.
-        await mergeContactDetails(messages.msgData);
+      function selectionChangedListener(tab) {
+        let state = getState();
 
-        if (!append) {
-          await dispatch(composeSlice.actions.resetStore());
-          await dispatch(quickReplySlice.actions.setExpandedState({
-            expanded: false
-          }));
-          await dispatch(summarySlice.actions.replaceSummaryDetails(summary));
+        if (state.summary.tabId != tab.id) {
+          return;
         }
 
-        return dispatch(messageActions.updateConversation({
-          messages,
-          append
+        if (markAsReadTimer) {
+          clearTimeout(markAsReadTimer);
+          markAsReadTimer = null;
+        }
+      }
+
+      function printListener(winId, msgId) {
+        let state = getState();
+
+        if (state.summary.windowId != winId) {
+          return;
+        }
+
+        if (!state.messages.msgData.find(m => m.id == msgId)) {
+          return;
+        }
+
+        browser.convMsgWindow.print(winId, `convIframe${msgId}`);
+      }
+
+      browser.messageDisplay.onMessagesDisplayed.addListener(selectionChangedListener);
+
+      if (getState().summary.hasBuiltInPdf) {
+        // Only override print on TB 91 and later.
+        browser.convMsgWindow.onPrint.addListener(printListener);
+        window.addEventListener("unload", () => {
+          browser.messageDisplay.onMessagesDisplayed.removeListener(selectionChangedListener);
+          browser.convMsgWindow.onPrint.removeListener(printListener);
+        }, {
+          once: true
+        });
+      }
+    };
+  },
+
+  /**
+   * Sets up getting user preferences for a conversation.
+   */
+  setupUserPreferences() {
+    return async (dispatch, getState) => {
+      const prefs = await browser.storage.local.get("preferences");
+
+      function setPrefs(newPrefs = {}) {
+        return dispatch(summarySlice.actions.setUserPreferences({
+          // Default is expand auto.
+          expandWho: newPrefs.preferences?.expand_who ?? 4,
+          extraAttachments: newPrefs.preferences?.extra_attachments ?? false,
+          hideQuickReply: newPrefs.preferences?.hide_quick_reply ?? false,
+          hideQuoteLength: newPrefs.preferences?.hide_quote_length ?? 5,
+          hideSigs: newPrefs.preferences?.hide_sigs ?? false,
+          loggingEnabled: newPrefs.preferences?.logging_enabled ?? false,
+          noFriendlyDate: newPrefs.preferences?.no_friendly_date ?? false,
+          operateOnConversations: newPrefs.preferences?.operate_on_conversations ?? false,
+          tweakBodies: newPrefs.preferences?.tweak_bodies ?? true,
+          tweakChrome: newPrefs.preferences?.tweak_chrome ?? true
         }));
+      }
+
+      browser.storage.onChanged.addListener(async (changed, areaName) => {
+        if (areaName != "local" || !("preferences" in changed) || !("newValue" in changed.preferences)) {
+          return;
+        }
+
+        const newPrefs = await browser.storage.local.get("preferences");
+        setPrefs(newPrefs);
       });
+      await setPrefs(prefs);
     };
   },
 
@@ -1811,6 +1667,7 @@ const summaryActions = {
   },
 
   sendEmail({
+    msgId,
     name,
     email
   }) {
@@ -1822,15 +1679,18 @@ const summaryActions = {
       });
 
       if (state.summary.hasIdentityParamsForCompose) {
-        // Ideally we should use the displayed folder, but the displayed message
-        // works fine, as we'll only
-        let tab = await browser.mailTabs.query({
-          active: true,
-          currentWindow: true
-        });
-        let account = await browser.accounts.get(tab[0].displayedFolder.accountId);
+        let msg = getState().messages.msgData.find(m => m.id == msgId);
+        let account = await browser.accounts.get(msg.folderAccountId);
+        let identityId;
+
+        if (!account) {
+          identityId = (await browser.accounts.list())[0].identityId;
+        } else {
+          identityId = account.identities[0]?.id;
+        }
+
         await browser.compose.beginNew({
-          identityId: account.identities[0]?.id,
+          identityId,
           to: dest
         });
       } else {
@@ -1903,9 +1763,10 @@ const summaryActions = {
   },
 
   forwardConversation() {
-    return async () => {
+    return async (dispay, getState) => {
       try {
-        await Conversations.currentConversation.forward();
+        let state = getState();
+        await conversationUtils.forward(state.summary.tabId, state.messages.msgData);
       } catch (e) {
         console.error(e);
       }
@@ -1925,12 +1786,8 @@ const summaryActions = {
       // and move on.
 
 
-      const {
-        summary
-      } = getState();
-
-      if (summary.conversation?.getMessage) {
-        const msg = summary.conversation.getMessage(msgUri);
+      if (Conversations.currentConversation?.getMessage) {
+        let msg = Conversations.currentConversation.getMessage(msgUri);
 
         if (msg) {
           msg.postStreamMessage(topMail3Pane(window), iframe);
@@ -1949,16 +1806,61 @@ const summaryActions = {
         dispatch(summarySlice.actions.incIframesLoading());
       }
 
-      const {
-        summary
-      } = getState();
-      let message = summary.conversation.getMessage(msgUri); // The message might not be found, if so it has probably been deleted from
+      let msg = Conversations.currentConversation.getMessage(msgUri); // The message might not be found, if so it has probably been deleted from
       // under us, so just continue and not blow up.
 
-      if (message) {
-        message.streamMessage(topMail3Pane(window).msgWindow, docshell);
+      if (msg) {
+        msg.streamMessage(topMail3Pane(window).msgWindow, docshell);
       } else {
         console.warn("Could not find message for streaming", msgUri);
+      }
+    };
+  },
+
+  setMarkAsRead() {
+    return async (dispatch, getState) => {
+      let state = getState();
+      let autoMarkRead = await browser.conversations.getCorePref("mailnews.mark_message_read.auto");
+
+      if (autoMarkRead) {
+        let delay = 0;
+        let shouldDelay = await browser.conversations.getCorePref("mailnews.mark_message_read.delay");
+
+        if (shouldDelay) {
+          delay = (await browser.conversations.getCorePref("mailnews.mark_message_read.delay.interval")) * 1000;
+        }
+
+        markAsReadTimer = setTimeout(async function () {
+          markAsReadTimer = null;
+
+          if (state.summary.initialSet.length > 1) {
+            // If we're selecting a thread, mark thee whole conversation as read.
+            // Note: if two or more in different threads are selected, then
+            // the conversation UI is not used. Hence why this is ok to do here.
+            if (state.summary.prefs.loggingEnabled) {
+              console.debug("Marking the whole conversation as read");
+            }
+
+            for (let msg of state.messages.msgData) {
+              if (!msg.read) {
+                await dispatch(messageActions.markAsRead({
+                  id: msg.id
+                }));
+              }
+            }
+          } else {
+            // We only have a single message selected, mark that as read.
+            if (state.summary.prefs.loggingEnabled) {
+              console.debug("Marking selected message as read");
+            } // We use the selection from the initial set, just in case something
+            // changed before we hit the timer.
+
+
+            await dispatch(messageActions.markAsRead({
+              id: state.summary.initialSet[0]
+            }));
+          }
+        }, delay);
       }
     };
   }
@@ -1986,11 +1888,13 @@ const summarySlice = redux_toolkit_esm/* createSlice */.oM({
     }) {
       const {
         isInTab,
+        isStandalone,
         tabId,
         windowId
       } = payload;
       return { ...state,
         isInTab,
+        isStandalone,
         tabId,
         windowId
       };
@@ -2005,8 +1909,7 @@ const summarySlice = redux_toolkit_esm/* createSlice */.oM({
         browserBackgroundColor,
         defaultFontSize,
         defaultDetailsShowing,
-        browserVersion,
-        hideQuickReply
+        browserVersion
       } = payload;
       let tenPxFactor = 0.625;
 
@@ -2023,11 +1926,22 @@ const summarySlice = redux_toolkit_esm/* createSlice */.oM({
         defaultFontSize,
         defaultDetailsShowing,
         // Thunderbird 81 has built-in PDF viewer.
+        // Note: the logic here is the wrong way around, but not bothering
+        // to change that on the 3.2+ branch.
         hasBuiltInPdf: mainVersion >= 81,
         hasIdentityParamsForCompose: mainVersion > 78 || mainVersion == 78 && minorVersion >= 6,
-        hideQuickReply,
         OS,
         tenPxFactor
+      };
+    },
+
+    setUserPreferences(state, {
+      payload
+    }) {
+      return { ...state,
+        prefs: { ...state.prefs,
+          ...payload
+        }
       };
     },
 
@@ -2307,7 +2221,8 @@ store.dispatch(composeActions.initCompose({
 /******/ 				}
 /******/ 				if(fulfilled) {
 /******/ 					deferred.splice(i--, 1)
-/******/ 					result = fn();
+/******/ 					var r = fn();
+/******/ 					if (r !== undefined) result = r;
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
@@ -2399,7 +2314,7 @@ store.dispatch(composeActions.initCompose({
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [415,800,829,533], () => (__webpack_require__(6720)))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [415,928,829,533], () => (__webpack_require__(4750)))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

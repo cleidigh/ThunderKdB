@@ -14,7 +14,7 @@ var quicktext = {
   mPickedIndex:         null,
   mOS:                  "WINNT"
 ,
-  init: function()
+  init: async function()
   {
     if (!this.mLoaded)
     {
@@ -28,7 +28,7 @@ var quicktext = {
       this.mOS = appInfo.OS;
 
       gQuicktext.addObserver(this);
-      var hasLoadedBefore = !gQuicktext.loadSettings(false);
+      var hasLoadedBefore = !(await gQuicktext.loadSettings(false));
 
       var states = gQuicktext.collapseState;
       if (states != "")
@@ -261,15 +261,6 @@ var quicktext = {
       this.generalChangeMade(aIndex);
     else
       this.noGeneralChangeMade(aIndex);
-  }
-,
-  onResize: function()
-  {
-    let textElement = document.getElementById("text");
-    textElement.style.height = (textElement.parentElement.clientHeight - 5) + "px";
-
-    let scriptElement = document.getElementById("script");
-    scriptElement.style.height = (scriptElement.parentElement.clientHeight - 5) + "px";
   }
 ,
   checkForTextChanges: function(aIndex)
@@ -870,8 +861,7 @@ var quicktext = {
         elements[i].hidden = false;
       else
         elements[i].hidden = true;
-    }
-    this.onResize();    
+    } 
   }
 ,
 
@@ -1420,7 +1410,7 @@ var quicktext = {
 ,
   resetCounter: function()
   {
-    gQuicktext.preferences.setPref("counter", 0);
+    notifyTools.notifyBackground({command:"setPref", pref: "counter", value: 0});
   }
 ,
   shortcutModifierChange: function()

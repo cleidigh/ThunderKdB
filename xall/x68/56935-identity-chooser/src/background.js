@@ -9,9 +9,28 @@ class IdentityChooser {
   async run() {
     console.debug("IdentityChooser#run -- begin");
 
-    await this.icOptions.setupDefaultOptions();
+    try {
+      await this.icOptions.setupDefaultOptions();
+    } catch (error) {
+      //
+      // Workaround. Several users report issues with Cardboox and
+      // Identity Chooser accessing the browser.local store
+      // (https://github.com/speedball2001/identitychooser-mx/issues/18:
+      //
+      //    20:30:33.873 TransactionInactiveError: A request was placed
+      //    against a transaction which is currently not active, or which
+      //    is finished. IndexedDB.jsm:101:46
+      //
+      // Assuming that this error is caused by a timing issue while
+      // accessing the store concurrently, we simply try to circumvent this by
+      // reloading ourselves
 
-    browser.icApi.onIdentityChosen.addListener((identityId, action, info) => this.identityChosen(identityId, action, info));
+      console.debug("Caught exception while reading settings. Reloading extension.", error);
+      browser.runtime.reload();
+    }
+
+    browser.icApi.onIdentityChosen.addListener(
+        (identityId, action, windowId, info) => this.identityChosen(identityId, action, windowId, info));
     console.debug('IdentityChooser#run: onIdentityChosen listener registered');
 
     console.debug('IdentityChooser#run: iterate over accounts and identities');
@@ -102,9 +121,9 @@ class IdentityChooser {
     console.debug("IdentityChooser#initUI -- end");
   }
 
-  async identityChosen(identityId, action, info) {
+  async identityChosen(identityId, action, windowId, info) {
     console.debug('IdentityChooser#identityChosen -- begin');
-    console.debug(`IdentityChooser#identityChosen: identityId: ${identityId}, action: ${action}, info: ${info}`);
+    console.debug(`IdentityChooser#identityChosen: identityId: ${identityId}, action: ${action}, windowId: ${windowId}, info: ${info}`);
 
     var messageFormat = await browser.composePrefsApi.getMessageFormat(identityId);
 
@@ -122,58 +141,58 @@ class IdentityChooser {
       if(messageFormat == "text/plain") {
         browser.compose.beginNew({
           "identityId": identityId,
-          "isPlainText" : true,
-          "plainTextBody": ""
+          "isPlainText" : true
         });
       } else {
         browser.compose.beginNew({
           "identityId": identityId,
-          "isPlainText" : false,
-          "body": ""
+          "isPlainText" : false
         });
       }
     } else if(action == "reply") {
-      var tabs = await browser.tabs.query({ active: true, currentWindow: true });
+      var tabs = await browser.tabs.query({ "windowId": windowId });
       for (let tab of tabs) {
         var msg = await browser.messageDisplay.getDisplayedMessage(tab.id);
-        console.debug('IdentityChooser#identityChosen: reply to message: ', msg);
-        if(messageFormat == "text/plain") {
-          browser.compose.beginReply(msg.id,
-                                     "replyToSender",
-                                     { "identityId": identityId,
-                                       "isPlainText" : true,
-                                       "plainTextBody": ""
-                                     });
-        } else {
-          browser.compose.beginReply(msg.id,
-                                     "replyToSender",
-                                     { "identityId": identityId,
-                                       "isPlainText" : false,
-                                       "body": ""
-                                     });
+
+        if(msg != null) {
+          console.debug('IdentityChooser#identityChosen: reply to message: ', msg);
+
+          if(messageFormat == "text/plain") {
+            browser.compose.beginReply(msg.id,
+                                       "replyToSender",
+                                       { "identityId": identityId,
+                                         "isPlainText" : true
+                                       });
+          } else {
+            browser.compose.beginReply(msg.id,
+                                       "replyToSender",
+                                       { "identityId": identityId,
+                                         "isPlainText" : false
+                                       });
+          }
         }
       }
     } else if(action == "replyAll") {
-      var tabs = await browser.tabs.query({ active: true, currentWindow: true });
+      var tabs = await browser.tabs.query({ "windowId": windowId });
       for (let tab of tabs) {
         var msg = await browser.messageDisplay.getDisplayedMessage(tab.id);
 
         console.debug('IdentityChooser#identityChosen: reply all to  message: ',
                       msg);
-        if(messageFormat == "text/plain") {
-          browser.compose.beginReply(msg.id,
-                                     "replyToAll",
-                                     { "identityId": identityId,
-                                       "isPlainText" : true,
-                                       "plainTextBody": ""
-                                     });
-        } else {
-          browser.compose.beginReply(msg.id,
-                                     "replyToAll",
-                                     { "identityId": identityId,
-                                       "isPlainText" : false,
-                                       "body": ""
-                                     });
+        if(msg != null) {
+          if(messageFormat == "text/plain") {
+            browser.compose.beginReply(msg.id,
+                                       "replyToAll",
+                                       { "identityId": identityId,
+                                         "isPlainText" : true
+                                       });
+          } else {
+            browser.compose.beginReply(msg.id,
+                                       "replyToAll",
+                                       { "identityId": identityId,
+                                         "isPlainText" : false
+                                       });
+          }
         }
       }
     } else if(action == "forward") {
@@ -181,26 +200,27 @@ class IdentityChooser {
       console.debug('IdentityChooser#identityChosen: forwardType: ',
                     forwardType);
 
-      var tabs = await browser.tabs.query({ active: true, currentWindow: true });
+      var tabs = await browser.tabs.query({ "windowId": windowId });
       for (let tab of tabs) {
         var msg = await browser.messageDisplay.getDisplayedMessage(tab.id);
         var window = await browser.windows.getCurrent();
 
         console.debug('IdentityChooser#identityChosen: forward  message: ',
                       msg);
-        if(!info.includes("Shift")) {
-          browser.icForwardApi.beginForward(msg,
-                                            forwardType,
-                                            { "identityId": identityId,
-                                              "format" : "Default"
-                                            });
-        } else {
-          browser.icForwardApi.beginForward(msg,
-                                            forwardType,
-                                            { "identityId": identityId,
-                                              "format" : "OppositeOfDefault",
-                                              "body": ""
-                                            });
+        if(msg != null) {
+          if(!info.includes("Shift")) {
+            browser.icForwardApi.beginForward(msg,
+                                              forwardType,
+                                              { "identityId": identityId,
+                                                "format" : "Default"
+                                              });
+          } else {
+            browser.icForwardApi.beginForward(msg,
+                                              forwardType,
+                                              { "identityId": identityId,
+                                                "format" : "OppositeOfDefault"
+                                              });
+          }
         }
       }
     }

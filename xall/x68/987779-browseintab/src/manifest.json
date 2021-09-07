@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
-  "version": "2.8",
+  "version": "3.0.1",
   "author": "alta88",
   "homepage_url": "https://bitbucket.org/alta8888/browseintab",
   "default_locale": "en",
@@ -10,12 +10,14 @@
   "applications": {
     "gecko": {
       "id": "browseintab@mozdev.org",
-      "strict_min_version": "78.0a1"
+      "strict_min_version": "91.0a1"
     }
   },
 
   "permissions": [
-    "storage"
+    "storage",
+    "tabs",
+    "<all_urls>"
   ],
 
   "options_ui": {
@@ -31,10 +33,6 @@
     "scripts": [
       "background.js"
     ]
-  },
-
-  "user_scripts": {
-    "api_script": "content/browseintab.js"
   },
 
   "experiment_apis": {

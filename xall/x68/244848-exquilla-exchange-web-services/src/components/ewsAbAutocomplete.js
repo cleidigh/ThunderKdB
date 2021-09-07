@@ -13,6 +13,11 @@
 
 const { classes: Cc, Constructor: CC, interfaces: Ci, utils: Cu, Exception: CE, results: Cr, } = Components;
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
+try { // COMPAT for TB 78 (bug 1649554)
+  var { ComponentUtils } = ChromeUtils.import("resource://gre/modules/ComponentUtils.jsm");
+} catch (ex) { // COMPAT for TB 78 (bug 1649554)
+  var ComponentUtils = XPCOMUtils; // COMPAT for TB 78 (bug 1649554)
+} // COMPAT for TB 78 (bug 1649554)
 ChromeUtils.defineModuleGetter(this, "Utils",
   "resource://exquilla/ewsUtils.jsm");
 ChromeUtils.defineModuleGetter(this, "Services",
@@ -179,7 +184,7 @@ EwsAbAutoCompleteResult.prototype = {
 
   // nsISupports:
 
-  QueryInterface: ChromeUtils.generateQI([Ci.nsIAutoCompleteResult]),
+  QueryInterface: ChromeUtils.generateQI(["nsIAutoCompleteResult"]),
 
 };
 
@@ -193,7 +198,7 @@ function EwsAbAutoCompleteSearch() {
 
 EwsAbAutoCompleteSearch.prototype = {
   classID:    Components.ID("AB68A3B5-2971-40d3-89FA-0AE1D9611224"),
-  QueryInterface: ChromeUtils.generateQI([Ci.nsIAutoCompleteSearch]),
+  QueryInterface: ChromeUtils.generateQI(["nsIAutoCompleteSearch"]),
 
   /*
    * Search for a given string and notify a listener (either synchronously
@@ -245,10 +250,9 @@ EwsAbAutoCompleteSearch.prototype = {
     // Scan through all address books, looking for GAL accounts
     let directories = MailServices.ab.directories;
     let galDirectories = [];
-    while (directories.hasMoreElements())
+    for (let directory of directories)
     {
-      let directory = directories.getNext();
-      let jsEwsDirectory = safeGetJS(directory);
+        let jsEwsDirectory = safeGetJS(directory);
       if (jsEwsDirectory && jsEwsDirectory.isGAL)
         galDirectories.push(directory);
     }
@@ -282,5 +286,5 @@ EwsAbAutoCompleteSearch.prototype = {
 
 };
 
-var NSGetFactory = XPCOMUtils.generateNSGetFactory([EwsAbAutoCompleteSearch]);
+var NSGetFactory = ComponentUtils.generateNSGetFactory([EwsAbAutoCompleteSearch]);
 var EXPORTED_SYMBOLS = ["NSGetFactory"];

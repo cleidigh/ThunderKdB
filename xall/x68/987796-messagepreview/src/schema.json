@@ -3,27 +3,15 @@
     "namespace": "messagepreview",
     "functions": [
       {
-        "name": "notifyLocaleMessages",
+        "name": "notifyStorageLocalChanged",
         "type": "function",
-        "description": "Make the current locale's messages.json map available to an overlay extension implementing an observer for 'extension:locale-messages'.",
-        "async": false,
-        "parameters": []
-      },
-      {
-        "name": "notifyStorageLocal",
-        "type": "function",
-        "description": "Make local indexedDB storage available to an overlay extension implementing an observer for 'extension:storage-local'.",
+        "description": "Make local indexedDB storage key-value object available to an overlay extension implementing an observer for 'extension:storage-local-changed'.",
         "async": false,
         "parameters": [
           {
             "name": "storageLocalData",
             "type": "any",
-            "description": "The storage.local object for this extension."
-          },
-          {
-            "name": "startup",
-            "type": "boolean",
-            "description": "If true, we are in startup, wait for ready notification; otherwise send data."
+            "description": "A storage.local key-value object for this extension."
           }
         ]
       },
@@ -42,6 +30,11 @@
             "name": "windowType",
             "type": "string",
             "description": "The windowType."
+          },
+          {
+            "name": "loadSync",
+            "type": "boolean",
+            "description": "If true, use loadSubScript(), else use async compileScript()."
           }
         ]
       }

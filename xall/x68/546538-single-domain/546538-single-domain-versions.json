@@ -4,7 +4,7 @@
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "91.*",
                 "min": "76.0"
             }
         },
@@ -29,7 +29,7 @@
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 3338,
             "name": {
@@ -41,7 +41,7 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "This version takes account of past user requests:\n\n1. Now if users put in multiple domains separated by spaces then these domains will be taken together.\nIf the Domain preference were \"<a href=\"http://gmail.com\" rel=\"nofollow\">gmail.com</a> <a href=\"http://protonmail.com\" rel=\"nofollow\">protonmail.com</a>\" (without speech marks) then any emails with only these domains would not be subject to a warning but any email with either or both and a third domain would give rise to a warning.\n\n2. If users put a @at the beginning of the Domain preference such as @gmail.com then emails sent to admin@lists.gmail.com would give rise to a warning whereas in the past this email would have gone without warning."
+            "en-US": "This version takes account of past user requests:\n\n1. Now if users put in multiple domains separated by spaces then these domains will be taken together.\nIf the Domain preference were \"<a rel=\"nofollow\" href=\"http://gmail.com\">gmail.com</a> <a rel=\"nofollow\" href=\"http://protonmail.com\">protonmail.com</a>\" (without speech marks) then any emails with only these domains would not be subject to a warning but any email with either or both and a third domain would give rise to a warning.\n\n2. If users put a @at the beginning of the Domain preference such as @gmail.com then emails sent to admin@lists.gmail.com would give rise to a warning whereas in the past this email would have gone without warning."
         },
         "reviewed": null,
         "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/single-domain/versions/3.8",
@@ -77,7 +77,7 @@
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 3338,
             "name": {
@@ -122,7 +122,7 @@
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 3338,
             "name": {
@@ -167,7 +167,7 @@
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 3338,
             "name": {
@@ -214,7 +214,7 @@
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 3338,
             "name": {
@@ -259,7 +259,7 @@
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 3338,
             "name": {

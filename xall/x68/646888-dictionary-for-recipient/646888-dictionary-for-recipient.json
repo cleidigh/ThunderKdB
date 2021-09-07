@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/6/6190/6190978.png?modified=1597937434"
         }
     ],
-    "average_daily_users": 3573,
+    "average_daily_users": 3907,
     "categories": {
         "thunderbird": [
             "language-support"
@@ -18,30 +18,30 @@
     "contributions_url": "https://www.paypal.me/jorgk",
     "created": "2015-08-25T03:54:57Z",
     "current_version": {
-        "id": 2476103,
+        "id": 2476375,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "102.0",
                 "min": "68.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dictionary-for-recipient/versions/2476103",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dictionary-for-recipient/versions/2476375",
         "files": [
             {
-                "id": 1019263,
-                "created": "2021-07-17T18:44:00Z",
-                "hash": "sha256:73f5dd24f00580ecbe338c7b5d6646d79c0e36a13811d6de4065a2be3ea219c4",
+                "id": 1019535,
+                "created": "2021-09-02T18:28:50Z",
+                "hash": "sha256:c66790e0b92ca408b726c4bbfa675ed019865ab9bf006168d7f305193931c41e",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 3861,
+                "size": 3870,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019263/dictionary_for_recipient-2.0.4-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019535/dictionary_for_recipient-2.0.5-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 7057,
             "name": {
@@ -50,11 +50,11 @@
             "url": null
         },
         "release_notes": {
-            "en-US": "Compatibility with TB 91."
+            "en-US": "No change."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dictionary-for-recipient/versions/2.0.4",
-        "version": "2.0.4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dictionary-for-recipient/versions/2.0.5",
+        "version": "2.0.5"
     },
     "default_locale": "en-US",
     "description": {
@@ -75,7 +75,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-07-17T18:47:48Z",
+    "last_updated": "2021-09-02T18:30:18Z",
     "name": {
         "en-US": "Dictionary for recipient"
     },
@@ -109,9 +109,11 @@
     "weekly_downloads": 50,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
             "comp68": true,
+            "comp69plus": true,
+            "comp78plus": true,
+            "comp61plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-04-04T23:13:17Z"
         }

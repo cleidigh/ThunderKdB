@@ -31,12 +31,9 @@ function template() {
 	win.mailmergeutils.template.attachments = [];
 	
 	let attachments = win.gMsgCompose.compFields.attachments;
-	while(attachments.hasMoreElements()) {
+	for(let attachment of attachments) {
 		
 		try {
-			
-			let attachment = attachments.getNext();
-			attachment.QueryInterface(Ci.nsIMsgAttachment);
 			
 			win.mailmergeutils.template.attachments.push(attachment);
 			
@@ -279,20 +276,14 @@ function addressbook() {
 			try {
 				
 				let addressbooks = Cc["@mozilla.org/abmanager;1"].getService(Ci.nsIAbManager).directories;
-				while(addressbooks.hasMoreElements()) {
+				for(let addressbook of addressbooks) {
 					
 					try {
 						
-						let addressbook = addressbooks.getNext();
-						addressbook.QueryInterface(Ci.nsIAbDirectory);
-						
-						if(win.mailmergeutils.prefs.addressbook && win.mailmergeutils.prefs.addressbook != addressbook.uuid) { continue; }
+						if(win.mailmergeutils.prefs.addressbook && win.mailmergeutils.prefs.addressbook != addressbook.UID) { continue; }
 						
 						let cards = addressbook.childCards;
-						while(cards.hasMoreElements()) {
-							
-							let card = cards.getNext();
-							card.QueryInterface(Ci.nsIAbCard);
+						for(let card of cards) {
 							
 							if(card.isMailList) { continue; }
 							
@@ -334,14 +325,11 @@ function addressbook() {
 			try {
 				
 				let addressbooks = Cc["@mozilla.org/abmanager;1"].getService(Ci.nsIAbManager).directories;
-				while(addressbooks.hasMoreElements()) {
+				for(let addressbook of addressbooks) {
 					
 					try {
 						
-						let addressbook = addressbooks.getNext();
-						addressbook.QueryInterface(Ci.nsIAbDirectory);
-						
-						if(win.mailmergeutils.prefs.addressbook && win.mailmergeutils.prefs.addressbook != addressbook.uuid) { continue; }
+						if(win.mailmergeutils.prefs.addressbook && win.mailmergeutils.prefs.addressbook != addressbook.UID) { continue; }
 						
 						card = addressbook.getCardFromProperty("PrimaryEmail", arrMatches, false);
 						if(card) { break; }
@@ -901,7 +889,6 @@ function compose(index) {
 	
 	/* compfields start */
 	compFields.attachVCard = win.gMsgCompose.compFields.attachVCard;
-	compFields.characterSet = win.gMsgCompose.compFields.characterSet;
 	compFields.contentLanguage = win.gMsgCompose.compFields.contentLanguage;
 	compFields.DSN = win.gMsgCompose.compFields.DSN;
 	compFields.organization = win.gMsgCompose.compFields.organization;

@@ -1,33 +1,58 @@
 /* All platforms */
 
+@namespace html url("http://www.w3.org/1999/xhtml");
+
 /* New tab button on the tabbar. */
 #new-tab-button {
-  list-style-image: url("chrome://messenger/skin/icons/new.svg");
+  list-style-image: url("chrome://global/skin/icons/add.svg");
 }
 
-.tabmail-tab[type="contentTab"][label=""] .tab-text.tab-label::before {
-  content: attr(tabtitlelabel);
+/* Move to MoreLayouts? */
+.tabmail-tab[selected]:focus .tab-background {
+  outline-width: 2px;
+  outline-style: solid;
+  outline-color: var(--focus-outline-color);
+  outline-offset: -2px;
+  border-radius: var(--toolbarbutton-border-radius); /* 3px; */
+}
+.tabmail-tab[selected]:focus .tab-background:-moz-lwtheme {
+  outline-color: var(--toolbar-field-focus-border-color);
+  outline-offset: -3px;
+}
+.tabmail-tab[selected]:focus .tab-background > .tab-line[selected="true"] {
+  background-color: transparent;
 }
 
-/* Make the fake urlbar look like someone cares.. */
+.tabmail-tab[visuallyselected]:focus::before,
+.tabmail-tab[visuallyselected]:focus::after,
+.tabmail-tab[visuallyselected]:focus + .tabmail-tab::before,
+#tabmail-arrowscrollbox[orient="vertical"] > .tabmail-tab[selected]:focus .tab-background[selected="true"],
+.tabmail-tab[selected]:focus > .tab-stack > .tab-content > .tab-label-container {
+  border-color: transparent;
+}
+
+/* Contextmenus */
+#copyUrlPopup[linknode] > menuitem.urlpopup,
+#aboutPagesContext[linknode] > menuitem.urlpopup {
+  display: block;
+}
+
+#copyUrlPopup > menuitem.urlpopup,
+#aboutPagesContext > menuitem.urlpopup,
+#copyUrlPopup[linknode] > menuitem:not(.urlpopup),
+#aboutPagesContext[linknode] > menuitem:not(.urlpopup) {
+  display: none;
+}
+
+/*******************************************************************************
+ *  Make the fake urlbar look like someone cares..
+ ******************************************************************************/
 #url-toolbox {
   visibility: visible;
-  /*
-  opacity: 1;
-  transition-property: opacity, visibility;
-  transition-duration: 2s;
-  transition-delay: 2s;
-  transition-timing-function: ease-in-out, ease-in-out, linear; */
 }
 #url-toolbox[hidden] {
   display: block;
   visibility: collapse;
-  /*
-  opacity: 0;
-  transition-property: opacity, visibility;
-  transition-duration: 2s;
-  transition-delay: 2s;
-  transition-timing-function: ease-in-out, ease-in-out, linear;*/
 }
 
 #back-button {
@@ -48,225 +73,134 @@
   list-style-image: url("chrome://messenger/skin/icons/stop.svg");
 }
 
-#reload-button:not([displaystop]) + #stop-button,
-#reload-button[displaystop] {
-  display: none;
+/*******************************************************************************
+ * Include browser.css from Fx.
+%include browser.css
+ ******************************************************************************/
+
+/*******************************************************************************
+ * For extra browser.css from shared/browser.inc.css (partial).
+ * 41cd945ed2443dc592f2674b16c5bdda5620995f
+ * created 2021-06-25 00:03 +0000
+ * pushed 2021-06-25 09:34 +0000
+ ******************************************************************************/
+:root {
+  --button-bgcolor: color-mix(in srgb, currentColor 13%, transparent);
+  --button-hover-bgcolor: color-mix(in srgb, currentColor 17%, transparent);
+  --button-active-bgcolor: color-mix(in srgb, currentColor 30%, transparent);
+  --button-color: currentColor;
+
+  --identity-box-margin-inline: 4px;
+  --identity-box-label-opacity: .8;
+  --urlbar-box-bgcolor: var(--button-bgcolor);
+  --urlbar-box-hover-bgcolor: var(--button-hover-bgcolor);
+  --urlbar-box-active-bgcolor: var(--button-active-bgcolor);
+
+  --urlbar-min-height: 28px; /* Override 32px; */
+  --urlbar-icon-fill-opacity: 0.9;
+  --urlbar-icon-padding: 6px; /* (32px - 2px border - 2px padding - 16px icon) / 2 */
+  /* This should be used for icons and chiclets inside the input field. It makes
+     the gap around them more uniform when they are close to the field edges */
+  --urlbar-icon-border-radius: calc(var(--toolbarbutton-border-radius) - 1px);
+  --urlbar-popup-url-color: -moz-nativehyperlinktext;
+  /* Change from %define to var */
+  --urlbarBreakoutExtend: 2px;
 }
 
-/* The reload-button is only disabled temporarily when it becomes visible
-   to prevent users from accidentally clicking it. We don't however need
-   to show this disabled state, as the flicker that it generates is short
-   enough to be visible but not long enough to explain anything to users.
-#reload-button[disabled]:not(:-moz-window-inactive) > .toolbarbutton-icon {
-  opacity: 1 !important;
-}  */
-
-#urlbar-container > #urlbar {
-  background-clip: padding-box;
-  border: 1px solid;
-  border-color: ThreeDShadow; /* browser.css urlbar default theme */
-  border-radius: 4px; /* var(--toolbarbutton-border-radius); (2px on win) */
-  box-shadow: 0 1px 4px rgba(0,0,0,.05);
-  min-height: 30px;
-  text-shadow: none;
+@media (prefers-contrast) {
+  :root {
+    --autocomplete-popup-separator-color: color-mix(in srgb, currentColor 86%, transparent);
+    --urlbar-icon-fill-opacity: 1;
+  }
 }
 
-#urlbar-container:-moz-lwtheme > #urlbar {
-  border-color: var(--lwt-toolbar-field-border-color, hsla(240,5%,5%,.25));
-}
+/*******************************************************************************
+ * End extra browser.inc.css
+ ******************************************************************************/
 
-#urlbar-input-container {
-  -moz-box-align: center;
-}
+/*******************************************************************************
+ * End browser.css
+ ******************************************************************************/
 
-/* From identity-block.inc.css */
-#identity-box {
-  padding-inline: 6px;
-  margin-inline-end: 2px;
-  fill: currentColor;
-  fill-opacity: .6;
-}
+/*******************************************************************************
+ * Include identity-block.inc.css from Fx.
+%include identity-block.inc.css
+ ******************************************************************************/
 
-#identity-box.chromeUI > #identity-icon-label,
-.urlbar-label {
-  opacity: .6;
-}
-#identity-icon-label {
-  padding-inline-start: 4px;
-}
-#identity-box.chromeUI,
-#identity-box.extensionPage {
-  padding-inline-end: 8px;
+/*******************************************************************************
+ * TODO: For extra identity-block.inc.css from [os]/browser.css.
+ ****************************************************************************** /
+
+
+/*******************************************************************************
+ * End extra identity-block.inc.css
+ ******************************************************************************/
+
+/* These 3 rules are to display about:blank in messagepane properly */
+#identity-box[pageproxystate="invalid"].chromeUI {
   margin-inline-end: 8px;
-  /* var(--urlbar-separator-color) */
-  border-inline-end: 1px solid ThreeDShadow;
-  border-image: linear-gradient(transparent 15%, ThreeDShadow 15%,
-                                ThreeDShadow 85%, transparent 85%);
-  border-image-slice: 1;
 }
-#identity-icon {
-  width: 16px;
-  height: 16px;
-  margin-inline-start: 0;
-  -moz-context-properties: fill, fill-opacity;
+#identity-box[pageproxystate="invalid"].chromeUI > .identity-box-button {
+  padding-inline: 8px;
+  border-radius: var(--urlbar-icon-border-radius);
+  background-color: var(--urlbar-box-bgcolor);
 }
-#identity-icon {
-  margin-inline-start: 0;
-  list-style-image: url(chrome://global/skin/icons/identity-icon.svg);
+#identity-box[pageproxystate="invalid"].chromeUI #identity-icon-label {
+  display: inline-block;
+  opacity: var(--identity-box-label-opacity);
 }
-#identity-box[loading="true"] > #identity-icon {
-  background-image: url(chrome://global/skin/icons/loading.png);
-  background-repeat: no-repeat;
-  list-style-image: none;
-}
-X#identity-box[pageproxystate="valid"].unknownIdentity > #identity-icon {
-  list-style-image: url(chrome://global/skin/icons/identity-icon.svg);
-}
-#identity-box[pageproxystate="valid"].chromeUI > #identity-icon {
-  /* list-style-image: url(chrome://branding/content/icon48.png); */
-}
-#identity-box[pageproxystate="valid"].localResource > #identity-icon {
-  /* This is in Fx 79, use file-item.svg for now
-  list-style-image: url(chrome://global/skin/icons/document.svg); */
-  list-style-image: url(chrome://messenger/skin/icons/file-item.svg);
-}
-#identity-box[pageproxystate="valid"].extensionPage > #identity-icon {
+
+#identity-box[pageproxystate="valid"].extensionPage #identity-icon {
   list-style-image: url(chrome://messenger/content/extension.svg);
 }
-#identity-box[pageproxystate="valid"].verifiedDomain > #identity-icon,
-#identity-box[pageproxystate="valid"].mixedActiveBlocked > #identity-icon {
-  list-style-image: url(chrome://messenger/skin/icons/connection-secure.svg);
-}
-/* connection-mixed-passive-loaded.svg */
-#identity-box[pageproxystate="valid"].weakCipher > #identity-icon,
-#identity-box[pageproxystate="valid"].mixedDisplayContent > #identity-icon,
-#identity-box[pageproxystate="valid"].mixedDisplayContentLoadedActiveBlocked > #identity-icon,
-#identity-box[pageproxystate="valid"].certUserOverridden > #identity-icon,
-#identity-box[pageproxystate="valid"].certErrorPage > #identity-icon {
-  list-style-image: url(chrome://messenger/skin/icons/connection-mixed.svg);
-  fill: unset;
-}
-/* connection-mixed-active-loaded.svg */
-#identity-box[pageproxystate="valid"].notSecure > #identity-icon,
-#identity-box[pageproxystate="valid"].mixedActiveContent > #identity-icon,
-#identity-box[pageproxystate="valid"].httpsOnlyErrorPage > #identity-icon {
-  list-style-image: url(chrome://messenger/skin/icons/connection-insecure.svg);
+
+/* Size the box */
+#identity-icon-box {
+  padding-block: 2px;
+  margin-inline-start: 2px;
 }
 
-/* End identity-block.inc.css */
-
-
-/* ::::: location bar ::::: */
-
-#urlbar-input {
-  -moz-box-flex: 1;
-  background-color: transparent;
-  color: inherit;
-  border: none;
-  margin: 0;
-  padding: 0;
-  outline: none;
-
-  mask-repeat: no-repeat;
-  unicode-bidi: plaintext;
-  text-align: match-parent;
-  cursor: text;
-  line-height: 1em;
+/* To display uncropped extension name. */
+#identity-box[pageproxystate="valid"].extensionPage > .identity-box-button {
+  display: flex;
 }
-
-#urlbar-input[readonly] {
-  opacity: 0.6;
+#identity-box[pageproxystate="valid"].extensionPage #identity-icon-label {
+  width: max-content;
 }
+/*******************************************************************************
+ * End identity-block.inc.css
+ ******************************************************************************/
 
-/* Align URLs to the right in RTL mode. */
-#urlbar-input:-moz-locale-dir(rtl) {
-  text-align: right !important;
+
+/*******************************************************************************
+ * Include urlbar-searchbar.inc.css from Fx.
+%include urlbar-searchbar.inc.css
+ ******************************************************************************/
+
+/*******************************************************************************
+ * Override urlbar-searchbar.inc.css
+ ******************************************************************************/
+
+#urlbar-container {
+  padding-block: 0;
+  margin-inline: 5px; /* @urlbarMarginInline@ */
 }
-
-/* Make sure that the location bar's alignment changes according
-   to the input box direction if the user switches the text direction using
-   cmd_switchTextDirection (which applies a dir attribute to the <input>). */
-#urlbar-input[dir=ltr]:-moz-locale-dir(rtl) {
-  text-align: left !important;
+#urlbar {
+  height: var(--urlbar-min-height);
 }
-
-#urlbar-input[dir=rtl]:-moz-locale-dir(ltr) {
-  text-align: right !important;
-}
-
-/* Go button */
-.urlbar-icon {
-  width: 28px;
-  height: 28px;
-  padding: 6px; /* var(--urlbar-icon-padding); */
-  -moz-context-properties: fill, fill-opacity;
-  fill: currentColor;
-  fill-opacity: 0.6;
-  color: inherit;
-}
-
-#urlbar-go-button,
-.search-go-button {
+#urlbar-go-button {
   list-style-image: url("chrome://messenger/skin/icons/goforward.svg");
 }
-#urlbar-go-button:-moz-locale-dir(rtl),
-.search-go-button:-moz-locale-dir(rtl) {
-  transform: scaleX(-1);
+#urlbar:not([focused="true"]):hover > #urlbar-background {
+  border-color: hsla(240,5%,5%,.35); /* @fieldHoverBorderColor@; */
+  box-shadow: 0 1px 6px rgba(0,0,0,.1);
 }
-#urlbar:not([usertyping]) > #urlbar-input-container > #urlbar-go-button,
-#urlbar:not([focused]) > #urlbar-input-container > #urlbar-go-button {
-  display: none;
-}
-:not(.urlbar-icon-wrapper) > .urlbar-icon:not([disabled]):hover,
- .urlbar-icon-wrapper:not([disabled]):hover {
-    background-color: hsla(0,0%,70%,.2);
+#urlbar[focused="true"] > #urlbar-background {
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: -1px;
 }
 
-/* Zoom button */
-#urlbar-zoom-button {
-  margin-inline: 6px;
-}
-#urlbar-zoom-button {
-  -moz-appearance: none;
-  color: inherit;
-  font-size: .8em;
-  padding: 0 8px;
-  border-radius: 1em;
-  background-color: hsla(0,0%,0%,.05);
-  border: 1px solid hsla(210,4%,50%,.3);
-}
-#urlbar-zoom-button:hover {
-  background-color: hsla(0,0%,0%,.1);
-}
-#urlbar-zoom-button:hover:active {
-  background-color: hsla(0,0%,0%,.15);
-}
-:root[lwt-toolbar-field-brighttext] #urlbar-zoom-button:hover {
-  background-color: rgba(255,255,255,.2);
-}
-:root[lwt-toolbar-field-brighttext] #urlbar-zoom-button:hover:active {
-  background-color: rgba(255,255,255,.3);
-}
-#urlbar-zoom-button:-moz-focusring {
-  outline: var(--toolbarbutton-focus-outline);
-  outline-offset: unset;
-  -moz-outline-radius: 1em;
-}
-#urlbar-zoom-button > .toolbarbutton-text {
-  display: inline;
-}
-#urlbar-zoom-button > .toolbarbutton-icon {
-  display: none;
-}
-
-#copyUrlPopup[linknode] > menuitem.urlpopup,
-#aboutPagesContext[linknode] > menuitem.urlpopup {
-  display: block;
-}
-
-#copyUrlPopup > menuitem.urlpopup,
-#aboutPagesContext > menuitem.urlpopup,
-#copyUrlPopup[linknode] > menuitem:not(.urlpopup),
-#aboutPagesContext[linknode] > menuitem:not(.urlpopup) {
-  display: none;
-}
+/*******************************************************************************
+ * End urlbar-searchbar.inc.css
+ ******************************************************************************/

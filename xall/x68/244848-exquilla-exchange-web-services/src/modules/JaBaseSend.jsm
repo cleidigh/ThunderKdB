@@ -33,7 +33,6 @@ JaBaseSend.Properties = {
                         Ci.nsIMsgOperationListener,
                         Ci.nsISupportsWeakReference,
                         Ci.msgIOverride,
-                        Ci.nsISupports,
                         Ci.nsIInterfaceRequestor,
                         ],
 

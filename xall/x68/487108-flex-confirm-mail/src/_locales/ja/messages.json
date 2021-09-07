@@ -51,6 +51,14 @@
   "confirmAttentionTermsCancel": { "message": "キャンセル" },
 
 
+  "alertBlockedDomainsTitle": { "message": "ブロック対象の宛先" },
+  "alertBlockedDomainsMessage": { "message": "ブロック対象のドメインに属する以下の宛先があります。\n\n$RECIPIENTS$\n\nこれらの宛先にメールを送ることはできません。",
+    "placeholders": {
+      "recipients": { "content": "$1", "example": "mail@example.com" }
+    }},
+  "alertBlockedDomainsAccept": { "message": "閉じる" },
+
+
   "countdownDialogTitle": { "message": "カウントダウン" },
   "countdownDialogMessage_before": { "message": "あと" },
   "countdownDialogMessage_after": { "message": "秒で送信します" },
@@ -104,6 +112,18 @@
   "config_attentionDomainsConfirmationMode_withAttachments_label": { "message": "添付ファイルがある時だけ再度警告する" },
   "config_attentionDomainsConfirmationMode_never_label": { "message": "再度警告しない" },
 
+
+  "config_blockedDomains_caption": { "message": "送信を禁止する宛先" },
+
+  "config_blockedDomainsSource_caption": { "message": "送信を禁止するドメイン" },
+  "config_blockedDomainsEnabled": { "message": "これらのドメインの宛先を含むメールの送信を禁止する" },
+  "config_blockedDomains_label": { "message": "手動編集のリストを使用" },
+  "config_blockedDomains_input_placeholder": { "message": "ドメイン名を1行ずつ入力（例：example.com）" },
+  "config_blockedDomainsFile_label": { "message": "ファイル形式のリストを使用" },
+  "config_blockedDomainsFile_button_label": { "message": "参照..." },
+  "config_blockedDomainsFile_button_dialogTitle": { "message": "送信を禁止するドメインのリストを選択" },
+  "config_blockedDomainsFile_button_dialogDisplayName": { "message": "リストファイル" },
+  "config_blockedDomainsFile_input_placeholder": { "message": "ファイルのパスを入力（例：\\\\FileServer\\Shared\\domains.txt）" },
 
 
   "config_attachments_caption": { "message": "添付ファイル" },

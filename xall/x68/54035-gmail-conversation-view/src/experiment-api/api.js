@@ -18,10 +18,12 @@ XPCOMUtils.defineLazyModuleGetters(this, {
   msgUriToMsgHdr: "chrome://conversations/content/modules/misc.js",
   NetUtil: "resource://gre/modules/NetUtil.jsm",
   PluralForm: "resource://gre/modules/PluralForm.jsm",
-  Prefs: "chrome://conversations/content/modules/prefs.js",
   Services: "resource://gre/modules/Services.jsm",
+  setLogState: "chrome://conversations/content/modules/misc.js",
   setupLogging: "chrome://conversations/content/modules/misc.js",
 });
+
+XPCOMUtils.defineLazyGlobalGetters(this, ["TextDecoder"]);
 
 // To help updates to apply successfully, we need to properly unload the modules
 // that Conversations loads.
@@ -31,7 +33,6 @@ const conversationModules = [
   // Don't unload these until we can find a way of unloading the attribute
   // providers. Unloading these will break gloda when someone updates.
   // "chrome://conversations/content/modules/plugins/glodaAttrProviders.js",
-  // "chrome://conversations/content/modules/plugins/helpers.js",
   "chrome://conversations/content/modules/plugins/lightning.js",
   "chrome://conversations/content/modules/assistant.js",
   "chrome://conversations/content/modules/browserSim.js",
@@ -39,10 +40,15 @@ const conversationModules = [
   "chrome://conversations/content/modules/hook.js",
   "chrome://conversations/content/modules/message.js",
   "chrome://conversations/content/modules/misc.js",
-  "chrome://conversations/content/modules/prefs.js",
 ];
 
+/**
+ * @typedef nsIMsgDBHdr
+ * @see https://searchfox.org/comm-central/rev/9d9fac50cddfd9606a51c4ec3059728c33d58028/mailnews/base/public/nsIMsgHdr.idl#14
+ */
+
 const kAllowRemoteContent = 2;
+const nsMsgViewIndex_None = 0xffffffff;
 
 // Note: we must not use any modules until after initialization of prefs,
 // otherwise the prefs might not get loaded correctly.
@@ -142,6 +148,9 @@ function monkeyPatchWindow(win, windowId) {
   win.Conversations.finishedStartup = true;
 }
 
+/**
+ * Handles observing updates on windows.
+ */
 class ApiWindowObserver {
   constructor(windowManager, callback) {
     this._windowManager = windowManager;
@@ -274,25 +283,23 @@ var conversations = class extends ExtensionCommon.ExtensionAPI {
     const { windowManager } = extension;
     return {
       conversations: {
-        async setPref(name, value) {
-          Prefs[name] = value;
+        async startup(loggingEnabled) {
+          setLogState(loggingEnabled);
 
-          if (name == "finishedStartup") {
-            Log.debug("startup");
+          Log.debug("startup");
 
-            try {
-              // Patch all existing windows when the UI is built; all locales should have been loaded here
-              // Hook in the embedding and gloda attribute providers.
-              GlodaAttrProviders.init();
-              apiMonkeyPatchAllWindows(windowManager, monkeyPatchWindow);
-              apiWindowObserver = new ApiWindowObserver(
-                windowManager,
-                monkeyPatchWindow
-              );
-              Services.ww.registerNotification(apiWindowObserver);
-            } catch (ex) {
-              console.error(ex);
-            }
+          try {
+            // Patch all existing windows when the UI is built; all locales should have been loaded here
+            // Hook in the embedding and gloda attribute providers.
+            GlodaAttrProviders.init();
+            apiMonkeyPatchAllWindows(windowManager, monkeyPatchWindow);
+            apiWindowObserver = new ApiWindowObserver(
+              windowManager,
+              monkeyPatchWindow
+            );
+            Services.ww.registerNotification(apiWindowObserver);
+          } catch (ex) {
+            console.error(ex);
           }
         },
         async getPref(name) {
@@ -341,8 +348,8 @@ var conversations = class extends ExtensionCommon.ExtensionAPI {
         async getLocaleDirection() {
           return Services.locale.isAppLocaleRTL ? "rtl" : "ltr";
         },
-        async installCustomisations(ids) {
-          let uninstallInfos = JSON.parse(Prefs.uninstall_infos);
+        async installCustomisations(ids, uninstallInfos) {
+          uninstallInfos = JSON.parse(uninstallInfos ?? "{}");
           for (const id of ids) {
             if (!(id in Customizations)) {
               Log.error("Couldn't find a suitable customization for", id);
@@ -359,7 +366,7 @@ var conversations = class extends ExtensionCommon.ExtensionAPI {
 
           return JSON.stringify(uninstallInfos);
         },
-        async undoCustomizations() {
+        async undoCustomizations(uninstallInfos) {
           for (let win of Services.wm.getEnumerator("mail:3pane")) {
             // Switch to a 3pane view (otherwise the "display threaded"
             // customization is not reverted)
@@ -369,7 +376,7 @@ var conversations = class extends ExtensionCommon.ExtensionAPI {
             }
           }
 
-          let uninstallInfos = JSON.parse(Prefs.uninstall_infos);
+          uninstallInfos = JSON.parse(uninstallInfos);
           for (let [k, v] of Object.entries(Customizations)) {
             if (k in uninstallInfos) {
               try {
@@ -459,7 +466,7 @@ var conversations = class extends ExtensionCommon.ExtensionAPI {
         async invalidateCache() {
           Services.obs.notifyObservers(null, "startupcache-invalidate");
         },
-        async getLateAttachments(id) {
+        async getLateAttachments(id, extraAttachments) {
           return new Promise((resolve) => {
             const msgHdr = context.extension.messageManager.get(id);
             MsgHdrToMimeMessage(msgHdr, null, (msgHdr, mimeMsg) => {
@@ -469,7 +476,7 @@ var conversations = class extends ExtensionCommon.ExtensionAPI {
               }
 
               let attachments;
-              if (Prefs.extra_attachments) {
+              if (extraAttachments) {
                 attachments = [
                   ...mimeMsg.allAttachments,
                   ...mimeMsg.allUserAttachments,
@@ -656,17 +663,170 @@ var conversations = class extends ExtensionCommon.ExtensionAPI {
           let attachment = await findAttachment(msgHdr, attachmentUrl);
           const win = Services.wm.getMostRecentWindow("mail:3pane");
           let msgUri = msgHdrGetUri(msgHdr);
-          getAttachmentInfo(win, msgUri, attachment).open();
+
+          // Older versions of Thunderbird require the old way of opening.
+          if (Services.vc.compare(Services.appinfo.version, "89.0a1") < 0) {
+            getAttachmentInfo(win, msgUri, attachment).open();
+            return;
+          }
+          if (attachment.contentType == "application/pdf") {
+            let mimeService = Cc["@mozilla.org/mime;1"].getService(
+              Ci.nsIMIMEService
+            );
+            let handlerInfo = mimeService.getFromTypeAndExtension(
+              attachment.contentType,
+              null
+            );
+            // Only open a new tab for pdfs if we are handling them internally.
+            if (
+              !handlerInfo.alwaysAskBeforeHandling &&
+              handlerInfo.preferredAction == Ci.nsIHandlerInfo.handleInternally
+            ) {
+              // Add the content type to avoid a "how do you want to open this?"
+              // dialog. The type may already be there, but that doesn't matter.
+              let url = attachmentUrl;
+              if (!url.includes("type=")) {
+                url += url.includes("?") ? "&" : "?";
+                url += "type=application/pdf";
+              }
+              let tabmail = win.document.getElementById("tabmail");
+              if (!tabmail) {
+                // If no tabmail available in this window, try and find it in
+                // another.
+                let win = Services.wm.getMostRecentWindow("mail:3pane");
+                tabmail = win && win.document.getElementById("tabmail");
+              }
+              if (tabmail) {
+                tabmail.openTab("contentTab", {
+                  url,
+                  background: false,
+                  linkHandler: "single-page",
+                });
+                return;
+              }
+              // If no tabmail, open PDF same as other attachments.
+            }
+          }
+          let url = Services.io.newURI(msgUri);
+          let msgService = Cc[
+            `@mozilla.org/messenger/messageservice;1?type=${url.scheme}`
+          ].createInstance(Ci.nsIMsgMessageService);
+          msgService.openAttachment(
+            attachment.contentType,
+            attachment.name,
+            attachment.url,
+            msgUri,
+            win.docShell,
+            win.msgWindow,
+            null
+          );
         },
         async detachAttachment(id, attachmentUrl, shouldSave) {
           let msgHdr = context.extension.messageManager.get(id);
           let attachment = await findAttachment(msgHdr, attachmentUrl);
           const win = Services.wm.getMostRecentWindow("mail:3pane");
           let msgUri = msgHdrGetUri(msgHdr);
-          getAttachmentInfo(win, msgUri, attachment).detach(shouldSave);
+          let messenger = Cc["@mozilla.org/messenger;1"].createInstance(
+            Ci.nsIMessenger
+          );
+          messenger.setWindow(win, win.msgWindow);
+          let info = getAttachmentInfo(win, msgUri, attachment);
+          messenger.detachAttachment(
+            info.contentType,
+            info.url,
+            encodeURIComponent(info.name),
+            info.uri,
+            shouldSave
+          );
         },
         async makeFriendlyDateAgo(date) {
           return makeFriendlyDateAgo(new Date(date));
+        },
+        async isInView(tabId, msgId) {
+          let tabObject = context.extension.tabManager.get(tabId);
+          if (!tabObject.nativeTab) {
+            return false;
+          }
+          let win = Cu.getGlobalForObject(tabObject.nativeTab);
+          if (!win) {
+            return false;
+          }
+
+          let msgHdr = context.extension.messageManager.get(msgId);
+          if (!msgHdr) {
+            return false;
+          }
+          return (
+            win.gDBView?.findIndexOfMsgHdr(msgHdr, false) != nsMsgViewIndex_None
+          );
+        },
+        /**
+         * Use the mailnews component to stream a message, and process it in a way
+         *  that's suitable for quoting (strip signature, remove images, stuff like
+         *  that).
+         *
+         * @param {id} id The message id that you want to quote
+         * @returns {Promise}
+         *   Returns a quoted string suitable for insertion in an HTML editor.
+         */
+        quoteMsgHdr(id) {
+          const msgHdr = context.extension.messageManager.get(id);
+          return new Promise((resolve) => {
+            let chunks = [];
+            const decoder = new TextDecoder();
+            let listener = {
+              /* eslint-disable jsdoc/require-param */
+              /** @ignore*/
+              setMimeHeaders() {},
+
+              /** @ignore*/
+              onStartRequest(aRequest) {},
+
+              /** @ignore*/
+              onStopRequest(aRequest, aStatusCode) {
+                let data = chunks.join("");
+                resolve(data);
+              },
+
+              /** @ignore*/
+              onDataAvailable(aRequest, aStream, aOffset, aCount) {
+                // Fortunately, we have in Gecko 2.0 a nice wrapper
+                let data = NetUtil.readInputStreamToString(aStream, aCount);
+                // Now each character of the string is actually to be understood as a byte
+                //  of a UTF-8 string.
+                // So charCodeAt is what we want here...
+                let array = [];
+                for (let i = 0; i < data.length; ++i) {
+                  array[i] = data.charCodeAt(i);
+                }
+                // Yay, good to go!
+                chunks.push(decoder.decode(Uint8Array.from(array)));
+              },
+              /* eslint-enable jsdoc/require-param */
+
+              QueryInterface: ChromeUtils.generateQI([
+                Ci.nsIStreamListener,
+                Ci.nsIMsgQuotingOutputStreamListener,
+                Ci.nsIRequestObserver,
+                Ci.nsISupportsWeakReference,
+              ]),
+            };
+            // Here's what we want to stream...
+            let msgUri = msgHdrGetUri(msgHdr);
+            /**
+             * Quote a particular message specified by its URI.
+             *
+             * @param charset optional parameter - if set, force the message to be
+             *                quoted using this particular charset
+             */
+            //   void quoteMessage(in string msgURI, in boolean quoteHeaders,
+            //                     in nsIMsgQuotingOutputStreamListener streamListener,
+            //                     in string charset, in boolean headersOnly);
+            let quoter = Cc[
+              "@mozilla.org/messengercompose/quoting;1"
+            ].createInstance(Ci.nsIMsgQuote);
+            quoter.quoteMessage(msgUri, false, listener, "", false, msgHdr);
+          });
         },
         onCallAPI: new ExtensionCommon.EventManager({
           context,

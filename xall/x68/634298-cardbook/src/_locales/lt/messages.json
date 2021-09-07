@@ -2909,6 +2909,9 @@
 	"wdw_cardEditionViewListTitle": {
 		"message": "Rodymas sąrašą"
 	},
+	"wdw_cardEditionEditTemplateTitle": {
+		"message": "Redaguoti šabloną"
+	},
 	"wdw_cardbookPrintTitleLong": {
 		"message": "Spaudinio peržiūra ($P1$) - Kontaktai - Thunderbird",
         "placeholders": {
@@ -3563,20 +3566,20 @@
 	"cardbookContactPaneItemAccesskey": {
 		"message": "K"
 	},
+	"wizard.next.label": {
+		"message": "Kitas"
+	},	
+	"wizard.back.label": {
+		"message": "Atgal"
+	},	
+	"wizard.create.label": {
+		"message": "Kartotis"
+	},
 	"wizard.title": {
 		"message": "Pridėti naują adresų knygą"
 	},
-	"wizard.label": {
-		"message": "Pridėti naują adresų knygą"
-	},
-	"welcomePage.wizard.description": {
-		"message": "Sveiki!"
-	},
 	"welcomePage.description": {
 		"message": "??It seems that this is the first time CardBook has been run. CardBook will attempt to collect contacts from Thunderbird’s standard address books and remote address books.??"
-	},
-	"initialPage.wizard.description": {
-		"message": "Nauja adresų knygos vieta."
 	},
 	"initialPage.description": {
 		"message": "Ar jūsų adresų knyga yra vietinė arba nuotolinė? :"
@@ -3595,9 +3598,6 @@
 	},
 	"initialPage.find.label": {
 		"message": "??Search for remote address books??"
-	},
-	"localPage.wizard.description": {
-		"message": "Naujos vietinės adresų knygos rūšis ir vieta."
 	},
 	"localPage.type.description": {
 		"message": "Koks yra jūsų vietinės adresų knygos tipas? :"
@@ -3632,9 +3632,6 @@
 	"localPage.uributton.label": {
 		"message": "Naršyti"
 	},
-	"remotePage.wizard.description": {
-		"message": "Naujos nuotolinės adresų knygos rūšis ir vieta."
-	},
 	"remotePage.description": {
 		"message": "Koks jūsų nuotolinės adresų knygos tipas? (Atsargiai! Google“ neatitinka vCard“ standartų)"
 	},
@@ -3646,6 +3643,9 @@
 	},
 	"remotePage.google.label": {
 		"message": "Google"
+	},
+	"remotePage.googleWorkspace.label": {
+		"message": "Google Workspace"
 	},
 	"remotePage.apple.label": {
 		"message": "Apple"
@@ -3671,14 +3671,14 @@
 	"remotePage.password.label": {
 		"message": "Slaptažodis:"
 	},
+	"rememberPassword": {
+		"message": "Naudoti slaptažodžių tvarkytuvę šiam slaptažodžiui įsiminti"
+	},
 	"showHidePassword.tooltip": {
 		"message": "Rodyti / slėpti slaptažodį*-9"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Patvirtinti"
-	},
-	"locationSearchPage.wizard.description": {
-		"message": "Išsaugotas paieškos apibrėžimas"
 	},
 	"locationSearchPage.label": {
 		"message": "Įrašyti Paieškos radinius"
@@ -3704,9 +3704,6 @@
 	"googleOauthPage.wizard.description": {
 		"message": "„Google“ autentifikavimas"
 	},
-	"namePage.wizard.description": {
-		"message": "Adreso knygos savybės"
-	},
 	"namePage.selected.label": {
 		"message": "Pasirinkta"
 	},
@@ -3725,17 +3722,11 @@
 	"namePage.vCardVersion.label": {
 		"message": "vCard"
 	},
-	"namesPage.wizard.description": {
-		"message": "Adresų knygų savybės"
-	},
 	"namesPage.name.label": {
 		"message": "Vardai"
 	},
 	"namesPage.name.description": {
 		"message": "Pasirodė kelios adresų knygos. Pasirinkite adresų knygas, kurias norite atidaryti, ir jų pavadinimus :"
-	},
-	"findPage.wizard.description": {
-		"message": "??Remote address book search??"
 	},
 	"findPage.name1.description": {
 		"message": "??No remote address books found.??"
@@ -3745,9 +3736,6 @@
 	},
 	"findPage.name3.description": {
 		"message": "??Multiple remote address books found. Validate remote address books to add:??"
-	},
-	"finishPage.wizard.description": {
-		"message": "??Address books configuration??"
 	},
 	"finishPage.description": {
 		"message": "Jūsų nauja adresų knyga buvo sėkmingai sukonfigūruota."
@@ -5117,6 +5105,12 @@
 	"cardbookToolbarAddListButtonTooltip": {
 		"message": "Naujas adresatų sąrašas"
 	},
+	"cardbookToolbarAddTemplateButtonLabel": {
+		"message": "??New Template??"
+	},
+	"cardbookToolbarAddTemplateButtonTooltip": {
+		"message": "??Create a new template??"
+	},
 	"cardbookToolbarEditButtonLabel": {
 		"message": "Keisti"
 	},
@@ -5315,6 +5309,15 @@
 	"searchForLocalKeyEditButton.tooltip": {
 		"message": "Importuoti iš failo"
 	},
+	"definitionLabel": {
+		"message": "Sąvokos aprašas"
+	},
+	"fieldsLabel": {
+		"message": "Laukai"
+	},
+	"formulasLabel": {
+		"message": "??Formulas??"
+	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Dalintis elektroniniu paštu"
 	},
@@ -5462,6 +5465,9 @@
 	"fnFormulaExplanation": {
 		"message": "Galima pritaikyti „Kontaktų“ rodomo vardo būdą. Ši formulė susideda iš blokų, kuriuos apima skliausteliai „()“. ??In these blocks there might be many parts delimited by „|“.??"
 	},
+	"templateFormulaExplanation": {
+		"message": "??It is possible to define templates with pre-defined fields. For example one may define a template with the email ”({{2}}).({{4}})@mycompany.org”. Once applied to a contact that has ”John” and ”Doe” as given name and family name, an email ”john.doe@mycompany.org” will be added to the contact.??"
+	},
 	"formulaExplanation1": {
 		"message": "??({{1}}|{{2}}) : If {{1}} is empty, then the block will be replaced by {{2}}.??"
 	},
@@ -5500,12 +5506,6 @@
 	},
 	"displayFieldNamesAccesskey": {
 		"message": "F"
-	},
-	"displayTypesLabel": {
-		"message": "Tipai ir pageidavimai"
-	},
-	"displayTypesAccesskey": {
-		"message": "y"
 	},
 	"fieldsToPrintGroupboxLabel": {
 		"message": "Ką spausdinti"
@@ -5698,6 +5698,12 @@
 	},
 	"saveTemplateLabel": {
 		"message": "Išsaugoti šabloną"
+	},
+	"applyTemplateLabel": {
+		"message": "??Apply template??"
+	},
+	"createTemplateLabel": {
+		"message": "??Create template??"
 	},
 	"convertVCardsLabel": {
 		"message": "??Convert vCards??"

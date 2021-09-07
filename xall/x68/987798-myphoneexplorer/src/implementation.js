@@ -10,8 +10,8 @@ var { mpe } = ChromeUtils.import(extension.rootURI.resolve("modules/mpe.jsm"));
 var MyPhoneExplorer = class extends ExtensionCommon.ExtensionAPI {
   getAPI(context) {
 	  var debugMode = false;
-	//console.log("Loading Experiment");
-  
+	  console.log("Loading Experiment");
+      mpe.test();
   
   context.callOnClose({close(){
 	//console.log("Goodbye world!");
@@ -27,10 +27,11 @@ var MyPhoneExplorer = class extends ExtensionCommon.ExtensionAPI {
 		{	
 				var res = "";
 				var chosen;
-				var data;
+				var data = "";
 	
 				if(command == null) {return;}
 	
+				
 				var i = command.indexOf("\r\n");
 				if(i >= 0) {
 					data = command.substring(i+2);
@@ -55,10 +56,17 @@ var MyPhoneExplorer = class extends ExtensionCommon.ExtensionAPI {
 						res = mpe.ListInfo();
 					} 
 					else if(command == 'list-abooks' || command == 'list-addressbooks') {
-						res = mpe.ListABooks();
-					}			
+						res = mpe.ListABooks((data.indexOf("includeCardbook") != -1));
+					}
+					else if(command == 'refresh-cardbook') {
+						res = mpe.RefreshCardbook();
+					}
 					else if(command == 'export-cards') {
 						res = mpe.WriteCards(chosen ? chosen : mpe.ChosenABook);
+					}
+					else if(command == 'export-vcards') {
+						mpe.WriteVcards(chosen ? chosen : mpe.ChosenABook);
+						return;
 					}
 					else if(command == 'import-cards') {
 						mpe.ReadCards(chosen ? chosen : mpe.ChosenABook, data);

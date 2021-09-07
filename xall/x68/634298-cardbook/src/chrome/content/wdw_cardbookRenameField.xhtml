@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/css" href="chrome://messenger/skin/addressbook/abContactsPanel.css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+<?xml-stylesheet type="text/css" href="chrome://cardbook/content/skin/cardbookRenameField.css"?>
+
 <!-- for notificationbox.xml -->
 <?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
 <?xml-stylesheet href="chrome://messenger/content/notification.css" type="text/css"?>
@@ -34,30 +36,35 @@
 	
 		<hbox flex="1">
 			<vbox flex="1">
-				<grid align="center" flex="1">
-					<columns>
-						<column/>
-						<column flex="1"/>
-					</columns>
-		
-					<rows>
-						<row align="center">
+				<html:table>
+					<html:tr>
+						<html:td>
 							<label id="typeLabel" control="typeTextBox"/>
+						</html:td>
+						<html:td class="cardbook-td-input cardbook-large2-column">
 							<html:input id="typeTextBox" oninput="validate();"/>
-						</row>
-						<row align="center" id="colorRow">
+						</html:td>
+					</html:tr>
+					<html:tr id="colorRow">
+						<html:td>
 							<label value="__MSG_colorLabel__" control="useColorCheck"/>
+						</html:td>
+						<html:td class="cardbook-td-input">
 							<hbox align="center">
 								<checkbox id="useColorCheck" label="__MSG_useColorCheckLabel__"/>
 								<html:input id="colorInput" type="color" palettename="standard"/>
 							</hbox>
-						</row>
-						<row align="center" id="mailPopRow">
+						</html:td>
+					</html:tr>
+					<html:tr id="mailPopRow">
+						<html:td>
 							<label value="__MSG_popularityLabel__" control="mailPopTextBox"/>
+						</html:td>
+						<html:td class="cardbook-td-input">
 							<html:input id="mailPopTextBox" oninput="validate();" type="number" min="0" max="100000" class="size5"/>
-						</row>
-					</rows>
-				</grid>
+						</html:td>
+					</html:tr>
+				</html:table>
 			</vbox>
 		</hbox>
 		<hbox id="errorNotificationsHbox" class="notification-inline">

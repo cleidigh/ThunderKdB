@@ -6,14 +6,14 @@ if ("undefined" == typeof(ovl_cardbookFindEmails)) {
 
 	var ovl_cardbookFindEmails = {
 
-		findEmailsFromEmail: function() {
-			var myEmailNode = document.popupNode.closest("mail-emailaddress");
+		findEmailsFromEmail: function(emailAddressNode) {
+			var myEmailNode = emailAddressNode.closest("mail-emailaddress");
 			var myEmail = myEmailNode.getAttribute('emailAddress');
 			ovl_cardbookFindEmails.findEmails(null, [myEmail]);
 		},
 
-		findAllEmailsFromContact: function() {
-			var myEmailNode = document.popupNode.closest("mail-emailaddress");
+		findAllEmailsFromContact: function(emailAddressNode) {
+			var myEmailNode = emailAddressNode.closest("mail-emailaddress");
 			var myEmail = myEmailNode.getAttribute('emailAddress');
 			if (ovl_cardbookMailContacts) {
 				var isEmailRegistered = cardbookRepository.isEmailRegistered(myEmail, ovl_cardbookMailContacts.getIdentityKey());

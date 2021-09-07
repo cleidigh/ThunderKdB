@@ -51,6 +51,14 @@
   "confirmAttentionTermsCancel": { "message": "Cancel" },
 
 
+  "alertBlockedDomainsTitle": { "message": "Recipients with blocked domains" },
+  "alertBlockedDomainsMessage": { "message": "These recipients with blocked domains are found:\n\n$RECIPIENTS$\n\nIt is not allowe to send messages to such recipients.",
+    "placeholders": {
+      "recipients": { "content": "$1", "example": "mail@example.com" }
+    }},
+  "alertBlockedDomainsAccept": { "message": "Close" },
+
+
   "countdownDialogTitle": { "message": "Countdown" },
   "countdownDialogMessage_before": { "message": "\u200b" },
   "countdownDialogMessage_after": { "message": " seconds left to send." },
@@ -103,6 +111,18 @@
   "config_attentionDomainsConfirmationMode_always_label": { "message": "Always" },
   "config_attentionDomainsConfirmationMode_withAttachments_label": { "message": "Only when there is any attachment" },
   "config_attentionDomainsConfirmationMode_never_label": { "message": "Never" },
+
+
+  "config_blockedDomains_caption": { "message": "Blocked domains in recipients" },
+
+  "config_blockedDomainsEnabled": { "message": "Disallow to send messages including any recipient with these domains" },
+  "config_blockedDomains_label": { "message": "Use the manually managed list" },
+  "config_blockedDomains_input_placeholder": { "message": "Input domain names per line (e.g. example.com)" },
+  "config_blockedDomainsFile_label": { "message": "Use a list given as a file" },
+  "config_blockedDomainsFile_button_label": { "message": "Choose…" },
+  "config_blockedDomainsFile_button_dialogTitle": { "message": "Choose a list of blocked domains in recipients" },
+  "config_blockedDomainsFile_button_dialogDisplayName": { "message": "List File" },
+  "config_blockedDomainsFile_input_placeholder": { "message": "Path to the file (e.g. \\\\FileServer\\Shared\\domains.txt)" },
 
 
   "config_attachments_caption": { "message": "Attachments" },

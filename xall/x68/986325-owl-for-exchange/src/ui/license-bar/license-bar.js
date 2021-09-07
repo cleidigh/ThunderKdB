@@ -38,7 +38,7 @@ function showWelcomeBar(ticket) {
   let bundle = new StringBundle("settings");
   let label = bundle.getString("paidWelcome");
   browser.notificationbox.appendNotification(label, "owl_license_welcome",
-    browser.extension.getURL("ui/logo/owl-32.png"),
+    browser.runtime.getURL("ui/logo/owl-32.png"),
     browser.notificationbox.PRIORITY_INFO_HIGH,
     []);
 }
@@ -64,7 +64,7 @@ function showWarningBar(ticket) {
   label = label.replace("%days%", daysLeft);
 
   browser.notificationbox.appendNotification(label, id,
-    browser.extension.getURL("ui/logo/owl-32.png"),
+    browser.runtime.getURL("ui/logo/owl-32.png"),
     priority, [{
       label: bundle.getString("getLicense"),
       value: "owl_purchase_license",
@@ -87,4 +87,4 @@ browser.notificationbox.onButton.addListener(async (notification, button) => {
   }
 });
 
-browser.notificationbox.addStyleSheet(browser.extension.getURL("ui/license-bar/license-bar.css"));
+browser.notificationbox.addStyleSheet(browser.runtime.getURL("ui/license-bar/license-bar.css"));

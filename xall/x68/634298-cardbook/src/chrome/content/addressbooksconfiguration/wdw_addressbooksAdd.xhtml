@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="chrome://cardbook/content/skin/cardbookAddressBooks.css" type="text/css"?>
+<?xml-stylesheet href="chrome://cardbook/content/skin/cardbookAddressBooksAdd.css" type="text/css"?>
 <!-- for notificationbox.xml -->
 <?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
 <?xml-stylesheet href="chrome://messenger/content/notification.css" type="text/css"?>
@@ -12,9 +13,9 @@
 <!-- for the display -->
 <?xml-stylesheet type="text/css" href="chrome://messenger/skin/themeableDialog.css"?>
 <!-- for the password icon -->
-<?xml-stylesheet href="chrome://messenger/skin/creationDialog.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/accountSetup.css" type="text/css"?>
 
-<window id="addressbook-wizard-window"
+<window id="addressbook-creation-window"
 	title="__MSG_wizard.title__"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 	xmlns:html="http://www.w3.org/1999/xhtml"
@@ -42,20 +43,16 @@
 	</linkset>
 
 
-	<wizard id="addressbook-wizard">
-		<wizardpage id="welcomePage"
-				pageid="welcomePage"
-				next="namesPage"
-				label="__MSG_wizard.label__"
-				description="__MSG_welcomePage.wizard.description__">
+	<dialog id="addressbook-creation-dialog" buttons="extra2,accept,cancel">
+		<vbox id="welcomePage" class="cardbook-page"
+			buttonlabelaccept="__MSG_wizard.next.label__"
+			buttonlabelextra2="__MSG_wizard.back.label__">
 			<description>__MSG_welcomePage.description__</description>
-		</wizardpage>
+		</vbox>
 	
-	   <wizardpage id="initialPage"
-			pageid="initialPage"
-			next="localPage"
-			label="__MSG_wizard.label__"
-			description="__MSG_initialPage.wizard.description__">
+		<vbox id="initialPage" class="cardbook-page"
+			buttonlabelaccept="__MSG_wizard.next.label__"
+			buttonlabelextra2="__MSG_wizard.back.label__">
 			<description>__MSG_initialPage.description__</description>
 			<radiogroup id="addressbookType" class="indent">
 				<radio value="local" label="__MSG_initialPage.computer.label__" selected="true"/>
@@ -64,144 +61,120 @@
 				<radio value="search" label="__MSG_initialPage.search.label__"/>
 				<radio value="find" label="__MSG_initialPage.find.label__"/>
 			</radiogroup>
-	   </wizardpage>
+		</vbox>
 	
-	   <wizardpage id="localPage"
-				pageid="localPage"
-				next="namesPage"
-				label="__MSG_wizard.label__"
-				description="__MSG_localPage.wizard.description__">
-	
+		<vbox id="localPage" class="cardbook-page"
+			buttonlabelaccept="__MSG_wizard.next.label__"
+			buttonlabelextra2="__MSG_wizard.back.label__">
 			<groupbox>
 				<label class="header">__MSG_localPage.type.label__</label>
-				<grid flex="1">
-					<columns>
-						<column/>
-						<column flex="1"/>
-					</columns>
-					<rows>
-						<description>__MSG_localPage.type.description__</description>
-						<row align="center">
-							<radiogroup id="localPageType" onselect="wdw_addressbooksAdd.localPageSelect();" class="indent">
-								<radio value="createDB" label="__MSG_localPage.createDB.label__" selected="true"/>
-								<radio value="createDirectory" label="__MSG_localPage.createDirectory.label__"/>
-								<radio value="createFile" label="__MSG_localPage.createFile.label__"/>
-								<radio value="openDirectory" label="__MSG_localPage.openDirectory.label__"/>
-								<radio value="openFile" label="__MSG_localPage.openFile.label__"/>
-							</radiogroup>
-						</row>
-					</rows>
-				</grid>
+				<description>__MSG_localPage.type.description__</description>
+				<radiogroup id="localPageType" onselect="wdw_addressbooksAdd.localPageSelect();" class="indent">
+					<radio value="createDB" label="__MSG_localPage.createDB.label__" selected="true"/>
+					<radio value="createDirectory" label="__MSG_localPage.createDirectory.label__"/>
+					<radio value="createFile" label="__MSG_localPage.createFile.label__"/>
+					<radio value="openDirectory" label="__MSG_localPage.openDirectory.label__"/>
+					<radio value="openFile" label="__MSG_localPage.openFile.label__"/>
+				</radiogroup>
 			</groupbox>
-	
+			<separator class="groove-thin"/>
 			<groupbox>
 				<label class="header">__MSG_localPage.uri.groupbox__</label>
-				<grid flex="1">
-					<columns>
-						<column/>
-						<column flex="1"/>
-						<column/>
-					</columns>
-					<rows>
-						<description>__MSG_localPage.uri.description__</description>
-						<row align="center">
+				<description>__MSG_localPage.uri.description__</description>
+				<html:table>
+					<html:tr>
+						<html:td>
 							<label id="localPageURILabel" value="__MSG_localPage.uri.label__" control="localPageURI"/>
+						</html:td>
+						<html:td class="cardbook-td-input cardbook-large-column">
 							<html:input id="localPageURI" oninput="wdw_addressbooksAdd.checkRequired();"/>
+						</html:td>
+						<html:td>
 							<button id="localPageURIButton" label="__MSG_localPage.uributton.label__" oncommand="wdw_addressbooksAdd.searchFile();"/>
-						</row>
-						<row align="center">
-							<spacer/>
-							<hbox id="localPageURINotificationsHbox" class="notification-inline" flex="1">
-								<!-- notificationbox will be added here lazily. -->
-							</hbox>
-							<spacer/>
-						</row>
-					</rows>
-				</grid>
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<spacer/>
+						<hbox id="localPageURINotificationsHbox" class="notification-inline" flex="1">
+							<!-- notificationbox will be added here lazily. -->
+						</hbox>
+						<spacer/>
+					</html:tr>
+				</html:table>
 			</groupbox>
-	   </wizardpage>
+		</vbox>
 	
-	   <wizardpage id="remotePage"
-			pageid="remotePage"
-			next="namesPage"
-			label="__MSG_wizard.label__"
-			description="__MSG_remotePage.wizard.description__">
-	
+		<vbox id="remotePage" class="cardbook-page"
+			buttonlabelaccept="__MSG_wizard.next.label__"
+			buttonlabelextra2="__MSG_wizard.back.label__">
 			<groupbox>
 				<label class="header">__MSG_remotePage.type.label__</label>
-				<grid flex="1">
-					<columns>
-						<column/>
-						<column flex="1"/>
-					</columns>
-					<rows>
-						<description>__MSG_remotePage.description__</description>
-						<row align="center">
-							<radiogroup id="remotePageType" onselect="wdw_addressbooksAdd.remotePageSelect();" class="indent">
-								<radio value="CARDDAV" label="__MSG_remotePage.carddav.label__" selected="true"/>
-								<radio value="GOOGLE2" label="__MSG_remotePage.google.label__"/>
-								<radio value="APPLE" label="__MSG_remotePage.apple.label__"/>
-								<radio value="YAHOO" label="__MSG_remotePage.yahoo.label__"/>
-							</radiogroup>
-						</row>
-					</rows>
-				</grid>
+				<description>__MSG_remotePage.description__</description>
+				<radiogroup id="remotePageType" onselect="wdw_addressbooksAdd.remotePageSelect();" class="indent">
+					<radio value="CARDDAV" label="__MSG_remotePage.carddav.label__" selected="true"/>
+					<radio value="GOOGLE2" label="__MSG_remotePage.google.label__"/>
+					<radio value="GOOGLE3" label="__MSG_remotePage.googleWorkspace.label__"/>
+					<radio value="APPLE" label="__MSG_remotePage.apple.label__"/>
+					<radio value="YAHOO" label="__MSG_remotePage.yahoo.label__"/>
+				</radiogroup>
 			</groupbox>
-	
+			<separator class="groove-thin"/>
 			<groupbox>
 				<label class="header">__MSG_remotePage.connection.label__</label>
-				<grid flex="1">
-					<columns>
-						<column/>
-						<column flex="1"/>
-						<column flex="1"/>
-					</columns>
-					<rows>
-						<description>__MSG_remotePage.url.description__</description>
-						<row align="center">
+				<description>__MSG_remotePage.url.description__</description>
+				<html:table>
+					<html:tr>
+						<html:td>
 							<label id="remotePageUriLabel" value="__MSG_remotePage.url.label__" control="remotePageURI"/>
+						</html:td>
+						<html:td class="cardbook-td-input cardbook-large2-column">
 							<html:input id="remotePageURI"
 								required="true"
 								oninput="wdw_addressbooksAdd.remotePageTextboxInput();"/>
-						</row>
-					</rows>
-				</grid>
+						</html:td>
+					</html:tr>
+				</html:table>
 				<separator class="groove-thin"/>
-				<grid>
-					<columns>
-						<column/>
-						<column/>
-						<column/>
-					</columns>
-					<rows>
-						<description>__MSG_remotePage.credentials.description__</description>
-						<row align="center">
+				<description>__MSG_remotePage.credentials.description__</description>
+				<html:table>
+					<html:tr>
+						<html:td>
 							<label id="remotePageUsernameLabel" value="__MSG_remotePage.user.label__" control="remotePageUsername"/>
+						</html:td>
+						<html:td class="cardbook-td-input cardbook-large2-column">
 							<html:input id="remotePageUsername"
-								class="hub-field"
 								required="true"
 								oninput="wdw_addressbooksAdd.remotePageTextboxInput();"/>
 							<image id="remotePageUsernameInfo"
 								class="form-icon"/>
-						</row>
-						<row align="center">
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:td>
 							<label id="remotePagePasswordLabel" value="__MSG_remotePage.password.label__" control="remotePagePassword"/>
+						</html:td>
+						<html:td class="cardbook-td-input cardbook-large2-column">
 							<html:input id="remotePagePassword"
+								class="input-field"
 								type="password"
-								class="hub-field"
 								required="true"
 								oninput="wdw_addressbooksAdd.remotePageTextboxInput();"/>
 							<image id="remotePagePasswordInfo"
-								class="form-icon icon-hidden"
+								src="chrome://messenger/skin/icons/hidden.svg"
+								class="form-icon"
 								tooltiptext="__MSG_showHidePassword.tooltip__"
 								onclick="wdw_addressbooksAdd.showPassword();"/>
-				   		</row>
-						<row align="center">
-							<label id="rememberPasswordLabel" control="rememberPasswordCheckbox"/>
-							<checkbox id="rememberPasswordCheckbox" disabled="false" checked="true"/>
-						</row>
-					</rows>
-				</grid>
+						</html:td>
+					</html:tr>
+					<html:tr>
+						<html:td>
+						</html:td>
+						<html:td class="cardbook-td-input cardbook-large2-column">
+							<checkbox id="rememberPasswordCheckbox" disabled="false" label="__MSG_rememberPassword__" checked="true"/>
+						</html:td>
+					</html:tr>
+				</html:table>
+
 				<separator class="groove-thin"/>
 				<hbox>
 					<spacer flex="1"/>
@@ -210,16 +183,14 @@
 					</hbox>
 					<notificationbox id="resultNotifications" flex="1"/>
 					<button id="validateButton" label="__MSG_remotePage.validatebutton.label__" oncommand="wdw_addressbooksAdd.validateURL();"/>
+					<button id="validateGoogleButton" oncommand="wdw_addressbooksAdd.validateURL();"/>
 				</hbox>
 			</groupbox>
-		</wizardpage>
+		</vbox>
 	
-	   <wizardpage id="searchPage"
-			pageid="searchPage"
-			next="searchNamePage"
-			label="__MSG_wizard.label__"
-			description="__MSG_locationSearchPage.wizard.description__">
-	
+		<vbox id="searchPage" class="cardbook-page"
+			buttonlabelaccept="__MSG_wizard.next.label__"
+			buttonlabelextra2="__MSG_wizard.back.label__">
 			<groupbox>
 				<label class="header">__MSG_locationSearchPage.label__</label>
 					<vbox id="searchTerms" flex="3" persist="height">
@@ -247,111 +218,102 @@
 						<spacer flex="100"/>
 					</vbox>
 			</groupbox>
-		</wizardpage>
+		</vbox>
 	
-		<wizardpage id="searchNamePage"
-				pageid="searchNamePage"
-				next="finishPage"
-				label="__MSG_wizard.label__"
-				description="__MSG_namePage.wizard.description__">
-			<grid flex="1">
-				<columns>
-					<column/>
-					<column flex="1"/>
-				</columns>
-				<rows>
-					<row id="nameRow" align="center">
+		<vbox id="searchNamePage" class="cardbook-page"
+			buttonlabelaccept="__MSG_wizard.next.label__"
+			buttonlabelextra2="__MSG_wizard.back.label__">
+			<html:table>
+				<html:tr>
+					<html:td>
 						<label id="searchNamePageLabel" value="__MSG_namePage.name.label__" control="searchNamePageName"/>
+					</html:td>
+					<html:td class="cardbook-td-input">
 						<html:input id="searchNamePageName"
 							required="true"
 							oninput="wdw_addressbooksAdd.checkRequired();"/>
-					</row>
-				</rows>
-			</grid>
-		</wizardpage>
+					</html:td>
+				</html:tr>
+			</html:table>
+		</vbox>
 	
-		<wizardpage id="findPage"
-				pageid="findPage"
-				next="namesPage"
-				label="__MSG_wizard.label__"
-				description="__MSG_findPage.wizard.description__">
+		<vbox id="findPage" class="cardbook-page"
+			buttonlabelaccept="__MSG_wizard.next.label__"
+			buttonlabelextra2="__MSG_wizard.back.label__">
 			<vbox>
 				<description id="findPageName1Description">__MSG_findPage.name1.description__</description>
 				<description id="findPageName2Description" hidden="true">__MSG_findPage.name2.description__</description>
 				<description id="findPageName3Description" hidden="true">__MSG_findPage.name3.description__</description>
 			</vbox>
 			<separator class="groove-thin"/>
-			<grid>
-				<columns flex="1">
-					<column align="center"/>
-					<column align="center" flex="1"/>
-					<column align="center" flex="1"/>
-					<column align="center" hidden="true"/>
-					<column align="center" hidden="true"/>
-					<column align="center" hidden="true"/>
-				</columns>
-				<rows id="findRows">
-					<row id="findHeadersRow">
+			<html:table id="findTable">
+				<html:tr id="findHeadersRow">
+					<html:td>
 						<label id="findPageValidateLabel" value="__MSG_remotePage.validatebutton.label__"/>
+					</html:td>
+					<html:td>
 						<label id="findPageUserLabel" flex="1" value="__MSG_remotePage.user.label__"/>
+					</html:td>
+					<html:td>
 						<label id="findPagePasswordLabel" value="__MSG_remotePage.password.label__"/>
+					</html:td>
+					<html:td>
 						<label id="findPagePasswordShowLabel" value="__MSG_showHidePassword.tooltip__"/>
+					</html:td>
+					<html:td>
 						<label id="findPageVCardVersionsLabel" hidden="true"/>
+					</html:td>
+					<html:td>
 						<label id="findPageURLLabel" hidden="true"/>
+					</html:td>
+					<html:td>
 						<label id="findPageABNameLabel" hidden="true"/>
-					</row>
-				</rows>
-			</grid>
-		</wizardpage>
+					</html:td>
+				</html:tr>
+			</html:table>
+		</vbox>
 	
-		<wizardpage id="namesPage"
-				pageid="namesPage"
-				next="finishPage"
-				label="__MSG_wizard.label__"
-				description="__MSG_namesPage.wizard.description__">
+		<vbox id="namesPage" class="cardbook-page"
+			buttonlabelaccept="__MSG_wizard.next.label__"
+			buttonlabelextra2="__MSG_wizard.back.label__">
 			<vbox id="namesPageDescription">
 				<description>__MSG_namesPage.name.description__</description>
 			</vbox>
 			<separator class="groove-thin"/>
-			<grid>
-				<columns flex="1">
-					<column align="center"/>
-					<column align="center" flex="1"/>
-					<column align="center"/>
-					<column align="center"/>
-					<column align="center" hidden="true"/>
-					<column align="center"/>
-					<column align="center"/>
-				</columns>
-				<rows id="namesRows">
-					<row id="namesHeadersRow">
+			<html:table id="namesTable">
+				<html:tr id="namesTableRow">
+					<html:td>
 						<label id="namesPageSelectedLabel" value="__MSG_namePage.selected.label__"/>
-						<label id="namesPageNameLabel" flex="1" value="__MSG_namePage.name.label__"/>
+					</html:td>
+					<html:td>
+						<label id="namesPageNameLabel" value="__MSG_namePage.name.label__"/>
+					</html:td>
+					<html:td>
 						<label id="namesPageColorLabel" value="__MSG_namePage.color.label__"/>
+					</html:td>
+					<html:td>
 						<label id="namesPageVCardVersionLabel" value="__MSG_namePage.vCardVersion.label__"/>
-						<label id="namesPageURLLabel" hidden="true"/>
+					</html:td>
+					<html:td>
 						<label id="namesPageDBCachedLabel" value="__MSG_namePage.DBCached.label__"/>
-					</row>
-				</rows>
-			</grid>
-		</wizardpage>
+					</html:td>
+				</html:tr>
+			</html:table>
+		</vbox>
 	
-		<wizardpage id="finishFirstPage"
-				pageid="finishFirstPage"
-				next="findPage"
-				label="__MSG_wizard.label__"
-				description="__MSG_finishPage.wizard.description__">
+		<vbox id="finishFirstPage" class="cardbook-page"
+			buttonlabelaccept="__MSG_wizard.next.label__"
+			buttonlabelextra2="__MSG_wizard.back.label__">
 			<description id="finishFirstPage1Description">__MSG_finishPage.description__</description>
 			<description id="finishFirstPage2Description" hidden="true">__MSG_finishsPage.description__</description>
-		</wizardpage>
+		</vbox>
 	
-		<wizardpage id="finishPage"
-				pageid="finishPage"
-				label="__MSG_wizard.label__"
-				description="__MSG_finishPage.wizard.description__">
+		<vbox id="finishPage" class="cardbook-page"
+			buttonlabelaccept="__MSG_wizard.create.label__"
+			buttonlabelextra2="__MSG_wizard.back.label__">
 			<description id="finishPage1Description">__MSG_finishPage.description__</description>
 			<description id="finishPage2Description" hidden="true">__MSG_finishsPage.description__</description>
-		</wizardpage>
+		</vbox>
 		
-	</wizard>
+	</dialog>
 </window>
